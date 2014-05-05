@@ -1,0 +1,89 @@
+/*
+ * TransportStabilization.cc
+ *
+ *  Created on: May 17, 2011
+ *      Author: fumagalli
+ */
+
+#include "../include/TransportStabilization.h"
+
+TransportStabilization::TransportStabilization ( const GetPot& dataFile,
+                                                 const std::string& section ) :
+    M_section(section), M_relaxation(dataFile(
+            (M_section + "relaxPeclet").data(), 1.)), M_stabilizationFunction(
+            dataFile((M_section + "function").data(), "Pe"))
+{
+}
+
+// Stabilization function in a given element
+scalar_type TransportStabilization::function ( const size_type& iElem ) const
+{
+    M_parser.setString(M_stabilizationFunction);
+
+    // Select the corresponding element and extract the local Pecle
+    const scalar_type Pe = M_relaxation * ((*M_edgePeclet) [ iElem ]);
+    M_parser.setVariable("Pe", Pe);
+
+    return M_parser.evaluate();
+} // function
+
+void TransportStabilization::computeMediumPeclet ( const scalarVectorPtr_Type& advectionAbscissa,
+                                                   const scalarVectorPtr_Type& advectionOrdinate,
+                                                   const scalarVector_Type& invDiffusion,
+                                                   const MeshHandlerPtr_Type& mesh,
+                                                   const sparseMatrixPtr_Type& globalMatrix )
+{
+    const scalarVector_Type meshSize = mesh->getMeshSize();
+    const size_type numberElements = meshSize.size();
+
+    M_mediumPeclet.reset(new scalarVector_Type(numberElements, 0));
+
+    for ( size_type i = 0; i < numberElements; ++i )
+    {
+        const size_type elem =
+                mesh->getMeshFEMScalar().ind_basic_dof_of_element(i) [ 0 ];
+
+        const base_node point = mesh->getMeshFEMScalar().point_of_basic_dof(
+                elem);
+
+        const scalar_type V1 = (*advectionAbscissa) [ elem ];
+        const scalar_type V2 = (*advectionOrdinate) [ elem ];
+
+        // Compute the vector in the baricenter of the current element
+        (*M_mediumPeclet) [ i ] = (std::max(std::fabs(V1), std::fabs(V2))
+                * invDiffusion [ i ] * meshSize [ elem ]) * 0.5;
+
+    }
+
+} // computeMediumPeclet
+
+void TransportStabilization::computeEdgePeclet ( const scalarVector_Type& advection,
+                                                 const scalarVector_Type& invDiffusion,
+                                                 const MeshHandlerPtr_Type& mesh )
+{
+    const size_type numberEdges = mesh->getMeshFEMVector().nb_dof();
+    M_edgePeclet.reset(new scalarVector_Type(numberEdges, 0.));
+
+    // Computes all the distances between the circumcenters of adjacent triangels
+    for ( getfem::mr_visitor vis(mesh->getMesh().convex_index()); !vis.finished(); ++vis )
+    {
+
+        for ( size_type i = 0; i < mesh->getMesh().nb_faces_of_convex(vis.cv()); ++i )
+        {
+            size_type dof = mesh->getMeshFEMVector().ind_basic_dof_of_element(
+                    vis.cv()) [ i ];
+
+            const size_type elem =
+                    mesh->getMeshFEMScalar().first_convex_of_basic_dof(vis.cv());
+
+            // Computes the average flux
+            const scalar_type hatAdvection = std::fabs(advection [ dof ]);
+
+            // Computes the Peclet of the current edge
+            (*M_edgePeclet) [ dof ] = 0.5 * hatAdvection * invDiffusion [ elem ]
+                    * mesh->getCircumcentersDistance(dof);
+
+        }
+    }
+
+} // computeEdgePeclet

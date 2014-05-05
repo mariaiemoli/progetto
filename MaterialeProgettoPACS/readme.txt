@@ -1,0 +1,53 @@
+*** Letture preliminari
+
+-Lettura rapida dei primi 2 capitli del Bastian, per entrare nel problema.
+
+-lecture1.pdf slides introduttive di un corso di dottorato. SI sovrappongono al testo del Bastian
+
+
+
+*** Problema di Darcy su Networks
+
+-m2an130231_proof.pdf Articolo di derivazione del modello ridotto di
+ flusso di Darcy in network di fratture. Le equazoini importanti sono
+ le 3.11. Non perdetevi nei dettagli. Il codice C++ che risolve questo
+ problema esiste gia` e vi sara dato!. In questo lavoro si fa vedere,
+ oltre alla derivazione del modello ridotto, come trattiamo le
+ intersezioni. Per le biforcazioni pero` le cose sono un po` diverse.
+
+-Cartella Bifurcation:
+
+Trovate le mie note su una proposta di trattamento della biformaczione
+con anche un codice C++ funzionante che calcola le varie
+quantita`. Per il codice, controlalte slo che nel makefile sia
+indicata correttamente la cartella dove avete istallato la libreria
+eigen (quella per le matrici/vettri che avete usato nel corso).
+
+
+
+*** Problema Iperbolico su Networks
+
+lecture3.pdf Anche questa presa largamente dal Bastian, contiene pero`
+delle indicazioni sulle problematiche di questo tipo di problemi.
+
+Numerical Methods for Conservation Laws,
+by Randall J. LeVeque,
+Lectures in Mathematics, ETH-Zurich
+Birkhauser-Verlag, Basel, 1990.
+ISBN 3-7643-2464-3 
+
+
+Finite Volume Methods for Hyperbolic Problems,
+by Randall J. LeVeque,
+Cambridge University Press, 2002.
+Hardback: ISBN 0-521-81087-6
+Paperback: ISBN 0-521-00924-3 
+
+**** Software da guardare
+
+GetFem++
+http://download.gna.org/getfem/html/homepage/
+
+E`la libreria che usiamo per il nostri codice per Darcy su
+network. Conviene scaricarla e istallarla. Le parti specifiche da
+guardare ve le diremo quand vi daremo il codice.

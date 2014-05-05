@@ -1,0 +1,62 @@
+In file included from src/../include/Parser.h:43:0,
+                 from src/../include/FractureData.h:5,
+                 from src/../include/FractureHandler.h:4,
+                 from src/FractureHandler.cc:1:
+src/../include/ParserSpiritGrammar.h:521:8: warning: "/*" within comment
+In file included from src/../include/Parser.h:43:0,
+                 from src/../include/FractureData.h:5,
+                 from src/../include/FractureHandler.h:4,
+                 from src/../include/FracturesSet.h:5,
+                 from src/../include/DarcyFractured.h:6,
+                 from src/DarcyFractured.cc:1:
+src/../include/ParserSpiritGrammar.h:521:8: warning: "/*" within comment
+In file included from src/../include/FractureIntersect.h:5:0,
+                 from src/../include/FracturesSet.h:6,
+                 from src/../include/DarcyFractured.h:6,
+                 from src/DarcyFractured.cc:1:
+src/../include/IntersectData.h: In member function ‘const IntersectData& IntersectData::operator=(const IntersectData&)’:
+src/../include/IntersectData.h:94:5: warning: no return statement in function returning non-void
+In file included from src/../include/XFEMOperators.h:9:0,
+                 from src/../include/DarcyFractured.h:7,
+                 from src/DarcyFractured.cc:1:
+src/../include/MeshHandler.h: In member function ‘const getfem::mesh_region& MeshHandler::getRegion(const bgeot::size_type&) const’:
+src/../include/MeshHandler.h:137:40: warning: returning reference to temporary
+src/DarcyFractured.cc: In member function ‘void DarcyFractured::init()’:
+src/DarcyFractured.cc:41:79: warning: ‘bgeot::base_node getfem::mesh_fem::point_of_dof(bgeot::size_type) const’ is deprecated (declared at /u/software/Repository/Targets/x86_64-any/include/getfem/getfem_mesh_fem.h:459)
+src/DarcyFractured.cc: In member function ‘void DarcyFractured::assembly()’:
+src/DarcyFractured.cc:154:71: error: ‘class FractureHandler’ has no member named ‘getNumIntersections’
+src/DarcyFractured.cc:182:54: warning: name lookup of ‘i’ changed
+src/DarcyFractured.cc:171:25: warning:   matches this ‘i’ under ISO standard rules
+src/DarcyFractured.cc:176:29: warning:   matches this ‘i’ under old rules
+src/DarcyFractured.cc:168:51: warning: unused variable ‘intersectionType’
+src/DarcyFractured.cc:381:51: warning: unused variable ‘intersectionType’
+src/DarcyFractured.cc:464:51: warning: unused variable ‘intersectionType’
+src/DarcyFractured.cc:620:39: error: expected ‘)’ before ‘;’ token
+src/DarcyFractured.cc:844:51: warning: unused variable ‘intersectionType’
+src/../include/FractureHandler.h: In constructor ‘FractureHandler::FractureHandler(const GetPot&, const bgeot::size_type&, const std::string&)’:
+src/../include/FractureHandler.h:270:21: warning: ‘FractureHandler::M_integrationMethodLinear’ will be initialized after
+src/../include/FractureHandler.h:239:21: warning:   ‘getfem::mesh_im FractureHandler::M_integrationMethodPressureVisualization’
+src/FractureHandler.cc:3:1: warning:   when initialized here
+src/../include/FractureHandler.h:246:22: warning: ‘FractureHandler::M_meshFEMVelocity’ will be initialized after
+src/../include/FractureHandler.h:243:22: warning:   ‘getfem::mesh_fem FractureHandler::M_meshFEMPressure’
+src/FractureHandler.cc:3:1: warning:   when initialized here
+src/../include/FractureHandler.h:272:22: warning: ‘FractureHandler::M_meshFEMLinear’ will be initialized after
+src/../include/FractureHandler.h:245:22: warning:   ‘getfem::mesh_fem FractureHandler::M_meshFEMPressureVisualization’
+src/FractureHandler.cc:3:1: warning:   when initialized here
+src/FractureHandler.cc: In member function ‘void FractureHandler::init()’:
+src/FractureHandler.cc:163:49: warning: ‘bgeot::base_node getfem::mesh_fem::point_of_dof(bgeot::size_type) const’ is deprecated (declared at /u/software/Repository/Targets/x86_64-any/include/getfem/getfem_mesh_fem.h:459)
+src/FractureHandler.cc:166:49: warning: ‘bgeot::base_node getfem::mesh_fem::point_of_dof(bgeot::size_type) const’ is deprecated (declared at /u/software/Repository/Targets/x86_64-any/include/getfem/getfem_mesh_fem.h:459)
+src/FractureHandler.cc:169:49: warning: ‘bgeot::base_node getfem::mesh_fem::point_of_dof(bgeot::size_type) const’ is deprecated (declared at /u/software/Repository/Targets/x86_64-any/include/getfem/getfem_mesh_fem.h:459)
+src/FractureHandler.cc:172:49: warning: ‘bgeot::base_node getfem::mesh_fem::point_of_dof(bgeot::size_type) const’ is deprecated (declared at /u/software/Repository/Targets/x86_64-any/include/getfem/getfem_mesh_fem.h:459)
+src/DarcyFractured.cc: In member function ‘void DarcyFractured::solve()’:
+src/DarcyFractured.cc:1180:25: warning: unused variable ‘basisFunction’
+src/DarcyFractured.cc:1183:32: warning: unused variable ‘extendDOFScalar’
+src/DarcyFractured.cc:1186:32: warning: unused variable ‘extendDOFVector’
+src/FractureHandler.cc: At global scope:
+src/FractureHandler.cc:280:51: error: no ‘bgeot::size_type FractureHandler::getNumIntersections() const’ member function declared in class ‘FractureHandler’
+src/DarcyFractured.cc:888:23: warning: unused variable ‘numberIntersections’
+src/DarcyFractured.cc:891:21: warning: unused variable ‘dofVelocity’
+src/DarcyFractured.cc:892:21: warning: unused variable ‘dofPressure’
+make: *** [src/FractureHandler.o] Error 1
+make: *** Waiting for unfinished jobs....
+make: *** [src/DarcyFractured.o] Error 1

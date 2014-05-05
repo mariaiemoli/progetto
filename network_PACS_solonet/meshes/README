@@ -1,0 +1,5 @@
+To use convertMesh type
+
+./convertMesh FREEFEMPROGRAM.edp MESHNAME
+
+where MESHNAME is the name of the mesh without the extension.

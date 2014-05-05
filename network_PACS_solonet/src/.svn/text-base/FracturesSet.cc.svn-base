@@ -1,0 +1,44 @@
+#include "../include/FracturesSet.h"
+
+FracturesSet::FracturesSet ():
+        M_intersections ( new FractureIntersect_Type )
+{}
+
+void FracturesSet::
+init ( const GetPot& dataFile, const std::string& section,
+       const size_type& numFractures, getfem::mesh& mesh, getfem::mesh_level_set& meshLevelSet,
+       const std::string& integrationTypeVelocity, const getfem::mesh_fem& meshFEMScalar,
+       const getfem::mesh_fem& meshFEMVector )
+{
+        M_fractures.resize ( numFractures );
+
+        std::ostringstream sectionFracture;
+
+        // Fill the fracture container
+        for ( size_type f = 0; f < numFractures; ++f )
+        {
+                sectionFracture << section << "fractureData" << f << "/";
+                M_fractures [ f ].reset ( new FractureHandler_Type ( dataFile,
+                                          f, sectionFracture.str() ) );
+
+                // Initialize the fracture
+                M_fractures [ f ]->init();
+
+                // Initialize the level set
+                M_fractures [ f ]->getLevelSet()->init ( mesh, integrationTypeVelocity,
+                                                         meshFEMScalar, meshFEMVector );
+
+                // Compute the normal and map
+                M_fractures [ f ]->normalVectorAndMap ( meshFEMScalar );
+
+                meshLevelSet.add_level_set ( M_fractures[f]->getLevelSet()->getLevelSet() );
+
+                sectionFracture.str("");
+        }
+
+        meshLevelSet.adapt ();
+
+        // Initialize the fracture intersections
+        M_intersections->constructIntesection ( meshLevelSet, M_fractures );
+
+} // init

@@ -1,0 +1,399 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% parameters for program laplacian                                        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+meshFile = meshes/mesh
+folderVTK = ./vtk/
+transientSolver = 0
+stabilize = 1
+
+numberFractures = 2
+
+[dataTime]
+
+        endTime = 1000000000000
+        deltaTime = 1000000000000
+        plotAt = 1
+
+[../]
+
+[stabilization]
+
+    relaxPeclet = 1.
+    function = Pe-1.
+
+[../]
+
+[mediumData]
+
+        [./domain]
+
+                meshExternal = none
+                meshFolder = ./meshes/
+
+                spatialDiscretization = 21
+                spatialInclination = 0.
+                lengthAbscissa = 1.
+                lengthOrdinate = 1.
+                lengthQuota = 1.
+                meshType = GT_PK(2,1)
+                spaceDimension = 2.
+
+                integrationTypeVelocity = IM_TRIANGLE(6)
+                integrationTypePressure = IM_TRIANGLE(1)
+
+                FEMTypeVelocity = FEM_RT0(2)
+                FEMTypePressure = FEM_PK(2,0)
+
+                penaltyParameterVelocity = 50.
+                penaltyParameterPressure = 10.
+
+        [../]
+
+        [./darcy]
+
+                invK = 1.
+                invKDist11 = 1.
+                invKDist12 = 0.
+                invKDist22 = 1.
+
+                source = 4   %source term for darcy
+                solution = 0 %function for BC on pressure
+                solutionIn = 0 
+                solutionOut = 0
+                velocity = 0. %function for BC on velocity
+
+        [../]
+
+[../]
+[fractureData0]
+
+        spaceDimension = 1.
+
+        [./levelSet]
+                levelSet = y-0.5   %the zero is the fracture
+                levelSetCut = -1
+                zMap = 0.5  %fracture equation as z=z(x)
+                jacMap = 1. %ratio between grid size and actual arc length
+                normalMap = [-1.,2.] #[-0.01,1.] #[-0.75,1.] #[-0.25,1.]
+
+                integrationTypeSimplex = IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(3),1)
+
+        [../]
+
+  	[./domain]
+
+                position = 0.0
+                thickness = 0.01
+
+                csi0 = 0.25  %parameter for model closure
+
+                spacing = x
+
+                spatialDiscretization = 81
+                translateAbscissa = 0.0
+                lengthAbscissa = 1
+                lengthOrdinate = 0.
+                lengthQuota = 0.
+                meshType = GT_PK(1,1)
+
+                integrationTypeVelocity = IM_GAUSS1D(3)
+                integrationTypePressure = IM_GAUSS1D(2)
+
+                FEMTypeVelocity = FEM_PK(1,1)
+                FEMTypePressure = FEM_PK(1,0)
+                FEMTypeLinear = FEM_PK(1,1)
+
+        [../]
+
+        [./darcy]
+
+                etaNormal = 0.01
+                etaNormalDistribution = 1.
+                etaTangential = 100.
+                etaTangentialDistribution = 1. 
+
+                source = -0.04
+                solution = 0.0  %for BC on pressure
+                velocity = 0.
+
+        [../]
+
+        
+[../]
+
+[fractureData1]
+
+        spaceDimension = 1.
+
+        [./levelSet]
+
+                levelSet = y-(-2*x+1.2)
+                levelSetCut = -1
+                zMap = -2*x+1.2
+                jacMap = [1./sqrt(5)] %here the mapped grid is shorter than the actual arc length
+                normalMap = [1.,2.]
+
+                integrationTypeSimplex = IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(3),1)
+
+        [../]
+
+        [./domain]
+
+                position = 0.0
+                thickness = 0.01
+
+                csi0 = 0.25
+
+                spacing = x+0.1  %here the fracture starts at x=0.1 
+                spatialDiscretization = 41 
+                translateAbscissa = 0.1
+                lengthAbscissa = 0.5 #1.
+                lengthOrdinate = 0.
+                lengthQuota = 0.
+                meshType = GT_PK(1,1)
+
+                integrationTypeVelocity = IM_GAUSS1D(3)
+                integrationTypePressure = IM_GAUSS1D(2)
+
+                FEMTypeVelocity = FEM_PK(1,1)
+                FEMTypePressure = FEM_PK(1,0)
+                FEMTypeLinear = FEM_PK(1,1)
+
+        [../]
+
+        [./darcy]
+
+                etaNormal = 0.01
+                etaNormalDistribution = 1. 
+                etaTangential = 100
+                etaTangentialDistribution = 1.
+
+                source = -0.04
+                solution = 0.
+                velocity = 0.
+
+        [../]
+
+s[../]
+
+
+[fractureData2]
+
+ spaceDimension = 1.
+
+        [./levelSet]
+
+                levelSet = y-0.1*sin(7*x+0.2)-0.72 #y-2*x+0.4 #
+                levelSetCut = -1
+                zMap = 0.1*sin(7*x+0.2)+0.72 #2*x-0.4
+                jacMap = [1./sqrt(1.+(0.1*7*cos(7*x+0.2))*(0.1*7*cos(7*x+0.2)))] #[1./sqrt(5.)]
+                normalMap = [0.,1.] #[-2.,1.]
+
+                integrationTypeSimplex = IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(3),1)
+
+        [../]
+
+        [./domain]
+
+                position = 0.47
+                thickness = 0.01
+
+                csi0 = 0. #0.25
+
+                spacing = x #x+0.2
+
+                spatialDiscretization = 81
+                translateAbscissa = 0.0
+                lengthAbscissa = 1. #0.5
+                lengthOrdinate = 0.
+                lengthQuota = 0.
+                meshType = GT_PK(1,1)
+
+
+                integrationTypeVelocity = IM_GAUSS1D(3)
+                integrationTypePressure = IM_GAUSS1D(2)
+
+                FEMTypeVelocity = FEM_PK(1,1)
+                FEMTypePressure = FEM_PK(1,0)
+                FEMTypeLinear = FEM_PK(1,1)
+
+        [../]
+
+        [./darcy]
+
+                etaNormal = 1.
+                etaNormalDistribution = 1. #1.+1000.*(x>0.25)-1000.*(x>0.75)
+                etaTangential = 100.
+                etaTangentialDistribution = 1.
+
+                source = 0.0
+                solution = 0.
+                velocity = 0.
+
+        [../]
+
+        [./transport]
+
+                muNormal = 0.1
+                muNormalDistribution = 70.
+                muTangential = 100.
+                muTangentialDistribution = 70.
+
+                source = 0.
+                initialCondition = 0.
+                solution = 0.
+                solutionInOut = 0.
+                flux = 0.
+
+        [../]
+
+
+[../]
+
+[fractureData3]
+
+        spaceDimension = 1.
+
+        [./levelSet]
+
+                levelSet = y-0.85 #-y-0.01*x+0.487
+                levelSetCut = -1
+                zMap = 0.85 #-0.01*x+0.487
+                jacMap = [1.]#[1./sqrt(5.)]  #[1.+1./10000.]
+                normalMap = [2.,1.] # [0.01,1.]
+
+                integrationTypeSimplex = IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(3),1)
+
+        [../]
+
+        [./domain]
+
+                position = 0.73
+                thickness = 0.01
+
+                csi0 = 0.25
+
+                spacing = x #1.-x
+
+                spatialDiscretization = 41
+                translateAbscissa = 0.0
+                lengthAbscissa = 1. #1.
+                lengthOrdinate = 0.
+                lengthQuota = 0.
+                meshType = GT_PK(1,1)
+
+                integrationTypeVelocity = IM_GAUSS1D(3)
+                integrationTypePressure = IM_GAUSS1D(2)
+
+                FEMTypeVelocity = FEM_PK(1,1)
+                FEMTypePressure = FEM_PK(1,0)
+                FEMTypeLinear = FEM_PK(1,1)
+
+        [../]
+
+        [./darcy]
+
+                etaNormal = 0.01
+                etaNormalDistribution = 1. #1.+1000.*(x>0.25)-1000.*(x>0.75)
+                etaTangential = 100.
+                etaTangentialDistribution = 1. #10.*(x<0.5)+10.*(x>0.5)
+
+                source = 0.0
+                solution = 0.
+                velocity = 0.
+
+        [../]
+
+        [./transport]
+
+                muNormal = 0.1
+                muNormalDistribution = 70.
+                muTangential = 100.
+                muTangentialDistribution = 70.
+
+                source = 0.
+                initialCondition = 0.
+                solution = 0.
+                solutionInOut = 0.
+                flux = 0.
+
+        [../]
+
+[../]
+
+
+[fractureData6]
+
+ spaceDimension = 1.
+
+        [./levelSet]
+
+                levelSet = y-0.5*x-0.4 #-y+0.423
+                levelSetCut = -1
+                zMap = 0.5*x+0.4 #0.423
+                jacMap = [1./sqrt(1.25)] #[1.]
+                normalMap = [-1.,2.] #[0.,1.]
+
+                integrationTypeSimplex = IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(3),1)
+
+        [../]
+
+        [./domain]
+
+                position = 0.47
+                thickness = 0.01
+
+                csi0 = 0.25
+
+                spacing = x #x
+
+                spatialDiscretization = 41
+                translateAbscissa = 0.0
+                lengthAbscissa = 1 #1.
+                lengthOrdinate = 0.
+                lengthQuota = 0.
+                meshType = GT_PK(1,1)
+
+                integrationTypeVelocity = IM_GAUSS1D(3)
+                integrationTypePressure = IM_GAUSS1D(2)
+
+                FEMTypeVelocity = FEM_PK(1,1)
+                FEMTypePressure = FEM_PK(1,0)
+                FEMTypeLinear = FEM_PK(1,1)
+
+        [../]
+
+        [./darcy]
+
+                etaNormal = 0.0001
+                etaNormalDistribution = 1. #1.+1000.*(x>0.25)-1000.*(x>0.75)
+                etaTangential = 100.
+                etaTangentialDistribution = 1.
+
+                source = 0.04
+                solution = 0.
+                velocity = 0.
+
+        [../]
+
+        [./transport]
+
+                muNormal = 0.1
+                muNormalDistribution = 70.
+                muTangential = 100.
+                muTangentialDistribution = 70.
+
+                source = 0.
+                initialCondition = 0.
+                solution = 0.
+                solutionInOut = 0.
+                flux = 0.
+
+        [../]
+
+
+        
+[../]
+                        
+

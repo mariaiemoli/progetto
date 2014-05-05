@@ -1,0 +1,1255 @@
+/*
+ * TransportFractured.cc
+ *
+ *  Created on: Apr 4, 2011
+ *      Author: fumagalli
+ */
+
+#include "../include/TransportFractured.h"
+
+TransportFractured::TransportFractured ( const MediumDataPtr_Type& medium,
+                                         const MeshHandlerPtr_Type& mesh,
+                                         const BCHandlerPtr_Type& bcHandler,
+                                         FracturePtrContainer_Type& fracture,
+                                         const TimeDataPtr_Type& time,
+                                         const ExporterPtr_Type& exporter,
+                                         const DarcyFracturedPtr_Type& darcy ) :
+    M_mediumData(medium), M_timeData(time), M_mesh(mesh),
+            M_bcHandler(bcHandler), M_fracture(fracture), M_exporter(exporter),
+            M_darcy(darcy), M_fractureMuNormalOnMedium(fracture.size()),
+            M_fractureMassMatrix(fracture.size()), M_fractureConcentrationOld(
+                    fracture.size()), M_fractureConcentration(fracture.size())
+
+{
+}
+
+void TransportFractured::init ( )
+{
+    const size_type numberFractures = M_fracture.size();
+
+    // Allocate the vector for M_mediumMuInterpolated
+    gmm::resize(M_mediumMuInterpolated,
+            M_mesh->getMeshFEMCoefficients().nb_dof());
+    gmm::clear(M_mediumMuInterpolated);
+
+    for ( size_type f = 0; f < numberFractures; ++f )
+    {
+        // Allocate the vector for M_fractureMuNormalOnMedium
+        gmm::resize(M_fractureMuNormalOnMedium [ f ],
+                M_mesh->getMeshFEMCoefficients().nb_dof());
+        gmm::clear(M_fractureMuNormalOnMedium [ f ]);
+    }
+
+    // Fill the vectors M_mediumEtaInterpolated, M_mediumMuInterpolated, M_fractureEtaNormalOnMedium and M_fractureMuNormalOnMedium of the bulk
+    for ( size_type i = 0; i < M_mesh->getMeshFEMCoefficients().nb_dof(); ++i )
+    {
+        const base_node node = M_mesh->getMeshFEMCoefficients().point_of_dof(i);
+
+        M_mediumMuInterpolated [ i ] = M_mediumData->invKDistribution(node)
+                * M_mediumData->getInvK();
+
+        for ( size_type f = 0; f < numberFractures; ++f )
+        {
+            M_fractureMuNormalOnMedium [ f ] [ i ]
+                    = M_fracture [ f ]->getData().muNormalDistribution(node)
+                            * M_fracture [ f ]->getData().getMuNormal();
+        }
+    }
+} // init
+
+void TransportFractured::assembly ( )
+{
+    const scalar_type numberFractures = M_fracture.size();
+
+    const size_type mediumNumberDOFVelocity =
+            M_mesh->getMeshFEMVector().nb_dof();
+
+    const size_type mediumNumberDOFPressure =
+            M_mesh->getMeshFEMScalar().nb_dof();
+
+    const size_type mediumNumberDOFCoefficients =
+            M_mesh->getMeshFEMCoefficients().nb_dof();
+
+    const size_type mediumNumberBoundaryDOF =
+            M_bcHandler->getMediumBC()->getMeshFEM().nb_dof();
+
+    // Degrees of freedom of the bulk primal: total degree plus extended elements
+    const size_type mediumNumberDOFPressureGlobal = mediumNumberDOFPressure
+            + M_mesh->getCountExtendedDOFScalar(numberFractures - 1);
+
+    // Degrees of freedom of the bulk dual: total degree plus extended elements
+    const size_type mediumNumberDOFVelocityGlobal = mediumNumberDOFVelocity
+            + M_mesh->getCountExtendedDOFVector(numberFractures - 1);
+
+    // Degrees of freedom of the bulk: primal plus dual degrees for freedom
+    const size_type mediumNumberDOFVelocityPressureGlobal =
+            mediumNumberDOFVelocityGlobal + mediumNumberDOFPressureGlobal;
+
+    // Degrees of freedom of the fracture primal
+    sizeVector_Type fractureNumberDOFPressure(numberFractures);
+
+    // Degrees of freedom of the fracture dual
+    sizeVector_Type fractureNumberDOFVelocity(numberFractures);
+
+    // Global number of Degrees of freedom of the fracture
+    sizeVector_Type fractureNumberDOFVelocityPressure(numberFractures);
+
+    // Global number of Degrees of freedom of the fracture
+    sizeVector_Type fractureNumberBoundaryDOF(numberFractures);
+
+    // Total number of degrees of freedom
+    size_type fractureTotalNumberDOFVelocityPressure = 0;
+
+    // Total number of degrees of freedom for the pressure/concentration in the fractures
+    size_type fractureTotalNumberDOFPressure = 0;
+
+    for ( size_type f = 0; f < numberFractures; ++f )
+    {
+        fractureNumberDOFPressure [ f ]
+                = M_fracture [ f ]->getMeshFEMPressure().nb_dof();
+
+        fractureTotalNumberDOFPressure += fractureNumberDOFPressure [ f ];
+
+        fractureNumberDOFVelocity [ f ]
+                = M_fracture [ f ]->getMeshFEMVelocity().nb_dof();
+
+        fractureNumberDOFVelocityPressure [ f ]
+                = fractureNumberDOFVelocity [ f ]
+                        + fractureNumberDOFPressure [ f ];
+
+        fractureTotalNumberDOFVelocityPressure
+                += fractureNumberDOFVelocityPressure [ f ];
+
+        fractureNumberBoundaryDOF [ f ]
+                = M_bcHandler->getFractureBC(f)->getMeshFEM().nb_dof();
+    }
+
+    // Allocate the matrix M_transportMediumMassMatrix
+    M_mediumMassMatrix.reset(new sparseMatrix_Type(
+            mediumNumberDOFPressureGlobal, mediumNumberDOFPressureGlobal));
+    gmm::clear(*M_mediumMassMatrix);
+
+    // Allocate the global matrix M_transportGlobalMatrix
+    M_globalMatrix.reset(new sparseMatrix_Type(
+            mediumNumberDOFVelocityPressureGlobal
+                    + fractureTotalNumberDOFVelocityPressure,
+            mediumNumberDOFVelocityPressureGlobal
+                    + fractureTotalNumberDOFVelocityPressure));
+    gmm::clear(*M_globalMatrix);
+
+    // Allocate the global vector M_transportFluxAndConcentration
+    M_fluxAndConcentration.reset(new scalarVector_Type(
+            mediumNumberDOFVelocityPressureGlobal
+                    + fractureTotalNumberDOFVelocityPressure));
+    gmm::clear(*M_fluxAndConcentration);
+
+    // Allocate the vector M_transportMediumConcentrationOld
+    M_mediumConcentrationOld.reset(new scalarVector_Type(
+            mediumNumberDOFPressureGlobal));
+    gmm::clear(*M_mediumConcentrationOld);
+
+    // Allocate the vector M_transportMediumConcentration
+    M_mediumConcentration.reset(new scalarVector_Type(
+            mediumNumberDOFPressureGlobal));
+    gmm::clear(*M_mediumConcentration);
+
+    for ( size_type f = 0; f < numberFractures; ++f )
+    {
+        // Allocate the fracture matrix M_transportFractureConcentrationOld
+        M_fractureConcentrationOld [ f ].reset(new scalarVector_Type(
+                fractureNumberDOFPressure [ f ]));
+        gmm::clear(*(M_fractureConcentrationOld [ f ]));
+
+        // Allocate the fracture vector M_transportFractureConcentration
+        M_fractureConcentration [ f ].reset(new scalarVector_Type(
+                fractureNumberDOFPressure [ f ]));
+        gmm::clear(*(M_fractureConcentration [ f ]));
+    }
+
+    // Initialize all the block matrices, global matrices and right hand side for the system and the solution vector
+
+    // Blocks of matrix
+    sparseMatrixPtr_Type A11, A12, D;
+
+    // Block of fracture matrix
+    sparseMatrixPtrContainer_Type A11F(numberFractures), A12F(numberFractures),
+            E(numberFractures);
+
+    // Allocate the matrix A11
+    A11.reset(new sparseMatrix_Type(mediumNumberDOFVelocityGlobal,
+            mediumNumberDOFVelocityGlobal));
+    gmm::clear(*A11);
+
+    // Allocate the matrix A12
+    A12.reset(new sparseMatrix_Type(mediumNumberDOFVelocityGlobal,
+            mediumNumberDOFPressureGlobal));
+    gmm::clear(*A12);
+
+    // Allocate the matrix D
+    D.reset(new sparseMatrix_Type(mediumNumberDOFVelocityGlobal,
+            mediumNumberDOFPressureGlobal));
+    gmm::clear(*D);
+
+    for ( size_type f = 0; f < numberFractures; ++f )
+    {
+        // Allocate the fracture matrix A11F
+        A11F [ f ].reset(new sparseMatrix_Type(fractureNumberDOFVelocity [ f ],
+                fractureNumberDOFVelocity [ f ]));
+        gmm::clear(*(A11F [ f ]));
+
+        // Allocate the fracture matrix A12F
+        A12F [ f ].reset(new sparseMatrix_Type(fractureNumberDOFVelocity [ f ],
+                fractureNumberDOFPressure [ f ]));
+        gmm::clear(*(A12F [ f ]));
+
+        // Allocate the fracture matrix M_transportMediumMassMatrix
+        M_fractureMassMatrix [ f ].reset(
+                new sparseMatrix_Type(fractureNumberDOFPressure [ f ],
+                        fractureNumberDOFPressure [ f ]));
+        gmm::clear(*(M_fractureMassMatrix [ f ]));
+
+        // Allocate the matrix E
+        E [ f ].reset(new sparseMatrix_Type(mediumNumberDOFVelocityGlobal,
+                mediumNumberDOFPressure));
+        gmm::clear(*(E [ f ]));
+    }
+
+    // Compute the edge measure of the fracture
+
+    scalarVectorContainer_Type fractureEdgeMeasure(numberFractures);
+    sparseMatrixPtrContainer_Type fractureMediumInterpolationMatrix(
+            numberFractures);
+
+    for ( size_type f = 0; f < numberFractures; ++f )
+    {
+        gmm::resize(fractureEdgeMeasure [ f ], fractureNumberDOFPressure [ f ]);
+
+        getfem::stimaLati(fractureEdgeMeasure [ f ], M_fracture [ f ]);
+
+        // Compute the matrix fractureMediumInterpolationMatrix for interpolation between the fracture and the bulk
+        fractureMediumInterpolationMatrix [ f ].reset(new sparseMatrix_Type(
+                mediumNumberDOFCoefficients, fractureNumberDOFPressure [ f ]));
+
+        gmm::clear(*fractureMediumInterpolationMatrix [ f ]);
+
+        getfem::interpolationMatrix(fractureMediumInterpolationMatrix [ f ],
+                M_mesh, M_fracture [ f ]);
+
+    }
+
+    std::cout << "Assembling medium" << std::endl;
+
+    // Computes the matrix \int_K \tau_i \cdot \tau_j
+    getfem::massHdiv(A11, M_mesh, M_mediumMuInterpolated,
+            MeshHandler::UNCUT_REGION);
+
+    getfem::nitsche(A11, M_mesh, M_mediumMuInterpolated,
+            M_mediumData->getPenaltyVector(), M_bcHandler->getDirichletUncut(),
+            MeshHandler::UNCUT_REGION);
+
+    // Computes the matrix \int_K \nabla v_i \cdot \tau_j
+    getfem::divHdiv(A12, M_mesh, MeshHandler::UNCUT_REGION);
+
+    // Shift for the fracture
+    for ( size_type f = 0; f < numberFractures; ++f )
+    {
+
+        std::cout << "Fracture " << f << std::endl;
+
+        // Computes the matrix \int_K \tau_i \cdot \tau_j +  \int_K {\tau_i \cdot n}{\tau_j \cdot n} + \int_K [\tau_i \cdot n][\tau_j \cdot n]
+        getfem::massHdiv(A11, M_mesh, M_fracture [ f ],
+                M_fractureMuNormalOnMedium [ f ], M_mediumMuInterpolated, f
+                        + FractureData::FRACTURE);
+
+        getfem::darcy_E(E [ f ], M_mesh, M_fracture [ f ], f
+                + FractureData::FRACTURE);
+
+        getfem::nitsche(A11, M_mesh, M_fracture [ f ], M_mediumMuInterpolated,
+                M_mediumData->getPenaltyVector(), M_bcHandler->getDirichletCut(
+                        FractureData::FRACTURE + f));
+
+        getfem::divHdiv(A12, M_mesh, M_fracture [ f ], f
+                + FractureData::FRACTURE);
+
+    }
+
+    for ( size_type f = 0; f < numberFractures; ++f )
+    {
+        std::cout << "Assembling fracture " << f << " of " << numberFractures
+                << std::endl;
+
+        // Computes the matrix \int_\gamma \tau_i \cdot \tau_j
+        getfem::darcy_A11F(A11F [ f ], M_fracture [ f ],
+                M_mediumData->getPenaltyVector(),
+                M_fracture [ f ]->getMuTangentialInterpolated(),
+                M_bcHandler->getFractureBC(f)->getDirichlet());
+
+        // Computes the matrix \int_\gamma \nabla v_i \cdot \tau_j
+        getfem::darcy_A12F(A12F [ f ], M_fracture [ f ]);
+    }
+
+    // Copy blocks into the system matrix M_transportGlobalMatrix
+    //     [  A11  A12+D  0              ]
+    // Z = [ -A12    M  0              ]
+    //     [  0    0      A11F  A12F+Df  ]
+    //     [  0    0     -A12F   M    ]
+
+    // Copy the matrix A11 in M_transportGlobalMatrix in the correct position
+    gmm::copy(*A11, gmm::sub_matrix(*M_globalMatrix, gmm::sub_interval(0,
+            mediumNumberDOFVelocityGlobal), gmm::sub_interval(0,
+            mediumNumberDOFVelocityGlobal)));
+
+    // Copy the matrix A12 in M_darcyGlobalMatrix in the correct position
+    gmm::copy(*A12, gmm::sub_matrix(*M_globalMatrix, gmm::sub_interval(0,
+            mediumNumberDOFVelocityGlobal), gmm::sub_interval(
+            mediumNumberDOFVelocityGlobal, mediumNumberDOFPressureGlobal)));
+
+    // Copy the matrix -A12 in M_darcyGlobalMatrix in the correct position
+    gmm::copy(gmm::transposed(gmm::scaled(*A12, -1.0)), gmm::sub_matrix(
+            *M_globalMatrix, gmm::sub_interval(mediumNumberDOFVelocityGlobal,
+                    mediumNumberDOFPressureGlobal), gmm::sub_interval(0,
+                    mediumNumberDOFVelocityGlobal)));
+
+    // Shift for the fracture
+    size_type fractureShift = mediumNumberDOFVelocityPressureGlobal;
+    for ( size_type f = 0; f < numberFractures; ++f )
+    {
+
+        // Copy the matrix A11F in M_darcyGlobalMatrix in the correct position
+        gmm::copy(*(A11F [ f ]),
+                gmm::sub_matrix(*M_globalMatrix, gmm::sub_interval(
+                        fractureShift, fractureNumberDOFVelocity [ f ]),
+                        gmm::sub_interval(fractureShift,
+                                fractureNumberDOFVelocity [ f ])));
+
+        // Copy the matrix A12F in M_darcyGlobalMatrix in the correct position
+        gmm::copy(*(A12F [ f ]),
+                gmm::sub_matrix(*M_globalMatrix, gmm::sub_interval(
+                        fractureShift, fractureNumberDOFVelocity [ f ]),
+                        gmm::sub_interval(fractureShift
+                                + fractureNumberDOFVelocity [ f ],
+                                fractureNumberDOFPressure [ f ])));
+
+        // Copy the matrix -A12F in M_darcyGlobalMatrix in the correct position
+        gmm::copy(gmm::transposed(gmm::scaled(*(A12F [ f ]), -1.0)),
+                gmm::sub_matrix(*M_globalMatrix, gmm::sub_interval(
+                        fractureShift + fractureNumberDOFVelocity [ f ],
+                        fractureNumberDOFPressure [ f ]), gmm::sub_interval(
+                        fractureShift, fractureNumberDOFVelocity [ f ])));
+
+        //--------------------------------qui E-----------------------------
+        // E è il termine che accoppia la soluzione nella frattura a quella esterna.
+        // uso E e -E', dovrebbe essere una garanzia per l'energia perché uso la
+        //stessa interpolazione e approssimazione "nei due sensi"
+
+        scalarVector_Type provv(fractureNumberDOFPressure [ f ]), provv1(
+                mediumNumberDOFPressure);
+
+        for ( size_type i = 0; i < mediumNumberDOFVelocityGlobal; ++i )
+        {
+            // n columns of the block
+            gmm::clear(provv);
+            gmm::clear(provv1);
+
+            for ( size_type j = 0; j < mediumNumberDOFPressure; ++j )
+            {
+                provv1 [ j ] = -(*(E [ f ]))(i, j);
+            }
+
+            gmm::mult_add(gmm::transposed(
+                    *fractureMediumInterpolationMatrix [ f ]), provv1, provv);
+
+            for ( size_type j = 0; j < fractureNumberDOFPressure [ f ]; ++j )
+            {
+                (*M_globalMatrix)(fractureShift
+                        + fractureNumberDOFVelocity [ f ] + j, i) = provv [ j ];
+            }
+        }
+
+        for ( size_type i = 0; i < mediumNumberDOFVelocityGlobal; ++i )
+        {
+            // n rows of the block
+            gmm::clear(provv);
+            gmm::clear(provv1);
+            for ( size_type j = 0; j < mediumNumberDOFPressure; ++j )
+            {
+                provv1 [ j ] = (*(E [ f ]))(i, j);
+            }
+
+            gmm::mult_add(gmm::transposed(
+                    *fractureMediumInterpolationMatrix [ f ]), provv1, provv);
+
+            for ( size_type j = 0; j < fractureNumberDOFPressure [ f ]; ++j )
+            {
+                (*M_globalMatrix)(i, fractureShift
+                        + fractureNumberDOFVelocity [ f ] + j) = provv [ j ];
+            }
+        }
+
+        // Update the shift
+        fractureShift += fractureNumberDOFVelocityPressure [ f ];
+    }
+
+    // Set the initial condition for the concentration
+    for ( size_type i = 0; i < M_mesh->getMeshFEMCoefficients().nb_dof(); i++ )
+    {
+        const base_node node =
+                M_mesh->getMeshFEMCoefficients().point_of_basic_dof(i);
+        (*M_mediumConcentrationOld) [ i ] = M_mediumData->exactInitial(node);
+    }
+
+    for ( size_type f = 0; f < numberFractures; ++f )
+    {
+        // Set the initial condition for the concentration in the fracture
+        for ( size_type i = 0; i < fractureNumberDOFPressure [ f ]; ++i )
+        {
+            const base_node
+                    node =
+                            M_fracture [ f ]->getMeshFEMPressure().point_of_basic_dof(
+                                    i);
+            (*(M_fractureConcentrationOld [ f ])) [ i ]
+                    = M_fracture [ f ]->getData().concentrationInitialCondition(
+                            node);
+        }
+
+    }
+
+    // Build the mass mastrix for the concentration.
+    // It is diagonal since primal is piecewise constant
+    scalarVector_Type dens(mediumNumberDOFPressure, 0.);
+    for ( size_type i = 0; i < mediumNumberDOFPressure; ++i )
+    {
+        dens [ i ] = 1.0 / M_timeData->getDeltaTime();
+    }
+
+    scalarVectorContainer_Type densF(numberFractures);
+
+    for ( size_type f = 0; f < numberFractures; ++f )
+    {
+        densF [ f ].resize(fractureNumberDOFPressure [ f ], 0.);
+
+        for ( size_type i = 0; i < fractureNumberDOFPressure [ f ]; ++i )
+        {
+            densF [ f ] [ i ] = 0.01
+                    / (M_fracture [ f ]->getMagnificationMapFactor1() [ i ]
+                            * M_timeData->getDeltaTime());
+        }
+    }
+
+    M_mediumMassMatrix.reset(new sparseMatrix_Type(
+            mediumNumberDOFPressureGlobal, mediumNumberDOFPressureGlobal));
+    gmm::clear(*M_mediumMassMatrix);
+
+    // Computes the matrix \int_K \vi_i \vi_j
+    getfem::massL2(M_mediumMassMatrix, M_mesh, dens, MeshHandler::UNCUT_REGION);
+
+    for ( size_type f = 0; f < numberFractures; ++f )
+    {
+        getfem::massL2(M_mediumMassMatrix, M_mesh, M_fracture [ f ], dens, f
+                + FractureData::FRACTURE);
+
+        // Computes the matrix \int_\gamma \vi_i \vi_j
+        getfem::massL2(M_fractureMassMatrix [ f ], M_fracture [ f ], densF [ f ]);
+
+    }
+
+    // Copy the matrix M_transportMediumMassMatrix in M_transportGlobalMatrix in the correct position
+    gmm::copy(*M_mediumMassMatrix, gmm::sub_matrix(*M_globalMatrix,
+            gmm::sub_interval(mediumNumberDOFVelocityGlobal,
+                    mediumNumberDOFPressureGlobal), gmm::sub_interval(
+                    mediumNumberDOFVelocityGlobal,
+                    mediumNumberDOFPressureGlobal)));
+
+    fractureShift = mediumNumberDOFVelocityPressureGlobal;
+    for ( size_type f = 0; f < numberFractures; ++f )
+    {
+        // Copy the matrix M_transportFractureMassMatrix in M_transportGlobalMatrix in the correct position
+        gmm::copy(*(M_fractureMassMatrix [ f ]), gmm::sub_matrix(
+                *M_globalMatrix, gmm::sub_interval(fractureShift
+                        + fractureNumberDOFVelocity [ f ],
+                        fractureNumberDOFPressure [ f ]), gmm::sub_interval(
+                        fractureShift + fractureNumberDOFVelocity [ f ],
+                        fractureNumberDOFPressure [ f ])));
+
+        // Update the shift
+        fractureShift += fractureNumberDOFVelocityPressure [ f ];
+    }
+
+    // Build D and DF, which contain the linear transport term
+    D.reset(new sparseMatrix_Type(mediumNumberDOFVelocityGlobal,
+            mediumNumberDOFPressureGlobal));
+    gmm::clear(*D);
+
+    sparseMatrixPtrContainer_Type DF(numberFractures);
+    for ( size_type f = 0; f < numberFractures; ++f )
+    {
+        DF [ f ].reset(new sparseMatrix_Type(fractureNumberDOFVelocity [ f ],
+                fractureNumberDOFPressure [ f ]));
+        gmm::clear(*DF [ f ]);
+    }
+
+    // Computes the matrix \int_K \beta \cdot \tau_i v_j
+    getfem::advectHdiv(D, M_mesh, M_mediumMuInterpolated,
+            M_darcy->getMediumVelocity(), MeshHandler::UNCUT_REGION);
+
+    for ( size_type f = 0; f < numberFractures; ++f )
+    {
+
+        // Computes the matrix \int_K \beta \cdot \tau_i v_j
+        getfem::advectHdiv(D, M_mesh, M_fracture [ f ], M_mediumMuInterpolated,
+                M_darcy->getMediumVelocityInlet(),
+                M_darcy->getMediumVelocityOutlet(), f + FractureData::FRACTURE);
+
+        // Computes the matrix \int_\gamma \beta \cdot \tau_i v_j
+        getfem::darcy_DF(DF [ f ],
+                M_fracture [ f ]->getIntegrationMethodVelocity(),
+                M_fracture [ f ]->getMeshFEMVelocity(),
+                M_fracture [ f ]->getMeshFEMPressure(),
+                M_fracture [ f ]->getMuTangentialInterpolated(),
+                M_fracture [ f ]->getMagnificationMapFactor1(),
+                M_darcy->getFractureVelocity(f), -1);
+
+    }
+
+    // Add the matrix D in M_transportGlobalMatrix in the correct position
+    gmm::add(*D, gmm::sub_matrix(*M_globalMatrix, gmm::sub_interval(0,
+            mediumNumberDOFVelocityGlobal), gmm::sub_interval(
+            mediumNumberDOFVelocityGlobal, mediumNumberDOFPressureGlobal)));
+
+    fractureShift = mediumNumberDOFVelocityPressureGlobal;
+    for ( size_type f = 0; f < numberFractures; ++f )
+    {
+        // Add the matrix DF in M_transportGlobalMatrix in the correct position
+        gmm::add(*(DF [ f ]),
+                gmm::sub_matrix(*M_globalMatrix, gmm::sub_interval(
+                        fractureShift, fractureNumberDOFVelocity [ f ]),
+                        gmm::sub_interval(fractureShift
+                                + fractureNumberDOFVelocity [ f ],
+                                fractureNumberDOFPressure [ f ])));
+
+        // Update the shift
+        fractureShift += fractureNumberDOFVelocityPressure [ f ];
+    }
+
+} // assembly
+
+
+void TransportFractured::addStabilization ( const TransportStabilizationPtr_Type& stabilization )
+{
+    stabilization->computeMediumPeclet(
+            M_darcy->getMediumVelocityInterpolatedAbscissa(),
+            M_darcy->getMediumVelocityInterpolatedOrdinate(),
+            M_mediumMuInterpolated, M_mesh, M_globalMatrix);
+
+    stabilization->computeEdgePeclet(*(M_darcy->getMediumVelocity()),
+            M_mediumMuInterpolated, M_mesh);
+
+    exportSolutionInCell(M_exporter->getFolder() + "Peclet.vtk", "Peclet",
+            M_mesh->getMeshFEMScalar(), *(stabilization->getMediumPeclet()));
+
+    // Build D and DF, which contain the linear transport term
+
+    // Computes the matrix \int_K \nabla v_i \cdot \tau_j
+    sparseMatrixPtr_Type A12;
+
+    // Degrees of freedom of the bulk dual: total degree plus extended elements
+
+    A12.reset(new sparseMatrix_Type(M_mesh->getMeshFEMVector().nb_dof(),
+            M_mesh->getMeshFEMScalar().nb_dof()));
+    gmm::clear(*A12);
+
+    // Allocate the global vector M_darcyGlobalRightHandSide
+    M_stabilizationRightHandSide.reset(new scalarVector_Type(
+            M_mesh->getMeshFEMVector().nb_dof()
+                    + M_mesh->getMeshFEMScalar().nb_dof()));
+
+    getfem::divHdiv(A12, M_mesh, MeshHandler::UNCUT_REGION);
+
+    // Computes all the distances between the circumcenters of adjacent triangels
+    for ( getfem::mr_visitor vis(M_mesh->getMesh().convex_index()); !vis.finished(); ++vis )
+    {
+
+        const size_type
+                elem = M_mesh->getMeshFEMScalar().ind_basic_dof_of_element(
+                        vis.cv()) [ 0 ];
+
+        for ( size_type i = 0; i < M_mesh->getMesh().nb_faces_of_convex(
+                vis.cv()); ++i )
+        {
+            size_type dof =
+                    M_mesh->getMeshFEMVector().ind_basic_dof_of_element(
+                            vis.cv()) [ i ];
+
+            const base_node point =
+                    M_mesh->getMeshFEMVector().point_of_basic_dof(dof);
+
+            std::cout << point << std::endl;
+
+            // Computes the average flux
+            const scalar_type rho = stabilization->function(dof);
+
+            scalar_type segno = (*A12)(dof, elem)
+                    * (*(M_darcy->getMediumVelocity())) [ dof ];
+
+            if ( segno != 0 )
+            {
+                segno = segno / std::fabs(segno);
+            }
+            else
+            {
+                segno = -1;
+            }
+
+            if ( stabilization->getEdgePeclet(dof) > 1 )
+            {
+
+                (*M_globalMatrix)(dof, elem
+                        + M_mesh->getMeshFEMVector().nb_dof()) += segno * rho;
+
+                // Check if the current edge is a boundary edge
+                if ( M_mesh->getRegion(BC::NEUMANN_BOUNDARY_NUM).is_in(
+                        vis.cv(), i) )
+                {
+                    const base_node point =
+                            M_mesh->getMeshFEMVector().point_of_basic_dof(dof);
+
+                    const scalar_type ud = M_mediumData->exact(point, 0.);
+
+                    (*M_stabilizationRightHandSide) [ dof ] = -ud * rho;
+                }
+
+            }
+        }
+    }
+
+    M_exporter->spy(M_globalMatrix, "stab");
+
+} // addStabilization
+
+void TransportFractured::solve ( )
+{
+    const scalar_type numberFractures = M_fracture.size();
+
+    const size_type mediumNumberDOFVelocity =
+            M_mesh->getMeshFEMVector().nb_dof();
+
+    const size_type mediumNumberDOFPressure =
+            M_mesh->getMeshFEMScalar().nb_dof();
+
+    const size_type mediumNumberDOFCoefficients =
+            M_mesh->getMeshFEMCoefficients().nb_dof();
+
+    const size_type mediumNumberBoundaryDOF =
+            M_bcHandler->getMediumBC()->getMeshFEM().nb_dof();
+
+    const size_type mediumNumberDOFVelocityGlobal = mediumNumberDOFVelocity
+            + M_mesh->getCountExtendedDOFVector(numberFractures - 1);
+
+    // Degrees of freedom of the bulk dual: total degree plus extended elements
+    const size_type mediumNumberDOFPressureGlobal = mediumNumberDOFPressure
+            + M_mesh->getCountExtendedDOFScalar(numberFractures - 1);
+
+    // Degrees of freedom of the bulk: primal plus dual degrees for freedom
+    const size_type mediumNumberDOFVelocityPressureGlobal =
+            mediumNumberDOFPressureGlobal + mediumNumberDOFVelocityGlobal;
+
+    // Degrees of freedom of the fracture primal
+    sizeVector_Type fractureNumberDOFPressure(numberFractures);
+
+    // Degrees of freedom of the fracture dual
+    sizeVector_Type fractureNumberDOFVelocity(numberFractures);
+
+    // Global number of Degrees of freedom of the fracture
+    sizeVector_Type fractureNumberDOFVelocityPressure(numberFractures);
+
+    // Global number of Degrees of freedom of the fracture
+    sizeVector_Type fractureNumberBoundaryDOF(numberFractures);
+
+    // Total number of degrees of freedom
+    size_type fractureTotalNumberDOFVelocityPressure = 0;
+
+    // Total number of degrees of freedom for the pressure/concentration in the fractures
+    size_type fractureTotalNumberDOFPressure = 0;
+
+    for ( size_type f = 0; f < numberFractures; ++f )
+    {
+        fractureNumberDOFPressure [ f ]
+                = M_fracture [ f ]->getMeshFEMPressure().nb_dof();
+
+        fractureTotalNumberDOFPressure += fractureNumberDOFPressure [ f ];
+
+        fractureNumberDOFVelocity [ f ]
+                = M_fracture [ f ]->getMeshFEMVelocity().nb_dof();
+
+        fractureNumberDOFVelocityPressure [ f ]
+                = fractureNumberDOFVelocity [ f ]
+                        + fractureNumberDOFPressure [ f ];
+
+        fractureTotalNumberDOFVelocityPressure
+                += fractureNumberDOFVelocityPressure [ f ];
+
+        fractureNumberBoundaryDOF [ f ]
+                = M_bcHandler->getFractureBC(f)->getMeshFEM().nb_dof();
+    }
+
+    M_fluxAndConcentration.reset(new scalarVector_Type(
+            mediumNumberDOFVelocityPressureGlobal
+                    + fractureTotalNumberDOFVelocityPressure, 0));
+
+    // Allocate the global vector M_darcyGlobalRightHandSide
+    M_globalRightHandSide.reset(new scalarVector_Type(
+            mediumNumberDOFVelocityPressureGlobal
+                    + fractureTotalNumberDOFVelocityPressure));
+
+    scalar_type flusso(0); //in queste variabili sommo il flusso attraverso il bordo del dominio per fare un bilancio di massa
+    scalar_type flusso2d(0);
+
+    scalarVector_Type chi(mediumNumberDOFVelocityGlobal, 0); //variabile flusso
+    scalarVector_Type transportMediumConcentration(
+            mediumNumberDOFPressureGlobal, 0); //variabile concentrazione
+
+    scalarVectorContainer_Type fractureConcentration(numberFractures); //concentrazione nella frattura
+    for ( size_type f = 0; f < numberFractures; ++f )
+    {
+        fractureConcentration [ f ].resize(fractureNumberDOFPressure [ f ], 0);
+
+    }
+
+    scalarVectorPtr_Type Cneumann;
+    Cneumann.reset(new scalarVector_Type(mediumNumberBoundaryDOF, 0));
+
+    scalarVectorPtr_Type CneumannIn;
+    CneumannIn.reset(new scalarVector_Type(mediumNumberBoundaryDOF, 0));
+
+    scalarVectorPtr_Type CneumannOut;
+    CneumannOut.reset(new scalarVector_Type(mediumNumberBoundaryDOF, 0));
+
+    scalarVectorPtr_Type div;
+    div.reset(new scalarVector_Type(mediumNumberDOFCoefficients, 0));
+
+    scalarVectorPtr_Type B_p;
+    B_p.reset(new scalarVector_Type(mediumNumberDOFPressureGlobal, 0));
+
+    scalarVectorPtr_Type B_v;
+    B_v.reset(new scalarVector_Type(mediumNumberDOFVelocityGlobal, 0));
+
+    scalarVectorPtr_Type Bs;
+    Bs.reset(new scalarVector_Type(mediumNumberDOFVelocityGlobal, 0));
+
+    scalarVectorPtrContainer_Type CneumannF(numberFractures);
+    scalarVectorPtrContainer_Type divF(numberFractures);
+
+    scalarVectorPtrContainer_Type B_pF(numberFractures);
+    scalarVectorPtrContainer_Type B_vF(numberFractures);
+
+    scalarVectorPtrContainer_Type BsF(numberFractures);
+
+    for ( size_type f = 0; f < numberFractures; ++f )
+    {
+        CneumannF [ f ].reset(new scalarVector_Type(
+                fractureNumberBoundaryDOF [ f ], 0));
+
+        divF [ f ].reset(new scalarVector_Type(fractureNumberDOFPressure [ f ],
+                0));
+
+        B_pF [ f ].reset(new scalarVector_Type(fractureNumberDOFPressure [ f ],
+                0));
+
+        B_vF [ f ].reset(new scalarVector_Type(fractureNumberDOFVelocity [ f ],
+                0));
+
+        BsF [ f ].reset(new scalarVector_Type(fractureNumberDOFVelocity [ f ],
+                0));
+    }
+
+    //-----------------------------------------------CICLO IN TEMPO---------------------------------------
+    for ( size_type currentTimeStep = 1; currentTimeStep
+            <= M_timeData->getTimeSteps(); ++currentTimeStep )
+    {
+        // Compute the current time
+        const scalar_type currentTime = currentTimeStep
+                * M_timeData->getDeltaTime();
+
+        cout << endl << "Current time  " << currentTime << " over "
+                << M_timeData->getEndTime() << endl;
+
+        // Clean all the time dependent matrices
+        gmm::clear(*M_globalRightHandSide);
+        gmm::clear(*B_v);
+        gmm::clear(*B_p);
+
+        *M_globalRightHandSide = *M_stabilizationRightHandSide;
+
+        for ( size_type f = 0; f < numberFractures; ++f )
+        {
+            gmm::clear(*(B_pF [ f ]));
+            gmm::clear(*(B_vF [ f ]));
+        }
+
+        // Evaluate the source term
+        for ( size_type i = 0; i < mediumNumberDOFCoefficients; i++ )
+        {
+            const base_node node =
+                    M_mesh->getMeshFEMCoefficients().point_of_basic_dof(i);
+
+            (*div) [ i ] = M_mediumData->source(node, currentTime);
+        }
+
+        for ( size_type f = 0; f < numberFractures; ++f )
+        {
+            for ( size_type i = 0; i < fractureNumberDOFPressure [ f ]; i++ )
+            {
+                const base_node
+                        node =
+                                M_fracture [ f ]->getMeshFEMPressure().point_of_basic_dof(
+                                        i);
+
+                (*(divF [ f ])) [ i ]
+                        = M_fracture [ f ]->getData().transportSource(node,
+                                currentTime);
+                // Non è coerente!!!!
+
+                (*(divF [ f ])) [ i ]
+                        *= M_fracture [ f ]->getData().getThickness();
+            }
+        }
+
+        //assemblo il termine noto
+        getfem::sourceL2(B_p, div, M_mesh, MeshHandler::UNCUT_REGION);
+
+        size_type fractureShift = 0;
+        for ( size_type f = 0; f < numberFractures; ++f )
+        {
+
+            //assemblo il termine noto
+            getfem::sourceL2(B_p, div, M_mesh, M_fracture [ f ], fractureShift,
+                    f + FractureData::FRACTURE);
+
+            getfem::assembling_Source_BoundaryF(B_pF [ f ], B_vF [ f ],
+                    divF [ f ], M_fracture [ f ]);
+
+            fractureShift += fractureNumberDOFVelocityPressure [ f ];
+        }
+
+        gmm::add(*B_p, gmm::sub_vector(*M_globalRightHandSide,
+                gmm::sub_interval(mediumNumberDOFVelocityGlobal,
+                        mediumNumberDOFPressureGlobal)));
+
+        fractureShift = mediumNumberDOFVelocityPressureGlobal;
+        for ( size_type f = 0; f < numberFractures; ++f )
+        {
+            gmm::add(*(B_pF [ f ]), gmm::sub_vector(*M_globalRightHandSide,
+                    gmm::sub_interval(fractureShift,
+                            fractureNumberDOFPressure [ f ])));
+
+            fractureShift += fractureNumberDOFVelocityPressure [ f ];
+        }
+
+        // questo è il termine M_transportMediumMassMatrix*M_transportMediumConcentration^n/M_deltaTime che va al termine noto
+        gmm::mult_add(*M_mediumMassMatrix, *M_mediumConcentrationOld,
+                gmm::sub_vector(*M_globalRightHandSide, gmm::sub_interval(
+                        mediumNumberDOFVelocityGlobal,
+                        mediumNumberDOFPressureGlobal)));
+
+        gmm::clear(transportMediumConcentration);
+        gmm::mult_add(*M_mediumMassMatrix, *M_mediumConcentrationOld,
+                transportMediumConcentration);
+
+        //lo stesso ma nella frattura
+        fractureShift = mediumNumberDOFVelocityPressureGlobal;
+        for ( size_type f = 0; f < numberFractures; ++f )
+        {
+            gmm::mult_add(*(M_fractureMassMatrix [ f ]),
+                    *(M_fractureConcentrationOld [ f ]), gmm::sub_vector(
+                            *M_globalRightHandSide, gmm::sub_interval(
+                                    fractureNumberDOFVelocity [ f ]
+                                            + fractureShift,
+                                    fractureNumberDOFPressure [ f ])));
+
+            gmm::clear(fractureConcentration [ f ]);
+
+            gmm::mult_add(*(M_fractureMassMatrix [ f ]),
+                    *(M_fractureConcentrationOld [ f ]),
+                    fractureConcentration [ f ]);
+
+            fractureShift += fractureNumberDOFVelocityPressure [ f ];
+        }
+
+        //calcolo la massa di tracciante contenuta nel dominio
+        scalar_type totalConcentration = 0;
+        for ( size_type i = 0; i < mediumNumberDOFPressureGlobal; ++i )
+        {
+            totalConcentration += transportMediumConcentration [ i ]
+                    * M_timeData->getDeltaTime();
+        }
+
+        for ( size_type f = 0; f < numberFractures; ++f )
+        {
+            for ( size_type i = 0; i < fractureNumberDOFPressure [ f ]; ++i )
+            {
+                totalConcentration += fractureConcentration [ f ] [ i ]
+                        * M_timeData->getDeltaTime();
+            }
+        }
+
+        cout << std::setprecision(15) << "Total mass" << totalConcentration
+                << endl << "Flux " << flusso << endl
+                << "Flux 2D times Delta t " << flusso2d
+                * M_timeData->getDeltaTime() << endl
+                << "Total Mass plus flux plus flux 2D times Delta t "
+                << totalConcentration + flusso + flusso2d
+                        * M_timeData->getDeltaTime() << endl << endl;
+
+        //condizioni al contorno (dipendono dal tempo)
+        // Fill External Stress values for concentration
+        for ( size_type i = 0; i < mediumNumberBoundaryDOF; i++ )
+        {
+
+            const base_node
+                    node =
+                            M_bcHandler->getMediumBC()->getMeshFEM().point_of_basic_dof(
+                                    i);
+
+            (*Cneumann) [ i ] = M_mediumData->exact(node, currentTime);
+
+            (*CneumannIn) [ i ] = M_mediumData->exactInlet(node, currentTime);
+
+            (*CneumannOut) [ i ] = M_mediumData->exactOutlet(node, currentTime);
+
+        }
+
+        for ( size_type f = 0; f < numberFractures; ++f )
+        {
+            const BCPtr_Type& fractureBC = M_bcHandler->getFractureBC(f);
+
+            for ( size_type i = 0; i < fractureNumberBoundaryDOF [ f ]; i++ )
+            {
+                const base_node node =
+                        fractureBC->getMeshFEM().point_of_basic_dof(i);
+
+                (*(CneumannF [ f ])) [ i ]
+                        = M_fracture [ f ]->getData().concentrationExact(node,
+                                currentTime);
+            }
+            (*(CneumannF [ f ])) [ 0 ] *= -1;
+        }
+
+        gmm::clear(*div);
+        gmm::clear(*Bs);
+
+        for ( size_type f = 0; f < numberFractures; ++f )
+        {
+            gmm::clear(*(divF [ f ]));
+            gmm::clear(*(BsF [ f ]));
+        }
+
+        // Computes the right hand side rhs which stores the boundary conditions
+        getfem::stressRHS(Bs, M_mesh, M_bcHandler, Cneumann);
+
+        getfem::nitscheRHS(B_v, M_mesh, M_bcHandler, M_mediumData->getInvK(),
+                M_mediumData->getPenaltyVector(), div);
+
+        fractureShift = 0;
+        for ( size_type f = 0; f < numberFractures; ++f )
+        {
+            getfem::stressRHS(Bs, M_mesh, M_bcHandler, M_fracture [ f ],
+                    fractureShift, CneumannIn, CneumannOut);
+
+            getfem::nitscheRHS(B_v, M_mesh, M_bcHandler, M_fracture [ f ],
+                    fractureShift, M_mediumData->getInvK(),
+                    M_mediumData->getPenaltyVector(), div);
+
+            fractureShift += fractureNumberDOFVelocity [ f ];
+
+            getfem::darcy_dataF(BsF [ f ], B_vF [ f ], M_bcHandler,
+                    M_fracture [ f ], M_mediumData->getPenaltyVector(),
+                    M_mediumData->getInvK(), CneumannF [ f ], divF [ f ]);
+        }
+
+        gmm::add(*Bs, gmm::sub_vector(*M_globalRightHandSide,
+                gmm::sub_interval(0, mediumNumberDOFVelocityGlobal)));
+
+        fractureShift = mediumNumberDOFVelocityPressureGlobal;
+        for ( size_type f = 0; f < numberFractures; ++f )
+        {
+            gmm::add(*(BsF [ f ]), gmm::sub_vector(*M_globalRightHandSide,
+                    gmm::sub_interval(fractureShift,
+                            fractureNumberDOFVelocity [ f ])));
+
+            fractureShift += fractureNumberDOFVelocityPressure [ f ];
+        }
+
+        M_exporter->spy(M_globalMatrix, "matrice.mm");
+        M_exporter->spy(M_globalRightHandSide, "rhs.mm");
+
+        scalar_type roundConditionNumber;
+        gmm::clear(*M_fluxAndConcentration);
+        // Solve the global system for the current time step
+        SuperLU_solve(*M_globalMatrix, *M_fluxAndConcentration,
+                *M_globalRightHandSide, roundConditionNumber);
+
+        M_exporter->spy(M_fluxAndConcentration, "solution.mm");
+
+        //calcolo il flusso in uscita/ingresso nel dominio sia per la frattura sia per  il 2d
+        flusso
+                -= (*M_fluxAndConcentration) [ mediumNumberDOFVelocityPressureGlobal ];
+
+        fractureShift = mediumNumberDOFVelocityPressureGlobal;
+        for ( size_type f = 0; f < numberFractures; ++f )
+        {
+            flusso += (*M_fluxAndConcentration) [ fractureShift
+                    + fractureNumberDOFVelocity [ f ] - 1 ];
+            fractureShift += fractureNumberDOFVelocity [ f ];
+        }
+        flusso *= M_timeData->getDeltaTime();
+
+        gmm::copy(gmm::sub_vector(*M_fluxAndConcentration, gmm::sub_interval(0,
+                mediumNumberDOFVelocityGlobal)), chi);
+
+        /*
+         getfem::flux_out ( flusso2d, chi, M_fracture.getLevelSet (), M_mediumIntegrationMethodVelocity,
+         M_mediumMeshFEMVelocity, M_mediumExtendedDOFVelocity, NeumannBoundary_cut,
+         NeumannBoundary_uncut );
+         */
+        // Extract the concentration in the bulk and save as previous time step
+        gmm::copy(gmm::sub_vector(*M_fluxAndConcentration, gmm::sub_interval(
+                mediumNumberDOFVelocityGlobal, mediumNumberDOFPressureGlobal)),
+                *M_mediumConcentrationOld);
+
+        // Extract the concentration in the bulk and save
+        gmm::copy(gmm::sub_vector(*M_fluxAndConcentration, gmm::sub_interval(
+                mediumNumberDOFVelocityGlobal, mediumNumberDOFPressureGlobal)),
+                *M_mediumConcentration);
+
+        // Extract the concentration in the fracture and save
+        fractureShift = mediumNumberDOFVelocityPressureGlobal;
+        for ( size_type f = 0; f < numberFractures; ++f )
+        {
+            gmm::copy(gmm::sub_vector(*M_fluxAndConcentration,
+                    gmm::sub_interval(fractureNumberDOFVelocity [ f ]
+                            + fractureShift, fractureNumberDOFPressure [ f ])),
+                    *(M_fractureConcentration [ f ]));
+
+            // Extract the concentration in the fracture and save as previous time step
+            gmm::copy(gmm::sub_vector(*M_fluxAndConcentration,
+                    gmm::sub_interval(fractureNumberDOFVelocity [ f ]
+                            + fractureShift, fractureNumberDOFPressure [ f ])),
+                    *(M_fractureConcentrationOld [ f ]));
+
+            fractureShift += fractureNumberDOFVelocityPressure [ f ];
+
+        }
+
+        //se è uno degli istanti in cui devo plottare
+        if ( (currentTimeStep - 2) % M_timeData->getPlotAtEachTimeStep() == 0 )
+        {
+
+            getfem::mesh_level_set mLevelSetCut(M_mesh->getMesh());
+            for ( size_type f = 0; f < numberFractures; ++f )
+            {
+                mLevelSetCut.add_level_set(
+                        M_fracture [ f ]->getLevelSet()->getLevelSet());
+            }
+
+            mLevelSetCut.adapt();
+
+            // The following finite element space is useful for visualization
+            getfem::mesh mcut;
+            mLevelSetCut.global_cut_mesh(mcut);
+
+            // Discontinuous finite element space
+            getfem::mesh_fem mfcut(mcut, M_mesh->getMeshFEMScalar().get_qdim());
+            mfcut.set_classical_discontinuous_finite_element(3, 0.01);
+
+            // Export solution
+            scalarVector_Type mediumConcentrationInlet(mediumNumberDOFPressure,
+                    0.0);
+
+            scalarVector_Type mediumConcentrationOutlet(
+                    mediumNumberDOFPressure, 0.0);
+
+            scalarVector_Type mediumConcentrationMean(mfcut.nb_dof(), 0.0);
+            // sizeVector elem;
+
+            //for ( size_type i = 0; i < M_mediumMeshFEMPressure.nb_dof (); ++i )
+            //{
+            //elem.push_back ( M_mediumMeshFEMPressure.first_convex_of_basic_dof ( i ) );
+            //xb.push_back ( M_mediumMeshFEMPressure.point_of_basic_dof ( i ) [ 0 ] );
+            //yb.push_back ( M_mediumMeshFEMPressure.point_of_basic_dof ( i ) [ 1 ] );
+            //}
+
+            //size_type shiftVelocity ( M_mediumMeshFEMVelocity.nb_dof () + M_mediumExtendedDOFVelocity.size () );
+
+            cout << "bla" << endl;
+
+            //valore del level set
+            //            getfem::vtk_export levelSetVTKExport ( ( M_vtkFolder + "laplacian-ls.vtk" ).data () );
+            // levelSetVTKExport.exporting ( M_mediumMeshFEMPressure );
+            // levelSetVTKExport.write_mesh ();
+            // levelSetVTKExport.write_point_data ( M_mediumMeshFEMPressure, M_levelSetBaricenterValue, "lset" );
+
+            cout << "blu" << endl;
+
+            size_type shiftVelocity = mediumNumberDOFVelocityGlobal;
+            fractureShift = 0;
+            for ( size_type f = 0; f < numberFractures; ++f )
+            {
+                scalarVector_Type
+                        concentrationInletFracture(mfcut.nb_dof(), 0.);
+                scalarVector_Type concentrationOutletFracture(mfcut.nb_dof(),
+                        0.);
+
+                gmm::clear(mediumConcentrationInlet);
+                gmm::clear(mediumConcentrationOutlet);
+
+                const sizeVector_Type& extendedDOF =
+                        M_mesh->getExtendedDOFScalar(f);
+                const size_type shiftExtended = extendedDOF.size();
+
+                for ( size_type i = 0; i < shiftExtended; ++i )
+                {
+                    const size_type j = extendedDOF [ i ];
+                    const size_type
+                            el =
+                                    M_mesh->getMeshFEMScalar().first_convex_of_basic_dof(
+                                            j);
+
+                    if ( M_mesh->getRegion(f + FractureData::FRACTURE).is_in(el) )
+                    {
+                        if ( M_fracture [ f ]->getLevelSet()->getBaricenterValue(
+                                j) < 0 )
+                        {
+
+                            mediumConcentrationInlet [ j ]
+                                    = (*M_fluxAndConcentration) [ shiftVelocity
+                                            + j ];
+
+                            mediumConcentrationOutlet [ j ]
+                                    = (*M_fluxAndConcentration) [ shiftVelocity
+                                            + mediumNumberDOFPressure + i
+                                            + fractureShift ];
+                        }
+                        else
+                        {
+
+                            mediumConcentrationOutlet [ j ]
+                                    = (*M_fluxAndConcentration) [ shiftVelocity
+                                            + j ];
+
+                            mediumConcentrationInlet [ j ]
+                                    = (*M_fluxAndConcentration) [ shiftVelocity
+                                            + mediumNumberDOFPressure + i
+                                            + fractureShift ];
+                        }
+
+                    }
+
+                }
+
+                fractureShift += shiftExtended;
+
+                getfem::interpolation(M_mesh->getMeshFEMScalar(), mfcut,
+                        mediumConcentrationInlet, concentrationInletFracture);
+
+                getfem::interpolation(M_mesh->getMeshFEMScalar(), mfcut,
+                        mediumConcentrationOutlet, concentrationOutletFracture);
+
+                for ( dal::bv_visitor cv(mcut.convex_index()); !cv.finished(); ++cv )
+                {
+                    getfem::mesh_fem::ind_dof_ct idofs =
+                            mfcut.ind_basic_dof_of_element(cv);
+                    scalar_type dmean = 0;
+
+                    for ( size_type i = 0; i < idofs.size(); ++i )
+                    {
+                        const base_node node = mfcut.point_of_basic_dof(
+                                idofs [ i ]);
+                        dmean
+                                += M_fracture [ f ]->getLevelSet()->getData()->levelSetFunction(
+                                        node);
+                    }
+
+                    if ( dmean < 0 )
+                    {
+                        for ( size_type i = 0; i < idofs.size(); ++i )
+                        {
+                            size_type j = idofs [ i ];
+                            concentrationOutletFracture [ j ]
+                                    = concentrationInletFracture [ j ];
+
+                        }
+                    }
+
+                }
+
+                for ( size_type i = 0; i < concentrationOutletFracture.size(); ++i )
+                {
+                    mediumConcentrationMean [ i ]
+                            += concentrationOutletFracture [ i ];
+                }
+
+            }
+
+            scalarVector_Type concentrationMeanUNCUT(mediumNumberDOFPressure,
+                    0.);
+
+            for ( size_type i = 0; i < mediumNumberDOFPressure; ++i )
+            {
+                const size_type el =
+                        M_mesh->getMeshFEMScalar().first_convex_of_basic_dof(i);
+
+                if ( M_mesh->getRegion(MeshHandler::UNCUT_REGION).is_in(el) )
+                {
+                    concentrationMeanUNCUT [ i ]
+                            = (*M_fluxAndConcentration) [ shiftVelocity + i ];
+                }
+            }
+
+            scalarVector_Type concentrationMeanUNCUTInterpolated(
+                    mfcut.nb_dof(), 0.);
+
+            getfem::interpolation(M_mesh->getMeshFEMScalar(), mfcut,
+                    concentrationMeanUNCUT, concentrationMeanUNCUTInterpolated);
+
+            for ( size_type i = 0; i < mediumConcentrationMean.size(); ++i )
+            {
+                mediumConcentrationMean [ i ]
+                        += concentrationMeanUNCUTInterpolated [ i ];
+            }
+
+            std::ostringstream osFileName;
+
+            osFileName
+                    << (M_exporter->getFolder() + "MediumConcentration").data()
+                    << currentTimeStep << ".vtk";
+
+            exportSolution(osFileName.str(), "Concentration", mfcut,
+                    mediumConcentrationMean);
+
+            getfem::pfem fractureFETypePressure;
+            if ( numberFractures > 0 )
+            {
+                fractureFETypePressure = getfem::fem_descriptor(
+                        M_fracture [ 0 ]->getData().getFEMTypePressure());
+            }
+
+            for ( size_type f = 0; f < numberFractures; ++f )
+            {
+                osFileName.str("");
+
+                osFileName << (M_exporter->getFolder()
+                        + "FractureConcentration").data() << f << "-"
+                        << currentTimeStep << ".vtk";
+
+                getfem::mesh_fem mfproj(M_fracture [ f ]->getMeshMapped(),
+                        M_fracture [ f ]->getMeshFEMPressure().get_qdim());
+                mfproj.set_finite_element(fractureFETypePressure);
+
+                exportSolution(osFileName.str(), "Concentration", mfproj,
+                        *(M_fractureConcentration [ f ]));
+            }
+
+        }
+    }
+
+}

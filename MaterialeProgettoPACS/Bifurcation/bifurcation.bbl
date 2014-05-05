@@ -1,0 +1,23 @@
+\begin{thebibliography}{1}
+
+\bibitem{brezzi2005family}
+Franco Brezzi, Konstantin Lipnikov, and Valeria Simoncini.
+\newblock A family of mimetic finite difference methods on polygonal and
+  polyhedral meshes.
+\newblock {\em Mathematical Models and Methods in Applied Sciences},
+  15(10):1533--1551, 2005.
+
+\bibitem{Formaggia2014}
+L.~Formaggia, A.~Fumagalli, A.~Scotti, and P.~Ruffo.
+\newblock A reduced model for {D}arcy's problem in networks of fractures.
+\newblock {\em ESAIM Mathematical Modelling and Numerical Analysis}, 2014.
+\newblock in press.
+
+\bibitem{lie2012open}
+Knut-Andreas Lie, Stein Krogstad, Ingeborg~Skjelkv{\aa}le Ligaarden,
+  Jostein~Roald Natvig, Halvor~M{\o}ll Nilsen, and B{\aa}rd Skaflestad.
+\newblock Open-source matlab implementation of consistent discretisations on
+  complex grids.
+\newblock {\em Computational Geosciences}, 16(2):297--322, 2012.
+
+\end{thebibliography}

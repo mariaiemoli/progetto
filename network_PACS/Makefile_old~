@@ -1,0 +1,73 @@
+# Compiler
+CXX = g++
+
+# Optimize flags
+OPTFLAGS = -O3
+
+# Flags
+CXXFLAGS = $(OPTFLAGS) -Wall
+
+# Executable source
+EXESRCS = main.cc
+
+# Executable object file
+EXEOBJS = $(EXESRCS:.cc = .o)
+
+# Executable name
+EXEC = darcy
+
+# Sources folder
+FOLDER = src/
+
+# External library
+# MOX
+#GETFEM_PATH = /u/software/Repository/Targets/x86_64-any/opt/getfem-4.1.1
+# Laptop
+GETFEM_PATH = /usr/local/include/getfem
+
+# MOX
+#LIB_PATH = /u/software/Repository/Targets/x86_64-any/lib
+# Laptop
+LIB_PATH =  /usr/lib
+
+# MOX
+#LDLIBS = $(GETFEM_PATH)/lib/libgetfem.a
+# Laptop
+LDLIBS = /usr/local/lib/libgetfem.a
+
+# MOX
+#LDLIBS += $(GETFEM_LIB) -rdynamic $(LIB_PATH)/libblas.so $(LIB_PATH)/liblapack.so  $(LIB_PATH)/libqhull.a
+# Laptop
+LDLIBS += $(GETFEM_LIB) -rdynamic $(LIB_PATH)/libblas/libblas.so $(LIB_PATH)/lapack/liblapack.so  $(LIB_PATH)/libqhull.a
+
+# MOX
+#INCLUDE = -I$(GETFEM_PATH) -I$(GETFEM_PATH)/include -I$(GETFEM_PATH)/include/gmm -I./include
+# Laptop
+INCLUDE = -I$(GETFEM_PATH) -I$(GETFEM_PATH)/src -I$(GETFEM_PATH)/src/gmm -I./include -I/usr/include
+
+DEF_TAGS = -DHAVE_CONFIG -DGMM_USES_BLAS
+
+# Sources
+SRCS = $(wildcard $(FOLDER)*.cc)
+
+# Objects
+OBJS = $(SRCS:.cc=.o)
+
+# Headers
+HEADERS = $(SRCS:.cc=.h)
+
+# Name file of dependences
+DEPEND = make.dep
+
+.PHONY: all clean
+
+all : $(DEPEND) $(OBJS) $(EXEOBJS)
+	$(CXX) $(OPTFLAGS) -o $(EXEC) $(EXEOBJS) $(OBJS) $(LDLIBS) $(DEF_TAGS) $(INCLUDE)
+
+$(DEPEND) : $(SRCS) $(EXESRCS)
+	$(CXX) -MM $(SRCS) $(EXESRCS) -MF $(DEPEND)
+
+-include $(DEPEND)
+
+clean :
+	-rm $(EXEC) $(OBJS)
