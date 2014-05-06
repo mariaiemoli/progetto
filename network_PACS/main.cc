@@ -12,6 +12,9 @@
 /*  main program.                                                         */
 /**************************************************************************/
 
+/*
+ * metto un commento per provare a fare un commit
+ */
 int main ( int argc, char* argv [ ] )
 {
 
