@@ -11,6 +11,12 @@ public:
     LevelSetData ( const GetPot& dataFile,
                    const std::string& section = "fractureData/",
                    const std::string& sectionLevelSet = "levelSet/" );
+    /*Costruttore:
+     * prende in input una referenza ad un oggetto di tipo GetPot, il numero della frattura da costruire
+     * e di default è stata impostata la sezione levelSet/
+     * con il costruttore non faccio altro che riempire i campi della classe LevelSetData con i valori del
+     * file data, oppure assegnando dei valori di default
+     */
 
     // prima funzione level set che definisce la frattura . decommentare quello voluto
     scalar_type levelSetFunction ( const base_node& x,

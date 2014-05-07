@@ -3,12 +3,18 @@
 
 #include "LevelSetData.h"
 
+/*LevelSetHandler
+ * classe che mi permette di costruire la frattura a partire dai dati del file data
+ */
 class LevelSetHandler
 {
 public:
 
     LevelSetHandler ( const GetPot& dataFile, const std::string& section =
             "fractureData/", const std::string& sectionLevelSet = "levelSet/" );
+    /*Costruttore
+     * il costruttore non fa altro che creare un nuovo oggetto di tipo LevelSetData
+     */
 
     void
     init ( getfem::mesh& mediumMesh,

@@ -251,6 +251,20 @@ private:
     qi::rule< iterator_Type, double(), ascii::space_type >       M_group;
 
     qi::symbols<char, Real >                                     M_variable;
+
+    /*
+     * The class symbols implements a symbol table: an associative container (or map) of key-value pairs
+     * where the keys are strings. The symbols class can work efficiently with 8, 16, 32 and even 64 bit characters.
+     * Traditionally, symbol table management is maintained seperately outside the grammar through semantic actions.
+     * Contrary to standard practice, the Spirit symbol table class symbols is-a parser, an instance of which may be used
+     * anywhere in the grammar specification. It is an example of a dynamic parser. A dynamic parser is characterized by its
+     * ability to modify its behavior at run time. Initially, an empty symbols object matches nothing. At any time, symbols may
+     * be added, thus, dynamically altering its behavior.
+     *
+     * sym.find(s)	--> Return a pointer to the object associated with symbol, s. If sym does not already contain such an object, find returns a null pointer.
+     *
+     *
+     */
 };
 
 

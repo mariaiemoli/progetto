@@ -61,6 +61,8 @@ public:
 
     typedef std::vector< std::string >                       stringsVector_Type;
     typedef std::string::const_iterator                      stringIterator_Type;
+
+    // ParserSpiritGrammar è una classe definita nel file ParserSpiritGrammar.h
     typedef ParserSpiritGrammar< stringIterator_Type >       calculator_Type;
     typedef calculator_Type::results_Type                    results_Type;
 
@@ -162,9 +164,9 @@ private:
 
     stringsVector_Type  M_strings;
 
-    results_Type        M_results;
+    results_Type        M_results;		// oggetto di tipo vettore di reali
 
-    calculator_Type     M_calculator;
+    calculator_Type     M_calculator;	// oggetto di tipo ParserSpiritGrammar
 
     bool                M_evaluate;
 };

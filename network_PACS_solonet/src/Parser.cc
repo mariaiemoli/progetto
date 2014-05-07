@@ -174,8 +174,8 @@ Parser::setString( const std::string& string, const std::string& stringSeparator
     Debug( 5030 ) << "Parser::setString:          strings: " << string << "\n";
 #endif
 
-    M_strings.clear();
-    boost::split( M_strings, string, boost::is_any_of( stringSeparator ) );
+    M_strings.clear();		// M_strings è un vettore di stringhe
+    boost::split( M_strings, string, boost::is_any_of( stringSeparator ) );	// suddivido la stringa con tutta la funzione in pezzi
 
     //Remove white space to speed up the parser
     for ( UInt i = 0; i < M_strings.size(); ++i )
