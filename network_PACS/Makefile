@@ -38,7 +38,7 @@ LDLIBS = /usr/local/lib/libgetfem.a
 # MOX
 #LDLIBS += $(GETFEM_LIB) -rdynamic $(LIB_PATH)/libblas.so $(LIB_PATH)/liblapack.so  $(LIB_PATH)/libqhull.a
 # Laptop
-LDLIBS += $(GETFEM_LIB) -rdynamic  /usr/lib/libblas.a /usr/lib/liblapack.so.3gf  /usr/lib/libqhull.so.5
+LDLIBS += $(GETFEM_LIB) -rdynamic  /usr/lib/libblas.a /usr/lib/liblapack.so.3gf  /usr/lib/libqhull.a
 
 # MOX
 #INCLUDE = -I$(GETFEM_PATH) -I$(GETFEM_PATH)/include -I$(GETFEM_PATH)/include/gmm -I./include
