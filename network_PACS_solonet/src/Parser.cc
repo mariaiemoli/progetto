@@ -43,6 +43,10 @@ namespace LifeV
 // ===================================================
 // Constructors & Destructor
 // ===================================================
+	
+//Nei primi costruttori dove non ho ancora trovato il risultato numerico della stringa mi serve porre M_evaluate=true poichè la funzione
+//evaluate faccia qualcosa.	
+
 Parser::Parser() :
         M_strings       (),
         M_results       (),
@@ -54,7 +58,7 @@ Parser::Parser() :
     Debug( 5030 ) << "Parser::Parser"<< "\n";
 #endif
 
-    M_calculator.setDefaultVariables();
+    M_calculator.setDefaultVariables(); //funzione diParserSpirtGrammar
 }
 
 Parser::Parser( const std::string& string ) :
@@ -68,7 +72,7 @@ Parser::Parser( const std::string& string ) :
     Debug( 5030 ) << "Parser::Parser( string, applyRules )"<< "\n";
 #endif
 
-    M_calculator.setDefaultVariables();
+    M_calculator.setDefaultVariables(); //funzione diParserSpirtGrammar
     setString( string );
 }
 
@@ -114,6 +118,7 @@ Parser::evaluate( const ID& id )
             end   = M_strings[i].end();
 //#ifdef HAVE_BOOST_SPIRIT_QI
             qi::phrase_parse( start, end, M_calculator, ascii::space, M_results );
+			//usa una libreria delle boost per calcolare per passare da stringa a
 /*#else
             std::cout << "!!! ERROR: Boost version < 1.41 !!!" << std::endl;
             // This generate an error ---------

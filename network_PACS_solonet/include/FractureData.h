@@ -4,6 +4,10 @@
 #include "Core.h"
 #include "Parser.h"
 
+/* Sostanzialmente questa classe ci serve per partire dal file data e  portare tutte le informazioni che abbiamo
+ * salvate in stringe in formati più fruibili dal computer
+ */
+
 class FractureData
 {
 public:

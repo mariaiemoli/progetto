@@ -104,4 +104,15 @@ enum ElementDimension
     MEDIUM = 2, FRACTURE = MEDIUM-1
 };
 
+/*! introduco anche i typedef contenuti in Parser messi in un commento in modo che possiamo trovarli già nel Core.h senza doverci ricordare le dipendenza che ci portano a Parser.h
+ *   typedef std::vector< std::string >                       stringsVector_Type;
+ *  typedef std::string::const_iterator                      stringIterator_Type;
+ *  typedef ParserSpiritGrammar< stringIterator_Type >       calculator_Type;
+ *  typedef calculator_Type::results_Type                    results_Type;
+ *  typedef IteratorType                                        iterator_Type;
+ *  typedef boost::iterator_range< iterator_Type >              iteratorRange_Type;
+ *  typedef ResultsType                                         results_Type;
+
+*/
+
 #endif

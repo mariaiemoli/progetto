@@ -9,7 +9,8 @@ FractureData::FractureData ( const GetPot& dataFile,
             M_sectionDomain ( M_section + sectionDomain ),
             M_sectionDarcy ( M_section + sectionDarcy ),
             M_sectionTransport ( M_section + sectionTransport ),
-            // domain
+            
+			// domain
             M_position ( dataFile ( ( M_sectionDomain + "position" ).data (), 0.5 ) ),
             M_thickness ( dataFile ( ( M_sectionDomain + "thickness" ).data (), 0.01 ) ),
 
@@ -50,11 +51,15 @@ FractureData::FractureData ( const GetPot& dataFile,
 {
 }
 
+/*!le funzioni qui usate sono definite nel file Parser.h e Parser.cc
+* !!! NON RIESCO A TROVARE DOVE DEFINISCE M_parser! in questo file questa variabile compare dalla riga 61 in poi!
+*/
+
 // termine sorgente per il tracciante, problema di trasporto
 scalar_type FractureData::transportSource ( const base_node& x,
                                             const scalar_type& time )
 {
-    M_parser.setString ( M_transportSource );
+	M_parser.setString ( M_transportSource );
     M_parser.setVariable ( "x", x [ 0 ] );
     M_parser.setVariable ( "t", time );
     return M_parser.evaluate ();
