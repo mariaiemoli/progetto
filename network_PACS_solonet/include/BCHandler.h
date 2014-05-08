@@ -12,6 +12,9 @@
 #include "BC.h"
 #include "FractureData.h"
 
+/*! Libreria che gestisce le condizioni al bordo nella mesh
+ */
+
 class BCHandler
 {
 public:

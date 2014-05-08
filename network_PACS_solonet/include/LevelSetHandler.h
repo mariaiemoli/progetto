@@ -3,7 +3,7 @@
 
 #include "LevelSetData.h"
 
-/*LevelSetHandler
+/* LevelSetHandler
  * classe che mi permette di costruire la frattura a partire dai dati del file data
  */
 class LevelSetHandler
@@ -97,6 +97,10 @@ private:
     //valore del level set nei gradi di libertà di v
     scalarVector_Type M_DOFValue;
 
+	/*! GFIntegrationMethodLevelSetPtr_Type è un puntatore dinamico a un elemento di mesh_im_level_set
+	 * mini spiegazione alla pagina http://download.gna.org/getfem/doc/getfem_reference/classgetfem_1_1mesh__im__level__set.html
+	 */
+	
     // integration method, level set (on the boundary)
     GFIntegrationMethodLevelSetPtr_Type M_integrationMethod;
     // integration method, level set (inside)

@@ -105,14 +105,33 @@ enum ElementDimension
 };
 
 /*! introduco anche i typedef contenuti in Parser messi in un commento in modo che possiamo trovarli già nel Core.h senza doverci ricordare le dipendenza che ci portano a Parser.h
- *   typedef std::vector< std::string >                       stringsVector_Type;
+ *
+ * Parser:  
+ *	typedef std::vector< std::string >                       stringsVector_Type;
  *  typedef std::string::const_iterator                      stringIterator_Type;
  *  typedef ParserSpiritGrammar< stringIterator_Type >       calculator_Type;
  *  typedef calculator_Type::results_Type                    results_Type;
  *  typedef IteratorType                                        iterator_Type;
  *  typedef boost::iterator_range< iterator_Type >              iteratorRange_Type;
  *  typedef ResultsType                                         results_Type;
-
+ *
+ * BC
+ * typedef BC BC_Type;
+ * typedef boost::shared_ptr<BC> BCPtr_Type;
+ * typedef std::vector<BCPtr_Type> BCPtrContainer_Type;
+ *
+ * LevelSetHandler
+ * typedef LevelSetHandler LevelSetHandler_Type;
+ * typedef boost::shared_ptr<LevelSetHandler_Type> LevelSetHandlerPtr_Type;
+ *
+ * FractureHandler
+ * typedef FractureHandler FractureHandler_Type;
+ * typedef boost::shared_ptr<FractureHandler_Type> FractureHandlerPtr_Type;
+ * typedef std::vector<FractureHandlerPtr_Type> FracturePtrContainer_Type;
+ * typedef std::vector<FractureHandler_Type> FractureContainer_Type;
+ * typedef boost::shared_ptr<FracturePtrContainer_Type> FracturePtrContainerPtr_Type;
+ *
+ *
 */
 
 #endif

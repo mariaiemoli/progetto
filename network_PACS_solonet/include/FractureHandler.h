@@ -26,7 +26,12 @@ public:
     void normalVectorAndMap ( const getfem::mesh_fem& mediumMeshFEMPressure );
 
     void computeInvH ( const BCHandlerPtr_Type& bcHandler );
-
+ 
+    /*! serie di inline che ci permettono di avere accesso agli elementi privati della classe.
+	 * come in FractureData l'utente ha accesso agli elementi ma non poò modificarli
+	 * finisce a riga 173 e a 172 inzia a enunciare delle altre funzione della libreria definite poi in .cc
+	 */
+	
     inline const getfem::mesh& getMeshFlat ( ) const
     {
         return M_meshFlat;
@@ -235,7 +240,16 @@ private:
     // the M_mediummesh for the fracture: M_meshFlat is "flat", M_meshMapped is mapped (z(x))
     getfem::mesh M_meshFlat;
     getfem::mesh M_meshMapped;
-
+	
+	/*! GFMeshLevelSetPtrContainer_Type è una tipo definito in core.h 
+	 * é un vettore di elementi definiti in GetFem come mesh_level_set che è una libreria di getfem
+	 * mini spiegazione alla pagina http://download.gna.org/getfem/doc/getfem_reference/classgetfem_1_1mesh__level__set.html
+	 *
+	 * GFLevelSetPtrContainer_Type è un tipo definito in core.h
+	 * dovrebbe essere una vettore di puntatori dinamici riferiti a vettori di elementi di level_set anchessa libreria di getfem
+ 	 * mini spiegazione alla pagina http://download.gna.org/getfem/doc/getfem_reference/classgetfem_1_1level__set.html
+	 */ 
+	
     GFMeshLevelSetPtrContainer_Type M_meshLevelSetIntersect;
     GFLevelSetPtrContainer_Type M_levelSetIntersect;
 

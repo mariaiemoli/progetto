@@ -11,6 +11,9 @@
 #include "Core.h"
 #include "UsefulFunctions.h"
 
+/*! Libreria che introduce le condizioni al bordo sul problema
+*/
+
 class BC
 {
 public:
