@@ -131,6 +131,14 @@ enum ElementDimension
  * typedef std::vector<FractureHandler_Type> FractureContainer_Type;
  * typedef boost::shared_ptr<FracturePtrContainer_Type> FracturePtrContainerPtr_Type;
  *
+ *FractureIntersect
+ * enum IntersectionType
+ *      {
+ *              Parallel = 400000,
+ *              Cross = 500000
+ *      };
+ * typedef std::map < IntersectionType, IntersectDataContainer_Type > mapIntersection_Type;
+ * typedef std::pair < size_type, size_type > regionLevelSetPair_Type;
  *
 */
 

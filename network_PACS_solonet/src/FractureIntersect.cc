@@ -3,6 +3,9 @@
 FractureIntersect::FractureIntersect ()
 {
     // fill the number of basis functions for each extended element
+	/*! dove M_basisFunctionOfType è un tipo definito nel .h ed è una 
+	 * mappa fra il tipo di intersezione e un size_type che è un double
+	 */ 
     M_basisFunctionOfType [ Parallel ] = 1; // TRUCCO!!!!!
     M_basisFunctionOfType [ Cross ] = 1;
 
