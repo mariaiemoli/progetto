@@ -45,13 +45,13 @@ void exportSolutionInCell ( const std::string& fileName,
                             const scalarVector_Type& solution )
 {
     getfem::vtk_export exporter(fileName.data());
-
+ 
     exporter.exporting(meshFEM);
-
+ 
     exporter.write_mesh();
-
+ 
     exporter.write_cell_data(solution, solutionName.data());
-
+ 
 }// exportSolutionInCell
 
 

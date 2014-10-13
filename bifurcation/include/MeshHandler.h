@@ -60,7 +60,7 @@ public:
     void setUpFEM ( );
 
 
-   // void computeMeshMeasures ( );
+    void computeMeshMeasures ( );
 
 
     /** void printCuttedElements ( const std::string& vtkFolder = "vtk/", const std::string& fileName = "CuttedElements" ) const;

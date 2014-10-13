@@ -61,7 +61,9 @@ constructIntesection ( getfem::mesh_level_set& meshLevelSet, const FracturePtrCo
 	        }
 */
 	        IntersectionType type = intersectionType ( meshLevelSet, listOfConvex [ i ], listOfLevelSet [ i ] );
-
+	        
+	        if (type==Cross)
+	        	std::cout << "listOfConvex [ i ]:" << listOfConvex [ i ] << std::endl;
 
 			// Take the pointers of the fractures involved
 			FracturePtrContainer_Type fracturesInvolved ( listOfLevelSet[i].size() );
@@ -101,7 +103,7 @@ constructIntesection ( getfem::mesh_level_set& meshLevelSet, const FracturePtrCo
 
            // Take the pointers of the fractures involved
            FracturePtrContainer_Type fracturesInvolved ( listOfLevelSet[i].size() );
-
+           
            for ( size_type f = 0; f < fracturesInvolved.size(); ++f )
            {
                 fracturesInvolved [ f ] = fractures [ listOfLevelSet [ i ] [ f ] ];
@@ -150,7 +152,6 @@ constructIntesection ( getfem::mesh_level_set& meshLevelSet, const FracturePtrCo
            }
 
 
-
         if ( type == Cross )
         {
             pairSizeVectorContainer_Type& fracture0 = fracturesInvolved[0]->getFractureIntersectElementsGlobalIndex();
@@ -176,17 +177,27 @@ constructIntesection ( getfem::mesh_level_set& meshLevelSet, const FracturePtrCo
         }
 
         else if ( type == Bifurcation )
-        {
+        {    
             pairSizeVectorContainer_Type& fracture0 = fracturesInvolved[0]->getFractureIntersectElementsGlobalIndex();
             pairSizeVectorContainer_Type& fracture1 = fracturesInvolved[1]->getFractureIntersectElementsGlobalIndex();
             pairSizeVectorContainer_Type& fracture2 = fracturesInvolved[2]->getFractureIntersectElementsGlobalIndex();
-
+            
             fracture0 [ fracturesInvolved[2]->getId() ][ 0 ].second = fracture0 [ fracturesInvolved[1]->getId() ][ 0 ].first;
+            std::cout << "1" << std::endl;
+            size_type ind = fracturesInvolved[2]->getId();
+            std::cout << " fracturesInvolved[0]->getId(): " << fracturesInvolved[0]->getId() << std::endl;
+            std::cout << "fracture0.size(): " << fracture0.size() << std::endl;
+            std::cout << "fracture1 [ fracturesInvolved[0]->getId() ][ 0 ].second: " << fracture1 [ fracturesInvolved[0]->getId() ][ 0 ].second << std::endl;
             fracture1 [ fracturesInvolved[0]->getId() ][ 0 ].second = fracture0 [ fracturesInvolved[2]->getId() ][ 0 ].first;
+            std::cout << "2" << std::endl;
             fracture1 [ fracturesInvolved[2]->getId() ][ 0 ].second = fracture1 [ fracturesInvolved[0]->getId() ][ 0 ].first;
+            std::cout << "3" << std::endl;
             fracture2 [ fracturesInvolved[0]->getId() ][ 0 ].second = fracture1 [ fracturesInvolved[2]->getId() ][ 0 ].first;
+            std::cout << "4" << std::endl;
             fracture2 [ fracturesInvolved[1]->getId() ][ 0 ].second = fracture2 [ fracturesInvolved[0]->getId() ][ 0 ].first;
+            std::cout << "5" << std::endl;
             fracture0 [ fracturesInvolved[1]->getId() ][ 0 ].second = fracture2 [ fracturesInvolved[1]->getId() ][ 0 ].first;
+            std::cout << "6" << std::endl;
 
             std::cout << "Fratture: " << fracturesInvolved[0]->getId() << "		" << fracturesInvolved[1]->getId() << "		" << fracturesInvolved[2]->getId() << std::endl;
 

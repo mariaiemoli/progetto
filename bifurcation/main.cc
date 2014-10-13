@@ -119,6 +119,7 @@ int main ( int argc, char* argv [ ] )
 
 	// Save the regions of the mesh
 	exporter->meshRegion ( mesh->getMesh(), "RegionMesh.vtk" );
+	
 /*
 	// Compute inverse of mesh size
 	std::cout << "Compute inverse of mesh size..." << std::flush;

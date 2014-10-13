@@ -291,45 +291,65 @@ bool MeshHandler::compreso ( const bgeot::basic_mesh::ref_mesh_pt_ct nodes, Frac
 
     base_node nodo ( 1 );
     nodo [ 0 ] = 0;
-    scalar_type translateOrdinata = fracture->getLevelSet()->getData()->y_map(nodo);
-    nodo [ 0 ] = 1;
-    scalar_type lengthOrdinata = fracture->getLevelSet()->getData()->y_map(nodo);
-
-    if ( minx > translateAbscissa && maxx < translateAbscissa + lengthAbscissa)
-    {
-	if ( miny > translateOrdinata && maxy < lengthOrdinata )
-        {
-		return 1;
-	}
-	else
-	{
-		return 0;
-	}
+    base_node nodo1 ( 1 );
+    nodo1 [ 0 ] = 1;
+    
+    scalar_type translateOrdinata = fmin( fracture->getLevelSet()->getData()->y_map(nodo), fracture->getLevelSet()->getData()->y_map(nodo1) );
+    
+    scalar_type lengthOrdinata = fmax( fracture->getLevelSet()->getData()->y_map(nodo), fracture->getLevelSet()->getData()->y_map(nodo1) );
+    
+    if ( minx >= translateAbscissa && maxx <= translateAbscissa + lengthAbscissa)
+    {   
+		if ( miny >= translateOrdinata && maxy <= lengthOrdinata )
+		{	
+			return 1;
+		}
+		else if ( miny <= lengthOrdinata && maxy >= lengthOrdinata )
+		{	
+			return 1;
+		}
+		else if ( miny <= translateOrdinata && maxy >= translateOrdinata )
+		{	
+			return 1;
+		}
+		else
+		{	
+			return 0;
+		}
 
     }
 
-    else if ( minx < translateAbscissa && maxx > translateAbscissa )
+    else if ( minx <= translateAbscissa && maxx >= translateAbscissa )
     {
-	if ( miny < translateOrdinata && maxy < translateOrdinata )
-        {
-		return 0;
-	}
-	else
-	{
-		return 1;
-	}
+		if ( miny < translateOrdinata && maxy < translateOrdinata )
+		{
+			return 0;
+		}
+		else if ( miny > lengthOrdinata && maxy > lengthOrdinata )
+		{
+			return 0;
+		}
+
+		else
+		{
+			return 1;
+		}
     }
 
-    else if ( minx < translateAbscissa  + lengthAbscissa && maxx > translateAbscissa + lengthAbscissa )
+    else if ( minx <= translateAbscissa  + lengthAbscissa && maxx >= translateAbscissa + lengthAbscissa )
     {
-	if ( miny > lengthOrdinata && maxy > lengthOrdinata )
-        {
-		return 0;
-	}
-	else
-	{
-		return 1;
-	}
+    	if ( miny >= lengthOrdinata && maxy >= lengthOrdinata )
+		{	
+			return 0;
+		}
+    	else if ( miny <= translateOrdinata && maxy <= translateOrdinata )
+		{	
+			return 0;
+		}
+		else
+		{	
+			return 1;
+		}
 
     }
 
@@ -337,6 +357,157 @@ bool MeshHandler::compreso ( const bgeot::basic_mesh::ref_mesh_pt_ct nodes, Frac
 
 }
 
+
+void MeshHandler::computeMeshMeasures ( )
+{
+    // Allocate the vector for the circumcenters
+    gmm::resize(M_circumcentersAbscissa, M_meshFEMCoefficients.nb_dof());
+    gmm::clear(M_circumcentersAbscissa);
+
+    gmm::resize(M_circumcentersOrdinate, M_meshFEMCoefficients.nb_dof());
+    gmm::clear(M_circumcentersOrdinate);
+
+    // Allocate the vector for the edge midpoint
+    gmm::resize(M_edgeMidpointAbscissa, M_meshFEMVector.nb_dof());
+    gmm::clear(M_edgeMidpointAbscissa);
+
+    gmm::resize(M_edgeMidpointOrdinate, M_meshFEMVector.nb_dof());
+    gmm::clear(M_edgeMidpointOrdinate);
+
+    // Allocate the vector for the edge length
+    gmm::resize(M_edgeLength, M_meshFEMVector.nb_dof());
+    gmm::clear(M_edgeLength);
+
+    // Computes all the circumcenters
+    for ( getfem::mr_visitor vis(M_mesh.convex_index()); !vis.finished(); ++vis )
+    {
+        // Get the coordinates of the vertices of the current triangle
+        bgeot::basic_mesh::ref_mesh_pt_ct coordinates =
+                M_mesh.points_of_convex(vis.cv());
+
+        for ( size_type i = 0; i < M_mesh.nb_faces_of_convex(vis.cv()); ++i )
+        {
+
+            size_type dof =
+                    M_meshFEMVector.ind_basic_dof_of_element(vis.cv()) [ i ];
+
+            M_edgeMidpointAbscissa [ dof ] = 0.5 * (coordinates [ i ] [ 0 ]
+                    + coordinates [ (i + 1) % 3 ] [ 0 ]);
+
+            M_edgeMidpointOrdinate [ dof ] = 0.5 * (coordinates [ i ] [ 1 ]
+                    + coordinates [ (i + 1) % 3 ] [ 1 ]);
+
+            // Computes the edge length
+            M_edgeLength [ dof ] = pointDistance(coordinates [ i ] [ 0 ],
+                    coordinates [ (i + 1) % 3 ] [ 0 ], coordinates [ i ] [ 1 ],
+                    coordinates [ (i + 1) % 3 ] [ 1 ]);
+
+        }
+
+        // Computes the circumcenter
+        for ( size_type i = 0; i < M_mesh.nb_faces_of_convex(vis.cv()); ++i )
+        {
+            size_type dof =
+                    M_meshFEMVector.ind_basic_dof_of_element(vis.cv()) [ i ];
+
+            M_circumcentersAbscissa [ vis.cv() ] += 0.3
+                    * M_edgeMidpointAbscissa [ dof ];
+
+            M_circumcentersOrdinate [ vis.cv() ] += 0.3
+                    * M_edgeMidpointOrdinate [ dof ];
+        }
+
+    }
+
+    gmm::resize(M_circumcentersDistance, M_meshFEMVector.nb_dof());
+    gmm::clear(M_circumcentersDistance);
+
+    // Computes all the distances between the circumcenters of adjacent triangels
+    for ( getfem::mr_visitor vis(M_mesh.convex_index()); !vis.finished(); ++vis )
+    {
+        for ( size_type i = 0; i < M_mesh.nb_faces_of_convex(vis.cv()); ++i )
+        {
+            // For each face get the corresponding neighbour
+            size_type neighbour = M_mesh.neighbour_of_convex(vis.cv(), i);
+
+            size_type dof =
+                    M_meshFEMVector.ind_basic_dof_of_element(vis.cv()) [ i ];
+
+            // Check if the neighbour exist, i.e. not a boundary element
+            if ( neighbour != size_type(-1) )
+            {
+
+                // Check if the position in M_circumcentersDistance is jet filled
+                if ( M_circumcentersDistance [ dof ] == 0 )
+                {
+                    // Computes the distance of the circumcenters
+                    M_circumcentersDistance [ dof ] = pointDistance(
+                            M_circumcentersAbscissa [ neighbour ],
+                            M_circumcentersAbscissa [ vis.cv() ],
+                            M_circumcentersOrdinate [ neighbour ],
+                            M_circumcentersOrdinate [ vis.cv() ]);
+
+                }
+            }
+            else
+            {
+                // Boundary face, the position is not jet filled
+                M_circumcentersDistance [ dof ] = pointDistance(
+                        M_edgeMidpointAbscissa [ dof ],
+                        M_circumcentersAbscissa [ vis.cv() ],
+                        M_edgeMidpointOrdinate [ dof ],
+                        M_circumcentersOrdinate [ vis.cv() ]);
+
+            }
+        }
+    }
+
+    // Computing h^(-1) on external boudaries.
+    // Useful for impose the boundary condition with Nitsche penalisation
+
+    // Allocate the vector for the M_mediumMesh size
+    gmm::resize(M_meshSize, M_meshFEMScalar.nb_dof());
+    gmm::clear(M_meshSize);
+
+    // Allocate the vector for the inverse of the M_mediumMesh size
+    gmm::resize(M_inverseMeshSize, M_meshFEMScalar.nb_dof());
+    gmm::clear(M_inverseMeshSize);
+
+    //const size_type shiftDirichlet =
+    //      bcHandler->getMediumBC()->getDirichlet().size();
+    //for ( size_type i = 0; i < shiftDirichlet; i++ )
+
+    //{
+    //for ( getfem::mr_visitor vis(M_mesh.region(
+    //      bcHandler->getMediumBC()->getDirichlet(i))); !vis.finished(); ++vis )
+    for ( getfem::mr_visitor vis(M_mesh.convex_index()); !vis.finished(); ++vis )
+    {
+        // Select the current dof
+        size_type dofScalar =
+                M_meshFEMScalar.ind_basic_dof_of_element(vis.cv()) [ 0 ];
+
+        scalarVector_Type edges(3, 0.);
+
+        for ( size_type i = 0; i < M_mesh.nb_faces_of_convex(vis.cv()); ++i )
+        {
+
+            size_type dofVector = M_meshFEMVector.ind_basic_dof_of_element(
+                    vis.cv()) [ i ];
+
+            // Computes the edge length
+            edges [ i ] = M_edgeLength [ dofVector ];
+
+        }
+
+        // Estimate the element size
+        M_meshSize [ dofScalar ] = *(std::max_element ( edges.begin(), edges.end() ));
+
+        // Compute h^(-1)
+        M_inverseMeshSize [ dofScalar ] = 1.0 / M_meshSize [ dofScalar ];
+    }
+    //}
+
+}
 
 
 // Definizione degli elementi finiti
@@ -378,6 +549,32 @@ void MeshHandler::setUpFEM ( )
             FETypePressure);
 
 }// setUpFEM
+
+
+// Just to see what elements are cut by the level set M_levelSet:
+//esporto per paraview gli elementi tagliati, 1 se tagliati 0 se no
+void MeshHandler::printCuttedElements ( const std::string& vtkFolder,
+                                        const std::string& fileName ) const
+{
+    const size_type numberFractures = M_extendedDOFScalar.size();
+
+    scalarVector_Type cuttedElements(M_meshFEMScalar.nb_dof(), 0);		// numero totale dei gradi di libertà
+    
+    for ( size_type f = 0; f < numberFractures; ++f )
+    {
+        const sizeVector_Type& extendedDOFScalar = M_extendedDOFScalar [ f ];
+        const size_type shiftExtended = extendedDOFScalar.size();
+
+        for ( size_type i = 0; i < shiftExtended; ++i )
+        {
+            cuttedElements [ M_meshFEMScalar.first_convex_of_basic_dof(
+                    extendedDOFScalar [ i ]) ] += 1.0;
+        }
+    }
+
+    exportSolutionInCell(vtkFolder + fileName, "CuttedElements",
+            M_meshFEMScalar, cuttedElements);
+}
 
 
 size_type MeshHandler::getCountExtendedDOFScalar ( const scalar_type& id ) const

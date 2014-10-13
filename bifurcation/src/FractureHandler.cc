@@ -261,28 +261,31 @@ size_type FractureHandler::setMeshLevelSetFracture ( FractureHandler& otherFract
 
         size_type i_cv = 0;
         dal::bit_vector bc_cv = M_meshLevelSetIntersect[ otherFractureId ]->linked_mesh().convex_index();
-
-
+		
         for ( i_cv << bc_cv; i_cv != size_type(-1); i_cv << bc_cv )
         {
             if (M_meshLevelSetIntersect[ otherFractureId ]->is_convex_cut ( i_cv ) )
-            {
-                M_meshFlat.region ( FractureHandler::FRACTURE_UNCUT * ( M_ID + 1 ) ).sup ( i_cv );
-                M_meshFlat.region ( FractureHandler::FRACTURE_INTERSECT * ( M_ID + 1 ) + otherFractureId + 1 ).add( i_cv );
-                M_extendedPressure.push_back ( M_meshFEMPressure.ind_basic_dof_of_element ( i_cv )[0] );
-                M_extendedVelocity.push_back ( M_meshFEMVelocity.ind_basic_dof_of_element ( i_cv )[0] );
-                M_extendedVelocity.push_back ( M_meshFEMVelocity.ind_basic_dof_of_element ( i_cv )[1] );
+            {  
+            	
+				M_meshFlat.region ( FractureHandler::FRACTURE_UNCUT * ( M_ID + 1 ) ).sup ( i_cv );
+				
+				M_meshFlat.region ( FractureHandler::FRACTURE_INTERSECT * ( M_ID + 1 ) + otherFractureId + 1 ).add( i_cv );
+				M_extendedPressure.push_back ( M_meshFEMPressure.ind_basic_dof_of_element ( i_cv )[0] );
+				M_extendedVelocity.push_back ( M_meshFEMVelocity.ind_basic_dof_of_element ( i_cv )[0] );
+				M_extendedVelocity.push_back ( M_meshFEMVelocity.ind_basic_dof_of_element ( i_cv )[1] );
 
-                M_fractureIntersectElements [ otherFractureId ].push_back ( i_cv );
+				M_fractureIntersectElements [ otherFractureId ].push_back ( i_cv );
 
-                pairSize_Type coppia;
-                coppia.first = globalIndex;
-                coppia.second = 0;
-                M_fractureIntersectElementsGlobalIndex [ otherFractureId ].push_back ( coppia );
-                ++globalIndex;
-                ++numIntersect;
+				pairSize_Type coppia;
+				coppia.first = globalIndex;
+				coppia.second = 0;
+				M_fractureIntersectElementsGlobalIndex [ otherFractureId ].push_back ( coppia );
+				++globalIndex;
+				++numIntersect;
+		   
+				std::cout << "fracture: " << M_ID << " otherfracture " << otherFractureId << std::endl;
+				std::cout << "coppia.first:" << coppia.first << " coppia.second: " << coppia.second << std::endl;
             }
-
         }
     }
 
