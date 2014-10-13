@@ -52,14 +52,14 @@ constructIntesection ( getfem::mesh_level_set& meshLevelSet, const FracturePtrCo
 		for ( size_type i = 0; i < listOfConvex.size(); ++i )
 		{
 	        fromBitVectorToStdVector ( listOfLevelSet_bitVector [ i ], listOfLevelSet [ i ] );
-
+/*
 	        std::cout << "listOfConvex [ i ]:  " << listOfConvex [ i ] << std::endl;
 
 	        for ( size_type j = 0; j < listOfLevelSet [ i ].size(); j++)
 	        {
 	        	std::cout << " listOfLevelSet [ i ] [ j ]:  " << listOfLevelSet [ i ] [ j ] << std::endl;
 	        }
-
+*/
 	        IntersectionType type = intersectionType ( meshLevelSet, listOfConvex [ i ], listOfLevelSet [ i ] );
 
 

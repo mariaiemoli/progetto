@@ -13,6 +13,7 @@
 #include "UsefulFunctions.h"
 #include "FracturesSet.h"
 #include "BCHandler.h"
+#include <math.h>
 
 
 class MeshHandler

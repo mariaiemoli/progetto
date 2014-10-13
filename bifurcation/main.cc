@@ -92,7 +92,7 @@ int main ( int argc, char* argv [ ] )
 			MEDIUM));
 	std::cout << " completed!" << std::endl;
 
-/*
+
 	// Fracture boundary conditions
 	std::cout << "Create fracture boundary conditions..." << std::flush;
 	BCPtrContainer_Type bcFracture(numberFractures);
@@ -119,7 +119,7 @@ int main ( int argc, char* argv [ ] )
 
 	// Save the regions of the mesh
 	exporter->meshRegion ( mesh->getMesh(), "RegionMesh.vtk" );
-
+/*
 	// Compute inverse of mesh size
 	std::cout << "Compute inverse of mesh size..." << std::flush;
 	mesh->computeMeshMeasures();
