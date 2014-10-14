@@ -29,7 +29,7 @@ public:
     void normalVectorAndMap ( const getfem::mesh_fem& mediumMeshFEMPressure );
 
 
-//    void computeInvH ( const BCHandlerPtr_Type& bcHandler );
+    void computeInvH ( const BCHandlerPtr_Type& bcHandler );
 
 
     inline const getfem::mesh& getMeshFlat ( ) const

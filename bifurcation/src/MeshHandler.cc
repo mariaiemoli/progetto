@@ -262,7 +262,7 @@ void MeshHandler::setUpRegions ( const FracturesSetPtr_Type& fractures )
 
     }
 
-}
+}// setUpRegions
 
 
 /*
@@ -355,7 +355,7 @@ bool MeshHandler::compreso ( const bgeot::basic_mesh::ref_mesh_pt_ct nodes, Frac
 
     return 0;
 
-}
+}// compreso
 
 
 void MeshHandler::computeMeshMeasures ( )
@@ -377,62 +377,54 @@ void MeshHandler::computeMeshMeasures ( )
     // Allocate the vector for the edge length
     gmm::resize(M_edgeLength, M_meshFEMVector.nb_dof());
     gmm::clear(M_edgeLength);
-
+	
+	
     // Computes all the circumcenters
-    for ( getfem::mr_visitor vis(M_mesh.convex_index()); !vis.finished(); ++vis )
-    {
-        // Get the coordinates of the vertices of the current triangle
-        bgeot::basic_mesh::ref_mesh_pt_ct coordinates =
-                M_mesh.points_of_convex(vis.cv());
+	for ( size_type j=0; j< (M_mesh.convex_index()).size(); j++)
+    {	
+		// Get the coordinates of the vertices of the current triangle
+        bgeot::basic_mesh::ref_mesh_pt_ct coordinates = M_mesh.points_of_convex(j);
 
-        for ( size_type i = 0; i < M_mesh.nb_faces_of_convex(vis.cv()); ++i )
+        for ( size_type i = 0; i < M_mesh.nb_faces_of_convex(j); ++i )
         {
+			
+            size_type dof = M_meshFEMVector.ind_basic_dof_of_element(j) [ i ];
 
-            size_type dof =
-                    M_meshFEMVector.ind_basic_dof_of_element(vis.cv()) [ i ];
+            M_edgeMidpointAbscissa [ dof ] = 0.5 * (coordinates [ i ] [ 0 ] + coordinates [ (i + 1) % 3 ] [ 0 ]);
 
-            M_edgeMidpointAbscissa [ dof ] = 0.5 * (coordinates [ i ] [ 0 ]
-                    + coordinates [ (i + 1) % 3 ] [ 0 ]);
-
-            M_edgeMidpointOrdinate [ dof ] = 0.5 * (coordinates [ i ] [ 1 ]
-                    + coordinates [ (i + 1) % 3 ] [ 1 ]);
-
+            M_edgeMidpointOrdinate [ dof ] = 0.5 * (coordinates [ i ] [ 1 ] + coordinates [ (i + 1) % 3 ] [ 1 ]);
+			
             // Computes the edge length
             M_edgeLength [ dof ] = pointDistance(coordinates [ i ] [ 0 ],
-                    coordinates [ (i + 1) % 3 ] [ 0 ], coordinates [ i ] [ 1 ],
-                    coordinates [ (i + 1) % 3 ] [ 1 ]);
-
+									coordinates [ (i + 1) % 3 ] [ 0 ], coordinates [ i ] [ 1 ],
+									coordinates [ (i + 1) % 3 ] [ 1 ]);
         }
 
         // Computes the circumcenter
-        for ( size_type i = 0; i < M_mesh.nb_faces_of_convex(vis.cv()); ++i )
+        for ( size_type i = 0; i < M_mesh.nb_faces_of_convex(j); ++i )
         {
-            size_type dof =
-                    M_meshFEMVector.ind_basic_dof_of_element(vis.cv()) [ i ];
-
-            M_circumcentersAbscissa [ vis.cv() ] += 0.3
-                    * M_edgeMidpointAbscissa [ dof ];
-
-            M_circumcentersOrdinate [ vis.cv() ] += 0.3
-                    * M_edgeMidpointOrdinate [ dof ];
+            size_type dof = M_meshFEMVector.ind_basic_dof_of_element(j) [ i ];
+			
+			M_circumcentersAbscissa [ j ] += 0.3 * M_edgeMidpointAbscissa [ dof ];
+			
+            M_circumcentersOrdinate [ j ] += 0.3 * M_edgeMidpointOrdinate [ dof ];
         }
-
+	
     }
-
+	
     gmm::resize(M_circumcentersDistance, M_meshFEMVector.nb_dof());
     gmm::clear(M_circumcentersDistance);
 
     // Computes all the distances between the circumcenters of adjacent triangels
-    for ( getfem::mr_visitor vis(M_mesh.convex_index()); !vis.finished(); ++vis )
-    {
-        for ( size_type i = 0; i < M_mesh.nb_faces_of_convex(vis.cv()); ++i )
+    for ( size_type j=0; j< (M_mesh.convex_index()).size(); j++)
+	{
+		for ( size_type i = 0; i < M_mesh.nb_faces_of_convex(j); ++i )
         {
             // For each face get the corresponding neighbour
-            size_type neighbour = M_mesh.neighbour_of_convex(vis.cv(), i);
+			size_type neighbour = M_mesh.neighbour_of_convex(j, i);
 
-            size_type dof =
-                    M_meshFEMVector.ind_basic_dof_of_element(vis.cv()) [ i ];
-
+            size_type dof = M_meshFEMVector.ind_basic_dof_of_element(j) [ i ];
+ 
             // Check if the neighbour exist, i.e. not a boundary element
             if ( neighbour != size_type(-1) )
             {
@@ -441,23 +433,20 @@ void MeshHandler::computeMeshMeasures ( )
                 if ( M_circumcentersDistance [ dof ] == 0 )
                 {
                     // Computes the distance of the circumcenters
-                    M_circumcentersDistance [ dof ] = pointDistance(
-                            M_circumcentersAbscissa [ neighbour ],
-                            M_circumcentersAbscissa [ vis.cv() ],
-                            M_circumcentersOrdinate [ neighbour ],
-                            M_circumcentersOrdinate [ vis.cv() ]);
+                    M_circumcentersDistance [ dof ] = pointDistance( M_circumcentersAbscissa [ neighbour ],
+                    												 M_circumcentersAbscissa [ j ],
+																	 M_circumcentersOrdinate [ neighbour ],
+																	 M_circumcentersOrdinate [ j ]);
 
                 }
             }
             else
             {
                 // Boundary face, the position is not jet filled
-                M_circumcentersDistance [ dof ] = pointDistance(
-                        M_edgeMidpointAbscissa [ dof ],
-                        M_circumcentersAbscissa [ vis.cv() ],
-                        M_edgeMidpointOrdinate [ dof ],
-                        M_circumcentersOrdinate [ vis.cv() ]);
-
+                M_circumcentersDistance [ dof ] = pointDistance( M_edgeMidpointAbscissa [ dof ],
+																 M_circumcentersAbscissa [ j ],
+																 M_edgeMidpointOrdinate [ dof ],
+																 M_circumcentersOrdinate [ j ]);
             }
         }
     }
@@ -473,26 +462,17 @@ void MeshHandler::computeMeshMeasures ( )
     gmm::resize(M_inverseMeshSize, M_meshFEMScalar.nb_dof());
     gmm::clear(M_inverseMeshSize);
 
-    //const size_type shiftDirichlet =
-    //      bcHandler->getMediumBC()->getDirichlet().size();
-    //for ( size_type i = 0; i < shiftDirichlet; i++ )
-
-    //{
-    //for ( getfem::mr_visitor vis(M_mesh.region(
-    //      bcHandler->getMediumBC()->getDirichlet(i))); !vis.finished(); ++vis )
-    for ( getfem::mr_visitor vis(M_mesh.convex_index()); !vis.finished(); ++vis )
+    for ( size_type j=0; j< (M_mesh.convex_index()).size(); j++)
     {
         // Select the current dof
-        size_type dofScalar =
-                M_meshFEMScalar.ind_basic_dof_of_element(vis.cv()) [ 0 ];
+        size_type dofScalar = M_meshFEMScalar.ind_basic_dof_of_element(j) [ 0 ];
 
         scalarVector_Type edges(3, 0.);
 
-        for ( size_type i = 0; i < M_mesh.nb_faces_of_convex(vis.cv()); ++i )
+		for ( size_type i = 0; i < M_mesh.nb_faces_of_convex(j); ++i )
         {
 
-            size_type dofVector = M_meshFEMVector.ind_basic_dof_of_element(
-                    vis.cv()) [ i ];
+            size_type dofVector = M_meshFEMVector.ind_basic_dof_of_element( j ) [ i ];
 
             // Computes the edge length
             edges [ i ] = M_edgeLength [ dofVector ];
@@ -505,9 +485,8 @@ void MeshHandler::computeMeshMeasures ( )
         // Compute h^(-1)
         M_inverseMeshSize [ dofScalar ] = 1.0 / M_meshSize [ dofScalar ];
     }
-    //}
 
-}
+}// computeMeshMeasures
 
 
 // Definizione degli elementi finiti
@@ -574,7 +553,7 @@ void MeshHandler::printCuttedElements ( const std::string& vtkFolder,
 
     exportSolutionInCell(vtkFolder + fileName, "CuttedElements",
             M_meshFEMScalar, cuttedElements);
-}
+}// printCuttedElements
 
 
 size_type MeshHandler::getCountExtendedDOFScalar ( const scalar_type& id ) const

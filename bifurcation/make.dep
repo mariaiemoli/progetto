@@ -1,0 +1,11 @@
+main.o: main.cc include/MeshHandler.h include/Core.h include/GetPot \
+ include/UsefulFunctions.h include/FracturesSet.h \
+ include/FractureHandler.h include/FractureData.h include/Parser.h \
+ include/ParserDefinitions.h include/ParserSpiritGrammar.h \
+ include/BCHandler.h include/BC.h include/LevelSetHandler.h \
+ include/LevelSetData.h include/FractureIntersect.h \
+ include/IntersectData.h include/FracturesSet.h include/MediumData.h \
+ include/DarcyFractured.h include/XFEMOperators.h include/MeshHandler.h \
+ include/MediumData.h include/Exporter.h include/TransportFractured.h \
+ include/TimeData.h include/TransportStabilization.h include/./Core.h \
+ include/DarcyFractured.h

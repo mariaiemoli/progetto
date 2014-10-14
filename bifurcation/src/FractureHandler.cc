@@ -197,6 +197,33 @@ void FractureHandler::init ( )
 }// init
 
 
+void FractureHandler::computeInvH ( const BCHandlerPtr_Type& bcHandler )
+{
+    // Computing h^(-1) on external boudaries of the fracture.
+    // Useful for impose the boundary condition with Nitsche penalisation
+	
+    const sizeVector_Type& fractureDirichlet = bcHandler->getFractureBC(M_ID)->getDirichlet();
+    const size_type shiftFracture = fractureDirichlet.size();
+    
+    for ( size_type i = 0; i < shiftFracture; i++ )
+    {
+        for ( getfem::mr_visitor vis( M_meshFlat.region( fractureDirichlet [ i ] ) ); !vis.finished(); ++vis )
+        {
+            // Select the current dof
+            size_type dof = M_meshFEMPressure.ind_basic_dof_of_element( vis.cv() ) [ 0 ];
+
+            // Estimate the element size
+            const scalar_type meshSize = M_meshFlat.convex_radius_estimate( vis.cv() );
+
+            // Compute h^(-1)
+            M_inverseMeshSize [ dof ] = 1.0 / meshSize;
+
+        }
+    }
+    
+}// computeInvH
+
+
 void FractureHandler::normalVectorAndMap ( const getfem::mesh_fem& mediumMeshFEMPressure )
 {
     // Assign normal vector and the map of the fracture
@@ -218,10 +245,6 @@ void FractureHandler::normalVectorAndMap ( const getfem::mesh_fem& mediumMeshFEM
 }// normalVectorAndMap
 
 
-/*
- * non va modificata per la biforcazione, crea un vettore di vettori di coppie, non importa quante fratture si intersecano
- * la numerazione dei dof è gestita in FractureIntersect.cc in constructIntesection
- */
 size_type FractureHandler::setMeshLevelSetFracture ( FractureHandler& otherFracture, size_type& globalIndex )
 {
     const size_type otherFractureId = otherFracture.getId();
@@ -283,9 +306,7 @@ size_type FractureHandler::setMeshLevelSetFracture ( FractureHandler& otherFract
 				++globalIndex;
 				++numIntersect;
 		   
-				std::cout << "fracture: " << M_ID << " otherfracture " << otherFractureId << std::endl;
-				std::cout << "coppia.first:" << coppia.first << " coppia.second: " << coppia.second << std::endl;
-            }
+	            }
         }
     }
 

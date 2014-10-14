@@ -1,5 +1,5 @@
 /**
- * PROGETTO DI PACS
+ * PROGETTO DI PACS 2014
  *
  * autori:	Bonomi Claudia, Iemoli Maria
  *
@@ -68,7 +68,7 @@ int main ( int argc, char* argv [ ] )
 	std::cout << "Create the set of fractures for " << std::flush;
 	const size_type numberFractures = dataFile(
 			(section + "numberFractures").data(), 0);
-	std::cout << numberFractures << " fracture(s)..." << std::flush;
+	std::cout << numberFractures << " fracture(s)..." << std::endl << std::flush;
 
 	// Fracture Set
 	FracturesSetPtr_Type fractures ( new FracturesSet );
@@ -120,8 +120,8 @@ int main ( int argc, char* argv [ ] )
 	// Save the regions of the mesh
 	exporter->meshRegion ( mesh->getMesh(), "RegionMesh.vtk" );
 	
-/*
-	// Compute inverse of mesh size
+
+	// Compute inverse of mesh size (h^(-1) dove h è il passo di griglia)
 	std::cout << "Compute inverse of mesh size..." << std::flush;
 	mesh->computeMeshMeasures();
 	for ( size_type f = 0; f < numberFractures; ++f )
@@ -145,7 +145,7 @@ int main ( int argc, char* argv [ ] )
 	std::cout << "Assembly the Darcy problem..." << std::flush;
 	darcy->assembly();
 	std::cout << " completed!" << std::endl;
-
+/*
 	// Solve and save the solutions
 	std::cout << "Solve the Darcy problem..." << std::flush;
 	darcy->solve();

@@ -48,6 +48,10 @@ public:
          * restituisce il numero di intersezioni trovate del tipo type ( il numero di elementi tagliati)
          */
         size_type getNumberIntersectionOfType ( IntersectionType type ) const;
+        
+        size_type getNumberCross () const;
+        
+        size_type getNumberBifurcation () const;
 
 
         /** size_type getNumberIntersections () const

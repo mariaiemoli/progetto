@@ -247,11 +247,66 @@ spaceDimension = 1.
 s[../]
 
 
-
-
-
-
 [fractureData3]
+
+spaceDimension = 1.
+
+        [./levelSet]
+
+				levelSet = y-0.91
+                ylevelSet = y-0.91
+				xlevelSet = x-t
+                levelSetCut = -1
+                yMap = 0.91
+				xMap = t
+                jacMap = [1] %here the mapped grid is shorter than the actual arc length
+                normalMap = [-1.,2.]
+
+                integrationTypeSimplex = IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(3),1)
+
+        [../]
+
+        [./domain]
+
+                position = 0.0
+                thickness = 0.01
+
+                csi0 = 0.25
+
+                spacing = x  %here the fracture starts at x=0.1 
+                spatialDiscretization = 81 
+                translateAbscissa = 0.
+                lengthAbscissa = 1. #1.
+                lengthOrdinate = 0.
+                lengthQuota = 0.
+                meshType = GT_PK(1,1)
+
+                integrationTypeVelocity = IM_GAUSS1D(3)
+                integrationTypePressure = IM_GAUSS1D(2)
+
+                FEMTypeVelocity = FEM_PK(1,1)
+                FEMTypePressure = FEM_PK(1,0)
+                FEMTypeLinear = FEM_PK(1,1)
+
+        [../]
+
+        [./darcy]
+
+                etaNormal = 0.01
+                etaNormalDistribution = 1. 
+                etaTangential = 100
+                etaTangentialDistribution = 1.
+
+                source = -0.04
+                solution = 0.
+                velocity = 0.
+
+        [../]
+
+s[../]
+
+
+[fractureData4]
 
 spaceDimension = 1.
 
@@ -308,6 +363,7 @@ spaceDimension = 1.
         [../]
 
 s[../]
+
 
 
 [fractureData5]

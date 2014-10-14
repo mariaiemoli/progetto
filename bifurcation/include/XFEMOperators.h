@@ -5,3 +5,65 @@
  * REMEMBER: the matrix corresponding to a(u,v) is Aij = a(\phi_j, \phi_i)
  *
  */
+
+#ifndef _DARCY_OPERATORSX_
+#define _DARCY_OPERATORSX_ 1
+
+#include "Core.h"
+#include "LevelSetHandler.h"
+#include "MeshHandler.h"
+#include "FractureHandler.h"
+#include "BCHandler.h"
+
+namespace getfem
+{
+
+
+//matrice tau tau per la frattura
+void darcy_A11F ( sparseMatrixPtr_Type& M,
+                  const FractureHandlerPtr_Type& fracture,
+                  const scalar_type& gammaU,
+                  const scalarVector_Type& invKTangentialInterpolated,
+                  const sizeVector_Type &ExtBoundary,
+                  const size_type& uncutRegionFlag );
+
+//matrice tau tau per la frattura intersecata
+/*void darcy_A11F ( sparseMatrixPtr_Type& M,
+                  const FractureHandlerPtr_Type& fracture,
+                  const scalarVector_Type& invKTangentialInterpolated,
+                  const FractureHandlerPtr_Type& otherFracture,
+                  const size_type& cutRegionFlag );
+*/
+
+//lo stesso per la frattura
+void darcy_A12F ( sparseMatrixPtr_Type& M,
+                  const FractureHandlerPtr_Type& fracture,
+                  const size_type& uncutRegionFlag );
+
+
+//stesso lavoro con la frattura - più semplice
+void darcy_dataF ( scalarVectorPtr_Type &Bstress,
+                   scalarVectorPtr_Type &Bvel,
+                   const BCHandlerPtr_Type& bcHandler,
+                   const FractureHandlerPtr_Type& fracture,
+                   const scalar_type& gammaU,
+                   const scalar_type& invK,
+                   const scalarVectorPtr_Type& Pneumann,
+                   const scalarVectorPtr_Type& v_diri );
+
+
+//termine sorgente per la frattura
+void assembling_Source_BoundaryF ( scalarVectorPtr_Type& D,
+                                   const scalarVectorPtr_Type& source,
+                                   const FractureHandlerPtr_Type& fracture,
+                                   const size_type& uncutRegionFlag );
+
+
+//funzione che accoppia le variabili corrispondenti alle fratture che si intersecano
+void coupleFractures ( sparseMatrixPtr_Type& M, const FracturesSetPtr_Type& fractures );
+
+
+
+} // namespace getfem
+
+#endif
