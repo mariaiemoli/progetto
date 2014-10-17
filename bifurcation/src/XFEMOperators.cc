@@ -12,7 +12,7 @@ namespace getfem
 {
 
 
-//matrice tau tau per la frattura
+//matrice A11 per la frattura non intersecata
 void darcy_A11F ( sparseMatrixPtr_Type& M,
                   const FractureHandlerPtr_Type& fracture,
                   const scalar_type& gammaU,
@@ -38,17 +38,65 @@ void darcy_A11F ( sparseMatrixPtr_Type& M,
     const size_type shiftMapFactor = fracture->getMagnificationMapFactor1().size();
     scalarVector_Type invF(shiftMapFactor, 0.);
 
-    generic_assembly assem, assemGam;
+    generic_assembly assem;
     
+    /**
+     * getfem::generic_assembly assem;
+     * 
+     * assem.push_im(mim);
+     * assem.push_mf(mf);
+     * assem.push_mf(mfdata);
+     * assem.push_data(F);
+     * assem.push_vec(B);
+     * 
+     * assem.set("Z=data(#2);"
+     * 			 "V(#1)+=comp(Base(#1).Base(#2))(:,j).Z(j);");
+     * 
+     * assem.assembly();
+     * 
+     * The first instructions declare the object, and set the data that it will use: a mesh_im object which holds the integration
+     * methods, two mesh_fem objects, the input data F, and the destination vector B.
+     * 
+     * The input data is the vector F , defined on mfdata.
+     * One wants to evaluate sum(j){ f_j* int_Ω (φ_i * ψ_j). The instruction must be seen as something that will be executed for each convex cv 
+     * of the mesh.
+     * The terms #1 and #2 refer to the first mesh_fem and the second one (i.e. mf and mfdata).
+     * The instruction Z=data(#2); means that for each convex, the “tensor” Z will receive the values of the first data argument provided 
+     * with push_data, at indexes corresponding to the degrees of freedom attached to the convex of the second (#2) mesh_fem 
+     * (here, Z = F[mfdata.ind_dof_of_element(cv)].
+     * The part V(#1)+=... means that the result of the next expression will be accumulated into the output vector (provided with push_vec).
+     * Here again, #1 means that we will write the result at indexes corresponding to the degrees of freedom of the current convex with 
+     * respect to the first (#1) mesh_fem.
+     * 
+     * The right hand side comp(Base(#1).Base(#2))(:,j).Z(j) contains two operations.
+     * The first one is a computation of a tensor on the convex: comp(Base(#1).Base(#2)) is evaluated as a 2-dimensions tensor, int(φ_i*ψ_j) ,
+     * for all degrees of freedom i of mf and j of mfdata attached to the current convex.
+     * The next part is a reduction operation, C(:,j).Z(j): each named index (here j) is summed, i.e. the result is sum(j){ c_(i,j)*z_j }.
+     * 
+     * The integration method used inside comp(Base(#1).Base(#2)) is taken from mim.
+     * 
+     */
     if ( fracture->getMeshFEMVelocity().get_qdim() == 1 )
     {
         for ( size_type i = 0; i < shiftMapFactor; ++i )
         {
             invF [ i ] = 1 / fracture->getMagnificationMapFactor1(i);
         }
+        /*
+         *  definisce la forma bilineare:
+         *  
+         *  		a_i(u,w) = (eta_i * u, w)_L2
+         *  		
+         *  u velocità
+         *  w funzione test per la velocità
+         *  
+         *  #1 velocità
+         *  #2 pressione
+         *  		
+         */
         assem.set("w=data$1(#2);" "q=data$2(#2);"
-            "a=comp(Base(#1).Base(#1).Base(#2).Base(#2));"
-            "M(#1,#1)+=a(:, :, i,k).w(i).q(k);");
+        		  "a=comp(Base(#1).Base(#1).Base(#2).Base(#2));"
+        		  "M(#1,#1)+=a(:, :, i,k).w(i).q(k);");
     }
     else
     {
@@ -95,11 +143,15 @@ void darcy_A11F ( sparseMatrixPtr_Type& M,
     // Boundary integration for the fracture
     gmm::clear(M_);
 
-    getfem::generic_assembly assem_surf, assem_normx, assem_normy;
+    getfem::generic_assembly assem_surf;
 
+    /*
+     * tratta il termine di bordo non soggetto a condizione al contorno di dirichlet per la pressione
+     * 
+     */ 
     assem_surf.set("gamma=data$1(#2);"
-        "t=comp(vBase(#1).Normal().vBase(#1).Normal().Base(#2));"
-        "M$1(#1,#1)+=(t(:,i, i, :,j, j, k).gamma(k));");
+    			   "t=comp(vBase(#1).Normal().vBase(#1).Normal().Base(#2));"		
+    			   "M$1(#1,#1)+=(t(:,i, i, :,j, j, k).gamma(k));");
 
     // Assign the M_mediumMesh integration method
     assem_surf.push_mi(fracture->getIntegrationMethodVelocity());
@@ -136,7 +188,7 @@ void darcy_A11F ( sparseMatrixPtr_Type& M,
 } // darcy_A11F
 
 
-//lo stesso per la frattura
+//matrice A12 per la frattura non intersecata
 void darcy_A12F ( sparseMatrixPtr_Type& M,
                   const FractureHandlerPtr_Type& fracture,
                   const size_type& uncutRegionFlag )
@@ -154,7 +206,16 @@ void darcy_A12F ( sparseMatrixPtr_Type& M,
 
     if ( fracture->getMeshFEMVelocity().get_qdim() == 1 )
     {
-        assem.set("M(#1,#2)+=-comp(vGrad(#1).Base(#2))" "(:, i,i,:);");
+    	/*
+    	 * definisce la forma bilineare
+    	 * 
+    	 * 		b_i(q,w) = - (q, div(w))_L2
+    	 * 	
+    	 * 	w funzione test per la velocità
+    	 * 	q funzione test per la pressione
+    	 * 	
+    	 */
+        assem.set("M(#1,#2)+=-comp(vGrad(#1).Base(#2))" "(:, i,i,:);");	// ma non ci va un prodotto scalare in L2?
     }
     else
     {
@@ -342,6 +403,11 @@ void assembling_Source_BoundaryF ( scalarVectorPtr_Type& D,
             invF [ i ] = 1.0 / (fracture->getMagnificationMapFactor1(i));
         }
 
+        /*
+         * assembla il termine noto
+         * 
+         * 		sum(i) { - (f_i, q_i) }
+         */
         assem_Source.set("w=data$1(#2);" "q=data$2(#2);"
             "a=comp(Base(#1).Base(#2).Base(#2));"
             "V(#1)+=a(:, k,j).w(k).q(j)");

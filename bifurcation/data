@@ -7,7 +7,7 @@ folderVTK = ./vtk/
 transientSolver = 0
 stabilize = 1
 
-numberFractures = 3
+numberFractures = 1
 
 [dataTime]
 

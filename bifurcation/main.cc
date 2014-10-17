@@ -145,13 +145,11 @@ int main ( int argc, char* argv [ ] )
 	std::cout << "Assembly the Darcy problem..." << std::flush;
 	darcy->assembly();
 	std::cout << " completed!" << std::endl;
-/*
+
 	// Solve and save the solutions
 	std::cout << "Solve the Darcy problem..." << std::flush;
 	darcy->solve();
 	std::cout << " completed!" << std::endl;
-
-*/
 
 	return 0;
 

@@ -55,7 +55,7 @@ public:
 
     
     
-    //void solve ( );
+    void solve ( );
 
     
     inline const scalarVectorPtr_Type& getMediumVelocity ( ) const

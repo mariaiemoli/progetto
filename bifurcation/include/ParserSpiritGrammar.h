@@ -461,64 +461,6 @@ ParserSpiritGrammar< IteratorType, ResultsType >::setVariable( const std::string
         M_variable.add( name, value );
 }
 
-//qi::rule< IteratorType, double(double), ascii::space_type > Power, M_multiplyDivide, M_plusMinus, M_compare;
-/*
-        M_expression
-            =   ExpressionLevel_1                          [qi::_val = qi::_1]
-            >> *M_plusMinus(qi::_val)                        [qi::_val = qi::_1]
-        ;
-
-        ExpressionLevel_1
-            =   M_element                                    [qi::_val = qi::_1]
-            >> *M_multiplyDivide(qi::_val)                   [qi::_val = qi::_1]
-        ;
-
-        M_plusMinus
-            =   qi::eps(qi::_val = qi::_r1)
-            >>  (
-                qi::lit('+') >> ExpressionLevel_1          [qi::_val += qi::_1]
-            |   qi::lit('-') >> ExpressionLevel_1          [qi::_val -= qi::_1]
-                )
-        ;
-
-        M_multiplyDivide
-            =   qi::eps(qi::_val = qi::_r1)
-            >>  (
-                qi::lit('*') >> M_element                    [qi::_val *= qi::_1]
-            |   qi::lit('/') >> M_element                    [qi::_val /= qi::_1]
-                )
-        ;
-*/
-
-/*#else
-
-//! ParserSpiritGrammar - An empty implementation for boost version < 1.41
-template < typename IteratorType = std::string::const_iterator, typename ResultsType = std::vector < Real > >
-class ParserSpiritGrammar
-{
-public:
-
-    typedef IteratorType                                        iterator_Type;
-    typedef boost::iterator_range< iterator_Type >              iteratorRange_Type;
-    typedef ResultsType                                         results_Type;
-
-    ParserSpiritGrammar() : M_real(0.) {}
-    ParserSpiritGrammar( const ParserSpiritGrammar& ) : M_real(0.) {}
-    ~ParserSpiritGrammar() {}
-
-    ParserSpiritGrammar& operator=( const ParserSpiritGrammar& ) { return *this; }
-
-    void clearVariables() {}
-
-    void setDefaultVariables() {}
-    void setVariable( const std::string&, const Real& ) {}
-
-    Real& variable( const std::string& ) { return M_real; }
-
-    Real M_real;
-};
-
-#endif /* HAVE_BOOST_SPIRIT_QI */
 
 } // Namespace LifeV
 

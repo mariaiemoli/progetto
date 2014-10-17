@@ -242,9 +242,10 @@ void DarcyFractured::assembly ( )
  
     }
 
-    gmm::copy(*App, gmm::sub_matrix(*M_globalMatrix, 
+/*    gmm::copy(*App, gmm::sub_matrix(*M_globalMatrix, 
     		gmm::sub_interval( fractureTotalNumberDOFVelocityPressure, fractureNumberIntersections ), 
     		gmm::sub_interval( fractureTotalNumberDOFVelocityPressure, globalFractureNumber ) ));
+  */
     
     //Costruiamo il termine noto
     
@@ -279,14 +280,13 @@ void DarcyFractured::assembly ( )
 
     for ( size_type f = 0; f < numberFractures; ++f )
     {
-        const BCPtr_Type& fractureBC = M_bcHandler->getFractureBC(f);
+        const BCPtr_Type& fractureBC = M_bcHandler->getFractureBC( f );
 
         for ( size_type i = 0; i < fractureNumberBoundaryDOF [ f ]; i++ )
         {
-            const base_node node = fractureBC->getMeshFEM().point_of_basic_dof(
-                    i);
+            const base_node node = fractureBC->getMeshFEM().point_of_basic_dof( i );
 
-            (*(PneumannF [ f ])) [ i ] = M_fractures->getFracture( f )->getData().pressureExact(node);
+            (*(PneumannF [ f ])) [ i ] = M_fractures->getFracture( f )->getData().pressureExact( node );
         }
 
         (*(PneumannF [ f ])) [ 0 ] *= -1; //perché la normale ha il segno meno all'inizio di una roba 1D
@@ -348,7 +348,7 @@ void DarcyFractured::assembly ( )
             }
         }
 
-    /*    for ( size_type i = 0; i < fractureNumberGlobalDOFVelocity [ f ]; ++i )
+        for ( size_type i = 0; i < fractureNumberGlobalDOFVelocity [ f ]; ++i )
         {
             (*M_globalRightHandSide) [ fractureShift + i ] += (*(B_vF [ f ])) [ i ];
         }
@@ -357,7 +357,7 @@ void DarcyFractured::assembly ( )
         {
                 (*M_globalRightHandSide) [ fractureShift + i ] += (*(B_pF [ f ])) [ i - fractureNumberGlobalDOFVelocity [ f ] ];
         }
-	   */
+	   
         // Update the shift
         fractureShift += fractureNumberDOFVelocityPressure [ f ];
 
@@ -387,3 +387,266 @@ void DarcyFractured::assembly ( )
 
     
 }// assembly
+
+
+
+// Solve the Darcy for the governing flux and do the time loop for the evolution problem
+void DarcyFractured::solve ( )
+{  
+    const scalar_type numberFractures = M_fractures->getNumberFractures();
+   
+    sizeVector_Type fractureNumberDOFVelocity(numberFractures);
+    sizeVector_Type fractureNumberGlobalDOFVelocity(numberFractures);
+
+    sizeVector_Type fractureNumberDOFPressure(numberFractures);
+    sizeVector_Type fractureNumberGlobalDOFPressure(numberFractures);
+
+    sizeVector_Type fractureNumberDOFVelocityPressure(numberFractures);
+
+    size_type fractureTotalNumberDOFVelocityPressure(0);
+
+    size_type fractureNumberIntersections = 0;
+
+    for ( size_type f = 0; f < numberFractures; ++f )
+    {
+        fractureNumberDOFVelocity [ f ] = M_fractures->getFracture( f )->getMeshFEMVelocity().nb_dof();
+
+        fractureNumberGlobalDOFVelocity [ f ] = fractureNumberDOFVelocity [ f ] + M_fractures->getFracture( f )->getNumExtendedVelocity();
+
+        fractureNumberDOFPressure [ f ] = M_fractures->getFracture( f )->getMeshFEMPressure().nb_dof();
+
+        fractureNumberGlobalDOFPressure [ f ] = fractureNumberDOFPressure [ f ] + M_fractures->getFracture( f )->getNumExtendedPressure();
+
+        fractureNumberDOFVelocityPressure [ f ] = fractureNumberGlobalDOFVelocity [ f ] + fractureNumberGlobalDOFPressure [ f ];
+
+        fractureTotalNumberDOFVelocityPressure += fractureNumberDOFVelocityPressure [ f ];
+
+        M_fracturePressure [ f ].reset(new scalarVector_Type( fractureNumberGlobalDOFPressure [ f ], 0));
+
+        M_fractureVelocity [ f ].reset(new scalarVector_Type( fractureNumberGlobalDOFVelocity [ f ], 0));
+
+        fractureNumberIntersections += M_fractures->getFracture( f )->getNumIntersections();
+
+    }
+
+    // Solve the Darcy problem
+    std::cout << std::endl << "Solving problem in Omega..." << std::flush;
+    scalar_type roundConditionNumber;
+
+    SuperLU_solve(*M_globalMatrix, *M_velocityAndPressure,
+                  *M_globalRightHandSide, roundConditionNumber);
+
+    std::cout << " completed!" << std::endl;
+    size_type fractureShift = 0;
+
+    for ( size_type f = 0; f < numberFractures; ++f )
+    { 
+        // Extract the dual in the fracture
+        gmm::copy( gmm::sub_vector( *M_velocityAndPressure, gmm::sub_interval( fractureShift, fractureNumberGlobalDOFVelocity [ f ])),
+                  *( M_fractureVelocity [ f ] ) );
+
+        // Extract the primal in the fracture
+        gmm::copy( gmm::sub_vector( *M_velocityAndPressure, 
+        							gmm::sub_interval( fractureShift + fractureNumberGlobalDOFVelocity [ f ], fractureNumberGlobalDOFPressure [ f ])), 
+        		   *(M_fracturePressure [ f ]));
+
+        // Update the shift
+        fractureShift += fractureNumberDOFVelocityPressure [ f ];
+    }
+
+    // the extra dof start at the end of the fracture dofs
+  
+    getfem::pfem fractureFETypePressure;
+    if ( numberFractures > 0 )
+    {
+        fractureFETypePressure = getfem::fem_descriptor( M_fractures->getFracture( 0 )->getData().getFEMTypePressure());
+    }
+
+
+    //--------export solution in the fracture-------------------
+    for ( size_type f = 0; f < numberFractures; ++f )
+    {
+        FractureHandlerPtr_Type& fracture = M_fractures->getFracture(f);
+        std::ostringstream osFileName;
+
+        getfem::mesh_level_set meshFLevelSetCutFlat ( fracture->getMeshFlat() );
+        for ( size_type otherF = 0; otherF < numberFractures; ++otherF )
+        {
+            GFLevelSetPtr_Type levelSetPtr = fracture->getLevelSetIntersect ( otherF );
+
+            if ( levelSetPtr.get() != NULL )
+            {
+                meshFLevelSetCutFlat.add_level_set ( *levelSetPtr );
+            }
+        }
+
+
+        meshFLevelSetCutFlat.adapt();
+
+        getfem::mesh meshFcutFlat;
+        getfem::mesh meshFcutMapped;
+        meshFLevelSetCutFlat.global_cut_mesh ( meshFcutFlat );
+
+        getfem::mesh_fem meshFEMcutFlat ( meshFcutFlat, fracture->getMeshFEMPressure().get_qdim());
+        meshFEMcutFlat.set_finite_element ( fracture->getMeshFEMVelocity().fem_of_element(0) );
+
+        scalarVector_Type ordinataUncut ( fractureNumberDOFVelocity [ f ], 0. );
+        scalarVector_Type ordinataCut ( meshFEMcutFlat.nb_dof(), 0. );
+
+	
+        for ( size_type i = 0; i < fractureNumberDOFVelocity [ f ]; ++i )
+        {
+            const bgeot::base_node P = fracture->getMeshFEMVelocity().point_of_basic_dof(i);
+
+            bgeot::base_node P1 = fracture->getMeshMapped().points( ) [i];
+
+
+            scalar_type c= 1./fracture->getData().getSpatialDiscretization ();
+
+            P1 [0] =  i*c;
+
+            ordinataUncut [ i ] = fracture->getLevelSet()->getData()->y_map(P1);
+        }
+
+        getfem::interpolation ( fracture->getMeshFEMVelocity(), meshFEMcutFlat, ordinataUncut, ordinataCut );
+
+        for ( size_type i = 0; i < meshFEMcutFlat.nb_dof(); ++i )
+        {
+            bgeot::base_node P ( fracture->getData().getSpaceDimension() + 2 );
+            
+            P [ 0 ] = meshFEMcutFlat.point_of_basic_dof(i)[0];
+            P [ 1 ] = ordinataCut [ i ];
+            
+            meshFcutMapped.add_point(P);
+        }
+
+
+        const size_type numConvex = meshFcutFlat.convex_index().size();
+
+        for ( size_type i = 0; i < numConvex; ++i )
+        {
+            std::vector<bgeot::size_type> point(3);
+           
+            point [ 0 ] = meshFcutFlat.ind_points_of_convex(i) [ 0 ];
+            point [ 1 ] = meshFcutFlat.ind_points_of_convex(i) [ 1 ];
+            point [ 2 ] = meshFcutFlat.ind_points_of_convex(i) [ 2 ];
+            
+            meshFcutMapped.add_convex( fracture->getGeometricTransformation(), point.begin() );
+        }
+
+        // per ogni frattura esporto la mesh reale
+        osFileName << "cmeshF2-" << f << ".vtk";
+        exportMesh(M_exporter->getFolder() + osFileName.str().c_str(), meshFcutMapped );
+
+        getfem::mesh_fem mfproj ( meshFcutMapped, fracture->getMeshFEMPressure().get_qdim() );
+
+        mfproj.set_classical_discontinuous_finite_element ( 0, 0.01 );
+
+        scalarVector_Type fracturePressureMeanUNCUT ( fractureNumberDOFPressure [ f ], 0. );
+        scalarVector_Type fracturePressureInCut ( fractureNumberDOFPressure [ f ], 0. );
+        scalarVector_Type fracturePressureOutCut ( fractureNumberDOFPressure [ f ], 0. );
+
+        for ( size_type i = 0; i < fractureNumberDOFPressure [ f ]; ++i )
+        {
+            const size_type el =  fracture->getMeshFEMPressure().first_convex_of_basic_dof(i);
+		
+            if ( fracture->getMeshFlat().region ( FractureHandler::FRACTURE_UNCUT * ( f + 1 ) ).is_in(el) )
+            {	
+                fracturePressureMeanUNCUT [ i ] = (*(M_fracturePressure [ f ])) [ i ];
+            }
+        }
+
+        
+        /*
+         * getfem risolve il sistema per la mesh piatta, per avere i corretti valori di pressione devo interpolare
+         * sulla mesh mappata i valori che ho ottenuto
+         * 
+         */
+        scalarVector_Type fracturePressureMeanUNCUTInterpolated ( mfproj.nb_dof(), 0. );
+        scalarVector_Type fracturePressureMeanInCutInterpolated ( mfproj.nb_dof(), 0. );
+        scalarVector_Type fracturePressureMeanOutCutInterpolated ( mfproj.nb_dof(), 0. );
+
+        getfem::mesh_fem mfprojUncut ( fracture->getMeshMapped(), fracture->getMeshFEMPressure().get_qdim());
+        mfprojUncut.set_finite_element ( fractureFETypePressure );
+
+        getfem::interpolation ( mfprojUncut, mfproj, fracturePressureMeanUNCUT, fracturePressureMeanUNCUTInterpolated );
+
+        const sizeVector_Type& extendedPressure = fracture->getExtendedPressure();
+/*
+        for ( size_type otherFracture = 0; otherFracture < numberFractures; ++otherFracture )
+        {
+            if ( fracture->getLevelSetIntersect( otherFracture ).get() )
+            {
+                getfem::mesh_region regionMesh = fracture->getMeshFlat().region ( FractureHandler::FRACTURE_INTERSECT * ( f + 1 ) + otherFracture + 1 );
+                size_type i_cv = 0;
+                dal::bit_vector bc_cv = regionMesh.index();
+                gmm::clear ( fracturePressureInCut );
+                gmm::clear ( fracturePressureOutCut );
+
+                for ( i_cv << bc_cv; i_cv != size_type(-1); i_cv << bc_cv )
+                {
+                    const size_type ibase = fracture->getMeshFEMPressure().ind_basic_dof_of_element ( i_cv )[0];
+                    const size_type position = size_type ( std::find ( extendedPressure.begin(), extendedPressure.end(), ibase )
+                                                - extendedPressure.begin());
+
+                    const base_node point = mfprojUncut.point_of_basic_dof ( ibase );
+                    const scalar_type levelSetValue = M_fractures->getFracture( otherFracture )->getLevelSet()->getData()->levelSetFunction( point );
+
+                    if ( levelSetValue < 0 )
+                    {
+                        fracturePressureInCut [ ibase ] = (*(M_fracturePressure [ f ])) [ ibase ];
+                        fracturePressureOutCut [ ibase ] = (*(M_fracturePressure [ f ])) [ fractureNumberDOFPressure [ f ] + position ];
+                    }
+                    else
+                    {
+                        fracturePressureOutCut [ ibase ] = (*(M_fracturePressure [ f ])) [ ibase ];
+                        fracturePressureInCut [ ibase ] = (*(M_fracturePressure [ f ])) [ fractureNumberDOFPressure [ f ] + position ];
+                    }
+
+                }
+
+                gmm::clear ( fracturePressureMeanInCutInterpolated );
+
+                getfem::interpolation ( mfprojUncut, mfproj,
+                                        fracturePressureInCut, fracturePressureMeanInCutInterpolated );
+
+                gmm::clear ( fracturePressureMeanOutCutInterpolated );
+
+                getfem::interpolation ( mfprojUncut, mfproj,
+                                        fracturePressureOutCut, fracturePressureMeanOutCutInterpolated );
+
+                i_cv = 0;
+                bc_cv = meshFcutMapped.convex_index();
+                for ( i_cv << bc_cv; i_cv != size_type(-1); i_cv << bc_cv )
+                {
+                    getfem::mesh_fem::ind_dof_ct idofs = mfproj.ind_basic_dof_of_element ( i_cv );
+                    for ( size_type k = 0; k < idofs.size(); ++k )
+                    {
+                        const base_node node = mfproj.point_of_basic_dof(idofs [ k ]);
+                        const scalar_type levelSetValue = M_fractures->getFracture( otherFracture )->getLevelSet()->getData()->levelSetFunction( node );
+                        if ( levelSetValue < 0 )
+                        {
+                            fracturePressureMeanUNCUTInterpolated [ idofs[k] ] += fracturePressureMeanInCutInterpolated [ idofs[k] ];
+                        }
+                        else
+                        {
+                            fracturePressureMeanUNCUTInterpolated [ idofs[k] ] += fracturePressureMeanOutCutInterpolated [ idofs[k] ];
+                        }
+
+                    }
+
+                }
+
+            }
+        }
+*/
+        osFileName.str("");
+        osFileName << "fracturePressure" << f << ".vtk";
+
+        exportSolution ( M_exporter->getFolder() + osFileName.str(), "Pressure",
+                     mfproj, fracturePressureMeanUNCUTInterpolated );
+    }
+
+   
+   
+}
