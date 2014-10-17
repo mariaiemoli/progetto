@@ -37,6 +37,13 @@ public:
         {
                 return M_intersections [ type ];
         }
+        
+        
+        IntersectDataContainer_Type getCrossIntersections () const;
+        
+        
+        IntersectDataContainer_Type getBifurcationIntersections () const;
+        
 
         mapIntersection_Type& getIntersections ()
         {
@@ -67,6 +74,7 @@ public:
 
 
         size_type getBasisFunctionOfType ( IntersectionType type ) const;
+        
 
 
 

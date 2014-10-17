@@ -108,30 +108,51 @@ void DarcyFractured::assembly ( )
     {
     	// numero di gradi di libertà per la pressione senza quelli estesi per la frattura f
         fractureNumberDOFPressure [ f ] = M_fractures->getFracture( f )->getMeshFEMPressure().nb_dof();
-
+    	
+  //      std::cout << "fractureNumberDOFPressure [ " << f << " ]:  " << fractureNumberDOFPressure [ f ] << std::endl;
+    	
     	// numero di gradi di libertà per la pressione con quelli estesi per la frattura f
         fractureNumberGlobalDOFPressure [ f ] = fractureNumberDOFPressure [ f ] + M_fractures->getFracture( f )->getNumExtendedPressure();
+    	
+  //      std::cout << "fractureNumberGlobalDOFPressure [ "<< f <<" ]:  " << fractureNumberGlobalDOFPressure [ f ] << std::endl;
 
     	// numero totale di gradi di libertà per la pressione
         fractureTotalNumberDOFPressure += fractureNumberGlobalDOFPressure [ f ];
 
     	// numero di gradi di libertà per la velocità senza quelli estesi per la frattura f
         fractureNumberDOFVelocity [ f ] = M_fractures->getFracture( f )->getMeshFEMVelocity().nb_dof();
+    	
+   //     std::cout << "fractureNumberDOFVelocity [ " << f << " ]:  " << fractureNumberDOFVelocity [ f ] << std::endl;
 
     	// numero di gradi di libertà per la velocità con quelli estesi per la frattura f
         fractureNumberGlobalDOFVelocity [ f ] = fractureNumberDOFVelocity [ f ] + M_fractures->getFracture( f )->getNumExtendedVelocity();
+    	
+   //     std::cout << "fractureNumberGlobalDOFVelocity [ " << f << " ]:  " << fractureNumberGlobalDOFVelocity [ f ] << std::endl;
 
     	// numero totale di gradi di libertà per la velocità e la pressione per la frattura f
         fractureNumberDOFVelocityPressure [ f ] = fractureNumberGlobalDOFVelocity [ f ] + fractureNumberGlobalDOFPressure [ f ];
+    	
+   //    std::cout << "fractureNumberDOFVelocityPressure [ " << f << " ]:  " << fractureNumberDOFVelocityPressure [ f ] << std::endl;
 
     	// numero totale di gradi di libertà per la pressione e la velocità
         fractureTotalNumberDOFVelocityPressure += fractureNumberDOFVelocityPressure [ f ];
 
     	// numero di gradi di libertà per i bordi per la frattura f
         fractureNumberBoundaryDOF [ f ] = M_bcHandler->getFractureBC(f)->getMeshFEM().nb_dof();
+    	
+   //     std::cout << "fractureNumberBoundaryDOF [ " << f << " ]:  " << fractureNumberBoundaryDOF [ f ] << std::endl;
+
+    	// numero totale di intersezioni
+        fractureNumberIntersections += M_fractures->getFracture( f )->getNumIntersections();
 
     }
-	
+    //	std::cout << "fractureTotalNumberDOFPressure:  " << fractureTotalNumberDOFPressure << std::endl;
+      
+    //	std::cout << "fractureTotalNumberDOFVelocityPressure:  " << fractureTotalNumberDOFVelocityPressure << std::endl;
+
+    //	std::cout << "fractureNumberIntersections:  " << fractureNumberIntersections << std::endl;
+    
+
     // numero intersezioni
     fractureNumberCross = M_fractures->getIntersections ()->getNumberCross ();
    
@@ -144,8 +165,13 @@ void DarcyFractured::assembly ( )
     // inizializziamo tutte le matrici a blocchi, la matrice globale e il termine di destra per il sistema e il vettore delle soluzioni 
     
     // Allochiamo la matrice globale del sistema:  M_darcyGlobalMatrix
+  /*
     M_globalMatrix.reset( new sparseMatrix_Type( fractureTotalNumberDOFVelocityPressure + fractureNumberIntersections,
              	 	 	 	 	 	 	 	 	 fractureTotalNumberDOFVelocityPressure + globalFractureNumber ));
+    */
+    M_globalMatrix.reset( new sparseMatrix_Type( fractureTotalNumberDOFVelocityPressure + globalFractureNumber,
+             	 	 	 	 	 	 	 	 	 fractureTotalNumberDOFVelocityPressure + globalFractureNumber ));
+    
     gmm::clear( *M_globalMatrix );
     
     // Allochiamo il vettore del termine noto di destra del sistema: M_darcyGlobalRightHandSide
@@ -183,7 +209,9 @@ void DarcyFractured::assembly ( )
     
     // Accoppiamo le fratture
     getfem::coupleFractures ( App, M_fractures );
-    size_type shiftIntersect = 0;
+    sizeVector_Type shiftIntersect ( numberFractures );
+    
+    shiftIntersect [ 0 ] = 0;
     
     for ( size_type f = 0; f < numberFractures; ++f )
     {
@@ -198,25 +226,140 @@ void DarcyFractured::assembly ( )
 
         // Computes the matrix \int_\gamma \nabla v_i \cdot \tau_j
         getfem::darcy_A12F ( A12F [ f ], M_fractures->getFracture( f ), FractureHandler::FRACTURE_UNCUT * ( f + 1 ) );
-
-        sparseMatrixPtr_Type Aup;
-        Aup.reset ( new sparseMatrix_Type ( fractureNumberGlobalDOFVelocity [ f ], 1 ) );
-        gmm::clear(*Aup);
         
-        for ( size_type otherFracture = 0; otherFracture < numberFractures; ++otherFracture )
+        if( f != 0)
         {
-            if ( M_fractures->getFracture( f )->getMeshLevelSetIntersect ( otherFracture ).get() )
-            {
-            	// cosa fare?!
-            	
-            	std::cout << "gestire intersezione" << std::endl;
-            }
-
+        	shiftIntersect [ f ] = shiftIntersect [ f-1 ] + fractureNumberDOFVelocityPressure [ f-1 ];	
         }
         
-        shiftIntersect += fractureNumberDOFVelocityPressure [ f ];
       }
     
+    /*
+     * provo a cambiare, invece che ciclare su ogni altra frattura ciclo su ogni intersezione, così so gestire anche i Cross
+     * 
+     */
+    
+    size_type NumIntersections = fractureNumberCross + fractureNumberBifurcation;
+  
+    IntersectDataContainer_Type IntCross = M_fractures->getIntersections ()-> getCrossIntersections ();
+    
+    IntersectDataContainer_Type IntBifurcation = M_fractures->getIntersections ()-> getBifurcationIntersections ();
+    		
+    for ( size_type i = 0; i < IntCross.size(); i++ )
+    {
+    	
+    	sparseMatrixPtr_Type Aup0, Aup1;
+    	   	
+    	FractureHandlerPtr_Type f0 = IntCross [ i ].getFracture (0);
+    	FractureHandlerPtr_Type f1 = IntCross [ i ].getFracture (1);
+    	
+    	size_type id0 = f0->getId();
+    	size_type id1 = f1->getId();
+    	
+    	
+        Aup0.reset ( new sparseMatrix_Type ( fractureNumberGlobalDOFVelocity [ id0 ], 1 ) );
+        gmm::clear(*Aup0);
+
+        Aup1.reset ( new sparseMatrix_Type ( fractureNumberGlobalDOFVelocity [ id1 ], 1 ) );
+        gmm::clear(*Aup1);
+
+        // aggiorno per la frattura 0
+        getfem::darcy_A11F ( A11F [ id0 ],f0,
+                             f0->getEtaTangentialInterpolated(), 
+                             f1,
+                             FractureHandler::FRACTURE_INTERSECT * ( id0 + 1 ) + id1 + 1);
+
+        getfem::darcy_A12F ( A12F [ id0 ], f0, f1,
+                             FractureHandler::FRACTURE_INTERSECT * ( id0 + 1 ) + id1 + 1 );
+
+        // aggiorno per la frattura 1
+		getfem::darcy_A11F ( A11F [ id1 ],f1,
+							 f1->getEtaTangentialInterpolated(),
+							 f0,
+							 FractureHandler::FRACTURE_INTERSECT * ( id1 + 1 ) + id0 + 1 );
+
+		getfem::darcy_A12F ( A12F [ id1 ], f1, f0,
+							 FractureHandler::FRACTURE_INTERSECT * ( id1 + 1 ) + id0 + 1 );
+
+        const pairSizeVectorContainer_Type& intersectElementsGlobalIndex0 = f0->getFractureIntersectElementsGlobalIndex ();
+        const pairSizeVectorContainer_Type& intersectElementsGlobalIndex1 = f1->getFractureIntersectElementsGlobalIndex ();
+        
+        const size_type numIntersections = intersectElementsGlobalIndex0 [id1].size();
+        
+        const sizeVectorContainer_Type& intersectElements0 = f0->getFractureIntersectElements ();
+        const sizeVectorContainer_Type& intersectElements1 = f1->getFractureIntersectElements ();
+        
+		for ( size_type k = 0; k < numIntersections; ++k )
+		{
+			gmm::clear (*Aup0);
+			gmm::clear (*Aup1);
+
+			getfem::velocityJump ( Aup0, f0, f1, intersectElements0 [id1][k] );
+			getfem::velocityJump ( Aup1, f1, f0, intersectElements1 [id0][k] );
+
+			const size_type globalIndex = intersectElementsGlobalIndex0 [id1] [k].first;
+			const size_type globalIndex2 = intersectElementsGlobalIndex0 [id1] [k].second;
+
+
+			gmm::copy ( *Aup0, 
+					    gmm::sub_matrix (*M_globalMatrix,
+									    gmm::sub_interval ( shiftIntersect [ id0 ], fractureNumberGlobalDOFVelocity [ id0 ] ),
+									    gmm::sub_interval (  fractureTotalNumberDOFVelocityPressure + globalIndex, 1 ) ) );
+
+			gmm::copy ( gmm::transposed(*Aup0), 
+					    gmm::sub_matrix (*M_globalMatrix,
+									    gmm::sub_interval (  fractureTotalNumberDOFVelocityPressure + std::max(globalIndex, globalIndex2), 1 ),
+									    gmm::sub_interval ( shiftIntersect [ id0 ], fractureNumberGlobalDOFVelocity [ id0 ] ) ) );
+
+			gmm::copy ( *Aup1, 
+					    gmm::sub_matrix (*M_globalMatrix,
+									    gmm::sub_interval ( shiftIntersect [ id1 ], fractureNumberGlobalDOFVelocity [ id1 ] ),
+									    gmm::sub_interval (  fractureTotalNumberDOFVelocityPressure + globalIndex2, 1 ) ) );
+
+			gmm::copy ( gmm::transposed(*Aup1), 
+					    gmm::sub_matrix (*M_globalMatrix,
+									    gmm::sub_interval (  fractureTotalNumberDOFVelocityPressure + std::max(globalIndex, globalIndex2), 1 ),
+									    gmm::sub_interval ( shiftIntersect [ id1 ], fractureNumberGlobalDOFVelocity [ id1 ] ) ) );
+
+         }
+    	
+    }
+    
+  /*  for ( size_type i = 0; i < IntBifurcation.size(); i++ )
+    {
+    	
+    	sparseMatrixPtr_Type Aup0, Aup1, Aup2;
+    	   	
+    	FractureHandlerPtr_Type f0 = IntBifurcation [ i ].getFracture (0);
+    	FractureHandlerPtr_Type f1 = IntBifurcation [ i ].getFracture (1);
+    	FractureHandlerPtr_Type f2 = IntBifurcation [ i ].getFracture (1);
+    	
+    	size_type id0 = f0->getId();
+    	size_type id1 = f1->getId();
+    	size_type id2 = f2->getId();
+    	
+        Aup0.reset ( new sparseMatrix_Type ( fractureNumberGlobalDOFVelocity [ id0 ], 1 ) );
+        gmm::clear(*Aup0);
+
+        Aup1.reset ( new sparseMatrix_Type ( fractureNumberGlobalDOFVelocity [ id1 ], 1 ) );
+        gmm::clear(*Aup1);
+
+        Aup2.reset ( new sparseMatrix_Type ( fractureNumberGlobalDOFVelocity [ id2 ], 1 ) );
+        gmm::clear(*Aup2);
+
+    	
+
+    }
+    */
+    /*
+     * 		Copy blocks into the system matrix M_darcyGlobalMatrix
+     * 		
+     * 				[  A11  A12  0          ]
+     * 		    M = [ -A12  A22  0          ]
+     * 		    	[  0    0    A11F  A12F ]
+     * 		        [  0    0   -A12F  0    ]    	
+     */ 
+ 
     // Shift for the fracture
     size_type fractureShift = 0;
     for ( size_type f = 0; f < numberFractures; ++f )
@@ -242,10 +385,10 @@ void DarcyFractured::assembly ( )
  
     }
 
-/*    gmm::copy(*App, gmm::sub_matrix(*M_globalMatrix, 
+    gmm::copy(*App, gmm::sub_matrix(*M_globalMatrix, 
     		gmm::sub_interval( fractureTotalNumberDOFVelocityPressure, fractureNumberIntersections ), 
     		gmm::sub_interval( fractureTotalNumberDOFVelocityPressure, globalFractureNumber ) ));
-  */
+  
     
     //Costruiamo il termine noto
     
@@ -335,19 +478,19 @@ void DarcyFractured::assembly ( )
         gmm::clear(*(B_pF [ f ]));
 
         getfem::assembling_Source_BoundaryF ( B_pF [ f ], divF [ f ], M_fractures->getFracture( f ), FractureHandler::FRACTURE_UNCUT * ( f + 1 ) );
-
+/*
         for ( size_type otherFracture = 0; otherFracture < numberFractures; ++otherFracture )
         {
             if ( M_fractures->getFracture( f )->getMeshLevelSetIntersect ( otherFracture ).get() )
             {
-               /* getfem::assembling_SourceF ( B_pF [ f ], divF [ f ], M_fractures->getFracture( f ),
+                getfem::assembling_SourceF ( B_pF [ f ], divF [ f ], M_fractures->getFracture( f ),
                                              M_fractures->getFracture ( otherFracture ),
                                              FractureHandler::FRACTURE_INTERSECT * ( f + 1 ) + otherFracture + 1 );
-                                             */
+                                             
             	std::cout << "sistemare intersezione" << std::endl;
             }
         }
-
+*/
         for ( size_type i = 0; i < fractureNumberGlobalDOFVelocity [ f ]; ++i )
         {
             (*M_globalRightHandSide) [ fractureShift + i ] += (*(B_vF [ f ])) [ i ];
@@ -470,7 +613,7 @@ void DarcyFractured::solve ( )
         std::ostringstream osFileName;
 
         getfem::mesh_level_set meshFLevelSetCutFlat ( fracture->getMeshFlat() );
-        for ( size_type otherF = 0; otherF < numberFractures; ++otherF )
+   /*     for ( size_type otherF = 0; otherF < numberFractures; ++otherF )
         {
             GFLevelSetPtr_Type levelSetPtr = fracture->getLevelSetIntersect ( otherF );
 
@@ -479,7 +622,7 @@ void DarcyFractured::solve ( )
                 meshFLevelSetCutFlat.add_level_set ( *levelSetPtr );
             }
         }
-
+*/
 
         meshFLevelSetCutFlat.adapt();
 

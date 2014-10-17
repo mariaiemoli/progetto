@@ -320,10 +320,45 @@ integrateWithBooleanOperation ( getfem::mesh_level_set& meshLevelSet, const size
 } // integrateWithBooleanOperation
 
 
+IntersectDataContainer_Type FractureIntersect::getCrossIntersections () const
+{
+	IntersectDataContainer_Type tmp;
+	
+    mapIntersection_Type::const_iterator it;
+    
+    for ( it = M_intersections.begin(); it != M_intersections.end(); ++it )
+    {
+    	if ( it->first == Cross)
+        {
+    		tmp = it->second;
+        }
+    }
+
+    return tmp;
+}
+
+
+IntersectDataContainer_Type FractureIntersect::getBifurcationIntersections () const
+{
+	IntersectDataContainer_Type tmp;
+	
+    mapIntersection_Type::const_iterator it;
+    
+    for ( it = M_intersections.begin(); it != M_intersections.end(); ++it )
+    {
+    	if ( it->first == Bifurcation)
+        {
+    		tmp = it->second;
+        }
+    }
+
+    return tmp;
+}
+
 
 size_type FractureIntersect::getNumberIntersectionOfType ( IntersectionType type ) const
 {
-        return M_intersections.find( type )->second.size();
+	return M_intersections.find( type )->second.size();
 } // getNumberIntersectionOfType
 
 

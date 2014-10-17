@@ -18,6 +18,30 @@
 namespace getfem
 {
 
+class level_set_unit_normal : public getfem::nonlinear_elem_term
+{
+    const getfem::mesh_fem& mf;
+    scalarVector_Type U;
+    size_type N;
+    base_matrix gradU;
+    bgeot::base_vector coeff;
+    bgeot::multi_index sizes_;
+
+public:
+
+    level_set_unit_normal ( const getfem::mesh_fem& mf_,
+                            const scalarVector_Type& U_ );
+
+    inline const bgeot::multi_index& sizes ( ) const
+    {
+        return sizes_;
+    }
+
+    virtual void compute ( getfem::fem_interpolation_context& ctx,
+                           bgeot::base_tensor& t );
+};
+
+
 
 //matrice tau tau per la frattura
 void darcy_A11F ( sparseMatrixPtr_Type& M,
@@ -28,17 +52,24 @@ void darcy_A11F ( sparseMatrixPtr_Type& M,
                   const size_type& uncutRegionFlag );
 
 //matrice tau tau per la frattura intersecata
-/*void darcy_A11F ( sparseMatrixPtr_Type& M,
+void darcy_A11F ( sparseMatrixPtr_Type& M,
                   const FractureHandlerPtr_Type& fracture,
                   const scalarVector_Type& invKTangentialInterpolated,
                   const FractureHandlerPtr_Type& otherFracture,
                   const size_type& cutRegionFlag );
-*/
+
 
 //lo stesso per la frattura
 void darcy_A12F ( sparseMatrixPtr_Type& M,
                   const FractureHandlerPtr_Type& fracture,
                   const size_type& uncutRegionFlag );
+
+
+//lo stesso per la frattura intersecata
+void darcy_A12F ( sparseMatrixPtr_Type& M,
+                  const FractureHandlerPtr_Type& fracture,
+                  const FractureHandlerPtr_Type& otherFracture,
+                  const size_type& cutRegionFlag );
 
 
 //stesso lavoro con la frattura - più semplice
@@ -62,6 +93,11 @@ void assembling_Source_BoundaryF ( scalarVectorPtr_Type& D,
 //funzione che accoppia le variabili corrispondenti alle fratture che si intersecano
 void coupleFractures ( sparseMatrixPtr_Type& M, const FracturesSetPtr_Type& fractures );
 
+
+void velocityJump ( sparseMatrixPtr_Type& M,
+                    const FractureHandlerPtr_Type& fracture,
+                    const FractureHandlerPtr_Type& otherFracture,
+                    const size_type& convex );
 
 
 } // namespace getfem
