@@ -1,0 +1,309 @@
+\hypertarget{UsefulFunctions_8h}{\section{Riferimenti per il file include/\-Useful\-Functions.h}
+\label{UsefulFunctions_8h}\index{include/\-Useful\-Functions.\-h@{include/\-Useful\-Functions.\-h}}
+}
+{\ttfamily \#include \char`\"{}Core.\-h\char`\"{}}\\*
+\subsection*{Funzioni}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{UsefulFunctions_8h_add7b8b88dc68d93addd88b9a4dc6e8bf}{export\-Solution} (const std\-::string \&file\-Name, const std\-::string \&solution\-Name, const getfem\-::mesh\-\_\-fem \&mesh\-F\-E\-M, const \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalar\-Vector\-\_\-\-Type} \&solution)
+\begin{DoxyCompactList}\small\item\em \hyperlink{UsefulFunctions_8h}{Useful\-Functions.\-h}. \end{DoxyCompactList}\item 
+void \hyperlink{UsefulFunctions_8h_a08d7eb25d2acdceda04b336d0c75f0ca}{export\-Solution\-In\-Cell} (const std\-::string \&file\-Name, const std\-::string \&solution\-Name, const getfem\-::mesh\-\_\-fem \&mesh\-F\-E\-M, const \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalar\-Vector\-\_\-\-Type} \&solution)
+\item 
+void \hyperlink{UsefulFunctions_8h_ae4bd400c144e72bee180107bb41ae72a}{export\-Mesh} (const std\-::string \&file\-Name, const getfem\-::mesh \&mesh)
+\item 
+void \hyperlink{UsefulFunctions_8h_ac9c4dffc2df78de82445b5a1a7bf3116}{mass\-Lumping} (\hyperlink{Core_8h_afba9f623673e2ae32054015bdb5500f9}{sparse\-Matrix\-\_\-\-Type} \&matrix)
+\begin{DoxyCompactList}\small\item\em \hyperlink{UsefulFunctions_8cc}{Useful\-Functions.\-cc}. \end{DoxyCompactList}\item 
+void \hyperlink{UsefulFunctions_8h_a0ea0b08a12a1e6a94718cf3bcd60edeb}{from\-Bit\-Vector\-To\-Std\-Vector} (dal\-::bit\-\_\-vector \&bit\-Vector, std\-::vector$<$ size\-\_\-type $>$ \&std\-Vector)
+\item 
+char \hyperlink{UsefulFunctions_8h_abe0e6d66cd0f0b6f6893b3c1c6a7029b}{int\-To\-Char} (const size\-\_\-type \&integer)
+\item 
+std\-::string \hyperlink{UsefulFunctions_8h_abecc60f3f34576882b4cf1d8f4431e88}{region\-Signs} (const \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalar\-Vector\-\_\-\-Type} \&level\-Set\-Value)
+\item 
+scalar\-\_\-type \hyperlink{UsefulFunctions_8h_ad9cf8f3fe42287349e8e1b2f1f824958}{point\-Distance} (const scalar\-\_\-type \&x0, const scalar\-\_\-type \&x1, const scalar\-\_\-type \&y0, const scalar\-\_\-type \&y1)
+\item 
+std\-::string \hyperlink{UsefulFunctions_8h_ad72b66ecae17bd314d54beee9489bb1b}{get\-Operation} (const std\-::string \&sub\-Region, const \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{size\-Vector\-\_\-\-Type} \&level\-Sets)
+\item 
+std\-::pair$<$ std\-::string, size\-\_\-type $>$ \hyperlink{UsefulFunctions_8h_a87ad1850ebc381cc2a65e498376f47c2}{compara\-Segni} (const std\-::string \&region, const \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalar\-Vector\-\_\-\-Type} \&signs)
+\item 
+bool \hyperlink{UsefulFunctions_8h_afd1a054449ce848a00546cc740e83901}{is\-In\-Triangle} (const getfem\-::mesh \&mesh, const size\-\_\-type \&element\-I\-D, const base\-\_\-node \&node, const scalar\-\_\-type \&toll=1e-\/7)
+\end{DoxyCompactItemize}
+
+
+\subsection{Documentazione delle funzioni}
+\hypertarget{UsefulFunctions_8h_a87ad1850ebc381cc2a65e498376f47c2}{\index{Useful\-Functions.\-h@{Useful\-Functions.\-h}!compara\-Segni@{compara\-Segni}}
+\index{compara\-Segni@{compara\-Segni}!UsefulFunctions.h@{Useful\-Functions.\-h}}
+\subsubsection[{compara\-Segni}]{\setlength{\rightskip}{0pt plus 5cm}std\-::pair$<$ std\-::string, size\-\_\-type $>$ compara\-Segni (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{region, }
+\item[{const {\bf scalar\-Vector\-\_\-\-Type} \&}]{signs}
+\end{DoxyParamCaption}
+)}}\label{UsefulFunctions_8h_a87ad1850ebc381cc2a65e498376f47c2}
+
+\begin{DoxyCode}
+168 \{
+169     std::pair < std::string, size\_type > compara;
+170     compara.first = \textcolor{stringliteral}{"Base"};
+171 
+172     scalar\_type flag = 0;
+173 
+174     \textcolor{keywordflow}{for} ( size\_type i = 0; i < signs.size(); ++i )
+175     \{
+176         \textcolor{keywordflow}{if} ( !( ( region[i] == \textcolor{charliteral}{'+'} && signs[i] > 0 ) || ( region[i] == \textcolor{charliteral}{'-'} && signs[i] < 0 ) ) )
+177         \{
+178             ++flag;
+179             compara.first = \textcolor{stringliteral}{"Extended"};
+180             compara.second = i;
+181         \}
+182     \}
+183 
+184     \textcolor{keywordflow}{if} ( flag == signs.size() )
+185     \{
+186         compara.first = \textcolor{stringliteral}{"Extra"};
+187     \}
+188 
+189     \textcolor{keywordflow}{return} compara;
+190 
+191 \}\textcolor{comment}{// comparaSegni}
+\end{DoxyCode}
+\hypertarget{UsefulFunctions_8h_ae4bd400c144e72bee180107bb41ae72a}{\index{Useful\-Functions.\-h@{Useful\-Functions.\-h}!export\-Mesh@{export\-Mesh}}
+\index{export\-Mesh@{export\-Mesh}!UsefulFunctions.h@{Useful\-Functions.\-h}}
+\subsubsection[{export\-Mesh}]{\setlength{\rightskip}{0pt plus 5cm}void export\-Mesh (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{file\-Name, }
+\item[{const getfem\-::mesh \&}]{mesh}
+\end{DoxyParamCaption}
+)}}\label{UsefulFunctions_8h_ae4bd400c144e72bee180107bb41ae72a}
+
+\begin{DoxyCode}
+59 \{
+60     getfem::vtk\_export exporter(fileName.data(), \textcolor{keyword}{true});
+61     \textcolor{comment}{/*}
+62 \textcolor{comment}{     * con true mi permette di esportare la mesh in formato txt}
+63 \textcolor{comment}{     */}
+64     exporter.exporting(mesh);
+65 
+66     exporter.write\_mesh();
+67 \}\textcolor{comment}{// exportMesh}
+\end{DoxyCode}
+\hypertarget{UsefulFunctions_8h_add7b8b88dc68d93addd88b9a4dc6e8bf}{\index{Useful\-Functions.\-h@{Useful\-Functions.\-h}!export\-Solution@{export\-Solution}}
+\index{export\-Solution@{export\-Solution}!UsefulFunctions.h@{Useful\-Functions.\-h}}
+\subsubsection[{export\-Solution}]{\setlength{\rightskip}{0pt plus 5cm}void export\-Solution (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{file\-Name, }
+\item[{const std\-::string \&}]{solution\-Name, }
+\item[{const getfem\-::mesh\-\_\-fem \&}]{mesh\-F\-E\-M, }
+\item[{const {\bf scalar\-Vector\-\_\-\-Type} \&}]{solution}
+\end{DoxyParamCaption}
+)}}\label{UsefulFunctions_8h_add7b8b88dc68d93addd88b9a4dc6e8bf}
+
+
+\hyperlink{UsefulFunctions_8h}{Useful\-Functions.\-h}. 
+
+
+\begin{DoxyCode}
+30 \{
+31     getfem::vtk\_export exporter(fileName.data());
+32 
+33     exporter.exporting(meshFEM);
+34 
+35     exporter.write\_mesh();
+36 
+37     exporter.write\_point\_data(meshFEM, solution, solutionName.data());
+38 
+39 \}\textcolor{comment}{// exportSolution}
+\end{DoxyCode}
+\hypertarget{UsefulFunctions_8h_a08d7eb25d2acdceda04b336d0c75f0ca}{\index{Useful\-Functions.\-h@{Useful\-Functions.\-h}!export\-Solution\-In\-Cell@{export\-Solution\-In\-Cell}}
+\index{export\-Solution\-In\-Cell@{export\-Solution\-In\-Cell}!UsefulFunctions.h@{Useful\-Functions.\-h}}
+\subsubsection[{export\-Solution\-In\-Cell}]{\setlength{\rightskip}{0pt plus 5cm}void export\-Solution\-In\-Cell (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{file\-Name, }
+\item[{const std\-::string \&}]{solution\-Name, }
+\item[{const getfem\-::mesh\-\_\-fem \&}]{mesh\-F\-E\-M, }
+\item[{const {\bf scalar\-Vector\-\_\-\-Type} \&}]{solution}
+\end{DoxyParamCaption}
+)}}\label{UsefulFunctions_8h_a08d7eb25d2acdceda04b336d0c75f0ca}
+
+\begin{DoxyCode}
+46 \{
+47     getfem::vtk\_export exporter(fileName.data());
+48  
+49     exporter.exporting(meshFEM);
+50  
+51     exporter.write\_mesh();
+52  
+53     exporter.write\_cell\_data(solution, solutionName.data());
+54  
+55 \}\textcolor{comment}{// exportSolutionInCell}
+\end{DoxyCode}
+\hypertarget{UsefulFunctions_8h_a0ea0b08a12a1e6a94718cf3bcd60edeb}{\index{Useful\-Functions.\-h@{Useful\-Functions.\-h}!from\-Bit\-Vector\-To\-Std\-Vector@{from\-Bit\-Vector\-To\-Std\-Vector}}
+\index{from\-Bit\-Vector\-To\-Std\-Vector@{from\-Bit\-Vector\-To\-Std\-Vector}!UsefulFunctions.h@{Useful\-Functions.\-h}}
+\subsubsection[{from\-Bit\-Vector\-To\-Std\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}void from\-Bit\-Vector\-To\-Std\-Vector (
+\begin{DoxyParamCaption}
+\item[{dal\-::bit\-\_\-vector \&}]{bit\-Vector, }
+\item[{std\-::vector$<$ size\-\_\-type $>$ \&}]{std\-Vector}
+\end{DoxyParamCaption}
+)}}\label{UsefulFunctions_8h_a0ea0b08a12a1e6a94718cf3bcd60edeb}
+
+\begin{DoxyCode}
+80 \{
+81         size\_type i\_cv = 0;
+82 
+83         \textcolor{keywordflow}{for} ( i\_cv << bitVector; i\_cv != size\_type(-1); i\_cv << bitVector )
+84         \{
+85                 stdVector.push\_back ( i\_cv );
+86         \}
+87 
+88 \} \textcolor{comment}{// fromBitVectorToStdVector}
+\end{DoxyCode}
+\hypertarget{UsefulFunctions_8h_ad72b66ecae17bd314d54beee9489bb1b}{\index{Useful\-Functions.\-h@{Useful\-Functions.\-h}!get\-Operation@{get\-Operation}}
+\index{get\-Operation@{get\-Operation}!UsefulFunctions.h@{Useful\-Functions.\-h}}
+\subsubsection[{get\-Operation}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string get\-Operation (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{sub\-Region, }
+\item[{const {\bf size\-Vector\-\_\-\-Type} \&}]{level\-Sets}
+\end{DoxyParamCaption}
+)}}\label{UsefulFunctions_8h_ad72b66ecae17bd314d54beee9489bb1b}
+
+\begin{DoxyCode}
+140 \{
+141     std::ostringstream operation;
+142 
+143     \textcolor{keywordflow}{for} ( size\_type i = 0; i < levelSets.size(); ++i )
+144     \{
+145         \textcolor{keywordflow}{if} ( subRegion [i] == \textcolor{charliteral}{'-'} )
+146         \{
+147             operation << \textcolor{stringliteral}{"(!"} << \hyperlink{UsefulFunctions_8cc_abe0e6d66cd0f0b6f6893b3c1c6a7029b}{intToChar} ( levelSets[i] ) << \textcolor{stringliteral}{")"};
+148         \}
+149         \textcolor{keywordflow}{else}
+150         \{
+151             operation << \hyperlink{UsefulFunctions_8cc_abe0e6d66cd0f0b6f6893b3c1c6a7029b}{intToChar} ( levelSets[i] );
+152         \}
+153 
+154         \textcolor{comment}{// Not the last one}
+155         \textcolor{keywordflow}{if} ( i != levelSets.size() - 1 )
+156         \{
+157             operation << \textcolor{stringliteral}{"*"};
+158         \}
+159     \}
+160 
+161     \textcolor{keywordflow}{return} operation.str().c\_str();
+162 \} \textcolor{comment}{// getOperation}
+\end{DoxyCode}
+\hypertarget{UsefulFunctions_8h_abe0e6d66cd0f0b6f6893b3c1c6a7029b}{\index{Useful\-Functions.\-h@{Useful\-Functions.\-h}!int\-To\-Char@{int\-To\-Char}}
+\index{int\-To\-Char@{int\-To\-Char}!UsefulFunctions.h@{Useful\-Functions.\-h}}
+\subsubsection[{int\-To\-Char}]{\setlength{\rightskip}{0pt plus 5cm}char int\-To\-Char (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-type \&}]{integer}
+\end{DoxyParamCaption}
+)}}\label{UsefulFunctions_8h_abe0e6d66cd0f0b6f6893b3c1c6a7029b}
+
+\begin{DoxyCode}
+92 \{
+93         \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{char}\textcolor{keyword}{>}( integer + 97 );
+94 \} \textcolor{comment}{// intToChar}
+\end{DoxyCode}
+\hypertarget{UsefulFunctions_8h_afd1a054449ce848a00546cc740e83901}{\index{Useful\-Functions.\-h@{Useful\-Functions.\-h}!is\-In\-Triangle@{is\-In\-Triangle}}
+\index{is\-In\-Triangle@{is\-In\-Triangle}!UsefulFunctions.h@{Useful\-Functions.\-h}}
+\subsubsection[{is\-In\-Triangle}]{\setlength{\rightskip}{0pt plus 5cm}bool is\-In\-Triangle (
+\begin{DoxyParamCaption}
+\item[{const getfem\-::mesh \&}]{mesh, }
+\item[{const size\-\_\-type \&}]{element\-I\-D, }
+\item[{const base\-\_\-node \&}]{node, }
+\item[{const scalar\-\_\-type \&}]{toll = {\ttfamily 1e-\/7}}
+\end{DoxyParamCaption}
+)}}\label{UsefulFunctions_8h_afd1a054449ce848a00546cc740e83901}
+
+\begin{DoxyCode}
+118 \{
+119     \textcolor{keyword}{const} base\_node x0 = node - mesh.points\_of\_convex(elementID) [ 0 ];
+120     \textcolor{keyword}{const} base\_node x1 = node - mesh.points\_of\_convex(elementID) [ 1 ];
+121     \textcolor{keyword}{const} base\_node x2 = node - mesh.points\_of\_convex(elementID) [ 2 ];
+122 
+123     \textcolor{keyword}{const} scalar\_type A = 0.5 * ( gmm::abs(x0 [ 0 ] * x1 [ 1 ] - x0 [ 1 ] * x1 [ 0 ]) +
+124                                   gmm::abs(x0 [ 0 ] * x2 [ 1 ] - x0 [ 1 ] * x2 [ 0 ]) +
+125                                   gmm::abs(x2 [ 0 ] * x1 [ 1 ] - x2 [ 1 ] * x1 [ 0 ]) );
+126 
+127     \textcolor{keywordflow}{if} ( gmm::abs( A - mesh.convex\_area\_estimate(elementID) ) <= toll )
+128     \{
+129         \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+130     \}
+131     \textcolor{keywordflow}{else}
+132     \{
+133         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+134     \}
+135 
+136 \} \textcolor{comment}{// isInTriangle}
+\end{DoxyCode}
+\hypertarget{UsefulFunctions_8h_ac9c4dffc2df78de82445b5a1a7bf3116}{\index{Useful\-Functions.\-h@{Useful\-Functions.\-h}!mass\-Lumping@{mass\-Lumping}}
+\index{mass\-Lumping@{mass\-Lumping}!UsefulFunctions.h@{Useful\-Functions.\-h}}
+\subsubsection[{mass\-Lumping}]{\setlength{\rightskip}{0pt plus 5cm}void mass\-Lumping (
+\begin{DoxyParamCaption}
+\item[{{\bf sparse\-Matrix\-\_\-\-Type} \&}]{matrix}
+\end{DoxyParamCaption}
+)}}\label{UsefulFunctions_8h_ac9c4dffc2df78de82445b5a1a7bf3116}
+
+
+\hyperlink{UsefulFunctions_8cc}{Useful\-Functions.\-cc}. 
+
+
+\begin{DoxyCode}
+8 \{
+9 
+10     \textcolor{keyword}{const} scalar\_type matrixSize = gmm::mat\_nrows(matrix);
+11 
+12     \textcolor{keywordflow}{for} ( size\_type i = 0; i < matrixSize; ++i )
+13     \{
+14         scalar\_type lumped = 0;
+15 
+16         \textcolor{keywordflow}{for} ( size\_type j = 0; j < matrixSize; ++j )
+17         \{
+18             lumped += matrix(i, j);
+19             matrix(i, j) = 0;
+20         \}
+21         matrix(i, i) = lumped;
+22     \}
+23 \}\textcolor{comment}{// massLumping}
+\end{DoxyCode}
+\hypertarget{UsefulFunctions_8h_ad9cf8f3fe42287349e8e1b2f1f824958}{\index{Useful\-Functions.\-h@{Useful\-Functions.\-h}!point\-Distance@{point\-Distance}}
+\index{point\-Distance@{point\-Distance}!UsefulFunctions.h@{Useful\-Functions.\-h}}
+\subsubsection[{point\-Distance}]{\setlength{\rightskip}{0pt plus 5cm}scalar\-\_\-type point\-Distance (
+\begin{DoxyParamCaption}
+\item[{const scalar\-\_\-type \&}]{x0, }
+\item[{const scalar\-\_\-type \&}]{x1, }
+\item[{const scalar\-\_\-type \&}]{y0, }
+\item[{const scalar\-\_\-type \&}]{y1}
+\end{DoxyParamCaption}
+)}}\label{UsefulFunctions_8h_ad9cf8f3fe42287349e8e1b2f1f824958}
+
+\begin{DoxyCode}
+74 \{
+75     \textcolor{keywordflow}{return} std::sqrt(std::pow(x0 - x1, 2) + std::pow(y0 - y1, 2));
+76 \}\textcolor{comment}{// pointDistance}
+\end{DoxyCode}
+\hypertarget{UsefulFunctions_8h_abecc60f3f34576882b4cf1d8f4431e88}{\index{Useful\-Functions.\-h@{Useful\-Functions.\-h}!region\-Signs@{region\-Signs}}
+\index{region\-Signs@{region\-Signs}!UsefulFunctions.h@{Useful\-Functions.\-h}}
+\subsubsection[{region\-Signs}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string region\-Signs (
+\begin{DoxyParamCaption}
+\item[{const {\bf scalar\-Vector\-\_\-\-Type} \&}]{level\-Set\-Value}
+\end{DoxyParamCaption}
+)}}\label{UsefulFunctions_8h_abecc60f3f34576882b4cf1d8f4431e88}
+
+\begin{DoxyCode}
+98 \{
+99     std::ostringstream \hyperlink{UsefulFunctions_8cc_abecc60f3f34576882b4cf1d8f4431e88}{regionSigns};
+100     \textcolor{keyword}{const} size\_type numLevelSet = levelSetValue.size();
+101     \textcolor{keywordflow}{for} ( size\_type i = 0; i < numLevelSet; ++i )
+102     \{
+103         \textcolor{keywordflow}{if} ( levelSetValue[i] > 0 )
+104         \{
+105             regionSigns << \textcolor{stringliteral}{"+"};
+106         \}
+107         \textcolor{keywordflow}{else}
+108         \{
+109             regionSigns << \textcolor{stringliteral}{"-"};
+110         \}
+111     \}
+112 
+113     \textcolor{keywordflow}{return} regionSigns.str();
+114 \} \textcolor{comment}{// regionSigns}
+\end{DoxyCode}

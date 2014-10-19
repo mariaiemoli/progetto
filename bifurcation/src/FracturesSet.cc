@@ -22,26 +22,25 @@ init ( const GetPot& dataFile, const std::string& section,
 
         std::ostringstream sectionFracture;
 
-        // Fill the fracture container
+        // Riempio il vettore delle fratture
         for ( size_type f = 0; f < numFractures; ++f )
         {
                 sectionFracture << section << "fractureData" << f << "/";
 
-                M_fractures [ f ].reset ( new FractureHandler_Type ( dataFile,
-                                          f, sectionFracture.str() ) );
+                M_fractures [ f ].reset ( new FractureHandler_Type ( dataFile, f, sectionFracture.str() ) );
 
-                // Initialize the fracture	--> per ogni frattura inizializzo il level set
+                // Inizializzo la frattura	
                 M_fractures [ f ]->init();
 
                 M_fractures [ f ]->numFractures ( numFractures );
 
-                // Initialize the level set
-                M_fractures [ f ]->getLevelSet()->init ( mesh, integrationTypeVelocity,
-                                                         meshFEMScalar, meshFEMVector );
+                // Per ogni frattura inizializzo il level set
+                M_fractures [ f ]->getLevelSet()->init ( mesh, integrationTypeVelocity, meshFEMScalar, meshFEMVector );
 
-                // Compute the normal and map
+                // Calcolo la normale alla frattura e il fattore di conversione della lunghezza della mesh reale
                 M_fractures [ f ]->normalVectorAndMap ( meshFEMScalar );
 
+                // Per ogni frattura aggiungo le informazioni relative al corrispondente level set a meshLevelSet
                 meshLevelSet.add_level_set ( M_fractures[f]->getLevelSet()->getLevelSet() );
 
                 sectionFracture.str("");
@@ -49,7 +48,7 @@ init ( const GetPot& dataFile, const std::string& section,
 
         meshLevelSet.adapt ();
 
-        // Initialize the fracture intersections
+        // una volta costruito il vettore delle fratture inizializzo la classe per le intersezioni
         M_intersections->constructIntesection ( meshLevelSet, M_fractures );
 
 }// init

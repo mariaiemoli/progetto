@@ -1,0 +1,1061 @@
+\hypertarget{classFractureHandler}{\section{Riferimenti per la classe Fracture\-Handler}
+\label{classFractureHandler}\index{Fracture\-Handler@{Fracture\-Handler}}
+}
+
+
+\hyperlink{FractureHandler_8h}{Fracture\-Handler.\-h}.  
+
+
+
+
+{\ttfamily \#include $<$Fracture\-Handler.\-h$>$}
+
+\subsection*{Tipi pubblici}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \hyperlink{classFractureHandler_a495ad4fc72d0c47c8f0424842f1153aaaa992cc3ad024a030ecd798dc319c95ac}{F\-R\-A\-C\-T\-U\-R\-E\-\_\-\-U\-N\-C\-U\-T} = 10000, 
+\hyperlink{classFractureHandler_a495ad4fc72d0c47c8f0424842f1153aaa781cae3f3b99bf9357fed2833d315537}{F\-R\-A\-C\-T\-U\-R\-E\-\_\-\-I\-N\-T\-E\-R\-S\-E\-C\-T} = 10000
+ \}
+\begin{DoxyCompactList}\small\item\em flags che uso per distinguere sulla mesh di ogni level set le regioni \char`\"{} non tagliate \char`\"{}, cioè dove non vi è intersezione con altre fratture, dalle regioni \char`\"{} tagliate \char`\"{}, cioè dove il level set ha un'intersezione \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classFractureHandler_aa3872456d95550cdd424908bbb5a15ec}{Fracture\-Handler} (const Get\-Pot \&data\-File, const size\-\_\-type \&I\-D, const std\-::string \&section=\char`\"{}fracture\-Data/\char`\"{})
+\begin{DoxyCompactList}\small\item\em \hyperlink{FractureHandler_8cc}{Fracture\-Handler.\-cc}. \end{DoxyCompactList}\item 
+void \hyperlink{classFractureHandler_aa28ce054ba2a2679214956c71f8cf1e0}{init} ()
+\begin{DoxyCompactList}\small\item\em funzione che inizializza la frattura Ogni frattura ha una rappresentazione 1d, ma la mesh reale è una mesh di punti 2d ( sono i punti del tipo (x,y) che stanno sulla curva y=f(x) ) e questo comporta dei problemi per l'integrazione. \end{DoxyCompactList}\item 
+void \hyperlink{classFractureHandler_aec1fc4e2664b3fe60877b63024af3605}{normal\-Vector\-And\-Map} (const getfem\-::mesh\-\_\-fem \&medium\-Mesh\-F\-E\-M\-Pressure)
+\begin{DoxyCompactList}\small\item\em funzione che calcola il vettore normale alla frattura e la mappa di conversione dalla mesh reale alla mesh piatta \end{DoxyCompactList}\item 
+void \hyperlink{classFractureHandler_a87f0f8e2998b621b481173ec8d9aaa2a}{compute\-Inv\-H} (const \hyperlink{BCHandler_8h_aa175884cb453788647f17f2230a2a762}{B\-C\-Handler\-Ptr\-\_\-\-Type} \&bc\-Handler)
+\begin{DoxyCompactList}\small\item\em funzione che calcola il passo di griglia, h$^\wedge$-\/1 \end{DoxyCompactList}\item 
+const getfem\-::mesh \& \hyperlink{classFractureHandler_a9ff9f584b850d6b750981befdbefbdbe}{get\-Mesh\-Flat} () const 
+\item 
+getfem\-::mesh \& \hyperlink{classFractureHandler_ad9b02a825d444016b3ab8ee901f887f6}{get\-Mesh\-Flat} ()
+\item 
+const getfem\-::mesh\-\_\-fem \& \hyperlink{classFractureHandler_ae54c07023428b44556bbec4da5be9306}{get\-Mesh\-F\-E\-M\-Velocity} () const 
+\item 
+const getfem\-::mesh\-\_\-fem \& \hyperlink{classFractureHandler_a6dc20a9624f9dff49b1c58f0dd261002}{get\-Mesh\-F\-E\-M\-Pressure} () const 
+\item 
+const getfem\-::mesh\-\_\-im \& \hyperlink{classFractureHandler_afe4c174c17862ed30b99ebe4a80aa695}{get\-Integration\-Method\-Velocity} () const 
+\item 
+const getfem\-::mesh\-\_\-im \& \hyperlink{classFractureHandler_ad7afd53439c3067f46a0fb6e1473d661}{get\-Integration\-Method\-Pressure} () const 
+\item 
+\hyperlink{classFractureData}{Fracture\-Data} \& \hyperlink{classFractureHandler_a68ed77a8d9816a472700ee4bcf2f505d}{get\-Data} ()
+\item 
+\hyperlink{LevelSetHandler_8h_aba343569cb3213c103252f69c39cad0b}{Level\-Set\-Handler\-Ptr\-\_\-\-Type} \& \hyperlink{classFractureHandler_af37ab12a17f812a960da2aa71699ba0f}{get\-Level\-Set} ()
+\item 
+const \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalar\-Vector\-\_\-\-Type} \& \hyperlink{classFractureHandler_ac5cab221c35c03c72b264d73564d5e38}{get\-Eta\-Normal\-Interpolated} () const 
+\item 
+const \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalar\-Vector\-\_\-\-Type} \& \hyperlink{classFractureHandler_a06b6f81d62ccd91ec1253cd41ffae808}{get\-Eta\-Tangential\-Interpolated} () const 
+\item 
+const scalar\-\_\-type \& \hyperlink{classFractureHandler_a47c7f4161817ebf6cd978cf6b2caa74f}{get\-Eta\-Tangential\-Interpolated} (const size\-\_\-type \&dof) const 
+\item 
+const \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalar\-Vector\-\_\-\-Type} \& \hyperlink{classFractureHandler_a3f78aef488ef82ac8384bdd9e39a9be5}{get\-Inverse\-Mesh\-Size} () const 
+\item 
+const scalar\-\_\-type \& \hyperlink{classFractureHandler_a1e1ba24caa1e789b199252c3c34f696d}{get\-Inverse\-Mesh\-Size} (const size\-\_\-type \&dof) const 
+\item 
+const \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalar\-Vector\-\_\-\-Type} \& \hyperlink{classFractureHandler_abaf5f99ba68775a587d6b3f0222e8b9a}{get\-Magnification\-Map\-Factor1} () const 
+\item 
+const scalar\-\_\-type \& \hyperlink{classFractureHandler_a1cafea5a92ab3a9b5eae67c347867f58}{get\-Magnification\-Map\-Factor1} (const size\-\_\-type \&dof) const 
+\item 
+const \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalar\-Vector\-\_\-\-Type} \& \hyperlink{classFractureHandler_a68b09b4012669140979a0026736b3dfe}{get\-Magnification\-Map\-Factor2} () const 
+\item 
+const scalar\-\_\-type \& \hyperlink{classFractureHandler_a5bbe076a3595909f6af49e8d69e39231}{get\-Magnification\-Map\-Factor2} (const size\-\_\-type \&dof) const 
+\item 
+const bgeot\-::pgeometric\-\_\-trans \& \hyperlink{classFractureHandler_a2e1d27efecfa84246375be5f4262bab2}{get\-Geometric\-Transformation} () const 
+\item 
+const \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalar\-Vector\-\_\-\-Type} \& \hyperlink{classFractureHandler_a22e229a4016119138c48b456a185e1ff}{get\-Normal1} () const 
+\item 
+const \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalar\-Vector\-\_\-\-Type} \& \hyperlink{classFractureHandler_ae707e764eaff191e2856765131289c82}{get\-Normal2} () const 
+\item 
+const getfem\-::mesh \& \hyperlink{classFractureHandler_a79b2fbb306b2bc045d5bef0b73d12ec8}{get\-Mesh\-Mapped} () const 
+\item 
+getfem\-::mesh \& \hyperlink{classFractureHandler_ad3fa0255b0e57f6562dc98bbf71588b1}{get\-Mesh\-Mapped} ()
+\item 
+const \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalar\-Vector\-\_\-\-Type} \& \hyperlink{classFractureHandler_a6af2b5af4046d6a0eafbacaec96f8153}{get\-Mu\-Normal\-Interpolated} () const 
+\item 
+const \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalar\-Vector\-\_\-\-Type} \& \hyperlink{classFractureHandler_a868f8aeaeec90df8211d091612e03593}{get\-Mu\-Tangential\-Interpolated} () const 
+\item 
+const getfem\-::mesh\-\_\-im \& \hyperlink{classFractureHandler_a157f39f66131faf579b980b6b5fb91fb}{get\-Integration\-Method\-Pressure\-Visualization} () const 
+\item 
+const getfem\-::mesh\-\_\-fem \& \hyperlink{classFractureHandler_ac78f500422e542b77114e56f11173b0d}{get\-Mesh\-F\-E\-M\-Pressure\-Visualization} () const 
+\item 
+const getfem\-::mesh\-\_\-fem \& \hyperlink{classFractureHandler_ab77ee6aaf47d7f1d80fd1ff23bd34a33}{get\-Mesh\-F\-E\-M\-Linear} () const 
+\item 
+const size\-\_\-type \& \hyperlink{classFractureHandler_a7f7ec5b15315791f76d8deb0874511d6}{get\-Id} () const 
+\item 
+void \hyperlink{classFractureHandler_a002e255a1976918ffbe6ea63b0fdae1b}{num\-Fractures} (const size\-\_\-type \&num\-Fractures)
+\item 
+size\-\_\-type \hyperlink{classFractureHandler_ae4204c592df2afe9c3dc6171f8bbb042}{set\-Mesh\-Level\-Set\-Fracture} (\hyperlink{classFractureHandler}{Fracture\-Handler} \&other\-Fracture, size\-\_\-type \&global\-Index)
+\begin{DoxyCompactList}\small\item\em funzione che, data un'altra frattura con cui si interseca, imposta i valori legati all'intersezione\-: costruisce sulla mesh la regione \char`\"{} tagliata \char`\"{}, aggiunge i gradi di libertà estesi, e imposta che tali gradi di libertà siano gli stessi sulle due fratture \end{DoxyCompactList}\item 
+size\-\_\-type \hyperlink{classFractureHandler_a585b1c169be23022e25e07bd9666d18d}{get\-Num\-Extended\-Pressure} () const 
+\item 
+const \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{size\-Vector\-\_\-\-Type} \& \hyperlink{classFractureHandler_a5d8a3c910ba9a5d156decb747040e41f}{get\-Extended\-Pressure} () const 
+\item 
+size\-\_\-type \hyperlink{classFractureHandler_af5b7cdadefe6993813e76fd6238b1771}{get\-Num\-Extended\-Velocity} () const 
+\item 
+const \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{size\-Vector\-\_\-\-Type} \& \hyperlink{classFractureHandler_acfb03361fe0e1060fdf07dd997065519}{get\-Extended\-Velocity} () const 
+\item 
+\hyperlink{Core_8h_a1cbde831f5a62206e084de1c5de27000}{G\-F\-Mesh\-Level\-Set\-Ptr\-\_\-\-Type} \hyperlink{classFractureHandler_a69b5921703089ac725df60b08eb821c1}{get\-Mesh\-Level\-Set\-Intersect} (const size\-\_\-type \&f)
+\item 
+\hyperlink{Core_8h_a036173458a8a25c7c03f8c76d97e9580}{G\-F\-Level\-Set\-Ptr\-\_\-\-Type} \hyperlink{classFractureHandler_a3c2efa9ded1347b095e2b3247e728894}{get\-Level\-Set\-Intersect} (const size\-\_\-type \&f)
+\item 
+size\-\_\-type \hyperlink{classFractureHandler_aa66dc3447c3bafc87e61f5b232c98acb}{get\-Num\-Intersections} () const 
+\begin{DoxyCompactList}\small\item\em funzione che calcola in numero totale di intersezione della frattura corrente \end{DoxyCompactList}\item 
+const \hyperlink{Core_8h_a80e8381d86ecb0a7f4f87ff84d1a0be5}{size\-Vector\-Container\-\_\-\-Type} \& \hyperlink{classFractureHandler_ab722c7fb4c48e062a8060251c4cb80c3}{get\-Fracture\-Intersect\-Elements} () const 
+\item 
+const \\*
+\hyperlink{Core_8h_a9bc476e433f99b82a9c2b8560735c7b5}{pair\-Size\-Vector\-Container\-\_\-\-Type} \& \hyperlink{classFractureHandler_a7f439a7c14b6064d52984130f8bcb7c1}{get\-Fracture\-Intersect\-Elements\-Global\-Index} () const 
+\item 
+\hyperlink{Core_8h_a9bc476e433f99b82a9c2b8560735c7b5}{pair\-Size\-Vector\-Container\-\_\-\-Type} \& \hyperlink{classFractureHandler_ac4156ff43fcdc7a4641aef8cdabf2357}{get\-Fracture\-Intersect\-Elements\-Global\-Index} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Descrizione dettagliata}
+\hyperlink{FractureHandler_8h}{Fracture\-Handler.\-h}. 
+
+classe che inizializza e gestisce una frattura 
+
+\subsection{Documentazione dei tipi enumerati (enum)}
+\hypertarget{classFractureHandler_a495ad4fc72d0c47c8f0424842f1153aa}{\subsubsection[{anonymous enum}]{\setlength{\rightskip}{0pt plus 5cm}anonymous enum}}\label{classFractureHandler_a495ad4fc72d0c47c8f0424842f1153aa}
+
+
+flags che uso per distinguere sulla mesh di ogni level set le regioni \char`\"{} non tagliate \char`\"{}, cioè dove non vi è intersezione con altre fratture, dalle regioni \char`\"{} tagliate \char`\"{}, cioè dove il level set ha un'intersezione 
+
+\begin{Desc}
+\item[Valori del tipo enumerato]\par
+\begin{description}
+\index{F\-R\-A\-C\-T\-U\-R\-E\-\_\-\-U\-N\-C\-U\-T@{F\-R\-A\-C\-T\-U\-R\-E\-\_\-\-U\-N\-C\-U\-T}!Fracture\-Handler@{Fracture\-Handler}}\index{Fracture\-Handler@{Fracture\-Handler}!F\-R\-A\-C\-T\-U\-R\-E\-\_\-\-U\-N\-C\-U\-T@{F\-R\-A\-C\-T\-U\-R\-E\-\_\-\-U\-N\-C\-U\-T}}\item[{\em 
+\hypertarget{classFractureHandler_a495ad4fc72d0c47c8f0424842f1153aaaa992cc3ad024a030ecd798dc319c95ac}{F\-R\-A\-C\-T\-U\-R\-E\-\_\-\-U\-N\-C\-U\-T}\label{classFractureHandler_a495ad4fc72d0c47c8f0424842f1153aaaa992cc3ad024a030ecd798dc319c95ac}
+}]\index{F\-R\-A\-C\-T\-U\-R\-E\-\_\-\-I\-N\-T\-E\-R\-S\-E\-C\-T@{F\-R\-A\-C\-T\-U\-R\-E\-\_\-\-I\-N\-T\-E\-R\-S\-E\-C\-T}!Fracture\-Handler@{Fracture\-Handler}}\index{Fracture\-Handler@{Fracture\-Handler}!F\-R\-A\-C\-T\-U\-R\-E\-\_\-\-I\-N\-T\-E\-R\-S\-E\-C\-T@{F\-R\-A\-C\-T\-U\-R\-E\-\_\-\-I\-N\-T\-E\-R\-S\-E\-C\-T}}\item[{\em 
+\hypertarget{classFractureHandler_a495ad4fc72d0c47c8f0424842f1153aaa781cae3f3b99bf9357fed2833d315537}{F\-R\-A\-C\-T\-U\-R\-E\-\_\-\-I\-N\-T\-E\-R\-S\-E\-C\-T}\label{classFractureHandler_a495ad4fc72d0c47c8f0424842f1153aaa781cae3f3b99bf9357fed2833d315537}
+}]\end{description}
+\end{Desc}
+
+\begin{DoxyCode}
+23     \{
+24         \hyperlink{classFractureHandler_a495ad4fc72d0c47c8f0424842f1153aaaa992cc3ad024a030ecd798dc319c95ac}{FRACTURE\_UNCUT} = 10000,
+25         \hyperlink{classFractureHandler_a495ad4fc72d0c47c8f0424842f1153aaa781cae3f3b99bf9357fed2833d315537}{FRACTURE\_INTERSECT} = 10000
+26     \};
+\end{DoxyCode}
+
+
+\subsection{Documentazione dei costruttori e dei distruttori}
+\hypertarget{classFractureHandler_aa3872456d95550cdd424908bbb5a15ec}{\index{Fracture\-Handler@{Fracture\-Handler}!Fracture\-Handler@{Fracture\-Handler}}
+\index{Fracture\-Handler@{Fracture\-Handler}!FractureHandler@{Fracture\-Handler}}
+\subsubsection[{Fracture\-Handler}]{\setlength{\rightskip}{0pt plus 5cm}Fracture\-Handler\-::\-Fracture\-Handler (
+\begin{DoxyParamCaption}
+\item[{const Get\-Pot \&}]{data\-File, }
+\item[{const size\-\_\-type \&}]{I\-D, }
+\item[{const std\-::string \&}]{section = {\ttfamily \char`\"{}fractureData/\char`\"{}}}
+\end{DoxyParamCaption}
+)}}\label{classFractureHandler_aa3872456d95550cdd424908bbb5a15ec}
+
+
+\hyperlink{FractureHandler_8cc}{Fracture\-Handler.\-cc}. 
+
+
+\begin{DoxyCode}
+10                                                               : 
+11                                    M\_ID( \hyperlink{namespaceLifeV_a7c0e64679fcd30daa5471b87a57601e9}{ID} ), 
+12                                    M\_data( dataFile, section ),
+13                                    M\_integrationMethodVelocity( M\_meshFlat ),
+14                                    M\_integrationMethodPressure( M\_meshFlat ),
+15                                    M\_integrationMethodLinear( M\_meshMapped ),
+16                                    M\_integrationMethodPressureVisualization( M\_meshMapped ), 
+17                                    M\_meshFEMVelocity( M\_meshFlat ),
+18                                    M\_meshFEMPressure( M\_meshFlat ), 
+19                                    M\_meshFEMLinear( M\_meshMapped ),
+20                                    M\_meshFEMPressureVisualization( M\_meshMapped )
+21 \{
+22     M\_levelSet.reset( \textcolor{keyword}{new} \hyperlink{classLevelSetHandler}{LevelSetHandler\_Type} ( dataFile, section ) );
+23 \}\textcolor{comment}{// costruttore}
+\end{DoxyCode}
+
+
+\subsection{Documentazione delle funzioni membro}
+\hypertarget{classFractureHandler_a87f0f8e2998b621b481173ec8d9aaa2a}{\index{Fracture\-Handler@{Fracture\-Handler}!compute\-Inv\-H@{compute\-Inv\-H}}
+\index{compute\-Inv\-H@{compute\-Inv\-H}!FractureHandler@{Fracture\-Handler}}
+\subsubsection[{compute\-Inv\-H}]{\setlength{\rightskip}{0pt plus 5cm}void Fracture\-Handler\-::compute\-Inv\-H (
+\begin{DoxyParamCaption}
+\item[{const {\bf B\-C\-Handler\-Ptr\-\_\-\-Type} \&}]{bc\-Handler}
+\end{DoxyParamCaption}
+)}}\label{classFractureHandler_a87f0f8e2998b621b481173ec8d9aaa2a}
+
+
+funzione che calcola il passo di griglia, h$^\wedge$-\/1 
+
+
+\begin{DoxyCode}
+176 \{
+177     \textcolor{comment}{// Computing h^(-1) on external boudaries of the fracture.}
+178     \textcolor{comment}{// Useful for impose the boundary condition with Nitsche penalisation}
+179     
+180     \textcolor{keyword}{const} \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{sizeVector\_Type}& fractureDirichlet = bcHandler->getFractureBC( M\_ID )->
+      getDirichlet();
+181     \textcolor{keyword}{const} size\_type shiftFracture = fractureDirichlet.size();
+182     
+183     \textcolor{keywordflow}{for} ( size\_type i = 0; i < shiftFracture; i++ )
+184     \{
+185         \textcolor{keywordflow}{for} ( getfem::mr\_visitor vis( M\_meshFlat.region( fractureDirichlet [ i ] ) ); !vis.finished(); ++
+      vis )
+186         \{
+187             \textcolor{comment}{// Seleziono i grado di libertà corrente}
+188             size\_type dof = M\_meshFEMPressure.ind\_basic\_dof\_of\_element( vis.cv() ) [ 0 ];
+189 
+190             \textcolor{comment}{// Stimo la dimensione della mesh}
+191             \textcolor{keyword}{const} scalar\_type meshSize = M\_meshFlat.convex\_radius\_estimate( vis.cv() );
+192 
+193             \textcolor{comment}{// calcolo h^(-1)}
+194             M\_inverseMeshSize [ dof ] = 1.0 / meshSize;
+195 
+196         \}
+197     \}
+198     
+199 \}\textcolor{comment}{// computeInvH}
+\end{DoxyCode}
+\hypertarget{classFractureHandler_a68ed77a8d9816a472700ee4bcf2f505d}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Data@{get\-Data}}
+\index{get\-Data@{get\-Data}!FractureHandler@{Fracture\-Handler}}
+\subsubsection[{get\-Data}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Fracture\-Data}\& Fracture\-Handler\-::get\-Data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_a68ed77a8d9816a472700ee4bcf2f505d}
+
+\begin{DoxyCode}
+92     \{
+93         \textcolor{keywordflow}{return} M\_data;
+94     \}
+\end{DoxyCode}
+\hypertarget{classFractureHandler_ac5cab221c35c03c72b264d73564d5e38}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Eta\-Normal\-Interpolated@{get\-Eta\-Normal\-Interpolated}}
+\index{get\-Eta\-Normal\-Interpolated@{get\-Eta\-Normal\-Interpolated}!FractureHandler@{Fracture\-Handler}}
+\subsubsection[{get\-Eta\-Normal\-Interpolated}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf scalar\-Vector\-\_\-\-Type}\& Fracture\-Handler\-::get\-Eta\-Normal\-Interpolated (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_ac5cab221c35c03c72b264d73564d5e38}
+
+\begin{DoxyCode}
+104     \{
+105         \textcolor{keywordflow}{return} M\_etaNormalInterpolated;
+106     \}
+\end{DoxyCode}
+\hypertarget{classFractureHandler_a06b6f81d62ccd91ec1253cd41ffae808}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Eta\-Tangential\-Interpolated@{get\-Eta\-Tangential\-Interpolated}}
+\index{get\-Eta\-Tangential\-Interpolated@{get\-Eta\-Tangential\-Interpolated}!FractureHandler@{Fracture\-Handler}}
+\subsubsection[{get\-Eta\-Tangential\-Interpolated}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf scalar\-Vector\-\_\-\-Type}\& Fracture\-Handler\-::get\-Eta\-Tangential\-Interpolated (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_a06b6f81d62ccd91ec1253cd41ffae808}
+
+\begin{DoxyCode}
+110     \{
+111         \textcolor{keywordflow}{return} M\_etaTangentialInterpolated;
+112     \}
+\end{DoxyCode}
+\hypertarget{classFractureHandler_a47c7f4161817ebf6cd978cf6b2caa74f}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Eta\-Tangential\-Interpolated@{get\-Eta\-Tangential\-Interpolated}}
+\index{get\-Eta\-Tangential\-Interpolated@{get\-Eta\-Tangential\-Interpolated}!FractureHandler@{Fracture\-Handler}}
+\subsubsection[{get\-Eta\-Tangential\-Interpolated}]{\setlength{\rightskip}{0pt plus 5cm}const scalar\-\_\-type\& Fracture\-Handler\-::get\-Eta\-Tangential\-Interpolated (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-type \&}]{dof}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_a47c7f4161817ebf6cd978cf6b2caa74f}
+
+\begin{DoxyCode}
+116     \{
+117         \textcolor{keywordflow}{return} M\_etaTangentialInterpolated [ dof ];
+118     \}
+\end{DoxyCode}
+\hypertarget{classFractureHandler_a5d8a3c910ba9a5d156decb747040e41f}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Extended\-Pressure@{get\-Extended\-Pressure}}
+\index{get\-Extended\-Pressure@{get\-Extended\-Pressure}!FractureHandler@{Fracture\-Handler}}
+\subsubsection[{get\-Extended\-Pressure}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf size\-Vector\-\_\-\-Type}\& Fracture\-Handler\-::get\-Extended\-Pressure (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_a5d8a3c910ba9a5d156decb747040e41f}
+\begin{DoxyReturn}{Restituisce}
+M\-\_\-extended\-Pressure\-: vettore dei gradi di libertà estesi per la pressione per la frattura 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+252     \{
+253         \textcolor{keywordflow}{return} M\_extendedPressure;
+254     \}
+\end{DoxyCode}
+\hypertarget{classFractureHandler_acfb03361fe0e1060fdf07dd997065519}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Extended\-Velocity@{get\-Extended\-Velocity}}
+\index{get\-Extended\-Velocity@{get\-Extended\-Velocity}!FractureHandler@{Fracture\-Handler}}
+\subsubsection[{get\-Extended\-Velocity}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf size\-Vector\-\_\-\-Type}\& Fracture\-Handler\-::get\-Extended\-Velocity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_acfb03361fe0e1060fdf07dd997065519}
+\begin{DoxyReturn}{Restituisce}
+M\-\_\-extended\-Velocity\-: vettore dei gradi di libertà estesi per la velocità per la frattura 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+271     \{
+272         \textcolor{keywordflow}{return} M\_extendedVelocity;
+273     \}
+\end{DoxyCode}
+\hypertarget{classFractureHandler_ab722c7fb4c48e062a8060251c4cb80c3}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Fracture\-Intersect\-Elements@{get\-Fracture\-Intersect\-Elements}}
+\index{get\-Fracture\-Intersect\-Elements@{get\-Fracture\-Intersect\-Elements}!FractureHandler@{Fracture\-Handler}}
+\subsubsection[{get\-Fracture\-Intersect\-Elements}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf size\-Vector\-Container\-\_\-\-Type}\& Fracture\-Handler\-::get\-Fracture\-Intersect\-Elements (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_ab722c7fb4c48e062a8060251c4cb80c3}
+
+\begin{DoxyCode}
+301     \{
+302         \textcolor{keywordflow}{return} M\_fractureIntersectElements;
+303     \}
+\end{DoxyCode}
+\hypertarget{classFractureHandler_a7f439a7c14b6064d52984130f8bcb7c1}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Fracture\-Intersect\-Elements\-Global\-Index@{get\-Fracture\-Intersect\-Elements\-Global\-Index}}
+\index{get\-Fracture\-Intersect\-Elements\-Global\-Index@{get\-Fracture\-Intersect\-Elements\-Global\-Index}!FractureHandler@{Fracture\-Handler}}
+\subsubsection[{get\-Fracture\-Intersect\-Elements\-Global\-Index}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf pair\-Size\-Vector\-Container\-\_\-\-Type}\& Fracture\-Handler\-::get\-Fracture\-Intersect\-Elements\-Global\-Index (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_a7f439a7c14b6064d52984130f8bcb7c1}
+
+\begin{DoxyCode}
+307     \{
+308         \textcolor{keywordflow}{return} M\_fractureIntersectElementsGlobalIndex;
+309     \}
+\end{DoxyCode}
+\hypertarget{classFractureHandler_ac4156ff43fcdc7a4641aef8cdabf2357}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Fracture\-Intersect\-Elements\-Global\-Index@{get\-Fracture\-Intersect\-Elements\-Global\-Index}}
+\index{get\-Fracture\-Intersect\-Elements\-Global\-Index@{get\-Fracture\-Intersect\-Elements\-Global\-Index}!FractureHandler@{Fracture\-Handler}}
+\subsubsection[{get\-Fracture\-Intersect\-Elements\-Global\-Index}]{\setlength{\rightskip}{0pt plus 5cm}{\bf pair\-Size\-Vector\-Container\-\_\-\-Type}\& Fracture\-Handler\-::get\-Fracture\-Intersect\-Elements\-Global\-Index (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_ac4156ff43fcdc7a4641aef8cdabf2357}
+
+\begin{DoxyCode}
+313     \{
+314         \textcolor{keywordflow}{return} M\_fractureIntersectElementsGlobalIndex;
+315     \}
+\end{DoxyCode}
+\hypertarget{classFractureHandler_a2e1d27efecfa84246375be5f4262bab2}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Geometric\-Transformation@{get\-Geometric\-Transformation}}
+\index{get\-Geometric\-Transformation@{get\-Geometric\-Transformation}!FractureHandler@{Fracture\-Handler}}
+\subsubsection[{get\-Geometric\-Transformation}]{\setlength{\rightskip}{0pt plus 5cm}const bgeot\-::pgeometric\-\_\-trans\& Fracture\-Handler\-::get\-Geometric\-Transformation (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_a2e1d27efecfa84246375be5f4262bab2}
+
+\begin{DoxyCode}
+158     \{
+159         \textcolor{keywordflow}{return} M\_geometricTransformation;
+160     \}
+\end{DoxyCode}
+\hypertarget{classFractureHandler_a7f7ec5b15315791f76d8deb0874511d6}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Id@{get\-Id}}
+\index{get\-Id@{get\-Id}!FractureHandler@{Fracture\-Handler}}
+\subsubsection[{get\-Id}]{\setlength{\rightskip}{0pt plus 5cm}const size\-\_\-type\& Fracture\-Handler\-::get\-Id (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_a7f7ec5b15315791f76d8deb0874511d6}
+
+\begin{DoxyCode}
+218     \{
+219         \textcolor{keywordflow}{return} M\_ID;
+220     \}
+\end{DoxyCode}
+\hypertarget{classFractureHandler_ad7afd53439c3067f46a0fb6e1473d661}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Integration\-Method\-Pressure@{get\-Integration\-Method\-Pressure}}
+\index{get\-Integration\-Method\-Pressure@{get\-Integration\-Method\-Pressure}!FractureHandler@{Fracture\-Handler}}
+\subsubsection[{get\-Integration\-Method\-Pressure}]{\setlength{\rightskip}{0pt plus 5cm}const getfem\-::mesh\-\_\-im\& Fracture\-Handler\-::get\-Integration\-Method\-Pressure (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_ad7afd53439c3067f46a0fb6e1473d661}
+
+\begin{DoxyCode}
+86     \{
+87         \textcolor{keywordflow}{return} M\_integrationMethodPressure;
+88     \}
+\end{DoxyCode}
+\hypertarget{classFractureHandler_a157f39f66131faf579b980b6b5fb91fb}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Integration\-Method\-Pressure\-Visualization@{get\-Integration\-Method\-Pressure\-Visualization}}
+\index{get\-Integration\-Method\-Pressure\-Visualization@{get\-Integration\-Method\-Pressure\-Visualization}!FractureHandler@{Fracture\-Handler}}
+\subsubsection[{get\-Integration\-Method\-Pressure\-Visualization}]{\setlength{\rightskip}{0pt plus 5cm}const getfem\-::mesh\-\_\-im\& Fracture\-Handler\-::get\-Integration\-Method\-Pressure\-Visualization (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_a157f39f66131faf579b980b6b5fb91fb}
+
+\begin{DoxyCode}
+200     \{
+201         \textcolor{keywordflow}{return} M\_integrationMethodPressureVisualization;
+202     \}
+\end{DoxyCode}
+\hypertarget{classFractureHandler_afe4c174c17862ed30b99ebe4a80aa695}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Integration\-Method\-Velocity@{get\-Integration\-Method\-Velocity}}
+\index{get\-Integration\-Method\-Velocity@{get\-Integration\-Method\-Velocity}!FractureHandler@{Fracture\-Handler}}
+\subsubsection[{get\-Integration\-Method\-Velocity}]{\setlength{\rightskip}{0pt plus 5cm}const getfem\-::mesh\-\_\-im\& Fracture\-Handler\-::get\-Integration\-Method\-Velocity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_afe4c174c17862ed30b99ebe4a80aa695}
+
+\begin{DoxyCode}
+80     \{
+81         \textcolor{keywordflow}{return} M\_integrationMethodVelocity;
+82     \}
+\end{DoxyCode}
+\hypertarget{classFractureHandler_a3f78aef488ef82ac8384bdd9e39a9be5}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Inverse\-Mesh\-Size@{get\-Inverse\-Mesh\-Size}}
+\index{get\-Inverse\-Mesh\-Size@{get\-Inverse\-Mesh\-Size}!FractureHandler@{Fracture\-Handler}}
+\subsubsection[{get\-Inverse\-Mesh\-Size}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf scalar\-Vector\-\_\-\-Type}\& Fracture\-Handler\-::get\-Inverse\-Mesh\-Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_a3f78aef488ef82ac8384bdd9e39a9be5}
+
+\begin{DoxyCode}
+122     \{
+123         \textcolor{keywordflow}{return} M\_inverseMeshSize;
+124     \}
+\end{DoxyCode}
+\hypertarget{classFractureHandler_a1e1ba24caa1e789b199252c3c34f696d}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Inverse\-Mesh\-Size@{get\-Inverse\-Mesh\-Size}}
+\index{get\-Inverse\-Mesh\-Size@{get\-Inverse\-Mesh\-Size}!FractureHandler@{Fracture\-Handler}}
+\subsubsection[{get\-Inverse\-Mesh\-Size}]{\setlength{\rightskip}{0pt plus 5cm}const scalar\-\_\-type\& Fracture\-Handler\-::get\-Inverse\-Mesh\-Size (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-type \&}]{dof}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_a1e1ba24caa1e789b199252c3c34f696d}
+
+\begin{DoxyCode}
+128     \{
+129         \textcolor{keywordflow}{return} M\_inverseMeshSize [ dof ];
+130     \}
+\end{DoxyCode}
+\hypertarget{classFractureHandler_af37ab12a17f812a960da2aa71699ba0f}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Level\-Set@{get\-Level\-Set}}
+\index{get\-Level\-Set@{get\-Level\-Set}!FractureHandler@{Fracture\-Handler}}
+\subsubsection[{get\-Level\-Set}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Level\-Set\-Handler\-Ptr\-\_\-\-Type}\& Fracture\-Handler\-::get\-Level\-Set (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_af37ab12a17f812a960da2aa71699ba0f}
+
+\begin{DoxyCode}
+98     \{
+99         \textcolor{keywordflow}{return} M\_levelSet;
+100     \}
+\end{DoxyCode}
+\hypertarget{classFractureHandler_a3c2efa9ded1347b095e2b3247e728894}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Level\-Set\-Intersect@{get\-Level\-Set\-Intersect}}
+\index{get\-Level\-Set\-Intersect@{get\-Level\-Set\-Intersect}!FractureHandler@{Fracture\-Handler}}
+\subsubsection[{get\-Level\-Set\-Intersect}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\-F\-Level\-Set\-Ptr\-\_\-\-Type} Fracture\-Handler\-::get\-Level\-Set\-Intersect (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-type \&}]{f}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_a3c2efa9ded1347b095e2b3247e728894}
+\begin{DoxyReturn}{Restituisce}
+M\-\_\-\-Level\-Set\-Intersect\mbox{[}f\mbox{]}\-: level set di indice f intersecato dalla frattura corrente 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+289     \{
+290         \textcolor{keywordflow}{return} M\_levelSetIntersect[f];
+291     \}
+\end{DoxyCode}
+\hypertarget{classFractureHandler_abaf5f99ba68775a587d6b3f0222e8b9a}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Magnification\-Map\-Factor1@{get\-Magnification\-Map\-Factor1}}
+\index{get\-Magnification\-Map\-Factor1@{get\-Magnification\-Map\-Factor1}!FractureHandler@{Fracture\-Handler}}
+\subsubsection[{get\-Magnification\-Map\-Factor1}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf scalar\-Vector\-\_\-\-Type}\& Fracture\-Handler\-::get\-Magnification\-Map\-Factor1 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_abaf5f99ba68775a587d6b3f0222e8b9a}
+
+\begin{DoxyCode}
+134     \{
+135         \textcolor{keywordflow}{return} M\_magnificationMapFactor1;
+136     \}
+\end{DoxyCode}
+\hypertarget{classFractureHandler_a1cafea5a92ab3a9b5eae67c347867f58}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Magnification\-Map\-Factor1@{get\-Magnification\-Map\-Factor1}}
+\index{get\-Magnification\-Map\-Factor1@{get\-Magnification\-Map\-Factor1}!FractureHandler@{Fracture\-Handler}}
+\subsubsection[{get\-Magnification\-Map\-Factor1}]{\setlength{\rightskip}{0pt plus 5cm}const scalar\-\_\-type\& Fracture\-Handler\-::get\-Magnification\-Map\-Factor1 (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-type \&}]{dof}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_a1cafea5a92ab3a9b5eae67c347867f58}
+
+\begin{DoxyCode}
+140     \{
+141         \textcolor{keywordflow}{return} M\_magnificationMapFactor1 [ dof ];
+142     \}
+\end{DoxyCode}
+\hypertarget{classFractureHandler_a68b09b4012669140979a0026736b3dfe}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Magnification\-Map\-Factor2@{get\-Magnification\-Map\-Factor2}}
+\index{get\-Magnification\-Map\-Factor2@{get\-Magnification\-Map\-Factor2}!FractureHandler@{Fracture\-Handler}}
+\subsubsection[{get\-Magnification\-Map\-Factor2}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf scalar\-Vector\-\_\-\-Type}\& Fracture\-Handler\-::get\-Magnification\-Map\-Factor2 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_a68b09b4012669140979a0026736b3dfe}
+
+\begin{DoxyCode}
+146     \{
+147         \textcolor{keywordflow}{return} M\_magnificationMapFactor2;
+148     \}
+\end{DoxyCode}
+\hypertarget{classFractureHandler_a5bbe076a3595909f6af49e8d69e39231}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Magnification\-Map\-Factor2@{get\-Magnification\-Map\-Factor2}}
+\index{get\-Magnification\-Map\-Factor2@{get\-Magnification\-Map\-Factor2}!FractureHandler@{Fracture\-Handler}}
+\subsubsection[{get\-Magnification\-Map\-Factor2}]{\setlength{\rightskip}{0pt plus 5cm}const scalar\-\_\-type\& Fracture\-Handler\-::get\-Magnification\-Map\-Factor2 (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-type \&}]{dof}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_a5bbe076a3595909f6af49e8d69e39231}
+
+\begin{DoxyCode}
+152     \{
+153         \textcolor{keywordflow}{return} M\_magnificationMapFactor2 [ dof ];
+154     \}
+\end{DoxyCode}
+\hypertarget{classFractureHandler_ab77ee6aaf47d7f1d80fd1ff23bd34a33}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Mesh\-F\-E\-M\-Linear@{get\-Mesh\-F\-E\-M\-Linear}}
+\index{get\-Mesh\-F\-E\-M\-Linear@{get\-Mesh\-F\-E\-M\-Linear}!FractureHandler@{Fracture\-Handler}}
+\subsubsection[{get\-Mesh\-F\-E\-M\-Linear}]{\setlength{\rightskip}{0pt plus 5cm}const getfem\-::mesh\-\_\-fem\& Fracture\-Handler\-::get\-Mesh\-F\-E\-M\-Linear (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_ab77ee6aaf47d7f1d80fd1ff23bd34a33}
+
+\begin{DoxyCode}
+212     \{
+213         \textcolor{keywordflow}{return} M\_meshFEMLinear;
+214     \}
+\end{DoxyCode}
+\hypertarget{classFractureHandler_a6dc20a9624f9dff49b1c58f0dd261002}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Mesh\-F\-E\-M\-Pressure@{get\-Mesh\-F\-E\-M\-Pressure}}
+\index{get\-Mesh\-F\-E\-M\-Pressure@{get\-Mesh\-F\-E\-M\-Pressure}!FractureHandler@{Fracture\-Handler}}
+\subsubsection[{get\-Mesh\-F\-E\-M\-Pressure}]{\setlength{\rightskip}{0pt plus 5cm}const getfem\-::mesh\-\_\-fem\& Fracture\-Handler\-::get\-Mesh\-F\-E\-M\-Pressure (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_a6dc20a9624f9dff49b1c58f0dd261002}
+
+\begin{DoxyCode}
+74     \{
+75         \textcolor{keywordflow}{return} M\_meshFEMPressure;
+76     \}
+\end{DoxyCode}
+\hypertarget{classFractureHandler_ac78f500422e542b77114e56f11173b0d}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Mesh\-F\-E\-M\-Pressure\-Visualization@{get\-Mesh\-F\-E\-M\-Pressure\-Visualization}}
+\index{get\-Mesh\-F\-E\-M\-Pressure\-Visualization@{get\-Mesh\-F\-E\-M\-Pressure\-Visualization}!FractureHandler@{Fracture\-Handler}}
+\subsubsection[{get\-Mesh\-F\-E\-M\-Pressure\-Visualization}]{\setlength{\rightskip}{0pt plus 5cm}const getfem\-::mesh\-\_\-fem\& Fracture\-Handler\-::get\-Mesh\-F\-E\-M\-Pressure\-Visualization (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_ac78f500422e542b77114e56f11173b0d}
+
+\begin{DoxyCode}
+206     \{
+207         \textcolor{keywordflow}{return} M\_meshFEMPressureVisualization;
+208     \}
+\end{DoxyCode}
+\hypertarget{classFractureHandler_ae54c07023428b44556bbec4da5be9306}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Mesh\-F\-E\-M\-Velocity@{get\-Mesh\-F\-E\-M\-Velocity}}
+\index{get\-Mesh\-F\-E\-M\-Velocity@{get\-Mesh\-F\-E\-M\-Velocity}!FractureHandler@{Fracture\-Handler}}
+\subsubsection[{get\-Mesh\-F\-E\-M\-Velocity}]{\setlength{\rightskip}{0pt plus 5cm}const getfem\-::mesh\-\_\-fem\& Fracture\-Handler\-::get\-Mesh\-F\-E\-M\-Velocity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_ae54c07023428b44556bbec4da5be9306}
+
+\begin{DoxyCode}
+68     \{
+69         \textcolor{keywordflow}{return} M\_meshFEMVelocity;
+70     \}
+\end{DoxyCode}
+\hypertarget{classFractureHandler_a9ff9f584b850d6b750981befdbefbdbe}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Mesh\-Flat@{get\-Mesh\-Flat}}
+\index{get\-Mesh\-Flat@{get\-Mesh\-Flat}!FractureHandler@{Fracture\-Handler}}
+\subsubsection[{get\-Mesh\-Flat}]{\setlength{\rightskip}{0pt plus 5cm}const getfem\-::mesh\& Fracture\-Handler\-::get\-Mesh\-Flat (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_a9ff9f584b850d6b750981befdbefbdbe}
+
+\begin{DoxyCode}
+56     \{
+57         \textcolor{keywordflow}{return} M\_meshFlat;
+58     \}
+\end{DoxyCode}
+\hypertarget{classFractureHandler_ad9b02a825d444016b3ab8ee901f887f6}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Mesh\-Flat@{get\-Mesh\-Flat}}
+\index{get\-Mesh\-Flat@{get\-Mesh\-Flat}!FractureHandler@{Fracture\-Handler}}
+\subsubsection[{get\-Mesh\-Flat}]{\setlength{\rightskip}{0pt plus 5cm}getfem\-::mesh\& Fracture\-Handler\-::get\-Mesh\-Flat (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_ad9b02a825d444016b3ab8ee901f887f6}
+
+\begin{DoxyCode}
+62     \{
+63         \textcolor{keywordflow}{return} M\_meshFlat;
+64     \}
+\end{DoxyCode}
+\hypertarget{classFractureHandler_a69b5921703089ac725df60b08eb821c1}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Mesh\-Level\-Set\-Intersect@{get\-Mesh\-Level\-Set\-Intersect}}
+\index{get\-Mesh\-Level\-Set\-Intersect@{get\-Mesh\-Level\-Set\-Intersect}!FractureHandler@{Fracture\-Handler}}
+\subsubsection[{get\-Mesh\-Level\-Set\-Intersect}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\-F\-Mesh\-Level\-Set\-Ptr\-\_\-\-Type} Fracture\-Handler\-::get\-Mesh\-Level\-Set\-Intersect (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-type \&}]{f}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_a69b5921703089ac725df60b08eb821c1}
+\begin{DoxyReturn}{Restituisce}
+M\-\_\-mesh\-Level\-Set\-Intersect\mbox{[}f\mbox{]}\-: mesh del level set di indice f intersecato dalla frattura corrente 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+280     \{
+281         \textcolor{keywordflow}{return} M\_meshLevelSetIntersect[f];
+282     \}
+\end{DoxyCode}
+\hypertarget{classFractureHandler_a79b2fbb306b2bc045d5bef0b73d12ec8}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Mesh\-Mapped@{get\-Mesh\-Mapped}}
+\index{get\-Mesh\-Mapped@{get\-Mesh\-Mapped}!FractureHandler@{Fracture\-Handler}}
+\subsubsection[{get\-Mesh\-Mapped}]{\setlength{\rightskip}{0pt plus 5cm}const getfem\-::mesh\& Fracture\-Handler\-::get\-Mesh\-Mapped (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_a79b2fbb306b2bc045d5bef0b73d12ec8}
+
+\begin{DoxyCode}
+176     \{
+177         \textcolor{keywordflow}{return} M\_meshMapped;
+178     \}
+\end{DoxyCode}
+\hypertarget{classFractureHandler_ad3fa0255b0e57f6562dc98bbf71588b1}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Mesh\-Mapped@{get\-Mesh\-Mapped}}
+\index{get\-Mesh\-Mapped@{get\-Mesh\-Mapped}!FractureHandler@{Fracture\-Handler}}
+\subsubsection[{get\-Mesh\-Mapped}]{\setlength{\rightskip}{0pt plus 5cm}getfem\-::mesh\& Fracture\-Handler\-::get\-Mesh\-Mapped (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_ad3fa0255b0e57f6562dc98bbf71588b1}
+
+\begin{DoxyCode}
+182     \{
+183         \textcolor{keywordflow}{return} M\_meshMapped;
+184     \}
+\end{DoxyCode}
+\hypertarget{classFractureHandler_a6af2b5af4046d6a0eafbacaec96f8153}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Mu\-Normal\-Interpolated@{get\-Mu\-Normal\-Interpolated}}
+\index{get\-Mu\-Normal\-Interpolated@{get\-Mu\-Normal\-Interpolated}!FractureHandler@{Fracture\-Handler}}
+\subsubsection[{get\-Mu\-Normal\-Interpolated}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf scalar\-Vector\-\_\-\-Type}\& Fracture\-Handler\-::get\-Mu\-Normal\-Interpolated (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_a6af2b5af4046d6a0eafbacaec96f8153}
+
+\begin{DoxyCode}
+188     \{
+189         \textcolor{keywordflow}{return} M\_muNormalInterpolated;
+190     \}
+\end{DoxyCode}
+\hypertarget{classFractureHandler_a868f8aeaeec90df8211d091612e03593}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Mu\-Tangential\-Interpolated@{get\-Mu\-Tangential\-Interpolated}}
+\index{get\-Mu\-Tangential\-Interpolated@{get\-Mu\-Tangential\-Interpolated}!FractureHandler@{Fracture\-Handler}}
+\subsubsection[{get\-Mu\-Tangential\-Interpolated}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf scalar\-Vector\-\_\-\-Type}\& Fracture\-Handler\-::get\-Mu\-Tangential\-Interpolated (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_a868f8aeaeec90df8211d091612e03593}
+
+\begin{DoxyCode}
+194     \{
+195         \textcolor{keywordflow}{return} M\_muTangentialInterpolated;
+196     \}
+\end{DoxyCode}
+\hypertarget{classFractureHandler_a22e229a4016119138c48b456a185e1ff}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Normal1@{get\-Normal1}}
+\index{get\-Normal1@{get\-Normal1}!FractureHandler@{Fracture\-Handler}}
+\subsubsection[{get\-Normal1}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf scalar\-Vector\-\_\-\-Type}\& Fracture\-Handler\-::get\-Normal1 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_a22e229a4016119138c48b456a185e1ff}
+
+\begin{DoxyCode}
+164     \{
+165         \textcolor{keywordflow}{return} M\_normal1;
+166     \}
+\end{DoxyCode}
+\hypertarget{classFractureHandler_ae707e764eaff191e2856765131289c82}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Normal2@{get\-Normal2}}
+\index{get\-Normal2@{get\-Normal2}!FractureHandler@{Fracture\-Handler}}
+\subsubsection[{get\-Normal2}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf scalar\-Vector\-\_\-\-Type}\& Fracture\-Handler\-::get\-Normal2 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_ae707e764eaff191e2856765131289c82}
+
+\begin{DoxyCode}
+170     \{
+171         \textcolor{keywordflow}{return} M\_normal2;
+172     \}
+\end{DoxyCode}
+\hypertarget{classFractureHandler_a585b1c169be23022e25e07bd9666d18d}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Num\-Extended\-Pressure@{get\-Num\-Extended\-Pressure}}
+\index{get\-Num\-Extended\-Pressure@{get\-Num\-Extended\-Pressure}!FractureHandler@{Fracture\-Handler}}
+\subsubsection[{get\-Num\-Extended\-Pressure}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-type Fracture\-Handler\-::get\-Num\-Extended\-Pressure (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_a585b1c169be23022e25e07bd9666d18d}
+\begin{DoxyReturn}{Restituisce}
+M\-\_\-extended\-Pressure.\-size()\-: numero di gradi di libertà estesi per la pressione per la frattura, uno per ogni intersezione di tipo Cross e tre per ogni intersezione di tipo Biforcazione 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+243     \{
+244         \textcolor{keywordflow}{return} M\_extendedPressure.size();
+245     \}
+\end{DoxyCode}
+\hypertarget{classFractureHandler_af5b7cdadefe6993813e76fd6238b1771}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Num\-Extended\-Velocity@{get\-Num\-Extended\-Velocity}}
+\index{get\-Num\-Extended\-Velocity@{get\-Num\-Extended\-Velocity}!FractureHandler@{Fracture\-Handler}}
+\subsubsection[{get\-Num\-Extended\-Velocity}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-type Fracture\-Handler\-::get\-Num\-Extended\-Velocity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_af5b7cdadefe6993813e76fd6238b1771}
+\begin{DoxyReturn}{Restituisce}
+M\-\_\-extended\-Velocity.\-size()\-: numero di gradi di libertà estesi per la velocità per la frattura, due per ogni intersezione di tipo Cross e sei per ogni intersezione di tipo Biforcazione 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+262     \{
+263         \textcolor{keywordflow}{return} M\_extendedVelocity.size();
+264     \}
+\end{DoxyCode}
+\hypertarget{classFractureHandler_aa66dc3447c3bafc87e61f5b232c98acb}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Num\-Intersections@{get\-Num\-Intersections}}
+\index{get\-Num\-Intersections@{get\-Num\-Intersections}!FractureHandler@{Fracture\-Handler}}
+\subsubsection[{get\-Num\-Intersections}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-type Fracture\-Handler\-::get\-Num\-Intersections (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classFractureHandler_aa66dc3447c3bafc87e61f5b232c98acb}
+
+
+funzione che calcola in numero totale di intersezione della frattura corrente 
+
+
+\begin{DoxyCode}
+290 \{
+291     size\_type total = 0;
+292 
+293     \textcolor{keywordflow}{for} ( size\_type i = 0; i < M\_fractureIntersectElements.size(); ++i )
+294     \{
+295         total += M\_fractureIntersectElements[i].size();
+296     \}
+297 
+298     \textcolor{keywordflow}{return} total;
+299 \}\textcolor{comment}{// getNumIntersections}
+\end{DoxyCode}
+\hypertarget{classFractureHandler_aa28ce054ba2a2679214956c71f8cf1e0}{\index{Fracture\-Handler@{Fracture\-Handler}!init@{init}}
+\index{init@{init}!FractureHandler@{Fracture\-Handler}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}void Fracture\-Handler\-::init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classFractureHandler_aa28ce054ba2a2679214956c71f8cf1e0}
+
+
+funzione che inizializza la frattura Ogni frattura ha una rappresentazione 1d, ma la mesh reale è una mesh di punti 2d ( sono i punti del tipo (x,y) che stanno sulla curva y=f(x) ) e questo comporta dei problemi per l'integrazione. 
+
+Per risolvere il problema per ogni frattura costruiamo una mesh 1d ottenuta proiettando lungo l'asse delle ascisse la mesh reale. Una volta risolto il problema si ritorna sulla mesh reale interpolando i risultati ottenuti. 
+\begin{DoxyCode}
+27 \{
+28     \textcolor{comment}{// Geometric transformation usign primal finite elements type in the fracture}
+29     M\_geometricTransformation = bgeot::geometric\_trans\_descriptor( M\_data.
+      \hyperlink{classFractureData_aaded6c0452470489beb4ab95b5f4158f}{getMeshType}() );
+30 
+31     \textcolor{comment}{//------------------M\_mediumMesh di Gamma sul piano orizzontale -----------------------}
+32 
+33     \textcolor{comment}{// Build a standard M\_mediumMesh, ND}
+34 
+35     \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{sizeVector\_Type} fractureNumberSubdivision( M\_data.
+      \hyperlink{classFractureData_a4ead03266295fe14fa3285692f945d89}{getSpaceDimension}() ); \textcolor{comment}{// numero suddivisioni}
+36 
+37     std::fill( fractureNumberSubdivision.begin(), fractureNumberSubdivision.end(), M\_data.
+      \hyperlink{classFractureData_a5c10d579be7849be1a126c24982f8a23}{getSpatialDiscretization}() );
+38 
+39     getfem::regular\_unit\_mesh( M\_meshFlat, fractureNumberSubdivision, M\_geometricTransformation );
+40 
+41     bgeot::base\_matrix fractureTransformMatrix( M\_data.\hyperlink{classFractureData_a4ead03266295fe14fa3285692f945d89}{getSpaceDimension}(), M\_data.
+      \hyperlink{classFractureData_a4ead03266295fe14fa3285692f945d89}{getSpaceDimension}() );
+42 
+43     \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} fractureLength(3);
+44     fractureLength [ 0 ] = M\_data.\hyperlink{classFractureData_abaebcf16d83713858e25837939ad3161}{getLengthAbscissa}();
+45     fractureLength [ 1 ] = M\_data.\hyperlink{classFractureData_a905e953f685b1329ddcc7ee56f8302b1}{getLengthOrdinate}();
+46     fractureLength [ 2 ] = M\_data.\hyperlink{classFractureData_a79747fff53da9d858950d83ad0114288}{getLengthQuota}();
+47 
+48     \textcolor{keywordflow}{for} ( size\_type i = 0; i < M\_data.\hyperlink{classFractureData_a4ead03266295fe14fa3285692f945d89}{getSpaceDimension}(); ++i )
+49     \{
+50         fractureTransformMatrix(i, i) = (i < M\_data.\hyperlink{classFractureData_a4ead03266295fe14fa3285692f945d89}{getSpaceDimension}()) ? fractureLength 
+      [ i ] : 1.0;
+51     \}
+52 
+53     \textcolor{comment}{// riscalo la mesh unitaria M\_mediumMesh to [M\_mediumLengthAbscissa,M\_mediumLengthOrdinate]}
+54     M\_meshFlat.transformation( fractureTransformMatrix );
+55     \textcolor{keywordflow}{for} ( size\_type i = 0; i < M\_meshFlat.points().size(); ++i )
+56     \{
+57         M\_meshFlat.points() [ i ] [ 0 ] = M\_data.\hyperlink{classFractureData_ab79d66dd830b6e1c55ade0d940c5c8cf}{meshSpacing}( M\_meshFlat.points() [ i ] [ 0 ] );
+58     \}
+59     
+60     \textcolor{comment}{//------------------M\_mediumMesh di Gamma in 3D------------------------------------------}
+61 
+62     \textcolor{comment}{//costruisco la M\_mediumMesh n.2 quella di servizio, quella della frattura mappata}
+63 
+64     \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{sizeVector\_Type} ind( M\_meshFlat.points().size() );
+65     \textcolor{keywordflow}{for} ( size\_type i = 0; i < M\_meshFlat.points().size(); ++i )
+66     \{
+67         bgeot::base\_node P(M\_data.\hyperlink{classFractureData_a4ead03266295fe14fa3285692f945d89}{getSpaceDimension}() + 2);
+68         bgeot::base\_node P1(M\_data.\hyperlink{classFractureData_a4ead03266295fe14fa3285692f945d89}{getSpaceDimension}() + 2);
+69         
+70         P [ 0 ] = M\_meshFlat.points() [ i ] [ 0 ];
+71 
+72         scalar\_type t = i*1./(M\_data.\hyperlink{classFractureData_a5c10d579be7849be1a126c24982f8a23}{getSpatialDiscretization} () );
+73 
+74         P1 [ 0 ] = t;
+75         P [ 1 ] =  M\_levelSet->getData()->y\_map( P1 );
+76         ind [ i ] = M\_meshMapped.add\_point( P );
+77     \}
+78 
+79 
+80     \textcolor{keywordflow}{for} ( size\_type i = 0; i < M\_meshFlat.convex\_index().size(); ++i )
+81     \{
+82         std::vector<bgeot::size\_type> point(3);
+83         point [ 0 ] = M\_meshFlat.ind\_points\_of\_convex(i) [ 0 ];
+84         point [ 1 ] = M\_meshFlat.ind\_points\_of\_convex(i) [ 1 ];
+85         point [ 2 ] = M\_meshFlat.ind\_points\_of\_convex(i) [ 2 ];
+86 
+87         M\_meshMapped.add\_convex( M\_geometricTransformation, point.begin() );
+88     \}
+89 
+90     \textcolor{comment}{// Definisco gli elementi finiti}
+91 
+92     \textcolor{comment}{// Definisco gli elementi finiti per la velocità nella frattura}
+93     getfem::pfem fractureFETypeVelocity = getfem::fem\_descriptor( M\_data.
+      \hyperlink{classFractureData_a7396b67399a1ae8e5550841907c0dcb5}{getFEMTypeVelocity}() );
+94 
+95     \textcolor{comment}{// Definisco il tipo di integrazione per la velocità nella frattura}
+96     getfem::pintegration\_method fractureIntegrationTypeVelocity = getfem::int\_method\_descriptor( M\_data.
+      \hyperlink{classFractureData_a8a8a198482de6bf4104746bc1d0510c6}{getIntegrationTypeVelocity}() );
+97 
+98     \textcolor{comment}{// Definisco il metodo di integrazione per la velocità nella frattura}
+99     M\_integrationMethodVelocity.set\_integration\_method( M\_meshFlat.convex\_index(), 
+      fractureIntegrationTypeVelocity );
+100     
+101     \textcolor{comment}{// Definisco lo spazio degli elementi finiti per la velocità nella frattura}
+102     M\_meshFEMVelocity.set\_qdim( M\_data.\hyperlink{classFractureData_a4ead03266295fe14fa3285692f945d89}{getSpaceDimension}() );
+103     M\_meshFEMVelocity.set\_finite\_element( M\_meshFlat.convex\_index(), fractureFETypeVelocity );
+104 
+105     \textcolor{comment}{// Definisco gli elementi finiti per i coefficienti nella frattura}
+106     getfem::pfem fractureFEMTypeLinear = getfem::fem\_descriptor( M\_data.
+      \hyperlink{classFractureData_a606c22e054fdb5f8602ce39fa6ae15cc}{getFEMTypeLinear}() );
+107 
+108     \textcolor{comment}{// Definisco il tipo di integrazione per i coefficienti nella frattura}
+109     getfem::pintegration\_method fractureIntegrationTypeLinea = getfem::int\_method\_descriptor( M\_data.
+      \hyperlink{classFractureData_a8a8a198482de6bf4104746bc1d0510c6}{getIntegrationTypeVelocity}() );
+110 
+111     \textcolor{comment}{// Definisco il metodo di integrazione per i coefficienti nella frattura}
+112     M\_integrationMethodLinear.set\_integration\_method( M\_meshMapped.convex\_index(), 
+      fractureIntegrationTypeLinea );
+113 
+114     \textcolor{comment}{// Definisco lo spazio degli elementi finiti per i coefficienti nella frattura}
+115     M\_meshFEMLinear.set\_qdim( M\_data.\hyperlink{classFractureData_a4ead03266295fe14fa3285692f945d89}{getSpaceDimension}() );
+116     M\_meshFEMLinear.set\_finite\_element( M\_meshMapped.convex\_index(), fractureFEMTypeLinear );
+117 
+118     \textcolor{comment}{// P(K-1) discontinuous FE (pressure)}
+119     \textcolor{comment}{// Definisco gli elementi finiti per la pressione nella frattura}
+120     getfem::pfem fractureFETypePressure = getfem::fem\_descriptor( M\_data.
+      \hyperlink{classFractureData_a643b9a8a33405ec7aaa6b5612cb81d57}{getFEMTypePressure}() );
+121 
+122     \textcolor{comment}{// Definisco il tipo di integrazione per la pressione nella frattura}
+123     getfem::pintegration\_method fractureIntegrationTypePressure = getfem::int\_method\_descriptor( M\_data.
+      \hyperlink{classFractureData_a9333d8e89dc92023d97a48c1905ada76}{getIntegrationTypePressure}() );
+124 
+125     \textcolor{comment}{// Definisco il metodo di integrazione per la pressione nella frattura}
+126     M\_integrationMethodPressure.set\_integration\_method( M\_meshFlat.convex\_index(), 
+      fractureIntegrationTypePressure );
+127 
+128     \textcolor{comment}{// Definisco lo spazio degli elementi finiti per i coefficienti nella frattura}
+129     M\_meshFEMPressure.set\_finite\_element(M\_meshFlat.convex\_index(), fractureFETypePressure );
+130 
+131     \textcolor{comment}{// Metodo di integrazione per la pressione nella frattura per la visualizzazione}
+132     M\_integrationMethodPressureVisualization.set\_integration\_method( M\_meshMapped.convex\_index(), 
+      fractureIntegrationTypePressure );
+133 
+134     \textcolor{comment}{// Elementi finiti per la pressione nella frattura per la visualizzazione}
+135     M\_meshFEMPressureVisualization.set\_finite\_element( M\_meshMapped.convex\_index(), fractureFETypePressure 
+      );
+136 
+137     \textcolor{comment}{// Allocate data}
+138 
+139     \textcolor{comment}{// Alloco il vettore per M\_etaNormalInterpolated}
+140     gmm::resize ( M\_etaNormalInterpolated, M\_meshFEMPressure.nb\_dof() );
+141     gmm::clear ( M\_etaNormalInterpolated );
+142 
+143     \textcolor{comment}{// Alloco il vettore per M\_etaTangentialInterpolated}
+144     gmm::resize ( M\_etaTangentialInterpolated, M\_meshFEMPressure.nb\_dof() );
+145     gmm::clear ( M\_etaTangentialInterpolated );
+146 
+147     \textcolor{comment}{// Allocate the vector for M\_muNormalInterpolated}
+148     gmm::resize ( M\_muNormalInterpolated, M\_meshFEMPressure.nb\_dof() );
+149     gmm::clear ( M\_muNormalInterpolated );
+150 
+151     \textcolor{comment}{// Alloco il vettore per M\_muTangentialInterpolated}
+152     gmm::resize ( M\_muTangentialInterpolated, M\_meshFEMPressure.nb\_dof() );
+153     gmm::clear ( M\_muTangentialInterpolated );
+154 
+155     \textcolor{comment}{// Riempio i vettori M\_etaNormalInterpolated, M\_etaTangentialInterpolated, M\_muNormalInterpolated e
+       M\_muTangentialInterpolated della frattura}
+156     \textcolor{keywordflow}{for} ( size\_type i = 0; i < M\_meshFEMPressure.nb\_dof(); ++i )
+157     \{
+158         M\_etaNormalInterpolated [ i ] = M\_data.\hyperlink{classFractureData_a0aaeeb3d9eedd46175759cd6b9536484}{etaNormalDistribution}( 
+      M\_meshFEMPressure.point\_of\_dof(i) ) * M\_data.\hyperlink{classFractureData_a9acc76c77282d4b5d0cdca18c2b1b9ea}{getEtaNormal}();
+159 
+160         M\_etaTangentialInterpolated [ i ] = M\_data.\hyperlink{classFractureData_a0f989b64832a1f0fc77632c6803f102c}{etaTangentialDistribution}( 
+      M\_meshFEMPressure.point\_of\_dof(i) ) * M\_data.\hyperlink{classFractureData_a7378053b4009825b4a2957484cb2a5e8}{getEtaTangential}();
+161 
+162         M\_muNormalInterpolated [ i ] = M\_data.\hyperlink{classFractureData_a4ae566f9148893e47279097cab215e7b}{muNormalDistribution}( M\_meshFEMPressure.
+      point\_of\_dof(i) ) * M\_data.\hyperlink{classFractureData_ab059ac23b93115e05029e1b6cadd1cd9}{getMuNormal}();
+163 
+164         M\_muTangentialInterpolated [ i ] = M\_data.\hyperlink{classFractureData_a9a3e1a75231b55be01ad198b824c0d56}{muTangentialDistribution}( 
+      M\_meshFEMPressure.point\_of\_dof(i) ) * M\_data.\hyperlink{classFractureData_a1ac3cca1ae035eedb2ec89c0517f8b1f}{getMuTangential}();
+165     \}
+166 
+167     gmm::resize ( M\_inverseMeshSize, M\_meshFEMPressure.nb\_dof() );
+168     gmm::clear ( M\_inverseMeshSize );
+169 
+170     M\_meshFlat.region ( \hyperlink{classFractureHandler_a495ad4fc72d0c47c8f0424842f1153aaaa992cc3ad024a030ecd798dc319c95ac}{FractureHandler::FRACTURE\_UNCUT} * ( M\_ID + 1 ) ).add
+       ( M\_meshFlat.convex\_index() );
+171 
+172 \}\textcolor{comment}{// init}
+\end{DoxyCode}
+\hypertarget{classFractureHandler_aec1fc4e2664b3fe60877b63024af3605}{\index{Fracture\-Handler@{Fracture\-Handler}!normal\-Vector\-And\-Map@{normal\-Vector\-And\-Map}}
+\index{normal\-Vector\-And\-Map@{normal\-Vector\-And\-Map}!FractureHandler@{Fracture\-Handler}}
+\subsubsection[{normal\-Vector\-And\-Map}]{\setlength{\rightskip}{0pt plus 5cm}void Fracture\-Handler\-::normal\-Vector\-And\-Map (
+\begin{DoxyParamCaption}
+\item[{const getfem\-::mesh\-\_\-fem \&}]{medium\-Mesh\-F\-E\-M\-Pressure}
+\end{DoxyParamCaption}
+)}}\label{classFractureHandler_aec1fc4e2664b3fe60877b63024af3605}
+
+
+funzione che calcola il vettore normale alla frattura e la mappa di conversione dalla mesh reale alla mesh piatta 
+
+
+\begin{DoxyCode}
+203 \{
+204     \textcolor{comment}{// Assegno il vettore normale e la mappa per la frattura}
+205     \textcolor{keywordflow}{for} ( size\_type i = 0; i < M\_meshFEMPressure.nb\_dof(); ++i )
+206     \{
+207         \textcolor{keyword}{const} base\_node& node = mediumMeshFEMPressure.point\_of\_basic\_dof(i);
+208         \textcolor{keyword}{const} bgeot::dim\_type& dim = M\_data.\hyperlink{classFractureData_a4ead03266295fe14fa3285692f945d89}{getSpaceDimension}();
+209         
+210         \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} magnificationMapFactor = M\_levelSet->getData()->map\_jac( node, 
+      dim );
+211 
+212         \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} fractureNormal = M\_levelSet->getData()->normal\_map( node, dim );
+213 
+214         M\_magnificationMapFactor1.push\_back ( magnificationMapFactor [ 0 ] );
+215         M\_normal1.push\_back ( fractureNormal [ 0 ] );
+216         M\_normal2.push\_back ( fractureNormal [ 1 ] );
+217     \}
+218 \}\textcolor{comment}{// normalVectorAndMap}
+\end{DoxyCode}
+\hypertarget{classFractureHandler_a002e255a1976918ffbe6ea63b0fdae1b}{\index{Fracture\-Handler@{Fracture\-Handler}!num\-Fractures@{num\-Fractures}}
+\index{num\-Fractures@{num\-Fractures}!FractureHandler@{Fracture\-Handler}}
+\subsubsection[{num\-Fractures}]{\setlength{\rightskip}{0pt plus 5cm}void Fracture\-Handler\-::num\-Fractures (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-type \&}]{num\-Fractures}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_a002e255a1976918ffbe6ea63b0fdae1b}
+
+\begin{DoxyCode}
+224     \{
+225         M\_meshLevelSetIntersect.resize ( \hyperlink{classFractureHandler_a002e255a1976918ffbe6ea63b0fdae1b}{numFractures} );
+226         M\_levelSetIntersect.resize ( \hyperlink{classFractureHandler_a002e255a1976918ffbe6ea63b0fdae1b}{numFractures} );
+227         M\_fractureIntersectElements.resize ( \hyperlink{classFractureHandler_a002e255a1976918ffbe6ea63b0fdae1b}{numFractures} );
+228         M\_fractureIntersectElementsGlobalIndex.resize ( \hyperlink{classFractureHandler_a002e255a1976918ffbe6ea63b0fdae1b}{numFractures} );
+229     \}
+\end{DoxyCode}
+\hypertarget{classFractureHandler_ae4204c592df2afe9c3dc6171f8bbb042}{\index{Fracture\-Handler@{Fracture\-Handler}!set\-Mesh\-Level\-Set\-Fracture@{set\-Mesh\-Level\-Set\-Fracture}}
+\index{set\-Mesh\-Level\-Set\-Fracture@{set\-Mesh\-Level\-Set\-Fracture}!FractureHandler@{Fracture\-Handler}}
+\subsubsection[{set\-Mesh\-Level\-Set\-Fracture}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-type Fracture\-Handler\-::set\-Mesh\-Level\-Set\-Fracture (
+\begin{DoxyParamCaption}
+\item[{{\bf Fracture\-Handler} \&}]{other\-Fracture, }
+\item[{size\-\_\-type \&}]{global\-Index}
+\end{DoxyParamCaption}
+)}}\label{classFractureHandler_ae4204c592df2afe9c3dc6171f8bbb042}
+
+
+funzione che, data un'altra frattura con cui si interseca, imposta i valori legati all'intersezione\-: costruisce sulla mesh la regione \char`\"{} tagliata \char`\"{}, aggiunge i gradi di libertà estesi, e imposta che tali gradi di libertà siano gli stessi sulle due fratture 
+
+
+\begin{DoxyCode}
+222 \{
+223     \textcolor{keyword}{const} size\_type otherFractureId = otherFracture.\hyperlink{classFractureHandler_a7f7ec5b15315791f76d8deb0874511d6}{getId}();
+224     size\_type numIntersect = 0;
+225     
+226     \textcolor{keywordflow}{if} ( !M\_meshLevelSetIntersect[ otherFractureId ].\textcolor{keyword}{get}() )
+227     \{
+228         M\_meshLevelSetIntersect[ otherFractureId ].reset ( \textcolor{keyword}{new} 
+      \hyperlink{Core_8h_a126f7165f04db4ed0b72454469145a08}{GFMeshLevelSet\_Type} ( M\_meshFlat ) );
+229         \hyperlink{LevelSetHandler_8h_aba343569cb3213c103252f69c39cad0b}{LevelSetHandlerPtr\_Type} otherLevelSet = otherFracture.
+      \hyperlink{classFractureHandler_af37ab12a17f812a960da2aa71699ba0f}{getLevelSet}();
+230         M\_levelSetIntersect [ otherFractureId ].reset ( \textcolor{keyword}{new} \hyperlink{Core_8h_a71358a15bd3925629e26ccbb214a0133}{GFLevelSet\_Type} ( M\_meshFlat, 1,
+       \textcolor{keyword}{false} )  );
+231         M\_levelSetIntersect [ otherFractureId ]->reinit();
+232 
+233         \textcolor{keyword}{const} size\_type nbDof = M\_levelSetIntersect [ otherFractureId ]->get\_mesh\_fem().nb\_basic\_dof();
+234 
+235         \textcolor{keywordflow}{for} ( size\_type d = 0; d < nbDof; ++d )
+236         \{
+237             base\_node node = M\_levelSetIntersect [ otherFractureId ]->get\_mesh\_fem().point\_of\_basic\_dof(d);
+238             base\_node mappedNode ( node.size() +1 );
+239 
+240             scalar\_type t = d*1./(M\_data.\hyperlink{classFractureData_a5c10d579be7849be1a126c24982f8a23}{getSpatialDiscretization} () );
+241             base\_node P (node.size());
+242 
+243             P [0] = t;
+244 
+245             mappedNode [0] = node [0];
+246 
+247             mappedNode [1] = M\_levelSet->getData()->y\_map ( P );
+248 
+249             M\_levelSetIntersect [ otherFractureId ]->values(0)[d] = otherLevelSet->getData()->
+      ylevelSetFunction ( mappedNode );
+250 
+251         \}
+252 
+253 
+254         M\_meshLevelSetIntersect[ otherFractureId ]->add\_level\_set ( *M\_levelSetIntersect [ otherFractureId 
+      ] );
+255         M\_meshLevelSetIntersect[ otherFractureId ]->adapt ();
+256 
+257         size\_type i\_cv = 0;
+258         dal::bit\_vector bc\_cv = M\_meshLevelSetIntersect[ otherFractureId ]->linked\_mesh().convex\_index();
+259         
+260         \textcolor{keywordflow}{for} ( i\_cv << bc\_cv; i\_cv != size\_type(-1); i\_cv << bc\_cv )
+261         \{
+262             \textcolor{keywordflow}{if} (M\_meshLevelSetIntersect[ otherFractureId ]->is\_convex\_cut ( i\_cv ) )
+263             \{  
+264                 
+265                 M\_meshFlat.region ( \hyperlink{classFractureHandler_a495ad4fc72d0c47c8f0424842f1153aaaa992cc3ad024a030ecd798dc319c95ac}{FractureHandler::FRACTURE\_UNCUT} * ( M\_ID
+       + 1 ) ).sup ( i\_cv );
+266                 
+267                 M\_meshFlat.region ( \hyperlink{classFractureHandler_a495ad4fc72d0c47c8f0424842f1153aaa781cae3f3b99bf9357fed2833d315537}{FractureHandler::FRACTURE\_INTERSECT} 
+      * ( M\_ID + 1 ) + otherFractureId + 1 ).add( i\_cv );
+268                 M\_extendedPressure.push\_back ( M\_meshFEMPressure.ind\_basic\_dof\_of\_element ( i\_cv )[0] );
+269                 M\_extendedVelocity.push\_back ( M\_meshFEMVelocity.ind\_basic\_dof\_of\_element ( i\_cv )[0] );
+270                 M\_extendedVelocity.push\_back ( M\_meshFEMVelocity.ind\_basic\_dof\_of\_element ( i\_cv )[1] );
+271 
+272                 M\_fractureIntersectElements [ otherFractureId ].push\_back ( i\_cv );
+273 
+274                 \hyperlink{Core_8h_a6453867d4e9bd858ad9577b4a1078511}{pairSize\_Type} coppia;
+275                 coppia.first = globalIndex;
+276                 coppia.second = 0;
+277                 M\_fractureIntersectElementsGlobalIndex [ otherFractureId ].push\_back ( coppia );
+278                 ++globalIndex;
+279                 ++numIntersect;
+280            
+281                 \}
+282         \}
+283     \}
+284 
+285     \textcolor{keywordflow}{return} numIntersect;
+286 \}\textcolor{comment}{// setMeshLevelSetFracture}
+\end{DoxyCode}
+
+
+La documentazione per questa classe è stata generata a partire dai seguenti file\-:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{FractureHandler_8h}{Fracture\-Handler.\-h}\item 
+src/\hyperlink{FractureHandler_8cc}{Fracture\-Handler.\-cc}\end{DoxyCompactItemize}

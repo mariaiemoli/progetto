@@ -1,0 +1,159 @@
+\hypertarget{main_8cc}{\section{Riferimenti per il file main.\-cc}
+\label{main_8cc}\index{main.\-cc@{main.\-cc}}
+}
+{\ttfamily \#include \char`\"{}include/\-Mesh\-Handler.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}include/\-Fractures\-Set.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}include/\-Medium\-Data.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}include/\-Darcy\-Fractured.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}include/\-Transport\-Fractured.\-h\char`\"{}}\\*
+\subsection*{Funzioni}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{main_8cc_a0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em P\-R\-O\-G\-E\-T\-T\-O D\-I P\-A\-C\-S 2014. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Documentazione delle funzioni}
+\hypertarget{main_8cc_a0ddf1224851353fc92bfbff6f499fa97}{\index{main.\-cc@{main.\-cc}!main@{main}}
+\index{main@{main}!main.cc@{main.\-cc}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}}\label{main_8cc_a0ddf1224851353fc92bfbff6f499fa97}
+
+
+P\-R\-O\-G\-E\-T\-T\-O D\-I P\-A\-C\-S 2014. 
+
+autori\-: Bonomi Claudia, Iemoli Maria
+
+Interior Penality for Darcy's equation 
+\begin{DoxyCode}
+23 \{
+24     GetPot command\_line(argc, argv);
+25 
+26     \textcolor{keyword}{const} std::string data\_file\_name = command\_line.follow(\textcolor{stringliteral}{"data"}, 2, \textcolor{stringliteral}{"-f"}, \textcolor{stringliteral}{"--file"});
+27 
+28     GetPot dataFile(data\_file\_name.data());
+29 
+30     \textcolor{keyword}{const} std::string section = \textcolor{stringliteral}{""};
+31 
+32     \textcolor{keyword}{const} std::string vtkFolder = \textcolor{stringliteral}{"vtk/"};
+33 
+34 
+35     \textcolor{comment}{//Data exporter}
+36     std::cout << \textcolor{stringliteral}{"Create the data exporter..."} << std::flush;
+37     \hyperlink{Exporter_8h_ac9d7f94fea8b91459a536bfaa2f3910c}{ExporterPtr\_Type} exporter( \textcolor{keyword}{new} \hyperlink{Exporter_8h_a4b759507874351b3feb7e4023a152ccf}{Exporter\_Type}(dataFile));
+38     std::cout << \textcolor{stringliteral}{" completed!"} <<std::endl;
+39 
+40 
+41     \textcolor{comment}{//Mesh Handler}
+42     std::cout << \textcolor{stringliteral}{"Create the meshHandler..."} << std::flush;
+43     \hyperlink{MeshHandler_8h_a1e5fc39dfda19e81b21756ab7719ef4c}{MeshHandlerPtr\_Type} mesh(\textcolor{keyword}{new} \hyperlink{MeshHandler_8h_a165e862bef156a4c61d3109d08b50982}{MeshHandler\_Type}(dataFile, \textcolor{stringliteral}{"
+      mediumData/domain/"}));
+44     mesh->setUpMesh();
+45     mesh->setUpFEM();
+46     std::cout<< \textcolor{stringliteral}{" completed!"} << std::endl;
+47 
+48 
+49     \textcolor{comment}{// Medium data for the Darcy problem}
+50     std::cout << \textcolor{stringliteral}{"Create the mediumData for the Darcy problem.."} << std::flush;
+51     \textcolor{keyword}{const} std::string sectionSolverDarcy = \textcolor{stringliteral}{"darcy/"};
+52     \hyperlink{MediumData_8h_ab4e5446269b79f019405fbe1b6e4b1fe}{MediumDataPtr\_Type} mediumDataDarcy(\textcolor{keyword}{new} \hyperlink{MediumData_8h_a7beafa8fa08252555a744d155afee88a}{MediumData\_Type}(dataFile,
+53                                         sectionSolverDarcy));
+54     std::cout << \textcolor{stringliteral}{" completed!"} << std::endl;
+55 
+56 
+57     \textcolor{comment}{// Fracture Set}
+58     std::cout << \textcolor{stringliteral}{"Create the set of fractures for "} << std::flush;
+59     \textcolor{keyword}{const} size\_type numberFractures = dataFile(
+60             (section + \textcolor{stringliteral}{"numberFractures"}).data(), 0);
+61     std::cout << numberFractures << \textcolor{stringliteral}{" fracture(s)..."} << std::endl << std::flush;
+62 
+63     \textcolor{comment}{// Fracture Set}
+64     \hyperlink{FracturesSet_8h_ac29a2a91d3af77fb459980a7db47f420}{FracturesSetPtr\_Type} fractures ( \textcolor{keyword}{new} \hyperlink{classFracturesSet}{FracturesSet} );
+65 
+66     fractures->init ( dataFile, section, numberFractures, mesh->getMesh(), mesh->getMeshLevelSet(),
+67                       mesh->getIntegrationTypeVelocity(),
+68                       mesh->getMeshFEMScalar(), mesh->getMeshFEMVector() );
+69 
+70     std::cout << \textcolor{stringliteral}{" completed!"} << std::endl;
+71 
+72 
+73     \textcolor{comment}{// Create the mesh regions}
+74     std::cout << \textcolor{stringliteral}{"Create mesh regions..."} << std::flush;
+75     mesh->setUpRegions ( fractures );
+76     std::cout << \textcolor{stringliteral}{" completed!"} << std::endl;
+77 
+78 
+79     \textcolor{comment}{// Medium boundary conditions}
+80     std::cout << \textcolor{stringliteral}{"Create medium boundary conditions..."} << std::flush;
+81     \hyperlink{BC_8h_a088c36f945ad8f6e7e0c7c423994c6ec}{BCPtr\_Type} bcMedium(\textcolor{keyword}{new} \hyperlink{BC_8h_a0fe235bbd14db4aea3ae80332cff646e}{BC\_Type}(mesh->getMesh(), mesh->getMeshType(),
+82             \hyperlink{Core_8h_a419d7707e418f02d8daeb1fc7c0b9ae5a5340ec7ecef6cc3886684a3bd3450d64}{MEDIUM}));
+83     std::cout << \textcolor{stringliteral}{" completed!"} << std::endl;
+84 
+85 
+86     \textcolor{comment}{// Fracture boundary conditions}
+87     std::cout << \textcolor{stringliteral}{"Create fracture boundary conditions..."} << std::flush;
+88     \hyperlink{BC_8h_ae127263052e0676d0fe233f834ca7227}{BCPtrContainer\_Type} bcFracture(numberFractures);
+89     \textcolor{keywordflow}{for} ( size\_type f = 0; f < numberFractures; ++f )
+90     \{
+91         bcFracture [ f ].reset(\textcolor{keyword}{new} \hyperlink{BC_8h_a0fe235bbd14db4aea3ae80332cff646e}{BC\_Type}(fractures->getFracture( f )->getMeshFlat(),
+92                                            fractures->getFracture ( f )->getData().getMeshType(),
+93                                            \hyperlink{Core_8h_a419d7707e418f02d8daeb1fc7c0b9ae5aa06469ae01e54e762465572dd016a84e}{FRACTURE}));
+94     \}
+95     std::cout << \textcolor{stringliteral}{" completed!"} << std::endl;
+96 
+97     \textcolor{comment}{// Boundary conditions handler}
+98     std::cout << \textcolor{stringliteral}{"Create boundary conditions handler..."} << std::flush;
+99     \hyperlink{BCHandler_8h_aa175884cb453788647f17f2230a2a762}{BCHandlerPtr\_Type} bcHandler(\textcolor{keyword}{new} \hyperlink{BCHandler_8h_a37cc8157d35b390c633acad42ab6da0c}{BCHandler\_Type}(bcMedium, bcFracture));
+100     std::cout << \textcolor{stringliteral}{" completed!"} << std::endl;
+101 
+102     std::cout << \textcolor{stringliteral}{"Setup boundary conditions handler..."} << std::flush;
+103     bcHandler->createBDRegions(mesh->getMesh());
+104     bcHandler->createBDRegionsFractures(mesh->getMesh());
+105     std::cout << \textcolor{stringliteral}{" completed!"} << std::endl;
+106 
+107     \textcolor{comment}{// Save the cutted elements}
+108     mesh->printCuttedElements(exporter->getFolder(), \textcolor{stringliteral}{"cuttedElements.vtk"});
+109 
+110     \textcolor{comment}{// Save the regions of the mesh}
+111     exporter->meshRegion ( mesh->getMesh(), \textcolor{stringliteral}{"RegionMesh.vtk"} );
+112     
+113 
+114     \textcolor{comment}{// Compute inverse of mesh size (h^(-1) dove h è il passo di griglia)}
+115     std::cout << \textcolor{stringliteral}{"Compute inverse of mesh size..."} << std::flush;
+116     mesh->computeMeshMeasures();
+117     \textcolor{keywordflow}{for} ( size\_type f = 0; f < numberFractures; ++f )
+118     \{
+119         fractures->getFracture( f )->computeInvH(bcHandler);
+120     \}
+121     std::cout << \textcolor{stringliteral}{" completed!"} << std::endl;
+122 
+123     \textcolor{comment}{// Darcy problem}
+124     std::cout << \textcolor{stringliteral}{"Create Darcy problem..."} << std::flush;
+125     \hyperlink{DarcyFractured_8h_a80f5a6188eb8a3c5c81d22bbecc60c40}{DarcyFracturedPtr\_Type} darcy(\textcolor{keyword}{new} \hyperlink{DarcyFractured_8h_a735a2a54035b86cbb5ddcf1c421f4911}{DarcyFractured\_Type}(
+      mediumDataDarcy, mesh,
+126             bcHandler, fractures, exporter));
+127     std::cout << \textcolor{stringliteral}{" completed!"} << std::endl;
+128 
+129     \textcolor{comment}{// Initialize the solver}
+130     std::cout << \textcolor{stringliteral}{"Initialize the Darcy problem..."} << std::flush;
+131     darcy->init();
+132     std::cout << \textcolor{stringliteral}{" completed!"} << std::endl;
+133 
+134     \textcolor{comment}{// Assembly the matrices and vectors}
+135     std::cout << \textcolor{stringliteral}{"Assembly the Darcy problem..."} << std::flush;
+136     darcy->assembly();
+137     std::cout << \textcolor{stringliteral}{" completed!"} << std::endl;
+138 
+139     \textcolor{comment}{// Solve and save the solutions}
+140     std::cout << \textcolor{stringliteral}{"Solve the Darcy problem..."} << std::flush;
+141     darcy->solve();
+142     std::cout << \textcolor{stringliteral}{" completed!"} << std::endl;
+143 
+144     \textcolor{keywordflow}{return} 0;
+145 
+146 \}
+\end{DoxyCode}

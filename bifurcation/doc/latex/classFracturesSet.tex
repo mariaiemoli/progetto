@@ -1,0 +1,189 @@
+\hypertarget{classFracturesSet}{\section{Riferimenti per la classe Fractures\-Set}
+\label{classFracturesSet}\index{Fractures\-Set@{Fractures\-Set}}
+}
+
+
+Fracture\-Set.\-h.  
+
+
+
+
+{\ttfamily \#include $<$Fractures\-Set.\-h$>$}
+
+\subsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classFracturesSet_a01682537586e273be19fd789c99cfa87}{Fractures\-Set} ()
+\begin{DoxyCompactList}\small\item\em Fracture\-Set.\-cc. \end{DoxyCompactList}\item 
+void \hyperlink{classFracturesSet_a451f55adca2cd36076294c3c3d2d5b6d}{init} (const Get\-Pot \&data\-File, const std\-::string \&section, const size\-\_\-type \&num\-Fractures, getfem\-::mesh \&mesh, getfem\-::mesh\-\_\-level\-\_\-set \&mesh\-Level\-Set, const std\-::string \&integration\-Type\-Velocity, const getfem\-::mesh\-\_\-fem \&mesh\-F\-E\-M\-Scalar, const getfem\-::mesh\-\_\-fem \&mesh\-F\-E\-M\-Vector)
+\begin{DoxyCompactList}\small\item\em funzione che inizializza l'insieme delle fratture definendo un vettore con le fratture e una classe delle intersezioni \end{DoxyCompactList}\item 
+size\-\_\-type \hyperlink{classFracturesSet_ad0d608408d6b65c83c2eb013d4daacdf}{get\-Number\-Fractures} () const 
+\item 
+const \hyperlink{FractureHandler_8h_af23fb7a30aaff864bd42587af4f1e78a}{Fracture\-Handler\-Ptr\-\_\-\-Type} \& \hyperlink{classFracturesSet_afa7100ac44d32e51e193380bf6d9d5f9}{get\-Fracture} (const size\-\_\-type \&f) const 
+\item 
+\hyperlink{FractureHandler_8h_af23fb7a30aaff864bd42587af4f1e78a}{Fracture\-Handler\-Ptr\-\_\-\-Type} \& \hyperlink{classFracturesSet_a12773c5c1e5a11703ed905ea6e47fcae}{get\-Fracture} (const size\-\_\-type \&f)
+\item 
+const \hyperlink{FractureIntersect_8h_a5486417d11465ffafe3034ce22c1c85b}{Fracture\-Intersect\-Ptr\-\_\-\-Type} \& \hyperlink{classFracturesSet_ae1d7e53adc5d8acaad0a37dd227aee03}{get\-Intersections} () const 
+\item 
+\hyperlink{FractureIntersect_8h_a5486417d11465ffafe3034ce22c1c85b}{Fracture\-Intersect\-Ptr\-\_\-\-Type} \& \hyperlink{classFracturesSet_a36e5a26e790e439e3aa8e516838c28ce}{get\-Intersections} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Descrizione dettagliata}
+Fracture\-Set.\-h. 
+
+classe che contiene tutte le fratture 
+
+\subsection{Documentazione dei costruttori e dei distruttori}
+\hypertarget{classFracturesSet_a01682537586e273be19fd789c99cfa87}{\index{Fractures\-Set@{Fractures\-Set}!Fractures\-Set@{Fractures\-Set}}
+\index{Fractures\-Set@{Fractures\-Set}!FracturesSet@{Fractures\-Set}}
+\subsubsection[{Fractures\-Set}]{\setlength{\rightskip}{0pt plus 5cm}Fractures\-Set\-::\-Fractures\-Set (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classFracturesSet_a01682537586e273be19fd789c99cfa87}
+
+
+Fracture\-Set.\-cc. 
+
+
+\begin{DoxyCode}
+9                            :
+10 M\_intersections ( \textcolor{keyword}{new} \hyperlink{classFractureIntersect}{FractureIntersect\_Type} )
+11 \{
+12 \}\textcolor{comment}{// costruttore nullo}
+\end{DoxyCode}
+
+
+\subsection{Documentazione delle funzioni membro}
+\hypertarget{classFracturesSet_afa7100ac44d32e51e193380bf6d9d5f9}{\index{Fractures\-Set@{Fractures\-Set}!get\-Fracture@{get\-Fracture}}
+\index{get\-Fracture@{get\-Fracture}!FracturesSet@{Fractures\-Set}}
+\subsubsection[{get\-Fracture}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Fracture\-Handler\-Ptr\-\_\-\-Type}\& Fractures\-Set\-::get\-Fracture (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-type \&}]{f}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFracturesSet_afa7100ac44d32e51e193380bf6d9d5f9}
+
+\begin{DoxyCode}
+44     \{
+45             \textcolor{keywordflow}{return} M\_fractures[f];
+46     \}
+\end{DoxyCode}
+\hypertarget{classFracturesSet_a12773c5c1e5a11703ed905ea6e47fcae}{\index{Fractures\-Set@{Fractures\-Set}!get\-Fracture@{get\-Fracture}}
+\index{get\-Fracture@{get\-Fracture}!FracturesSet@{Fractures\-Set}}
+\subsubsection[{get\-Fracture}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Fracture\-Handler\-Ptr\-\_\-\-Type}\& Fractures\-Set\-::get\-Fracture (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-type \&}]{f}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFracturesSet_a12773c5c1e5a11703ed905ea6e47fcae}
+
+\begin{DoxyCode}
+50     \{
+51             \textcolor{keywordflow}{return} M\_fractures[f];
+52     \}
+\end{DoxyCode}
+\hypertarget{classFracturesSet_ae1d7e53adc5d8acaad0a37dd227aee03}{\index{Fractures\-Set@{Fractures\-Set}!get\-Intersections@{get\-Intersections}}
+\index{get\-Intersections@{get\-Intersections}!FracturesSet@{Fractures\-Set}}
+\subsubsection[{get\-Intersections}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Fracture\-Intersect\-Ptr\-\_\-\-Type}\& Fractures\-Set\-::get\-Intersections (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFracturesSet_ae1d7e53adc5d8acaad0a37dd227aee03}
+
+\begin{DoxyCode}
+56     \{
+57             \textcolor{keywordflow}{return} M\_intersections;
+58     \}
+\end{DoxyCode}
+\hypertarget{classFracturesSet_a36e5a26e790e439e3aa8e516838c28ce}{\index{Fractures\-Set@{Fractures\-Set}!get\-Intersections@{get\-Intersections}}
+\index{get\-Intersections@{get\-Intersections}!FracturesSet@{Fractures\-Set}}
+\subsubsection[{get\-Intersections}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Fracture\-Intersect\-Ptr\-\_\-\-Type}\& Fractures\-Set\-::get\-Intersections (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFracturesSet_a36e5a26e790e439e3aa8e516838c28ce}
+
+\begin{DoxyCode}
+62     \{
+63             \textcolor{keywordflow}{return} M\_intersections;
+64     \}
+\end{DoxyCode}
+\hypertarget{classFracturesSet_ad0d608408d6b65c83c2eb013d4daacdf}{\index{Fractures\-Set@{Fractures\-Set}!get\-Number\-Fractures@{get\-Number\-Fractures}}
+\index{get\-Number\-Fractures@{get\-Number\-Fractures}!FracturesSet@{Fractures\-Set}}
+\subsubsection[{get\-Number\-Fractures}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-type Fractures\-Set\-::get\-Number\-Fractures (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFracturesSet_ad0d608408d6b65c83c2eb013d4daacdf}
+
+\begin{DoxyCode}
+38     \{
+39             \textcolor{keywordflow}{return} M\_fractures.size();
+40     \}
+\end{DoxyCode}
+\hypertarget{classFracturesSet_a451f55adca2cd36076294c3c3d2d5b6d}{\index{Fractures\-Set@{Fractures\-Set}!init@{init}}
+\index{init@{init}!FracturesSet@{Fractures\-Set}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}void Fractures\-Set\-::init (
+\begin{DoxyParamCaption}
+\item[{const Get\-Pot \&}]{data\-File, }
+\item[{const std\-::string \&}]{section, }
+\item[{const size\-\_\-type \&}]{num\-Fractures, }
+\item[{getfem\-::mesh \&}]{mesh, }
+\item[{getfem\-::mesh\-\_\-level\-\_\-set \&}]{mesh\-Level\-Set, }
+\item[{const std\-::string \&}]{integration\-Type\-Velocity, }
+\item[{const getfem\-::mesh\-\_\-fem \&}]{mesh\-F\-E\-M\-Scalar, }
+\item[{const getfem\-::mesh\-\_\-fem \&}]{mesh\-F\-E\-M\-Vector}
+\end{DoxyParamCaption}
+)}}\label{classFracturesSet_a451f55adca2cd36076294c3c3d2d5b6d}
+
+
+funzione che inizializza l'insieme delle fratture definendo un vettore con le fratture e una classe delle intersezioni 
+
+
+\begin{DoxyCode}
+20 \{
+21         M\_fractures.resize ( numFractures );
+22 
+23         std::ostringstream sectionFracture;
+24 
+25         \textcolor{comment}{// Riempio il vettore delle fratture}
+26         \textcolor{keywordflow}{for} ( size\_type f = 0; f < numFractures; ++f )
+27         \{
+28                 sectionFracture << section << \textcolor{stringliteral}{"fractureData"} << f << \textcolor{stringliteral}{"/"};
+29 
+30                 M\_fractures [ f ].reset ( \textcolor{keyword}{new} \hyperlink{classFractureHandler}{FractureHandler\_Type} ( dataFile, f, 
+      sectionFracture.str() ) );
+31 
+32                 \textcolor{comment}{// Inizializzo la frattura  }
+33                 M\_fractures [ f ]->init();
+34 
+35                 M\_fractures [ f ]->numFractures ( numFractures );
+36 
+37                 \textcolor{comment}{// Per ogni frattura inizializzo il level set}
+38                 M\_fractures [ f ]->getLevelSet()->init ( mesh, integrationTypeVelocity, meshFEMScalar, 
+      meshFEMVector );
+39 
+40                 \textcolor{comment}{// Calcolo la normale alla frattura e il fattore di conversione della lunghezza della mesh
+       reale}
+41                 M\_fractures [ f ]->normalVectorAndMap ( meshFEMScalar );
+42 
+43                 \textcolor{comment}{// Per ogni frattura aggiungo le informazioni relative al corrispondente level set a
+       meshLevelSet}
+44                 meshLevelSet.add\_level\_set ( M\_fractures[f]->getLevelSet()->getLevelSet() );
+45 
+46                 sectionFracture.str(\textcolor{stringliteral}{""});
+47         \}
+48 
+49         meshLevelSet.adapt ();
+50 
+51         \textcolor{comment}{// una volta costruito il vettore delle fratture inizializzo la classe per le intersezioni}
+52         M\_intersections->constructIntesection ( meshLevelSet, M\_fractures );
+53 
+54 \}\textcolor{comment}{// init}
+\end{DoxyCode}
+
+
+La documentazione per questa classe è stata generata a partire dai seguenti file\-:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{FracturesSet_8h}{Fractures\-Set.\-h}\item 
+src/\hyperlink{FracturesSet_8cc}{Fractures\-Set.\-cc}\end{DoxyCompactItemize}

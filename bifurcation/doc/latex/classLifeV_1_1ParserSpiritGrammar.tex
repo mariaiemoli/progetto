@@ -1,0 +1,476 @@
+\hypertarget{classLifeV_1_1ParserSpiritGrammar}{\section{Template per la classe Life\-V\-:\-:Parser\-Spirit\-Grammar$<$ Iterator\-Type, Results\-Type $>$}
+\label{classLifeV_1_1ParserSpiritGrammar}\index{Life\-V\-::\-Parser\-Spirit\-Grammar$<$ Iterator\-Type, Results\-Type $>$@{Life\-V\-::\-Parser\-Spirit\-Grammar$<$ Iterator\-Type, Results\-Type $>$}}
+}
+
+
+\hyperlink{classLifeV_1_1ParserSpiritGrammar}{Parser\-Spirit\-Grammar} -\/ A string parser grammar based on {\ttfamily boost\-::spirit\-::qi}.  
+
+
+
+
+{\ttfamily \#include $<$Parser\-Spirit\-Grammar.\-h$>$}
+
+Diagramma delle classi per Life\-V\-:\-:Parser\-Spirit\-Grammar$<$ Iterator\-Type, Results\-Type $>$\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classLifeV_1_1ParserSpiritGrammar}
+\end{center}
+\end{figure}
+\subsection*{Tipi pubblici}
+\begin{Indent}{\bf Public Types}\par
+\begin{DoxyCompactItemize}
+\item 
+typedef Iterator\-Type \hyperlink{classLifeV_1_1ParserSpiritGrammar_aaa28e2ed8f68d686da1e0bcc5834ed3b}{iterator\-\_\-\-Type}
+\item 
+typedef boost\-::iterator\-\_\-range\\*
+$<$ \hyperlink{classLifeV_1_1ParserSpiritGrammar_aaa28e2ed8f68d686da1e0bcc5834ed3b}{iterator\-\_\-\-Type} $>$ \hyperlink{classLifeV_1_1ParserSpiritGrammar_a8aca47ceac2876986dbc2ff9ee4d2edd}{iterator\-Range\-\_\-\-Type}
+\item 
+typedef Results\-Type \hyperlink{classLifeV_1_1ParserSpiritGrammar_a98dabec1a4a9a743a1d3b35e994cec7c}{results\-\_\-\-Type}
+\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Membri pubblici}
+\begin{Indent}{\bf Constructors \& Destructor}\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classLifeV_1_1ParserSpiritGrammar_afd12d0ca36622930f0c5e574c96acaa7}{Parser\-Spirit\-Grammar} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hyperlink{classLifeV_1_1ParserSpiritGrammar_a2a0d8a4396ae61a66edc4f320d9e79f5}{Parser\-Spirit\-Grammar} (const \hyperlink{classLifeV_1_1ParserSpiritGrammar}{Parser\-Spirit\-Grammar} \&spirit\-Grammar)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+virtual \hyperlink{classLifeV_1_1ParserSpiritGrammar_a32c0629e6ee7ea37bb0b3159b0fa31ee}{$\sim$\-Parser\-Spirit\-Grammar} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Operators}\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classLifeV_1_1ParserSpiritGrammar}{Parser\-Spirit\-Grammar} \& \hyperlink{classLifeV_1_1ParserSpiritGrammar_a6ce4fa32aacdc3bc7e4b38be901f94cf}{operator=} (const \hyperlink{classLifeV_1_1ParserSpiritGrammar}{Parser\-Spirit\-Grammar} \&spirit\-Grammar)
+\begin{DoxyCompactList}\small\item\em Operator =. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Methods}\par
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classLifeV_1_1ParserSpiritGrammar_a026a60af01b958c4f06877b40bbd19bf}{assign\-Variable} (const \hyperlink{classLifeV_1_1ParserSpiritGrammar_a8aca47ceac2876986dbc2ff9ee4d2edd}{iterator\-Range\-\_\-\-Type} \&string\-Iterator\-Range, const \hyperlink{namespaceLifeV_ad58c7402b26e5087b634b25d029c9c32}{Real} \&value)
+\item 
+void \hyperlink{classLifeV_1_1ParserSpiritGrammar_a81b8e2abdda8a35738367f2dcfb69c75}{clear\-Variables} ()
+\begin{DoxyCompactList}\small\item\em Clear all the variables. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Set Methods}\par
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classLifeV_1_1ParserSpiritGrammar_aa48cdca46ab32d3c1e55e656aa82e902}{set\-Default\-Variables} ()
+\begin{DoxyCompactList}\small\item\em Set default variables. \end{DoxyCompactList}\item 
+void \hyperlink{classLifeV_1_1ParserSpiritGrammar_a357a7e8d98940858ac6e05c106082e2e}{set\-Variable} (const std\-::string \&name, const \hyperlink{namespaceLifeV_ad58c7402b26e5087b634b25d029c9c32}{Real} \&value)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Get Methods}\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceLifeV_ad58c7402b26e5087b634b25d029c9c32}{Real} \& \hyperlink{classLifeV_1_1ParserSpiritGrammar_a768e48421db190a4eba5144932ddc4f6}{variable} (const std\-::string \&name)
+\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Descrizione dettagliata}
+\subsubsection*{template$<$typename Iterator\-Type = std\-::string\-::const\-\_\-iterator, typename Results\-Type = std\-::vector $<$ Real $>$$>$class Life\-V\-::\-Parser\-Spirit\-Grammar$<$ Iterator\-Type, Results\-Type $>$}
+
+\hyperlink{classLifeV_1_1ParserSpiritGrammar}{Parser\-Spirit\-Grammar} -\/ A string parser grammar based on {\ttfamily boost\-::spirit\-::qi}. 
+
+\begin{DoxyAuthor}{Autore}
+(s) Cristiano Malossi
+\end{DoxyAuthor}
+{\ttfamily \hyperlink{classLifeV_1_1ParserSpiritGrammar}{Parser\-Spirit\-Grammar}} is a {\ttfamily boost\-::spirit\-::qi} based class to perform evaluation of {\ttfamily std\-::string} expressions.
+
+{\bfseries E\-X\-A\-M\-P\-L\-E -\/ H\-O\-W T\-O U\-S\-E} Let's consider the following example\-: suppose that we have this function\-:
+
+\mbox{[}u,v,w\mbox{]} = f(x,y,z,t)
+
+where
+
+u(x) = a$\ast$b$\ast$x v(x,y) = a/b$\ast$sqrt(x$^\wedge$2 + y$^\wedge$2) w(t) = b$\ast$t;
+
+with \char`\"{}a\char`\"{} and \char`\"{}b\char`\"{} constants such that a=5.\-12345, b=9.\-999999.
+
+To evaluate function f(x,y,z,t), we use this syntax\-:
+
+string = \char`\"{}a=5.\-12345 ; b=9.\-999999 ; (a$\ast$b$\ast$x, a/b$\ast$sqrt(x$^\wedge$2 + y$^\wedge$2), b$\ast$t)\char`\"{}
+
+where semicolons (\char`\"{};\char`\"{}) separate constants and commas (\char`\"{},\char`\"{}) separate output functions.
+
+N\-O\-T\-E\-: Currently \hyperlink{classLifeV_1_1ParserSpiritGrammar}{Parser\-Spirit\-Grammar} works with the following operators\-: \begin{DoxyVerb}*  +, -, *, /, ^, sqrt(), sin(), cos(), tan(), exp(), log(), log10(), >, <.
+*  \end{DoxyVerb}
+ 
+
+\subsection{Documentazione delle ridefinizioni dei tipi (typedef)}
+\hypertarget{classLifeV_1_1ParserSpiritGrammar_aaa28e2ed8f68d686da1e0bcc5834ed3b}{\index{Life\-V\-::\-Parser\-Spirit\-Grammar@{Life\-V\-::\-Parser\-Spirit\-Grammar}!iterator\-\_\-\-Type@{iterator\-\_\-\-Type}}
+\index{iterator\-\_\-\-Type@{iterator\-\_\-\-Type}!LifeV::ParserSpiritGrammar@{Life\-V\-::\-Parser\-Spirit\-Grammar}}
+\subsubsection[{iterator\-\_\-\-Type}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Iterator\-Type = std\-::string\-::const\-\_\-iterator, typename Results\-Type = std\-::vector $<$ Real $>$$>$ typedef Iterator\-Type {\bf Life\-V\-::\-Parser\-Spirit\-Grammar}$<$ Iterator\-Type, Results\-Type $>$\-::{\bf iterator\-\_\-\-Type}}}\label{classLifeV_1_1ParserSpiritGrammar_aaa28e2ed8f68d686da1e0bcc5834ed3b}
+\hypertarget{classLifeV_1_1ParserSpiritGrammar_a8aca47ceac2876986dbc2ff9ee4d2edd}{\index{Life\-V\-::\-Parser\-Spirit\-Grammar@{Life\-V\-::\-Parser\-Spirit\-Grammar}!iterator\-Range\-\_\-\-Type@{iterator\-Range\-\_\-\-Type}}
+\index{iterator\-Range\-\_\-\-Type@{iterator\-Range\-\_\-\-Type}!LifeV::ParserSpiritGrammar@{Life\-V\-::\-Parser\-Spirit\-Grammar}}
+\subsubsection[{iterator\-Range\-\_\-\-Type}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Iterator\-Type = std\-::string\-::const\-\_\-iterator, typename Results\-Type = std\-::vector $<$ Real $>$$>$ typedef boost\-::iterator\-\_\-range$<$ {\bf iterator\-\_\-\-Type} $>$ {\bf Life\-V\-::\-Parser\-Spirit\-Grammar}$<$ Iterator\-Type, Results\-Type $>$\-::{\bf iterator\-Range\-\_\-\-Type}}}\label{classLifeV_1_1ParserSpiritGrammar_a8aca47ceac2876986dbc2ff9ee4d2edd}
+\hypertarget{classLifeV_1_1ParserSpiritGrammar_a98dabec1a4a9a743a1d3b35e994cec7c}{\index{Life\-V\-::\-Parser\-Spirit\-Grammar@{Life\-V\-::\-Parser\-Spirit\-Grammar}!results\-\_\-\-Type@{results\-\_\-\-Type}}
+\index{results\-\_\-\-Type@{results\-\_\-\-Type}!LifeV::ParserSpiritGrammar@{Life\-V\-::\-Parser\-Spirit\-Grammar}}
+\subsubsection[{results\-\_\-\-Type}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Iterator\-Type = std\-::string\-::const\-\_\-iterator, typename Results\-Type = std\-::vector $<$ Real $>$$>$ typedef Results\-Type {\bf Life\-V\-::\-Parser\-Spirit\-Grammar}$<$ Iterator\-Type, Results\-Type $>$\-::{\bf results\-\_\-\-Type}}}\label{classLifeV_1_1ParserSpiritGrammar_a98dabec1a4a9a743a1d3b35e994cec7c}
+
+
+\subsection{Documentazione dei costruttori e dei distruttori}
+\hypertarget{classLifeV_1_1ParserSpiritGrammar_afd12d0ca36622930f0c5e574c96acaa7}{\index{Life\-V\-::\-Parser\-Spirit\-Grammar@{Life\-V\-::\-Parser\-Spirit\-Grammar}!Parser\-Spirit\-Grammar@{Parser\-Spirit\-Grammar}}
+\index{Parser\-Spirit\-Grammar@{Parser\-Spirit\-Grammar}!LifeV::ParserSpiritGrammar@{Life\-V\-::\-Parser\-Spirit\-Grammar}}
+\subsubsection[{Parser\-Spirit\-Grammar}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Iterator\-Type , typename Results\-Type $>$ {\bf Life\-V\-::\-Parser\-Spirit\-Grammar}$<$ Iterator\-Type, Results\-Type $>$\-::{\bf Parser\-Spirit\-Grammar} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}}\label{classLifeV_1_1ParserSpiritGrammar_afd12d0ca36622930f0c5e574c96acaa7}
+
+
+Constructor. 
+
+
+\begin{DoxyCode}
+262                                                                       :
+263         ParserSpiritGrammar::base\_type( M\_start ),
+264         M\_start                               (),
+265         M\_assignment                          (),
+266 \textcolor{comment}{//        M\_command                             (),}
+267         M\_expression                          (),
+268         M\_compare                             (),
+269         M\_plusMinus                           (),
+270         M\_multiplyDivide                      (),
+271         M\_elevate                             (),
+272         M\_element                             (),
+273         M\_number                              (),
+274         M\_function                            (),
+275         M\_group                               (),
+276         M\_variable                            ()
+277 \{
+278     M\_start
+279     =
+280         (
+281             M\_assignment
+282 \textcolor{comment}{//        |  M\_command}
+283         |  ( -qi::lit(\textcolor{charliteral}{'['}) >> M\_expression % \textcolor{charliteral}{','} >> -qi::lit(\textcolor{charliteral}{']'}) )
+284         )
+285         ;
+286 
+287     M\_assignment
+288     =
+289         (    qi::raw[qi::lexeme[(qi::alpha | \textcolor{charliteral}{'\_'}) >> *(qi::alnum | \textcolor{charliteral}{'\_'})]]
+290         >>   qi::lit(\textcolor{charliteral}{'='})
+291         >>   M\_expression
+292         )              [phoenix::bind(&\hyperlink{classLifeV_1_1ParserSpiritGrammar_a026a60af01b958c4f06877b40bbd19bf}{ParserSpiritGrammar::assignVariable}
+      ,\textcolor{keyword}{this}, qi::\_1, qi::\_2)]
+293         ;
+294     \textcolor{comment}{/*}
+295 \textcolor{comment}{        M\_command}
+296 \textcolor{comment}{            =  qi::lit("ShowMe")[phoenix::bind(&ParserSpiritGrammar::ShowMe, this)]}
+297 \textcolor{comment}{        ;}
+298 \textcolor{comment}{    */}
+299 
+300     M\_expression
+301     =  *M\_compare                                        [qi::\_val = qi::\_1]
+302        ;
+303 
+304     M\_compare
+305     =   M\_plusMinus                                      [qi::\_val = qi::\_1]
+306         >> *(
+307             qi::lit(\textcolor{charliteral}{'>'}) >> M\_plusMinus                  [qi::\_val = qi::\_val > qi::\_1]
+308         |   qi::lit(\textcolor{charliteral}{'<'}) >> M\_plusMinus                  [qi::\_val = qi::\_val < qi::\_1]
+309         )
+310         ;
+311 
+312     M\_plusMinus
+313     =   M\_multiplyDivide                                 [qi::\_val = qi::\_1]
+314         >> *(
+315             qi::lit(\textcolor{charliteral}{'+'}) >> M\_multiplyDivide             [qi::\_val += qi::\_1]
+316         |   qi::lit(\textcolor{charliteral}{'-'}) >> M\_multiplyDivide             [qi::\_val -= qi::\_1]
+317         )
+318         ;
+319 
+320     M\_multiplyDivide
+321     =   M\_elevate                                        [qi::\_val = qi::\_1]
+322         >> *(
+323             qi::lit(\textcolor{charliteral}{'*'}) >> M\_elevate                    [qi::\_val *= qi::\_1]
+324         |   qi::lit(\textcolor{charliteral}{'/'}) >> M\_elevate                    [qi::\_val /= qi::\_1]
+325         )
+326         ;
+327 
+328     M\_elevate
+329     =
+330         (
+331             qi::lit(\textcolor{charliteral}{'-'}) >> M\_element                    [qi::\_val = qi::\_1]
+332             >>  (
+333                 qi::lit(\textcolor{charliteral}{'^'}) >> M\_element                [qi::\_val = -phoenix::bind(&
+      ParserSpiritGrammar::pow, \textcolor{keyword}{this}, qi::\_val, qi::\_1)]
+334             )
+335             >> *(
+336                 qi::lit(\textcolor{charliteral}{'^'}) >> M\_element                [qi::\_val = phoenix::bind(&
+      ParserSpiritGrammar::pow, \textcolor{keyword}{this}, qi::\_val, qi::\_1)]
+337             )
+338         )
+339         |
+340         (
+341             M\_element                                    [qi::\_val = qi::\_1]
+342             >> *(
+343                 qi::lit(\textcolor{charliteral}{'^'}) >> M\_element                [qi::\_val = phoenix::bind(&
+      ParserSpiritGrammar::pow, \textcolor{keyword}{this}, qi::\_val, qi::\_1)]
+344             )
+345         )
+346         ;
+347 
+348     M\_element
+349     =
+350         (
+351             qi::lit(\textcolor{charliteral}{'-'}) >> M\_element                    [qi::\_val = -qi::\_1]
+352         )
+353         |
+354         (
+355             M\_number                                     [qi::\_val = qi::\_1]
+356         |   M\_function                                   [qi::\_val = qi::\_1]
+357         |   M\_variable                                   [qi::\_val = qi::\_1]
+358         |   M\_group                                      [qi::\_val = qi::\_1]
+359         )
+360         ;
+361 
+362     M\_number
+363     =
+364         (
+365             qi::double\_
+366 \textcolor{comment}{//            ||   ('.' >> qi::double\_)}
+367 \textcolor{comment}{//            >>   -('.' >> qi::double\_) | ('.' >> qi::double\_)}
+368         )
+369         ;
+370 
+371     M\_function
+372     =
+373         (
+374             qi::lit(\textcolor{stringliteral}{"sin"})   >> M\_group                  [qi::\_val = phoenix::bind(&
+      ParserSpiritGrammar::sin, \textcolor{keyword}{this},   qi::\_1)]
+375         |   qi::lit(\textcolor{stringliteral}{"cos"})   >> M\_group                  [qi::\_val = phoenix::bind(&
+      ParserSpiritGrammar::cos, \textcolor{keyword}{this},   qi::\_1)]
+376         |   qi::lit(\textcolor{stringliteral}{"tan"})   >> M\_group                  [qi::\_val = phoenix::bind(&
+      ParserSpiritGrammar::tan, \textcolor{keyword}{this},   qi::\_1)]
+377         |   qi::lit(\textcolor{stringliteral}{"sqrt"})  >> M\_group                  [qi::\_val = phoenix::bind(&
+      ParserSpiritGrammar::sqrt, \textcolor{keyword}{this},  qi::\_1)]
+378         |   qi::lit(\textcolor{stringliteral}{"exp"})   >> M\_group                  [qi::\_val = phoenix::bind(&
+      ParserSpiritGrammar::exp, \textcolor{keyword}{this},   qi::\_1)]
+379         |   qi::lit(\textcolor{stringliteral}{"log"})   >> M\_group                  [qi::\_val = phoenix::bind(&
+      ParserSpiritGrammar::log, \textcolor{keyword}{this},   qi::\_1)]
+380         |   qi::lit(\textcolor{stringliteral}{"log10"}) >> M\_group                  [qi::\_val = phoenix::bind(&
+      ParserSpiritGrammar::log10, \textcolor{keyword}{this}, qi::\_1)]
+381         )
+382         ;
+383 
+384     M\_group
+385     =
+386         (
+387             \textcolor{charliteral}{'('}
+388         >>  M\_expression                                 [qi::\_val = qi::\_1]
+389         >>  \textcolor{charliteral}{')'}
+390         )
+391         ;
+392 \}
+\end{DoxyCode}
+\hypertarget{classLifeV_1_1ParserSpiritGrammar_a2a0d8a4396ae61a66edc4f320d9e79f5}{\index{Life\-V\-::\-Parser\-Spirit\-Grammar@{Life\-V\-::\-Parser\-Spirit\-Grammar}!Parser\-Spirit\-Grammar@{Parser\-Spirit\-Grammar}}
+\index{Parser\-Spirit\-Grammar@{Parser\-Spirit\-Grammar}!LifeV::ParserSpiritGrammar@{Life\-V\-::\-Parser\-Spirit\-Grammar}}
+\subsubsection[{Parser\-Spirit\-Grammar}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Iterator\-Type , typename Results\-Type $>$ {\bf Life\-V\-::\-Parser\-Spirit\-Grammar}$<$ Iterator\-Type, Results\-Type $>$\-::{\bf Parser\-Spirit\-Grammar} (
+\begin{DoxyParamCaption}
+\item[{const {\bf Parser\-Spirit\-Grammar}$<$ Iterator\-Type, Results\-Type $>$ \&}]{spirit\-Grammar}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}}\label{classLifeV_1_1ParserSpiritGrammar_a2a0d8a4396ae61a66edc4f320d9e79f5}
+
+
+Copy constructor. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em \hyperlink{classLifeV_1_1ParserSpiritGrammar}{Parser\-Spirit\-Grammar}} & \hyperlink{classLifeV_1_1ParserSpiritGrammar}{Parser\-Spirit\-Grammar} \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+395                                                                                                            
+           :
+396         ParserSpiritGrammar::base\_type     ( spiritGrammar.M\_start ),
+397         M\_start                               ( spiritGrammar.M\_start ),
+398         M\_assignment                          ( spiritGrammar.M\_assignment ),
+399 \textcolor{comment}{//        M\_command                             ( spiritGrammar.M\_command ),}
+400         M\_expression                          ( spiritGrammar.M\_expression ),
+401         M\_compare                             ( spiritGrammar.M\_compare ),
+402         M\_plusMinus                           ( spiritGrammar.M\_plusMinus ),
+403         M\_multiplyDivide                      ( spiritGrammar.M\_multiplyDivide ),
+404         M\_elevate                             ( spiritGrammar.M\_elevate ),
+405         M\_element                             ( spiritGrammar.M\_element ),
+406         M\_number                              ( spiritGrammar.M\_number ),
+407         M\_function                            ( spiritGrammar.M\_function ),
+408         M\_group                               ( spiritGrammar.M\_group ),
+409         M\_variable                            ( spiritGrammar.M\_variable )
+410 \{
+411 \}
+\end{DoxyCode}
+\hypertarget{classLifeV_1_1ParserSpiritGrammar_a32c0629e6ee7ea37bb0b3159b0fa31ee}{\index{Life\-V\-::\-Parser\-Spirit\-Grammar@{Life\-V\-::\-Parser\-Spirit\-Grammar}!$\sim$\-Parser\-Spirit\-Grammar@{$\sim$\-Parser\-Spirit\-Grammar}}
+\index{$\sim$\-Parser\-Spirit\-Grammar@{$\sim$\-Parser\-Spirit\-Grammar}!LifeV::ParserSpiritGrammar@{Life\-V\-::\-Parser\-Spirit\-Grammar}}
+\subsubsection[{$\sim$\-Parser\-Spirit\-Grammar}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Iterator\-Type = std\-::string\-::const\-\_\-iterator, typename Results\-Type = std\-::vector $<$ Real $>$$>$ virtual {\bf Life\-V\-::\-Parser\-Spirit\-Grammar}$<$ Iterator\-Type, Results\-Type $>$\-::$\sim${\bf Parser\-Spirit\-Grammar} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classLifeV_1_1ParserSpiritGrammar_a32c0629e6ee7ea37bb0b3159b0fa31ee}
+
+
+Destructor. 
+
+
+\begin{DoxyCode}
+108 \{\}
+\end{DoxyCode}
+
+
+\subsection{Documentazione delle funzioni membro}
+\hypertarget{classLifeV_1_1ParserSpiritGrammar_a026a60af01b958c4f06877b40bbd19bf}{\index{Life\-V\-::\-Parser\-Spirit\-Grammar@{Life\-V\-::\-Parser\-Spirit\-Grammar}!assign\-Variable@{assign\-Variable}}
+\index{assign\-Variable@{assign\-Variable}!LifeV::ParserSpiritGrammar@{Life\-V\-::\-Parser\-Spirit\-Grammar}}
+\subsubsection[{assign\-Variable}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Iterator\-Type = std\-::string\-::const\-\_\-iterator, typename Results\-Type = std\-::vector $<$ Real $>$$>$ void {\bf Life\-V\-::\-Parser\-Spirit\-Grammar}$<$ Iterator\-Type, Results\-Type $>$\-::assign\-Variable (
+\begin{DoxyParamCaption}
+\item[{const {\bf iterator\-Range\-\_\-\-Type} \&}]{string\-Iterator\-Range, }
+\item[{const {\bf Real} \&}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLifeV_1_1ParserSpiritGrammar_a026a60af01b958c4f06877b40bbd19bf}
+Assign a variable using a {\ttfamily boost\-::iterator\-\_\-range} 
+
+
+\begin{DoxyParams}{Parametri}
+{\em string\-Iterator\-Range} & name of the parameter \\
+\hline
+{\em value} & value of the parameter \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+134 \{ \hyperlink{classLifeV_1_1ParserSpiritGrammar_a357a7e8d98940858ac6e05c106082e2e}{setVariable}( std::string( stringIteratorRange.begin(), stringIteratorRange.end() ), value ); \}
+\end{DoxyCode}
+\hypertarget{classLifeV_1_1ParserSpiritGrammar_a81b8e2abdda8a35738367f2dcfb69c75}{\index{Life\-V\-::\-Parser\-Spirit\-Grammar@{Life\-V\-::\-Parser\-Spirit\-Grammar}!clear\-Variables@{clear\-Variables}}
+\index{clear\-Variables@{clear\-Variables}!LifeV::ParserSpiritGrammar@{Life\-V\-::\-Parser\-Spirit\-Grammar}}
+\subsubsection[{clear\-Variables}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Iterator\-Type = std\-::string\-::const\-\_\-iterator, typename Results\-Type = std\-::vector $<$ Real $>$$>$ void {\bf Life\-V\-::\-Parser\-Spirit\-Grammar}$<$ Iterator\-Type, Results\-Type $>$\-::clear\-Variables (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLifeV_1_1ParserSpiritGrammar_a81b8e2abdda8a35738367f2dcfb69c75}
+
+
+Clear all the variables. 
+
+
+\begin{DoxyCode}
+137 \{ M\_variable.clear(); \}
+\end{DoxyCode}
+\hypertarget{classLifeV_1_1ParserSpiritGrammar_a6ce4fa32aacdc3bc7e4b38be901f94cf}{\index{Life\-V\-::\-Parser\-Spirit\-Grammar@{Life\-V\-::\-Parser\-Spirit\-Grammar}!operator=@{operator=}}
+\index{operator=@{operator=}!LifeV::ParserSpiritGrammar@{Life\-V\-::\-Parser\-Spirit\-Grammar}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Iterator\-Type , typename Results\-Type $>$ {\bf Parser\-Spirit\-Grammar}$<$ Iterator\-Type, Results\-Type $>$ \& {\bf Life\-V\-::\-Parser\-Spirit\-Grammar}$<$ Iterator\-Type, Results\-Type $>$\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Parser\-Spirit\-Grammar}$<$ Iterator\-Type, Results\-Type $>$ \&}]{spirit\-Grammar}
+\end{DoxyParamCaption}
+)}}\label{classLifeV_1_1ParserSpiritGrammar_a6ce4fa32aacdc3bc7e4b38be901f94cf}
+
+
+Operator =. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em Spirit\-Grammar} & \hyperlink{classLifeV_1_1ParserSpiritGrammar}{Parser\-Spirit\-Grammar} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+reference to a copy of the class 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+419 \{
+420     \textcolor{keywordflow}{if} ( \textcolor{keyword}{this} != &spiritGrammar )
+421     \{
+422         ParserSpiritGrammar::base\_type::operator=( spiritGrammar.M\_start );
+423 \textcolor{comment}{//        ParserSpiritGrammar< IteratorType, ResultsType >::operator=( spiritGrammar );}
+424         M\_start                               = spiritGrammar.M\_start;
+425         M\_assignment                          = spiritGrammar.M\_assignment;
+426 \textcolor{comment}{//        M\_command                             = spiritGrammar.M\_command;}
+427         M\_expression                          = spiritGrammar.M\_expression;
+428         M\_compare                             = spiritGrammar.M\_compare;
+429         M\_plusMinus                           = spiritGrammar.M\_plusMinus;
+430         M\_multiplyDivide                      = spiritGrammar.M\_multiplyDivide;
+431         M\_elevate                             = spiritGrammar.M\_elevate;
+432         M\_element                             = spiritGrammar.M\_element;
+433         M\_number                              = spiritGrammar.M\_number;
+434         M\_function                            = spiritGrammar.M\_function;
+435         M\_group                               = spiritGrammar.M\_group;
+436         M\_variable                            = spiritGrammar.M\_variable;
+437     \}
+438 
+439     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};
+440 \}
+\end{DoxyCode}
+\hypertarget{classLifeV_1_1ParserSpiritGrammar_aa48cdca46ab32d3c1e55e656aa82e902}{\index{Life\-V\-::\-Parser\-Spirit\-Grammar@{Life\-V\-::\-Parser\-Spirit\-Grammar}!set\-Default\-Variables@{set\-Default\-Variables}}
+\index{set\-Default\-Variables@{set\-Default\-Variables}!LifeV::ParserSpiritGrammar@{Life\-V\-::\-Parser\-Spirit\-Grammar}}
+\subsubsection[{set\-Default\-Variables}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Iterator\-Type , typename Results\-Type $>$ void {\bf Life\-V\-::\-Parser\-Spirit\-Grammar}$<$ Iterator\-Type, Results\-Type $>$\-::set\-Default\-Variables (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLifeV_1_1ParserSpiritGrammar_aa48cdca46ab32d3c1e55e656aa82e902}
+
+
+Set default variables. 
+
+
+\begin{DoxyCode}
+448 \{
+449     M\_variable.add( \textcolor{stringliteral}{"pi"} , M\_PI );
+450     M\_variable.add( \textcolor{stringliteral}{"e"}, M\_E );
+451 \}
+\end{DoxyCode}
+\hypertarget{classLifeV_1_1ParserSpiritGrammar_a357a7e8d98940858ac6e05c106082e2e}{\index{Life\-V\-::\-Parser\-Spirit\-Grammar@{Life\-V\-::\-Parser\-Spirit\-Grammar}!set\-Variable@{set\-Variable}}
+\index{set\-Variable@{set\-Variable}!LifeV::ParserSpiritGrammar@{Life\-V\-::\-Parser\-Spirit\-Grammar}}
+\subsubsection[{set\-Variable}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Iterator\-Type , typename Results\-Type $>$ void {\bf Life\-V\-::\-Parser\-Spirit\-Grammar}$<$ Iterator\-Type, Results\-Type $>$\-::set\-Variable (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{name, }
+\item[{const {\bf Real} \&}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLifeV_1_1ParserSpiritGrammar_a357a7e8d98940858ac6e05c106082e2e}
+Set/replace a variable
+
+
+\begin{DoxyParams}{Parametri}
+{\em name} & name of the parameter \\
+\hline
+{\em value} & value of the parameter \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+456 \{
+457     \hyperlink{namespaceLifeV_ad58c7402b26e5087b634b25d029c9c32}{Real} *p = M\_variable.find( name );
+458     \textcolor{keywordflow}{if} ( p != 0 )
+459         *p = value;
+460     \textcolor{keywordflow}{else}
+461         M\_variable.add( name, value );
+462 \}
+\end{DoxyCode}
+\hypertarget{classLifeV_1_1ParserSpiritGrammar_a768e48421db190a4eba5144932ddc4f6}{\index{Life\-V\-::\-Parser\-Spirit\-Grammar@{Life\-V\-::\-Parser\-Spirit\-Grammar}!variable@{variable}}
+\index{variable@{variable}!LifeV::ParserSpiritGrammar@{Life\-V\-::\-Parser\-Spirit\-Grammar}}
+\subsubsection[{variable}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Iterator\-Type = std\-::string\-::const\-\_\-iterator, typename Results\-Type = std\-::vector $<$ Real $>$$>$ {\bf Real}\& {\bf Life\-V\-::\-Parser\-Spirit\-Grammar}$<$ Iterator\-Type, Results\-Type $>$\-::variable (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLifeV_1_1ParserSpiritGrammar_a768e48421db190a4eba5144932ddc4f6}
+Get variable
+
+
+\begin{DoxyParams}{Parametri}
+{\em name} & name of the parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+value of the variable 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+170 \{ \textcolor{keywordflow}{return} M\_variable.at( name ); \}
+\end{DoxyCode}
+
+
+La documentazione per questa classe è stata generata a partire dal seguente file\-:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{ParserSpiritGrammar_8h}{Parser\-Spirit\-Grammar.\-h}\end{DoxyCompactItemize}

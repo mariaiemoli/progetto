@@ -1,5 +1,5 @@
-/** DarcyFractured.h  
- *
+/**   
+ * DarcyFractured.h
  * structure for the Darcy fractured problem
  *
  */
@@ -27,9 +27,10 @@ public:
                      const FracturesSetPtr_Type& fractures,
                      const ExporterPtr_Type& exporter );
     
-    /** void init ()
-     *  Build the M_mediumMesh, set finite element
-     * and integration methods and select the boundaries.
+    /** 
+     * void init ()
+     * Build the M_mediumMesh, set finite element and integration methods and select the boundaries.
+     * 
      */
     void init ( );
 

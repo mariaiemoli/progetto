@@ -7,7 +7,7 @@
 LevelSetHandler::LevelSetHandler ( const GetPot& dataFile,
                                    const std::string& section,
                                    const std::string& sectionLevelSet ) :
-                                   M_data(new LevelSetData_Type(dataFile, section, sectionLevelSet))
+                                   M_data( new LevelSetData_Type ( dataFile, section, sectionLevelSet ) )
 {}
 
 

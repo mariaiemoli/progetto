@@ -10,29 +10,22 @@ MediumData::MediumData ( const GetPot& dataFile,
                          const std::string& sectionSolver,
                          const std::string& section,
                          const std::string& sectionDomain ) :
-            M_section(section),
-            M_sectionDomain(M_section + sectionDomain),
-            M_sectionSolver(M_section + sectionSolver),
-            M_penaltyVector(dataFile(
-                    (M_sectionDomain + "penaltyVelocity").data(), 5.)),
-            M_penaltyScalar(dataFile(
-                    (M_sectionDomain + "penaltyPressure").data(), 1.)),
-            // darcy
-            M_invK(dataFile((M_sectionSolver + "invK").data(), 1.)),
-            M_invKDistribution11(dataFile(
-                    (M_sectionSolver + "invKDist11").data(), "1.")),
-           M_invKDistribution12(dataFile(
-                    (M_sectionSolver + "invKDist12").data(), "1.")),
-           M_invKDistribution22(dataFile(
-                    (M_sectionSolver + "invKDist22").data(), "1.")),
-            M_exact(dataFile((M_sectionSolver + "solution").data(), "x")),
-            M_exactInlet(dataFile((M_sectionSolver + "solutionIn").data(),
-                    M_exact.data())), M_exactOutlet(dataFile((M_sectionSolver
-                    + "solutionOut").data(), M_exact.data())), M_exactFlux(
-                    dataFile((M_sectionSolver + "velocity").data(), "1.")),
-            M_source(dataFile((M_sectionSolver + "source").data(), "1.")),
-            M_exactInitial(dataFile(
-                    (M_sectionSolver + "initialCondition").data(), "0."))
+            M_section( section ),
+            M_sectionDomain( M_section + sectionDomain ),
+            M_sectionSolver( M_section + sectionSolver ),
+            M_penaltyVector( dataFile ( ( M_sectionDomain + "penaltyVelocity" ).data(), 5. ) ),
+            M_penaltyScalar( dataFile ( ( M_sectionDomain + "penaltyPressure" ).data(), 1. ) ),
+            // darcy 
+            M_invK( dataFile ( ( M_sectionSolver + "invK" ).data(), 1. ) ),
+            M_invKDistribution11( dataFile ( ( M_sectionSolver + "invKDist11" ).data(), "1." ) ),
+            M_invKDistribution12( dataFile ( ( M_sectionSolver + "invKDist12" ).data(), "1." ) ),
+            M_invKDistribution22( dataFile ( ( M_sectionSolver + "invKDist22" ).data(), "1." ) ),
+            M_exact(dataFile( ( M_sectionSolver + "solution" ).data(), "x" ) ),
+            M_exactInlet( dataFile ( ( M_sectionSolver + "solutionIn" ).data(), M_exact.data() ) ), 
+            M_exactOutlet( dataFile ( ( M_sectionSolver + "solutionOut" ).data(), M_exact.data() ) ), 
+            M_exactFlux( dataFile ( ( M_sectionSolver + "velocity" ).data(), "1." ) ),
+            M_source(dataFile( ( M_sectionSolver + "source" ).data(), "1." ) ),
+            M_exactInitial( dataFile ( ( M_sectionSolver + "initialCondition" ).data(), "0." ) )
 {
 }// costruttore
 
@@ -106,7 +99,6 @@ scalar_type MediumData::source ( const base_node& x, const scalar_type& t ) cons
 }// source
 
 
-//questa bella funzione restituisce un'eventuale modulazione del coefficiente di permeabilità
 scalar_type MediumData::invKDistribution11 ( const base_node& x ) const
 {
     M_parser.setString(M_invKDistribution11);

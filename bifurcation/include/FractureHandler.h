@@ -1,5 +1,7 @@
-/** FractureHandler.h
- *
+/** 
+ * FractureHandler.h
+ * 
+ * classe che inizializza e gestisce una frattura
  */
 
 #ifndef FRACTUREHANDLER_H_
@@ -13,22 +15,40 @@ class FractureHandler
 {
 public:
 
+	/**
+	 * flags che uso per distinguere sulla mesh di ogni level set le regioni " non tagliate ", 
+	 * cioè dove non vi è intersezione con altre fratture, dalle regioni " tagliate ", cioè dove il level set ha un'intersezione
+	 */
     enum
     {
         FRACTURE_UNCUT = 10000,
         FRACTURE_INTERSECT = 10000
     };
 
+    
     FractureHandler ( const GetPot& dataFile,
                       const size_type& ID,
                       const std::string& section = "fractureData/" );
 
+    /**
+     * funzione che inizializza la frattura
+     * Ogni frattura ha una rappresentazione 1d, ma la mesh reale è una mesh di punti 2d ( sono i punti del tipo (x,y) che stanno sulla 
+     * curva y=f(x) ) e questo comporta dei problemi per l'integrazione. Per risolvere il problema per ogni frattura costruiamo una mesh
+     * 1d ottenuta proiettando lungo l'asse delle ascisse la mesh reale. Una volta risolto il problema si ritorna sulla mesh reale 
+     * interpolando i risultati ottenuti.
+     */
     void init ( );
 
 
+    /**
+     * funzione che calcola il vettore normale alla frattura e la mappa di conversione dalla mesh reale alla mesh piatta
+     */
     void normalVectorAndMap ( const getfem::mesh_fem& mediumMeshFEMPressure );
 
 
+    /**
+     * funzione che calcola il passo di griglia, h^-1
+     */
     void computeInvH ( const BCHandlerPtr_Type& bcHandler );
 
 
@@ -208,45 +228,72 @@ public:
         M_fractureIntersectElementsGlobalIndex.resize ( numFractures );
     }
 
+    /**
+     * funzione che, data un'altra frattura con cui si interseca, imposta i  valori legati all'intersezione: costruisce sulla mesh 
+     * la regione " tagliata ", aggiunge i gradi di libertà estesi,  e imposta che tali gradi di libertà siano gli stessi sulle due fratture
+     */
     size_type setMeshLevelSetFracture ( FractureHandler& otherFracture, size_type& globalIndex );
 
 
+    /**
+     * \return M_extendedPressure.size(): numero di gradi di libertà estesi per la pressione per la frattura, uno per ogni intersezione
+     * di tipo Cross e tre per ogni intersezione di tipo Biforcazione
+     */
     size_type getNumExtendedPressure () const
     {
         return M_extendedPressure.size();
     }
 
 
+    /**
+     * \return M_extendedPressure: vettore dei gradi di libertà estesi per la pressione per la frattura 
+     */
     const sizeVector_Type& getExtendedPressure () const
     {
         return M_extendedPressure;
     }
 
 
+    /**
+     * \return M_extendedVelocity.size(): numero di gradi di libertà estesi per la velocità per la frattura, due per ogni intersezione
+     * di tipo Cross e sei per ogni intersezione di tipo Biforcazione
+     */
     size_type getNumExtendedVelocity () const
     {
         return M_extendedVelocity.size();
     }
 
 
+    /**
+     * \return M_extendedVelocity: vettore dei gradi di libertà estesi per la velocità per la frattura 
+     */
     const sizeVector_Type& getExtendedVelocity () const
     {
         return M_extendedVelocity;
     }
 
 
+    /**
+     * \return M_meshLevelSetIntersect[f]: mesh del level set di indice f intersecato dalla frattura corrente 
+     */
     GFMeshLevelSetPtr_Type getMeshLevelSetIntersect ( const size_type& f )
     {
         return M_meshLevelSetIntersect[f];
     }
 
 
+    /**
+     * \return M_LevelSetIntersect[f]: level set di indice f intersecato dalla frattura corrente 
+     */
     GFLevelSetPtr_Type getLevelSetIntersect ( const size_type& f )
     {
         return M_levelSetIntersect[f];
     }
 
 
+    /**
+     * funzione che calcola in numero totale di intersezione della frattura corrente
+     */
     size_type getNumIntersections () const;
 
 
@@ -276,7 +323,7 @@ private:
 
     LevelSetHandlerPtr_Type M_levelSet;
 
-    // the M_mediummesh for the fracture: M_meshFlat is "flat", M_meshMapped is mapped (z(x))
+    // the M_mediummesh for the fracture: M_meshFlat is "flat", M_meshMapped is mapped (x(t),y(t))
     getfem::mesh M_meshFlat;
     getfem::mesh M_meshMapped;
 
@@ -336,10 +383,10 @@ private:
 
 };
 
-typedef FractureHandler FractureHandler_Type;
-typedef boost::shared_ptr<FractureHandler_Type> FractureHandlerPtr_Type;
-typedef std::vector<FractureHandlerPtr_Type> FracturePtrContainer_Type;
-typedef std::vector<FractureHandler_Type> FractureContainer_Type;
-typedef boost::shared_ptr<FracturePtrContainer_Type> FracturePtrContainerPtr_Type;
+typedef FractureHandler FractureHandler_Type;											/*!< classe FractureHandler */
+typedef boost::shared_ptr<FractureHandler_Type> FractureHandlerPtr_Type;				/*!< puntatore alla classe FractureHandler */
+typedef std::vector<FractureHandlerPtr_Type> FracturePtrContainer_Type;					/*!< vettore di puntatori alla classe FractureHandler */
+typedef std::vector<FractureHandler_Type> FractureContainer_Type;						/*!< vettore di classi FractureHandler */
+typedef boost::shared_ptr<FracturePtrContainer_Type> FracturePtrContainerPtr_Type;		/*!< puntatore a un vettore di puntatori alla classe FractureHandler */
 
 #endif /* FRACTUREHANDLER_H_ */

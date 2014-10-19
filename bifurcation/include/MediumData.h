@@ -2,6 +2,8 @@
  *
  * MediumData.h
  *
+ * classe che contiene le informazioni sulle proprietà del mezzo e sui metodi di integrazione
+ * 
  */
 
 #ifndef _MEDIUMDATA_
@@ -14,47 +16,75 @@ class MediumData
 {
 public:
 
+	/**
+	 * \param dataFile: variabile di tipo GetPot che contiene il nome del file data
+	 * \param section: nome della sezione corrispondente al mezzo
+	 * \param sectionDomain: noe della sezione del mezzo corrispondente alle caratteristiche del dominio
+	 */
 	MediumData ( const GetPot& dataFile,
 				 const std::string& sectionSolver,
 				 const std::string& section = "mediumData/",
 				 const std::string& sectionDomain = "domain/" );
 
 
-    /** Exact solution, pressure
-     *
+    /** 
      * funzione che valuta la soluzione esatta in un dato nodo
+     * \param x: bgeot::base_node, nodo geometrico
      *
      */
     scalar_type exact ( const base_node& x, const scalar_type& t = 0 ) const;
 
 
-    // Exact solution, pressure OUT, i.e. level set >0
-    scalar_type
-    exactOutlet ( const base_node& x, const scalar_type& t = 0 ) const;
+    /** 
+     * funzione che valuta la soluzione esatta in un dato nodo nella regione in cui level set > 0 
+     * \param x: bgeot::base_node, nodo geometrico
+     */
+    scalar_type exactOutlet ( const base_node& x, const scalar_type& t = 0 ) const;
 
 
-    // Exact solution, pressure IN (i.e. level set <0)
-    scalar_type
-    exactInlet ( const base_node& x, const scalar_type& t = 0 ) const;
+
+    /** 
+     * funzione che valuta la soluzione esatta in un dato nodo nella regione in cui level set < 0 
+     * \param x: bgeot::base_node, nodo geometrico
+     */
+    scalar_type exactInlet ( const base_node& x, const scalar_type& t = 0 ) const;
 
 
-    // Exact solution, velocity (non ho ancora impostato quella corretta)
+    /** 
+     * funzione che valuta il flusso esatto in un dato nodo  
+     * \param x: bgeot::base_node, nodo geometrico
+     * \param n: bgeot::base_node, vettore normale
+     */
     scalar_type exactFlux ( const base_node& x,
                             const base_node& n,
                             const scalar_type& t = 0 ) const;
 
 
-    // Exact solution, div(Velocity) -- SET = 0 WITH NO MASS SOURCES/SINKS !
+    /** 
+     * funzione che valuta il termine sorgente in un dato nodo 
+     * \param x: bgeot::base_node, nodo geometrico
+     */
     scalar_type source ( const base_node& x, const scalar_type& t = 0 ) const;
 
 
-    //questa bella funzione restituisce un'eventuale modulazione del coefficiente di permeabilità
+    /**
+     * funzione che restituisce un'eventuale modulazione del coefficiente di permeabilità
+     * \param x: bgeot::base_node, nodo geometrico
+     */
     scalar_type invKDistribution11 ( const base_node& x ) const;
 
 
+    /**
+     * funzione che restituisce un'eventuale modulazione del coefficiente di permeabilità
+     * \param x: bgeot::base_node, nodo geometrico
+     */
     scalar_type invKDistribution12 ( const base_node& x ) const;
 
 
+    /**
+     * funzione che restituisce un'eventuale modulazione del coefficiente di permeabilità
+     * \param x: bgeot::base_node, nodo geometrico
+     */
     scalar_type invKDistribution22 ( const base_node& x ) const;
 
 
@@ -107,8 +137,8 @@ private:
 
 };
 
-typedef MediumData MediumData_Type;
-typedef boost::shared_ptr<MediumData_Type> MediumDataPtr_Type;
+typedef MediumData MediumData_Type;									/*!< classe MediumData */
+typedef boost::shared_ptr<MediumData_Type> MediumDataPtr_Type;		/*!< puntatore alla classe MediumData */ 
 
 
 #endif /* MEDIUMDATA_H_ */

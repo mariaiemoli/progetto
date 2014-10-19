@@ -299,7 +299,9 @@ void DarcyFractured::assembly ( )
 
 			const size_type globalIndex = intersectElementsGlobalIndex0 [id1] [k].first;
 			const size_type globalIndex2 = intersectElementsGlobalIndex0 [id1] [k].second;
-
+			
+			std::cout << "globalIndex: " << globalIndex << "globalIndex2: " << globalIndex2 << std::endl;
+			std::cout << "shiftIntersect [ id0 ]: " << shiftIntersect [ id0 ] << "shiftIntersect [ id0 ]: " << shiftIntersect [ id1 ] << std::endl;
 
 			gmm::copy ( *Aup0, 
 					    gmm::sub_matrix (*M_globalMatrix,
@@ -383,6 +385,7 @@ void DarcyFractured::assembly ( )
         // Update the shift
         fractureShift += fractureNumberDOFVelocityPressure [ f ];
  
+        std::cout << "fractureShift [ " << f << " ] " << fractureShift << std::endl;
     }
 
     gmm::copy(*App, gmm::sub_matrix(*M_globalMatrix, 
@@ -478,7 +481,7 @@ void DarcyFractured::assembly ( )
         gmm::clear(*(B_pF [ f ]));
 
         getfem::assembling_Source_BoundaryF ( B_pF [ f ], divF [ f ], M_fractures->getFracture( f ), FractureHandler::FRACTURE_UNCUT * ( f + 1 ) );
-/*
+
         for ( size_type otherFracture = 0; otherFracture < numberFractures; ++otherFracture )
         {
             if ( M_fractures->getFracture( f )->getMeshLevelSetIntersect ( otherFracture ).get() )
@@ -490,7 +493,7 @@ void DarcyFractured::assembly ( )
             	std::cout << "sistemare intersezione" << std::endl;
             }
         }
-*/
+
         for ( size_type i = 0; i < fractureNumberGlobalDOFVelocity [ f ]; ++i )
         {
             (*M_globalRightHandSide) [ fractureShift + i ] += (*(B_vF [ f ])) [ i ];
@@ -613,7 +616,7 @@ void DarcyFractured::solve ( )
         std::ostringstream osFileName;
 
         getfem::mesh_level_set meshFLevelSetCutFlat ( fracture->getMeshFlat() );
-   /*     for ( size_type otherF = 0; otherF < numberFractures; ++otherF )
+        for ( size_type otherF = 0; otherF < numberFractures; ++otherF )
         {
             GFLevelSetPtr_Type levelSetPtr = fracture->getLevelSetIntersect ( otherF );
 
@@ -622,7 +625,7 @@ void DarcyFractured::solve ( )
                 meshFLevelSetCutFlat.add_level_set ( *levelSetPtr );
             }
         }
-*/
+
 
         meshFLevelSetCutFlat.adapt();
 
@@ -715,7 +718,7 @@ void DarcyFractured::solve ( )
         getfem::interpolation ( mfprojUncut, mfproj, fracturePressureMeanUNCUT, fracturePressureMeanUNCUTInterpolated );
 
         const sizeVector_Type& extendedPressure = fracture->getExtendedPressure();
-/*
+
         for ( size_type otherFracture = 0; otherFracture < numberFractures; ++otherFracture )
         {
             if ( fracture->getLevelSetIntersect( otherFracture ).get() )
@@ -782,7 +785,7 @@ void DarcyFractured::solve ( )
 
             }
         }
-*/
+
         osFileName.str("");
         osFileName << "fracturePressure" << f << ".vtk";
 

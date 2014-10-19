@@ -813,6 +813,108 @@ void assembling_Source_BoundaryF ( scalarVectorPtr_Type& D,
 } // assembling_Source_BoundaryF
 
 
+//termine sorgente per la frattura
+void assembling_SourceF ( scalarVectorPtr_Type& D,
+                          const scalarVectorPtr_Type& source,
+                          const FractureHandlerPtr_Type& fracture,
+                          const FractureHandlerPtr_Type& otherFracture,
+                          const size_type& cutRegionFlag )
+{
+    const size_type shiftPressure = fracture->getMeshFEMPressure().nb_dof();
+    const size_type shiftMapFactor = fracture->getMagnificationMapFactor1().size();
+    const size_type otherFractureId = otherFracture->getId();
+    LevelSetHandlerPtr_Type& levelSetOtherFracture = otherFracture->getLevelSet();
+
+    scalarVector_Type DIn ( shiftPressure, 0.0 ), DOut ( shiftPressure, 0.0 ),
+                      invF ( shiftMapFactor, 0 );
+
+    generic_assembly assemIn, assemOut;
+
+    for ( size_type i = 0; i < shiftMapFactor; ++i )
+    {
+        invF [ i ] = 1.0 / (fracture->getMagnificationMapFactor1(i));
+    }
+
+    assemIn.set( "w=data$1(#2);" "q=data$2(#2);"
+                 "a=comp(Base(#1).Base(#2).Base(#2));"
+                 "V(#1)+=a(:, k,j).w(k).q(j)" );
+
+    assemOut.set( "w=data$1(#2);" "q=data$2(#2);"
+                  "a=comp(Base(#1).Base(#2).Base(#2));"
+                  "V(#1)+=a(:, k,j).w(k).q(j)" );
+
+    const getfem::pintegration_method intTypeIM = getfem::int_method_descriptor ( "IM_GAUSS1D(3)" );
+    getfem::mesh_im_level_set meshImLevelSetOut ( *fracture->getMeshLevelSetIntersect ( otherFractureId ),
+                                                  getfem::mesh_im_level_set::INTEGRATE_OUTSIDE );
+
+    getfem::mesh_im_level_set meshImLevelSetIn ( *fracture->getMeshLevelSetIntersect ( otherFractureId ),
+                                                 getfem::mesh_im_level_set::INTEGRATE_INSIDE );
+
+    meshImLevelSetOut.set_integration_method ( fracture->getMeshFlat().convex_index(), intTypeIM );
+    meshImLevelSetIn.set_integration_method ( fracture->getMeshFlat().convex_index(), intTypeIM );
+
+    meshImLevelSetOut.set_simplex_im ( intTypeIM );
+    meshImLevelSetIn.set_simplex_im ( intTypeIM );
+
+    // Assign the M_mediumMesh integration method
+    assemIn.push_mi ( meshImLevelSetIn );
+    assemOut.push_mi ( meshImLevelSetOut );
+
+    // Assign the M_mediumMesh finite element space
+    assemIn.push_mf ( fracture->getMeshFEMPressure() );
+    assemOut.push_mf ( fracture->getMeshFEMPressure() );
+
+    // Assign the M_mediumMesh finite element space for the coefficients
+    assemIn.push_mf ( fracture->getMeshFEMPressure() );
+    assemIn.push_mf ( fracture->getMeshFEMPressure() );
+    assemOut.push_mf ( fracture->getMeshFEMPressure() );
+    assemOut.push_mf ( fracture->getMeshFEMPressure() );
+
+    // Assign the coefficients
+    assemIn.push_data ( *source );
+    assemIn.push_data ( invF );
+    assemOut.push_data ( *source );
+    assemOut.push_data ( invF );
+
+    // Set the vector to save the evaluations
+    assemIn.push_vec ( DIn );
+    assemOut.push_vec ( DOut );
+
+    // Computes the matrices
+    assemIn.assembly ( cutRegionFlag );
+    assemOut.assembly ( cutRegionFlag );
+
+    const sizeVector_Type& extendedPressure = fracture->getExtendedPressure();
+    const size_type extendedNumPressure = fracture->getNumExtendedPressure();
+
+    for ( size_type i = 0; i < extendedNumPressure; ++i )
+    {
+        const size_type ii = extendedPressure [ i ];
+        const base_node pointFlat = fracture->getMeshFEMPressure().point_of_basic_dof(ii);
+        base_node pointMapped(0,0);
+        base_node pointMapped1(0,0);
+	scalar_type t = ii*1./(fracture->getData().getSpatialDiscretization () );
+        pointMapped[0] = t;
+        pointMapped1[0] = pointFlat[0];
+        pointMapped1[1] = fracture->getLevelSet()->getData()->y_map( pointMapped );
+        
+	const scalar_type levelSetValue = levelSetOtherFracture->getData()->ylevelSetFunction ( pointMapped1 );
+
+        if ( levelSetValue < 0 )
+        {
+            (*D) [ ii ] += DIn [ ii ];
+            (*D) [ i + shiftPressure ] += DOut [ ii ];
+        }
+        else
+        {
+            (*D) [ ii ] += DOut [ ii ];
+            (*D) [ i + shiftPressure ] += DIn [ ii ];
+        }
+    }
+
+} // assembling_SourceF
+
+
 void coupleFractures ( sparseMatrixPtr_Type& M, const FracturesSetPtr_Type& fractures )
 {
     const size_type numFractures = fractures->getNumberFractures ();

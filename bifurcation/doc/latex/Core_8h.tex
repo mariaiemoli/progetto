@@ -1,0 +1,243 @@
+\hypertarget{Core_8h}{\section{Riferimenti per il file include/\-Core.h}
+\label{Core_8h}\index{include/\-Core.\-h@{include/\-Core.\-h}}
+}
+{\ttfamily \#include $<$getfem/getfem\-\_\-regular\-\_\-meshes.\-h$>$}\\*
+{\ttfamily \#include $<$getfem/getfem\-\_\-interpolation.\-h$>$}\\*
+{\ttfamily \#include $<$getfem/getfem\-\_\-config.\-h$>$}\\*
+{\ttfamily \#include $<$getfem/getfem\-\_\-assembling.\-h$>$}\\*
+{\ttfamily \#include $<$getfem/getfem\-\_\-import.\-h$>$}\\*
+{\ttfamily \#include $<$getfem/getfem\-\_\-export.\-h$>$}\\*
+{\ttfamily \#include $<$gmm/gmm.\-h$>$}\\*
+{\ttfamily \#include $<$gmm/gmm\-\_\-inoutput.\-h$>$}\\*
+{\ttfamily \#include $<$gmm/gmm\-\_\-\-M\-U\-M\-P\-S\-\_\-interface.\-h$>$}\\*
+{\ttfamily \#include $<$gmm/gmm\-\_\-superlu\-\_\-interface.\-h$>$}\\*
+{\ttfamily \#include $<$getfem/bgeot\-\_\-mesh.\-h$>$}\\*
+{\ttfamily \#include $<$getfem/getfem\-\_\-mesh\-\_\-im\-\_\-level\-\_\-set.\-h$>$}\\*
+{\ttfamily \#include $<$getfem/getfem\-\_\-mesh\-\_\-fem\-\_\-level\-\_\-set.\-h$>$}\\*
+{\ttfamily \#include $<$string$>$}\\*
+{\ttfamily \#include $<$getfem/getfem\-\_\-mesh\-\_\-fem\-\_\-product.\-h$>$}\\*
+{\ttfamily \#include $<$getfem/getfem\-\_\-mesh\-\_\-fem\-\_\-global\-\_\-function.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}Get\-Pot\char`\"{}}\\*
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$boost/shared\-\_\-ptr.\-hpp$>$}\\*
+{\ttfamily \#include $<$iomanip$>$}\\*
+\subsection*{Namespace}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceLifeV}{Life\-V}
+\end{DoxyCompactItemize}
+\subsection*{Ridefinizioni di tipo (typedef)}
+\begin{DoxyCompactItemize}
+\item 
+typedef gmm\-::rsvector\\*
+$<$ scalar\-\_\-type $>$ \hyperlink{Core_8h_a866438488c3e9b9569ecfbb4f4739751}{sparse\-Vector\-\_\-\-Type}
+\item 
+typedef gmm\-::row\-\_\-matrix\\*
+$<$ \hyperlink{Core_8h_a866438488c3e9b9569ecfbb4f4739751}{sparse\-Vector\-\_\-\-Type} $>$ \hyperlink{Core_8h_afba9f623673e2ae32054015bdb5500f9}{sparse\-Matrix\-\_\-\-Type}
+\item 
+typedef boost\-::shared\-\_\-ptr\\*
+$<$ \hyperlink{Core_8h_afba9f623673e2ae32054015bdb5500f9}{sparse\-Matrix\-\_\-\-Type} $>$ \hyperlink{Core_8h_a87137a9501b38c724ac80bc955164bb7}{sparse\-Matrix\-Ptr\-\_\-\-Type}
+\item 
+typedef std\-::vector\\*
+$<$ \hyperlink{Core_8h_afba9f623673e2ae32054015bdb5500f9}{sparse\-Matrix\-\_\-\-Type} $>$ \hyperlink{Core_8h_a95b5f3daac96e3478e8cce49aa2fe689}{sparse\-Matrix\-Container\-\_\-\-Type}
+\item 
+typedef std\-::vector\\*
+$<$ \hyperlink{Core_8h_a87137a9501b38c724ac80bc955164bb7}{sparse\-Matrix\-Ptr\-\_\-\-Type} $>$ \hyperlink{Core_8h_a2f5e086fbce840d40be38c016488fd91}{sparse\-Matrix\-Ptr\-Container\-\_\-\-Type}
+\item 
+typedef std\-::vector$<$ scalar\-\_\-type $>$ \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalar\-Vector\-\_\-\-Type}
+\item 
+typedef boost\-::shared\-\_\-ptr\\*
+$<$ \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalar\-Vector\-\_\-\-Type} $>$ \hyperlink{Core_8h_ab09b6fa3c23db1b8c60456f8690c44a7}{scalar\-Vector\-Ptr\-\_\-\-Type}
+\item 
+typedef std\-::vector\\*
+$<$ \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalar\-Vector\-\_\-\-Type} $>$ \hyperlink{Core_8h_ae3afecb4de4310d8262e9ab20cfb875b}{scalar\-Vector\-Container\-\_\-\-Type}
+\item 
+typedef boost\-::shared\-\_\-ptr\\*
+$<$ \hyperlink{Core_8h_ab09b6fa3c23db1b8c60456f8690c44a7}{scalar\-Vector\-Ptr\-\_\-\-Type} $>$ \hyperlink{Core_8h_a45f913084cbd38630aa9e0d0f567ae6b}{scalar\-Vector\-Container\-Ptr\-\_\-\-Type}
+\item 
+typedef std\-::vector\\*
+$<$ \hyperlink{Core_8h_ab09b6fa3c23db1b8c60456f8690c44a7}{scalar\-Vector\-Ptr\-\_\-\-Type} $>$ \hyperlink{Core_8h_a20f0354ac7b92989514c678f4cdfcb6b}{scalar\-Vector\-Ptr\-Container\-\_\-\-Type}
+\item 
+typedef std\-::vector$<$ size\-\_\-type $>$ \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{size\-Vector\-\_\-\-Type}
+\item 
+typedef boost\-::shared\-\_\-ptr\\*
+$<$ \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{size\-Vector\-\_\-\-Type} $>$ \hyperlink{Core_8h_aae592fe3076c1985d0ad6c88172e2adf}{size\-Vector\-Ptr\-\_\-\-Type}
+\item 
+typedef std\-::vector\\*
+$<$ \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{size\-Vector\-\_\-\-Type} $>$ \hyperlink{Core_8h_a80e8381d86ecb0a7f4f87ff84d1a0be5}{size\-Vector\-Container\-\_\-\-Type}
+\item 
+typedef std\-::vector\\*
+$<$ \hyperlink{Core_8h_aae592fe3076c1985d0ad6c88172e2adf}{size\-Vector\-Ptr\-\_\-\-Type} $>$ \hyperlink{Core_8h_a19cd2e66996cb454b746a0e689857698}{size\-Vector\-Ptr\-Container\-\_\-\-Type}
+\item 
+typedef std\-::pair$<$ size\-\_\-type, \\*
+size\-\_\-type $>$ \hyperlink{Core_8h_a6453867d4e9bd858ad9577b4a1078511}{pair\-Size\-\_\-\-Type}
+\item 
+typedef std\-::vector\\*
+$<$ \hyperlink{Core_8h_a6453867d4e9bd858ad9577b4a1078511}{pair\-Size\-\_\-\-Type} $>$ \hyperlink{Core_8h_a25b461d8af44928b225f6d4e545a0e28}{pair\-Size\-Vector\-\_\-\-Type}
+\item 
+typedef std\-::vector\\*
+$<$ \hyperlink{Core_8h_a25b461d8af44928b225f6d4e545a0e28}{pair\-Size\-Vector\-\_\-\-Type} $>$ \hyperlink{Core_8h_a9bc476e433f99b82a9c2b8560735c7b5}{pair\-Size\-Vector\-Container\-\_\-\-Type}
+\item 
+typedef std\-::vector$<$ std\-::string $>$ \hyperlink{Core_8h_abd22988c59cfec13627d6187914605c9}{string\-Container\-\_\-\-Type}
+\item 
+typedef getfem\-::mesh\-\_\-fem \hyperlink{Core_8h_ae7bbd1c30a789b1da88f5459e0b70ab5}{G\-F\-Mesh\-F\-E\-M\-\_\-\-Type}
+\item 
+typedef boost\-::shared\-\_\-ptr\\*
+$<$ \hyperlink{Core_8h_ae7bbd1c30a789b1da88f5459e0b70ab5}{G\-F\-Mesh\-F\-E\-M\-\_\-\-Type} $>$ \hyperlink{Core_8h_adbcb92a7299d61d5fe4b56c6a7dab5bc}{G\-F\-Mesh\-F\-E\-M\-Ptr\-\_\-\-Type}
+\item 
+typedef std\-::vector\\*
+$<$ \hyperlink{Core_8h_adbcb92a7299d61d5fe4b56c6a7dab5bc}{G\-F\-Mesh\-F\-E\-M\-Ptr\-\_\-\-Type} $>$ \hyperlink{Core_8h_a5a3193c466013aeb4a6eb90e5de6c8c7}{G\-F\-Mesh\-F\-E\-M\-Ptr\-Container\-\_\-\-Type}
+\item 
+typedef getfem\-::mesh\-\_\-level\-\_\-set \hyperlink{Core_8h_a126f7165f04db4ed0b72454469145a08}{G\-F\-Mesh\-Level\-Set\-\_\-\-Type}
+\item 
+typedef boost\-::shared\-\_\-ptr\\*
+$<$ \hyperlink{Core_8h_a126f7165f04db4ed0b72454469145a08}{G\-F\-Mesh\-Level\-Set\-\_\-\-Type} $>$ \hyperlink{Core_8h_a1cbde831f5a62206e084de1c5de27000}{G\-F\-Mesh\-Level\-Set\-Ptr\-\_\-\-Type}
+\item 
+typedef std\-::vector\\*
+$<$ \hyperlink{Core_8h_a1cbde831f5a62206e084de1c5de27000}{G\-F\-Mesh\-Level\-Set\-Ptr\-\_\-\-Type} $>$ \hyperlink{Core_8h_a29030a1ee2a376ae4052e25cde188912}{G\-F\-Mesh\-Level\-Set\-Ptr\-Container\-\_\-\-Type}
+\item 
+typedef getfem\-::level\-\_\-set \hyperlink{Core_8h_a71358a15bd3925629e26ccbb214a0133}{G\-F\-Level\-Set\-\_\-\-Type}
+\item 
+typedef std\-::vector\\*
+$<$ \hyperlink{Core_8h_a71358a15bd3925629e26ccbb214a0133}{G\-F\-Level\-Set\-\_\-\-Type} $>$ \hyperlink{Core_8h_ad8657223c251502b6c6a7e8ce792d708}{G\-F\-Level\-Set\-Container\-\_\-\-Type}
+\item 
+typedef boost\-::shared\-\_\-ptr\\*
+$<$ \hyperlink{Core_8h_a71358a15bd3925629e26ccbb214a0133}{G\-F\-Level\-Set\-\_\-\-Type} $>$ \hyperlink{Core_8h_a036173458a8a25c7c03f8c76d97e9580}{G\-F\-Level\-Set\-Ptr\-\_\-\-Type}
+\item 
+typedef std\-::vector\\*
+$<$ \hyperlink{Core_8h_a036173458a8a25c7c03f8c76d97e9580}{G\-F\-Level\-Set\-Ptr\-\_\-\-Type} $>$ \hyperlink{Core_8h_a987d5dc736e8c716b3a33e3901a8c904}{G\-F\-Level\-Set\-Ptr\-Container\-\_\-\-Type}
+\item 
+typedef getfem\-::mesh\-\_\-im\-\_\-level\-\_\-set \hyperlink{Core_8h_ade18ba6e17965b6fdd50b3382b2a7020}{G\-F\-Integration\-Method\-Level\-Set\-\_\-\-Type}
+\item 
+typedef boost\-::shared\-\_\-ptr\\*
+$<$ \hyperlink{Core_8h_ade18ba6e17965b6fdd50b3382b2a7020}{G\-F\-Integration\-Method\-Level\-Set\-\_\-\-Type} $>$ \hyperlink{Core_8h_a8b50cf7cff521cc16dc8ab5b1c86e622}{G\-F\-Integration\-Method\-Level\-Set\-Ptr\-\_\-\-Type}
+\item 
+typedef scalar\-\_\-type \hyperlink{namespaceLifeV_ad58c7402b26e5087b634b25d029c9c32}{Life\-V\-::\-Real}
+\item 
+typedef size\-\_\-type \hyperlink{namespaceLifeV_a4bd093cf6b0d5b57b2d89e0e90d610b7}{Life\-V\-::\-U\-Int}
+\item 
+typedef size\-\_\-type \hyperlink{namespaceLifeV_a7c0e64679fcd30daa5471b87a57601e9}{Life\-V\-::\-I\-D}
+\item 
+typedef int \hyperlink{namespaceLifeV_a86d39e8d98566ac745a6c441ed3de2dc}{Life\-V\-::\-Int}
+\end{DoxyCompactItemize}
+\subsection*{Tipi enumerati (enum)}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{Core_8h_a419d7707e418f02d8daeb1fc7c0b9ae5}{Element\-Dimension} \{ \hyperlink{Core_8h_a419d7707e418f02d8daeb1fc7c0b9ae5a5340ec7ecef6cc3886684a3bd3450d64}{M\-E\-D\-I\-U\-M} = 2, 
+\hyperlink{Core_8h_a419d7707e418f02d8daeb1fc7c0b9ae5aa06469ae01e54e762465572dd016a84e}{F\-R\-A\-C\-T\-U\-R\-E} = M\-E\-D\-I\-U\-M-\/1
+ \}
+\end{DoxyCompactItemize}
+
+
+\subsection{Documentazione delle ridefinizioni di tipo (typedef)}
+\hypertarget{Core_8h_ade18ba6e17965b6fdd50b3382b2a7020}{\index{Core.\-h@{Core.\-h}!G\-F\-Integration\-Method\-Level\-Set\-\_\-\-Type@{G\-F\-Integration\-Method\-Level\-Set\-\_\-\-Type}}
+\index{G\-F\-Integration\-Method\-Level\-Set\-\_\-\-Type@{G\-F\-Integration\-Method\-Level\-Set\-\_\-\-Type}!Core.h@{Core.\-h}}
+\subsubsection[{G\-F\-Integration\-Method\-Level\-Set\-\_\-\-Type}]{\setlength{\rightskip}{0pt plus 5cm}typedef getfem\-::mesh\-\_\-im\-\_\-level\-\_\-set {\bf G\-F\-Integration\-Method\-Level\-Set\-\_\-\-Type}}}\label{Core_8h_ade18ba6e17965b6fdd50b3382b2a7020}
+\hypertarget{Core_8h_a8b50cf7cff521cc16dc8ab5b1c86e622}{\index{Core.\-h@{Core.\-h}!G\-F\-Integration\-Method\-Level\-Set\-Ptr\-\_\-\-Type@{G\-F\-Integration\-Method\-Level\-Set\-Ptr\-\_\-\-Type}}
+\index{G\-F\-Integration\-Method\-Level\-Set\-Ptr\-\_\-\-Type@{G\-F\-Integration\-Method\-Level\-Set\-Ptr\-\_\-\-Type}!Core.h@{Core.\-h}}
+\subsubsection[{G\-F\-Integration\-Method\-Level\-Set\-Ptr\-\_\-\-Type}]{\setlength{\rightskip}{0pt plus 5cm}typedef boost\-::shared\-\_\-ptr$<${\bf G\-F\-Integration\-Method\-Level\-Set\-\_\-\-Type}$>$ {\bf G\-F\-Integration\-Method\-Level\-Set\-Ptr\-\_\-\-Type}}}\label{Core_8h_a8b50cf7cff521cc16dc8ab5b1c86e622}
+\hypertarget{Core_8h_a71358a15bd3925629e26ccbb214a0133}{\index{Core.\-h@{Core.\-h}!G\-F\-Level\-Set\-\_\-\-Type@{G\-F\-Level\-Set\-\_\-\-Type}}
+\index{G\-F\-Level\-Set\-\_\-\-Type@{G\-F\-Level\-Set\-\_\-\-Type}!Core.h@{Core.\-h}}
+\subsubsection[{G\-F\-Level\-Set\-\_\-\-Type}]{\setlength{\rightskip}{0pt plus 5cm}typedef getfem\-::level\-\_\-set {\bf G\-F\-Level\-Set\-\_\-\-Type}}}\label{Core_8h_a71358a15bd3925629e26ccbb214a0133}
+\hypertarget{Core_8h_ad8657223c251502b6c6a7e8ce792d708}{\index{Core.\-h@{Core.\-h}!G\-F\-Level\-Set\-Container\-\_\-\-Type@{G\-F\-Level\-Set\-Container\-\_\-\-Type}}
+\index{G\-F\-Level\-Set\-Container\-\_\-\-Type@{G\-F\-Level\-Set\-Container\-\_\-\-Type}!Core.h@{Core.\-h}}
+\subsubsection[{G\-F\-Level\-Set\-Container\-\_\-\-Type}]{\setlength{\rightskip}{0pt plus 5cm}typedef std\-::vector$<$ {\bf G\-F\-Level\-Set\-\_\-\-Type} $>$ {\bf G\-F\-Level\-Set\-Container\-\_\-\-Type}}}\label{Core_8h_ad8657223c251502b6c6a7e8ce792d708}
+\hypertarget{Core_8h_a036173458a8a25c7c03f8c76d97e9580}{\index{Core.\-h@{Core.\-h}!G\-F\-Level\-Set\-Ptr\-\_\-\-Type@{G\-F\-Level\-Set\-Ptr\-\_\-\-Type}}
+\index{G\-F\-Level\-Set\-Ptr\-\_\-\-Type@{G\-F\-Level\-Set\-Ptr\-\_\-\-Type}!Core.h@{Core.\-h}}
+\subsubsection[{G\-F\-Level\-Set\-Ptr\-\_\-\-Type}]{\setlength{\rightskip}{0pt plus 5cm}typedef boost\-::shared\-\_\-ptr$<${\bf G\-F\-Level\-Set\-\_\-\-Type}$>$ {\bf G\-F\-Level\-Set\-Ptr\-\_\-\-Type}}}\label{Core_8h_a036173458a8a25c7c03f8c76d97e9580}
+\hypertarget{Core_8h_a987d5dc736e8c716b3a33e3901a8c904}{\index{Core.\-h@{Core.\-h}!G\-F\-Level\-Set\-Ptr\-Container\-\_\-\-Type@{G\-F\-Level\-Set\-Ptr\-Container\-\_\-\-Type}}
+\index{G\-F\-Level\-Set\-Ptr\-Container\-\_\-\-Type@{G\-F\-Level\-Set\-Ptr\-Container\-\_\-\-Type}!Core.h@{Core.\-h}}
+\subsubsection[{G\-F\-Level\-Set\-Ptr\-Container\-\_\-\-Type}]{\setlength{\rightskip}{0pt plus 5cm}typedef std\-::vector$<$ {\bf G\-F\-Level\-Set\-Ptr\-\_\-\-Type} $>$ {\bf G\-F\-Level\-Set\-Ptr\-Container\-\_\-\-Type}}}\label{Core_8h_a987d5dc736e8c716b3a33e3901a8c904}
+\hypertarget{Core_8h_ae7bbd1c30a789b1da88f5459e0b70ab5}{\index{Core.\-h@{Core.\-h}!G\-F\-Mesh\-F\-E\-M\-\_\-\-Type@{G\-F\-Mesh\-F\-E\-M\-\_\-\-Type}}
+\index{G\-F\-Mesh\-F\-E\-M\-\_\-\-Type@{G\-F\-Mesh\-F\-E\-M\-\_\-\-Type}!Core.h@{Core.\-h}}
+\subsubsection[{G\-F\-Mesh\-F\-E\-M\-\_\-\-Type}]{\setlength{\rightskip}{0pt plus 5cm}typedef getfem\-::mesh\-\_\-fem {\bf G\-F\-Mesh\-F\-E\-M\-\_\-\-Type}}}\label{Core_8h_ae7bbd1c30a789b1da88f5459e0b70ab5}
+\hypertarget{Core_8h_adbcb92a7299d61d5fe4b56c6a7dab5bc}{\index{Core.\-h@{Core.\-h}!G\-F\-Mesh\-F\-E\-M\-Ptr\-\_\-\-Type@{G\-F\-Mesh\-F\-E\-M\-Ptr\-\_\-\-Type}}
+\index{G\-F\-Mesh\-F\-E\-M\-Ptr\-\_\-\-Type@{G\-F\-Mesh\-F\-E\-M\-Ptr\-\_\-\-Type}!Core.h@{Core.\-h}}
+\subsubsection[{G\-F\-Mesh\-F\-E\-M\-Ptr\-\_\-\-Type}]{\setlength{\rightskip}{0pt plus 5cm}typedef boost\-::shared\-\_\-ptr$<${\bf G\-F\-Mesh\-F\-E\-M\-\_\-\-Type}$>$ {\bf G\-F\-Mesh\-F\-E\-M\-Ptr\-\_\-\-Type}}}\label{Core_8h_adbcb92a7299d61d5fe4b56c6a7dab5bc}
+\hypertarget{Core_8h_a5a3193c466013aeb4a6eb90e5de6c8c7}{\index{Core.\-h@{Core.\-h}!G\-F\-Mesh\-F\-E\-M\-Ptr\-Container\-\_\-\-Type@{G\-F\-Mesh\-F\-E\-M\-Ptr\-Container\-\_\-\-Type}}
+\index{G\-F\-Mesh\-F\-E\-M\-Ptr\-Container\-\_\-\-Type@{G\-F\-Mesh\-F\-E\-M\-Ptr\-Container\-\_\-\-Type}!Core.h@{Core.\-h}}
+\subsubsection[{G\-F\-Mesh\-F\-E\-M\-Ptr\-Container\-\_\-\-Type}]{\setlength{\rightskip}{0pt plus 5cm}typedef std\-::vector$<${\bf G\-F\-Mesh\-F\-E\-M\-Ptr\-\_\-\-Type}$>$ {\bf G\-F\-Mesh\-F\-E\-M\-Ptr\-Container\-\_\-\-Type}}}\label{Core_8h_a5a3193c466013aeb4a6eb90e5de6c8c7}
+\hypertarget{Core_8h_a126f7165f04db4ed0b72454469145a08}{\index{Core.\-h@{Core.\-h}!G\-F\-Mesh\-Level\-Set\-\_\-\-Type@{G\-F\-Mesh\-Level\-Set\-\_\-\-Type}}
+\index{G\-F\-Mesh\-Level\-Set\-\_\-\-Type@{G\-F\-Mesh\-Level\-Set\-\_\-\-Type}!Core.h@{Core.\-h}}
+\subsubsection[{G\-F\-Mesh\-Level\-Set\-\_\-\-Type}]{\setlength{\rightskip}{0pt plus 5cm}typedef getfem\-::mesh\-\_\-level\-\_\-set {\bf G\-F\-Mesh\-Level\-Set\-\_\-\-Type}}}\label{Core_8h_a126f7165f04db4ed0b72454469145a08}
+\hypertarget{Core_8h_a1cbde831f5a62206e084de1c5de27000}{\index{Core.\-h@{Core.\-h}!G\-F\-Mesh\-Level\-Set\-Ptr\-\_\-\-Type@{G\-F\-Mesh\-Level\-Set\-Ptr\-\_\-\-Type}}
+\index{G\-F\-Mesh\-Level\-Set\-Ptr\-\_\-\-Type@{G\-F\-Mesh\-Level\-Set\-Ptr\-\_\-\-Type}!Core.h@{Core.\-h}}
+\subsubsection[{G\-F\-Mesh\-Level\-Set\-Ptr\-\_\-\-Type}]{\setlength{\rightskip}{0pt plus 5cm}typedef boost\-::shared\-\_\-ptr$<${\bf G\-F\-Mesh\-Level\-Set\-\_\-\-Type}$>$ {\bf G\-F\-Mesh\-Level\-Set\-Ptr\-\_\-\-Type}}}\label{Core_8h_a1cbde831f5a62206e084de1c5de27000}
+\hypertarget{Core_8h_a29030a1ee2a376ae4052e25cde188912}{\index{Core.\-h@{Core.\-h}!G\-F\-Mesh\-Level\-Set\-Ptr\-Container\-\_\-\-Type@{G\-F\-Mesh\-Level\-Set\-Ptr\-Container\-\_\-\-Type}}
+\index{G\-F\-Mesh\-Level\-Set\-Ptr\-Container\-\_\-\-Type@{G\-F\-Mesh\-Level\-Set\-Ptr\-Container\-\_\-\-Type}!Core.h@{Core.\-h}}
+\subsubsection[{G\-F\-Mesh\-Level\-Set\-Ptr\-Container\-\_\-\-Type}]{\setlength{\rightskip}{0pt plus 5cm}typedef std\-::vector$<$ {\bf G\-F\-Mesh\-Level\-Set\-Ptr\-\_\-\-Type} $>$ {\bf G\-F\-Mesh\-Level\-Set\-Ptr\-Container\-\_\-\-Type}}}\label{Core_8h_a29030a1ee2a376ae4052e25cde188912}
+\hypertarget{Core_8h_a6453867d4e9bd858ad9577b4a1078511}{\index{Core.\-h@{Core.\-h}!pair\-Size\-\_\-\-Type@{pair\-Size\-\_\-\-Type}}
+\index{pair\-Size\-\_\-\-Type@{pair\-Size\-\_\-\-Type}!Core.h@{Core.\-h}}
+\subsubsection[{pair\-Size\-\_\-\-Type}]{\setlength{\rightskip}{0pt plus 5cm}typedef std\-::pair$<$size\-\_\-type, size\-\_\-type$>$ {\bf pair\-Size\-\_\-\-Type}}}\label{Core_8h_a6453867d4e9bd858ad9577b4a1078511}
+\hypertarget{Core_8h_a25b461d8af44928b225f6d4e545a0e28}{\index{Core.\-h@{Core.\-h}!pair\-Size\-Vector\-\_\-\-Type@{pair\-Size\-Vector\-\_\-\-Type}}
+\index{pair\-Size\-Vector\-\_\-\-Type@{pair\-Size\-Vector\-\_\-\-Type}!Core.h@{Core.\-h}}
+\subsubsection[{pair\-Size\-Vector\-\_\-\-Type}]{\setlength{\rightskip}{0pt plus 5cm}typedef std\-::vector$<${\bf pair\-Size\-\_\-\-Type} $>$ {\bf pair\-Size\-Vector\-\_\-\-Type}}}\label{Core_8h_a25b461d8af44928b225f6d4e545a0e28}
+\hypertarget{Core_8h_a9bc476e433f99b82a9c2b8560735c7b5}{\index{Core.\-h@{Core.\-h}!pair\-Size\-Vector\-Container\-\_\-\-Type@{pair\-Size\-Vector\-Container\-\_\-\-Type}}
+\index{pair\-Size\-Vector\-Container\-\_\-\-Type@{pair\-Size\-Vector\-Container\-\_\-\-Type}!Core.h@{Core.\-h}}
+\subsubsection[{pair\-Size\-Vector\-Container\-\_\-\-Type}]{\setlength{\rightskip}{0pt plus 5cm}typedef std\-::vector$<${\bf pair\-Size\-Vector\-\_\-\-Type}$>$ {\bf pair\-Size\-Vector\-Container\-\_\-\-Type}}}\label{Core_8h_a9bc476e433f99b82a9c2b8560735c7b5}
+\hypertarget{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{\index{Core.\-h@{Core.\-h}!scalar\-Vector\-\_\-\-Type@{scalar\-Vector\-\_\-\-Type}}
+\index{scalar\-Vector\-\_\-\-Type@{scalar\-Vector\-\_\-\-Type}!Core.h@{Core.\-h}}
+\subsubsection[{scalar\-Vector\-\_\-\-Type}]{\setlength{\rightskip}{0pt plus 5cm}typedef std\-::vector$<$scalar\-\_\-type$>$ {\bf scalar\-Vector\-\_\-\-Type}}}\label{Core_8h_a4e75b5863535ba1dd79942de2846eff0}
+\hypertarget{Core_8h_ae3afecb4de4310d8262e9ab20cfb875b}{\index{Core.\-h@{Core.\-h}!scalar\-Vector\-Container\-\_\-\-Type@{scalar\-Vector\-Container\-\_\-\-Type}}
+\index{scalar\-Vector\-Container\-\_\-\-Type@{scalar\-Vector\-Container\-\_\-\-Type}!Core.h@{Core.\-h}}
+\subsubsection[{scalar\-Vector\-Container\-\_\-\-Type}]{\setlength{\rightskip}{0pt plus 5cm}typedef std\-::vector$<${\bf scalar\-Vector\-\_\-\-Type}$>$ {\bf scalar\-Vector\-Container\-\_\-\-Type}}}\label{Core_8h_ae3afecb4de4310d8262e9ab20cfb875b}
+\hypertarget{Core_8h_a45f913084cbd38630aa9e0d0f567ae6b}{\index{Core.\-h@{Core.\-h}!scalar\-Vector\-Container\-Ptr\-\_\-\-Type@{scalar\-Vector\-Container\-Ptr\-\_\-\-Type}}
+\index{scalar\-Vector\-Container\-Ptr\-\_\-\-Type@{scalar\-Vector\-Container\-Ptr\-\_\-\-Type}!Core.h@{Core.\-h}}
+\subsubsection[{scalar\-Vector\-Container\-Ptr\-\_\-\-Type}]{\setlength{\rightskip}{0pt plus 5cm}typedef boost\-::shared\-\_\-ptr$<${\bf scalar\-Vector\-Ptr\-\_\-\-Type}$>$ {\bf scalar\-Vector\-Container\-Ptr\-\_\-\-Type}}}\label{Core_8h_a45f913084cbd38630aa9e0d0f567ae6b}
+\hypertarget{Core_8h_ab09b6fa3c23db1b8c60456f8690c44a7}{\index{Core.\-h@{Core.\-h}!scalar\-Vector\-Ptr\-\_\-\-Type@{scalar\-Vector\-Ptr\-\_\-\-Type}}
+\index{scalar\-Vector\-Ptr\-\_\-\-Type@{scalar\-Vector\-Ptr\-\_\-\-Type}!Core.h@{Core.\-h}}
+\subsubsection[{scalar\-Vector\-Ptr\-\_\-\-Type}]{\setlength{\rightskip}{0pt plus 5cm}typedef boost\-::shared\-\_\-ptr$<${\bf scalar\-Vector\-\_\-\-Type}$>$ {\bf scalar\-Vector\-Ptr\-\_\-\-Type}}}\label{Core_8h_ab09b6fa3c23db1b8c60456f8690c44a7}
+\hypertarget{Core_8h_a20f0354ac7b92989514c678f4cdfcb6b}{\index{Core.\-h@{Core.\-h}!scalar\-Vector\-Ptr\-Container\-\_\-\-Type@{scalar\-Vector\-Ptr\-Container\-\_\-\-Type}}
+\index{scalar\-Vector\-Ptr\-Container\-\_\-\-Type@{scalar\-Vector\-Ptr\-Container\-\_\-\-Type}!Core.h@{Core.\-h}}
+\subsubsection[{scalar\-Vector\-Ptr\-Container\-\_\-\-Type}]{\setlength{\rightskip}{0pt plus 5cm}typedef std\-::vector$<${\bf scalar\-Vector\-Ptr\-\_\-\-Type}$>$ {\bf scalar\-Vector\-Ptr\-Container\-\_\-\-Type}}}\label{Core_8h_a20f0354ac7b92989514c678f4cdfcb6b}
+\hypertarget{Core_8h_a83c51913d041a5001e8683434c09857f}{\index{Core.\-h@{Core.\-h}!size\-Vector\-\_\-\-Type@{size\-Vector\-\_\-\-Type}}
+\index{size\-Vector\-\_\-\-Type@{size\-Vector\-\_\-\-Type}!Core.h@{Core.\-h}}
+\subsubsection[{size\-Vector\-\_\-\-Type}]{\setlength{\rightskip}{0pt plus 5cm}typedef std\-::vector$<$size\-\_\-type$>$ {\bf size\-Vector\-\_\-\-Type}}}\label{Core_8h_a83c51913d041a5001e8683434c09857f}
+\hypertarget{Core_8h_a80e8381d86ecb0a7f4f87ff84d1a0be5}{\index{Core.\-h@{Core.\-h}!size\-Vector\-Container\-\_\-\-Type@{size\-Vector\-Container\-\_\-\-Type}}
+\index{size\-Vector\-Container\-\_\-\-Type@{size\-Vector\-Container\-\_\-\-Type}!Core.h@{Core.\-h}}
+\subsubsection[{size\-Vector\-Container\-\_\-\-Type}]{\setlength{\rightskip}{0pt plus 5cm}typedef std\-::vector$<${\bf size\-Vector\-\_\-\-Type}$>$ {\bf size\-Vector\-Container\-\_\-\-Type}}}\label{Core_8h_a80e8381d86ecb0a7f4f87ff84d1a0be5}
+\hypertarget{Core_8h_aae592fe3076c1985d0ad6c88172e2adf}{\index{Core.\-h@{Core.\-h}!size\-Vector\-Ptr\-\_\-\-Type@{size\-Vector\-Ptr\-\_\-\-Type}}
+\index{size\-Vector\-Ptr\-\_\-\-Type@{size\-Vector\-Ptr\-\_\-\-Type}!Core.h@{Core.\-h}}
+\subsubsection[{size\-Vector\-Ptr\-\_\-\-Type}]{\setlength{\rightskip}{0pt plus 5cm}typedef boost\-::shared\-\_\-ptr$<${\bf size\-Vector\-\_\-\-Type}$>$ {\bf size\-Vector\-Ptr\-\_\-\-Type}}}\label{Core_8h_aae592fe3076c1985d0ad6c88172e2adf}
+\hypertarget{Core_8h_a19cd2e66996cb454b746a0e689857698}{\index{Core.\-h@{Core.\-h}!size\-Vector\-Ptr\-Container\-\_\-\-Type@{size\-Vector\-Ptr\-Container\-\_\-\-Type}}
+\index{size\-Vector\-Ptr\-Container\-\_\-\-Type@{size\-Vector\-Ptr\-Container\-\_\-\-Type}!Core.h@{Core.\-h}}
+\subsubsection[{size\-Vector\-Ptr\-Container\-\_\-\-Type}]{\setlength{\rightskip}{0pt plus 5cm}typedef std\-::vector$<${\bf size\-Vector\-Ptr\-\_\-\-Type}$>$ {\bf size\-Vector\-Ptr\-Container\-\_\-\-Type}}}\label{Core_8h_a19cd2e66996cb454b746a0e689857698}
+\hypertarget{Core_8h_afba9f623673e2ae32054015bdb5500f9}{\index{Core.\-h@{Core.\-h}!sparse\-Matrix\-\_\-\-Type@{sparse\-Matrix\-\_\-\-Type}}
+\index{sparse\-Matrix\-\_\-\-Type@{sparse\-Matrix\-\_\-\-Type}!Core.h@{Core.\-h}}
+\subsubsection[{sparse\-Matrix\-\_\-\-Type}]{\setlength{\rightskip}{0pt plus 5cm}typedef gmm\-::row\-\_\-matrix$<${\bf sparse\-Vector\-\_\-\-Type}$>$ {\bf sparse\-Matrix\-\_\-\-Type}}}\label{Core_8h_afba9f623673e2ae32054015bdb5500f9}
+\hypertarget{Core_8h_a95b5f3daac96e3478e8cce49aa2fe689}{\index{Core.\-h@{Core.\-h}!sparse\-Matrix\-Container\-\_\-\-Type@{sparse\-Matrix\-Container\-\_\-\-Type}}
+\index{sparse\-Matrix\-Container\-\_\-\-Type@{sparse\-Matrix\-Container\-\_\-\-Type}!Core.h@{Core.\-h}}
+\subsubsection[{sparse\-Matrix\-Container\-\_\-\-Type}]{\setlength{\rightskip}{0pt plus 5cm}typedef std\-::vector$<${\bf sparse\-Matrix\-\_\-\-Type}$>$ {\bf sparse\-Matrix\-Container\-\_\-\-Type}}}\label{Core_8h_a95b5f3daac96e3478e8cce49aa2fe689}
+\hypertarget{Core_8h_a87137a9501b38c724ac80bc955164bb7}{\index{Core.\-h@{Core.\-h}!sparse\-Matrix\-Ptr\-\_\-\-Type@{sparse\-Matrix\-Ptr\-\_\-\-Type}}
+\index{sparse\-Matrix\-Ptr\-\_\-\-Type@{sparse\-Matrix\-Ptr\-\_\-\-Type}!Core.h@{Core.\-h}}
+\subsubsection[{sparse\-Matrix\-Ptr\-\_\-\-Type}]{\setlength{\rightskip}{0pt plus 5cm}typedef boost\-::shared\-\_\-ptr$<${\bf sparse\-Matrix\-\_\-\-Type}$>$ {\bf sparse\-Matrix\-Ptr\-\_\-\-Type}}}\label{Core_8h_a87137a9501b38c724ac80bc955164bb7}
+\hypertarget{Core_8h_a2f5e086fbce840d40be38c016488fd91}{\index{Core.\-h@{Core.\-h}!sparse\-Matrix\-Ptr\-Container\-\_\-\-Type@{sparse\-Matrix\-Ptr\-Container\-\_\-\-Type}}
+\index{sparse\-Matrix\-Ptr\-Container\-\_\-\-Type@{sparse\-Matrix\-Ptr\-Container\-\_\-\-Type}!Core.h@{Core.\-h}}
+\subsubsection[{sparse\-Matrix\-Ptr\-Container\-\_\-\-Type}]{\setlength{\rightskip}{0pt plus 5cm}typedef std\-::vector$<${\bf sparse\-Matrix\-Ptr\-\_\-\-Type}$>$ {\bf sparse\-Matrix\-Ptr\-Container\-\_\-\-Type}}}\label{Core_8h_a2f5e086fbce840d40be38c016488fd91}
+\hypertarget{Core_8h_a866438488c3e9b9569ecfbb4f4739751}{\index{Core.\-h@{Core.\-h}!sparse\-Vector\-\_\-\-Type@{sparse\-Vector\-\_\-\-Type}}
+\index{sparse\-Vector\-\_\-\-Type@{sparse\-Vector\-\_\-\-Type}!Core.h@{Core.\-h}}
+\subsubsection[{sparse\-Vector\-\_\-\-Type}]{\setlength{\rightskip}{0pt plus 5cm}typedef gmm\-::rsvector$<$scalar\-\_\-type$>$ {\bf sparse\-Vector\-\_\-\-Type}}}\label{Core_8h_a866438488c3e9b9569ecfbb4f4739751}
+\hypertarget{Core_8h_abd22988c59cfec13627d6187914605c9}{\index{Core.\-h@{Core.\-h}!string\-Container\-\_\-\-Type@{string\-Container\-\_\-\-Type}}
+\index{string\-Container\-\_\-\-Type@{string\-Container\-\_\-\-Type}!Core.h@{Core.\-h}}
+\subsubsection[{string\-Container\-\_\-\-Type}]{\setlength{\rightskip}{0pt plus 5cm}typedef std\-::vector$<$ std\-::string $>$ {\bf string\-Container\-\_\-\-Type}}}\label{Core_8h_abd22988c59cfec13627d6187914605c9}
+
+
+\subsection{Documentazione dei tipi enumerati}
+\hypertarget{Core_8h_a419d7707e418f02d8daeb1fc7c0b9ae5}{\index{Core.\-h@{Core.\-h}!Element\-Dimension@{Element\-Dimension}}
+\index{Element\-Dimension@{Element\-Dimension}!Core.h@{Core.\-h}}
+\subsubsection[{Element\-Dimension}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Element\-Dimension}}}\label{Core_8h_a419d7707e418f02d8daeb1fc7c0b9ae5}
+\begin{Desc}
+\item[Valori del tipo enumerato]\par
+\begin{description}
+\index{M\-E\-D\-I\-U\-M@{M\-E\-D\-I\-U\-M}!Core.\-h@{Core.\-h}}\index{Core.\-h@{Core.\-h}!M\-E\-D\-I\-U\-M@{M\-E\-D\-I\-U\-M}}\item[{\em 
+\hypertarget{Core_8h_a419d7707e418f02d8daeb1fc7c0b9ae5a5340ec7ecef6cc3886684a3bd3450d64}{M\-E\-D\-I\-U\-M}\label{Core_8h_a419d7707e418f02d8daeb1fc7c0b9ae5a5340ec7ecef6cc3886684a3bd3450d64}
+}]\index{F\-R\-A\-C\-T\-U\-R\-E@{F\-R\-A\-C\-T\-U\-R\-E}!Core.\-h@{Core.\-h}}\index{Core.\-h@{Core.\-h}!F\-R\-A\-C\-T\-U\-R\-E@{F\-R\-A\-C\-T\-U\-R\-E}}\item[{\em 
+\hypertarget{Core_8h_a419d7707e418f02d8daeb1fc7c0b9ae5aa06469ae01e54e762465572dd016a84e}{F\-R\-A\-C\-T\-U\-R\-E}\label{Core_8h_a419d7707e418f02d8daeb1fc7c0b9ae5aa06469ae01e54e762465572dd016a84e}
+}]\end{description}
+\end{Desc}
+
+\begin{DoxyCode}
+103 \{
+104     \hyperlink{Core_8h_a419d7707e418f02d8daeb1fc7c0b9ae5a5340ec7ecef6cc3886684a3bd3450d64}{MEDIUM} = 2, \hyperlink{Core_8h_a419d7707e418f02d8daeb1fc7c0b9ae5aa06469ae01e54e762465572dd016a84e}{FRACTURE} = \hyperlink{Core_8h_a419d7707e418f02d8daeb1fc7c0b9ae5a5340ec7ecef6cc3886684a3bd3450d64}{MEDIUM}-1
+105 \};
+\end{DoxyCode}

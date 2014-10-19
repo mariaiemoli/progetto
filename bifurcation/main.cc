@@ -32,17 +32,13 @@ int main ( int argc, char* argv [ ] )
 	const std::string vtkFolder = "vtk/";
 
 
-	/** Data exporter
-	 *
-	 */
+	//Data exporter
 	std::cout << "Create the data exporter..." << std::flush;
 	ExporterPtr_Type exporter( new Exporter_Type(dataFile));
 	std::cout << " completed!" <<std::endl;
 
 
-	/** Mesh Handler
-	 *
-	 */
+	//Mesh Handler
 	std::cout << "Create the meshHandler..." << std::flush;
 	MeshHandlerPtr_Type mesh(new MeshHandler_Type(dataFile, "mediumData/domain/"));
 	mesh->setUpMesh();
@@ -50,9 +46,7 @@ int main ( int argc, char* argv [ ] )
 	std::cout<< " completed!" << std::endl;
 
 
-	/** Medium data for the Darcy problem
-	 *
-	 */
+	// Medium data for the Darcy problem
 	std::cout << "Create the mediumData for the Darcy problem.." << std::flush;
 	const std::string sectionSolverDarcy = "darcy/";
 	MediumDataPtr_Type mediumDataDarcy(new MediumData_Type(dataFile,
@@ -60,11 +54,7 @@ int main ( int argc, char* argv [ ] )
 	std::cout << " completed!" << std::endl;
 
 
-	/** Fracture Set
-	 *
-	 * costruiamo l'insieme delle fratture, una classe che contiene tutte le fratture e le intersezioni
-	 *
-	 */
+	// Fracture Set
 	std::cout << "Create the set of fractures for " << std::flush;
 	const size_type numberFractures = dataFile(
 			(section + "numberFractures").data(), 0);

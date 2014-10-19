@@ -1,0 +1,617 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>Progetto PACS: Riferimenti per il file include/Core.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Progetto PACS
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generato da Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Pagina&#160;Principale</span></a></li>
+      <li><a href="namespaces.html"><span>Namespace</span></a></li>
+      <li><a href="annotated.html"><span>Classi</span></a></li>
+      <li class="current"><a href="files.html"><span>File</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Cerca" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Elenco&#160;dei&#160;file</span></a></li>
+      <li><a href="globals.html"><span>Elementi&#160;dei&#160;file</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tutto</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classi</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespace</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>File</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funzioni</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Ridefinizioni di tipo (typedef)</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Tipi enumerati (enum)</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Valori del tipo enumerato</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#namespaces">Namespace</a> &#124;
+<a href="#typedef-members">Ridefinizioni di tipo (typedef)</a> &#124;
+<a href="#enum-members">Tipi enumerati (enum)</a>  </div>
+  <div class="headertitle">
+<div class="title">Riferimenti per il file Core.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;getfem/getfem_regular_meshes.h&gt;</code><br/>
+<code>#include &lt;getfem/getfem_interpolation.h&gt;</code><br/>
+<code>#include &lt;getfem/getfem_config.h&gt;</code><br/>
+<code>#include &lt;getfem/getfem_assembling.h&gt;</code><br/>
+<code>#include &lt;getfem/getfem_import.h&gt;</code><br/>
+<code>#include &lt;getfem/getfem_export.h&gt;</code><br/>
+<code>#include &lt;gmm/gmm.h&gt;</code><br/>
+<code>#include &lt;gmm/gmm_inoutput.h&gt;</code><br/>
+<code>#include &lt;gmm/gmm_MUMPS_interface.h&gt;</code><br/>
+<code>#include &lt;gmm/gmm_superlu_interface.h&gt;</code><br/>
+<code>#include &lt;getfem/bgeot_mesh.h&gt;</code><br/>
+<code>#include &lt;getfem/getfem_mesh_im_level_set.h&gt;</code><br/>
+<code>#include &lt;getfem/getfem_mesh_fem_level_set.h&gt;</code><br/>
+<code>#include &lt;string&gt;</code><br/>
+<code>#include &lt;getfem/getfem_mesh_fem_product.h&gt;</code><br/>
+<code>#include &lt;getfem/getfem_mesh_fem_global_function.h&gt;</code><br/>
+<code>#include &quot;GetPot&quot;</code><br/>
+<code>#include &lt;iostream&gt;</code><br/>
+<code>#include &lt;boost/shared_ptr.hpp&gt;</code><br/>
+<code>#include &lt;iomanip&gt;</code><br/>
+</div>
+<p><a href="Core_8h_source.html">Vai al codice sorgente di questo file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namespace</h2></td></tr>
+<tr class="memitem:namespaceLifeV"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLifeV.html">LifeV</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Ridefinizioni di tipo (typedef)</h2></td></tr>
+<tr class="memitem:a866438488c3e9b9569ecfbb4f4739751"><td class="memItemLeft" align="right" valign="top">typedef gmm::rsvector<br class="typebreak"/>
+&lt; scalar_type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Core_8h.html#a866438488c3e9b9569ecfbb4f4739751">sparseVector_Type</a></td></tr>
+<tr class="separator:a866438488c3e9b9569ecfbb4f4739751"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afba9f623673e2ae32054015bdb5500f9"><td class="memItemLeft" align="right" valign="top">typedef gmm::row_matrix<br class="typebreak"/>
+&lt; <a class="el" href="Core_8h.html#a866438488c3e9b9569ecfbb4f4739751">sparseVector_Type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Core_8h.html#afba9f623673e2ae32054015bdb5500f9">sparseMatrix_Type</a></td></tr>
+<tr class="separator:afba9f623673e2ae32054015bdb5500f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87137a9501b38c724ac80bc955164bb7"><td class="memItemLeft" align="right" valign="top">typedef boost::shared_ptr<br class="typebreak"/>
+&lt; <a class="el" href="Core_8h.html#afba9f623673e2ae32054015bdb5500f9">sparseMatrix_Type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Core_8h.html#a87137a9501b38c724ac80bc955164bb7">sparseMatrixPtr_Type</a></td></tr>
+<tr class="separator:a87137a9501b38c724ac80bc955164bb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95b5f3daac96e3478e8cce49aa2fe689"><td class="memItemLeft" align="right" valign="top">typedef std::vector<br class="typebreak"/>
+&lt; <a class="el" href="Core_8h.html#afba9f623673e2ae32054015bdb5500f9">sparseMatrix_Type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Core_8h.html#a95b5f3daac96e3478e8cce49aa2fe689">sparseMatrixContainer_Type</a></td></tr>
+<tr class="separator:a95b5f3daac96e3478e8cce49aa2fe689"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f5e086fbce840d40be38c016488fd91"><td class="memItemLeft" align="right" valign="top">typedef std::vector<br class="typebreak"/>
+&lt; <a class="el" href="Core_8h.html#a87137a9501b38c724ac80bc955164bb7">sparseMatrixPtr_Type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Core_8h.html#a2f5e086fbce840d40be38c016488fd91">sparseMatrixPtrContainer_Type</a></td></tr>
+<tr class="separator:a2f5e086fbce840d40be38c016488fd91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e75b5863535ba1dd79942de2846eff0"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; scalar_type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Core_8h.html#a4e75b5863535ba1dd79942de2846eff0">scalarVector_Type</a></td></tr>
+<tr class="separator:a4e75b5863535ba1dd79942de2846eff0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab09b6fa3c23db1b8c60456f8690c44a7"><td class="memItemLeft" align="right" valign="top">typedef boost::shared_ptr<br class="typebreak"/>
+&lt; <a class="el" href="Core_8h.html#a4e75b5863535ba1dd79942de2846eff0">scalarVector_Type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Core_8h.html#ab09b6fa3c23db1b8c60456f8690c44a7">scalarVectorPtr_Type</a></td></tr>
+<tr class="separator:ab09b6fa3c23db1b8c60456f8690c44a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3afecb4de4310d8262e9ab20cfb875b"><td class="memItemLeft" align="right" valign="top">typedef std::vector<br class="typebreak"/>
+&lt; <a class="el" href="Core_8h.html#a4e75b5863535ba1dd79942de2846eff0">scalarVector_Type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Core_8h.html#ae3afecb4de4310d8262e9ab20cfb875b">scalarVectorContainer_Type</a></td></tr>
+<tr class="separator:ae3afecb4de4310d8262e9ab20cfb875b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45f913084cbd38630aa9e0d0f567ae6b"><td class="memItemLeft" align="right" valign="top">typedef boost::shared_ptr<br class="typebreak"/>
+&lt; <a class="el" href="Core_8h.html#ab09b6fa3c23db1b8c60456f8690c44a7">scalarVectorPtr_Type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Core_8h.html#a45f913084cbd38630aa9e0d0f567ae6b">scalarVectorContainerPtr_Type</a></td></tr>
+<tr class="separator:a45f913084cbd38630aa9e0d0f567ae6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20f0354ac7b92989514c678f4cdfcb6b"><td class="memItemLeft" align="right" valign="top">typedef std::vector<br class="typebreak"/>
+&lt; <a class="el" href="Core_8h.html#ab09b6fa3c23db1b8c60456f8690c44a7">scalarVectorPtr_Type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Core_8h.html#a20f0354ac7b92989514c678f4cdfcb6b">scalarVectorPtrContainer_Type</a></td></tr>
+<tr class="separator:a20f0354ac7b92989514c678f4cdfcb6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83c51913d041a5001e8683434c09857f"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; size_type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Core_8h.html#a83c51913d041a5001e8683434c09857f">sizeVector_Type</a></td></tr>
+<tr class="separator:a83c51913d041a5001e8683434c09857f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae592fe3076c1985d0ad6c88172e2adf"><td class="memItemLeft" align="right" valign="top">typedef boost::shared_ptr<br class="typebreak"/>
+&lt; <a class="el" href="Core_8h.html#a83c51913d041a5001e8683434c09857f">sizeVector_Type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Core_8h.html#aae592fe3076c1985d0ad6c88172e2adf">sizeVectorPtr_Type</a></td></tr>
+<tr class="separator:aae592fe3076c1985d0ad6c88172e2adf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80e8381d86ecb0a7f4f87ff84d1a0be5"><td class="memItemLeft" align="right" valign="top">typedef std::vector<br class="typebreak"/>
+&lt; <a class="el" href="Core_8h.html#a83c51913d041a5001e8683434c09857f">sizeVector_Type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Core_8h.html#a80e8381d86ecb0a7f4f87ff84d1a0be5">sizeVectorContainer_Type</a></td></tr>
+<tr class="separator:a80e8381d86ecb0a7f4f87ff84d1a0be5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19cd2e66996cb454b746a0e689857698"><td class="memItemLeft" align="right" valign="top">typedef std::vector<br class="typebreak"/>
+&lt; <a class="el" href="Core_8h.html#aae592fe3076c1985d0ad6c88172e2adf">sizeVectorPtr_Type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Core_8h.html#a19cd2e66996cb454b746a0e689857698">sizeVectorPtrContainer_Type</a></td></tr>
+<tr class="separator:a19cd2e66996cb454b746a0e689857698"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6453867d4e9bd858ad9577b4a1078511"><td class="memItemLeft" align="right" valign="top">typedef std::pair&lt; size_type, <br class="typebreak"/>
+size_type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Core_8h.html#a6453867d4e9bd858ad9577b4a1078511">pairSize_Type</a></td></tr>
+<tr class="separator:a6453867d4e9bd858ad9577b4a1078511"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25b461d8af44928b225f6d4e545a0e28"><td class="memItemLeft" align="right" valign="top">typedef std::vector<br class="typebreak"/>
+&lt; <a class="el" href="Core_8h.html#a6453867d4e9bd858ad9577b4a1078511">pairSize_Type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Core_8h.html#a25b461d8af44928b225f6d4e545a0e28">pairSizeVector_Type</a></td></tr>
+<tr class="separator:a25b461d8af44928b225f6d4e545a0e28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9bc476e433f99b82a9c2b8560735c7b5"><td class="memItemLeft" align="right" valign="top">typedef std::vector<br class="typebreak"/>
+&lt; <a class="el" href="Core_8h.html#a25b461d8af44928b225f6d4e545a0e28">pairSizeVector_Type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Core_8h.html#a9bc476e433f99b82a9c2b8560735c7b5">pairSizeVectorContainer_Type</a></td></tr>
+<tr class="separator:a9bc476e433f99b82a9c2b8560735c7b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd22988c59cfec13627d6187914605c9"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Core_8h.html#abd22988c59cfec13627d6187914605c9">stringContainer_Type</a></td></tr>
+<tr class="separator:abd22988c59cfec13627d6187914605c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7bbd1c30a789b1da88f5459e0b70ab5"><td class="memItemLeft" align="right" valign="top">typedef getfem::mesh_fem&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Core_8h.html#ae7bbd1c30a789b1da88f5459e0b70ab5">GFMeshFEM_Type</a></td></tr>
+<tr class="separator:ae7bbd1c30a789b1da88f5459e0b70ab5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbcb92a7299d61d5fe4b56c6a7dab5bc"><td class="memItemLeft" align="right" valign="top">typedef boost::shared_ptr<br class="typebreak"/>
+&lt; <a class="el" href="Core_8h.html#ae7bbd1c30a789b1da88f5459e0b70ab5">GFMeshFEM_Type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Core_8h.html#adbcb92a7299d61d5fe4b56c6a7dab5bc">GFMeshFEMPtr_Type</a></td></tr>
+<tr class="separator:adbcb92a7299d61d5fe4b56c6a7dab5bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a3193c466013aeb4a6eb90e5de6c8c7"><td class="memItemLeft" align="right" valign="top">typedef std::vector<br class="typebreak"/>
+&lt; <a class="el" href="Core_8h.html#adbcb92a7299d61d5fe4b56c6a7dab5bc">GFMeshFEMPtr_Type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Core_8h.html#a5a3193c466013aeb4a6eb90e5de6c8c7">GFMeshFEMPtrContainer_Type</a></td></tr>
+<tr class="separator:a5a3193c466013aeb4a6eb90e5de6c8c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a126f7165f04db4ed0b72454469145a08"><td class="memItemLeft" align="right" valign="top">typedef getfem::mesh_level_set&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Core_8h.html#a126f7165f04db4ed0b72454469145a08">GFMeshLevelSet_Type</a></td></tr>
+<tr class="separator:a126f7165f04db4ed0b72454469145a08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cbde831f5a62206e084de1c5de27000"><td class="memItemLeft" align="right" valign="top">typedef boost::shared_ptr<br class="typebreak"/>
+&lt; <a class="el" href="Core_8h.html#a126f7165f04db4ed0b72454469145a08">GFMeshLevelSet_Type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Core_8h.html#a1cbde831f5a62206e084de1c5de27000">GFMeshLevelSetPtr_Type</a></td></tr>
+<tr class="separator:a1cbde831f5a62206e084de1c5de27000"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29030a1ee2a376ae4052e25cde188912"><td class="memItemLeft" align="right" valign="top">typedef std::vector<br class="typebreak"/>
+&lt; <a class="el" href="Core_8h.html#a1cbde831f5a62206e084de1c5de27000">GFMeshLevelSetPtr_Type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Core_8h.html#a29030a1ee2a376ae4052e25cde188912">GFMeshLevelSetPtrContainer_Type</a></td></tr>
+<tr class="separator:a29030a1ee2a376ae4052e25cde188912"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71358a15bd3925629e26ccbb214a0133"><td class="memItemLeft" align="right" valign="top">typedef getfem::level_set&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Core_8h.html#a71358a15bd3925629e26ccbb214a0133">GFLevelSet_Type</a></td></tr>
+<tr class="separator:a71358a15bd3925629e26ccbb214a0133"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8657223c251502b6c6a7e8ce792d708"><td class="memItemLeft" align="right" valign="top">typedef std::vector<br class="typebreak"/>
+&lt; <a class="el" href="Core_8h.html#a71358a15bd3925629e26ccbb214a0133">GFLevelSet_Type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Core_8h.html#ad8657223c251502b6c6a7e8ce792d708">GFLevelSetContainer_Type</a></td></tr>
+<tr class="separator:ad8657223c251502b6c6a7e8ce792d708"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a036173458a8a25c7c03f8c76d97e9580"><td class="memItemLeft" align="right" valign="top">typedef boost::shared_ptr<br class="typebreak"/>
+&lt; <a class="el" href="Core_8h.html#a71358a15bd3925629e26ccbb214a0133">GFLevelSet_Type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Core_8h.html#a036173458a8a25c7c03f8c76d97e9580">GFLevelSetPtr_Type</a></td></tr>
+<tr class="separator:a036173458a8a25c7c03f8c76d97e9580"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a987d5dc736e8c716b3a33e3901a8c904"><td class="memItemLeft" align="right" valign="top">typedef std::vector<br class="typebreak"/>
+&lt; <a class="el" href="Core_8h.html#a036173458a8a25c7c03f8c76d97e9580">GFLevelSetPtr_Type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Core_8h.html#a987d5dc736e8c716b3a33e3901a8c904">GFLevelSetPtrContainer_Type</a></td></tr>
+<tr class="separator:a987d5dc736e8c716b3a33e3901a8c904"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade18ba6e17965b6fdd50b3382b2a7020"><td class="memItemLeft" align="right" valign="top">typedef getfem::mesh_im_level_set&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Core_8h.html#ade18ba6e17965b6fdd50b3382b2a7020">GFIntegrationMethodLevelSet_Type</a></td></tr>
+<tr class="separator:ade18ba6e17965b6fdd50b3382b2a7020"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b50cf7cff521cc16dc8ab5b1c86e622"><td class="memItemLeft" align="right" valign="top">typedef boost::shared_ptr<br class="typebreak"/>
+&lt; <a class="el" href="Core_8h.html#ade18ba6e17965b6fdd50b3382b2a7020">GFIntegrationMethodLevelSet_Type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Core_8h.html#a8b50cf7cff521cc16dc8ab5b1c86e622">GFIntegrationMethodLevelSetPtr_Type</a></td></tr>
+<tr class="separator:a8b50cf7cff521cc16dc8ab5b1c86e622"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad58c7402b26e5087b634b25d029c9c32"><td class="memItemLeft" align="right" valign="top">typedef scalar_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLifeV.html#ad58c7402b26e5087b634b25d029c9c32">LifeV::Real</a></td></tr>
+<tr class="separator:ad58c7402b26e5087b634b25d029c9c32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bd093cf6b0d5b57b2d89e0e90d610b7"><td class="memItemLeft" align="right" valign="top">typedef size_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLifeV.html#a4bd093cf6b0d5b57b2d89e0e90d610b7">LifeV::UInt</a></td></tr>
+<tr class="separator:a4bd093cf6b0d5b57b2d89e0e90d610b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c0e64679fcd30daa5471b87a57601e9"><td class="memItemLeft" align="right" valign="top">typedef size_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLifeV.html#a7c0e64679fcd30daa5471b87a57601e9">LifeV::ID</a></td></tr>
+<tr class="separator:a7c0e64679fcd30daa5471b87a57601e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86d39e8d98566ac745a6c441ed3de2dc"><td class="memItemLeft" align="right" valign="top">typedef int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLifeV.html#a86d39e8d98566ac745a6c441ed3de2dc">LifeV::Int</a></td></tr>
+<tr class="separator:a86d39e8d98566ac745a6c441ed3de2dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Tipi enumerati (enum)</h2></td></tr>
+<tr class="memitem:a419d7707e418f02d8daeb1fc7c0b9ae5"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Core_8h.html#a419d7707e418f02d8daeb1fc7c0b9ae5">ElementDimension</a> { <a class="el" href="Core_8h.html#a419d7707e418f02d8daeb1fc7c0b9ae5a5340ec7ecef6cc3886684a3bd3450d64">MEDIUM</a> = 2, 
+<a class="el" href="Core_8h.html#a419d7707e418f02d8daeb1fc7c0b9ae5aa06469ae01e54e762465572dd016a84e">FRACTURE</a> = MEDIUM-1
+ }</td></tr>
+<tr class="separator:a419d7707e418f02d8daeb1fc7c0b9ae5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentazione delle ridefinizioni di tipo (typedef)</h2>
+<a class="anchor" id="ade18ba6e17965b6fdd50b3382b2a7020"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef getfem::mesh_im_level_set <a class="el" href="Core_8h.html#ade18ba6e17965b6fdd50b3382b2a7020">GFIntegrationMethodLevelSet_Type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a8b50cf7cff521cc16dc8ab5b1c86e622"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef boost::shared_ptr&lt;<a class="el" href="Core_8h.html#ade18ba6e17965b6fdd50b3382b2a7020">GFIntegrationMethodLevelSet_Type</a>&gt; <a class="el" href="Core_8h.html#a8b50cf7cff521cc16dc8ab5b1c86e622">GFIntegrationMethodLevelSetPtr_Type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a71358a15bd3925629e26ccbb214a0133"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef getfem::level_set <a class="el" href="Core_8h.html#a71358a15bd3925629e26ccbb214a0133">GFLevelSet_Type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ad8657223c251502b6c6a7e8ce792d708"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::vector&lt; <a class="el" href="Core_8h.html#a71358a15bd3925629e26ccbb214a0133">GFLevelSet_Type</a> &gt; <a class="el" href="Core_8h.html#ad8657223c251502b6c6a7e8ce792d708">GFLevelSetContainer_Type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a036173458a8a25c7c03f8c76d97e9580"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef boost::shared_ptr&lt;<a class="el" href="Core_8h.html#a71358a15bd3925629e26ccbb214a0133">GFLevelSet_Type</a>&gt; <a class="el" href="Core_8h.html#a036173458a8a25c7c03f8c76d97e9580">GFLevelSetPtr_Type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a987d5dc736e8c716b3a33e3901a8c904"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::vector&lt; <a class="el" href="Core_8h.html#a036173458a8a25c7c03f8c76d97e9580">GFLevelSetPtr_Type</a> &gt; <a class="el" href="Core_8h.html#a987d5dc736e8c716b3a33e3901a8c904">GFLevelSetPtrContainer_Type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ae7bbd1c30a789b1da88f5459e0b70ab5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef getfem::mesh_fem <a class="el" href="Core_8h.html#ae7bbd1c30a789b1da88f5459e0b70ab5">GFMeshFEM_Type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="adbcb92a7299d61d5fe4b56c6a7dab5bc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef boost::shared_ptr&lt;<a class="el" href="Core_8h.html#ae7bbd1c30a789b1da88f5459e0b70ab5">GFMeshFEM_Type</a>&gt; <a class="el" href="Core_8h.html#adbcb92a7299d61d5fe4b56c6a7dab5bc">GFMeshFEMPtr_Type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a5a3193c466013aeb4a6eb90e5de6c8c7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::vector&lt;<a class="el" href="Core_8h.html#adbcb92a7299d61d5fe4b56c6a7dab5bc">GFMeshFEMPtr_Type</a>&gt; <a class="el" href="Core_8h.html#a5a3193c466013aeb4a6eb90e5de6c8c7">GFMeshFEMPtrContainer_Type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a126f7165f04db4ed0b72454469145a08"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef getfem::mesh_level_set <a class="el" href="Core_8h.html#a126f7165f04db4ed0b72454469145a08">GFMeshLevelSet_Type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a1cbde831f5a62206e084de1c5de27000"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef boost::shared_ptr&lt;<a class="el" href="Core_8h.html#a126f7165f04db4ed0b72454469145a08">GFMeshLevelSet_Type</a>&gt; <a class="el" href="Core_8h.html#a1cbde831f5a62206e084de1c5de27000">GFMeshLevelSetPtr_Type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a29030a1ee2a376ae4052e25cde188912"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::vector&lt; <a class="el" href="Core_8h.html#a1cbde831f5a62206e084de1c5de27000">GFMeshLevelSetPtr_Type</a> &gt; <a class="el" href="Core_8h.html#a29030a1ee2a376ae4052e25cde188912">GFMeshLevelSetPtrContainer_Type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a6453867d4e9bd858ad9577b4a1078511"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::pair&lt;size_type, size_type&gt; <a class="el" href="Core_8h.html#a6453867d4e9bd858ad9577b4a1078511">pairSize_Type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a25b461d8af44928b225f6d4e545a0e28"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::vector&lt;<a class="el" href="Core_8h.html#a6453867d4e9bd858ad9577b4a1078511">pairSize_Type</a> &gt; <a class="el" href="Core_8h.html#a25b461d8af44928b225f6d4e545a0e28">pairSizeVector_Type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a9bc476e433f99b82a9c2b8560735c7b5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::vector&lt;<a class="el" href="Core_8h.html#a25b461d8af44928b225f6d4e545a0e28">pairSizeVector_Type</a>&gt; <a class="el" href="Core_8h.html#a9bc476e433f99b82a9c2b8560735c7b5">pairSizeVectorContainer_Type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a4e75b5863535ba1dd79942de2846eff0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::vector&lt;scalar_type&gt; <a class="el" href="Core_8h.html#a4e75b5863535ba1dd79942de2846eff0">scalarVector_Type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ae3afecb4de4310d8262e9ab20cfb875b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::vector&lt;<a class="el" href="Core_8h.html#a4e75b5863535ba1dd79942de2846eff0">scalarVector_Type</a>&gt; <a class="el" href="Core_8h.html#ae3afecb4de4310d8262e9ab20cfb875b">scalarVectorContainer_Type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a45f913084cbd38630aa9e0d0f567ae6b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef boost::shared_ptr&lt;<a class="el" href="Core_8h.html#ab09b6fa3c23db1b8c60456f8690c44a7">scalarVectorPtr_Type</a>&gt; <a class="el" href="Core_8h.html#a45f913084cbd38630aa9e0d0f567ae6b">scalarVectorContainerPtr_Type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ab09b6fa3c23db1b8c60456f8690c44a7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef boost::shared_ptr&lt;<a class="el" href="Core_8h.html#a4e75b5863535ba1dd79942de2846eff0">scalarVector_Type</a>&gt; <a class="el" href="Core_8h.html#ab09b6fa3c23db1b8c60456f8690c44a7">scalarVectorPtr_Type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a20f0354ac7b92989514c678f4cdfcb6b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::vector&lt;<a class="el" href="Core_8h.html#ab09b6fa3c23db1b8c60456f8690c44a7">scalarVectorPtr_Type</a>&gt; <a class="el" href="Core_8h.html#a20f0354ac7b92989514c678f4cdfcb6b">scalarVectorPtrContainer_Type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a83c51913d041a5001e8683434c09857f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::vector&lt;size_type&gt; <a class="el" href="Core_8h.html#a83c51913d041a5001e8683434c09857f">sizeVector_Type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a80e8381d86ecb0a7f4f87ff84d1a0be5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::vector&lt;<a class="el" href="Core_8h.html#a83c51913d041a5001e8683434c09857f">sizeVector_Type</a>&gt; <a class="el" href="Core_8h.html#a80e8381d86ecb0a7f4f87ff84d1a0be5">sizeVectorContainer_Type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aae592fe3076c1985d0ad6c88172e2adf"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef boost::shared_ptr&lt;<a class="el" href="Core_8h.html#a83c51913d041a5001e8683434c09857f">sizeVector_Type</a>&gt; <a class="el" href="Core_8h.html#aae592fe3076c1985d0ad6c88172e2adf">sizeVectorPtr_Type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a19cd2e66996cb454b746a0e689857698"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::vector&lt;<a class="el" href="Core_8h.html#aae592fe3076c1985d0ad6c88172e2adf">sizeVectorPtr_Type</a>&gt; <a class="el" href="Core_8h.html#a19cd2e66996cb454b746a0e689857698">sizeVectorPtrContainer_Type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="afba9f623673e2ae32054015bdb5500f9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef gmm::row_matrix&lt;<a class="el" href="Core_8h.html#a866438488c3e9b9569ecfbb4f4739751">sparseVector_Type</a>&gt; <a class="el" href="Core_8h.html#afba9f623673e2ae32054015bdb5500f9">sparseMatrix_Type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a95b5f3daac96e3478e8cce49aa2fe689"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::vector&lt;<a class="el" href="Core_8h.html#afba9f623673e2ae32054015bdb5500f9">sparseMatrix_Type</a>&gt; <a class="el" href="Core_8h.html#a95b5f3daac96e3478e8cce49aa2fe689">sparseMatrixContainer_Type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a87137a9501b38c724ac80bc955164bb7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef boost::shared_ptr&lt;<a class="el" href="Core_8h.html#afba9f623673e2ae32054015bdb5500f9">sparseMatrix_Type</a>&gt; <a class="el" href="Core_8h.html#a87137a9501b38c724ac80bc955164bb7">sparseMatrixPtr_Type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a2f5e086fbce840d40be38c016488fd91"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::vector&lt;<a class="el" href="Core_8h.html#a87137a9501b38c724ac80bc955164bb7">sparseMatrixPtr_Type</a>&gt; <a class="el" href="Core_8h.html#a2f5e086fbce840d40be38c016488fd91">sparseMatrixPtrContainer_Type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a866438488c3e9b9569ecfbb4f4739751"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef gmm::rsvector&lt;scalar_type&gt; <a class="el" href="Core_8h.html#a866438488c3e9b9569ecfbb4f4739751">sparseVector_Type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="abd22988c59cfec13627d6187914605c9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::vector&lt; std::string &gt; <a class="el" href="Core_8h.html#abd22988c59cfec13627d6187914605c9">stringContainer_Type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Documentazione dei tipi enumerati</h2>
+<a class="anchor" id="a419d7707e418f02d8daeb1fc7c0b9ae5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="Core_8h.html#a419d7707e418f02d8daeb1fc7c0b9ae5">ElementDimension</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Valori del tipo enumerato</th></tr><tr><td class="fieldname"><em><a class="anchor" id="a419d7707e418f02d8daeb1fc7c0b9ae5a5340ec7ecef6cc3886684a3bd3450d64"></a>MEDIUM</em>&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a419d7707e418f02d8daeb1fc7c0b9ae5aa06469ae01e54e762465572dd016a84e"></a>FRACTURE</em>&#160;</td><td class="fielddoc">
+</td></tr>
+</table>
+<div class="fragment"><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;{</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <a class="code" href="Core_8h.html#a419d7707e418f02d8daeb1fc7c0b9ae5a5340ec7ecef6cc3886684a3bd3450d64">MEDIUM</a> = 2, <a class="code" href="Core_8h.html#a419d7707e418f02d8daeb1fc7c0b9ae5aa06469ae01e54e762465572dd016a84e">FRACTURE</a> = <a class="code" href="Core_8h.html#a419d7707e418f02d8daeb1fc7c0b9ae5a5340ec7ecef6cc3886684a3bd3450d64">MEDIUM</a>-1</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;};</div>
+<div class="ttc" id="Core_8h_html_a419d7707e418f02d8daeb1fc7c0b9ae5a5340ec7ecef6cc3886684a3bd3450d64"><div class="ttname"><a href="Core_8h.html#a419d7707e418f02d8daeb1fc7c0b9ae5a5340ec7ecef6cc3886684a3bd3450d64">MEDIUM</a></div><div class="ttdef"><b>Definition:</b> Core.h:104</div></div>
+<div class="ttc" id="Core_8h_html_a419d7707e418f02d8daeb1fc7c0b9ae5aa06469ae01e54e762465572dd016a84e"><div class="ttname"><a href="Core_8h.html#a419d7707e418f02d8daeb1fc7c0b9ae5aa06469ae01e54e762465572dd016a84e">FRACTURE</a></div><div class="ttdef"><b>Definition:</b> Core.h:104</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generato Dom 19 Ott 2014 18:46:37 per Progetto PACS da &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.6
+</small></address>
+</body>
+</html>

@@ -1,0 +1,345 @@
+\hypertarget{classLevelSetHandler}{\section{Riferimenti per la classe Level\-Set\-Handler}
+\label{classLevelSetHandler}\index{Level\-Set\-Handler@{Level\-Set\-Handler}}
+}
+
+
+\hyperlink{LevelSetHandler_8h}{Level\-Set\-Handler.\-h}.  
+
+
+
+
+{\ttfamily \#include $<$Level\-Set\-Handler.\-h$>$}
+
+\subsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classLevelSetHandler_a9dbe142d7d4f677abe8c204714c004ed}{Level\-Set\-Handler} (const Get\-Pot \&data\-File, const std\-::string \&section=\char`\"{}fracture\-Data/\char`\"{}, const std\-::string \&section\-Level\-Set=\char`\"{}level\-Set/\char`\"{})
+\begin{DoxyCompactList}\small\item\em \hyperlink{LevelSetHandler_8cc}{Level\-Set\-Handler.\-cc}. \end{DoxyCompactList}\item 
+void \hyperlink{classLevelSetHandler_a7ee7ade813923dfdef1bc25e9a881580}{init} (getfem\-::mesh \&medium\-Mesh, const std\-::string \&medium\-Integration\-Type\-Velocity, const getfem\-::mesh\-\_\-fem \&medium\-Mesh\-F\-E\-M\-Pressure, const getfem\-::mesh\-\_\-fem \&medium\-Mesh\-F\-E\-M\-Velocity)
+\item 
+const \hyperlink{Core_8h_a126f7165f04db4ed0b72454469145a08}{G\-F\-Mesh\-Level\-Set\-\_\-\-Type} \& \hyperlink{classLevelSetHandler_a6e08147a60f9e8d7ec65357223f72311}{get\-Mesh} () const 
+\item 
+\hyperlink{Core_8h_a126f7165f04db4ed0b72454469145a08}{G\-F\-Mesh\-Level\-Set\-\_\-\-Type} \& \hyperlink{classLevelSetHandler_a35e4adb6d0c5128445d46f0b489ce0a2}{get\-Mesh} ()
+\item 
+const \\*
+\hyperlink{Core_8h_ade18ba6e17965b6fdd50b3382b2a7020}{G\-F\-Integration\-Method\-Level\-Set\-\_\-\-Type} \& \hyperlink{classLevelSetHandler_a1bf7aa9bad7c2ccec178d4092690775b}{get\-Integration\-Method\-Inside} () const 
+\item 
+const \\*
+\hyperlink{Core_8h_ade18ba6e17965b6fdd50b3382b2a7020}{G\-F\-Integration\-Method\-Level\-Set\-\_\-\-Type} \& \hyperlink{classLevelSetHandler_a155cedf651006dc5509c34a6ea5e3324}{get\-Integration\-Method\-Outside} () const 
+\item 
+const \hyperlink{Core_8h_a71358a15bd3925629e26ccbb214a0133}{G\-F\-Level\-Set\-\_\-\-Type} \& \hyperlink{classLevelSetHandler_aa899ffbee62631067378346d61fd172a}{get\-Level\-Set} () const 
+\item 
+\hyperlink{Core_8h_a71358a15bd3925629e26ccbb214a0133}{G\-F\-Level\-Set\-\_\-\-Type} \& \hyperlink{classLevelSetHandler_a88f16d61da1d2a2a68d5ef33fa77a41d}{get\-Level\-Set} ()
+\item 
+const \\*
+\hyperlink{Core_8h_ade18ba6e17965b6fdd50b3382b2a7020}{G\-F\-Integration\-Method\-Level\-Set\-\_\-\-Type} \& \hyperlink{classLevelSetHandler_ad35aef3284c2582550b376fd3e99c45f}{get\-Integration\-Method} () const 
+\item 
+const \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalar\-Vector\-\_\-\-Type} \& \hyperlink{classLevelSetHandler_a983463087a38199510a0859658ad5291}{get\-Baricenter\-Value} () const 
+\item 
+const scalar\-\_\-type \& \hyperlink{classLevelSetHandler_a7a4653958485195d2b995be4d52e2765}{get\-Baricenter\-Value} (const size\-\_\-type \&dof) const 
+\item 
+const \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalar\-Vector\-\_\-\-Type} \& \hyperlink{classLevelSetHandler_ac46f075503657b1481d80acb5d3307d1}{get\-D\-O\-F\-Value} () const 
+\item 
+const scalar\-\_\-type \& \hyperlink{classLevelSetHandler_ab9babfc6e7705047b005a88b4ab1f46f}{get\-D\-O\-F\-Value} (const size\-\_\-type \&dof) const 
+\item 
+\hyperlink{LevelSetData_8h_a7750f14ec1c622b3c69aa0c5c2894972}{Level\-Set\-Data\-Ptr\-\_\-\-Type} \& \hyperlink{classLevelSetHandler_ab24897cb969210d278f54d94fd8f8977}{get\-Data} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Descrizione dettagliata}
+\hyperlink{LevelSetHandler_8h}{Level\-Set\-Handler.\-h}. 
+
+classe che mi permette di costruire la frattura a partire dai dati del file data 
+
+\subsection{Documentazione dei costruttori e dei distruttori}
+\hypertarget{classLevelSetHandler_a9dbe142d7d4f677abe8c204714c004ed}{\index{Level\-Set\-Handler@{Level\-Set\-Handler}!Level\-Set\-Handler@{Level\-Set\-Handler}}
+\index{Level\-Set\-Handler@{Level\-Set\-Handler}!LevelSetHandler@{Level\-Set\-Handler}}
+\subsubsection[{Level\-Set\-Handler}]{\setlength{\rightskip}{0pt plus 5cm}Level\-Set\-Handler\-::\-Level\-Set\-Handler (
+\begin{DoxyParamCaption}
+\item[{const Get\-Pot \&}]{data\-File, }
+\item[{const std\-::string \&}]{section = {\ttfamily \char`\"{}fractureData/\char`\"{}}, }
+\item[{const std\-::string \&}]{section\-Level\-Set = {\ttfamily \char`\"{}levelSet/\char`\"{}}}
+\end{DoxyParamCaption}
+)}}\label{classLevelSetHandler_a9dbe142d7d4f677abe8c204714c004ed}
+
+
+\hyperlink{LevelSetHandler_8cc}{Level\-Set\-Handler.\-cc}. 
+
+
+\begin{DoxyCode}
+9                                                                       :
+10                                    M\_data( \textcolor{keyword}{new} \hyperlink{classLevelSetData}{LevelSetData\_Type} ( dataFile, section, 
+      sectionLevelSet ) )
+11 \{\}
+\end{DoxyCode}
+
+
+\subsection{Documentazione delle funzioni membro}
+\hypertarget{classLevelSetHandler_a983463087a38199510a0859658ad5291}{\index{Level\-Set\-Handler@{Level\-Set\-Handler}!get\-Baricenter\-Value@{get\-Baricenter\-Value}}
+\index{get\-Baricenter\-Value@{get\-Baricenter\-Value}!LevelSetHandler@{Level\-Set\-Handler}}
+\subsubsection[{get\-Baricenter\-Value}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf scalar\-Vector\-\_\-\-Type}\& Level\-Set\-Handler\-::get\-Baricenter\-Value (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLevelSetHandler_a983463087a38199510a0859658ad5291}
+
+\begin{DoxyCode}
+70     \{
+71         \textcolor{keywordflow}{return} M\_baricenterValue;
+72     \}
+\end{DoxyCode}
+\hypertarget{classLevelSetHandler_a7a4653958485195d2b995be4d52e2765}{\index{Level\-Set\-Handler@{Level\-Set\-Handler}!get\-Baricenter\-Value@{get\-Baricenter\-Value}}
+\index{get\-Baricenter\-Value@{get\-Baricenter\-Value}!LevelSetHandler@{Level\-Set\-Handler}}
+\subsubsection[{get\-Baricenter\-Value}]{\setlength{\rightskip}{0pt plus 5cm}const scalar\-\_\-type\& Level\-Set\-Handler\-::get\-Baricenter\-Value (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-type \&}]{dof}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLevelSetHandler_a7a4653958485195d2b995be4d52e2765}
+
+\begin{DoxyCode}
+76     \{
+77         \textcolor{keywordflow}{return} M\_baricenterValue [ dof ];
+78     \}
+\end{DoxyCode}
+\hypertarget{classLevelSetHandler_ab24897cb969210d278f54d94fd8f8977}{\index{Level\-Set\-Handler@{Level\-Set\-Handler}!get\-Data@{get\-Data}}
+\index{get\-Data@{get\-Data}!LevelSetHandler@{Level\-Set\-Handler}}
+\subsubsection[{get\-Data}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Level\-Set\-Data\-Ptr\-\_\-\-Type}\& Level\-Set\-Handler\-::get\-Data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLevelSetHandler_ab24897cb969210d278f54d94fd8f8977}
+
+\begin{DoxyCode}
+94     \{
+95         \textcolor{keywordflow}{return} M\_data;
+96     \}
+\end{DoxyCode}
+\hypertarget{classLevelSetHandler_ac46f075503657b1481d80acb5d3307d1}{\index{Level\-Set\-Handler@{Level\-Set\-Handler}!get\-D\-O\-F\-Value@{get\-D\-O\-F\-Value}}
+\index{get\-D\-O\-F\-Value@{get\-D\-O\-F\-Value}!LevelSetHandler@{Level\-Set\-Handler}}
+\subsubsection[{get\-D\-O\-F\-Value}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf scalar\-Vector\-\_\-\-Type}\& Level\-Set\-Handler\-::get\-D\-O\-F\-Value (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLevelSetHandler_ac46f075503657b1481d80acb5d3307d1}
+
+\begin{DoxyCode}
+82     \{
+83         \textcolor{keywordflow}{return} M\_DOFValue;
+84     \}
+\end{DoxyCode}
+\hypertarget{classLevelSetHandler_ab9babfc6e7705047b005a88b4ab1f46f}{\index{Level\-Set\-Handler@{Level\-Set\-Handler}!get\-D\-O\-F\-Value@{get\-D\-O\-F\-Value}}
+\index{get\-D\-O\-F\-Value@{get\-D\-O\-F\-Value}!LevelSetHandler@{Level\-Set\-Handler}}
+\subsubsection[{get\-D\-O\-F\-Value}]{\setlength{\rightskip}{0pt plus 5cm}const scalar\-\_\-type\& Level\-Set\-Handler\-::get\-D\-O\-F\-Value (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-type \&}]{dof}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLevelSetHandler_ab9babfc6e7705047b005a88b4ab1f46f}
+
+\begin{DoxyCode}
+88     \{
+89         \textcolor{keywordflow}{return} M\_DOFValue [ dof ];
+90     \}
+\end{DoxyCode}
+\hypertarget{classLevelSetHandler_ad35aef3284c2582550b376fd3e99c45f}{\index{Level\-Set\-Handler@{Level\-Set\-Handler}!get\-Integration\-Method@{get\-Integration\-Method}}
+\index{get\-Integration\-Method@{get\-Integration\-Method}!LevelSetHandler@{Level\-Set\-Handler}}
+\subsubsection[{get\-Integration\-Method}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf G\-F\-Integration\-Method\-Level\-Set\-\_\-\-Type}\& Level\-Set\-Handler\-::get\-Integration\-Method (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLevelSetHandler_ad35aef3284c2582550b376fd3e99c45f}
+
+\begin{DoxyCode}
+64     \{
+65         \textcolor{keywordflow}{return} *M\_integrationMethod;
+66     \}
+\end{DoxyCode}
+\hypertarget{classLevelSetHandler_a1bf7aa9bad7c2ccec178d4092690775b}{\index{Level\-Set\-Handler@{Level\-Set\-Handler}!get\-Integration\-Method\-Inside@{get\-Integration\-Method\-Inside}}
+\index{get\-Integration\-Method\-Inside@{get\-Integration\-Method\-Inside}!LevelSetHandler@{Level\-Set\-Handler}}
+\subsubsection[{get\-Integration\-Method\-Inside}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf G\-F\-Integration\-Method\-Level\-Set\-\_\-\-Type}\& Level\-Set\-Handler\-::get\-Integration\-Method\-Inside (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLevelSetHandler_a1bf7aa9bad7c2ccec178d4092690775b}
+
+\begin{DoxyCode}
+40     \{
+41         \textcolor{keywordflow}{return} *M\_integrationMethodInside;
+42     \}
+\end{DoxyCode}
+\hypertarget{classLevelSetHandler_a155cedf651006dc5509c34a6ea5e3324}{\index{Level\-Set\-Handler@{Level\-Set\-Handler}!get\-Integration\-Method\-Outside@{get\-Integration\-Method\-Outside}}
+\index{get\-Integration\-Method\-Outside@{get\-Integration\-Method\-Outside}!LevelSetHandler@{Level\-Set\-Handler}}
+\subsubsection[{get\-Integration\-Method\-Outside}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf G\-F\-Integration\-Method\-Level\-Set\-\_\-\-Type}\& Level\-Set\-Handler\-::get\-Integration\-Method\-Outside (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLevelSetHandler_a155cedf651006dc5509c34a6ea5e3324}
+
+\begin{DoxyCode}
+46     \{
+47         \textcolor{keywordflow}{return} *M\_integrationMethodOutside;
+48     \}
+\end{DoxyCode}
+\hypertarget{classLevelSetHandler_aa899ffbee62631067378346d61fd172a}{\index{Level\-Set\-Handler@{Level\-Set\-Handler}!get\-Level\-Set@{get\-Level\-Set}}
+\index{get\-Level\-Set@{get\-Level\-Set}!LevelSetHandler@{Level\-Set\-Handler}}
+\subsubsection[{get\-Level\-Set}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf G\-F\-Level\-Set\-\_\-\-Type}\& Level\-Set\-Handler\-::get\-Level\-Set (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLevelSetHandler_aa899ffbee62631067378346d61fd172a}
+
+\begin{DoxyCode}
+52     \{
+53         \textcolor{keywordflow}{return} *M\_levelSet;
+54     \}
+\end{DoxyCode}
+\hypertarget{classLevelSetHandler_a88f16d61da1d2a2a68d5ef33fa77a41d}{\index{Level\-Set\-Handler@{Level\-Set\-Handler}!get\-Level\-Set@{get\-Level\-Set}}
+\index{get\-Level\-Set@{get\-Level\-Set}!LevelSetHandler@{Level\-Set\-Handler}}
+\subsubsection[{get\-Level\-Set}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\-F\-Level\-Set\-\_\-\-Type}\& Level\-Set\-Handler\-::get\-Level\-Set (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLevelSetHandler_a88f16d61da1d2a2a68d5ef33fa77a41d}
+
+\begin{DoxyCode}
+58     \{
+59         \textcolor{keywordflow}{return} *M\_levelSet;
+60     \}
+\end{DoxyCode}
+\hypertarget{classLevelSetHandler_a6e08147a60f9e8d7ec65357223f72311}{\index{Level\-Set\-Handler@{Level\-Set\-Handler}!get\-Mesh@{get\-Mesh}}
+\index{get\-Mesh@{get\-Mesh}!LevelSetHandler@{Level\-Set\-Handler}}
+\subsubsection[{get\-Mesh}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf G\-F\-Mesh\-Level\-Set\-\_\-\-Type}\& Level\-Set\-Handler\-::get\-Mesh (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLevelSetHandler_a6e08147a60f9e8d7ec65357223f72311}
+
+\begin{DoxyCode}
+28     \{
+29         \textcolor{keywordflow}{return} *M\_mesh;
+30     \}
+\end{DoxyCode}
+\hypertarget{classLevelSetHandler_a35e4adb6d0c5128445d46f0b489ce0a2}{\index{Level\-Set\-Handler@{Level\-Set\-Handler}!get\-Mesh@{get\-Mesh}}
+\index{get\-Mesh@{get\-Mesh}!LevelSetHandler@{Level\-Set\-Handler}}
+\subsubsection[{get\-Mesh}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\-F\-Mesh\-Level\-Set\-\_\-\-Type}\& Level\-Set\-Handler\-::get\-Mesh (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLevelSetHandler_a35e4adb6d0c5128445d46f0b489ce0a2}
+
+\begin{DoxyCode}
+34     \{
+35         \textcolor{keywordflow}{return} *M\_mesh;
+36     \}
+\end{DoxyCode}
+\hypertarget{classLevelSetHandler_a7ee7ade813923dfdef1bc25e9a881580}{\index{Level\-Set\-Handler@{Level\-Set\-Handler}!init@{init}}
+\index{init@{init}!LevelSetHandler@{Level\-Set\-Handler}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}void Level\-Set\-Handler\-::init (
+\begin{DoxyParamCaption}
+\item[{getfem\-::mesh \&}]{medium\-Mesh, }
+\item[{const std\-::string \&}]{medium\-Integration\-Type\-Velocity, }
+\item[{const getfem\-::mesh\-\_\-fem \&}]{medium\-Mesh\-F\-E\-M\-Pressure, }
+\item[{const getfem\-::mesh\-\_\-fem \&}]{medium\-Mesh\-F\-E\-M\-Velocity}
+\end{DoxyParamCaption}
+)}}\label{classLevelSetHandler_a7ee7ade813923dfdef1bc25e9a881580}
+
+\begin{DoxyCode}
+19 \{
+20     M\_mesh.reset(\textcolor{keyword}{new} \hyperlink{Core_8h_a126f7165f04db4ed0b72454469145a08}{GFMeshLevelSet\_Type}(mediumMesh));
+21 
+22     M\_levelSet.reset(\textcolor{keyword}{new} \hyperlink{Core_8h_a71358a15bd3925629e26ccbb214a0133}{GFLevelSet\_Type}(mediumMesh));
+23 
+24     M\_integrationMethod.reset(\textcolor{keyword}{new} \hyperlink{Core_8h_ade18ba6e17965b6fdd50b3382b2a7020}{GFIntegrationMethodLevelSet\_Type}(*M\_mesh,
+25             getfem::mesh\_im\_level\_set::INTEGRATE\_BOUNDARY));
+26 
+27     M\_integrationMethodInside.reset(\textcolor{keyword}{new} \hyperlink{Core_8h_ade18ba6e17965b6fdd50b3382b2a7020}{GFIntegrationMethodLevelSet\_Type}(
+28             *M\_mesh, getfem::mesh\_im\_level\_set::INTEGRATE\_INSIDE));
+29 
+30     M\_integrationMethodOutside.reset(\textcolor{keyword}{new} \hyperlink{Core_8h_ade18ba6e17965b6fdd50b3382b2a7020}{GFIntegrationMethodLevelSet\_Type}(
+31             *M\_mesh, getfem::mesh\_im\_level\_set::INTEGRATE\_OUTSIDE));
+32 
+33     \textcolor{comment}{// Level sets}
+34 
+35     \textcolor{comment}{// Integration type for the level set function}
+36     getfem::pintegration\_method integrationType =
+37             getfem::int\_method\_descriptor(M\_data->getIntegrationTypeSimplex());
+38 
+39     \textcolor{comment}{// Set that the M\_mediumMesh M\_levelSetMesh is cutted by a level set}
+40     M\_mesh->add\_level\_set(*M\_levelSet);
+41 
+42     \textcolor{comment}{// Integration type for the dual variable}
+43     getfem::pintegration\_method mediumIntegrationVelocity =
+44             getfem::int\_method\_descriptor(mediumIntegrationTypeVelocity);
+45 
+46     \textcolor{comment}{// Set the integration method for the zero of the level set function}
+47     M\_integrationMethod->set\_integration\_method(mediumMesh.convex\_index(),
+48             mediumIntegrationVelocity);
+49 
+50     M\_integrationMethod->set\_simplex\_im(integrationType);
+51 
+52     \textcolor{comment}{// Set the integration method for one side of the level set function}
+53     M\_integrationMethodInside->set\_integration\_method(
+54             mediumMesh.convex\_index(), mediumIntegrationVelocity);
+55 
+56     M\_integrationMethodInside->set\_simplex\_im(integrationType);
+57 
+58     \textcolor{comment}{// Set the integration method for the other side of the level set function}
+59     M\_integrationMethodOutside->set\_integration\_method(
+60             mediumMesh.convex\_index(), mediumIntegrationVelocity);
+61 
+62     M\_integrationMethodOutside->set\_simplex\_im(integrationType);
+63 
+64     M\_levelSet->reinit();
+65 
+66     M\_levelSet->values(1) = M\_levelSet->values(0);
+67 
+68 
+69     \textcolor{comment}{// Fill the level set with the value from the data}
+70     \textcolor{keywordflow}{for} ( size\_type d = 0; d < M\_levelSet->get\_mesh\_fem().nb\_basic\_dof(); ++d )
+71     \{
+72         \textcolor{keyword}{const} base\_node node = M\_levelSet->get\_mesh\_fem().point\_of\_basic\_dof(d);
+73 
+74         M\_levelSet->values(0) [ d ] = M\_data->ylevelSetFunction(node);
+75         M\_levelSet->values(1) [ d ] = M\_data->levelSetCutFunction(node);
+76     \}
+77 
+78     M\_levelSet->touch();
+79 
+80     \textcolor{comment}{// Since the level set is modified update the mesh and integration methods}
+81     M\_mesh->adapt();
+82     M\_integrationMethod->adapt();
+83     M\_integrationMethodInside->adapt();
+84     M\_integrationMethodOutside->adapt();
+85 
+86     \textcolor{comment}{// Evaluate the level set function in the primal degrees of freedom}
+87     \textcolor{keyword}{const} size\_type shiftPressure = mediumMeshFEMPressure.nb\_dof();
+88     \textcolor{comment}{// gives the total number of different degrees of freedom. If the optional reduction is used, this will
+       be the number}
+89     \textcolor{comment}{// of columns of the reduction matrix. Otherwise it will return the number of basic degrees of freedom}
+90 
+91     gmm::resize(M\_baricenterValue, shiftPressure);
+92     \textcolor{keywordflow}{for} ( size\_type i = 0; i < shiftPressure; ++i )
+93     \{
+94         \textcolor{keyword}{const} base\_node node = mediumMeshFEMPressure.point\_of\_basic\_dof(i);
+95         M\_baricenterValue [ i ] = M\_data->ylevelSetFunction(node, 0.0);
+96     \}
+97 
+98     \textcolor{comment}{// Evaluate the level set function in the dual degrees of freedom}
+99     \textcolor{keyword}{const} size\_type shiftVelocity = mediumMeshFEMVelocity.nb\_dof();
+100     gmm::resize(M\_DOFValue, shiftVelocity);
+101 
+102 
+103 
+104     \textcolor{keywordflow}{for} ( size\_type i = 0; i < shiftVelocity; ++i )
+105     \{
+106     \textcolor{keyword}{const} base\_node node = mediumMeshFEMVelocity.point\_of\_basic\_dof(i);
+107         M\_DOFValue [ i ] = M\_data->ylevelSetFunction(node, 0.0);
+108     \}
+109 
+110 \}
+\end{DoxyCode}
+
+
+La documentazione per questa classe è stata generata a partire dai seguenti file\-:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{LevelSetHandler_8h}{Level\-Set\-Handler.\-h}\item 
+src/\hyperlink{LevelSetHandler_8cc}{Level\-Set\-Handler.\-cc}\end{DoxyCompactItemize}

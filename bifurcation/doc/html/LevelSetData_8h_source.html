@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>Progetto PACS:  File sorgente include/LevelSetData.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Progetto PACS
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generato da Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Pagina&#160;Principale</span></a></li>
+      <li><a href="namespaces.html"><span>Namespace</span></a></li>
+      <li><a href="annotated.html"><span>Classi</span></a></li>
+      <li class="current"><a href="files.html"><span>File</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Cerca" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Elenco&#160;dei&#160;file</span></a></li>
+      <li><a href="globals.html"><span>Elementi&#160;dei&#160;file</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tutto</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classi</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespace</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>File</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funzioni</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Ridefinizioni di tipo (typedef)</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Tipi enumerati (enum)</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Valori del tipo enumerato</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">LevelSetData.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="LevelSetData_8h.html">Vai alla documentazione di questo file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#ifndef LEVELSETDATA_H_</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define LEVELSETDATA_H_ 1</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Core_8h.html">Core.h</a>&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Parser_8h.html">Parser.h</a>&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="classLevelSetData.html">   11</a></span>&#160;<span class="keyword">class </span><a class="code" href="classLevelSetData.html">LevelSetData</a></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="classLevelSetData.html#a8b2ab7808f47d9a951327891d65e84be">LevelSetData</a> ( <span class="keyword">const</span> GetPot&amp; dataFile,</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;                   <span class="keyword">const</span> std::string&amp; section = <span class="stringliteral">&quot;fractureData/&quot;</span>,</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                   <span class="keyword">const</span> std::string&amp; sectionLevelSet = <span class="stringliteral">&quot;levelSet/&quot;</span> );</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    scalar_type <a class="code" href="classLevelSetData.html#ab6dee766ab332d7384cc0db802001365">ylevelSetFunction</a> ( <span class="keyword">const</span> base_node&amp; x,</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                                   <span class="keywordtype">int</span> num = 0 );</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    scalar_type <a class="code" href="classLevelSetData.html#a15b4379080b2320c54467c89c3642c4a">levelSetFunction</a> ( <span class="keyword">const</span> base_node&amp; x,</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                                   <span class="keywordtype">int</span> num = 0 );</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    scalar_type <a class="code" href="classLevelSetData.html#a080eb321db2710b115ea6ea4344551e8">levelSetCutFunction</a> ( <span class="keyword">const</span> base_node&amp; x,</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                                      <span class="keywordtype">int</span> num = 0 );</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    scalar_type <a class="code" href="classLevelSetData.html#aa4cda1cced4bc385d85383b40bbc2631">y_map</a> ( <span class="keyword">const</span> base_node&amp; t );</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    scalar_type <a class="code" href="classLevelSetData.html#ae7f10d3f10b72fbb6f703ba7aa8fe17b">x_map</a> ( <span class="keyword">const</span> base_node&amp; t );</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    scalar_type <a class="code" href="classLevelSetData.html#ac5307b31e9aff44c3e0d7cb848c17949">t_map</a> ( <span class="keyword">const</span> base_node&amp; t );</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <a class="code" href="Core_8h.html#a4e75b5863535ba1dd79942de2846eff0">scalarVector_Type</a> <a class="code" href="classLevelSetData.html#a40fcfa36de7ac76613284d03690eb54b">map_jac</a> ( <span class="keyword">const</span> base_node&amp; x,</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                           <span class="keyword">const</span> size_type&amp; num );</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <a class="code" href="Core_8h.html#a4e75b5863535ba1dd79942de2846eff0">scalarVector_Type</a> <a class="code" href="classLevelSetData.html#a674d56690f4e22cbca38bf4b5f176a5e">normal_map</a> ( <span class="keyword">const</span> base_node&amp; P,</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                              <span class="keyword">const</span> size_type&amp; num );</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="classLevelSetData.html#aa4c3e1f7876cd318e80f5052689fe9e3">   89</a></span>&#160;    <span class="keyword">inline</span> bgeot::dim_type <a class="code" href="classLevelSetData.html#aa4c3e1f7876cd318e80f5052689fe9e3">getSpaceDimension</a> ()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keywordflow">return</span> M_spaceDimension;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="classLevelSetData.html#a3f8cb21a929065136dcf3a449edb373a">   95</a></span>&#160;    <span class="keyword">inline</span> std::string <a class="code" href="classLevelSetData.html#a3f8cb21a929065136dcf3a449edb373a">getIntegrationTypeSimplex</a> ()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordflow">return</span> M_integrationTypeSimplex;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    }</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="classLevelSetData.html#a672418971ce9b1bf71d3c6bccd278bd7">  101</a></span>&#160;    std::string <a class="code" href="classLevelSetData.html#a672418971ce9b1bf71d3c6bccd278bd7">getLevelSetFunctionString</a> ()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keywordflow">return</span> M_yfunction;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="comment">// Attributes</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    std::string M_section;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    std::string M_sectionLevelSet;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    bgeot::dim_type M_spaceDimension;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    std::string M_function;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    std::string M_xfunction;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    std::string M_yfunction;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    std::string M_cutFunction;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    std::string M_x_map;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    std::string M_y_map;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    std::string M_map_inv;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    std::string M_map_jac;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    std::string M_normal_map;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="comment">//SIMPLEX_INTEGRATION</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    std::string M_integrationTypeSimplex;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keyword">mutable</span> <a class="code" href="classLifeV_1_1Parser.html">LifeV::Parser</a> M_parser;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;};</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
+<div class="line"><a name="l00132"></a><span class="lineno"><a class="line" href="LevelSetData_8h.html#ad9acd4c7e96919475361341469698bb4">  132</a></span>&#160;<span class="keyword">typedef</span> <a class="code" href="classLevelSetData.html">LevelSetData</a> <a class="code" href="LevelSetData_8h.html#ad9acd4c7e96919475361341469698bb4">LevelSetData_Type</a>;</div>
+<div class="line"><a name="l00133"></a><span class="lineno"><a class="line" href="LevelSetData_8h.html#a7750f14ec1c622b3c69aa0c5c2894972">  133</a></span>&#160;<span class="keyword">typedef</span> boost::shared_ptr&lt;LevelSetData_Type&gt; <a class="code" href="LevelSetData_8h.html#a7750f14ec1c622b3c69aa0c5c2894972">LevelSetDataPtr_Type</a>;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* LEVELSETDATA_H_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="classLevelSetData_html_a3f8cb21a929065136dcf3a449edb373a"><div class="ttname"><a href="classLevelSetData.html#a3f8cb21a929065136dcf3a449edb373a">LevelSetData::getIntegrationTypeSimplex</a></div><div class="ttdeci">std::string getIntegrationTypeSimplex() const </div><div class="ttdef"><b>Definition:</b> LevelSetData.h:95</div></div>
+<div class="ttc" id="Core_8h_html_a4e75b5863535ba1dd79942de2846eff0"><div class="ttname"><a href="Core_8h.html#a4e75b5863535ba1dd79942de2846eff0">scalarVector_Type</a></div><div class="ttdeci">std::vector&lt; scalar_type &gt; scalarVector_Type</div><div class="ttdef"><b>Definition:</b> Core.h:61</div></div>
+<div class="ttc" id="classLevelSetData_html_a8b2ab7808f47d9a951327891d65e84be"><div class="ttname"><a href="classLevelSetData.html#a8b2ab7808f47d9a951327891d65e84be">LevelSetData::LevelSetData</a></div><div class="ttdeci">LevelSetData(const GetPot &amp;dataFile, const std::string &amp;section=&quot;fractureData/&quot;, const std::string &amp;sectionLevelSet=&quot;levelSet/&quot;)</div><div class="ttdoc">LevelSetData.cc. </div><div class="ttdef"><b>Definition:</b> LevelSetData.cc:7</div></div>
+<div class="ttc" id="Parser_8h_html"><div class="ttname"><a href="Parser_8h.html">Parser.h</a></div><div class="ttdoc">File containing the Parser interface. </div></div>
+<div class="ttc" id="classLevelSetData_html_a080eb321db2710b115ea6ea4344551e8"><div class="ttname"><a href="classLevelSetData.html#a080eb321db2710b115ea6ea4344551e8">LevelSetData::levelSetCutFunction</a></div><div class="ttdeci">scalar_type levelSetCutFunction(const base_node &amp;x, int num=0)</div><div class="ttdoc">scalar_type levelSetCutFunction ( const base_node&amp; x, int num = 0 ) </div><div class="ttdef"><b>Definition:</b> LevelSetData.cc:48</div></div>
+<div class="ttc" id="Core_8h_html"><div class="ttname"><a href="Core_8h.html">Core.h</a></div></div>
+<div class="ttc" id="classLevelSetData_html_ac5307b31e9aff44c3e0d7cb848c17949"><div class="ttname"><a href="classLevelSetData.html#ac5307b31e9aff44c3e0d7cb848c17949">LevelSetData::t_map</a></div><div class="ttdeci">scalar_type t_map(const base_node &amp;t)</div><div class="ttdoc">scalar_type t_map ( const base_node&amp; t ) </div><div class="ttdef"><b>Definition:</b> LevelSetData.cc:74</div></div>
+<div class="ttc" id="classLevelSetData_html_aa4c3e1f7876cd318e80f5052689fe9e3"><div class="ttname"><a href="classLevelSetData.html#aa4c3e1f7876cd318e80f5052689fe9e3">LevelSetData::getSpaceDimension</a></div><div class="ttdeci">bgeot::dim_type getSpaceDimension() const </div><div class="ttdef"><b>Definition:</b> LevelSetData.h:89</div></div>
+<div class="ttc" id="classLifeV_1_1Parser_html"><div class="ttname"><a href="classLifeV_1_1Parser.html">LifeV::Parser</a></div><div class="ttdoc">Parser - A string parser for algebraic expressions. </div><div class="ttdef"><b>Definition:</b> Parser.h:55</div></div>
+<div class="ttc" id="classLevelSetData_html_ab6dee766ab332d7384cc0db802001365"><div class="ttname"><a href="classLevelSetData.html#ab6dee766ab332d7384cc0db802001365">LevelSetData::ylevelSetFunction</a></div><div class="ttdeci">scalar_type ylevelSetFunction(const base_node &amp;x, int num=0)</div><div class="ttdoc">scalar_type ylevelSetFunction ( const base_node&amp; x, int num = 0 ) </div><div class="ttdef"><b>Definition:</b> LevelSetData.cc:28</div></div>
+<div class="ttc" id="classLevelSetData_html_a674d56690f4e22cbca38bf4b5f176a5e"><div class="ttname"><a href="classLevelSetData.html#a674d56690f4e22cbca38bf4b5f176a5e">LevelSetData::normal_map</a></div><div class="ttdeci">scalarVector_Type normal_map(const base_node &amp;P, const size_type &amp;num)</div><div class="ttdoc">scalarVector_Type normal_map ( const base_node&amp; P, const size_type&amp; num ); </div><div class="ttdef"><b>Definition:</b> LevelSetData.cc:102</div></div>
+<div class="ttc" id="classLevelSetData_html_a672418971ce9b1bf71d3c6bccd278bd7"><div class="ttname"><a href="classLevelSetData.html#a672418971ce9b1bf71d3c6bccd278bd7">LevelSetData::getLevelSetFunctionString</a></div><div class="ttdeci">std::string getLevelSetFunctionString() const </div><div class="ttdef"><b>Definition:</b> LevelSetData.h:101</div></div>
+<div class="ttc" id="classLevelSetData_html_a15b4379080b2320c54467c89c3642c4a"><div class="ttname"><a href="classLevelSetData.html#a15b4379080b2320c54467c89c3642c4a">LevelSetData::levelSetFunction</a></div><div class="ttdeci">scalar_type levelSetFunction(const base_node &amp;x, int num=0)</div><div class="ttdoc">scalar_type levelSetFunction ( const base_node&amp; x, int num = 0 ) </div><div class="ttdef"><b>Definition:</b> LevelSetData.cc:38</div></div>
+<div class="ttc" id="classLevelSetData_html_a40fcfa36de7ac76613284d03690eb54b"><div class="ttname"><a href="classLevelSetData.html#a40fcfa36de7ac76613284d03690eb54b">LevelSetData::map_jac</a></div><div class="ttdeci">scalarVector_Type map_jac(const base_node &amp;x, const size_type &amp;num)</div><div class="ttdoc">scalarVector_Type map_jac ( const base_node&amp; x, const size_type&amp; num ); </div><div class="ttdef"><b>Definition:</b> LevelSetData.cc:84</div></div>
+<div class="ttc" id="LevelSetData_8h_html_a7750f14ec1c622b3c69aa0c5c2894972"><div class="ttname"><a href="LevelSetData_8h.html#a7750f14ec1c622b3c69aa0c5c2894972">LevelSetDataPtr_Type</a></div><div class="ttdeci">boost::shared_ptr&lt; LevelSetData_Type &gt; LevelSetDataPtr_Type</div><div class="ttdef"><b>Definition:</b> LevelSetData.h:133</div></div>
+<div class="ttc" id="classLevelSetData_html"><div class="ttname"><a href="classLevelSetData.html">LevelSetData</a></div><div class="ttdoc">LevelSetData.h. </div><div class="ttdef"><b>Definition:</b> LevelSetData.h:11</div></div>
+<div class="ttc" id="classLevelSetData_html_ae7f10d3f10b72fbb6f703ba7aa8fe17b"><div class="ttname"><a href="classLevelSetData.html#ae7f10d3f10b72fbb6f703ba7aa8fe17b">LevelSetData::x_map</a></div><div class="ttdeci">scalar_type x_map(const base_node &amp;t)</div><div class="ttdoc">scalar_type x_map ( const base_node&amp; t ) </div><div class="ttdef"><b>Definition:</b> LevelSetData.cc:66</div></div>
+<div class="ttc" id="classLevelSetData_html_aa4cda1cced4bc385d85383b40bbc2631"><div class="ttname"><a href="classLevelSetData.html#aa4cda1cced4bc385d85383b40bbc2631">LevelSetData::y_map</a></div><div class="ttdeci">scalar_type y_map(const base_node &amp;t)</div><div class="ttdoc">scalar_type y_map ( const base_node&amp; t ) </div><div class="ttdef"><b>Definition:</b> LevelSetData.cc:58</div></div>
+<div class="ttc" id="LevelSetData_8h_html_ad9acd4c7e96919475361341469698bb4"><div class="ttname"><a href="LevelSetData_8h.html#ad9acd4c7e96919475361341469698bb4">LevelSetData_Type</a></div><div class="ttdeci">LevelSetData LevelSetData_Type</div><div class="ttdef"><b>Definition:</b> LevelSetData.h:132</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generato Dom 19 Ott 2014 18:46:37 per Progetto PACS da &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.6
+</small></address>
+</body>
+</html>

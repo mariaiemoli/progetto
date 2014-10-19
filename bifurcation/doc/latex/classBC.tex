@@ -1,0 +1,275 @@
+\hypertarget{classBC}{\section{Riferimenti per la classe B\-C}
+\label{classBC}\index{B\-C@{B\-C}}
+}
+
+
+\hyperlink{BC_8h}{B\-C.\-h}.  
+
+
+
+
+{\ttfamily \#include $<$B\-C.\-h$>$}
+
+\subsection*{Tipi pubblici}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \hyperlink{classBC_ad1b507696802f73b95c0ca59f4c41390a99103ccd54ba29b1bd2670cc6cd0c462}{D\-I\-R\-I\-C\-H\-L\-E\-T\-\_\-\-B\-O\-U\-N\-D\-A\-R\-Y\-\_\-\-N\-U\-M} = 40, 
+\hyperlink{classBC_ad1b507696802f73b95c0ca59f4c41390a432aa77a00d8eb4929463ef8d57b5c04}{N\-E\-U\-M\-A\-N\-N\-\_\-\-B\-O\-U\-N\-D\-A\-R\-Y\-\_\-\-N\-U\-M} = 50
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classBC_a75c13d0876a8230d1ec702341182da1c}{B\-C} (getfem\-::mesh \&mesh, const std\-::string \&Mesh\-Type, const \hyperlink{Core_8h_a419d7707e418f02d8daeb1fc7c0b9ae5}{Element\-Dimension} \&dimension=\hyperlink{Core_8h_a419d7707e418f02d8daeb1fc7c0b9ae5a5340ec7ecef6cc3886684a3bd3450d64}{M\-E\-D\-I\-U\-M})
+\begin{DoxyCompactList}\small\item\em \hyperlink{BC_8cc}{B\-C.\-cc}. \end{DoxyCompactList}\item 
+const \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{size\-Vector\-\_\-\-Type} \& \hyperlink{classBC_af2d22ae9848e3bed61f2106610bde5b7}{get\-Dirichlet} () const 
+\item 
+const size\-\_\-type \& \hyperlink{classBC_ae61f04dfbb377e38e4c43e0516e51c36}{get\-Dirichlet} (const size\-\_\-type \&dof) const 
+\item 
+const \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{size\-Vector\-\_\-\-Type} \& \hyperlink{classBC_a9541adfa180ca9783052349c373b0228}{get\-Neumann} () const 
+\item 
+const size\-\_\-type \& \hyperlink{classBC_a88bd7cd141cda536ce128f13b17d61b5}{get\-Neumann} (const size\-\_\-type \&dof) const 
+\item 
+const getfem\-::mesh\-\_\-fem \& \hyperlink{classBC_a920bf87c4fe5c10289923859f3ca7afc}{get\-Mesh\-F\-E\-M} () const 
+\end{DoxyCompactItemize}
+
+
+\subsection{Descrizione dettagliata}
+\hyperlink{BC_8h}{B\-C.\-h}. 
+
+Libreria che introduce le condizioni al bordo sul problema
+
+Created on\-: Apr 11, 2011
+
+Author\-: fumagalli 
+
+\subsection{Documentazione dei tipi enumerati (enum)}
+\hypertarget{classBC_ad1b507696802f73b95c0ca59f4c41390}{\subsubsection[{anonymous enum}]{\setlength{\rightskip}{0pt plus 5cm}anonymous enum}}\label{classBC_ad1b507696802f73b95c0ca59f4c41390}
+\begin{Desc}
+\item[Valori del tipo enumerato]\par
+\begin{description}
+\index{D\-I\-R\-I\-C\-H\-L\-E\-T\-\_\-\-B\-O\-U\-N\-D\-A\-R\-Y\-\_\-\-N\-U\-M@{D\-I\-R\-I\-C\-H\-L\-E\-T\-\_\-\-B\-O\-U\-N\-D\-A\-R\-Y\-\_\-\-N\-U\-M}!B\-C@{B\-C}}\index{B\-C@{B\-C}!D\-I\-R\-I\-C\-H\-L\-E\-T\-\_\-\-B\-O\-U\-N\-D\-A\-R\-Y\-\_\-\-N\-U\-M@{D\-I\-R\-I\-C\-H\-L\-E\-T\-\_\-\-B\-O\-U\-N\-D\-A\-R\-Y\-\_\-\-N\-U\-M}}\item[{\em 
+\hypertarget{classBC_ad1b507696802f73b95c0ca59f4c41390a99103ccd54ba29b1bd2670cc6cd0c462}{D\-I\-R\-I\-C\-H\-L\-E\-T\-\_\-\-B\-O\-U\-N\-D\-A\-R\-Y\-\_\-\-N\-U\-M}\label{classBC_ad1b507696802f73b95c0ca59f4c41390a99103ccd54ba29b1bd2670cc6cd0c462}
+}]\index{N\-E\-U\-M\-A\-N\-N\-\_\-\-B\-O\-U\-N\-D\-A\-R\-Y\-\_\-\-N\-U\-M@{N\-E\-U\-M\-A\-N\-N\-\_\-\-B\-O\-U\-N\-D\-A\-R\-Y\-\_\-\-N\-U\-M}!B\-C@{B\-C}}\index{B\-C@{B\-C}!N\-E\-U\-M\-A\-N\-N\-\_\-\-B\-O\-U\-N\-D\-A\-R\-Y\-\_\-\-N\-U\-M@{N\-E\-U\-M\-A\-N\-N\-\_\-\-B\-O\-U\-N\-D\-A\-R\-Y\-\_\-\-N\-U\-M}}\item[{\em 
+\hypertarget{classBC_ad1b507696802f73b95c0ca59f4c41390a432aa77a00d8eb4929463ef8d57b5c04}{N\-E\-U\-M\-A\-N\-N\-\_\-\-B\-O\-U\-N\-D\-A\-R\-Y\-\_\-\-N\-U\-M}\label{classBC_ad1b507696802f73b95c0ca59f4c41390a432aa77a00d8eb4929463ef8d57b5c04}
+}]\end{description}
+\end{Desc}
+
+\begin{DoxyCode}
+23     \{
+24         \hyperlink{classBC_ad1b507696802f73b95c0ca59f4c41390a99103ccd54ba29b1bd2670cc6cd0c462}{DIRICHLET\_BOUNDARY\_NUM} = 40,
+25         \hyperlink{classBC_ad1b507696802f73b95c0ca59f4c41390a432aa77a00d8eb4929463ef8d57b5c04}{NEUMANN\_BOUNDARY\_NUM} = 50
+26     \};
+\end{DoxyCode}
+
+
+\subsection{Documentazione dei costruttori e dei distruttori}
+\hypertarget{classBC_a75c13d0876a8230d1ec702341182da1c}{\index{B\-C@{B\-C}!B\-C@{B\-C}}
+\index{B\-C@{B\-C}!BC@{B\-C}}
+\subsubsection[{B\-C}]{\setlength{\rightskip}{0pt plus 5cm}B\-C\-::\-B\-C (
+\begin{DoxyParamCaption}
+\item[{getfem\-::mesh \&}]{mesh, }
+\item[{const std\-::string \&}]{Mesh\-Type, }
+\item[{const {\bf Element\-Dimension} \&}]{dimension = {\ttfamily {\bf M\-E\-D\-I\-U\-M}}}
+\end{DoxyParamCaption}
+)}}\label{classBC_a75c13d0876a8230d1ec702341182da1c}
+
+
+\hyperlink{BC_8cc}{B\-C.\-cc}. 
+
+Libreria che introduce le condizioni al bordo sul problema
+
+Created on\-: Apr 11, 2011
+
+Author\-: fumagalli 
+\begin{DoxyCode}
+16                                              :
+17     M\_meshFEM(mesh)
+18 \{
+19 
+20     \textcolor{comment}{// Dual variable spaces}
+21     \textcolor{comment}{//getfem::pfem FETypePressure = getfem::fem\_descriptor(FEMType);}
+22 
+23     \textcolor{comment}{//M\_meshFEM.set\_finite\_element(mesh.convex\_index(), FETypePressure);}
+24     bgeot::pgeometric\_trans geometricTransformation;
+25 
+26     geometricTransformation = bgeot::geometric\_trans\_descriptor(MeshType);
+27 
+28     M\_meshFEM.set\_finite\_element(mesh.convex\_index(), getfem::classical\_fem(
+29             geometricTransformation, 1));
+30 
+31     \textcolor{comment}{// Flag for fracture boundary conditions}
+32     \textcolor{comment}{// Dirichlet boundary condition}
+33     M\_dirichlet.clear();
+34     M\_dirichlet.push\_back(\hyperlink{classBC_ad1b507696802f73b95c0ca59f4c41390a99103ccd54ba29b1bd2670cc6cd0c462}{DIRICHLET\_BOUNDARY\_NUM});
+35 
+36     \textcolor{comment}{// Neumann boundary condition}
+37     M\_neumann.clear();
+38     M\_neumann.push\_back(\hyperlink{classBC_ad1b507696802f73b95c0ca59f4c41390a432aa77a00d8eb4929463ef8d57b5c04}{NEUMANN\_BOUNDARY\_NUM});
+39 
+40     \textcolor{comment}{// All boundary conditions}
+41     M\_extBoundary.clear();
+42     M\_extBoundary.push\_back(\hyperlink{classBC_ad1b507696802f73b95c0ca59f4c41390a99103ccd54ba29b1bd2670cc6cd0c462}{DIRICHLET\_BOUNDARY\_NUM});
+43     M\_extBoundary.push\_back(\hyperlink{classBC_ad1b507696802f73b95c0ca59f4c41390a432aa77a00d8eb4929463ef8d57b5c04}{NEUMANN\_BOUNDARY\_NUM});
+44 
+45     \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{sizeVector\_Type} boundaryFlags(2);
+46     boundaryFlags [ 0 ] = \hyperlink{classBC_ad1b507696802f73b95c0ca59f4c41390a99103ccd54ba29b1bd2670cc6cd0c462}{DIRICHLET\_BOUNDARY\_NUM};
+47     boundaryFlags [ 1 ] = \hyperlink{classBC_ad1b507696802f73b95c0ca59f4c41390a432aa77a00d8eb4929463ef8d57b5c04}{NEUMANN\_BOUNDARY\_NUM};
+48 
+49     \hyperlink{Core_8h_a80e8381d86ecb0a7f4f87ff84d1a0be5}{sizeVectorContainer\_Type} boundary\_cv;
+50     \hyperlink{Core_8h_a80e8381d86ecb0a7f4f87ff84d1a0be5}{sizeVectorContainer\_Type} boundary\_flags;
+51 
+52     \textcolor{comment}{// Number of Neumann boundary condition}
+53     size\_type neumannBoundary = 0;
+54 
+55     \textcolor{comment}{// List all the convexes}
+56     dal::bit\_vector nn = mesh.convex\_index();
+57     bgeot::size\_type i\_cv;
+58 
+59     \textcolor{keywordflow}{for} ( i\_cv << nn; i\_cv != bgeot::size\_type(-1); i\_cv << nn )
+60     \{
+61         neumannBoundary++;
+62     \}
+63 
+64     boundary\_cv.resize(neumannBoundary);
+65     boundary\_flags.resize(neumannBoundary);
+66 
+67     getfem::mesh\_region borderFaces;
+68     getfem::outer\_faces\_of\_mesh(mesh, borderFaces);
+69 
+70     \textcolor{keywordflow}{if} ( dimension == \hyperlink{Core_8h_a419d7707e418f02d8daeb1fc7c0b9ae5a5340ec7ecef6cc3886684a3bd3450d64}{MEDIUM} )
+71     \{
+72         \textcolor{keywordflow}{for} ( getfem::mr\_visitor i(borderFaces); !i.finished(); ++i )
+73         \{
+74             assert(i.is\_face());
+75 
+76             base\_node un = mesh.normal\_of\_face\_of\_convex(i.cv(), i.f());
+77             un /= gmm::vect\_norm2(un);
+78 
+79             \textcolor{keywordflow}{if}  (\textcolor{keyword}{false})  \textcolor{comment}{//( gmm::abs(gmm::abs(un [ dimension - 1 ]) - 1.0) > 1.0E-7 )}
+80             \{
+81                 \textcolor{comment}{// Dirichlet, flag 0}
+82                 boundary\_cv [ i.cv() ].push\_back(i.f());
+83                 boundary\_flags [ i.cv() ].push\_back(boundaryFlags [ 0 ]);
+84                 \textcolor{comment}{//This        will enforce M\_mediumMesh.region(0).add(i.cv(), i.f());}
+85             \}
+86             \textcolor{keywordflow}{else}
+87             \{
+88                 \textcolor{comment}{// Neumann, flag 1}
+89                 boundary\_cv [ i.cv() ].push\_back(i.f());
+90                 boundary\_flags [ i.cv() ].push\_back(boundaryFlags [ 1 ]);
+91                 \textcolor{comment}{// This will enforce M\_mediumMesh.region(1).add(i.cv(), i.f());}
+92             \}
+93         \}
+94     \}
+95     \textcolor{keywordflow}{else}
+96     \{
+97 
+98         \textcolor{keywordflow}{for} ( getfem::mr\_visitor i(borderFaces); !i.finished(); ++i )
+99         \{
+100             assert(i.is\_face());
+101             base\_node un = mesh.normal\_of\_face\_of\_convex(i.cv(), i.f());
+102             un /= gmm::vect\_norm2(un);
+103 
+104             \textcolor{keywordflow}{if} (\textcolor{keyword}{false})\textcolor{comment}{//( gmm::abs(gmm::abs(un [ dimension - 1 ]) - 1.0) > 1.0E-7 )}
+105             \{
+106             \textcolor{comment}{// Dirichlet, flag 0}
+107             boundary\_cv [ i.cv() ].push\_back(i.f());
+108             boundary\_flags [ i.cv() ].push\_back(boundaryFlags [ 1 ]);
+109             \textcolor{comment}{//This        will enforce M\_mediumMesh.region(0).add(i.cv(), i.f());}
+110         \}
+111         \textcolor{keywordflow}{else}
+112             \{
+113                 \textcolor{comment}{// Neumann, flag 1}
+114                 boundary\_cv [ i.cv() ].push\_back(i.f());
+115                 boundary\_flags [ i.cv() ].push\_back(boundaryFlags [1 ]);
+116                 \textcolor{comment}{// This will enforce M\_mediumMesh.region(1).add(i.cv(), i.f());}
+117             \}
+118         \}
+119     \}
+120     \textcolor{comment}{// Bulk mesh}
+121     \textcolor{keywordflow}{for} ( size\_type cv = 0; cv < boundary\_flags.size(); ++cv )
+122     \{
+123         \textcolor{keywordflow}{for} ( size\_type j = 0; j < boundary\_flags [ cv ].size(); j++ )
+124         \{
+125             mesh.region(boundary\_flags [ cv ] [ j ]).add(cv,
+126                     boundary\_cv [ cv ] [ j ]);
+127         \}
+128     \}
+129 
+130 \}\textcolor{comment}{// costruttore}
+\end{DoxyCode}
+
+
+\subsection{Documentazione delle funzioni membro}
+\hypertarget{classBC_af2d22ae9848e3bed61f2106610bde5b7}{\index{B\-C@{B\-C}!get\-Dirichlet@{get\-Dirichlet}}
+\index{get\-Dirichlet@{get\-Dirichlet}!BC@{B\-C}}
+\subsubsection[{get\-Dirichlet}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf size\-Vector\-\_\-\-Type}\& B\-C\-::get\-Dirichlet (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBC_af2d22ae9848e3bed61f2106610bde5b7}
+
+\begin{DoxyCode}
+36     \{
+37         \textcolor{keywordflow}{return} M\_dirichlet;
+38     \}
+\end{DoxyCode}
+\hypertarget{classBC_ae61f04dfbb377e38e4c43e0516e51c36}{\index{B\-C@{B\-C}!get\-Dirichlet@{get\-Dirichlet}}
+\index{get\-Dirichlet@{get\-Dirichlet}!BC@{B\-C}}
+\subsubsection[{get\-Dirichlet}]{\setlength{\rightskip}{0pt plus 5cm}const size\-\_\-type\& B\-C\-::get\-Dirichlet (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-type \&}]{dof}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBC_ae61f04dfbb377e38e4c43e0516e51c36}
+
+\begin{DoxyCode}
+42     \{
+43         \textcolor{keywordflow}{return} M\_dirichlet [ dof ];
+44     \}
+\end{DoxyCode}
+\hypertarget{classBC_a920bf87c4fe5c10289923859f3ca7afc}{\index{B\-C@{B\-C}!get\-Mesh\-F\-E\-M@{get\-Mesh\-F\-E\-M}}
+\index{get\-Mesh\-F\-E\-M@{get\-Mesh\-F\-E\-M}!BC@{B\-C}}
+\subsubsection[{get\-Mesh\-F\-E\-M}]{\setlength{\rightskip}{0pt plus 5cm}const getfem\-::mesh\-\_\-fem\& B\-C\-::get\-Mesh\-F\-E\-M (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBC_a920bf87c4fe5c10289923859f3ca7afc}
+
+\begin{DoxyCode}
+60     \{
+61         \textcolor{keywordflow}{return} M\_meshFEM;
+62     \}
+\end{DoxyCode}
+\hypertarget{classBC_a9541adfa180ca9783052349c373b0228}{\index{B\-C@{B\-C}!get\-Neumann@{get\-Neumann}}
+\index{get\-Neumann@{get\-Neumann}!BC@{B\-C}}
+\subsubsection[{get\-Neumann}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf size\-Vector\-\_\-\-Type}\& B\-C\-::get\-Neumann (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBC_a9541adfa180ca9783052349c373b0228}
+
+\begin{DoxyCode}
+48     \{
+49         \textcolor{keywordflow}{return} M\_neumann;
+50     \}
+\end{DoxyCode}
+\hypertarget{classBC_a88bd7cd141cda536ce128f13b17d61b5}{\index{B\-C@{B\-C}!get\-Neumann@{get\-Neumann}}
+\index{get\-Neumann@{get\-Neumann}!BC@{B\-C}}
+\subsubsection[{get\-Neumann}]{\setlength{\rightskip}{0pt plus 5cm}const size\-\_\-type\& B\-C\-::get\-Neumann (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-type \&}]{dof}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBC_a88bd7cd141cda536ce128f13b17d61b5}
+
+\begin{DoxyCode}
+54     \{
+55         \textcolor{keywordflow}{return} M\_neumann [ dof ];
+56     \}
+\end{DoxyCode}
+
+
+La documentazione per questa classe è stata generata a partire dai seguenti file\-:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{BC_8h}{B\-C.\-h}\item 
+src/\hyperlink{BC_8cc}{B\-C.\-cc}\end{DoxyCompactItemize}

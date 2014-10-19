@@ -1,6 +1,8 @@
 /**
  *
  * FractureSet.h
+ * 
+ * classe che contiene tutte le fratture
  *
  */
 
@@ -15,9 +17,13 @@
 class FracturesSet
 {
 public:
+	
 	FracturesSet ();
 
 
+	/**
+	 * funzione che inizializza l'insieme delle fratture definendo un vettore con le fratture e una classe delle intersezioni
+	 */
     void init ( const GetPot& dataFile,
                 const std::string& section,
                 const size_type& numFractures,

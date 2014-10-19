@@ -1,11 +1,5 @@
 /** Exporter.cc
- *
- * libreria in cui definisco le funzioni per esportare i dati
- *
- *  Created on: Apr 13, 2011
- *
- *  Author: fumagalli
- *
+ * 
  */
 
 #include "../include/Exporter.h"
@@ -40,16 +34,16 @@ spy ( const scalarVectorPtr_Type& vector, const std::string& nameFile ) const
 void Exporter::
 meshRegion ( const getfem::mesh& mesh, const std::string& nameFile ) const
 {
-        // set up a P0 space, each elements contains the region mesh value
+	    // imposto lo spazio degli elementi finiti P0, ogni elemento contiene il valore della region mesh 
         GFMeshFEM_Type meshFEM ( mesh );
         getfem::pfem FEType = getfem::fem_descriptor ( "FEM_PK(2,0)" );
         meshFEM.set_finite_element ( FEType );
 
-        // vector to store the values of the region mesh
+        // vettore che contiene i valori della region mesh, un valore per ogni grado di libertà
         const size_type nbElements = meshFEM.nb_basic_dof();
         scalarVector_Type regionMesh ( nbElements, 0 );
 
-        // Extract the regions flags from the mesh
+        // estraggo i flags delle rispettive regioni dalla mesh
         dal::bit_vector regionsIndexBitVector ( mesh.regions_index() );
         sizeVector_Type regionsIndex;
         fromBitVectorToStdVector ( regionsIndexBitVector, regionsIndex );
@@ -57,7 +51,8 @@ meshRegion ( const getfem::mesh& mesh, const std::string& nameFile ) const
         for ( size_type i = 0; i < regionsIndex.size(); ++i )
         {
                 getfem::mesh_region meshCurrentRegion ( mesh.region ( regionsIndex [i] ) );
-                // check if the current region is made just with convexes, avoid boundary regions
+                
+                // per ogni regione della mesh controllo se è costituita solo da convessi, cioè se non contiene bordi di nessun convesso
                 if ( meshCurrentRegion.is_only_convexes() == true )
                 {
                         dal::bit_vector currentRegionBitVector ( meshCurrentRegion.index() );
@@ -70,7 +65,7 @@ meshRegion ( const getfem::mesh& mesh, const std::string& nameFile ) const
                 }
         }
 
-        // Export as a solution
+        // esporto la soluzione
         exportSolution ( M_vtkFolder + nameFile, "RegionMesh", meshFEM, regionMesh );
 
 } // meshRegion

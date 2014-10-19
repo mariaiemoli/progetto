@@ -90,6 +90,14 @@ void assembling_Source_BoundaryF ( scalarVectorPtr_Type& D,
                                    const size_type& uncutRegionFlag );
 
 
+//termine sorgente per la frattura
+void assembling_SourceF ( scalarVectorPtr_Type& D,
+                          const scalarVectorPtr_Type& source,
+                          const FractureHandlerPtr_Type& fracture,
+                          const FractureHandlerPtr_Type& otherFracture,
+                          const size_type& cutRegionFlag );
+
+
 //funzione che accoppia le variabili corrispondenti alle fratture che si intersecano
 void coupleFractures ( sparseMatrixPtr_Type& M, const FracturesSetPtr_Type& fractures );
 

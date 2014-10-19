@@ -14,9 +14,10 @@ class LevelSetHandler
 {
 public:
 
-    LevelSetHandler ( const GetPot& dataFile, const std::string& section =
-            "fractureData/", const std::string& sectionLevelSet = "levelSet/" );
+    LevelSetHandler ( const GetPot& dataFile, const std::string& section =  "fractureData/", 
+    				  const std::string& sectionLevelSet = "levelSet/" );
 
+    
     void init ( getfem::mesh& mediumMesh,
            const std::string& mediumIntegrationTypeVelocity,
            const getfem::mesh_fem& mediumMeshFEMPressure,

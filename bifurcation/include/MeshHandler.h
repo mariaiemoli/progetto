@@ -2,8 +2,10 @@
  *
  * Created on: Apr 1, 2011
  *
- * Author: fumagalli
+ * \author Alessio Fumagalli
  *
+ * classe che costruisce e manipola la mesh di supporto
+ * 
  */
 
 #ifndef MESHHANDLER_H_
@@ -26,83 +28,117 @@ public:
 	};
 
 
-	/** costruttore della classe MeshHandler
+	/** 
 	 *
+	 * costruttore della classe MeshHandler
 	 * riempie i vari campi della classe con i dati nel file data
 	 *
 	 * la classe contiente informazioni circa le dimensione del dominio, il tipo di mesh,
 	 * la discretizzazione e i metodi di integrazione
+	 * 
+	 * \param dataFile: variabile di tipo GetPot che contiene il nome del file data 
+	 * \param section: stringa con il nome della sezione in cui leggere
 	 *
 	 */
 	MeshHandler ( const GetPot& dataFile, const std::string& sectionDomain = "");
 
 
-	/** void setUPMesh ()
+	/** 
 	 *
-	 * questa funzione definisce la mesh
+	 * funzione che costruisce la mesh
 	 * a seconda che il campo "meshExternal" nel file data sia posto pari a "none" o altro
 	 * costruisce la mesh usando i dati del file o la importa dall'esterno
 	 */
     void setUpMesh ( );
 
 
+	/** 
+	 *
+	 * funzione che definisce le regioni della mesh
+	 * \param fracture: puntatore all'insieme delle fratture
+	 */
     void setUpRegions ( const FracturesSetPtr_Type& fracture );
 
 
+	/** 
+	 *
+	 * funzione che controlla se un convesso è effettivamente tagliato da una frattura 
+	 * \param nodes: insieme dei nodi geometrici che definiscono il convesso
+	 * \param fracture: puntatore a una frattura
+	 */
     bool compreso ( const bgeot::basic_mesh::ref_mesh_pt_ct nodes, FractureHandlerPtr_Type& fracture );
 
 
-    /** void setUpFEM ( )
-     *
+    /**
      * funzione che definisce gli elementi finiti su cui si lavora
      *
      */
     void setUpFEM ( );
 
-
+    /**
+     * funzione che calcola l'inverso del passo della mesh, h^-1
+     */
     void computeMeshMeasures ( );
 
 
-    /** void printCuttedElements ( const std::string& vtkFolder = "vtk/", const std::string& fileName = "CuttedElements" ) const;
+    /** 
      *
      * funzione che esporta in formato .vtk per paraview gli elementi che sono tagliati dal level set M_levelSet
      * pone pari a 1 se sono tagliati e 0 se non lo sono
-     *
+     * \param vtkFolder: nome della cartella in cui esportare
+     * \param fileName: nome da dare al file da esportare con la soluzione
      */
-    void printCuttedElements ( const std::string& vtkFolder = "vtk/",
-                          const std::string& fileName = "CuttedElements" ) const;
+    void printCuttedElements ( const std::string& vtkFolder = "vtk/", const std::string& fileName = "CuttedElements" ) const;
 
 
+    /**
+     * \return M_spatialDiscretization: discretizzazione spaziale, numero di elementi in cui ogni lato del dominio viene suddiviso
+     */
     inline size_type getSpatialDiscretization ( ) const
     {
         return M_spatialDiscretization;
     }
 
-
+    /**
+     * \return M_inclination: grandezza che indica di quanto il dominio reale è inclinato rispetto al dominio di riferimento
+     */
     inline scalar_type getInclination ( ) const
     {
         return M_inclination;
     }
 
-
+    
+    /**
+     * \return M_lengthAbscissa: grandezza che indica la lunghezza dell'ascissa del dominio reale
+     */
     inline scalar_type getLengthAbscissa ( ) const
     {
         return M_lengthAbscissa;
     }
 
 
+    /**
+     * \return M_lengthOrdinate: grandezza che indica la lunghezza dell'ordinata del dominio reale
+     */
     inline scalar_type getLengthOrdinate ( ) const
     {
         return M_lengthOrdinate;
     }
 
 
+    /**
+     * \return M_lengthQuota: grandezza che indica la lunghezza della quota del dominio reale
+     */
     inline scalar_type getLengthQuota ( ) const
     {
         return M_lengthQuota;
     }
 
 
+    /**
+     * \return M_meshType: std::string M_meshType, grandezza che rappresenta una trasformazione per GetFEM++, definisce l'elemento di riferimento su cui è 
+     * descritto il metodo di integrazione
+     */
     inline std::string getMeshType ( ) const
     {
         return M_meshType;
@@ -223,11 +259,20 @@ public:
     }
 
 
+    /**
+     * funzione che conta il numero di gradi di libertà estesi per la pressione per tutte le fratture che hanno indice < id
+     * \param id: indice che identifica una frattura
+     * \return numero dei gradi di libertà 
+     */
     size_type getCountExtendedDOFScalar ( const scalar_type& id ) const;
 
-
+    
+    /**
+     * funzione che conta il numero di gradi di libertà estesi per la velocità per tutte le fratture che hanno indice < id
+     */
     size_type getCountExtendedDOFVector ( const scalar_type& id ) const;
 
+    
     inline const size_type& getExtendedDOFScalar ( const size_type& id,
                                                    const size_type& dof ) const
     {
@@ -248,7 +293,10 @@ public:
     }
 
 
-    size_type getCountExtendedIntersectDOFScalar () const;
+    inline size_type getCountExtendedIntersectDOFScalar () const
+    {
+        return M_extendedIntersectDOFScalar.size();
+    }
 
 
     const sizeVector_Type& getExtendedIntersectDOFScalar() const
@@ -257,7 +305,10 @@ public:
     }
 
 
-    size_type getCountExtendedIntersectDOFVector () const;
+    inline size_type getCountExtendedIntersectDOFVector () const
+    {
+        return M_extendedIntersectDOFVector.size();
+    }
 
 
     const sizeVector_Type& getExtendedIntersectDOFVector() const
@@ -291,11 +342,11 @@ public:
 
 
 private:
+    
     /*
      * questa sistema la cut region creando una lista dei triangoli che non sono veramente tagliati,
      * in pratica quando A1 o A2 sono minori di una certa tolleranza
      */
-
     void fixCutRegion ( const FractureHandlerPtr_Type& fracture );
 
 
@@ -396,8 +447,8 @@ private:
 
 };
 
-typedef MeshHandler MeshHandler_Type;
-typedef boost::shared_ptr<MeshHandler_Type> MeshHandlerPtr_Type;
+typedef MeshHandler MeshHandler_Type;									/*!< classe MeshHandler */
+typedef boost::shared_ptr<MeshHandler_Type> MeshHandlerPtr_Type;		/*!< puntatore alla classe MeshHandler */
 
 
 #endif /* MESHHANDLER_H_ */
