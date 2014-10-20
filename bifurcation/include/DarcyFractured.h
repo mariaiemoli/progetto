@@ -28,25 +28,25 @@ public:
                      const ExporterPtr_Type& exporter );
     
     /** 
-     * void init ()
-     * Build the M_mediumMesh, set finite element and integration methods and select the boundaries.
+     * 
+     * Funzione che costruisce M_mediumMesh, definisce gli elementi finiti e i metodi di integrazione e seleziona i contorni
      * 
      */
     void init ( );
 
     
-    /** void assembly ()
+    /** 
      * 
-     * Assemble all the matrices and the right hand side for the Darcy and a piece of the matrix for the transport
+     * Funzione che assembla tutte le matrici e il termine noto di destra 
      * 
-     * Our system has the following structure (DARCY):
+     * Il sistema che risulta ha la seguente struttura (DARCY):
      *
      * [  A11   A12 ] [ V ]  = [ Bv ]
      * [ -A12'  0   ] [ P ]  = [ Bp ]
      *
-     * (V,P = velocity, pressure)
+     * (V,P = velocità, pressione)
      *
-     * where
+     * dove
      *
      * BV = Mvd * Vdirichlet + Bstress
      * BP = Mpd * Vdirichlet
@@ -55,45 +55,17 @@ public:
     void assembly ( );
 
     
-    
+    /**
+     * Funzione che risolve il sistema ottenuto assemblando il problema di Darcy per tutte le fratture.
+     * Una volta risolto il sistema esporta i risultati ottenuti per la pressione per ogni frattura in formato vtk 
+     */
     void solve ( );
-
-    
-    inline const scalarVectorPtr_Type& getMediumVelocity ( ) const
-    {
-        return M_mediumVelocity;
-    }
 
     
     inline const scalarVectorPtr_Type& getFractureVelocity ( const size_type& f ) const
     {
         return M_fractureVelocity [ f ];
     }
-
-    
-    inline const scalarVectorPtr_Type& getMediumVelocityInlet ( ) const
-    {
-        return M_mediumVelocityInlet;
-    }
-
-    
-    inline const scalarVectorPtr_Type& getMediumVelocityOutlet ( ) const
-    {
-        return M_mediumVelocityOutlet;
-    }
-
-    
-    inline const scalarVectorPtr_Type& getMediumVelocityInterpolatedAbscissa ( ) const
-    {
-        return M_mediumVelocityInterpolatedAbscissa;
-    }
-
-    
-    inline const scalarVectorPtr_Type& getMediumVelocityInterpolatedOrdinate ( ) const
-    {
-        return M_mediumVelocityInterpolatedOrdinate;
-    }
-
     
 private:
 
@@ -114,42 +86,24 @@ private:
     // Exporter
     ExporterPtr_Type M_exporter;
 
-    // Inverse permeability of the medium - vector
+    // Vettore che rappresenta l'inverso della permeabilità del mezzo
     scalarVectorContainer_Type M_mediumEtaInterpolated;
 
-    // eta_gamma = d/K_normale - vector - sui punti della M_mediumMesh grande
+    // eta_gamma = d/K_normale - vettore - sui punti della M_mediumMesh grande
     scalarVectorContainer_Type M_fractureEtaNormalOnMedium;
 
     // Global matrix, darcy
     sparseMatrixPtr_Type M_globalMatrix;
-    // System RHS
+    // Termine noto di destra del sistema
     scalarVectorPtr_Type M_globalRightHandSide;
-    // System solution (velocity and pressure)
+    // Soluzione del sistema ( velocità + pressione )
     scalarVectorPtr_Type M_velocityAndPressure;
 
-    // System solution on medium
-    scalarVectorPtr_Type M_mediumVelocity;
-    scalarVectorPtr_Type M_mediumPressure;
-
-    scalarVectorPtr_Type M_mediumVelocityInlet;
-    scalarVectorPtr_Type M_mediumVelocityOutlet;
-
-    // System solution on fractures
+    // Soluzione del sistema nelle fratture
     scalarVectorPtrContainer_Type M_fractureVelocity;
     scalarVectorPtrContainer_Type M_fracturePressure;
 
     sparseMatrixPtr_Type M_normMatrix; // Norm matrix (i.e., the (H1,L2) norm on
-    
-    /**
-     * the (velocity,pressure) space is given by 
-     * ||M_darcyVelocityAndPressure||^2 = M_darcyVelocityAndPressure' * M_normMatrix * M_darcyVelocityAndPressure, 
-     * where M_darcyVelocityAndPressure = (M_darcyMediumVelocity, M_darcyMediumPressure) (see below)
-     * 
-     */ 
-
-    // Interpolation of the velocity in each baricenter
-    scalarVectorPtr_Type M_mediumVelocityInterpolatedAbscissa;
-    scalarVectorPtr_Type M_mediumVelocityInterpolatedOrdinate;
 
 };
 

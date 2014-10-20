@@ -33,13 +33,13 @@ virtual void \hyperlink{classgetfem_1_1level__set__unit__normal_ad1c18b6cbd9bad0
 )}}\label{classgetfem_1_1level__set__unit__normal_ab3614c6046c7f4875bf7f295dc858463}
 
 \begin{DoxyCode}
-17                                                                              :
-18     mf(mf\_), U(mf\_.nb\_basic\_dof()), N(mf\_.linked\_mesh().dim()), gradU(1, N)
-19 \{
-20     sizes\_.resize(1);
-21     sizes\_ [ 0 ] = short\_type(N);
-22     mf.extend\_vector(U\_, U);
-23 \}
+12                                                                                                       :
+13     mf(mf\_), U(mf\_.nb\_basic\_dof()), N(mf\_.linked\_mesh().dim()), gradU(1, N)
+14 \{
+15     sizes\_.resize(1);
+16     sizes\_ [ 0 ] = short\_type(N);
+17     mf.extend\_vector(U\_, U);
+18 \}
 \end{DoxyCode}
 
 
@@ -54,18 +54,18 @@ virtual void \hyperlink{classgetfem_1_1level__set__unit__normal_ad1c18b6cbd9bad0
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classgetfem_1_1level__set__unit__normal_ad1c18b6cbd9bad011fc00198d06b62f8}
 
 \begin{DoxyCode}
-27 \{
-28     size\_type cv = ctx.convex\_num();
-29     coeff.resize(mf.nb\_basic\_dof\_of\_element(cv));
-30     gmm::copy(gmm::sub\_vector(U,
-31             gmm::sub\_index(mf.ind\_basic\_dof\_of\_element(cv))), coeff);
-32     ctx.pf()->interpolation\_grad(ctx, coeff, gradU, 1);
-33     scalar\_type norm = gmm::vect\_norm2(gmm::mat\_row(gradU, 0));
-34     \textcolor{keywordflow}{for} ( size\_type i = 0; i < N; ++i )
-35     \{
-36         t [ i ] = gradU(0, i) / norm;
-37     \}
-38 \}
+21 \{
+22     size\_type cv = ctx.convex\_num();
+23     coeff.resize(mf.nb\_basic\_dof\_of\_element(cv));
+24     gmm::copy(gmm::sub\_vector(U,
+25             gmm::sub\_index(mf.ind\_basic\_dof\_of\_element(cv))), coeff);
+26     ctx.pf()->interpolation\_grad(ctx, coeff, gradU, 1);
+27     scalar\_type norm = gmm::vect\_norm2(gmm::mat\_row(gradU, 0));
+28     \textcolor{keywordflow}{for} ( size\_type i = 0; i < N; ++i )
+29     \{
+30         t [ i ] = gradU(0, i) / norm;
+31     \}
+32 \}
 \end{DoxyCode}
 \hypertarget{classgetfem_1_1level__set__unit__normal_a752cfcceeb76e736146a75ee676366a1}{\index{getfem\-::level\-\_\-set\-\_\-unit\-\_\-normal@{getfem\-::level\-\_\-set\-\_\-unit\-\_\-normal}!sizes@{sizes}}
 \index{sizes@{sizes}!getfem::level_set_unit_normal@{getfem\-::level\-\_\-set\-\_\-unit\-\_\-normal}}
@@ -76,9 +76,9 @@ virtual void \hyperlink{classgetfem_1_1level__set__unit__normal_ad1c18b6cbd9bad0
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classgetfem_1_1level__set__unit__normal_a752cfcceeb76e736146a75ee676366a1}
 
 \begin{DoxyCode}
-36     \{
-37         \textcolor{keywordflow}{return} sizes\_;
-38     \}
+38     \{
+39         \textcolor{keywordflow}{return} sizes\_;
+40     \}
 \end{DoxyCode}
 
 

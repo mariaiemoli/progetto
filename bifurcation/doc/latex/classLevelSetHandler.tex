@@ -16,7 +16,7 @@
 \hyperlink{classLevelSetHandler_a9dbe142d7d4f677abe8c204714c004ed}{Level\-Set\-Handler} (const Get\-Pot \&data\-File, const std\-::string \&section=\char`\"{}fracture\-Data/\char`\"{}, const std\-::string \&section\-Level\-Set=\char`\"{}level\-Set/\char`\"{})
 \begin{DoxyCompactList}\small\item\em \hyperlink{LevelSetHandler_8cc}{Level\-Set\-Handler.\-cc}. \end{DoxyCompactList}\item 
 void \hyperlink{classLevelSetHandler_a7ee7ade813923dfdef1bc25e9a881580}{init} (getfem\-::mesh \&medium\-Mesh, const std\-::string \&medium\-Integration\-Type\-Velocity, const getfem\-::mesh\-\_\-fem \&medium\-Mesh\-F\-E\-M\-Pressure, const getfem\-::mesh\-\_\-fem \&medium\-Mesh\-F\-E\-M\-Velocity)
-\item 
+\begin{DoxyCompactList}\small\item\em funzione che inizializza il level set. \end{DoxyCompactList}\item 
 const \hyperlink{Core_8h_a126f7165f04db4ed0b72454469145a08}{G\-F\-Mesh\-Level\-Set\-\_\-\-Type} \& \hyperlink{classLevelSetHandler_a6e08147a60f9e8d7ec65357223f72311}{get\-Mesh} () const 
 \item 
 \hyperlink{Core_8h_a126f7165f04db4ed0b72454469145a08}{G\-F\-Mesh\-Level\-Set\-\_\-\-Type} \& \hyperlink{classLevelSetHandler_a35e4adb6d0c5128445d46f0b489ce0a2}{get\-Mesh} ()
@@ -84,9 +84,9 @@ classe che mi permette di costruire la frattura a partire dai dati del file data
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLevelSetHandler_a983463087a38199510a0859658ad5291}
 
 \begin{DoxyCode}
-70     \{
-71         \textcolor{keywordflow}{return} M\_baricenterValue;
-72     \}
+79     \{
+80         \textcolor{keywordflow}{return} M\_baricenterValue;
+81     \}
 \end{DoxyCode}
 \hypertarget{classLevelSetHandler_a7a4653958485195d2b995be4d52e2765}{\index{Level\-Set\-Handler@{Level\-Set\-Handler}!get\-Baricenter\-Value@{get\-Baricenter\-Value}}
 \index{get\-Baricenter\-Value@{get\-Baricenter\-Value}!LevelSetHandler@{Level\-Set\-Handler}}
@@ -97,9 +97,9 @@ classe che mi permette di costruire la frattura a partire dai dati del file data
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLevelSetHandler_a7a4653958485195d2b995be4d52e2765}
 
 \begin{DoxyCode}
-76     \{
-77         \textcolor{keywordflow}{return} M\_baricenterValue [ dof ];
-78     \}
+85     \{
+86         \textcolor{keywordflow}{return} M\_baricenterValue [ dof ];
+87     \}
 \end{DoxyCode}
 \hypertarget{classLevelSetHandler_ab24897cb969210d278f54d94fd8f8977}{\index{Level\-Set\-Handler@{Level\-Set\-Handler}!get\-Data@{get\-Data}}
 \index{get\-Data@{get\-Data}!LevelSetHandler@{Level\-Set\-Handler}}
@@ -110,9 +110,9 @@ classe che mi permette di costruire la frattura a partire dai dati del file data
 )\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLevelSetHandler_ab24897cb969210d278f54d94fd8f8977}
 
 \begin{DoxyCode}
-94     \{
-95         \textcolor{keywordflow}{return} M\_data;
-96     \}
+103     \{
+104         \textcolor{keywordflow}{return} M\_data;
+105     \}
 \end{DoxyCode}
 \hypertarget{classLevelSetHandler_ac46f075503657b1481d80acb5d3307d1}{\index{Level\-Set\-Handler@{Level\-Set\-Handler}!get\-D\-O\-F\-Value@{get\-D\-O\-F\-Value}}
 \index{get\-D\-O\-F\-Value@{get\-D\-O\-F\-Value}!LevelSetHandler@{Level\-Set\-Handler}}
@@ -123,9 +123,9 @@ classe che mi permette di costruire la frattura a partire dai dati del file data
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLevelSetHandler_ac46f075503657b1481d80acb5d3307d1}
 
 \begin{DoxyCode}
-82     \{
-83         \textcolor{keywordflow}{return} M\_DOFValue;
-84     \}
+91     \{
+92         \textcolor{keywordflow}{return} M\_DOFValue;
+93     \}
 \end{DoxyCode}
 \hypertarget{classLevelSetHandler_ab9babfc6e7705047b005a88b4ab1f46f}{\index{Level\-Set\-Handler@{Level\-Set\-Handler}!get\-D\-O\-F\-Value@{get\-D\-O\-F\-Value}}
 \index{get\-D\-O\-F\-Value@{get\-D\-O\-F\-Value}!LevelSetHandler@{Level\-Set\-Handler}}
@@ -136,9 +136,9 @@ classe che mi permette di costruire la frattura a partire dai dati del file data
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLevelSetHandler_ab9babfc6e7705047b005a88b4ab1f46f}
 
 \begin{DoxyCode}
-88     \{
-89         \textcolor{keywordflow}{return} M\_DOFValue [ dof ];
-90     \}
+97     \{
+98         \textcolor{keywordflow}{return} M\_DOFValue [ dof ];
+99     \}
 \end{DoxyCode}
 \hypertarget{classLevelSetHandler_ad35aef3284c2582550b376fd3e99c45f}{\index{Level\-Set\-Handler@{Level\-Set\-Handler}!get\-Integration\-Method@{get\-Integration\-Method}}
 \index{get\-Integration\-Method@{get\-Integration\-Method}!LevelSetHandler@{Level\-Set\-Handler}}
@@ -149,9 +149,9 @@ classe che mi permette di costruire la frattura a partire dai dati del file data
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLevelSetHandler_ad35aef3284c2582550b376fd3e99c45f}
 
 \begin{DoxyCode}
-64     \{
-65         \textcolor{keywordflow}{return} *M\_integrationMethod;
-66     \}
+73     \{
+74         \textcolor{keywordflow}{return} *M\_integrationMethod;
+75     \}
 \end{DoxyCode}
 \hypertarget{classLevelSetHandler_a1bf7aa9bad7c2ccec178d4092690775b}{\index{Level\-Set\-Handler@{Level\-Set\-Handler}!get\-Integration\-Method\-Inside@{get\-Integration\-Method\-Inside}}
 \index{get\-Integration\-Method\-Inside@{get\-Integration\-Method\-Inside}!LevelSetHandler@{Level\-Set\-Handler}}
@@ -162,9 +162,9 @@ classe che mi permette di costruire la frattura a partire dai dati del file data
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLevelSetHandler_a1bf7aa9bad7c2ccec178d4092690775b}
 
 \begin{DoxyCode}
-40     \{
-41         \textcolor{keywordflow}{return} *M\_integrationMethodInside;
-42     \}
+49     \{
+50         \textcolor{keywordflow}{return} *M\_integrationMethodInside;
+51     \}
 \end{DoxyCode}
 \hypertarget{classLevelSetHandler_a155cedf651006dc5509c34a6ea5e3324}{\index{Level\-Set\-Handler@{Level\-Set\-Handler}!get\-Integration\-Method\-Outside@{get\-Integration\-Method\-Outside}}
 \index{get\-Integration\-Method\-Outside@{get\-Integration\-Method\-Outside}!LevelSetHandler@{Level\-Set\-Handler}}
@@ -175,9 +175,9 @@ classe che mi permette di costruire la frattura a partire dai dati del file data
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLevelSetHandler_a155cedf651006dc5509c34a6ea5e3324}
 
 \begin{DoxyCode}
-46     \{
-47         \textcolor{keywordflow}{return} *M\_integrationMethodOutside;
-48     \}
+55     \{
+56         \textcolor{keywordflow}{return} *M\_integrationMethodOutside;
+57     \}
 \end{DoxyCode}
 \hypertarget{classLevelSetHandler_aa899ffbee62631067378346d61fd172a}{\index{Level\-Set\-Handler@{Level\-Set\-Handler}!get\-Level\-Set@{get\-Level\-Set}}
 \index{get\-Level\-Set@{get\-Level\-Set}!LevelSetHandler@{Level\-Set\-Handler}}
@@ -188,9 +188,9 @@ classe che mi permette di costruire la frattura a partire dai dati del file data
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLevelSetHandler_aa899ffbee62631067378346d61fd172a}
 
 \begin{DoxyCode}
-52     \{
-53         \textcolor{keywordflow}{return} *M\_levelSet;
-54     \}
+61     \{
+62         \textcolor{keywordflow}{return} *M\_levelSet;
+63     \}
 \end{DoxyCode}
 \hypertarget{classLevelSetHandler_a88f16d61da1d2a2a68d5ef33fa77a41d}{\index{Level\-Set\-Handler@{Level\-Set\-Handler}!get\-Level\-Set@{get\-Level\-Set}}
 \index{get\-Level\-Set@{get\-Level\-Set}!LevelSetHandler@{Level\-Set\-Handler}}
@@ -201,9 +201,9 @@ classe che mi permette di costruire la frattura a partire dai dati del file data
 )\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLevelSetHandler_a88f16d61da1d2a2a68d5ef33fa77a41d}
 
 \begin{DoxyCode}
-58     \{
-59         \textcolor{keywordflow}{return} *M\_levelSet;
-60     \}
+67     \{
+68         \textcolor{keywordflow}{return} *M\_levelSet;
+69     \}
 \end{DoxyCode}
 \hypertarget{classLevelSetHandler_a6e08147a60f9e8d7ec65357223f72311}{\index{Level\-Set\-Handler@{Level\-Set\-Handler}!get\-Mesh@{get\-Mesh}}
 \index{get\-Mesh@{get\-Mesh}!LevelSetHandler@{Level\-Set\-Handler}}
@@ -214,9 +214,9 @@ classe che mi permette di costruire la frattura a partire dai dati del file data
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLevelSetHandler_a6e08147a60f9e8d7ec65357223f72311}
 
 \begin{DoxyCode}
-28     \{
-29         \textcolor{keywordflow}{return} *M\_mesh;
-30     \}
+37     \{
+38         \textcolor{keywordflow}{return} *M\_mesh;
+39     \}
 \end{DoxyCode}
 \hypertarget{classLevelSetHandler_a35e4adb6d0c5128445d46f0b489ce0a2}{\index{Level\-Set\-Handler@{Level\-Set\-Handler}!get\-Mesh@{get\-Mesh}}
 \index{get\-Mesh@{get\-Mesh}!LevelSetHandler@{Level\-Set\-Handler}}
@@ -227,9 +227,9 @@ classe che mi permette di costruire la frattura a partire dai dati del file data
 )\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLevelSetHandler_a35e4adb6d0c5128445d46f0b489ce0a2}
 
 \begin{DoxyCode}
-34     \{
-35         \textcolor{keywordflow}{return} *M\_mesh;
-36     \}
+43     \{
+44         \textcolor{keywordflow}{return} *M\_mesh;
+45     \}
 \end{DoxyCode}
 \hypertarget{classLevelSetHandler_a7ee7ade813923dfdef1bc25e9a881580}{\index{Level\-Set\-Handler@{Level\-Set\-Handler}!init@{init}}
 \index{init@{init}!LevelSetHandler@{Level\-Set\-Handler}}
@@ -242,100 +242,110 @@ classe che mi permette di costruire la frattura a partire dai dati del file data
 \end{DoxyParamCaption}
 )}}\label{classLevelSetHandler_a7ee7ade813923dfdef1bc25e9a881580}
 
+
+funzione che inizializza il level set. 
+
+Partendo dalle informazioni contenute nel file data costrusce le mesh e i metodi di integrazione 
+\begin{DoxyParams}{Parametri}
+{\em medium\-Mesh} & mesh di supporto del mezzo \\
+\hline
+{\em medium\-Integration\-Type\-Velocity} & metodo di integrazione per la velocità \\
+\hline
+{\em medium\-Mesh\-F\-E\-M\-Pressure} & mesh di integrazione per la pressione \\
+\hline
+{\em medium\-Mesh\-F\-E\-M\-Velocity} & mesh di integrazione per la velocità \\
+\hline
+\end{DoxyParams}
+
 \begin{DoxyCode}
 19 \{
-20     M\_mesh.reset(\textcolor{keyword}{new} \hyperlink{Core_8h_a126f7165f04db4ed0b72454469145a08}{GFMeshLevelSet\_Type}(mediumMesh));
+20     M\_mesh.reset ( \textcolor{keyword}{new} \hyperlink{Core_8h_a126f7165f04db4ed0b72454469145a08}{GFMeshLevelSet\_Type} ( mediumMesh ) );
 21 
-22     M\_levelSet.reset(\textcolor{keyword}{new} \hyperlink{Core_8h_a71358a15bd3925629e26ccbb214a0133}{GFLevelSet\_Type}(mediumMesh));
+22     M\_levelSet.reset ( \textcolor{keyword}{new} \hyperlink{Core_8h_a71358a15bd3925629e26ccbb214a0133}{GFLevelSet\_Type} ( mediumMesh ) );
 23 
-24     M\_integrationMethod.reset(\textcolor{keyword}{new} \hyperlink{Core_8h_ade18ba6e17965b6fdd50b3382b2a7020}{GFIntegrationMethodLevelSet\_Type}(*M\_mesh,
-25             getfem::mesh\_im\_level\_set::INTEGRATE\_BOUNDARY));
-26 
-27     M\_integrationMethodInside.reset(\textcolor{keyword}{new} \hyperlink{Core_8h_ade18ba6e17965b6fdd50b3382b2a7020}{GFIntegrationMethodLevelSet\_Type}(
-28             *M\_mesh, getfem::mesh\_im\_level\_set::INTEGRATE\_INSIDE));
+24     M\_integrationMethod.reset ( \textcolor{keyword}{new} \hyperlink{Core_8h_ade18ba6e17965b6fdd50b3382b2a7020}{GFIntegrationMethodLevelSet\_Type} ( *
+      M\_mesh, getfem::mesh\_im\_level\_set::INTEGRATE\_BOUNDARY ) );
+25 
+26     M\_integrationMethodInside.reset ( \textcolor{keyword}{new} \hyperlink{Core_8h_ade18ba6e17965b6fdd50b3382b2a7020}{GFIntegrationMethodLevelSet\_Type}(
+       *M\_mesh, getfem::mesh\_im\_level\_set::INTEGRATE\_INSIDE ) );
+27 
+28     M\_integrationMethodOutside.reset ( \textcolor{keyword}{new} \hyperlink{Core_8h_ade18ba6e17965b6fdd50b3382b2a7020}{GFIntegrationMethodLevelSet\_Type}
+       ( *M\_mesh, getfem::mesh\_im\_level\_set::INTEGRATE\_OUTSIDE ) );
 29 
-30     M\_integrationMethodOutside.reset(\textcolor{keyword}{new} \hyperlink{Core_8h_ade18ba6e17965b6fdd50b3382b2a7020}{GFIntegrationMethodLevelSet\_Type}(
-31             *M\_mesh, getfem::mesh\_im\_level\_set::INTEGRATE\_OUTSIDE));
-32 
-33     \textcolor{comment}{// Level sets}
+30     \textcolor{comment}{// Level sets}
+31 
+32     \textcolor{comment}{// Descrizione del metodo di integrazione per la funzione level set}
+33     getfem::pintegration\_method integrationType = getfem::int\_method\_descriptor( M\_data->
+      getIntegrationTypeSimplex() );
 34 
-35     \textcolor{comment}{// Integration type for the level set function}
-36     getfem::pintegration\_method integrationType =
-37             getfem::int\_method\_descriptor(M\_data->getIntegrationTypeSimplex());
-38 
-39     \textcolor{comment}{// Set that the M\_mediumMesh M\_levelSetMesh is cutted by a level set}
-40     M\_mesh->add\_level\_set(*M\_levelSet);
-41 
-42     \textcolor{comment}{// Integration type for the dual variable}
-43     getfem::pintegration\_method mediumIntegrationVelocity =
-44             getfem::int\_method\_descriptor(mediumIntegrationTypeVelocity);
-45 
-46     \textcolor{comment}{// Set the integration method for the zero of the level set function}
-47     M\_integrationMethod->set\_integration\_method(mediumMesh.convex\_index(),
-48             mediumIntegrationVelocity);
-49 
-50     M\_integrationMethod->set\_simplex\_im(integrationType);
-51 
-52     \textcolor{comment}{// Set the integration method for one side of the level set function}
-53     M\_integrationMethodInside->set\_integration\_method(
-54             mediumMesh.convex\_index(), mediumIntegrationVelocity);
+35     \textcolor{comment}{// Definiamo che la M\_mediumMesh M\_levelSetMesh è tagliata da un level set}
+36     M\_mesh->add\_level\_set( *M\_levelSet );
+37 
+38     \textcolor{comment}{// Descrizione del metodo di integrazione per la velocità}
+39     getfem::pintegration\_method mediumIntegrationVelocity = getfem::int\_method\_descriptor( 
+      mediumIntegrationTypeVelocity );
+40 
+41     \textcolor{comment}{// Descrizione del metodo di integrazione per la funzione level set di valore zero}
+42     M\_integrationMethod->set\_integration\_method ( mediumMesh.convex\_index(), mediumIntegrationVelocity );
+43     M\_integrationMethod->set\_simplex\_im ( integrationType );
+44 
+45     \textcolor{comment}{// Descrizione del metodo di integrazione per un lato della funzione level set}
+46     M\_integrationMethodInside->set\_integration\_method ( mediumMesh.convex\_index(), 
+      mediumIntegrationVelocity );
+47     M\_integrationMethodInside->set\_simplex\_im ( integrationType );
+48 
+49     \textcolor{comment}{// Descrizione del metodo di integrazione per l'altro lato della funzione level set}
+50     M\_integrationMethodOutside->set\_integration\_method ( mediumMesh.convex\_index(), 
+      mediumIntegrationVelocity );
+51     M\_integrationMethodOutside->set\_simplex\_im ( integrationType );
+52 
+53     M\_levelSet->reinit();
+54     M\_levelSet->values(1) = M\_levelSet->values(0);
 55 
-56     M\_integrationMethodInside->set\_simplex\_im(integrationType);
-57 
-58     \textcolor{comment}{// Set the integration method for the other side of the level set function}
-59     M\_integrationMethodOutside->set\_integration\_method(
-60             mediumMesh.convex\_index(), mediumIntegrationVelocity);
+56 
+57     \textcolor{comment}{// Riempio il level set con i valori nel file data}
+58     \textcolor{keywordflow}{for} ( size\_type d = 0; d < M\_levelSet->get\_mesh\_fem().nb\_basic\_dof(); ++d )
+59     \{
+60         \textcolor{keyword}{const} base\_node node = M\_levelSet->get\_mesh\_fem().point\_of\_basic\_dof(d);
 61 
-62     M\_integrationMethodOutside->set\_simplex\_im(integrationType);
-63 
-64     M\_levelSet->reinit();
+62         M\_levelSet->values(0) [ d ] = M\_data->ylevelSetFunction(node);
+63         M\_levelSet->values(1) [ d ] = M\_data->levelSetCutFunction(node);
+64     \}
 65 
-66     M\_levelSet->values(1) = M\_levelSet->values(0);
+66     M\_levelSet->touch();
 67 
-68 
-69     \textcolor{comment}{// Fill the level set with the value from the data}
-70     \textcolor{keywordflow}{for} ( size\_type d = 0; d < M\_levelSet->get\_mesh\_fem().nb\_basic\_dof(); ++d )
-71     \{
-72         \textcolor{keyword}{const} base\_node node = M\_levelSet->get\_mesh\_fem().point\_of\_basic\_dof(d);
+68     \textcolor{comment}{// Aggiorno la mesh e i metodi di integrazione poichè il level set è stato modificato}
+69     M\_mesh->adapt();
+70     M\_integrationMethod->adapt();
+71     M\_integrationMethodInside->adapt();
+72     M\_integrationMethodOutside->adapt();
 73 
-74         M\_levelSet->values(0) [ d ] = M\_data->ylevelSetFunction(node);
-75         M\_levelSet->values(1) [ d ] = M\_data->levelSetCutFunction(node);
-76     \}
-77 
-78     M\_levelSet->touch();
-79 
-80     \textcolor{comment}{// Since the level set is modified update the mesh and integration methods}
-81     M\_mesh->adapt();
-82     M\_integrationMethod->adapt();
-83     M\_integrationMethodInside->adapt();
-84     M\_integrationMethodOutside->adapt();
-85 
-86     \textcolor{comment}{// Evaluate the level set function in the primal degrees of freedom}
-87     \textcolor{keyword}{const} size\_type shiftPressure = mediumMeshFEMPressure.nb\_dof();
-88     \textcolor{comment}{// gives the total number of different degrees of freedom. If the optional reduction is used, this will
+74     \textcolor{comment}{// Valuto la funzione level set nei gradi di libertà primari}
+75     \textcolor{keyword}{const} size\_type shiftPressure = mediumMeshFEMPressure.nb\_dof();
+76     \textcolor{comment}{// gives the total number of different degrees of freedom. If the optional reduction is used, this will
        be the number}
-89     \textcolor{comment}{// of columns of the reduction matrix. Otherwise it will return the number of basic degrees of freedom}
+77     \textcolor{comment}{// of columns of the reduction matrix. Otherwise it will return the number of basic degrees of freedom}
+78 
+79     gmm::resize(M\_baricenterValue, shiftPressure);
+80     \textcolor{keywordflow}{for} ( size\_type i = 0; i < shiftPressure; ++i )
+81     \{
+82         \textcolor{keyword}{const} base\_node node = mediumMeshFEMPressure.point\_of\_basic\_dof ( i );
+83         M\_baricenterValue [ i ] = M\_data->ylevelSetFunction ( node, 0.0 );
+84     \}
+85 
+86     \textcolor{comment}{// Valuto la funzione level set nei gradi di libertà secondari}
+87     \textcolor{keyword}{const} size\_type shiftVelocity = mediumMeshFEMVelocity.nb\_dof();
+88     gmm::resize ( M\_DOFValue, shiftVelocity );
+89 
 90 
-91     gmm::resize(M\_baricenterValue, shiftPressure);
-92     \textcolor{keywordflow}{for} ( size\_type i = 0; i < shiftPressure; ++i )
+91 
+92     \textcolor{keywordflow}{for} ( size\_type i = 0; i < shiftVelocity; ++i )
 93     \{
-94         \textcolor{keyword}{const} base\_node node = mediumMeshFEMPressure.point\_of\_basic\_dof(i);
-95         M\_baricenterValue [ i ] = M\_data->ylevelSetFunction(node, 0.0);
+94         \textcolor{keyword}{const} base\_node node = mediumMeshFEMVelocity.point\_of\_basic\_dof ( i );
+95         M\_DOFValue [ i ] = M\_data->ylevelSetFunction ( node, 0.0 );
 96     \}
 97 
-98     \textcolor{comment}{// Evaluate the level set function in the dual degrees of freedom}
-99     \textcolor{keyword}{const} size\_type shiftVelocity = mediumMeshFEMVelocity.nb\_dof();
-100     gmm::resize(M\_DOFValue, shiftVelocity);
-101 
-102 
-103 
-104     \textcolor{keywordflow}{for} ( size\_type i = 0; i < shiftVelocity; ++i )
-105     \{
-106     \textcolor{keyword}{const} base\_node node = mediumMeshFEMVelocity.point\_of\_basic\_dof(i);
-107         M\_DOFValue [ i ] = M\_data->ylevelSetFunction(node, 0.0);
-108     \}
-109 
-110 \}
+98 \}
 \end{DoxyCode}
 
 

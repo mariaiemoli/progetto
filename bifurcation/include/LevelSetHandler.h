@@ -1,5 +1,7 @@
-/** LevelSetHandler.h
+/** 
  *
+ * LevelSetHandler.h
+ * 
  * classe che mi permette di costruire la frattura a partire dai dati del file data
  *
  */
@@ -18,10 +20,17 @@ public:
     				  const std::string& sectionLevelSet = "levelSet/" );
 
     
+    /**
+     * funzione che inizializza il level set. Partendo dalle informazioni contenute nel file data costrusce le mesh e i metodi di integrazione
+     * \param mediumMesh: mesh di supporto del mezzo
+     * \param mediumIntegrationTypeVelocity: metodo di integrazione per la velocità 
+     * \param mediumMeshFEMPressure: mesh di integrazione per la pressione
+     * \param mediumMeshFEMVelocity: mesh di integrazione per la velocità
+     */
     void init ( getfem::mesh& mediumMesh,
-           const std::string& mediumIntegrationTypeVelocity,
-           const getfem::mesh_fem& mediumMeshFEMPressure,
-           const getfem::mesh_fem& mediumMeshFEMVelocity );
+			    const std::string& mediumIntegrationTypeVelocity,
+			    const getfem::mesh_fem& mediumMeshFEMPressure,
+			    const getfem::mesh_fem& mediumMeshFEMVelocity );
 
 
     inline const GFMeshLevelSet_Type& getMesh ( ) const
@@ -103,24 +112,24 @@ private:
 
     // M_mediumMesh, level set
     GFMeshLevelSetPtr_Type M_mesh;
-    // The level sets defining the fracture
+    // Il level set che definisce la frattura
     GFLevelSetPtr_Type M_levelSet;
 
-    //valore del level set nei baricentri
+    // valore del level set nei baricentri
     scalarVector_Type M_baricenterValue;
-    //valore del level set nei gradi di libertà di v
+    // valore del level set nei gradi di libertà di v
     scalarVector_Type M_DOFValue;
 
-    // integration method, level set (on the boundary)
+    // metodo di integrazione per il level set sul bordo
     GFIntegrationMethodLevelSetPtr_Type M_integrationMethod;
-    // integration method, level set (inside)
+    // metodo di integrazione per il level set " interno "
     GFIntegrationMethodLevelSetPtr_Type M_integrationMethodInside;
-    // integration method, level set (outside)
+    // metodo di integrazione per il level set " esterno "
     GFIntegrationMethodLevelSetPtr_Type M_integrationMethodOutside;
 
 };
 
-typedef LevelSetHandler LevelSetHandler_Type;
-typedef boost::shared_ptr<LevelSetHandler_Type> LevelSetHandlerPtr_Type;
+typedef LevelSetHandler LevelSetHandler_Type;									/*!< classe LevelSetHandler */
+typedef boost::shared_ptr<LevelSetHandler_Type> LevelSetHandlerPtr_Type;		/*!< puntatore alla classe LeverSetHandler */
 
 #endif /* LEVELSETHANDLER_H_ */

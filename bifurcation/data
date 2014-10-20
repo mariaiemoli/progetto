@@ -7,7 +7,7 @@ folderVTK = ./vtk/
 transientSolver = 0
 stabilize = 1
 
-numberFractures = 2
+numberFractures = 3
 
 [dataTime]
 
@@ -67,7 +67,7 @@ numberFractures = 2
 
 [../]
 
-[fractureData0]
+[fractureData3]
 
 spaceDimension = 1.
 
@@ -144,19 +144,19 @@ spaceDimension = 1.
 [../]
 
 
-[fractureData1]
+[fractureData4]
 
 spaceDimension = 1.
 
         [./levelSet]
 
-		levelSet = y-0.8
+				levelSet = y-0.8
                 ylevelSet = y-0.8
-		xlevelSet = x-t
+				xlevelSet = x-t
                 levelSetCut = -1
                 yMap = 0.8
-		xMap = t
-		Map_inv = x
+				xMap = t
+				Map_inv = x
                 jacMap = 1 %here the mapped grid is shorter than the actual arc length
                 normalMap = [0.,-1.]
 
@@ -204,7 +204,7 @@ spaceDimension = 1.
 s[../]
 
 
-[fractureData9]
+[fractureData0]
 
 spaceDimension = 1.
 
@@ -265,7 +265,7 @@ spaceDimension = 1.
 [../]
 
 
-[fractureData8]
+[fractureData1]
 
 spaceDimension = 1.
 
@@ -326,7 +326,7 @@ spaceDimension = 1.
 [../]
 
 
-[fractureData7]
+[fractureData2]
 
 spaceDimension = 1.
 
@@ -504,7 +504,7 @@ s[../]
 
 
 
-[fractureData4]
+[fractureData9]
 
 spaceDimension = 1.
 
@@ -565,7 +565,7 @@ spaceDimension = 1.
 [../]
 
 
-[fractureData3]
+[fractureData8]
 
         spaceDimension = 1.
 
@@ -625,7 +625,7 @@ spaceDimension = 1.
 s[../]
 
 
-[fractureData2]
+[fractureData7]
 
 spaceDimension = 1.
 

@@ -1,5 +1,5 @@
-/** LevelSetHandler.cc
- *
+/** 
+ * LevelSetHandler.cc
  */
 
 #include "../include/LevelSetHandler.h"
@@ -17,56 +17,44 @@ void LevelSetHandler::init ( getfem::mesh& mediumMesh,
                              const getfem::mesh_fem& mediumMeshFEMPressure,
                              const getfem::mesh_fem& mediumMeshFEMVelocity )
 {
-    M_mesh.reset(new GFMeshLevelSet_Type(mediumMesh));
+    M_mesh.reset ( new GFMeshLevelSet_Type ( mediumMesh ) );
 
-    M_levelSet.reset(new GFLevelSet_Type(mediumMesh));
+    M_levelSet.reset ( new GFLevelSet_Type ( mediumMesh ) );
 
-    M_integrationMethod.reset(new GFIntegrationMethodLevelSet_Type(*M_mesh,
-            getfem::mesh_im_level_set::INTEGRATE_BOUNDARY));
+    M_integrationMethod.reset ( new GFIntegrationMethodLevelSet_Type ( *M_mesh, getfem::mesh_im_level_set::INTEGRATE_BOUNDARY ) );
 
-    M_integrationMethodInside.reset(new GFIntegrationMethodLevelSet_Type(
-            *M_mesh, getfem::mesh_im_level_set::INTEGRATE_INSIDE));
+    M_integrationMethodInside.reset ( new GFIntegrationMethodLevelSet_Type( *M_mesh, getfem::mesh_im_level_set::INTEGRATE_INSIDE ) );
 
-    M_integrationMethodOutside.reset(new GFIntegrationMethodLevelSet_Type(
-            *M_mesh, getfem::mesh_im_level_set::INTEGRATE_OUTSIDE));
+    M_integrationMethodOutside.reset ( new GFIntegrationMethodLevelSet_Type ( *M_mesh, getfem::mesh_im_level_set::INTEGRATE_OUTSIDE ) );
 
     // Level sets
 
-    // Integration type for the level set function
-    getfem::pintegration_method integrationType =
-            getfem::int_method_descriptor(M_data->getIntegrationTypeSimplex());
+    // Descrizione del metodo di integrazione per la funzione level set
+    getfem::pintegration_method integrationType = getfem::int_method_descriptor( M_data->getIntegrationTypeSimplex() );
 
-    // Set that the M_mediumMesh M_levelSetMesh is cutted by a level set
-    M_mesh->add_level_set(*M_levelSet);
+    // Definiamo che la M_mediumMesh M_levelSetMesh è tagliata da un level set
+    M_mesh->add_level_set( *M_levelSet );
 
-    // Integration type for the dual variable
-    getfem::pintegration_method mediumIntegrationVelocity =
-            getfem::int_method_descriptor(mediumIntegrationTypeVelocity);
+    // Descrizione del metodo di integrazione per la velocità
+    getfem::pintegration_method mediumIntegrationVelocity = getfem::int_method_descriptor( mediumIntegrationTypeVelocity );
 
-    // Set the integration method for the zero of the level set function
-    M_integrationMethod->set_integration_method(mediumMesh.convex_index(),
-            mediumIntegrationVelocity);
+    // Descrizione del metodo di integrazione per la funzione level set di valore zero
+    M_integrationMethod->set_integration_method ( mediumMesh.convex_index(), mediumIntegrationVelocity );
+    M_integrationMethod->set_simplex_im ( integrationType );
 
-    M_integrationMethod->set_simplex_im(integrationType);
+    // Descrizione del metodo di integrazione per un lato della funzione level set
+    M_integrationMethodInside->set_integration_method ( mediumMesh.convex_index(), mediumIntegrationVelocity );
+    M_integrationMethodInside->set_simplex_im ( integrationType );
 
-    // Set the integration method for one side of the level set function
-    M_integrationMethodInside->set_integration_method(
-            mediumMesh.convex_index(), mediumIntegrationVelocity);
-
-    M_integrationMethodInside->set_simplex_im(integrationType);
-
-    // Set the integration method for the other side of the level set function
-    M_integrationMethodOutside->set_integration_method(
-            mediumMesh.convex_index(), mediumIntegrationVelocity);
-
-    M_integrationMethodOutside->set_simplex_im(integrationType);
+    // Descrizione del metodo di integrazione per l'altro lato della funzione level set
+    M_integrationMethodOutside->set_integration_method ( mediumMesh.convex_index(), mediumIntegrationVelocity );
+    M_integrationMethodOutside->set_simplex_im ( integrationType );
 
     M_levelSet->reinit();
-
     M_levelSet->values(1) = M_levelSet->values(0);
 
 
-    // Fill the level set with the value from the data
+    // Riempio il level set con i valori nel file data
     for ( size_type d = 0; d < M_levelSet->get_mesh_fem().nb_basic_dof(); ++d )
     {
         const base_node node = M_levelSet->get_mesh_fem().point_of_basic_dof(d);
@@ -77,13 +65,13 @@ void LevelSetHandler::init ( getfem::mesh& mediumMesh,
 
     M_levelSet->touch();
 
-    // Since the level set is modified update the mesh and integration methods
+    // Aggiorno la mesh e i metodi di integrazione poichè il level set è stato modificato
     M_mesh->adapt();
     M_integrationMethod->adapt();
     M_integrationMethodInside->adapt();
     M_integrationMethodOutside->adapt();
 
-    // Evaluate the level set function in the primal degrees of freedom
+    // Valuto la funzione level set nei gradi di libertà primari
     const size_type shiftPressure = mediumMeshFEMPressure.nb_dof();
     // gives the total number of different degrees of freedom. If the optional reduction is used, this will be the number
 	// of columns of the reduction matrix. Otherwise it will return the number of basic degrees of freedom
@@ -91,20 +79,20 @@ void LevelSetHandler::init ( getfem::mesh& mediumMesh,
     gmm::resize(M_baricenterValue, shiftPressure);
     for ( size_type i = 0; i < shiftPressure; ++i )
     {
-    	const base_node node = mediumMeshFEMPressure.point_of_basic_dof(i);
-    	M_baricenterValue [ i ] = M_data->ylevelSetFunction(node, 0.0);
+    	const base_node node = mediumMeshFEMPressure.point_of_basic_dof ( i );
+    	M_baricenterValue [ i ] = M_data->ylevelSetFunction ( node, 0.0 );
     }
 
-    // Evaluate the level set function in the dual degrees of freedom
+    // Valuto la funzione level set nei gradi di libertà secondari
     const size_type shiftVelocity = mediumMeshFEMVelocity.nb_dof();
-    gmm::resize(M_DOFValue, shiftVelocity);
+    gmm::resize ( M_DOFValue, shiftVelocity );
 
 
 
     for ( size_type i = 0; i < shiftVelocity; ++i )
     {
-   	const base_node node = mediumMeshFEMVelocity.point_of_basic_dof(i);
-    	M_DOFValue [ i ] = M_data->ylevelSetFunction(node, 0.0);
+    	const base_node node = mediumMeshFEMVelocity.point_of_basic_dof ( i );
+    	M_DOFValue [ i ] = M_data->ylevelSetFunction ( node, 0.0 );
     }
 
 }

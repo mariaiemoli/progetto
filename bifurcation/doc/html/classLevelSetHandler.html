@@ -101,6 +101,7 @@ Membri pubblici</h2></td></tr>
 <tr class="memdesc:a9dbe142d7d4f677abe8c204714c004ed"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="LevelSetHandler_8cc.html">LevelSetHandler.cc</a>.  <a href="#a9dbe142d7d4f677abe8c204714c004ed">Continua...</a><br/></td></tr>
 <tr class="separator:a9dbe142d7d4f677abe8c204714c004ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7ee7ade813923dfdef1bc25e9a881580"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLevelSetHandler.html#a7ee7ade813923dfdef1bc25e9a881580">init</a> (getfem::mesh &amp;mediumMesh, const std::string &amp;mediumIntegrationTypeVelocity, const getfem::mesh_fem &amp;mediumMeshFEMPressure, const getfem::mesh_fem &amp;mediumMeshFEMVelocity)</td></tr>
+<tr class="memdesc:a7ee7ade813923dfdef1bc25e9a881580"><td class="mdescLeft">&#160;</td><td class="mdescRight">funzione che inizializza il level set.  <a href="#a7ee7ade813923dfdef1bc25e9a881580">Continua...</a><br/></td></tr>
 <tr class="separator:a7ee7ade813923dfdef1bc25e9a881580"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e08147a60f9e8d7ec65357223f72311"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="Core_8h.html#a126f7165f04db4ed0b72454469145a08">GFMeshLevelSet_Type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLevelSetHandler.html#a6e08147a60f9e8d7ec65357223f72311">getMesh</a> () const </td></tr>
 <tr class="separator:a6e08147a60f9e8d7ec65357223f72311"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -193,9 +194,9 @@ Membri pubblici</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordflow">return</span> M_baricenterValue;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordflow">return</span> M_baricenterValue;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -220,9 +221,9 @@ Membri pubblici</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    {</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordflow">return</span> M_baricenterValue [ dof ];</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordflow">return</span> M_baricenterValue [ dof ];</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -246,9 +247,9 @@ Membri pubblici</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    {</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keywordflow">return</span> M_data;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keywordflow">return</span> M_data;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -272,9 +273,9 @@ Membri pubblici</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    {</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keywordflow">return</span> M_DOFValue;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordflow">return</span> M_DOFValue;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -299,9 +300,9 @@ Membri pubblici</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    {</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordflow">return</span> M_DOFValue [ dof ];</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keywordflow">return</span> M_DOFValue [ dof ];</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -325,9 +326,9 @@ Membri pubblici</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordflow">return</span> *M_integrationMethod;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordflow">return</span> *M_integrationMethod;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -351,9 +352,9 @@ Membri pubblici</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordflow">return</span> *M_integrationMethodInside;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordflow">return</span> *M_integrationMethodInside;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -377,9 +378,9 @@ Membri pubblici</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordflow">return</span> *M_integrationMethodOutside;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordflow">return</span> *M_integrationMethodOutside;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -403,9 +404,9 @@ Membri pubblici</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordflow">return</span> *M_levelSet;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">return</span> *M_levelSet;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -429,9 +430,9 @@ Membri pubblici</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    {</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordflow">return</span> *M_levelSet;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordflow">return</span> *M_levelSet;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -455,9 +456,9 @@ Membri pubblici</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordflow">return</span> *M_mesh;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordflow">return</span> *M_mesh;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -481,9 +482,9 @@ Membri pubblici</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordflow">return</span> *M_mesh;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordflow">return</span> *M_mesh;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -522,98 +523,98 @@ Membri pubblici</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>funzione che inizializza il level set. </p>
+<p>Partendo dalle informazioni contenute nel file data costrusce le mesh e i metodi di integrazione </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mediumMesh</td><td>mesh di supporto del mezzo </td></tr>
+    <tr><td class="paramname">mediumIntegrationTypeVelocity</td><td>metodo di integrazione per la velocità </td></tr>
+    <tr><td class="paramname">mediumMeshFEMPressure</td><td>mesh di integrazione per la pressione </td></tr>
+    <tr><td class="paramname">mediumMeshFEMVelocity</td><td>mesh di integrazione per la velocità </td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="fragment"><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    M_mesh.reset(<span class="keyword">new</span> <a class="code" href="Core_8h.html#a126f7165f04db4ed0b72454469145a08">GFMeshLevelSet_Type</a>(mediumMesh));</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    M_mesh.reset ( <span class="keyword">new</span> <a class="code" href="Core_8h.html#a126f7165f04db4ed0b72454469145a08">GFMeshLevelSet_Type</a> ( mediumMesh ) );</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    M_levelSet.reset(<span class="keyword">new</span> <a class="code" href="Core_8h.html#a71358a15bd3925629e26ccbb214a0133">GFLevelSet_Type</a>(mediumMesh));</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    M_levelSet.reset ( <span class="keyword">new</span> <a class="code" href="Core_8h.html#a71358a15bd3925629e26ccbb214a0133">GFLevelSet_Type</a> ( mediumMesh ) );</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    M_integrationMethod.reset(<span class="keyword">new</span> <a class="code" href="Core_8h.html#ade18ba6e17965b6fdd50b3382b2a7020">GFIntegrationMethodLevelSet_Type</a>(*M_mesh,</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            getfem::mesh_im_level_set::INTEGRATE_BOUNDARY));</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    M_integrationMethodInside.reset(<span class="keyword">new</span> <a class="code" href="Core_8h.html#ade18ba6e17965b6fdd50b3382b2a7020">GFIntegrationMethodLevelSet_Type</a>(</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            *M_mesh, getfem::mesh_im_level_set::INTEGRATE_INSIDE));</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    M_integrationMethod.reset ( <span class="keyword">new</span> <a class="code" href="Core_8h.html#ade18ba6e17965b6fdd50b3382b2a7020">GFIntegrationMethodLevelSet_Type</a> ( *M_mesh, getfem::mesh_im_level_set::INTEGRATE_BOUNDARY ) );</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    M_integrationMethodInside.reset ( <span class="keyword">new</span> <a class="code" href="Core_8h.html#ade18ba6e17965b6fdd50b3382b2a7020">GFIntegrationMethodLevelSet_Type</a>( *M_mesh, getfem::mesh_im_level_set::INTEGRATE_INSIDE ) );</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    M_integrationMethodOutside.reset ( <span class="keyword">new</span> <a class="code" href="Core_8h.html#ade18ba6e17965b6fdd50b3382b2a7020">GFIntegrationMethodLevelSet_Type</a> ( *M_mesh, getfem::mesh_im_level_set::INTEGRATE_OUTSIDE ) );</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    M_integrationMethodOutside.reset(<span class="keyword">new</span> <a class="code" href="Core_8h.html#ade18ba6e17965b6fdd50b3382b2a7020">GFIntegrationMethodLevelSet_Type</a>(</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            *M_mesh, getfem::mesh_im_level_set::INTEGRATE_OUTSIDE));</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="comment">// Level sets</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="comment">// Level sets</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="comment">// Descrizione del metodo di integrazione per la funzione level set</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    getfem::pintegration_method integrationType = getfem::int_method_descriptor( M_data-&gt;getIntegrationTypeSimplex() );</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">// Integration type for the level set function</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    getfem::pintegration_method integrationType =</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            getfem::int_method_descriptor(M_data-&gt;getIntegrationTypeSimplex());</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="comment">// Set that the M_mediumMesh M_levelSetMesh is cutted by a level set</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    M_mesh-&gt;add_level_set(*M_levelSet);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="comment">// Integration type for the dual variable</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    getfem::pintegration_method mediumIntegrationVelocity =</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            getfem::int_method_descriptor(mediumIntegrationTypeVelocity);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="comment">// Set the integration method for the zero of the level set function</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    M_integrationMethod-&gt;set_integration_method(mediumMesh.convex_index(),</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            mediumIntegrationVelocity);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    M_integrationMethod-&gt;set_simplex_im(integrationType);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="comment">// Set the integration method for one side of the level set function</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    M_integrationMethodInside-&gt;set_integration_method(</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            mediumMesh.convex_index(), mediumIntegrationVelocity);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">// Definiamo che la M_mediumMesh M_levelSetMesh è tagliata da un level set</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    M_mesh-&gt;add_level_set( *M_levelSet );</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="comment">// Descrizione del metodo di integrazione per la velocità</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    getfem::pintegration_method mediumIntegrationVelocity = getfem::int_method_descriptor( mediumIntegrationTypeVelocity );</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="comment">// Descrizione del metodo di integrazione per la funzione level set di valore zero</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    M_integrationMethod-&gt;set_integration_method ( mediumMesh.convex_index(), mediumIntegrationVelocity );</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    M_integrationMethod-&gt;set_simplex_im ( integrationType );</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="comment">// Descrizione del metodo di integrazione per un lato della funzione level set</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    M_integrationMethodInside-&gt;set_integration_method ( mediumMesh.convex_index(), mediumIntegrationVelocity );</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    M_integrationMethodInside-&gt;set_simplex_im ( integrationType );</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="comment">// Descrizione del metodo di integrazione per l&#39;altro lato della funzione level set</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    M_integrationMethodOutside-&gt;set_integration_method ( mediumMesh.convex_index(), mediumIntegrationVelocity );</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    M_integrationMethodOutside-&gt;set_simplex_im ( integrationType );</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    M_levelSet-&gt;reinit();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    M_levelSet-&gt;values(1) = M_levelSet-&gt;values(0);</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    M_integrationMethodInside-&gt;set_simplex_im(integrationType);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="comment">// Set the integration method for the other side of the level set function</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    M_integrationMethodOutside-&gt;set_integration_method(</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            mediumMesh.convex_index(), mediumIntegrationVelocity);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="comment">// Riempio il level set con i valori nel file data</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">for</span> ( size_type d = 0; d &lt; M_levelSet-&gt;get_mesh_fem().nb_basic_dof(); ++d )</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keyword">const</span> base_node node = M_levelSet-&gt;get_mesh_fem().point_of_basic_dof(d);</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    M_integrationMethodOutside-&gt;set_simplex_im(integrationType);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    M_levelSet-&gt;reinit();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        M_levelSet-&gt;values(0) [ d ] = M_data-&gt;ylevelSetFunction(node);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        M_levelSet-&gt;values(1) [ d ] = M_data-&gt;levelSetCutFunction(node);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    }</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    M_levelSet-&gt;values(1) = M_levelSet-&gt;values(0);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    M_levelSet-&gt;touch();</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="comment">// Fill the level set with the value from the data</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">for</span> ( size_type d = 0; d &lt; M_levelSet-&gt;get_mesh_fem().nb_basic_dof(); ++d )</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keyword">const</span> base_node node = M_levelSet-&gt;get_mesh_fem().point_of_basic_dof(d);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="comment">// Aggiorno la mesh e i metodi di integrazione poichè il level set è stato modificato</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    M_mesh-&gt;adapt();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    M_integrationMethod-&gt;adapt();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    M_integrationMethodInside-&gt;adapt();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    M_integrationMethodOutside-&gt;adapt();</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        M_levelSet-&gt;values(0) [ d ] = M_data-&gt;ylevelSetFunction(node);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        M_levelSet-&gt;values(1) [ d ] = M_data-&gt;levelSetCutFunction(node);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    }</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    M_levelSet-&gt;touch();</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="comment">// Since the level set is modified update the mesh and integration methods</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    M_mesh-&gt;adapt();</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    M_integrationMethod-&gt;adapt();</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    M_integrationMethodInside-&gt;adapt();</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    M_integrationMethodOutside-&gt;adapt();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="comment">// Valuto la funzione level set nei gradi di libertà primari</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keyword">const</span> size_type shiftPressure = mediumMeshFEMPressure.nb_dof();</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="comment">// gives the total number of different degrees of freedom. If the optional reduction is used, this will be the number</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="comment">// of columns of the reduction matrix. Otherwise it will return the number of basic degrees of freedom</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    gmm::resize(M_baricenterValue, shiftPressure);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">for</span> ( size_type i = 0; i &lt; shiftPressure; ++i )</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keyword">const</span> base_node node = mediumMeshFEMPressure.point_of_basic_dof ( i );</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        M_baricenterValue [ i ] = M_data-&gt;ylevelSetFunction ( node, 0.0 );</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    }</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="comment">// Evaluate the level set function in the primal degrees of freedom</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keyword">const</span> size_type shiftPressure = mediumMeshFEMPressure.nb_dof();</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="comment">// gives the total number of different degrees of freedom. If the optional reduction is used, this will be the number</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="comment">// of columns of the reduction matrix. Otherwise it will return the number of basic degrees of freedom</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="comment">// Valuto la funzione level set nei gradi di libertà secondari</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keyword">const</span> size_type shiftVelocity = mediumMeshFEMVelocity.nb_dof();</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    gmm::resize ( M_DOFValue, shiftVelocity );</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    gmm::resize(M_baricenterValue, shiftPressure);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordflow">for</span> ( size_type i = 0; i &lt; shiftPressure; ++i )</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordflow">for</span> ( size_type i = 0; i &lt; shiftVelocity; ++i )</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    {</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keyword">const</span> base_node node = mediumMeshFEMPressure.point_of_basic_dof(i);</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        M_baricenterValue [ i ] = M_data-&gt;ylevelSetFunction(node, 0.0);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keyword">const</span> base_node node = mediumMeshFEMVelocity.point_of_basic_dof ( i );</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        M_DOFValue [ i ] = M_data-&gt;ylevelSetFunction ( node, 0.0 );</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    }</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="comment">// Evaluate the level set function in the dual degrees of freedom</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keyword">const</span> size_type shiftVelocity = mediumMeshFEMVelocity.nb_dof();</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    gmm::resize(M_DOFValue, shiftVelocity);</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordflow">for</span> ( size_type i = 0; i &lt; shiftVelocity; ++i )</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    {</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keyword">const</span> base_node node = mediumMeshFEMVelocity.point_of_basic_dof(i);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        M_DOFValue [ i ] = M_data-&gt;ylevelSetFunction(node, 0.0);</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    }</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;}</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;}</div>
 <div class="ttc" id="Core_8h_html_ade18ba6e17965b6fdd50b3382b2a7020"><div class="ttname"><a href="Core_8h.html#ade18ba6e17965b6fdd50b3382b2a7020">GFIntegrationMethodLevelSet_Type</a></div><div class="ttdeci">getfem::mesh_im_level_set GFIntegrationMethodLevelSet_Type</div><div class="ttdef"><b>Definition:</b> Core.h:91</div></div>
 <div class="ttc" id="Core_8h_html_a71358a15bd3925629e26ccbb214a0133"><div class="ttname"><a href="Core_8h.html#a71358a15bd3925629e26ccbb214a0133">GFLevelSet_Type</a></div><div class="ttdeci">getfem::level_set GFLevelSet_Type</div><div class="ttdef"><b>Definition:</b> Core.h:86</div></div>
 <div class="ttc" id="Core_8h_html_a126f7165f04db4ed0b72454469145a08"><div class="ttname"><a href="Core_8h.html#a126f7165f04db4ed0b72454469145a08">GFMeshLevelSet_Type</a></div><div class="ttdeci">getfem::mesh_level_set GFMeshLevelSet_Type</div><div class="ttdef"><b>Definition:</b> Core.h:82</div></div>
@@ -627,7 +628,7 @@ Membri pubblici</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generato Dom 19 Ott 2014 18:46:37 per Progetto PACS da &#160;<a href="http://www.doxygen.org/index.html">
+Generato Lun 20 Ott 2014 14:09:03 per Progetto PACS da &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

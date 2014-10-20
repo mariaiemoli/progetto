@@ -1,5 +1,7 @@
-/** XFEMOperators.h
- *
+/** 
+ * 
+ * XFEMOperators.h
+ * 
  * Darcy bilinear and linear forms.
  *
  * REMEMBER: the matrix corresponding to a(u,v) is Aij = a(\phi_j, \phi_i)
@@ -51,12 +53,20 @@ void darcy_A11F ( sparseMatrixPtr_Type& M,
                   const sizeVector_Type &ExtBoundary,
                   const size_type& uncutRegionFlag );
 
-//matrice tau tau per la frattura intersecata
-void darcy_A11F ( sparseMatrixPtr_Type& M,
-                  const FractureHandlerPtr_Type& fracture,
-                  const scalarVector_Type& invKTangentialInterpolated,
-                  const FractureHandlerPtr_Type& otherFracture,
-                  const size_type& cutRegionFlag );
+//matrice tau tau per la frattura con un'intersezione di tipo Cross
+void darcy_A11F_Cross ( sparseMatrixPtr_Type& M,
+					    const FractureHandlerPtr_Type& fracture,
+					    const scalarVector_Type& invKTangentialInterpolated,
+					    const FractureHandlerPtr_Type& otherFracture,
+					    const size_type& cutRegionFlag );
+
+
+//matrice tau tau per la frattura con un'intersezione di tipo Bifurcation
+void darcy_A11F_Bifurcation ( sparseMatrixPtr_Type& M,
+							  const FractureHandlerPtr_Type& fracture,
+							  const scalarVector_Type& invKTangentialInterpolated,
+							  const FractureHandlerPtr_Type& otherFracture,
+							  const size_type& cutRegionFlag );
 
 
 //lo stesso per la frattura
@@ -65,11 +75,18 @@ void darcy_A12F ( sparseMatrixPtr_Type& M,
                   const size_type& uncutRegionFlag );
 
 
-//lo stesso per la frattura intersecata
-void darcy_A12F ( sparseMatrixPtr_Type& M,
-                  const FractureHandlerPtr_Type& fracture,
-                  const FractureHandlerPtr_Type& otherFracture,
-                  const size_type& cutRegionFlag );
+//lo stesso per la frattura intersecata con un'intersezione di tipo Cross
+void darcy_A12F_Cross ( sparseMatrixPtr_Type& M,
+                  	    const FractureHandlerPtr_Type& fracture,
+                  	    const FractureHandlerPtr_Type& otherFracture,
+                  	    const size_type& cutRegionFlag );
+
+
+//lo stesso per la frattura intersecata con un'intersezione di tipo Bifurcation
+void darcy_A12F_Bifurcation ( sparseMatrixPtr_Type& M,
+                  	  	  	  const FractureHandlerPtr_Type& fracture,
+                  	  	  	  const FractureHandlerPtr_Type& otherFracture,
+							  const size_type& cutRegionFlag );
 
 
 //stesso lavoro con la frattura - più semplice
@@ -102,10 +119,16 @@ void assembling_SourceF ( scalarVectorPtr_Type& D,
 void coupleFractures ( sparseMatrixPtr_Type& M, const FracturesSetPtr_Type& fractures );
 
 
-void velocityJump ( sparseMatrixPtr_Type& M,
+void velocityJump_Cross ( sparseMatrixPtr_Type& M,
                     const FractureHandlerPtr_Type& fracture,
                     const FractureHandlerPtr_Type& otherFracture,
                     const size_type& convex );
+
+
+void velocityJump_Bifurcation ( sparseMatrixPtr_Type& M,
+                    			const FractureHandlerPtr_Type& fracture,
+                    			const FractureHandlerPtr_Type& otherFracture,
+                    			const size_type& convex );
 
 
 } // namespace getfem
