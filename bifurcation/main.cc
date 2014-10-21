@@ -21,12 +21,21 @@
 
 int main ( int argc, char* argv [ ] )
 {
-	GetPot command_line(argc, argv);
+	/*GetPot command_line(argc, argv);
 
 	const std::string data_file_name = command_line.follow("data", 2, "-f", "--file");
 
 	GetPot dataFile(data_file_name.data());
-
+*/
+	std::string fileName("data2");
+	
+	if ( argc == 2 )
+	{
+		fileName = argv[1];
+	}
+	
+	GetPot dataFile( fileName.c_str() );
+	
 	const std::string section = "";
 
 	const std::string vtkFolder = "vtk/";

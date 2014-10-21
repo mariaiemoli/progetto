@@ -1,0 +1,94 @@
+// Spacing
+int Nelem = 1200;
+int NelemI = 10;
+
+// first fracture y = a0*x+b0
+real a0 = 1.;
+real b0 = 0.;
+
+// second fracture y = -a1*x+b1
+real a1 = 1.;
+real b1 = 1.;
+
+real d0 = 0.0025/cos(atan(a0));
+real d1 = 0.0025/cos(atan(a1));
+
+real length00 = 1.*cos(atan(a0));
+real length01 = 1.*cos(atan(a0));
+real length10 = 1.*cos(atan(a1));
+real length11 = 1.*cos(atan(a1));
+
+real interFrac = ( b1 - b0 ) / ( a0 + a1 );
+
+cout << "Atan(a0) " << atan(a0) << endl;
+cout << "Atan(a1) " << atan(a1) << endl;
+cout << "Intersection Point " << interFrac << endl;
+
+// intersections
+real int0 = ( ( b1 - d1/2. ) - ( b0 - d0/2. ) ) / ( a0 + a1 );
+real int1 = ( ( b1 + d1/2. ) - ( b0 - d0/2. ) ) / ( a0 + a1 );
+real int2 = ( ( b1 + d1/2. ) - ( b0 + d0/2. ) ) / ( a0 + a1 );
+real int3 = ( ( b1 - d1/2. ) - ( b0 + d0/2. ) ) / ( a0 + a1 );
+cout << "*****" << endl;
+// final point
+real final0 = ( ( b1 - d1/2.) - ( interFrac + length11 ) * ( - a1 - 1./a1 ) - b1 ) / ( a1 + 1. / a1 );
+real final1 = ( ( b1 + d1/2.) - ( interFrac + length11 ) * ( - a1 - 1./a1 ) - b1 ) / ( a1 + 1. / a1 );
+
+real final2 = ( ( interFrac + length01 ) * (a0 + 1./a0) + b0 - ( b0 - d0/2.) ) / ( a0 + 1. / a0 );
+real final3 = ( ( interFrac + length01 ) * (a0 + 1./a0) + b0 - ( b0 + d0/2.) ) / ( a0 + 1. / a0 );
+
+real final4 = ( ( b1 + d1/2.) - ( interFrac - length10 ) * ( -a1 - 1./a1) - b1 ) / ( a1 + 1. / a1 );
+real final5 = ( ( b1 - d1/2.) - ( interFrac - length10 ) * ( -a1 - 1./a1) - b1 ) / ( a1 + 1. / a1 );
+
+real final6 = ( ( interFrac - length00 ) * (a0 + 1./a0) + b0 - ( b0 + d0/2.) ) / ( a0 + 1. / a0 );
+real final7 = ( ( interFrac - length00 ) * (a0 + 1./a0) + b0 - ( b0 - d0/2.) ) / ( a0 + 1. / a0 );
+
+border long0 ( t = final7, int0 ) { x = t; y = a0*t+b0-d0/2.; label = 3; }
+border long1 ( t = int0, final0 ) { x = t; y = -a1*t+b1-d1/2.; label = 3; }
+
+border short0 ( t = final0, final1 ) { x = t; y = 1./a1*t+(length11+interFrac)*(-a1-1./a1)+b1; label = 21;}
+
+border long2 ( t = final1, int1 ) { x = t; y = -a1*t+b1+d1/2.; label = 3; }
+border long3 ( t = int1, final2 ) { x = t; y = a0*t+b0-d0/2.; label = 3; }
+
+border short1 ( t = final2, final3 ) { x = t; y = -1./a0*t+(length01+interFrac)*(a0+1./a0)+b0; label = 11;}
+
+border long4 ( t = final3, int2 ) { x = t; y = a0*t+b0+d0/2.; label = 3; }
+border long5 ( t = int2, final4 ) { x = t; y = -a1*t+b1+d1/2.; label = 3; }
+
+border short2 ( t = final4, final5 ) { x = t; y = 1./a1*t+(interFrac-length10)*(-a1-1./a1)+b1; label = 22; }
+
+border long6 ( t = final5, int3 ) { x = t; y = -a1*t+b1-d1/2.; label = 3; }
+border long7 ( t = int3, final6 ) { x = t; y = a0*t+b0+d0/2.; label = 3; }
+
+border short3 ( t = final6, final7 ) { x = t; y = -1./a0*t+(interFrac-length00)*(a0+1./a0)-b0; label = 12; }
+
+border inside0 ( t = int0, int1 ) { x = t; y = a0*t+b0-d0/2.; label = 40; }
+border inside1 ( t = int1, int2 ) { x = t; y = -a1*t+b1+d1/2.; label = 41; }
+border inside2 ( t = int2, int3 ) { x = t; y = a0*t+b0+d0/2.; label = 42; }
+border inside3 ( t = int3, int0 ) { x = t; y = -a1*t+b1-d1/2.; label = 43; }
+
+mesh Th = buildmesh ( long0(Nelem*length00/cos(atan(a0))) + long1(Nelem*length11/cos(atan(a1))) +
+                      short0(Nelem*d1) +
+                      long2(Nelem*length11/cos(atan(a1))) + long3(Nelem*length01/cos(atan(a0))) +
+                      short1(Nelem*d0) +
+                      long4(Nelem*length01/cos(atan(a0))) + long5(Nelem*length10/cos(atan(a1))) +
+                      short2(Nelem*d1) +
+                      long6(Nelem*length10/cos(atan(a1))) + long7(Nelem*length00/cos(atan(a0))) +
+                      short3(Nelem*d0) +
+                      inside0(NelemI*Nelem*d1) + inside1(NelemI*Nelem*d0) +
+                      inside2(NelemI*Nelem*d1) + inside3(NelemI*Nelem*d0) );
+
+
+func part = (y-a0*x-b0-d0/2.<=0)*(y-a0*x-b0+d0/2.>=0)*(y+a1*x-b1-d1/2.<=0)*(y+a1*x-b1+d1/2.>=0);
+
+func fracture1 = (y-a0*x-b0-d0/2.<=0)*(y-a0*x-b0+d0/2.>=0)*(1.*(y+a1*x-b1-d1/2.>0)+1.*(y+a1*x-b1+d1/2.<0));
+func fracture2 = (1.*(y-a0*x-b0-d0/2.>0)+1.*(y-a0*x-b0+d0/2.<0))*(y+a1*x-b1-d1/2.<=0)*(y+a1*x-b1+d1/2.>=0);
+
+mesh ThI = trunc ( Th, part, label = 10, split = 1 );
+
+if ( plotYesNo )
+{
+    plot ( Th, wait = true );
+    plot ( ThI, wait = true );
+}

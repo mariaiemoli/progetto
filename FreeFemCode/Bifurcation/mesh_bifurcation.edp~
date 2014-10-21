@@ -1,0 +1,127 @@
+/////////////////////////////////////////////////////////////////////////
+///////////////// 	PROGETTO PACS		        /////////////////
+/////////////////////////////////////////////////////////////////////////
+
+/// CODICE PER CONFRONTARE I RISULTATI OTTENUTI CON IL MODELLO RIDOTTO PER LA PRESSIONE SULLA BIFORCAZIONE
+
+// Spacing
+int Nelem = 1200;
+int NelemI = 10;
+
+bool plotYesNo = true;
+
+// prima frattura y = -a0*x+b0
+real a0 = 1.;
+real b0 = 0.52;
+
+// seconda frattura y = a1*x-b1
+real a1 = 3.1;
+real b1 = 0.341;
+
+// terza frattura  y = a2*x+b2
+real a2 = 1.;
+real b2 = 0.1;
+
+// spessore delle fratture
+real d0 = 0.0024;
+real d1 = 0.002;
+real d2 = 0.0022;
+
+// punti di inizio frattura
+real init0 = 0.21;
+real init1 = 0.11;
+real init2 = 0.21;
+
+// punti di fine frattura 
+real fin0 = 0.52;
+real fin1 = 0.21;
+real fin2 = 0.9;
+
+// lunghezza delle fratture
+real length0 = sqrt( ( init0-fin0 )^2 + ( -a0*init0 + a0*fin0 )^2 );
+real length1 = sqrt( ( init1-fin1 )^2 + ( -a1*init1 + a1*fin1 )^2 );
+real length2 = sqrt( ( init2-fin2 )^2 + ( -a2*init2 + a2*fin2 )^2 );
+
+cout << "Lunghezza fratture: " << endl
+     << "Fracture0: " << length0 << endl
+     << "Fracture1: " << length1 << endl
+     << "Fracture2: " << length2 << endl;
+
+// punto di intersezione: è lo stesso per tutte e tre, sono certa che sia una biforcazione
+real interFrac = ( b1 + b0 ) / ( a0 + a1 );
+
+cout << "Intersection Point: " << interFrac << endl;
+
+// punti che costituiscono il triangolo di intersezione
+real intx0 = ( ( b1 + d1/2. ) + ( b0 - d0/2. ) ) / ( a0 + a1 );
+real inty0 = -a0*intx0 + b0 - d0/2.;
+
+real intx1 = ( ( b2 + d2/2. ) + ( b1 - d1/2. ) ) / ( a1 - a2 );
+real inty1 = a1*intx1 - b1 + d1/2.;
+
+real intx2 = ( ( b0 + d0/2. ) - ( b2 - d2/2. ) ) / ( a0 + a2 );
+real inty2 = a2*intx2 + b2 - d2/2.;
+
+
+cout << "Triangolo: " << endl
+     << intx0 << "  " << inty0 << endl
+     << intx1 << "  " << inty1 << endl
+     << intx2 << "  " << inty2 << endl;
+
+// segmenti che definiscono il triangolo
+// inside0: y = a3*x + b3
+real a3 = ( inty1 - inty0 )/( intx1 - intx0 );
+real b3 = ( inty0 - a3*intx0 );
+
+real a4 = ( inty1 - inty2 )/( intx1 - intx2 );
+real b4 = ( inty2 - a4*intx2 );
+
+real a5 = ( inty2 - inty0 )/( intx2 - intx0 );
+real b5 = ( inty0 - a5*intx0 );
+
+// punti che definiscono il dominio 2d delle fratture
+real ext0 = ( b0 + d0/2 )/a0;
+real ext1 = ( b0 - d0/2 )/a0;
+real ext2 = ( b1 + d1/2 )/a1;
+real ext3 = ( b1 - d1/2 )/a1;
+real ext4 = ( 1. - b2 - d2/2 )/a2;
+real ext5 = ( 1. - b2 + d2/2 )/a2;
+
+// definiamo i bordi della mesh
+border long0 ( t = ext1, intx0 ) { x = t; y = -a0*t+b0-d0/2.; label = 3; }
+border long1 ( t = intx0, ext2 ) { x = t; y = a1*t-b1-d1/2.; label = 3; }
+
+border short0 ( t = ext2, ext3 ) { x = t; y = 0; label = 21;}
+
+border long2 ( t = ext3, intx1 ) { x = t; y = a1*t-b1+d1/2.; label = 3; }
+border long3 ( t = intx1, ext4 ) { x = t; y = a2*t+b2+d2/2.; label = 3; }
+
+border short1 ( t = ext4, ext5 ) { x = t; y = 1; label = 11;}
+
+border long4 ( t = ext5, intx2 ) { x = t; y = a2*t+b2-d2/2.; label = 3; }
+border long5 ( t = intx2, ext0 ) { x = t; y = -a0*t+b0+d0/2.; label = 3; }
+
+border short2 ( t = ext0, ext1 ) { x = t; y = 0; label = 22; }
+
+border inside0 ( t = intx0, intx1 ) { x = t; y = a3*t+b3; label = 40; }
+border inside1 ( t = intx1, intx2 ) { x = t; y = a4*t+b4; label = 41; }
+border inside2 ( t = intx2, intx0 ) { x = t; y = a5*t+b5; label = 42; }
+
+
+// costruiamo la mesh
+mesh Th = buildmesh ( long0(Nelem) + long1(Nelem) +
+                      short0(Nelem*d1) +
+                      long2(Nelem) + long3(Nelem) +
+                      short1(Nelem*d2) +
+                      long4(Nelem) + long5(Nelem) +
+                      short2(Nelem*d0) );//+
+//                      inside0(NelemI*Nelem*d1) + inside1(NelemI*Nelem*d2) +
+//                      inside2(NelemI*Nelem*d0) );
+
+
+plot ( Th, wait = true );
+
+
+
+
+

@@ -21,7 +21,7 @@ FOLDER = src/
 
 # External library
 # MOX
-#GETFEM_PATH = /u/software/Repository/Targets/x86_64-any/opt/getfem-4.1.1
+#GETFEM_PATH = /u/software/Repository/Targets/x86_64-any/opt/getfem-4.2
 # Laptop
 GETFEM_PATH = /usr/local/
 

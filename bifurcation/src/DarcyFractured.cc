@@ -135,7 +135,7 @@ void DarcyFractured::assembly ( )
         fractureNumberBoundaryDOF [ f ] = M_bcHandler->getFractureBC(f)->getMeshFEM().nb_dof();
 
     	// numero totale di intersezioni
-        fractureNumberIntersections += M_fractures->getFracture( f )->getNumIntersections();
+        // fractureNumberIntersections += M_fractures->getFracture( f )->getNumIntersections();
 
     /*    
         std::cout << "fractureNumberDOFPressure [ " << f << " ]:  " << fractureNumberDOFPressure [ f ] << std::endl;
@@ -673,41 +673,69 @@ void DarcyFractured::assembly ( )
 // Solve the Darcy for the governing flux and do the time loop for the evolution problem
 void DarcyFractured::solve ( )
 {  
-    const scalar_type numberFractures = M_fractures->getNumberFractures();
+	// numero totale delle fratture
+	const scalar_type numberFractures = M_fractures->getNumberFractures();
    
+	// vettore dei gradi di libertà per la velocità per le fratture
     sizeVector_Type fractureNumberDOFVelocity(numberFractures);
+    
+    // numero di gradi di libertà totali per la velocità (con quelli estesi) per ogni frattura 
     sizeVector_Type fractureNumberGlobalDOFVelocity(numberFractures);
 
+    // vettore dei gradi di libertà per la pressione per le fratture
     sizeVector_Type fractureNumberDOFPressure(numberFractures);
+    
+    // numero di gradi di libertà totali per la pressione (con quelli estesi) per ogni frattura 
     sizeVector_Type fractureNumberGlobalDOFPressure(numberFractures);
 
+    // numero totale dei gradi di libertà ( velocità + pressione ) per ogni frattura
     sizeVector_Type fractureNumberDOFVelocityPressure(numberFractures);
 
+    // numero complessivo dei gradi di libertà ( pressione + velocità ) 
     size_type fractureTotalNumberDOFVelocityPressure(0);
 
+    // numero totale di intersezioni
+    size_type fractureNumberCross = 0;
+    size_type fractureNumberBifurcation = 0;
     size_type fractureNumberIntersections = 0;
+    size_type globalFractureNumber =0;
 
+    
     for ( size_type f = 0; f < numberFractures; ++f )
     {
+    	// numero di gradi di libertà per la velocità senza quelli estesi per la frattura f
         fractureNumberDOFVelocity [ f ] = M_fractures->getFracture( f )->getMeshFEMVelocity().nb_dof();
 
+        // numero di gradi di libertà per la velocità con quelli estesi per la frattura f
         fractureNumberGlobalDOFVelocity [ f ] = fractureNumberDOFVelocity [ f ] + M_fractures->getFracture( f )->getNumExtendedVelocity();
 
+        // numero di gradi di libertà per la pressione senza quelli estesi per la frattura f
         fractureNumberDOFPressure [ f ] = M_fractures->getFracture( f )->getMeshFEMPressure().nb_dof();
 
+        // numero di gradi di libertà per la pressione con quelli estesi per la frattura f
         fractureNumberGlobalDOFPressure [ f ] = fractureNumberDOFPressure [ f ] + M_fractures->getFracture( f )->getNumExtendedPressure();
 
+        // numero totale di gradi di libertà per la velocità e la pressione per la frattura f
         fractureNumberDOFVelocityPressure [ f ] = fractureNumberGlobalDOFVelocity [ f ] + fractureNumberGlobalDOFPressure [ f ];
 
+        // numero totale di gradi di libertà per la pressione e la velocità
         fractureTotalNumberDOFVelocityPressure += fractureNumberDOFVelocityPressure [ f ];
 
         M_fracturePressure [ f ].reset(new scalarVector_Type( fractureNumberGlobalDOFPressure [ f ], 0));
 
         M_fractureVelocity [ f ].reset(new scalarVector_Type( fractureNumberGlobalDOFVelocity [ f ], 0));
 
-        fractureNumberIntersections += M_fractures->getFracture( f )->getNumIntersections();
-
     }
+
+    // Numero intersezioni
+    fractureNumberCross = M_fractures->getIntersections ()->getNumberCross ();
+   
+    fractureNumberBifurcation = M_fractures->getIntersections ()->getNumberBifurcation ();
+	
+    fractureNumberIntersections = fractureNumberCross + 5*fractureNumberBifurcation;
+    
+    globalFractureNumber = fractureNumberCross*2 + fractureNumberBifurcation*6;
+
 
     // Solve the Darcy problem
     std::cout << std::endl << "Solving problem in Omega..." << std::flush;
@@ -718,7 +746,7 @@ void DarcyFractured::solve ( )
 
     std::cout << " completed!" << std::endl;
     size_type fractureShift = 0;
-
+    
     for ( size_type f = 0; f < numberFractures; ++f )
     { 
         // Extract the dual in the fracture

@@ -59,7 +59,7 @@ numberFractures = 3
 
                 source = 4   %source term for darcy
                 solution = 0 %function for BC on pressure
-                solutionIn = 0 
+                solutionIn = 0
                 solutionOut = 0
                 velocity = 0. %function for BC on velocity
 
@@ -79,7 +79,6 @@ spaceDimension = 1.
 				levelSetCut = -1
 				yMap = 0.6+0.4*t
 				xMap = 0.2*t
-				Map_inv = x/0.2
                 jacMap = [1./sqrt(5)]
                 normalMap = [2.,-1.] #[-2.,1.]
 
@@ -126,21 +125,6 @@ spaceDimension = 1.
 
         [../]
 
-        [./transport]
-
-                muNormal = 0.1
-                muNormalDistribution = 70.
-                muTangential = 100.
-                muTangentialDistribution = 70.
-
-                source = 0.
-                initialCondition = 0.
-                solution = 0.
-                solutionInOut = 0.
-                flux = 0.
-
-        [../]
-
 [../]
 
 
@@ -156,7 +140,6 @@ spaceDimension = 1.
                 levelSetCut = -1
                 yMap = 0.8
 				xMap = t
-				Map_inv = x
                 jacMap = 1 %here the mapped grid is shorter than the actual arc length
                 normalMap = [0.,-1.]
 
