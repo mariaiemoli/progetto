@@ -44,8 +44,7 @@ real final5 = ( ( b1 - d1/2.) - ( interFrac - length10 ) * ( -a1 - 1./a1) - b1 )
 
 real final6 = ( ( interFrac - length00 ) * (a0 + 1./a0) + b0 - ( b0 + d0/2.) ) / ( a0 + 1. / a0 );
 real final7 = ( ( interFrac - length00 ) * (a0 + 1./a0) + b0 - ( b0 - d0/2.) ) / ( a0 + 1. / a0 );
-cout << "final6: " << final6 << "  final7:  " << final7 <<endl;
-cout << "int0: " << int0 << endl;
+
 border long0 ( t = final7, int0 ) { x = t; y = a0*t+b0-d0/2.; label = 3; }
 border long1 ( t = int0, final0 ) { x = t; y = -a1*t+b1-d1/2.; label = 3; }
 

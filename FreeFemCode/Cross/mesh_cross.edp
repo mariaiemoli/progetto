@@ -1,8 +1,8 @@
 // Spacing
-int Nelem = 1200;
-int NelemI = 10;
+/*int Nelem = 1200;*/
+/*int NelemI = 10;*/
 
-bool plotYesNo = true;
+/*bool plotYesNo = true;*/
 
 // first fracture y = a0*x+b0
 real a0 = 1.;

@@ -991,7 +991,7 @@ void assembling_SourceF ( scalarVectorPtr_Type& D,
 
     assemIn.set( "w=data$1(#2);" "q=data$2(#2);"
                  "a=comp(Base(#1).Base(#2).Base(#2));"
-                 "V(#1)+=a(:, k,j).w(k).q(j)" );
+    			 "V(#1)+=a(:, k,j).w(k).q(j)" );
 
     assemOut.set( "w=data$1(#2);" "q=data$2(#2);"
                   "a=comp(Base(#1).Base(#2).Base(#2));"
@@ -1045,14 +1045,15 @@ void assembling_SourceF ( scalarVectorPtr_Type& D,
     {
         const size_type ii = extendedPressure [ i ];
         const base_node pointFlat = fracture->getMeshFEMPressure().point_of_basic_dof(ii);
+        
         base_node pointMapped(0,0);
         base_node pointMapped1(0,0);
-	scalar_type t = ii*1./(fracture->getData().getSpatialDiscretization () );
+        scalar_type t = ii*1./(fracture->getData().getSpatialDiscretization () );
         pointMapped[0] = t;
         pointMapped1[0] = pointFlat[0];
         pointMapped1[1] = fracture->getLevelSet()->getData()->y_map( pointMapped );
         
-	const scalar_type levelSetValue = levelSetOtherFracture->getData()->ylevelSetFunction ( pointMapped1 );
+        const scalar_type levelSetValue = levelSetOtherFracture->getData()->ylevelSetFunction ( pointMapped1 );
 
         if ( levelSetValue < 0 )
         {

@@ -49,7 +49,7 @@ constructIntesection ( getfem::mesh_level_set& meshLevelSet, const FracturePtrCo
 
 	if( listOfConvex.size() > 0 )
 	{
-		for ( size_type i = 0; i < listOfConvex.size(); ++i )
+		for ( size_type i = 0 ; i < listOfConvex.size(); ++i )
 		{
 	        fromBitVectorToStdVector ( listOfLevelSet_bitVector [ i ], listOfLevelSet [ i ] );
 
@@ -97,6 +97,7 @@ constructIntesection ( getfem::mesh_level_set& meshLevelSet, const FracturePtrCo
            for ( size_type f = 0; f < fracturesInvolved.size(); ++f )
            {
                 fracturesInvolved [ f ] = fractures [ listOfLevelSet [ i ] [ f ] ];
+                
            }
 
            if ( type == Cross )
@@ -107,10 +108,11 @@ constructIntesection ( getfem::mesh_level_set& meshLevelSet, const FracturePtrCo
 
                     size_type indexTmp = globalIndexCross;
                     fracturesInvolved [ 0 ]->setMeshLevelSetFracture ( *fracturesInvolved [ 1 ], indexTmp );
-
+                    
                     indexTmp = globalIndexCross + crossNum;
                     globalIndexCross += fracturesInvolved [ 1 ]->setMeshLevelSetFracture ( *fracturesInvolved [ 0 ], indexTmp );
-
+                    std::cout << " fracturesInvolved [ 0 ]: " << fracturesInvolved[0]->getId() << std::endl;
+                                        std::cout << " fracturesInvolved [ 1 ]: " << fracturesInvolved[1]->getId() << std::endl;
                 }
 
         	   else if ( fracturesInvolved.size() == 3 )
@@ -146,10 +148,11 @@ constructIntesection ( getfem::mesh_level_set& meshLevelSet, const FracturePtrCo
         {
             pairSizeVectorContainer_Type& fracture0 = fracturesInvolved[0]->getFractureIntersectElementsGlobalIndex();
             pairSizeVectorContainer_Type& fracture1 = fracturesInvolved[1]->getFractureIntersectElementsGlobalIndex();
-
-            fracture0 [ fracturesInvolved[1]->getId()][ 0 ].second = fracture1 [ fracturesInvolved[0]->getId()][ 0 ].first;
+            
             fracture1 [ fracturesInvolved[0]->getId()][ 0 ].second = fracture0 [ fracturesInvolved[1]->getId()][ 0 ].first;
 
+            fracture0 [ fracturesInvolved[1]->getId()][ 0 ].second = fracture1 [ fracturesInvolved[0]->getId()][ 0 ].first;
+            
             /*
              * funziona solo se due fratture si intersecano una volta sola
              */
@@ -364,7 +367,7 @@ size_type FractureIntersect::getNumberIntersectionOfType ( IntersectionType type
 
 size_type FractureIntersect::getNumberCross () const
 {
-    mapIntersection_Type::const_iterator it;
+ /*   mapIntersection_Type::const_iterator it;
     size_type numIntersect = 0;
     for ( it = M_intersections.begin(); it != M_intersections.end(); ++it )
     {
@@ -375,13 +378,17 @@ size_type FractureIntersect::getNumberCross () const
     }
 
     return numIntersect;
-
+*/
+	size_type NC = M_intersections.find( Cross )->second.size();
+	//std::cout << "numero Cross: " << NC << std::endl;
+	
+	return NC;
 } // getNumberCross
 
 
 size_type FractureIntersect::getNumberBifurcation () const
 {
-    mapIntersection_Type::const_iterator it;
+ /*   mapIntersection_Type::const_iterator it;
     size_type numIntersect = 0;
     for ( it = M_intersections.begin(); it != M_intersections.end(); ++it )
     {
@@ -392,7 +399,10 @@ size_type FractureIntersect::getNumberBifurcation () const
     }
 
     return numIntersect;
-      
+*/
+	size_type NC = M_intersections.find( Bifurcation )->second.size();
+	
+	return NC;
 } // getNumberBifurcation
 
 
