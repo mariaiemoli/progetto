@@ -1,11 +1,16 @@
 # Compiler
 CXX = g++ 
+#CXX=/usr/bin/clang++
 
 # Optimize flags
 OPTFLAGS = -O3
 
 # Flags
-CXXFLAGS = $(OPTFLAGS) -Wall -std=c++11
+CPPFLAGS=-I. -I/usr/local/include/eigen3
+
+WARNFLAGS=-Wall -Wno-deprecated
+
+CXXFLAGS = $(OPTFLAGS) $(CPPFLAGS) $(WARNFLAGS) -std=c++11
 
 # Executable source
 EXESRCS = main.cc
@@ -20,30 +25,15 @@ EXEC = darcy
 FOLDER = src/
 
 # External library
-# MOX
-#GETFEM_PATH = /u/software/Repository/Targets/x86_64-any/opt/getfem-4.2
-# Laptop
 GETFEM_PATH = /usr/local/
 
-# MOX
-#LIB_PATH = /u/software/Repository/Targets/x86_64-any/lib
-# Laptop
 LIB_PATH =  /usr/lib
 
-# MOX
-#LDLIBS = $(GETFEM_PATH)/lib/libgetfem.a
-# Laptop
 LDLIBS = /usr/local/lib/libgetfem.a
 
-# MOX
-#LDLIBS += $(GETFEM_LIB) -rdynamic $(LIB_PATH)/libblas.so $(LIB_PATH)/liblapack.so  $(LIB_PATH)/libqhull.a
-# Laptop
 LDLIBS += $(GETFEM_LIB) -rdynamic  /usr/lib/libblas.a /usr/lib/liblapack.so.3gf  /usr/lib/x86_64-linux-gnu/libqhull.a
 
-# MOX
-#INCLUDE = -I$(GETFEM_PATH) -I$(GETFEM_PATH)/include -I$(GETFEM_PATH)/include/gmm -I./include
-# Laptop
-INCLUDE = -I$(GETFEM_PATH) -I$(GETFEM_PATH)/src -I$(GETFEM_PATH)/src/gmm -I./include -I/usr/include
+INCLUDE = -I$(GETFEM_PATH) -I$(GETFEM_PATH)/src -I$(GETFEM_PATH)/src/gmm -I./include -I/usr/include 
 
 DEF_TAGS = -DHAVE_CONFIG -DGMM_USES_BLAS
 

@@ -4,7 +4,7 @@
  *
  * \author Alessio Fumagalli
  * 
- * libreria in cui definisco le funzioni per esportare i dati
+ * Libreria in cui definisco le funzioni per esportare i dati
  *
  */
 
@@ -38,7 +38,7 @@ public:
 
     
     /**
-     * funzione che esporta una matrice di tipo sparso
+     * Funzione che esporta una matrice di tipo sparso
      * \param matrix: matrice sparsa
      * \param nameFile: nome del file in cui esportare 
      */
@@ -46,7 +46,7 @@ public:
 
     
     /**
-     * funzione che esporta un vettore di scalari
+     * Funzione che esporta un vettore di scalari
      * \param vector: vettore di scalari
      * \param nameFile: nome del file in cui esportare 
      */
@@ -54,7 +54,7 @@ public:
 
     
     /**
-     * funzione che esporta le regioni della mesh
+     * Funzione che esporta le regioni della mesh
      * \param mesh: mesh di supporto
      * \param nameFile: nome del file su cui scrivere la soluzione
      */

@@ -1,7 +1,9 @@
 /**
  * PROGETTO DI PACS 2014
  *
- * autori:	Bonomi Claudia, Iemoli Maria
+ * \author Bonomi Claudia
+ * 
+ * \author Iemoli Maria
  *
  * Interior Penality for Darcy's equation
  *

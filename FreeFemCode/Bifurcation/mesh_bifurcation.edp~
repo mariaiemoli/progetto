@@ -5,10 +5,10 @@
 /// CODICE PER CONFRONTARE I RISULTATI OTTENUTI CON IL MODELLO RIDOTTO PER LA PRESSIONE SULLA BIFORCAZIONE
 
 // Spacing
-int Nelem = 10;
-int NelemI = 10;
+//int Nelem = 10;
+//int NelemI = 10;
 
-bool plotYesNo = true;
+//bool plotYesNo = true;
 
 // prima frattura y = -a0*x+b0
 real a0 = 1.;
@@ -113,22 +113,23 @@ real ext5 = ( ( interFrac + length2x )*( a2 + 1./a2 ) + b2 - ( b2 - d2/2. ) )/( 
 border long0 ( t = ext0, intx2 ) { x = t; y = -a0*t+b0+d0/2.; label = 3; }
 border long1 ( t = intx2, ext5 ) { x = t; y = a2*t+b2-d2/2.; label = 3; }
 
-border short0 ( t = ext5, ext4 ) { x = t; y = -x*1./a2+( interFrac + length2x )*( a2 + 1./a2 ) + b2; label = 11;}
+border short0 ( t = ext5, ext4 ) { x = t; y = -x*1./a2+( interFrac + length2x )*( a2 + 1./a2 ) + b2; label = 22;}
 
 border long2 ( t = ext4, intx1 ) { x = t; y = a2*t+b2+d2/2.; label = 3; }
 border long3 ( t = intx1, ext3 ) { x = t; y = a1*t-b1+d1/2.; label = 3; }
 
-border short1 ( t = ext3, ext2 ) { x = t; y = -x*1./a1 - b1 + ( interFrac - length1x )*( a1 + 1./a1 ); label = 21;}
+border short1 ( t = ext3, ext2 ) { x = t; y = -x*1./a1 - b1 + ( interFrac - length1x )*( a1 + 1./a1 ); label = 11;}
 
 border long4 ( t = ext2, intx0 ) { x = t; y = a1*t-b1-d1/2.; label = 3; }
 border long5 ( t = intx0, ext1 ) { x = t; y = -a0*t+b0-d0/2.; label = 3; }
 
-border short2 ( t = ext1, ext0 ) { x = t; y = x*1./a0 + b0 - ( interFrac + length0x )*( a0 + 1./a0 ); label = 22; }
+border short2 ( t = ext1, ext0 ) { x = t; y = x*1./a0 + b0 - ( interFrac + length0x )*( a0 + 1./a0 ); label = 00; }
 
 
 border inside0 ( t = intx0, intx2 ) { x = t; y = a5*t+b5; label = 42; }
 border inside1 ( t = intx2, intx1 ) { x = t; y = a4*t+b4; label = 41; }
 border inside2 ( t = intx1, intx0 ) { x = t; y = a3*t+b3; label = 40; }
+
 
 // costruiamo la mesh
 mesh Th = buildmesh ( long0(Nelem) + long1(Nelem) +
@@ -141,10 +142,21 @@ mesh Th = buildmesh ( long0(Nelem) + long1(Nelem) +
                       inside2(NelemI*Nelem*d0) );
 
 
-plot ( Th, wait = true );
+//plot ( Th, wait = true );
+
+func part = (y-a3*x-b3 <=0)*(y-a4*x-b4<=0)*(y-a5*x-b5>=0);
+
+func fracture0 = (y+a0*x-b0-d0/2.<=0)*(y+a0*x-b0+d0/2.>=0)*(1.*(y-a5*x-b5>=0));
+func fracture1 = (y-a1*x+b1+d1/2.>=0)*(y-a1*x+b1-d1/2.<=0)*(1.*(y-a3*x-b3>=0));
+func fracture2 = (y-a2*x-b2-d2/2.<=0)*(y-a2*x-b2+d1/2.>=0)*(1.*(y-a4*x-b4>=0));
+
+mesh ThI = trunc ( Th, part, label = 10, split = 1 );
 
 
-
-
+if ( plotYesNo )
+{
+    plot ( Th, wait = true );
+    plot ( ThI, wait = true );
+}
 
 

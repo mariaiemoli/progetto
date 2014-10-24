@@ -351,7 +351,7 @@ void DarcyFractured::assembly ( )
     for ( size_type i = 0; i < IntBifurcation.size(); i++ )
     {
     	
-    	sparseMatrixPtr_Type Aup01, Aup02, Aup10, Aup12, Aup20, Aup21;
+    	sparseMatrixPtr_Type Aup0, Aup1, Aup2;
     	   	
     	FractureHandlerPtr_Type f0 = IntBifurcation [ i ].getFracture (0);
     	FractureHandlerPtr_Type f1 = IntBifurcation [ i ].getFracture (1);
@@ -370,71 +370,24 @@ void DarcyFractured::assembly ( )
         const pairSizeVectorContainer_Type& intersectElementsGlobalIndex2 = M_fractures->getFracture( id2 )->getFractureIntersectElementsGlobalIndex ();
 
     	
-        Aup01.reset ( new sparseMatrix_Type ( fractureNumberGlobalDOFVelocity [ id0 ], 1 ) );
-        gmm::clear(*Aup01);
+        Aup0.reset ( new sparseMatrix_Type ( 1, fractureTotalNumberDOFVelocityPressure + globalFractureNumber) );
+        gmm::clear(*Aup0);
 
-        Aup02.reset ( new sparseMatrix_Type ( fractureNumberGlobalDOFVelocity [ id0 ], 1 ) );
-		gmm::clear(*Aup02);
+        Aup1.reset ( new sparseMatrix_Type ( 1, fractureTotalNumberDOFVelocityPressure + globalFractureNumber) );
+        gmm::clear(*Aup1);
 
-        Aup10.reset ( new sparseMatrix_Type ( fractureNumberGlobalDOFVelocity [ id1 ], 1 ) );
-        gmm::clear(*Aup10);
-
-		Aup12.reset ( new sparseMatrix_Type ( fractureNumberGlobalDOFVelocity [ id1 ], 1 ) );
-		gmm::clear(*Aup12);
-
-        Aup20.reset ( new sparseMatrix_Type ( fractureNumberGlobalDOFVelocity [ id2 ], 1 ) );
-        gmm::clear(*Aup20);
-
-		Aup21.reset ( new sparseMatrix_Type ( fractureNumberGlobalDOFVelocity [ id2 ], 1 ) );
-		gmm::clear(*Aup21);
+        Aup2.reset ( new sparseMatrix_Type ( 1, fractureTotalNumberDOFVelocityPressure + globalFractureNumber) );
+        gmm::clear(*Aup2);
 		
+        
 		
 		// Aggiorno la frattura 0
-        getfem::darcy_A11F_Bifurcation ( A11F [ id0 ], f0,
-						 	 	 	 	 f0->getEtaTangentialInterpolated(),
-						 	 	 	 	 f1,
-						 	 	 	 	 FractureHandler::FRACTURE_INTERSECT * ( id0 + 1 ) + id1 + 1 );
-		
-        getfem::darcy_A11F_Bifurcation ( A11F [ id0 ], f0,
-						 	 	 	 	 f0->getEtaTangentialInterpolated(),
-						 	 	 	 	 f2,
-						 	 	 	 	 FractureHandler::FRACTURE_INTERSECT * ( id0 + 1 ) + id2 + 1 );
-		
-        getfem::darcy_A12F_Bifurcation ( A12F [ id0 ], f0, f1, FractureHandler::FRACTURE_INTERSECT * ( id0 + 1 ) + id1 + 1 );
-		
-        getfem::darcy_A12F_Bifurcation ( A12F [ id0 ], f0, f2, FractureHandler::FRACTURE_INTERSECT * ( id0 + 1 ) + id2 + 1 );
 
 	
         // Aggiorno la frattura 1
-        getfem::darcy_A11F_Bifurcation ( A11F [ id1 ], f1,
-						 	 	 	 	 f1->getEtaTangentialInterpolated(),
-						 	 	 	 	 f0,
-						 	 	 	 	 FractureHandler::FRACTURE_INTERSECT * ( id1 + 1 ) + id0 + 1 );
-		
-        getfem::darcy_A11F_Bifurcation ( A11F [ id1 ], f1,
-						 	 	 	 	 f1->getEtaTangentialInterpolated(),
-						 	 	 	 	 f2,
-						 	 	 	 	 FractureHandler::FRACTURE_INTERSECT * ( id1 + 1 ) + id2 + 1 );
-		
-        getfem::darcy_A12F_Bifurcation ( A12F [ id1 ], f1, f0, FractureHandler::FRACTURE_INTERSECT * ( id1 + 1 ) + id0 + 1 );
-
-        getfem::darcy_A12F_Bifurcation ( A12F [ id1 ], f1, f2, FractureHandler::FRACTURE_INTERSECT * ( id1 + 1 ) + id2 + 1 );
 
         
         // Aggiorno la frattura 2
-        getfem::darcy_A11F_Bifurcation ( A11F [ id2 ], f2,
-						 	 	 	 	 f2->getEtaTangentialInterpolated(),
-						 	 	 	 	 f0,
-						 	 	 	 	 FractureHandler::FRACTURE_INTERSECT * ( id2 + 1 ) + id0 + 1 );
-		
-        getfem::darcy_A11F_Bifurcation ( A11F [ id2 ], f2,
-						 	 	 	 	 f2->getEtaTangentialInterpolated(),
-						 	 	 	 	 f1,
-						 	 	 	 	 FractureHandler::FRACTURE_INTERSECT * ( id2 + 1 ) + id1 + 1 );
-		
-        getfem::darcy_A12F_Bifurcation ( A12F [ id2 ], f2, f0, FractureHandler::FRACTURE_INTERSECT * ( id2 + 1 ) + id0 + 1 );
-
-        getfem::darcy_A12F_Bifurcation ( A12F [ id2 ], f2, f1, FractureHandler::FRACTURE_INTERSECT * ( id2 + 1 ) + id1 + 1 );
 
         std::cout << " ATTENZIONE: scrivere una funzione che copi le matrici, così il codice resta più pulito " << std::endl;
         
