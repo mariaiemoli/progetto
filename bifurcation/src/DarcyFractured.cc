@@ -391,7 +391,8 @@ void DarcyFractured::assembly ( )
 
         std::cout << " ATTENZIONE: scrivere una funzione che copi le matrici, così il codice resta più pulito " << std::endl;
         
-        // Calcolo i termini legati alla pressione nell'intersezione
+        /*
+		// Calcolo i termini legati alla pressione nell'intersezione
         getfem::velocityJump_Bifurcation ( Aup01, f0, f1, intersectElements0[id1][0] );
         
         getfem::velocityJump_Bifurcation ( Aup02, f0, f2, intersectElements0[id2][0] );
@@ -454,7 +455,7 @@ void DarcyFractured::assembly ( )
         
         
 
-       
+     */  
         
     }
     

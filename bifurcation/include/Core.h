@@ -37,6 +37,8 @@
 #include <boost/shared_ptr.hpp>
 #include <iomanip>
 
+#include <Eigen/Dense>
+
 /* some Getfem++ types that we will be using */
 using bgeot::base_small_vector;
 /* special class for small (dim < 16) vectors */
@@ -103,5 +105,12 @@ enum ElementDimension
 {
     MEDIUM = 2, FRACTURE = MEDIUM-1
 };
+
+typedef Eigen::Vector2d Vector2d;
+typedef Eigen::Matrix< scalar_type,3,2 > Matrix32;
+typedef Eigen::Matrix2d Matrix2d;
+typedef Eigen::Matrix< scalar_type,2,3 > Matrix23;
+typedef Eigen::Matrix3d Matrix3d;
+typedef Eigen::Vector3d Vector3d;
 
 #endif

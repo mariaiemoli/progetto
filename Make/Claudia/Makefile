@@ -5,7 +5,7 @@ CXX ?= g++
 OPTFLAGS ?= -O3
 
 # Flags
-CXXFLAGS = $(OPTFLAGS) -Wall #-std=c++11
+CXXFLAGS = $(OPTFLAGS) -Wall -I$(EIGEN_PATH)
 
 # Preprocessor flags
 CPPFLAGS += $(OPTFLAGS) -Wall $(INCLUDE) $(DEFINES)
@@ -27,13 +27,14 @@ OBJS = $(SRCS:.cc=.o)
 # External library
 GETFEM_PATH ?= /usr/local/include
 LIB_PATH ?= /opt/local/lib/
+EIGEN_PATH = /opt/local/include/eigen3
 
 # Linker flags
 LDFLAGS += -L$(GETFEM_PATH) -L$(LIB_PATH) 
 LIBS = -lblas -llapack -lqhull -lgetfem -latlas
 
 # Includes
-INCLUDE = -I$(GETFEM_PATH) -I$(GETFEM_PATH)/getfem -I$(GETFEM_PATH)/gmm -I/opt/local/include/ -I./include
+INCLUDE = -I$(GETFEM_PATH) -I$(GETFEM_PATH)/getfem -I$(GETFEM_PATH)/gmm -I/opt/local/include/ -I./include 
 
 # Defines
 DEFINES = -DHAVE_CONFIG_H -DGMM_USES_BLAS
@@ -46,7 +47,7 @@ DEPEND = make.dep
 all: $(EXEC)
 
 $(EXEC):$(DEPEND) $(EXEOBJS) $(OBJS)
-	$(CXX) -g $(LDFLAGS) $(LIBS) -o $@ $^ 
+	$(CXX) $(LDFLAGS) $(LIBS) -o $@ $^ 
 
 # the special macros $@ and $^, which are the left and right sides of the :, respectively, to make the overall compilation rule more general.
 	

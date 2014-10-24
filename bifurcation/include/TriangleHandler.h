@@ -1,12 +1,12 @@
 /**
  * TriangleHandler.h
  * 
- * Classe che costruisce il triangolo 2d dell'intersezione
+ * Classe che costruisce il triangolo 2d dell'size_typeersezione
  * 
  */
 
 #ifndef __TRIANGLEHANDLER_H__
-#define __TRIANGLEHANDLER_H__1
+#define __TRIANGLEHANDLER_H__
 
 #include <iosfwd>
 #include <Eigen/Dense>
@@ -14,63 +14,60 @@
 #include <assert.h>
 #include "UsefulFunctions.h"
 #include "PointHandler.h"
-
-typedef Eigen::Vector2d Vector;
-
-const int ndim=2;
-
+#include "FractureHandler.h"
+#include "MatrixBifurcationHandler.h"
 
 class TriangleHandler {
 	
 public:
-    static int const myDim=2;
-    static const int numVertices=3;
-    static const int numSides=3;
+    static size_type const myDim=2;
+    static const size_type numVertices=3;
+    static const size_type numSides=3;
 
-    Triangle( const FracturePtrContainer_Type& M_fractures ); //Constructs an empty triangle
+    TriangleHandler( const FracturePtrContainer_Type& M_fractures ); //Constructs an empty triangle
     
-    Triangle(Point&,Point&,Point&); //Points are given (by reference)
+    TriangleHandler(PointHandler&,PointHandler&,PointHandler&); //PointHandlers are given (by reference)
     
-    Triangle(const Triangle&);
+    TriangleHandler(const TriangleHandler&);
     
-    Triangle & operator=(const Triangle&);
+    TriangleHandler& operator=(const TriangleHandler&);
     
-    // We get the points by operator [] (defined in-class for inlining)
-    void setPoint(int i, Point const &  p);
-    
-    // Can be used ONLY if empty()==false
-    Point const & operator[](int i) const {return M_points[i];}
+    // We get the point by operator [] (defined in-class for inlining)
+    void setPoint(size_type i, PointHandler const &  p);
     
     // Can be used ONLY if empty()==false
-    Point & operator[](int i){return M_points[i];}
+    PointHandler const & operator[](size_type i) const {return M_point[i];}
     
-    double measure() const; // Triangle area
+    // Can be used ONLY if empty()==false
+    PointHandler & operator[](size_type i){return M_point[i];}
     
-    Point& edgePoint(int edgenum,int endnum); // The point on an edge
+    scalar_type measure() const; // Triangle area
     
-    Point const & edgePoint(int edgenum,int endnum) const; // The const version
+    PointHandler& edgePoint(size_type edgenum,size_type endnum); // The posize_type on an edge
+    
+    PointHandler const & edgePoint(size_type edgenum,size_type endnum) const; // The const version
     
     //!Get baricenter
-    Point baricenter()const;
+    PointHandler baricenter()const;
     
     //!Get edge baricenter
-    Point edgeBaricenter(int edgeNum) const;
+    PointHandler edgeBaricenter(size_type edgeNum) const;
     
     //!Get vector connecting edge baricenter with baricenter
-    Vector c(int edgeNum) const;
+    Vector2d c(size_type edgeNum) const;
     
     // Outward normal to edge times edge length;
-    Vector unscaledNormal(int edgeNum)const;
+    Vector2d unscaledNormal(size_type edgeNum)const;
     
-    static int edge(int edgeNum, int endNum); // The edge numbering
+    static size_type edge(size_type edgeNum, size_type endNum); // The edge numbering
     
-    friend std::ostream & operator <<(std::ostream &, Triangle const &);
+    friend std::ostream & operator <<(std::ostream &, TriangleHandler const &);
 
     
 	
 private:
-    PointHandler  M_points[numVertices];
-    static int const M_edge[numSides][2];
+    PointHandler  M_point[numVertices];
+    static size_type const M_edge[numSides][2];
 
 }; // TriangleHandler
 

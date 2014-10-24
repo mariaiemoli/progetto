@@ -7,6 +7,7 @@
 
 #include "Core.h"
 
+//Blocco funzioni per export
 void exportSolution ( const std::string& fileName,
                       const std::string& solutionName,
                       const getfem::mesh_fem& meshFEM,
@@ -42,5 +43,10 @@ bool isInTriangle ( const getfem::mesh& mesh,
                     const size_type& elementID,
                     const base_node& node,
                     const scalar_type& toll = 1e-7 );
+					
+//Blocco di funzioni per il calcolo del triangolo di intersezione
+
+
+
 
 #endif /* USEFULFUNCTIONS_H_ */

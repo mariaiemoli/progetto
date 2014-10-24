@@ -4,249 +4,154 @@
 
 // Definition of the static variable edge
 
-const int Triangle::M_edge[3][2] = {{0, 1}, {1, 2}, {2, 0}};
+const size_type TriangleHandler::M_edge[3][2] = {{0, 1}, {1, 2}, {2, 0}};
 
-Triangle::Triangle( const FracturePtrContainer_Type& M_fractures )
+//COSTRUTTORI	
+TriangleHandler::TriangleHandler()
+	{}// costruttore vuoro
+
+
+TriangleHandler::TriangleHandler(PointHandler & a, PointHandler & b, PointHandler & c)
+{
+  M_point[0] = a;
+  M_point[1] = b;
+  M_point[2] = c;
+}//costruttore dati i punti
+
+TriangleHandler::TriangleHandler( const FracturePtrContainer_Type& M_fractures )
 {
 	assert ( M_fractures.size() == 3 );
 	
-	FractureHandlerPtr_Type f0 = M_fractures [ 0 ];
-	FractureHandlerPtr_Type f1 = M_fractures [ 1 ];
-	FractureHandlerPtr_Type f2 = M_fractures [ 2 ];
-
 	LevelSetHandlerPtr_Type l0 = M_fractures [ 0 ]-> getLevelSet ();
 	LevelSetHandlerPtr_Type l1 = M_fractures [ 1 ]-> getLevelSet ();
 	LevelSetHandlerPtr_Type l2 = M_fractures [ 2 ]-> getLevelSet ();
-
 	
-	std::string val0;
-	std::string val1;
+	const size_type nbDof0 = l0 ->getLevelSet()-> get_mesh_fem().nb_basic_dof();
+	const size_type nbDof1 = l1 ->getLevelSet()-> get_mesh_fem().nb_basic_dof();
+	const size_type nbDof2 = l2 ->getLevelSet()-> get_mesh_fem().nb_basic_dof();
 	
-	/*
-	stringContainer_Type M_subRegion;
-		
-	M_subRegion [ 0 ] = "++";
-	M_subRegion [ 1 ] = "--";
-	M_subRegion [ 2 ] = "+-";
-	M_subRegion [ 3 ] = "-+";
+	base_node node0 = l0-> getLevelSet()-> get_mesh_fem().point_of_basic_dof( 0 );
+	base_node node1 = l1-> getLevelSet()-> get_mesh_fem().point_of_basic_dof( 0 );
+	base_node node2 = l2-> getLevelSet()-> get_mesh_fem().point_of_basic_dof( 0 );
+	base_node nodeI = l0-> getLevelSet()-> get_mesh_fem().point_of_basic_dof( nbDof0-1 );
 
-    sizeVectorContainer_Type listOfLevelSet0 (2);
-    sizeVectorContainer_Type listOfLevelSet1 (2);
-    
-    listOfLevelSet0 [ 0 ] = M_fractures [ 0 ]->getID();
-    listOfLevelSet1 [ 0 ] = M_fractures [ 0 ]->getID();
-    
-    listOfLevelSet0 [ 1 ] = M_fractures [ 1 ]->getID();
-    listOfLevelSet1 [ 1 ] = M_fractures [ 2 ]->getID();
-	
-    for ( size_type i = 0; i < maxIntersection; ++i )
-    {
-        booleanOperation [i] = getOperation ( M_subRegion[i], levelSets );
-
-    }
-
-  */
-	
-	const size_type nbDof0 = l0 ->get_mesh_fem().nb_basic_dof();
-	const size_type nbDof1 = l1 ->get_mesh_fem().nb_basic_dof();
-	const size_type nbDof2 = l2 ->get_mesh_fem().nb_basic_dof();
-	
-	base_node p0 = l0-> get_mesh_fem().point_of_basic_dof( 0 );
-	base_node p1 = l1-> get_mesh_fem().point_of_basic_dof( 0 );
-	base_node p2 = l2-> get_mesh_fem().point_of_basic_dof( 0 );
-
-	if ( l1->getData()->levelSetFunction ( p0 ) == 0 )
+	if ( l1->getData()->levelSetFunction ( node0 ) == 0 )
 	{
-		p0 = l0-> get_mesh_fem().point_of_basic_dof( nbDof0-1 )
+		node0 = l0-> getLevelSet()-> get_mesh_fem().point_of_basic_dof( nbDof0-1 );
+		nodeI = l0-> getLevelSet()-> get_mesh_fem().point_of_basic_dof( 0 );
 	}
 
-	if ( l0->getData()->levelSetFunction ( p1 ) == 0 )
+	if ( l0->getData()->levelSetFunction ( node1 ) == 0 )
 	{
-		p1 = l1-> get_mesh_fem().point_of_basic_dof( nbDof1-1 )
+		node1 = l1-> getLevelSet()-> get_mesh_fem().point_of_basic_dof( nbDof1-1 );
 	}
 
-	if ( l1->getData()->levelSetFunction ( p2 ) == 0 )
+	if ( l1->getData()->levelSetFunction ( node2 ) == 0 )
 	{
-		p2 = l2-> get_mesh_fem().point_of_basic_dof( nbDof2-1 )
+		node2 = l2->  getLevelSet()-> get_mesh_fem().point_of_basic_dof( nbDof2-1 );
 	}
 
+	//Estremi liberi delle fratture +  punto di intersezione
+	PointHandler p0( node0[0], node0[1] );
+	PointHandler p1( node1[0], node1[1] );
+	PointHandler p2( node2[0], node2[1] );
+	PointHandler pi( nodeI[0], nodeI[1] );
 	
-    val0 = l0->getData()->levelSetFunction ( p1 );
-    val1 = l0->getData()->levelSetFunction ( p2 );
-    
-    if( val0 * val1 < 0 )
-    {
-    	//questa è la prima frattura da usare insieme a quella che sta nella sua parte negativa ( per esempio )
-    	
-    }
-    else
-    {
-        val0 = l1->getData()->levelSetFunction ( p0 );
-        val1 = l1->getData()->levelSetFunction ( p2 );
-        
-        if ( val0 * val1 < 0 )
-        {
-        	//questa è la prima frattura da usare insieme a quella che sta nella sua parte negativa ( per esempio )
-        }
-        else
-        {
-        	// è sicuramente la terza quella da usare
-        }
-    }
-    
-
+	//Spessori delle mie fratture
+	scalar_type t0,t1,t2;
+	t0 = M_fractures [ 0 ] -> getData().getThickness();
+	t1 = M_fractures [ 1 ] -> getData().getThickness();
+	t2 = M_fractures [ 2 ] -> getData().getThickness();
 	
-}
+    FractureEnd f0{ p0, t0 };
+    FractureEnd f1{ p1, t1 };
+    FractureEnd f2{ p2, t2 };
+	
+    Intersection intersection(f0,f1,f2,pI);
+    
+	this->intersection.computeIntersectionTriangle();
+    
+}//Costruttore date le fratture
 
-
-Triangle::Triangle(Point & a, Point & b, Point & c)
+void TriangleHandler::setPoint(size_type i, PointHandler const & p)
 {
-	M_points[0] = a;
-	M_points[1] = b;
-	M_points[2] = c;
+M_point[i] = p;
 }
 
-void Triangle::setPoint(int i, Point const & p)
+PointHandler & TriangleHandler::edgePoint(size_type edgenum, size_type endnum)
 {
-M_points[i] = p;
+return M_point[M_edge[edgenum][endnum]];
 }
 
-Point & Triangle::edgePoint(int edgenum, int endnum)
+const PointHandler & TriangleHandler::edgePoint(size_type edgenum, size_type endnum) const
 {
-return M_points[M_edge[edgenum][endnum]];
+return M_point[M_edge[edgenum][endnum]];
 }
 
-const Point & Triangle::edgePoint(int edgenum, int endnum) const
+TriangleHandler::TriangleHandler(const TriangleHandler & t)
 {
-return M_points[M_edge[edgenum][endnum]];
+M_point[0]=t.M_point[0];
+M_point[1]=t.M_point[1];
+	M_point[2]=t.M_point[2];
 }
 
-Triangle::Triangle(const Triangle & t)
-{
-M_points[0]=t.M_points[0];
-M_points[1]=t.M_points[1];
-	M_points[2]=t.M_points[2];
-}
-
-Triangle & Triangle::operator =(const Triangle & t)
+TriangleHandler & TriangleHandler::operator =(const TriangleHandler & t)
 {
 if (this !=&t){
-  M_points[0]=t.M_points[0];
-  M_points[1]=t.M_points[1];
-  M_points[2]=t.M_points[2];
+  M_point[0]=t.M_point[0];
+  M_point[1]=t.M_point[1];
+  M_point[2]=t.M_point[2];
 }
 return *this;
 }
 
-int Triangle::edge(int i, int j)
+size_type TriangleHandler::edge(size_type i, size_type j)
 {
 return M_edge[i][j];
 }
 
-double Triangle::measure() const
+scalar_type TriangleHandler::measure() const
 {
-const Triangle & t = *this;
+const TriangleHandler & t = *this;
 return -0.5 *
   (t[1][0] * (t[2][1] - t[0][1]) +
    t[2][0] * (t[0][1] - t[1][1]) +
    t[0][0] * (t[1][1] - t[2][1]));
 }
 
-Point Triangle::baricenter()const
+PointHandler TriangleHandler::baricenter()const
 {
-Point tmp(M_points[0]);
-tmp += M_points[1];
-tmp += M_points[2];
+PointHandler tmp(M_point[0]);
+tmp += M_point[1];
+tmp += M_point[2];
 return tmp * (1./3.0);
 }
 
-Point Triangle::edgeBaricenter(int edgeNum)const
+PointHandler TriangleHandler::edgeBaricenter(size_type edgeNum)const
 {
-Point tmp(M_points[edge(edgeNum,0)]+M_points[edge(edgeNum,1)]);
+PointHandler tmp(M_point[edge(edgeNum,0)]+M_point[edge(edgeNum,1)]);
 return tmp *0.5;
 }
 
-Vector Triangle::c(int edgeNum) const
+Vector2d TriangleHandler::c(size_type edgeNum) const
 {
-Point baric = this->baricenter();
-Point eBaric= this->edgeBaricenter(edgeNum);
+PointHandler baric = this->baricenter();
+PointHandler eBaric= this->edgeBaricenter(edgeNum);
 return eBaric.asVector()-baric.asVector();
 }
 
-Vector Triangle::unscaledNormal(int edgeNum) const
+Vector2d TriangleHandler::unscaledNormal(size_type edgeNum) const
 {
-Point const & a=this->edgePoint(edgeNum,0);
-Point const & b=this->edgePoint(edgeNum,1);
-return Vector(a.y()-b.y(),b.x()-a.x());
+PointHandler const & a=this->edgePoint(edgeNum,0);
+PointHandler const & b=this->edgePoint(edgeNum,1);
+return Vector2d(a.y()-b.y(),b.x()-a.x());
 }
 
-std::ostream & operator <<(std::ostream & stream, Triangle const & t)
+std::ostream & operator <<(std::ostream & stream, TriangleHandler const & t)
 {
 stream<<" ************* TRIANGLE  POINTS ********"<<std::endl;
-for (int i=0;i<3;++i)
-  stream<< t.M_points[i]<<std::endl;
+for (size_type i=0;i<3;++i)
+  stream<< t.M_point[i]<<std::endl;
 stream<<"****************************************"<<std::endl;
 return stream;
 }
-Point Point::operator +=(const Point & rhs)
-{
-M_coor[0]+=rhs.M_coor[0];
-M_coor[1]+=rhs.M_coor[1];
-return *this;
-}
-
-Point Point::operator -=(const Point & rhs)
-{
-M_coor[0]-=rhs.M_coor[0];
-M_coor[1]-=rhs.M_coor[1];
-return *this;
-}
-
-Point operator -(const Point & a, const Point & b)
-{
-return Point(a.M_coor[0]-b.M_coor[0],
-	 a.M_coor[1]-b.M_coor[1]);
-}
-
-Point operator +(const Point & a, const Point & b)
-{
-return Point(a.M_coor[0]+b.M_coor[0],
-	 a.M_coor[1]+b.M_coor[1]);
-}
-
-
-Point Point::operator *(const double & d) const
-{
-return Point(d*M_coor[0],d*M_coor[1]);
-}
-
-Point::Point(const Point & p)    {
-M_coor[0]=p.M_coor[0];
-M_coor[1]=p.M_coor[1];
-}
-
-Point & Point::operator =(const Point & p)
-{
-if(this!=&p){
-  M_coor[0]=p.M_coor[0];
-  M_coor[1]=p.M_coor[1];
-}
-return *this;
-}
-
-Point operator *(const double & d, const Point & p)
-{
-return p*d;
-}
-
-double Point::dot(Point const & p)const
-{
-return this->x()*p.x()+this->y()*p.y();
-}
-
-std::ostream & operator <<(std::ostream &stream , Point const & p)
-{
-  stream <<"("<<p.M_coor[0]<<","<<p.M_coor[1]<<")"<<std::endl;
-  return stream;
-}
-
