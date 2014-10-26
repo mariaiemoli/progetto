@@ -2,66 +2,71 @@
 
 PointData::PointData(scalar_type x, scalar_type y)
 {
-  M_coor[0]=x; 
-  M_coor[1]=y;
+	M_coor.clear();
+  	M_coor.push_back(x); 
+  	M_coor.push_back(y);
+}
+
+PointData::PointData(const PointData & p)   
+{
+  	M_coor.clear();
+	M_coor.push_back(p.x());
+  	M_coor.push_back(p.y());
 }
 
 void PointData::setCoordinates(scalar_type x, scalar_type y)
 {
-  M_coor[0]=x; 
-  M_coor[1]=y;
+	M_coor.clear();
+  	M_coor.push_back(x); 
+  	M_coor.push_back(y)
 }//setCoordinates
 
 void PointData::getCoordinates(scalar_type & x, scalar_type & y) const
 {
-  x=M_coor[0];
-  y=M_coor[1];
+  	x=this->x();
+  	y=this->y();
 }//getCoordinates
 
 PointData PointData::operator +=(const PointData & rhs)
 {
-  M_coor[0]+=rhs.M_coor[0];
-  M_coor[1]+=rhs.M_coor[1];
+  M_coor[0]+=rhs.x()];
+  M_coor[1]+=rhs.y()];
   return *this;
 }
 
 PointData PointData::operator -=(const PointData & rhs)
 {
-  M_coor[0]-=rhs.M_coor[0];
-  M_coor[1]-=rhs.M_coor[1];
+  M_coor[0]-=rhs.x();
+  M_coor[1]-=rhs.y();
   return *this;
 }
 
 PointData operator -(const PointData & a, const PointData & b)
 {
-  return PointData( a.M_coor[0]-b.M_coor[0],
-	 				   a.M_coor[1]-b.M_coor[1] );
+  return PointData( a.x()-b.x(),
+	 				a.y()-b.y() );
 }
 
 PointData operator +(const PointData & a, const PointData & b)
 {
-  return PointData(a.M_coor[0]+b.M_coor[0],
-	 a.M_coor[1]+b.M_coor[1]);
+  return PointData( a.x()+b.x(),
+	 				a.y()+b.y() );
 }
 
 
 PointData PointData::operator *(const scalar_type & d) const
 {
-  return PointData( d*M_coor[0], d*M_coor[1] );
+  return PointData( d*this->x(), d*this->y() );
 }
 
-PointData::PointData(const PointData & p)   
-{
-  M_coor[0]=p.M_coor[0];
-  M_coor[1]=p.M_coor[1];
-}
 
 PointData & PointData::operator =(const PointData & p)
 {
   if(this!=&p)
   {
-    M_coor[0]=p.M_coor[0];
-    M_coor[1]=p.M_coor[1];
+    	M_coor.clear();
+  		M_coor.push_back(p.x());
+    	M_coor.push_back(p.y());
   }
   return *this;
 }

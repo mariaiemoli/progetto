@@ -28,6 +28,17 @@ class FractureEnd
 	        return M_thickness;
 	    }
 		
+		//Operatori
+		FractureEnd & operator=(const FractureEnd& t)
+		{
+		  	if (this !=&t)
+		   	{
+		  		M_endPoint = t.getPoint();
+		  		M_thickness = t.getThickness();
+		    }
+	
+			return *this;
+		}
 
 	private:
 	  //! The end point of the fracture
@@ -35,6 +46,11 @@ class FractureEnd
 	  // The thickness of the fracture
 	  scalar_type M_thickness;
 };
+
+typedef FractureEnd FractureEnd_Type;
+typedef std::vector < FractureEnd_Type > FractureEndContainer_Type;
+typedef boost::shared_ptr < FractureEnd_Type > FractureEndPtr_Type;
+typedef std::vector < FractureEndPtr_Type> FractureEndPtrContainer_Type;
 
 //! Class to represent the intersection
 class Intersection
@@ -51,13 +67,18 @@ class Intersection
 		  }
 
 	private:
-	  FractureEnd fractures[3];
+	  FractureEndContainer_Type fractures(3);
 	  PointData intersection_;
-	  Vector2d tangents[3];
-	  Vector2d normals[3];
+	  Vector2d tangents(3);
+	  Vector2d normals(3);
   
 	  TriangleData intersectionTriangle_;
   
 };
+
+typedef TriangleHandler TriangleHandler_Type;
+typedef std::vector < TriangleHandler_Type > TriangleHandlerContainer_Type;
+typedef boost::shared_ptr < TriangleHandler_Type > TriangleHandlerPtr_Type;
+typedef std::vector < TriangleHandlerPtr_Type> TriangleHandlerPtrContainer_Type;
 
 #endif

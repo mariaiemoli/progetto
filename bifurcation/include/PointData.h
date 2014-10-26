@@ -6,7 +6,6 @@
 #include <Eigen/Dense>
 #include "Core.h"
 
-const size_type ndim=2;
  
 class PointData {
 	public:
@@ -72,7 +71,9 @@ class PointData {
 			}//asVector
 
 	private:
-		scalarVector_Type M_coor[ndim];
+		
+		//const size_type ndim;
+		scalarVector_Type M_coor;
 };
 
 typedef PointData PointData_Type;
