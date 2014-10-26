@@ -1,7 +1,7 @@
 /**
  * MatrixBifurcationHandler.h
  * 
- * Classe che costruisce il triangolo 2d dell'size_typeersezione
+ * Classe che gestisce la costruzione delle matrici per il triangolo di intersezione
  * 
  */
 
@@ -9,10 +9,9 @@
 #define __MATRIXBIFURCATIONHANDLER_H__
 
 #include "Core.h"
-#include "PointHandler.h"
 #include "TriangleHandler.h"
-#include "UsefulFunctions.h"
 #include <Eigen/Dense>
+
 
 
 class Bifurcation{
@@ -86,32 +85,6 @@ private:
 	  Matrix3d T_;
 };
 
-
-//! Class that represents the end of a fracture
-struct FractureEnd
-{
-  //! The end point of the fracture
-  PointHandler  endPoint;
-  // The thickness of the fracture
-  scalar_type thickness;
-};
-
-
-//! Class to represent the intersection
-class Intersection
-{
-public:
-  //! Fractures must be set and given in clockwise order.
-  Intersection(FractureEnd const & gamma0, FractureEnd const & gamma1, FractureEnd const & gamma2, PointHandler const & intersectionPoint);
-  TriangleHandler const & computeIntersectionTriangle();
-  TriangleHandler const & intersectionTriangle()const {return intersectionTriangle_;}
-private:
-  FractureEnd fractures[3];
-  PointHandler intersection_;
-  Vector2d tangents[3];
-  Vector2d normals[3];
-  TriangleHandler intersectionTriangle_;
-};
 
 //! Returns the coefficients that links the pressure to edge pressure
 /*!

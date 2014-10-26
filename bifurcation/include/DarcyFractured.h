@@ -13,6 +13,7 @@
 #include "BCHandler.h"
 #include "MediumData.h"
 #include "Exporter.h"
+#include "MatrixBifurcationHandler.h"
 #include <sstream>
 //#include <fstream>
 

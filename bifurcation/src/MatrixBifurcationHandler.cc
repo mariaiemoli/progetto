@@ -70,55 +70,7 @@ void Bifurcation::computeTsimple(scalar_type t)
   Matrix3d tmp = Nd *Pc_;
   T_=(1./area)*( Nkn + t*tmp );
 }
- 
-Intersection::Intersection(FractureEnd const & gamma0, FractureEnd const & gamma1, FractureEnd const & gamma2, PointHandler const & intersectionPoint):
-  fractures{gamma0,gamma1,gamma2}
-{
-  Vector2d tmp;
-  for (unsigned int i=0;i<3;++i)
-    {
-		// get tangent at the end
-		tmp(0) = intersectionPoint.x()-fractures[i].endPoint.x();
-		tmp(1) = intersectionPoint.y()-fractures[i].endPoint.y();
-		tmp.normalize();
-		tangents[i]   = tmp;
-		normals[i](0) = -tmp(1);
-		normals[i](1) =  tmp(0);
-    }
-}
 
-TriangleHandler const &
-Intersection::computeIntersectionTriangle()
-{
-  PointHandler point;
-  const scalar_type tol=1.e-5;
-  scalar_type s(0.);
-  for (unsigned int i=0; i<3;++i)
-    {
-		unsigned int j = (i +1 ) % 3;
-		scalar_type ninj = normals[i].dot(normals[j] );
-		scalar_type nitj = normals[i].dot(tangents[j]);
-		if(std::fabs(nitj)<tol)
-  {
-    point=intersection_+PointHandler(normals[i](0),normals[i](1))*(0.5*(fractures[j].thickness+fractures[i].thickness));
-  }
-else
-  {
-    // parametric coordinate
-    s    = 0.5*(
-		   fractures[j].thickness*ninj +
-		   fractures[i].thickness
-		   )/nitj;
-
-    // the ith point is Pji in the note
-    point = intersection_+ 
-      (PointHandler(tangents[j](0),tangents[j](1))*s)- 
-      (PointHandler(normals[j](0),normals[j](1))*(0.5*fractures[j].thickness));
-  }
-     intersectionTriangle_.setPoint(i,point);
-   }
-return intersectionTriangle_;
-}
 Vector3d pressureCoeff(const Matrix3d &T)
 {
   scalar_type factor = (1.0/T.sum());
