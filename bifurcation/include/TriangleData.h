@@ -8,51 +8,44 @@
 #ifndef __TRIANGLEDATA_H__
 #define __TRIANGLEDATA_H__
 
-
-#include <iosfwd>
 #include <Eigen/Dense>
 
 #include <assert.h>
-#include "UsefulFunctions.h"
-#include "PointHandler.h"
+#include "PointData.h"
 #include "FractureHandler.h"
-#include "TriangleData.h"
+#include "StringUtility.h"
 
 class TriangleData {
 	
 public:
-    static size_type const myDim=2;
-    static const size_type numVertices=3;
-    static const size_type numSides=3;
-
-    TriangleData( const FracturePtrContainer_Type& M_fractures ); //Constructs an empty triangle
+    static int const myDim=2;
+    static const int numVertices=3;
+    static const int numSides=3;
     
-    TriangleData(PointHandler&,PointHandler&,PointHandler&); //PointHandlers are given (by reference)
+	//Costruttori
+	TriangleData(); //vuoto
     
-    TriangleData(const TriangleData&);
+    TriangleData(PointData&,PointData&,PointData&); //Da tre punti presi per refernza
     
-    TriangleData& operator=(const TriangleData&);
+    TriangleData(const TriangleData&); // Da un altro triangolo == Copia
+	
+	TriangleData( const FracturePtrContainer_Type& M_fractures ); //Da un insieme di 3 fratture
     
     // We get the point by operator [] (defined in-class for inlining)
-    void setPoint(size_type i, PointHandler const &  p);
+    void setPoint(size_type i, PointData const &  p);
     
-    // Can be used ONLY if empty()==false
-    PointHandler const & operator[](size_type i) const {return M_point[i];}
+	//misura l'area del tringolo
+	scalar_type measure() const; 
     
-    // Can be used ONLY if empty()==false
-    PointHandler & operator[](size_type i){return M_point[i];}
+    PointData& edgePoint(size_type edgenum,size_type endnum); // The posize_type on an edge
     
-    scalar_type measure() const; // Triangle area
-    
-    PointHandler& edgePoint(size_type edgenum,size_type endnum); // The posize_type on an edge
-    
-    PointHandler const & edgePoint(size_type edgenum,size_type endnum) const; // The const version
+    PointData const & edgePoint(size_type edgenum,size_type endnum) const; // The const version
     
     //!Get baricenter
-    PointHandler baricenter()const;
+    PointData baricenter()const;
     
     //!Get edge baricenter
-    PointHandler edgeBaricenter(size_type edgeNum) const;
+    PointData edgeBaricenter(size_type edgeNum) const;
     
     //!Get vector connecting edge baricenter with baricenter
     Vector2d c(size_type edgeNum) const;
@@ -62,11 +55,26 @@ public:
     
     static size_type edge(size_type edgeNum, size_type endNum); // The edge numbering
     
-    friend std::ostream & operator <<(std::ostream &, TriangleData const &);
+	//Operatori
+	TriangleData& operator=(const TriangleData&);
+	
+	friend std::ostream & operator <<(std::ostream &, TriangleData const &);
+	
+	// Can be used ONLY if empty()==false
+    PointData const & operator[](size_type i) const 
+	{
+		return M_point[i];
+	}
+    
+    // Can be used ONLY if empty()==false
+    PointData & operator[](size_type i)
+	{
+		return M_point[i];
+	}
 	
 	
 private:
-    PointHandler  M_point[numVertices];
+    PointDataContainer_Type  M_point[numVertices];
     static size_type const M_edge[numSides][2];
 	
 
