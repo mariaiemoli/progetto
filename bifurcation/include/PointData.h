@@ -3,7 +3,7 @@
 
 #include <iosfwd>
 #include <iostream>
-//#include <Eigen/Dense>
+#include <eigen3/Eigen/Dense>
 #include "Core.h"
 
  

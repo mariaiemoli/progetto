@@ -28,5 +28,21 @@ void IntersectData::copy ( const IntersectData& in )
             M_dofVelocity[i] = in.M_dofVelocity[i];
         }
 
+        M_matrices = in.M_matrices;
     }
 } // copy
+
+
+void IntersectData::setIntersection ( const size_type& elementID,
+									  const FracturePtrContainer_Type& fractures, const size_type k)
+{
+    M_elementID = elementID;
+    M_fractures = fractures;
+    
+    if ( k == 1) 	// k==1 -> Bifurcation
+    {
+    	M_matrices.setMatrices ( M_fractures );
+    }
+    
+} // setIntersection
+

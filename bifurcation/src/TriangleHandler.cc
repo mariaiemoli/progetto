@@ -21,21 +21,18 @@ Intersection::Intersection(FractureEnd const & gamma0, FractureEnd const & gamma
 	
 	Vector2d ttmp;
 	Vector2d ntmp;
-	
-//	tangents.clear();
-//	normals.clear();
-	
+		
 	for (unsigned int i=0;i<3;++i)
 	{
 		// get tangent at the end
 		ttmp(0) = intersectionPoint.x()-fractures[i].getPoint ().x();
 		ttmp(1) = intersectionPoint.y()-fractures[i].getPoint ().y();
 		ttmp.normalize();
-//		tangents.push_back( ttmp );
+
 		tangents [ i ] = ttmp;
 		ntmp(0) = -ttmp(1); 
 		ntmp(1) = ttmp(0); 
-//		normals.push_back( ntmp );
+
 		normals [ i ] = ntmp;
 	}
 	
@@ -43,10 +40,8 @@ Intersection::Intersection(FractureEnd const & gamma0, FractureEnd const & gamma
 }// costruttore intersezione
 
 
-Intersection::Intersection( const FracturePtrContainer_Type& M_fractures )
-{
-	//M_point.clear();
-	
+void Intersection::setIntersection( const FracturePtrContainer_Type& M_fractures )
+{	
 	assert ( M_fractures.size() == 3 );
 	
 	LevelSetHandlerPtr_Type l0 = M_fractures [ 0 ]-> getLevelSet ();
@@ -94,7 +89,20 @@ Intersection::Intersection( const FracturePtrContainer_Type& M_fractures )
     FractureEnd f1( p1, t1 );
     FractureEnd f2( p2, t2 );
 	
-    Intersection intersection(f0,f1,f2,pi);
+    Intersection tmp(f0,f1,f2,pi);
+    
+    this-> fractures = tmp.fractures;
+    this-> intersection_ = tmp.intersection_;
+    
+    this-> tangents [ 0 ] = tmp.tangents [ 0 ];
+    this-> tangents [ 1 ] = tmp.tangents [ 1 ];
+    this-> tangents [ 2 ] = tmp.tangents [ 2 ];
+    
+    this-> normals [ 0 ] = tmp.normals [ 0 ];
+    this-> normals [ 1 ] = tmp.normals [ 1 ];
+    this-> normals [ 2 ] = tmp.normals [ 2 ];
+    
+    this-> intersectionTriangle_ = tmp.intersectionTriangle_; 
     
 }// costruttore intersezione
 
@@ -131,14 +139,5 @@ TriangleData const & Intersection::computeIntersectionTriangle()
 	
 	return intersectionTriangle_;
 
-}
+}// computeIntersectionTriangle
 
-Vector3d pressureCoeff(const Matrix3d &T)
-{
-  double factor = (1.0/T.sum());
-  Vector3d tmp;
-  tmp(0)=factor*(T.col(0).sum());
-  tmp(1)=factor*(T.col(1).sum());
-  tmp(2)=factor*(T.col(2).sum());
-  return tmp;
-}

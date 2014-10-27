@@ -4,6 +4,7 @@
 
 // Definition of the static variable edge
 const size_type TriangleData::M_edge[3][2] = {{0, 1}, {1, 2}, {2, 0}};
+//const sizeVectorContainer_Type  TriangleData::M_edge = [ [ 0, 1 ], [ 1, 2 ], [ 2, 0 ] ];
 
 //COSTRUTTORI	
 TriangleData::TriangleData()

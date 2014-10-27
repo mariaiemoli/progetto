@@ -33,7 +33,7 @@ FractureIntersect::FractureIntersect ()
 
 
 void FractureIntersect::
-constructIntesection ( getfem::mesh_level_set& meshLevelSet, const FracturePtrContainer_Type& fractures )
+constructIntesection ( const GetPot& dataFile, getfem::mesh_level_set& meshLevelSet, const FracturePtrContainer_Type& fractures )
 {
 	const size_type numFractures = fractures.size();
 
@@ -76,8 +76,16 @@ constructIntesection ( getfem::mesh_level_set& meshLevelSet, const FracturePtrCo
 			}
 
 			// Costruisco la classe IntersectData per la nuova intersezione e la aggiungo in base al tipo
-			IntersectData intersection;
-			intersection.setIntersection ( listOfConvex[i], fracturesInvolved );
+			IntersectData intersection ( dataFile );
+			
+			size_type k = 0;
+			
+			if ( type == Bifurcation)
+			{
+				k = 1;
+			}
+			
+			intersection.setIntersection ( listOfConvex[i], fracturesInvolved, k);
 
 			M_intersections [ type ].push_back ( intersection );
 

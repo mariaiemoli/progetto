@@ -65,32 +65,60 @@ class Intersection
 {
 	public:
 		
-	  //Costruttori
-	  /**
-	   * Le fratture devono essere date in senso orario
-	   */ 
-	  Intersection(FractureEnd const & gamma0, FractureEnd const & gamma1, FractureEnd const & gamma2, PointData const & intersectionPoint);
+		
+		//Costruttori
+		/**
+		* Le fratture devono essere date in senso orario
+		*/ 
+		Intersection(FractureEnd const & gamma0, FractureEnd const & gamma1, FractureEnd const & gamma2, PointData const & intersectionPoint);
+		
+		Intersection()
+		{};
+		
+		//Troviamo il triangolo di intersezione partendo dal vettore delle fratture che si intersecano
+		void setIntersection( const FracturePtrContainer_Type& M_fractures );
+		
+		
+		//Metodi
+		TriangleData const & computeIntersectionTriangle();
+		
+		void setTriangle ( const TriangleData& triangle)
+		{
+			intersectionTriangle_ = triangle;
+		}
+		
+		TriangleData const & intersectionTriangle()const 
+		{
+			return intersectionTriangle_;
+		}
+		
+		
+		Intersection & operator =(const Intersection & Int)
+		{
+			this-> fractures = Int.fractures;
+			this-> intersection_ = Int.intersection_;
+			
+			this-> tangents [ 0 ] = Int.tangents [ 0 ];
+			this-> tangents [ 1 ] = Int.tangents [ 1 ];
+			this-> tangents [ 2 ] = Int.tangents [ 2 ];
+			
+			this-> normals [ 0 ] = Int.normals [ 0 ];
+			this-> normals [ 1 ] = Int.normals [ 1 ];
+			this-> normals [ 2 ] = Int.normals [ 2 ];
+			
+			this-> intersectionTriangle_ = Int.intersectionTriangle_; 
+			
+		}
 	  
-	  //Troviamo il triangolo di intersezione partendo dal vettore delle fratture che si intersecano
-	  Intersection( const FracturePtrContainer_Type& M_fractures );
-	  
-	  //Metodi
-	  TriangleData const & computeIntersectionTriangle();
-  
-	  TriangleData const & intersectionTriangle()const 
-	  {
-		  return intersectionTriangle_;
-	  }
 
 	private:
+		  
+		  FractureEndContainer_Type fractures;
+		  PointData intersection_;
+		  Vector2d tangents [ 3 ];
+		  Vector2d normals [ 3 ];
 	  
-	  FractureEndContainer_Type fractures;
-	  //FractureEnd fractures [ 3 ];
-	  PointData intersection_;
-	  Vector2d tangents [ 3 ];
-	  Vector2d normals [ 3 ];
-  
-	  TriangleData intersectionTriangle_;
+		  TriangleData intersectionTriangle_;
   
 };
 

@@ -37,7 +37,7 @@
 #include <boost/shared_ptr.hpp>
 #include <iomanip>
 
-//#include <Eigen/Dense>
+#include <eigen3/Eigen/Dense>
 
 /* some Getfem++ types that we will be using */
 using bgeot::base_small_vector;

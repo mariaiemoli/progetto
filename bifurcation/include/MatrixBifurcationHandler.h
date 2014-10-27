@@ -10,29 +10,38 @@
 
 #include "Core.h"
 #include "TriangleHandler.h"
-#include <Eigen/Dense>
+#include "Parser.h"
+#include "FractureHandler.h"
+#include <eigen3/Eigen/Dense>
 
 
-class Bifurcation
+class MatrixBifurcationHandler
 {
 	public:
 		
 		// Costruttore vuoto di defult
-		Bifurcation();
+		MatrixBifurcationHandler( const GetPot& dataFile,
+                				  const std::string& section = "mediumData/",
+                				  const std::string& subsection = "darcy/");
 		
 		
 		// Costruttore che prende in input la matrice di permeabilità
-		Bifurcation(Matrix2d K);
+		MatrixBifurcationHandler(Matrix2d K);
 		
 		
 		//! Passing a scalar permeability
-		explicit Bifurcation(scalar_type K);
+		explicit MatrixBifurcationHandler(scalar_type K);
+		
+		
+		
+		//
+		void setMatrices ( FracturePtrContainer_Type& fractures );
 		
 		
 		//! Give the triangle.
 		void setTriangle(TriangleData const & T)
 		{
-		  triangle_=T;
+			M_intersection.setTriangle ( T );
 		}
 		
 		
@@ -107,6 +116,22 @@ class Bifurcation
 		*/
 		void computeTsimple(scalar_type t=6.0);
 		
+		
+		void inversion2X2 ( const Matrix2d& invk, scalar_type det );
+		
+		
+		MatrixBifurcationHandler & operator =(const MatrixBifurcationHandler & mat)
+		{
+			M_intersection = mat.M_intersection;
+			K_ = mat.K_;
+			N_ = mat.N_;
+			C_ = mat.C_;
+			Qc_ = mat.Qc_;
+			Pc_ = mat.Pc_;
+			T_ = mat.T_;
+		}
+
+		
 		Matrix3d T()const {return T_;}
 		
 		EIGEN_MAKE_ALIGNED_OPERATOR_NEW 
@@ -114,7 +139,7 @@ class Bifurcation
 	private:
 
 		Matrix2d K_;
-		TriangleData triangle_;
+		Intersection_Type M_intersection;
 		Matrix32 N_;
 		Matrix32 C_;
 		Matrix32 Qc_;
@@ -122,16 +147,4 @@ class Bifurcation
 		Matrix3d T_;
 };
 
-
-//! Returns the coefficients that links the pressure to edge pressure
-/*!
-  It computes the coefficients that links the pressure internal at the 
-  intersection with that at the boundary (fracture end pressures).
-
-  @param T transmissibility matrix.
-  @return The vector the gives the coefficients.
- */
-Vector3d pressureCoeff(const Matrix3d & T);
-
-
-#endif
+typedef MatrixBifurcationHandler MatrixBifurcationHandler_Type;

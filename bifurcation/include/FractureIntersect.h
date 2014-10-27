@@ -52,7 +52,7 @@ public:
          * lo considero come una possibile intersezione e verifico se effettivamente lo è e di che tipo
          * 
          */
-        void constructIntesection ( getfem::mesh_level_set& meshLevelSet,
+        void constructIntesection ( const GetPot& dataFile, getfem::mesh_level_set& meshLevelSet,
                                     const FracturePtrContainer_Type& fractures );
 
         
