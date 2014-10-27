@@ -18,7 +18,7 @@ void PointData::setCoordinates(scalar_type x, scalar_type y)
 {
 	M_coor.clear();
   	M_coor.push_back(x); 
-  	M_coor.push_back(y)
+  	M_coor.push_back(y);
 }//setCoordinates
 
 void PointData::getCoordinates(scalar_type & x, scalar_type & y) const
@@ -29,8 +29,8 @@ void PointData::getCoordinates(scalar_type & x, scalar_type & y) const
 
 PointData PointData::operator +=(const PointData & rhs)
 {
-  M_coor[0]+=rhs.x()];
-  M_coor[1]+=rhs.y()];
+  M_coor[0]+=rhs.x();
+  M_coor[1]+=rhs.y();
   return *this;
 }
 

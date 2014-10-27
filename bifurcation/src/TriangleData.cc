@@ -7,7 +7,7 @@ const size_type TriangleData::M_edge[3][2] = {{0, 1}, {1, 2}, {2, 0}};
 
 //COSTRUTTORI	
 TriangleData::TriangleData()
-	{}// costruttore vuoro
+{}// costruttore vuoto
 
 
 TriangleData::TriangleData(PointData & a, PointData & b, PointData & c)
@@ -20,9 +20,14 @@ TriangleData::TriangleData(PointData & a, PointData & b, PointData & c)
 
 TriangleData::TriangleData(const TriangleData & t)
 {
+	M_point[0]=t.M_point[ 0 ];
+	M_point[1]=t.M_point[ 1 ];
+	M_point[2]=t.M_point[ 2 ];
+/*
 	M_point[0]=t.getPoint( 0 );
 	M_point[1]=t.getPoint( 1 );
 	M_point[2]=t.getPoint( 2 );
+*/
 }//Da triangolo
 
 void TriangleData::setPoint(size_type i, PointData const & p)

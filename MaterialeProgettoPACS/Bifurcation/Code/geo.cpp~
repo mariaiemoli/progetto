@@ -109,7 +109,6 @@ namespace Geometry{
     stream<<"****************************************"<<std::endl;
     return stream;
   }
-
   Point Point::operator +=(const Point & rhs)
   {
     M_coor[0]+=rhs.M_coor[0];

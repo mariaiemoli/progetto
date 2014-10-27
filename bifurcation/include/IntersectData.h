@@ -97,7 +97,7 @@ private:
     size_type M_elementID;
     sizeVector_Type M_dofPressure;
     sizeVectorContainer_Type M_dofVelocity;
-    TriangleHandlerPtr_Type M_triangle;
+  //  TriangleHandlerPtr_Type M_triangle;
 
 };
 

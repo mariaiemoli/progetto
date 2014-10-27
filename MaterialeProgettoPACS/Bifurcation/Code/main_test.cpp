@@ -11,10 +11,13 @@ int main ()
   Point e1(-1.,0.);
   Point e2(1.,0.);
   Point ip(0.,0.);
+
   FractureEnd f0{e0,0.1};
   FractureEnd f1{e1,0.1};
   FractureEnd f2{e2,0.05};
+
   Intersection intersection(f0,f1,f2,ip);
+
   Triangle triangle=intersection.computeIntersectionTriangle();
   std::cout<<triangle<<std::endl;
 

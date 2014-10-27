@@ -120,8 +120,6 @@ namespace Darcy
 	   }
 	return intersectionTriangle_;
   }
-
-
   Vector3d pressureCoeff(const Matrix3d &T)
   {
     double factor = (1.0/T.sum());

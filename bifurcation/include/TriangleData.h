@@ -29,7 +29,7 @@ public:
     TriangleData(const TriangleData&); // Da un altro triangolo == Copia
     
 	//Mi permette di accedere al punto i-esimo del triangolo
-    PointData getPoint( size_type i ) 
+    PointData& getPoint( size_type i ) 
 	{
 		assert ( i < M_point.size() );
 		

@@ -95,7 +95,6 @@ namespace Darcy{
   public:
     //! Fractures must be set and given in clockwise order.
     Intersection(FractureEnd const & gamma0, FractureEnd const & gamma1, FractureEnd const & gamma2, Point const & intersectionPoint);
-
     Triangle const & computeIntersectionTriangle();
     Triangle const & intersectionTriangle()const {return intersectionTriangle_;}
   private:

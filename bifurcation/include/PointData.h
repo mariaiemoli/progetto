@@ -3,12 +3,13 @@
 
 #include <iosfwd>
 #include <iostream>
-#include <Eigen/Dense>
+//#include <Eigen/Dense>
 #include "Core.h"
 
  
 class PointData {
 	public:
+	
 		static int const myDim=0;
 		
 		//Costruttori
