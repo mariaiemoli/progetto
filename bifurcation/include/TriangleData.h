@@ -12,7 +12,6 @@
 
 #include <assert.h>
 #include "PointData.h"
-#include "FractureHandler.h"
 #include "StringUtility.h"
 
 class TriangleData {
@@ -28,10 +27,16 @@ public:
     TriangleData(PointData&,PointData&,PointData&); //Da tre punti presi per refernza
     
     TriangleData(const TriangleData&); // Da un altro triangolo == Copia
-	
-	TriangleData( const FracturePtrContainer_Type& M_fractures ); //Da un insieme di 3 fratture
     
-    // We get the point by operator [] (defined in-class for inlining)
+	//Mi permette di accedere al punto i-esimo del triangolo
+    PointData getPoint( size_type i ) 
+	{
+		assert ( i < M_point.size() );
+		
+		return M_point[i];
+	}
+	
+	// We get the point by operator [] (defined in-class for inlining)
     void setPoint(size_type i, PointData const &  p);
     
 	//misura l'area del tringolo
@@ -44,6 +49,8 @@ public:
     //!Get baricenter
     PointData baricenter()const;
     
+	static size_type edge(size_type edgeNum, size_type endNum); // The edge numbering
+	
     //!Get edge baricenter
     PointData edgeBaricenter(size_type edgeNum) const;
     
@@ -52,8 +59,6 @@ public:
     
     // Outward normal to edge times edge length;
     Vector2d unscaledNormal(size_type edgeNum)const;
-    
-    static size_type edge(size_type edgeNum, size_type endNum); // The edge numbering
     
 	//Operatori
 	TriangleData& operator=(const TriangleData&);
@@ -74,7 +79,7 @@ public:
 	
 	
 private:
-    PointDataContainer_Type  M_point[numVertices];
+    PointDataContainer_Type  M_point;
     static size_type const M_edge[numSides][2];
 	
 

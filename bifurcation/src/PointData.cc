@@ -78,11 +78,11 @@ PointData operator *(const scalar_type & d, const PointData & p)
 
 scalar_type PointData::dot(PointData const & p)const
 {
-  return this->x()*p.x()+this->y()*p.y();
+  return this->x()*p.x() + this->y()*p.y();
 }
 
 std::ostream & operator <<(std::ostream &stream , PointData const & p)
 {
-	stream <<"("<<p.M_coor[0]<<","<<p.M_coor[1]<<")"<<std::endl;
+	stream << " ( " << p.x() << ", " << p.y() << " ) " << std::endl;
 	return stream;
 }

@@ -9,6 +9,7 @@
 #define __TRIANGLEHANDLER_H__
 
 #include "TriangleData.h"
+#include "FractureHandler.h"
 
 
 //! Class that represents the end of a fracture
@@ -56,9 +57,15 @@ typedef std::vector < FractureEndPtr_Type> FractureEndPtrContainer_Type;
 class Intersection
 {
 	public:
+		
+	  //Costruttori
 	  //! Fractures must be set and given in clockwise order.
 	  Intersection(FractureEnd const & gamma0, FractureEnd const & gamma1, FractureEnd const & gamma2, PointData const & intersectionPoint);
-
+	  
+	  //Troviamo il triangolo di intersezione partendo dal vettore delle fratture che si intersecano
+	  Intersection( const FracturePtrContainer_Type& M_fractures );
+	  
+	  //Metodi
 	  TriangleData const & computeIntersectionTriangle();
   
 	  TriangleData const & intersectionTriangle()const 
@@ -67,18 +74,18 @@ class Intersection
 		  }
 
 	private:
-	  FractureEndContainer_Type fractures(3);
+	  FractureEndContainer_Type fractures;
 	  PointData intersection_;
-	  Vector2d tangents(3);
-	  Vector2d normals(3);
+	  Vector2d tangents;
+	  Vector2d normals;
   
 	  TriangleData intersectionTriangle_;
   
 };
 
-typedef TriangleHandler TriangleHandler_Type;
-typedef std::vector < TriangleHandler_Type > TriangleHandlerContainer_Type;
-typedef boost::shared_ptr < TriangleHandler_Type > TriangleHandlerPtr_Type;
-typedef std::vector < TriangleHandlerPtr_Type> TriangleHandlerPtrContainer_Type;
+typedef Intersection Intersection_Type;
+typedef std::vector < Intersection_Type > IntersectionContainer_Type;
+typedef boost::shared_ptr < Intersection_Type > IntersectionPtr_Type;
+typedef std::vector < IntersectionPtr_Type> IntersectionPtrContainer_Type;
 
 #endif
