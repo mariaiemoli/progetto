@@ -21,7 +21,7 @@ public:
 	
 	/**
 	 * Costruttore vuoto di defult. 
-	 * Definisce la matrice 3x3 Pc_ costante pari a 1/3 e riempie la matrice 2x2 K_, leggendo dal file "data"
+	 * Definisce la matrice 3x3 Pc_ costante pari a 1/3 e riempie la matrice 2x2 K_, leggendo dal file "data".
 	 * \param GetPot& dataFile: nome del file data da cui leggere i dati
 	 * \param std::string& section = "mediumData/": nome della sezione nel file data in cui leggere, se non è fornita è posta di default 
 	 *    											pari a "mediumData/"
