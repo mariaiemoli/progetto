@@ -76,7 +76,7 @@ class Intersection
 		{};
 		
 		//Troviamo il triangolo di intersezione partendo dal vettore delle fratture che si intersecano
-		void setIntersection( const FracturePtrContainer_Type& M_fractures );
+		void setIntersection( const FracturePtrContainer_Type& M_FracturesSet );
 		
 		
 		//Metodi
@@ -84,41 +84,46 @@ class Intersection
 		
 		void setTriangle ( const TriangleData& triangle)
 		{
-			intersectionTriangle_ = triangle;
+			M_intersectionTriangle = triangle;
 		}
 		
 		TriangleData const & intersectionTriangle()const 
 		{
-			return intersectionTriangle_;
+			return M_intersectionTriangle;
+		}
+		
+		PointData getPointIntersection( ) const
+		{
+			return M_intersection;
 		}
 		
 		
 		Intersection & operator =(const Intersection & Int)
 		{
-			this-> fractures = Int.fractures;
-			this-> intersection_ = Int.intersection_;
+			this-> M_fractures = Int.M_fractures;
+			this-> M_intersection = Int.M_intersection;
 			
-			this-> tangents [ 0 ] = Int.tangents [ 0 ];
-			this-> tangents [ 1 ] = Int.tangents [ 1 ];
-			this-> tangents [ 2 ] = Int.tangents [ 2 ];
+			this-> M_tangents [ 0 ] = Int.M_tangents [ 0 ];
+			this-> M_tangents [ 1 ] = Int.M_tangents [ 1 ];
+			this-> M_tangents [ 2 ] = Int.M_tangents [ 2 ];
 			
-			this-> normals [ 0 ] = Int.normals [ 0 ];
-			this-> normals [ 1 ] = Int.normals [ 1 ];
-			this-> normals [ 2 ] = Int.normals [ 2 ];
+			this-> M_normals [ 0 ] = Int.M_normals [ 0 ];
+			this-> M_normals [ 1 ] = Int.M_normals [ 1 ];
+			this-> M_normals [ 2 ] = Int.M_normals [ 2 ];
 			
-			this-> intersectionTriangle_ = Int.intersectionTriangle_; 
+			this-> M_intersectionTriangle = Int.M_intersectionTriangle; 
 			
 		}
 	  
 
 	private:
 		  
-		  FractureEndContainer_Type fractures;
-		  PointData intersection_;
-		  Vector2d tangents [ 3 ];
-		  Vector2d normals [ 3 ];
+		  FractureEndContainer_Type M_fractures;
+		  PointData M_intersection;
+		  Vector2d M_tangents [ 3 ];
+		  Vector2d M_normals [ 3 ];
 	  
-		  TriangleData intersectionTriangle_;
+		  TriangleData M_intersectionTriangle;
   
 };
 

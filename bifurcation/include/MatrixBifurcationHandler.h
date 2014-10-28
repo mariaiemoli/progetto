@@ -21,7 +21,7 @@ public:
 	
 	/**
 	 * Costruttore vuoto di defult. 
-	 * Definisce la matrice 3x3 Pc_ costante pari a 1/3 e riempie la matrice 2x2 K_, leggendo dal file "data".
+	 * Definisce la matrice 3x3 M_Pc costante pari a 1/3 e riempie la matrice 2x2 M_K, leggendo dal file "data".
 	 * \param GetPot& dataFile: nome del file data da cui leggere i dati
 	 * \param std::string& section = "mediumData/": nome della sezione nel file data in cui leggere, se non è fornita è posta di default 
 	 *    											pari a "mediumData/"
@@ -35,15 +35,15 @@ public:
 	
 	/**
 	 * Costruttore che prende in input la matrice di permeabilità.
-	 * Definisce la matrice 3x3 Pc_ costante pari a 1/3 e riempie la matrice 2x2 K_ usando la matrice K fornita.
-	 * \param Matrix2d K: matrice di permeabilità da usare per modificare K_
+	 * Definisce la matrice 3x3 M_Pc costante pari a 1/3 e riempie la matrice 2x2 M_K usando la matrice K fornita.
+	 * \param Matrix2d K: matrice di permeabilità da usare per modificare M_K
 	 */ 
 	MatrixBifurcationHandler( Matrix2d K );
 	
 	
 	/**
 	 * Costruttore a partire dalla permeabilità. 
-	 * Definisce la matrice 3x3 Pc_ costante pari a 1/3 e riempie la matrice 2x2 K_ usando lo scalare K, inizializzandola come una matrice 
+	 * Definisce la matrice 3x3 M_Pc costante pari a 1/3 e riempie la matrice 2x2 M_K usando lo scalare K, inizializzandola come una matrice 
 	 * con K sulla diagonale e 0 fuori.
 	 */ 
 	explicit MatrixBifurcationHandler( scalar_type K );
@@ -51,7 +51,7 @@ public:
 	
 	
 	/**
-	 * Funzione che inizializza M_intersection, la classe che rappresenta il triangolo di intersezione, e calcola la matrice T_ a partire 
+	 * Funzione che inizializza M_intersection, la classe che rappresenta il triangolo di intersezione, e calcola la matrice M_T a partire 
 	 * dall'insieme delle fratture che costituiscono l'intersezione.
 	 * \param FracturePtrContainer_Type& fractures: vettore delle fratture che costituiscono l'intersezione
 	 */
@@ -72,32 +72,32 @@ public:
 	 * Funzione che cambia la matrice di permeabilità a partire da una matrice data.
 	 * \param Matrix2d K: matrice di permeabilità da sostituire
 	 */
-	void setK( Matrix2d K ){ K_=K; }
+	void setK( Matrix2d K ){ M_K=K; }
 	
 	
 	/**
 	 * Funzione che restituisce la matrice di permeabilità.
-	 * \return Matrix2d K_: matrice di permeabilità
+	 * \return Matrix2d M_K: matrice di permeabilità
 	 */
-	Matrix2d K()const{ return K_;}
+	Matrix2d K()const{ return M_K;}
 	
 	
 	/**
-	 * Funzione che calcola la matrice N_, matrice che ha per righe le normali ai lati.
+	 * Funzione che calcola la matrice M_N, matrice che ha per righe le normali ai lati.
 	 * Ovviamente per poter chiamare questo metodo è necessario che il triangolo che rappresenta l'intersezione sia stato già definito.
 	 */
 	void computeN();
 	
 	
 	/**
-	 * Funzione che restituisce la matrice N_, matrice che ha per righe le normali ai lati.
-	 * \return Matrix32 N_: matrice 3x2
+	 * Funzione che restituisce la matrice M_N, matrice che ha per righe le normali ai lati.
+	 * \return Matrix32 M_N: matrice 3x2
 	 */
-	Matrix32 N()const { return N_; }
+	Matrix32 N()const { return M_N; }
 	
 
 	/**
-	 * Funzione che calcola la matrice C_, matrice che ha per righe i vettori che uniscono il baricentro del triangolo con il punto medio 
+	 * Funzione che calcola la matrice M_C, matrice che ha per righe i vettori che uniscono il baricentro del triangolo con il punto medio 
 	 * di ogni lato.
 	 * Ovviamente per poter chiamare questo metodo è necessario che il triangolo che rappresenta l'intersezione sia stato già definito.
 	 */
@@ -105,50 +105,50 @@ public:
 	
 	
 	/**
-	 * Funzione che restituisce la matrice C_, matrice che ha per righe i vettori che uniscono il baricentro del triangolo con il punto medio 
+	 * Funzione che restituisce la matrice M_C, matrice che ha per righe i vettori che uniscono il baricentro del triangolo con il punto medio 
 	 * di ogni lato.
-	 * \return Matrix32 C_: matrice 3x2
+	 * \return Matrix32 M_C: matrice 3x2
 	 */
 
-	Matrix32 C(){ return C_; }
+	Matrix32 C(){ return M_C; }
 	
 	
 	/**
-	 * Funzione che costruisce la matrice Qc_, matrice che ha per colonne una base ortonormale per la matrice trasposta di C.
-	 * La funzione richiama il calcolo di C_, quindi non è necessario che sia stata precedentemente calcolata.
+	 * Funzione che costruisce la matrice M_Qc, matrice che ha per colonne una base ortonormale per la matrice trasposta di C.
+	 * La funzione richiama il calcolo di M_C, quindi non è necessario che sia stata precedentemente calcolata.
 	 */
 	void computeQc();
 	
 	
 	/**
-	 * Funzione che restituisce la matrice Qc_, matrice che ha per colonne una base ortonormale per la matrice trasposta di C.
-	 * \return Matrix32 Qc_: matrice 3x2
+	 * Funzione che restituisce la matrice M_Qc, matrice che ha per colonne una base ortonormale per la matrice trasposta di C.
+	 * \return Matrix32 M_Qc: matrice 3x2
 	 */
-	Matrix32 Qc()const { return Qc_; }
+	Matrix32 Qc()const { return M_Qc; }
 	
 		
 	/**
-	 * Funzione che restituisce la matrice Pc_, matrice di proiezione sullo spazio nullo di Qc_.
-	 * \return Matrix3d Pc_: matrice 3x3
+	 * Funzione che restituisce la matrice M_Pc, matrice di proiezione sullo spazio nullo di M_Qc.
+	 * \return Matrix3d M_Pc: matrice 3x3
 	 */
-	Matrix3d Pc()const { return Pc_; }
+	Matrix3d Pc()const { return M_Pc; }
 	
 	
 	/**
-	 * Funzione che calcola la matrice T_, matrice di trasmissibilità. La matrice T_ deriva dall'applicazione di uno schema alle 
+	 * Funzione che calcola la matrice M_T, matrice di trasmissibilità. La matrice M_T deriva dall'applicazione di uno schema alle 
 	 * differenze finite mimetiche sul triangolo di intersezione per la legge di Darcy, ignorando l'effetto della gravità.
-	 * Questa funzione richiama il calcolo delle matrici C_, N_ e Qc_.
-	 * L'approssimazione di T_ assume la seguente forma:
+	 * Questa funzione richiama il calcolo delle matrici M_C, M_N e M_Qc.
+	 * L'approssimazione di M_T assume la seguente forma:
 	 * 					 T= N K N^T + t \operatorname{trace}(NKN^T)P_c
 	 */
 	void computeT( scalar_type t = 6.0 );
 	
 	
 	/**
-	 * Funzione che calcola la matrice T_, matrice di trasmissibilità. La matrice T_ deriva dall'applicazione di uno schema alle 
+	 * Funzione che calcola la matrice M_T, matrice di trasmissibilità. La matrice M_T deriva dall'applicazione di uno schema alle 
 	 * differenze finite mimetiche sul triangolo di intersezione per la legge di Darcy, ignorando l'effetto della gravità.
-	 * Questa funzione richiama il calcolo delle matrici C_, N_ e Qc_.
-	 * L'approssimazione di T_ assume la seguente forma:
+	 * Questa funzione richiama il calcolo delle matrici M_C, M_N e M_Qc.
+	 * L'approssimazione di M_T assume la seguente forma:
 	 * 					 T= N K N^T + t \operatorname{trace}(NKN^T)P_c
 	 */	
 	void computeTsimple( scalar_type t=6.0 );
@@ -160,38 +160,45 @@ public:
 	 * \param scalar_type det: determinante della matrice
 	 */
 	void inversion2X2 ( const Matrix2d& invk, scalar_type det );
+
+	/**
+	* 
+	* 
+	* 
+	*/	
+	void SetDOFIntersecton( FractureHandlerPtr_Type& fractures, scalar_type& DOF );
 	
 	
 	// Operatore di assegnamento
 	MatrixBifurcationHandler & operator =( const MatrixBifurcationHandler & mat )
 	{
 		M_intersection = mat.M_intersection;
-		K_ = mat.K_;
-		N_ = mat.N_;
-		C_ = mat.C_;
-		Qc_ = mat.Qc_;
-		Pc_ = mat.Pc_;
-		T_ = mat.T_;
+		M_K = mat.M_K;
+		M_N = mat.M_N;
+		M_C = mat.M_C;
+		M_Qc = mat.M_Qc;
+		M_Pc = mat.M_Pc;
+		M_T = mat.M_T;
 	}
 
 	
 	/**
-	 * Funzione che restituisce la matrice T_, matrice di trasmissibilità.
-	 * \return Matrix3d T_, matrice 3x3
+	 * Funzione che restituisce la matrice M_T, matrice di trasmissibilità.
+	 * \return Matrix3d M_T, matrice 3x3
 	 */
-	Matrix3d T()const { return T_; }
+	Matrix3d T()const { return M_T; }
 	
 	EIGEN_MAKE_ALIGNED_OPERATOR_NEW 
 
 private:
 
-	Matrix2d K_;
+	Matrix2d M_K;
 	Intersection_Type M_intersection;
-	Matrix32 N_;
-	Matrix32 C_;
-	Matrix32 Qc_;
-	Matrix3d Pc_;
-	Matrix3d T_;
+	Matrix32 M_N;
+	Matrix32 M_C;
+	Matrix32 M_Qc;
+	Matrix3d M_Pc;
+	Matrix3d M_T;
 };
 
 typedef MatrixBifurcationHandler MatrixBifurcationHandler_Type;									/*!< Classe  MatrixBifurcationHandler */
