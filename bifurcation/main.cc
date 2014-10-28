@@ -138,7 +138,7 @@ int main ( int argc, char* argv [ ] )
 
 	// Assembly the matrices and vectors
 	std::cout << "Assembly the Darcy problem..." << std::flush;
-	darcy->assembly();
+	darcy->assembly( dataFile);
 	std::cout << " completed!" << std::endl;
 
 	// Solve and save the solutions

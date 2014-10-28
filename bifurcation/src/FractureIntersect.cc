@@ -76,16 +76,18 @@ constructIntesection ( const GetPot& dataFile, getfem::mesh_level_set& meshLevel
 			}
 
 			// Costruisco la classe IntersectData per la nuova intersezione e la aggiungo in base al tipo
-			IntersectData intersection ( dataFile );
+			IntersectData intersection /*( dataFile )*/ ;
 			
+			/*
 			size_type k = 0;
 			
 			if ( type == Bifurcation)
 			{
 				k = 1;
 			}
+			*/
 			
-			intersection.setIntersection ( listOfConvex[i], fracturesInvolved, k);
+			intersection.setIntersection ( listOfConvex[i], fracturesInvolved /*, k */);
 
 			M_intersections [ type ].push_back ( intersection );
 

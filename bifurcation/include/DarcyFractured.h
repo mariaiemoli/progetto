@@ -14,7 +14,7 @@
 #include "MediumData.h"
 #include "Exporter.h"
 #include "MatrixBifurcationHandler.h"
-#include <sstream>
+#include "StringUtility.h"
 //#include <fstream>
 
 
@@ -54,7 +54,7 @@ public:
      * BP = Mpd * Vdirichlet
      * 
      */
-    void assembly ( );
+    void assembly ( const GetPot& dataFile );
 
     
     /**

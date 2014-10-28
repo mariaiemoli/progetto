@@ -6,7 +6,7 @@
  */
 
 #ifndef __MATRIXBIFURCATIONHANDLER_H__
-#define __MATRIXBIFURCATIONHANDLER_H__1
+#define __MATRIXBIFURCATIONHANDLER_H__ 
 
 #include "Core.h"
 #include "TriangleHandler.h"

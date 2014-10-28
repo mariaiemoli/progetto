@@ -6,7 +6,7 @@
 #define _INTERSECTDATA_ 1
 
 #include "FractureHandler.h"
-#include "MatrixBifurcationHandler.h"
+//#include "MatrixBifurcationHandler.h"
 
 
 class IntersectData
@@ -14,16 +14,17 @@ class IntersectData
 
 public:
 
-    IntersectData ( const GetPot& dataFile ) : M_matrices ( dataFile )
+
+    IntersectData ( /*const GetPot& dataFile */ )// : M_matrices ( dataFile )
     {
     } // costruttore nullo
+	
 
-/*
     IntersectData ( const IntersectData& in )
     {
     	copy ( in );
     } // costruttore di copia
-*/
+
 
     
     /**
@@ -31,7 +32,7 @@ public:
      * se l'intersezione è di tipo " Bifurcation ", costruisce il triangolo dell'intersezione.
      */
     void setIntersection ( const size_type& elementID,
-                           const FracturePtrContainer_Type& fractures, const size_type k);
+                           const FracturePtrContainer_Type& fractures /*, const size_type k*/ );
 
     
     void setDOFPosition ( const sizeVector_Type& dofPressure,
@@ -98,7 +99,7 @@ private:
     size_type M_elementID;
     sizeVector_Type M_dofPressure;
     sizeVectorContainer_Type M_dofVelocity;
-    MatrixBifurcationHandler_Type M_matrices;
+    //MatrixBifurcationHandler_Type M_matrices;
 
 };
 

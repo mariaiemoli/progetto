@@ -139,9 +139,10 @@ void MeshHandler::setUpRegions ( const FracturesSetPtr_Type& fractures )
             dal::bit_vector cuttedRegionNumberDOFPressure = M_meshFEMScalar.basic_dof_on_region( f + FractureData::FRACTURE );
 
             // Riempio i gradi di liberta estesi per la variabile primaria
+			
             for ( dal::bv_visitor i( cuttedRegionNumberDOFPressure ); !i.finished(); ++i )
             {
-            	M_extendedDOFScalar [ f ].push_back(i);
+				M_extendedDOFScalar [ f ].push_back(i);
             }
 
             // Numero dei gradi di libertà per la variabile secondaria nella regione tagliata

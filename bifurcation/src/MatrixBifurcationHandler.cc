@@ -34,6 +34,7 @@ void MatrixBifurcationHandler::setMatrices ( FracturePtrContainer_Type& fracture
 	M_intersection.setIntersection ( fractures );
 	
 	computeT();	
+
 }// setMatrices
 
 
