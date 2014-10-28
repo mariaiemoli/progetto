@@ -16,7 +16,7 @@
 \hyperlink{classIntersectData_a6f368be5c978f120623bdef4b6acab12}{Intersect\-Data} (const Get\-Pot \&data\-File)
 \item 
 void \hyperlink{classIntersectData_a51a3df0f499c8150c32fe1f12f44ff8d}{set\-Intersection} (const size\-\_\-type \&element\-I\-D, const \hyperlink{FractureHandler_8h_a2f0b57e18ecf89912d7de0c87158009e}{Fracture\-Ptr\-Container\-\_\-\-Type} \&fractures, const size\-\_\-type k)
-\item 
+\begin{DoxyCompactList}\small\item\em Funzione che assegna a M\-\_\-fractures le fratture che si intersecano, M\-\_\-element\-I\-D l'I\-D dell'elemento in cui avviene l'intersezione e, se l'intersezione è di tipo \char`\"{} Bifurcation \char`\"{}, costruisce il triangolo dell'intersezione. \end{DoxyCompactList}\item 
 void \hyperlink{classIntersectData_ac4e5826b88471e0f1514cae82c49bcae}{set\-D\-O\-F\-Position} (const \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{size\-Vector\-\_\-\-Type} \&dof\-Pressure, const \hyperlink{Core_8h_a80e8381d86ecb0a7f4f87ff84d1a0be5}{size\-Vector\-Container\-\_\-\-Type} \&dof\-Velocity)
 \item 
 size\-\_\-type \hyperlink{classIntersectData_a50b33fda9608ffc678057b08e7aed405}{get\-D\-O\-F\-Pressure} (const size\-\_\-type \&component) const 
@@ -68,9 +68,9 @@ const \hyperlink{classIntersectData}{Intersect\-Data} \& \hyperlink{classInterse
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classIntersectData_a50b33fda9608ffc678057b08e7aed405}
 
 \begin{DoxyCode}
-41     \{
-42         \textcolor{keywordflow}{return} M\_dofPressure [ component ];
-43     \} \textcolor{comment}{// getDOFPressure}
+46     \{
+47         \textcolor{keywordflow}{return} M\_dofPressure [ component ];
+48     \} \textcolor{comment}{// getDOFPressure}
 \end{DoxyCode}
 \hypertarget{classIntersectData_a8a5946e35f80576da495a107464cd2cb}{\index{Intersect\-Data@{Intersect\-Data}!get\-D\-O\-F\-Velocity@{get\-D\-O\-F\-Velocity}}
 \index{get\-D\-O\-F\-Velocity@{get\-D\-O\-F\-Velocity}!IntersectData@{Intersect\-Data}}
@@ -82,9 +82,9 @@ const \hyperlink{classIntersectData}{Intersect\-Data} \& \hyperlink{classInterse
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classIntersectData_a8a5946e35f80576da495a107464cd2cb}
 
 \begin{DoxyCode}
-47     \{
-48         \textcolor{keywordflow}{return} M\_dofVelocity [ component ] [ region ];
-49     \} \textcolor{comment}{//  getDOFVelocity}
+52     \{
+53         \textcolor{keywordflow}{return} M\_dofVelocity [ component ] [ region ];
+54     \} \textcolor{comment}{//  getDOFVelocity}
 \end{DoxyCode}
 \hypertarget{classIntersectData_ae4cc921b5f9bee74c9a20b25ae7a6f37}{\index{Intersect\-Data@{Intersect\-Data}!get\-D\-O\-F\-Velocity@{get\-D\-O\-F\-Velocity}}
 \index{get\-D\-O\-F\-Velocity@{get\-D\-O\-F\-Velocity}!IntersectData@{Intersect\-Data}}
@@ -95,9 +95,9 @@ const \hyperlink{classIntersectData}{Intersect\-Data} \& \hyperlink{classInterse
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classIntersectData_ae4cc921b5f9bee74c9a20b25ae7a6f37}
 
 \begin{DoxyCode}
-53     \{
-54         \textcolor{keywordflow}{return} M\_dofVelocity [ region ];
-55     \} \textcolor{comment}{// getDOFVelocity}
+58     \{
+59         \textcolor{keywordflow}{return} M\_dofVelocity [ region ];
+60     \} \textcolor{comment}{// getDOFVelocity}
 \end{DoxyCode}
 \hypertarget{classIntersectData_a1872122295e3fec0fb3e81d4098e9949}{\index{Intersect\-Data@{Intersect\-Data}!get\-Element\-I\-D@{get\-Element\-I\-D}}
 \index{get\-Element\-I\-D@{get\-Element\-I\-D}!IntersectData@{Intersect\-Data}}
@@ -108,9 +108,9 @@ const \hyperlink{classIntersectData}{Intersect\-Data} \& \hyperlink{classInterse
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classIntersectData_a1872122295e3fec0fb3e81d4098e9949}
 
 \begin{DoxyCode}
-77     \{
-78         \textcolor{keywordflow}{return} M\_elementID;
-79     \} \textcolor{comment}{// getElementID}
+82     \{
+83         \textcolor{keywordflow}{return} M\_elementID;
+84     \} \textcolor{comment}{// getElementID}
 \end{DoxyCode}
 \hypertarget{classIntersectData_afef7730d6a494464350ebce088e488ee}{\index{Intersect\-Data@{Intersect\-Data}!get\-Fracture@{get\-Fracture}}
 \index{get\-Fracture@{get\-Fracture}!IntersectData@{Intersect\-Data}}
@@ -121,9 +121,9 @@ const \hyperlink{classIntersectData}{Intersect\-Data} \& \hyperlink{classInterse
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classIntersectData_afef7730d6a494464350ebce088e488ee}
 
 \begin{DoxyCode}
-65     \{
-66         \textcolor{keywordflow}{return} M\_fractures [ f ];
-67     \} \textcolor{comment}{// getFracture}
+70     \{
+71         \textcolor{keywordflow}{return} M\_fractures [ f ];
+72     \} \textcolor{comment}{// getFracture}
 \end{DoxyCode}
 \hypertarget{classIntersectData_a1c43bd327ed8dedaa89870f60cdb4606}{\index{Intersect\-Data@{Intersect\-Data}!get\-Fractures@{get\-Fractures}}
 \index{get\-Fractures@{get\-Fractures}!IntersectData@{Intersect\-Data}}
@@ -134,9 +134,9 @@ const \hyperlink{classIntersectData}{Intersect\-Data} \& \hyperlink{classInterse
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classIntersectData_a1c43bd327ed8dedaa89870f60cdb4606}
 
 \begin{DoxyCode}
-59     \{
-60         \textcolor{keywordflow}{return} M\_fractures;
-61     \} \textcolor{comment}{// getFractures}
+64     \{
+65         \textcolor{keywordflow}{return} M\_fractures;
+66     \} \textcolor{comment}{// getFractures}
 \end{DoxyCode}
 \hypertarget{classIntersectData_a25def82d58f9508d33ab1a43b2b03ceb}{\index{Intersect\-Data@{Intersect\-Data}!get\-Num\-Fractures@{get\-Num\-Fractures}}
 \index{get\-Num\-Fractures@{get\-Num\-Fractures}!IntersectData@{Intersect\-Data}}
@@ -147,9 +147,9 @@ const \hyperlink{classIntersectData}{Intersect\-Data} \& \hyperlink{classInterse
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classIntersectData_a25def82d58f9508d33ab1a43b2b03ceb}
 
 \begin{DoxyCode}
-71     \{
-72         \textcolor{keywordflow}{return} M\_fractures.size();
-73     \} \textcolor{comment}{// getNumFractures}
+76     \{
+77         \textcolor{keywordflow}{return} M\_fractures.size();
+78     \} \textcolor{comment}{// getNumFractures}
 \end{DoxyCode}
 \hypertarget{classIntersectData_a046a91173e4427a741101bcc01a622b1}{\index{Intersect\-Data@{Intersect\-Data}!operator=@{operator=}}
 \index{operator=@{operator=}!IntersectData@{Intersect\-Data}}
@@ -160,9 +160,9 @@ const \hyperlink{classIntersectData}{Intersect\-Data} \& \hyperlink{classInterse
 )\hspace{0.3cm}{\ttfamily [inline]}}}\label{classIntersectData_a046a91173e4427a741101bcc01a622b1}
 
 \begin{DoxyCode}
-83     \{
-84         copy ( in );
-85     \} \textcolor{comment}{// operator =}
+88     \{
+89         copy ( in );
+90     \} \textcolor{comment}{// operator =}
 \end{DoxyCode}
 \hypertarget{classIntersectData_ac4e5826b88471e0f1514cae82c49bcae}{\index{Intersect\-Data@{Intersect\-Data}!set\-D\-O\-F\-Position@{set\-D\-O\-F\-Position}}
 \index{set\-D\-O\-F\-Position@{set\-D\-O\-F\-Position}!IntersectData@{Intersect\-Data}}
@@ -174,10 +174,10 @@ const \hyperlink{classIntersectData}{Intersect\-Data} \& \hyperlink{classInterse
 )\hspace{0.3cm}{\ttfamily [inline]}}}\label{classIntersectData_ac4e5826b88471e0f1514cae82c49bcae}
 
 \begin{DoxyCode}
-34     \{
-35         M\_dofPressure = dofPressure;
-36         M\_dofVelocity = dofVelocity;
-37     \} \textcolor{comment}{// setDofPosition}
+39     \{
+40         M\_dofPressure = dofPressure;
+41         M\_dofVelocity = dofVelocity;
+42     \} \textcolor{comment}{// setDofPosition}
 \end{DoxyCode}
 \hypertarget{classIntersectData_a51a3df0f499c8150c32fe1f12f44ff8d}{\index{Intersect\-Data@{Intersect\-Data}!set\-Intersection@{set\-Intersection}}
 \index{set\-Intersection@{set\-Intersection}!IntersectData@{Intersect\-Data}}
@@ -188,6 +188,10 @@ const \hyperlink{classIntersectData}{Intersect\-Data} \& \hyperlink{classInterse
 \item[{const size\-\_\-type}]{k}
 \end{DoxyParamCaption}
 )}}\label{classIntersectData_a51a3df0f499c8150c32fe1f12f44ff8d}
+
+
+Funzione che assegna a M\-\_\-fractures le fratture che si intersecano, M\-\_\-element\-I\-D l'I\-D dell'elemento in cui avviene l'intersezione e, se l'intersezione è di tipo \char`\"{} Bifurcation \char`\"{}, costruisce il triangolo dell'intersezione. 
+
 
 \begin{DoxyCode}
 38 \{

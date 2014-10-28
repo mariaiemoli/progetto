@@ -16,7 +16,7 @@
 \hyperlink{classLevelSetHandler_a9dbe142d7d4f677abe8c204714c004ed}{Level\-Set\-Handler} (const Get\-Pot \&data\-File, const std\-::string \&section=\char`\"{}fracture\-Data/\char`\"{}, const std\-::string \&section\-Level\-Set=\char`\"{}level\-Set/\char`\"{})
 \begin{DoxyCompactList}\small\item\em \hyperlink{LevelSetHandler_8cc}{Level\-Set\-Handler.\-cc}. \end{DoxyCompactList}\item 
 void \hyperlink{classLevelSetHandler_a7ee7ade813923dfdef1bc25e9a881580}{init} (getfem\-::mesh \&medium\-Mesh, const std\-::string \&medium\-Integration\-Type\-Velocity, const getfem\-::mesh\-\_\-fem \&medium\-Mesh\-F\-E\-M\-Pressure, const getfem\-::mesh\-\_\-fem \&medium\-Mesh\-F\-E\-M\-Velocity)
-\begin{DoxyCompactList}\small\item\em funzione che inizializza il level set. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Funzione che inizializza il level set. \end{DoxyCompactList}\item 
 const \hyperlink{Core_8h_a126f7165f04db4ed0b72454469145a08}{G\-F\-Mesh\-Level\-Set\-\_\-\-Type} \& \hyperlink{classLevelSetHandler_a6e08147a60f9e8d7ec65357223f72311}{get\-Mesh} () const 
 \item 
 \hyperlink{Core_8h_a126f7165f04db4ed0b72454469145a08}{G\-F\-Mesh\-Level\-Set\-\_\-\-Type} \& \hyperlink{classLevelSetHandler_a35e4adb6d0c5128445d46f0b489ce0a2}{get\-Mesh} ()
@@ -243,17 +243,17 @@ classe che mi permette di costruire la frattura a partire dai dati del file data
 )}}\label{classLevelSetHandler_a7ee7ade813923dfdef1bc25e9a881580}
 
 
-funzione che inizializza il level set. 
+Funzione che inizializza il level set. 
 
 Partendo dalle informazioni contenute nel file data costrusce le mesh e i metodi di integrazione 
 \begin{DoxyParams}{Parametri}
-{\em medium\-Mesh} & mesh di supporto del mezzo \\
+{\em getfem\-::mesh\&} & medium\-Mesh\-: mesh di supporto del mezzo \\
 \hline
-{\em medium\-Integration\-Type\-Velocity} & metodo di integrazione per la velocità \\
+{\em std\-::string\&} & medium\-Integration\-Type\-Velocity\-: metodo di integrazione per la velocità \\
 \hline
-{\em medium\-Mesh\-F\-E\-M\-Pressure} & mesh di integrazione per la pressione \\
+{\em getfem\-::mesh\-\_\-fem\&} & medium\-Mesh\-F\-E\-M\-Pressure\-: mesh di integrazione per la pressione \\
 \hline
-{\em medium\-Mesh\-F\-E\-M\-Velocity} & mesh di integrazione per la velocità \\
+{\em getfem\-::mesh\-\_\-fem\&} & medium\-Mesh\-F\-E\-M\-Velocity\-: mesh di integrazione per la velocità \\
 \hline
 \end{DoxyParams}
 

@@ -39,13 +39,13 @@ void \hyperlink{classMatrixBifurcationHandler_a203b6bfcdef418ffa927aebaeedc6da2}
 void \hyperlink{classMatrixBifurcationHandler_a46ee3c60eedda32abe36700ab2ce2d16}{compute\-T} (scalar\-\_\-type t=6.\-0)
 \begin{DoxyCompactList}\small\item\em Funzione che calcola la matrice T\-\_\-, matrice di trasmissibilità. \end{DoxyCompactList}\item 
 void \hyperlink{classMatrixBifurcationHandler_a2153adb36bdbba82ca18ae74eb9e2ea7}{compute\-Tsimple} (scalar\-\_\-type t=6.\-0)
-\item 
+\begin{DoxyCompactList}\small\item\em Funzione che calcola la matrice T\-\_\-, matrice di trasmissibilità. \end{DoxyCompactList}\item 
 void \hyperlink{classMatrixBifurcationHandler_acafb7a17c3d639068938a21dad6bb0ec}{inversion2\-X2} (const \hyperlink{Core_8h_a1694976dd66ed00e5f0618f4f8821163}{Matrix2d} \&invk, scalar\-\_\-type det)
-\item 
+\begin{DoxyCompactList}\small\item\em Funzione che inverte una matrice 2x2. \end{DoxyCompactList}\item 
 \hyperlink{classMatrixBifurcationHandler}{Matrix\-Bifurcation\-Handler} \& \hyperlink{classMatrixBifurcationHandler_a2d67172a5034f104d08cb53e5dbda926}{operator=} (const \hyperlink{classMatrixBifurcationHandler}{Matrix\-Bifurcation\-Handler} \&mat)
 \item 
 \hyperlink{Core_8h_acd816705c6602062b91975525c4e3f6f}{Matrix3d} \hyperlink{classMatrixBifurcationHandler_a3b7305f6106add811e7b4b69f5642e86}{T} () const 
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Funzione che restituisce la matrice T\-\_\-, matrice di trasmissibilità. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Documentazione dei costruttori e dei distruttori}
@@ -62,7 +62,7 @@ void \hyperlink{classMatrixBifurcationHandler_acafb7a17c3d639068938a21dad6bb0ec}
 
 Costruttore vuoto di defult. 
 
-Definisce la matrice 3x3 Pc\-\_\- costante pari a 1/3 e riempie la matrice 2x2 K\-\_\-, leggendo dal file \char`\"{}data\char`\"{} 
+Definisce la matrice 3x3 Pc\-\_\- costante pari a 1/3 e riempie la matrice 2x2 K\-\_\-, leggendo dal file \char`\"{}data\char`\"{}. 
 \begin{DoxyParams}{Parametri}
 {\em Get\-Pot\&} & data\-File\-: nome del file data da cui leggere i dati \\
 \hline
@@ -148,7 +148,7 @@ Matrix32 C\-\_\-\-: matrice 3x2
 \end{DoxyReturn}
 
 \begin{DoxyCode}
-113 \{\textcolor{keywordflow}{return} C\_;\}
+113 \{ \textcolor{keywordflow}{return} C\_; \}
 \end{DoxyCode}
 \hypertarget{classMatrixBifurcationHandler_ac179ca406307a3d2ee5d5b5af94d265e}{\index{Matrix\-Bifurcation\-Handler@{Matrix\-Bifurcation\-Handler}!compute\-C@{compute\-C}}
 \index{compute\-C@{compute\-C}!MatrixBifurcationHandler@{Matrix\-Bifurcation\-Handler}}
@@ -248,6 +248,10 @@ La matrice T\-\_\- deriva dall'applicazione di uno schema alle differenze finite
 \end{DoxyParamCaption}
 )}}\label{classMatrixBifurcationHandler_a2153adb36bdbba82ca18ae74eb9e2ea7}
 
+
+Funzione che calcola la matrice T\-\_\-, matrice di trasmissibilità. 
+
+La matrice T\-\_\- deriva dall'applicazione di uno schema alle differenze finite mimetiche sul triangolo di intersezione per la legge di Darcy, ignorando l'effetto della gravità. Questa funzione richiama il calcolo delle matrici C\-\_\-, N\-\_\- e Qc\-\_\-. L'approssimazione di T\-\_\- assume la seguente forma\-: T= N K N$^\wedge$\-T + t \{trace\}(N\-K\-N$^\wedge$\-T)P\-\_\-c 
 \begin{DoxyCode}
 82 \{
 83     this->\hyperlink{classMatrixBifurcationHandler_a203b6bfcdef418ffa927aebaeedc6da2}{computeQc}();
@@ -272,6 +276,17 @@ La matrice T\-\_\- deriva dall'applicazione di uno schema alle differenze finite
 \item[{scalar\-\_\-type}]{det}
 \end{DoxyParamCaption}
 )}}\label{classMatrixBifurcationHandler_acafb7a17c3d639068938a21dad6bb0ec}
+
+
+Funzione che inverte una matrice 2x2. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em Matrix2d\&} & invk\-: matrice 2x2 da invertire \\
+\hline
+{\em scalar\-\_\-type} & det\-: determinante della matrice \\
+\hline
+\end{DoxyParams}
 
 \begin{DoxyCode}
 98 \{
@@ -315,7 +330,7 @@ Matrix32 N\-\_\-\-: matrice 3x2
 \end{DoxyReturn}
 
 \begin{DoxyCode}
-96 \{\textcolor{keywordflow}{return} N\_;\}
+96 \{ \textcolor{keywordflow}{return} N\_; \}
 \end{DoxyCode}
 \hypertarget{classMatrixBifurcationHandler_a2d67172a5034f104d08cb53e5dbda926}{\index{Matrix\-Bifurcation\-Handler@{Matrix\-Bifurcation\-Handler}!operator=@{operator=}}
 \index{operator=@{operator=}!MatrixBifurcationHandler@{Matrix\-Bifurcation\-Handler}}
@@ -326,15 +341,15 @@ Matrix32 N\-\_\-\-: matrice 3x2
 )\hspace{0.3cm}{\ttfamily [inline]}}}\label{classMatrixBifurcationHandler_a2d67172a5034f104d08cb53e5dbda926}
 
 \begin{DoxyCode}
-154     \{
-155         M\_intersection = mat.M\_intersection;
-156         K\_ = mat.K\_;
-157         N\_ = mat.N\_;
-158         C\_ = mat.C\_;
-159         Qc\_ = mat.Qc\_;
-160         Pc\_ = mat.Pc\_;
-161         T\_ = mat.T\_;
-162     \}
+167     \{
+168         M\_intersection = mat.M\_intersection;
+169         K\_ = mat.K\_;
+170         N\_ = mat.N\_;
+171         C\_ = mat.C\_;
+172         Qc\_ = mat.Qc\_;
+173         Pc\_ = mat.Pc\_;
+174         T\_ = mat.T\_;
+175     \}
 \end{DoxyCode}
 \hypertarget{classMatrixBifurcationHandler_ad84675e9be6d56de69c0e25bf1cd77cd}{\index{Matrix\-Bifurcation\-Handler@{Matrix\-Bifurcation\-Handler}!Pc@{Pc}}
 \index{Pc@{Pc}!MatrixBifurcationHandler@{Matrix\-Bifurcation\-Handler}}
@@ -390,7 +405,7 @@ Funzione che cambia la matrice di permeabilità a partire da una matrice data.
 \end{DoxyParams}
 
 \begin{DoxyCode}
-75 \{K\_=\hyperlink{classMatrixBifurcationHandler_ac7d63c6d730079862dd8238928d94b26}{K};\}
+75 \{ K\_=\hyperlink{classMatrixBifurcationHandler_ac7d63c6d730079862dd8238928d94b26}{K}; \}
 \end{DoxyCode}
 \hypertarget{classMatrixBifurcationHandler_a94433cf28ec2af6ba06b7f63a081d787}{\index{Matrix\-Bifurcation\-Handler@{Matrix\-Bifurcation\-Handler}!set\-Matrices@{set\-Matrices}}
 \index{set\-Matrices@{set\-Matrices}!MatrixBifurcationHandler@{Matrix\-Bifurcation\-Handler}}
@@ -446,8 +461,15 @@ Funzione che costruisce il triangolo di intersezione a partire da un trangolo gi
 \end{DoxyParamCaption}
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classMatrixBifurcationHandler_a3b7305f6106add811e7b4b69f5642e86}
 
+
+Funzione che restituisce la matrice T\-\_\-, matrice di trasmissibilità. 
+
+\begin{DoxyReturn}{Restituisce}
+Matrix3d T\-\_\-, matrice 3x3 
+\end{DoxyReturn}
+
 \begin{DoxyCode}
-165 \{\textcolor{keywordflow}{return} T\_;\}
+182 \{ \textcolor{keywordflow}{return} T\_; \}
 \end{DoxyCode}
 
 

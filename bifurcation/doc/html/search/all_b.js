@@ -14,6 +14,7 @@ var searchData=
   ['matrixbifurcationhandler_2ecc',['MatrixBifurcationHandler.cc',['../MatrixBifurcationHandler_8cc.html',1,'']]],
   ['matrixbifurcationhandler_2eh',['MatrixBifurcationHandler.h',['../MatrixBifurcationHandler_8h.html',1,'']]],
   ['matrixbifurcationhandler_5ftype',['MatrixBifurcationHandler_Type',['../MatrixBifurcationHandler_8h.html#a8c9916c78759dc6895c2c930240a5c8a',1,'MatrixBifurcationHandler.h']]],
+  ['matrixbifurcationhandlerptr_5ftype',['MatrixBifurcationHandlerPtr_Type',['../MatrixBifurcationHandler_8h.html#abf4d0e345fe04e694a8b692b3b47c572',1,'MatrixBifurcationHandler.h']]],
   ['measure',['measure',['../classTriangleData.html#acbfbc62d5221ecd37437012fe8b68c8d',1,'TriangleData']]],
   ['medium',['MEDIUM',['../Core_8h.html#a419d7707e418f02d8daeb1fc7c0b9ae5a5340ec7ecef6cc3886684a3bd3450d64',1,'Core.h']]],
   ['mediumdata',['MediumData',['../classMediumData.html',1,'MediumData'],['../classMediumData.html#aff5b247e34c08dbfa373e4cde5118da2',1,'MediumData::MediumData()']]],

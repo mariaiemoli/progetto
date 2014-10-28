@@ -16,21 +16,19 @@
 \hyperlink{classLevelSetData_a8b2ab7808f47d9a951327891d65e84be}{Level\-Set\-Data} (const Get\-Pot \&data\-File, const std\-::string \&section=\char`\"{}fracture\-Data/\char`\"{}, const std\-::string \&section\-Level\-Set=\char`\"{}level\-Set/\char`\"{})
 \begin{DoxyCompactList}\small\item\em \hyperlink{LevelSetData_8cc}{Level\-Set\-Data.\-cc}. \end{DoxyCompactList}\item 
 scalar\-\_\-type \hyperlink{classLevelSetData_ab6dee766ab332d7384cc0db802001365}{ylevel\-Set\-Function} (const base\-\_\-node \&x, int num=0)
-\begin{DoxyCompactList}\small\item\em scalar\-\_\-type ylevel\-Set\-Function ( const base\-\_\-node\& x, int num = 0 ) \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Questa funzione definisce il level set che rappresenta la frattura, level set valutato in (x,y). \end{DoxyCompactList}\item 
 scalar\-\_\-type \hyperlink{classLevelSetData_a15b4379080b2320c54467c89c3642c4a}{level\-Set\-Function} (const base\-\_\-node \&x, int num=0)
-\begin{DoxyCompactList}\small\item\em scalar\-\_\-type level\-Set\-Function ( const base\-\_\-node\& x, int num = 0 ) \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Questa funzione definisce il level set che rappresenta la frattura, level set valutato in (t,y). \end{DoxyCompactList}\item 
 scalar\-\_\-type \hyperlink{classLevelSetData_a080eb321db2710b115ea6ea4344551e8}{level\-Set\-Cut\-Function} (const base\-\_\-node \&x, int num=0)
 \begin{DoxyCompactList}\small\item\em scalar\-\_\-type level\-Set\-Cut\-Function ( const base\-\_\-node\& x, int num = 0 ) \end{DoxyCompactList}\item 
 scalar\-\_\-type \hyperlink{classLevelSetData_aa4cda1cced4bc385d85383b40bbc2631}{y\-\_\-map} (const base\-\_\-node \&t)
-\begin{DoxyCompactList}\small\item\em scalar\-\_\-type y\-\_\-map ( const base\-\_\-node\& t ) \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Questa funzione rappresenta la mappa dalla frattura piatta, y(t). \end{DoxyCompactList}\item 
 scalar\-\_\-type \hyperlink{classLevelSetData_ae7f10d3f10b72fbb6f703ba7aa8fe17b}{x\-\_\-map} (const base\-\_\-node \&t)
-\begin{DoxyCompactList}\small\item\em scalar\-\_\-type x\-\_\-map ( const base\-\_\-node\& t ) \end{DoxyCompactList}\item 
-scalar\-\_\-type \hyperlink{classLevelSetData_ac5307b31e9aff44c3e0d7cb848c17949}{t\-\_\-map} (const base\-\_\-node \&t)
-\begin{DoxyCompactList}\small\item\em scalar\-\_\-type t\-\_\-map ( const base\-\_\-node\& t ) \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Questa funzione rappresenta la mappa dalla frattura piatta, x(t). \end{DoxyCompactList}\item 
 \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalar\-Vector\-\_\-\-Type} \hyperlink{classLevelSetData_a40fcfa36de7ac76613284d03690eb54b}{map\-\_\-jac} (const base\-\_\-node \&x, const size\-\_\-type \&num)
-\begin{DoxyCompactList}\small\item\em scalar\-Vector\-\_\-\-Type map\-\_\-jac ( const base\-\_\-node\& x, const size\-\_\-type\& num ); \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Questa funzione serve per convertire la lunghezza/area degli elementi dalla frattura piatta a quella mappata. \end{DoxyCompactList}\item 
 \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalar\-Vector\-\_\-\-Type} \hyperlink{classLevelSetData_a674d56690f4e22cbca38bf4b5f176a5e}{normal\-\_\-map} (const base\-\_\-node \&P, const size\-\_\-type \&num)
-\begin{DoxyCompactList}\small\item\em scalar\-Vector\-\_\-\-Type normal\-\_\-map ( const base\-\_\-node\& P, const size\-\_\-type\& num ); \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Funzione che calcola la normale alla frattura -\/ può anche dipendere da x. \end{DoxyCompactList}\item 
 bgeot\-::dim\-\_\-type \hyperlink{classLevelSetData_aa4c3e1f7876cd318e80f5052689fe9e3}{get\-Space\-Dimension} () const 
 \item 
 std\-::string \hyperlink{classLevelSetData_a3f8cb21a929065136dcf3a449edb373a}{get\-Integration\-Type\-Simplex} () const 
@@ -90,9 +88,9 @@ std\-::string \hyperlink{classLevelSetData_a672418971ce9b1bf71d3c6bccd278bd7}{ge
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLevelSetData_a3f8cb21a929065136dcf3a449edb373a}
 
 \begin{DoxyCode}
-96     \{
-97         \textcolor{keywordflow}{return} M\_integrationTypeSimplex;
-98     \}
+79     \{
+80         \textcolor{keywordflow}{return} M\_integrationTypeSimplex;
+81     \}
 \end{DoxyCode}
 \hypertarget{classLevelSetData_a672418971ce9b1bf71d3c6bccd278bd7}{\index{Level\-Set\-Data@{Level\-Set\-Data}!get\-Level\-Set\-Function\-String@{get\-Level\-Set\-Function\-String}}
 \index{get\-Level\-Set\-Function\-String@{get\-Level\-Set\-Function\-String}!LevelSetData@{Level\-Set\-Data}}
@@ -103,9 +101,9 @@ std\-::string \hyperlink{classLevelSetData_a672418971ce9b1bf71d3c6bccd278bd7}{ge
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLevelSetData_a672418971ce9b1bf71d3c6bccd278bd7}
 
 \begin{DoxyCode}
-102     \{
-103         \textcolor{keywordflow}{return} M\_yfunction;
-104     \}
+85     \{
+86         \textcolor{keywordflow}{return} M\_yfunction;
+87     \}
 \end{DoxyCode}
 \hypertarget{classLevelSetData_aa4c3e1f7876cd318e80f5052689fe9e3}{\index{Level\-Set\-Data@{Level\-Set\-Data}!get\-Space\-Dimension@{get\-Space\-Dimension}}
 \index{get\-Space\-Dimension@{get\-Space\-Dimension}!LevelSetData@{Level\-Set\-Data}}
@@ -116,9 +114,9 @@ std\-::string \hyperlink{classLevelSetData_a672418971ce9b1bf71d3c6bccd278bd7}{ge
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLevelSetData_aa4c3e1f7876cd318e80f5052689fe9e3}
 
 \begin{DoxyCode}
-90     \{
-91         \textcolor{keywordflow}{return} M\_spaceDimension;
-92     \}
+73     \{
+74         \textcolor{keywordflow}{return} M\_spaceDimension;
+75     \}
 \end{DoxyCode}
 \hypertarget{classLevelSetData_a080eb321db2710b115ea6ea4344551e8}{\index{Level\-Set\-Data@{Level\-Set\-Data}!level\-Set\-Cut\-Function@{level\-Set\-Cut\-Function}}
 \index{level\-Set\-Cut\-Function@{level\-Set\-Cut\-Function}!LevelSetData@{Level\-Set\-Data}}
@@ -132,7 +130,15 @@ std\-::string \hyperlink{classLevelSetData_a672418971ce9b1bf71d3c6bccd278bd7}{ge
 
 scalar\-\_\-type level\-Set\-Cut\-Function ( const base\-\_\-node\& x, int num = 0 ) 
 
-terza funzione level set che definisce la frattura, se per caso voglio \char`\"{}tagliare la frattura\char`\"{} 
+Questa funzione definisce il level set che rappresenta la frattura, se per caso voglio \char`\"{}tagliare la frattura\char`\"{}. 
+\begin{DoxyParams}{Parametri}
+{\em base\-\_\-node\&} & x\-: nodo in coordinate ( t, y ) in cui valutare il levelset \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+scalar\-\_\-type\-: valore del levelset nel nodo x 
+\end{DoxyReturn}
+
 \begin{DoxyCode}
 50 \{
 51     M\_parser.\hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString} ( M\_cutFunction );
@@ -151,9 +157,17 @@ terza funzione level set che definisce la frattura, se per caso voglio \char`\"{
 )}}\label{classLevelSetData_a15b4379080b2320c54467c89c3642c4a}
 
 
-scalar\-\_\-type level\-Set\-Function ( const base\-\_\-node\& x, int num = 0 ) 
+Questa funzione definisce il level set che rappresenta la frattura, level set valutato in (t,y). 
 
-seconda funzione level set che definisce la frattura, level set valutato in (t,y) 
+
+\begin{DoxyParams}{Parametri}
+{\em base\-\_\-node\&} & x\-: nodo in coordinate ( t, y ) in cui valutare il levelset \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+scalar\-\_\-type\-: valore del levelset nel nodo x 
+\end{DoxyReturn}
+
 \begin{DoxyCode}
 40 \{
 41     M\_parser.\hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString} ( M\_yfunction );
@@ -172,24 +186,24 @@ seconda funzione level set che definisce la frattura, level set valutato in (t,y
 )}}\label{classLevelSetData_a40fcfa36de7ac76613284d03690eb54b}
 
 
-scalar\-Vector\-\_\-\-Type map\-\_\-jac ( const base\-\_\-node\& x, const size\-\_\-type\& num ); 
+Questa funzione serve per convertire la lunghezza/area degli elementi dalla frattura piatta a quella mappata. 
 
-questa funzione serve per convertire la lunghezza/area degli elementi dalla frattura piatta a quella mappata 
+
 \begin{DoxyCode}
-86 \{
-87     \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} \hyperlink{classLevelSetData_a40fcfa36de7ac76613284d03690eb54b}{map\_jac} ( num, 0. );
-88 
-89     M\_parser.\hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString} ( M\_map\_jac );
-90     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"x"}, x [ 0 ] );
-91     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"y"}, x [ 1 ] );
-92 
-93     \textcolor{keywordflow}{for} ( size\_type i = 0; i < num; ++i )
-94     \{
-95         \hyperlink{classLevelSetData_a40fcfa36de7ac76613284d03690eb54b}{map\_jac} [ i ] = M\_parser.\hyperlink{classLifeV_1_1Parser_a51d84fd4ae6d420620e7beee58fad673}{evaluate} ( i );
-96     \}
-97 
-98     \textcolor{keywordflow}{return} \hyperlink{classLevelSetData_a40fcfa36de7ac76613284d03690eb54b}{map\_jac};
-99 \}
+76 \{
+77     \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} \hyperlink{classLevelSetData_a40fcfa36de7ac76613284d03690eb54b}{map\_jac} ( num, 0. );
+78 
+79     M\_parser.\hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString} ( M\_map\_jac );
+80     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"x"}, x [ 0 ] );
+81     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"y"}, x [ 1 ] );
+82 
+83     \textcolor{keywordflow}{for} ( size\_type i = 0; i < num; ++i )
+84     \{
+85         \hyperlink{classLevelSetData_a40fcfa36de7ac76613284d03690eb54b}{map\_jac} [ i ] = M\_parser.\hyperlink{classLifeV_1_1Parser_a51d84fd4ae6d420620e7beee58fad673}{evaluate} ( i );
+86     \}
+87 
+88     \textcolor{keywordflow}{return} \hyperlink{classLevelSetData_a40fcfa36de7ac76613284d03690eb54b}{map\_jac};
+89 \}
 \end{DoxyCode}
 \hypertarget{classLevelSetData_a674d56690f4e22cbca38bf4b5f176a5e}{\index{Level\-Set\-Data@{Level\-Set\-Data}!normal\-\_\-map@{normal\-\_\-map}}
 \index{normal\-\_\-map@{normal\-\_\-map}!LevelSetData@{Level\-Set\-Data}}
@@ -201,45 +215,24 @@ questa funzione serve per convertire la lunghezza/area degli elementi dalla frat
 )}}\label{classLevelSetData_a674d56690f4e22cbca38bf4b5f176a5e}
 
 
-scalar\-Vector\-\_\-\-Type normal\-\_\-map ( const base\-\_\-node\& P, const size\-\_\-type\& num ); 
+Funzione che calcola la normale alla frattura -\/ può anche dipendere da x. 
 
-questa funzione calcola la normale alla frattura -\/ può anche dipendere da x 
+
 \begin{DoxyCode}
-104 \{
-105     \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} \hyperlink{classLevelSetData_a674d56690f4e22cbca38bf4b5f176a5e}{normal\_map} ( num + 1, 0. );
-106 
-107     M\_parser.\hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString} ( M\_map\_jac );
-108     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"x"}, x [ 0 ] );
-109     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"y"}, x [ 1 ] );
-110 
-111     \textcolor{keywordflow}{for} ( size\_type i = 0; i < num + 1; ++i )
-112     \{
-113         \hyperlink{classLevelSetData_a674d56690f4e22cbca38bf4b5f176a5e}{normal\_map} [ i ] = M\_parser.\hyperlink{classLifeV_1_1Parser_a51d84fd4ae6d420620e7beee58fad673}{evaluate} ( i );
-114     \}
-115 
-116     \textcolor{keywordflow}{return} \hyperlink{classLevelSetData_a674d56690f4e22cbca38bf4b5f176a5e}{normal\_map};
-117 \}
-\end{DoxyCode}
-\hypertarget{classLevelSetData_ac5307b31e9aff44c3e0d7cb848c17949}{\index{Level\-Set\-Data@{Level\-Set\-Data}!t\-\_\-map@{t\-\_\-map}}
-\index{t\-\_\-map@{t\-\_\-map}!LevelSetData@{Level\-Set\-Data}}
-\subsubsection[{t\-\_\-map}]{\setlength{\rightskip}{0pt plus 5cm}scalar\-\_\-type Level\-Set\-Data\-::t\-\_\-map (
-\begin{DoxyParamCaption}
-\item[{const base\-\_\-node \&}]{t}
-\end{DoxyParamCaption}
-)}}\label{classLevelSetData_ac5307b31e9aff44c3e0d7cb848c17949}
-
-
-scalar\-\_\-type t\-\_\-map ( const base\-\_\-node\& t ) 
-
-mappa inversa per trovare t dato x 
-\begin{DoxyCode}
-75 \{
-76     M\_parser.\hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString} ( M\_map\_inv );
-77     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"x"}, x [ 0 ] );
-78     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"y"}, x [ 1 ] );
-79     \textcolor{keywordflow}{return} M\_parser.\hyperlink{classLifeV_1_1Parser_a51d84fd4ae6d420620e7beee58fad673}{evaluate} ();
-80 
-81 \}
+94 \{
+95     \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} \hyperlink{classLevelSetData_a674d56690f4e22cbca38bf4b5f176a5e}{normal\_map} ( num + 1, 0. );
+96 
+97     M\_parser.\hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString} ( M\_map\_jac );
+98     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"x"}, x [ 0 ] );
+99     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"y"}, x [ 1 ] );
+100 
+101     \textcolor{keywordflow}{for} ( size\_type i = 0; i < num + 1; ++i )
+102     \{
+103         \hyperlink{classLevelSetData_a674d56690f4e22cbca38bf4b5f176a5e}{normal\_map} [ i ] = M\_parser.\hyperlink{classLifeV_1_1Parser_a51d84fd4ae6d420620e7beee58fad673}{evaluate} ( i );
+104     \}
+105 
+106     \textcolor{keywordflow}{return} \hyperlink{classLevelSetData_a674d56690f4e22cbca38bf4b5f176a5e}{normal\_map};
+107 \}
 \end{DoxyCode}
 \hypertarget{classLevelSetData_ae7f10d3f10b72fbb6f703ba7aa8fe17b}{\index{Level\-Set\-Data@{Level\-Set\-Data}!x\-\_\-map@{x\-\_\-map}}
 \index{x\-\_\-map@{x\-\_\-map}!LevelSetData@{Level\-Set\-Data}}
@@ -250,9 +243,9 @@ mappa inversa per trovare t dato x
 )}}\label{classLevelSetData_ae7f10d3f10b72fbb6f703ba7aa8fe17b}
 
 
-scalar\-\_\-type x\-\_\-map ( const base\-\_\-node\& t ) 
+Questa funzione rappresenta la mappa dalla frattura piatta, x(t). 
 
-mappa dalla frattura piatta a quella x(t) 
+
 \begin{DoxyCode}
 67 \{
 68     M\_parser.\hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString} ( M\_x\_map );
@@ -269,9 +262,9 @@ mappa dalla frattura piatta a quella x(t)
 )}}\label{classLevelSetData_aa4cda1cced4bc385d85383b40bbc2631}
 
 
-scalar\-\_\-type y\-\_\-map ( const base\-\_\-node\& t ) 
+Questa funzione rappresenta la mappa dalla frattura piatta, y(t). 
 
-mappa dalla frattura piatta a quella y(t) 
+
 \begin{DoxyCode}
 59 \{
 60     M\_parser.\hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString} ( M\_y\_map );
@@ -289,9 +282,17 @@ mappa dalla frattura piatta a quella y(t)
 )}}\label{classLevelSetData_ab6dee766ab332d7384cc0db802001365}
 
 
-scalar\-\_\-type ylevel\-Set\-Function ( const base\-\_\-node\& x, int num = 0 ) 
+Questa funzione definisce il level set che rappresenta la frattura, level set valutato in (x,y). 
 
-prima funzione level set che definisce la frattura, level set valutato in (x,y) 
+
+\begin{DoxyParams}{Parametri}
+{\em base\-\_\-node\&} & x\-: nodo in coordinate ( x, y ) in cui valutare il levelset \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+scalar\-\_\-type\-: valore del levelset nel nodo x 
+\end{DoxyReturn}
+
 \begin{DoxyCode}
 30 \{
 31     M\_parser.\hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString} ( M\_function );

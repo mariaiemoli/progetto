@@ -16,21 +16,21 @@
 \hyperlink{classMediumData_aff5b247e34c08dbfa373e4cde5118da2}{Medium\-Data} (const Get\-Pot \&data\-File, const std\-::string \&section\-Solver, const std\-::string \&section=\char`\"{}medium\-Data/\char`\"{}, const std\-::string \&section\-Domain=\char`\"{}domain/\char`\"{})
 \begin{DoxyCompactList}\small\item\em \hyperlink{MediumData_8cc}{Medium\-Data.\-cc}. \end{DoxyCompactList}\item 
 scalar\-\_\-type \hyperlink{classMediumData_a41b88e8b0d9eb57c51e7aad518867ff1}{exact} (const base\-\_\-node \&x, const scalar\-\_\-type \&t=0) const 
-\begin{DoxyCompactList}\small\item\em funzione che valuta la soluzione esatta in un dato nodo \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Funzione che valuta la soluzione esatta in un dato nodo. \end{DoxyCompactList}\item 
 scalar\-\_\-type \hyperlink{classMediumData_adc228cb9d834aae8886ec520093a003a}{exact\-Outlet} (const base\-\_\-node \&x, const scalar\-\_\-type \&t=0) const 
-\begin{DoxyCompactList}\small\item\em funzione che valuta la soluzione esatta in un dato nodo nella regione in cui level set $>$ 0 \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Funzione che valuta la soluzione esatta in un dato nodo nella regione in cui level set $>$ 0. \end{DoxyCompactList}\item 
 scalar\-\_\-type \hyperlink{classMediumData_a9e2ebf4af56f981be28836750fd58a17}{exact\-Inlet} (const base\-\_\-node \&x, const scalar\-\_\-type \&t=0) const 
-\begin{DoxyCompactList}\small\item\em funzione che valuta la soluzione esatta in un dato nodo nella regione in cui level set $<$ 0 \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Funzione che valuta la soluzione esatta in un dato nodo nella regione in cui level set $<$ 0. \end{DoxyCompactList}\item 
 scalar\-\_\-type \hyperlink{classMediumData_a6f3d3b64009602eb22a7c54b74a33a34}{exact\-Flux} (const base\-\_\-node \&x, const base\-\_\-node \&n, const scalar\-\_\-type \&t=0) const 
-\begin{DoxyCompactList}\small\item\em funzione che valuta il flusso esatto in un dato nodo \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Funzione che valuta il flusso esatto in un dato nodo. \end{DoxyCompactList}\item 
 scalar\-\_\-type \hyperlink{classMediumData_a1f5a2647becdcd8db8ad4c1a9b79b29e}{source} (const base\-\_\-node \&x, const scalar\-\_\-type \&t=0) const 
-\begin{DoxyCompactList}\small\item\em funzione che valuta il termine sorgente in un dato nodo \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Funzione che valuta il termine sorgente in un dato nodo. \end{DoxyCompactList}\item 
 scalar\-\_\-type \hyperlink{classMediumData_aae75c00abbad84594130890eb34dafd9}{inv\-K\-Distribution11} (const base\-\_\-node \&x) const 
-\begin{DoxyCompactList}\small\item\em funzione che restituisce un'eventuale modulazione del coefficiente di permeabilità \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Funzione che restituisce un'eventuale modulazione del coefficiente di permeabilità. \end{DoxyCompactList}\item 
 scalar\-\_\-type \hyperlink{classMediumData_aef29ca88f4183c72f590abffcff1fc87}{inv\-K\-Distribution12} (const base\-\_\-node \&x) const 
-\begin{DoxyCompactList}\small\item\em funzione che restituisce un'eventuale modulazione del coefficiente di permeabilità \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Funzione che restituisce un'eventuale modulazione del coefficiente di permeabilità. \end{DoxyCompactList}\item 
 scalar\-\_\-type \hyperlink{classMediumData_a5298eacbba56d9f3d6bc6b2297cdac31}{inv\-K\-Distribution22} (const base\-\_\-node \&x) const 
-\begin{DoxyCompactList}\small\item\em funzione che restituisce un'eventuale modulazione del coefficiente di permeabilità \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Funzione che restituisce un'eventuale modulazione del coefficiente di permeabilità. \end{DoxyCompactList}\item 
 scalar\-\_\-type \hyperlink{classMediumData_a80235292e1223f4b68a37832f7be9828}{exact\-Initial} (const base\-\_\-node \&x) const 
 \item 
 scalar\-\_\-type \hyperlink{classMediumData_a72374c5da3834b4313280f5ae53406fb}{get\-Inv\-K} () const 
@@ -63,11 +63,11 @@ classe che contiene le informazioni sulle proprietà del mezzo e sui metodi di i
 
 
 \begin{DoxyParams}{Parametri}
-{\em data\-File} & variabile di tipo Get\-Pot che contiene il nome del file data \\
+{\em Get\-Pot\&} & data\-File\-: variabile di tipo Get\-Pot che contiene il nome del file data \\
 \hline
-{\em section} & nome della sezione corrispondente al mezzo \\
+{\em std\-::string\&} & section\-: nome della sezione corrispondente al mezzo \\
 \hline
-{\em section\-Domain} & noe della sezione del mezzo corrispondente alle caratteristiche del dominio\\
+{\em std\-::string\&} & section = \char`\"{}medium\-Data/\char`\"{}\-: nome della sezione del mezzo corrispondente alle caratteristiche del dominio, se non fornito è posto di default pari a medium\-Data/"\\
 \hline
 \end{DoxyParams}
 
@@ -105,11 +105,11 @@ classe che contiene le informazioni sulle proprietà del mezzo e sui metodi di i
 ) const}}\label{classMediumData_a41b88e8b0d9eb57c51e7aad518867ff1}
 
 
-funzione che valuta la soluzione esatta in un dato nodo 
+Funzione che valuta la soluzione esatta in un dato nodo. 
 
 
 \begin{DoxyParams}{Parametri}
-{\em x} & bgeot\-::base\-\_\-node, nodo geometrico \\
+{\em base\-\_\-node\&} & x\-: bgeot\-::base\-\_\-node, nodo geometrico \\
 \hline
 \end{DoxyParams}
 
@@ -135,13 +135,13 @@ funzione che valuta la soluzione esatta in un dato nodo
 ) const}}\label{classMediumData_a6f3d3b64009602eb22a7c54b74a33a34}
 
 
-funzione che valuta il flusso esatto in un dato nodo 
+Funzione che valuta il flusso esatto in un dato nodo. 
 
 
 \begin{DoxyParams}{Parametri}
-{\em x} & bgeot\-::base\-\_\-node, nodo geometrico \\
+{\em base\-\_\-node\&} & x\-: bgeot\-::base\-\_\-node, nodo geometrico \\
 \hline
-{\em n} & bgeot\-::base\-\_\-node, vettore normale \\
+{\em base\-\_\-node\&} & n\-: bgeot\-::base\-\_\-node, vettore normale \\
 \hline
 \end{DoxyParams}
 
@@ -186,11 +186,11 @@ funzione che valuta il flusso esatto in un dato nodo
 ) const}}\label{classMediumData_a9e2ebf4af56f981be28836750fd58a17}
 
 
-funzione che valuta la soluzione esatta in un dato nodo nella regione in cui level set $<$ 0 
+Funzione che valuta la soluzione esatta in un dato nodo nella regione in cui level set $<$ 0. 
 
 
 \begin{DoxyParams}{Parametri}
-{\em x} & bgeot\-::base\-\_\-node, nodo geometrico \\
+{\em base\-\_\-node\&} & x\-: bgeot\-::base\-\_\-node, nodo geometrico \\
 \hline
 \end{DoxyParams}
 
@@ -215,11 +215,11 @@ funzione che valuta la soluzione esatta in un dato nodo nella regione in cui lev
 ) const}}\label{classMediumData_adc228cb9d834aae8886ec520093a003a}
 
 
-funzione che valuta la soluzione esatta in un dato nodo nella regione in cui level set $>$ 0 
+Funzione che valuta la soluzione esatta in un dato nodo nella regione in cui level set $>$ 0. 
 
 
 \begin{DoxyParams}{Parametri}
-{\em x} & bgeot\-::base\-\_\-node, nodo geometrico \\
+{\em base\-\_\-node\&} & x\-: bgeot\-::base\-\_\-node, nodo geometrico \\
 \hline
 \end{DoxyParams}
 
@@ -243,9 +243,9 @@ funzione che valuta la soluzione esatta in un dato nodo nella regione in cui lev
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classMediumData_a72374c5da3834b4313280f5ae53406fb}
 
 \begin{DoxyCode}
-96     \{
-97         \textcolor{keywordflow}{return} M\_invK;
-98     \}
+97     \{
+98         \textcolor{keywordflow}{return} M\_invK;
+99     \}
 \end{DoxyCode}
 \hypertarget{classMediumData_a627f26f5f80bb4139a548e2d2cce1a47}{\index{Medium\-Data@{Medium\-Data}!get\-Penalty\-Scalar@{get\-Penalty\-Scalar}}
 \index{get\-Penalty\-Scalar@{get\-Penalty\-Scalar}!MediumData@{Medium\-Data}}
@@ -256,9 +256,9 @@ funzione che valuta la soluzione esatta in un dato nodo nella regione in cui lev
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classMediumData_a627f26f5f80bb4139a548e2d2cce1a47}
 
 \begin{DoxyCode}
-108     \{
-109         \textcolor{keywordflow}{return} M\_penaltyScalar;
-110     \}
+109     \{
+110         \textcolor{keywordflow}{return} M\_penaltyScalar;
+111     \}
 \end{DoxyCode}
 \hypertarget{classMediumData_ac1646aa22f5ed8ea92a14560dfc0905f}{\index{Medium\-Data@{Medium\-Data}!get\-Penalty\-Vector@{get\-Penalty\-Vector}}
 \index{get\-Penalty\-Vector@{get\-Penalty\-Vector}!MediumData@{Medium\-Data}}
@@ -269,9 +269,9 @@ funzione che valuta la soluzione esatta in un dato nodo nella regione in cui lev
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classMediumData_ac1646aa22f5ed8ea92a14560dfc0905f}
 
 \begin{DoxyCode}
-102     \{
-103         \textcolor{keywordflow}{return} M\_penaltyVector;
-104     \}
+103     \{
+104         \textcolor{keywordflow}{return} M\_penaltyVector;
+105     \}
 \end{DoxyCode}
 \hypertarget{classMediumData_aae75c00abbad84594130890eb34dafd9}{\index{Medium\-Data@{Medium\-Data}!inv\-K\-Distribution11@{inv\-K\-Distribution11}}
 \index{inv\-K\-Distribution11@{inv\-K\-Distribution11}!MediumData@{Medium\-Data}}
@@ -282,11 +282,11 @@ funzione che valuta la soluzione esatta in un dato nodo nella regione in cui lev
 ) const}}\label{classMediumData_aae75c00abbad84594130890eb34dafd9}
 
 
-funzione che restituisce un'eventuale modulazione del coefficiente di permeabilità 
+Funzione che restituisce un'eventuale modulazione del coefficiente di permeabilità. 
 
 
 \begin{DoxyParams}{Parametri}
-{\em x} & bgeot\-::base\-\_\-node, nodo geometrico \\
+{\em base\-\_\-node\&} & x\-: bgeot\-::base\-\_\-node, nodo geometrico \\
 \hline
 \end{DoxyParams}
 
@@ -309,11 +309,11 @@ funzione che restituisce un'eventuale modulazione del coefficiente di permeabili
 ) const}}\label{classMediumData_aef29ca88f4183c72f590abffcff1fc87}
 
 
-funzione che restituisce un'eventuale modulazione del coefficiente di permeabilità 
+Funzione che restituisce un'eventuale modulazione del coefficiente di permeabilità. 
 
 
 \begin{DoxyParams}{Parametri}
-{\em x} & bgeot\-::base\-\_\-node, nodo geometrico \\
+{\em base\-\_\-node\&} & x\-: bgeot\-::base\-\_\-node, nodo geometrico \\
 \hline
 \end{DoxyParams}
 
@@ -336,11 +336,11 @@ funzione che restituisce un'eventuale modulazione del coefficiente di permeabili
 ) const}}\label{classMediumData_a5298eacbba56d9f3d6bc6b2297cdac31}
 
 
-funzione che restituisce un'eventuale modulazione del coefficiente di permeabilità 
+Funzione che restituisce un'eventuale modulazione del coefficiente di permeabilità. 
 
 
 \begin{DoxyParams}{Parametri}
-{\em x} & bgeot\-::base\-\_\-node, nodo geometrico \\
+{\em base\-\_\-node\&} & x\-: bgeot\-::base\-\_\-node, nodo geometrico \\
 \hline
 \end{DoxyParams}
 
@@ -364,11 +364,11 @@ funzione che restituisce un'eventuale modulazione del coefficiente di permeabili
 ) const}}\label{classMediumData_a1f5a2647becdcd8db8ad4c1a9b79b29e}
 
 
-funzione che valuta il termine sorgente in un dato nodo 
+Funzione che valuta il termine sorgente in un dato nodo. 
 
 
 \begin{DoxyParams}{Parametri}
-{\em x} & bgeot\-::base\-\_\-node, nodo geometrico \\
+{\em base\-\_\-node\&} & x\-: bgeot\-::base\-\_\-node, nodo geometrico \\
 \hline
 \end{DoxyParams}
 

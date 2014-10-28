@@ -179,7 +179,7 @@ Membri pubblici</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Restituisce</dt><dd>M_vtkFolder: stringa col nome della cartella di esportazione </dd></dl>
+<dl class="section return"><dt>Restituisce</dt><dd>std::string&amp; M_vtkFolder: stringa col nome della cartella di esportazione </dd></dl>
 <div class="fragment"><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    {</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordflow">return</span> M_vtkFolder;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    }</div>
@@ -213,8 +213,8 @@ Membri pubblici</h2></td></tr>
 <p>Funzione che esporta le regioni della mesh. </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">mesh</td><td>mesh di supporto </td></tr>
-    <tr><td class="paramname">nameFile</td><td>nome del file su cui scrivere la soluzione </td></tr>
+    <tr><td class="paramname">getfem::mesh&amp;</td><td>mesh: mesh di supporto </td></tr>
+    <tr><td class="paramname">std::string&amp;</td><td>nameFile = "RegionMesh.vtk": nome del file su cui scrivere la soluzione, se non è dato è posto di default pari a "RegionMesh.vtk" </td></tr>
   </table>
   </dd>
 </dl>
@@ -289,8 +289,8 @@ Membri pubblici</h2></td></tr>
 <p>Funzione che esporta una matrice di tipo sparso. </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">matrix</td><td>matrice sparsa </td></tr>
-    <tr><td class="paramname">nameFile</td><td>nome del file in cui esportare </td></tr>
+    <tr><td class="paramname">sparseMatrixPtr_Type&amp;</td><td>matrix: matrice sparsa </td></tr>
+    <tr><td class="paramname">td::string&amp;</td><td>nameFile: nome del file in cui esportare </td></tr>
   </table>
   </dd>
 </dl>
@@ -327,8 +327,8 @@ Membri pubblici</h2></td></tr>
 <p>Funzione che esporta un vettore di scalari. </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">vector</td><td>vettore di scalari </td></tr>
-    <tr><td class="paramname">nameFile</td><td>nome del file in cui esportare </td></tr>
+    <tr><td class="paramname">scalarVectorPtr_Type&amp;</td><td>vector: vettore di scalari </td></tr>
+    <tr><td class="paramname">std::string&amp;</td><td>nameFile: nome del file in cui esportare </td></tr>
   </table>
   </dd>
 </dl>
@@ -351,7 +351,7 @@ Membri pubblici</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generato Mar 28 Ott 2014 09:35:35 per Progetto PACS da &#160;<a href="http://www.doxygen.org/index.html">
+Generato Mar 28 Ott 2014 10:32:54 per Progetto PACS da &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

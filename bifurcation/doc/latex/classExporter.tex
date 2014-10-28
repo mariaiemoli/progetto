@@ -75,7 +75,7 @@ Costruttore che fissa la cartella dove esportare i risultati.
 \end{DoxyParamCaption}
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classExporter_a2771781a7f08fe8518973a6ba712a391}
 \begin{DoxyReturn}{Restituisce}
-M\-\_\-vtk\-Folder\-: stringa col nome della cartella di esportazione 
+std\-::string\& M\-\_\-vtk\-Folder\-: stringa col nome della cartella di esportazione 
 \end{DoxyReturn}
 
 \begin{DoxyCode}
@@ -97,9 +97,9 @@ Funzione che esporta le regioni della mesh.
 
 
 \begin{DoxyParams}{Parametri}
-{\em mesh} & mesh di supporto \\
+{\em getfem\-::mesh\&} & mesh\-: mesh di supporto \\
 \hline
-{\em name\-File} & nome del file su cui scrivere la soluzione \\
+{\em std\-::string\&} & name\-File = \char`\"{}\-Region\-Mesh.\-vtk\char`\"{}\-: nome del file su cui scrivere la soluzione, se non è dato è posto di default pari a \char`\"{}\-Region\-Mesh.\-vtk\char`\"{} \\
 \hline
 \end{DoxyParams}
 
@@ -157,9 +157,9 @@ Funzione che esporta una matrice di tipo sparso.
 
 
 \begin{DoxyParams}{Parametri}
-{\em matrix} & matrice sparsa \\
+{\em sparse\-Matrix\-Ptr\-\_\-\-Type\&} & matrix\-: matrice sparsa \\
 \hline
-{\em name\-File} & nome del file in cui esportare \\
+{\em td\-::string\&} & name\-File\-: nome del file in cui esportare \\
 \hline
 \end{DoxyParams}
 
@@ -182,9 +182,9 @@ Funzione che esporta un vettore di scalari.
 
 
 \begin{DoxyParams}{Parametri}
-{\em vector} & vettore di scalari \\
+{\em scalar\-Vector\-Ptr\-\_\-\-Type\&} & vector\-: vettore di scalari \\
 \hline
-{\em name\-File} & nome del file in cui esportare \\
+{\em std\-::string\&} & name\-File\-: nome del file in cui esportare \\
 \hline
 \end{DoxyParams}
 

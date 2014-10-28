@@ -16,17 +16,17 @@ Fracture\-Set.\-h.
 \hyperlink{classFracturesSet_a01682537586e273be19fd789c99cfa87}{Fractures\-Set} ()
 \begin{DoxyCompactList}\small\item\em Fracture\-Set.\-cc. \end{DoxyCompactList}\item 
 void \hyperlink{classFracturesSet_a451f55adca2cd36076294c3c3d2d5b6d}{init} (const Get\-Pot \&data\-File, const std\-::string \&section, const size\-\_\-type \&num\-Fractures, getfem\-::mesh \&mesh, getfem\-::mesh\-\_\-level\-\_\-set \&mesh\-Level\-Set, const std\-::string \&integration\-Type\-Velocity, const getfem\-::mesh\-\_\-fem \&mesh\-F\-E\-M\-Scalar, const getfem\-::mesh\-\_\-fem \&mesh\-F\-E\-M\-Vector)
-\begin{DoxyCompactList}\small\item\em funzione che inizializza l'insieme delle fratture definendo un vettore con le fratture e una classe delle intersezioni \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Funzione che inizializza l'insieme delle fratture definendo un vettore con le fratture e una classe delle intersezioni. \end{DoxyCompactList}\item 
 size\-\_\-type \hyperlink{classFracturesSet_ad0d608408d6b65c83c2eb013d4daacdf}{get\-Number\-Fractures} () const 
-\item 
+\begin{DoxyCompactList}\small\item\em Funzione che restituisce il numero totale di fratture. \end{DoxyCompactList}\item 
 const \hyperlink{FractureHandler_8h_af23fb7a30aaff864bd42587af4f1e78a}{Fracture\-Handler\-Ptr\-\_\-\-Type} \& \hyperlink{classFracturesSet_afa7100ac44d32e51e193380bf6d9d5f9}{get\-Fracture} (const size\-\_\-type \&f) const 
-\item 
+\begin{DoxyCompactList}\small\item\em Funzione che restituisce il puntatore ad una frattura. \end{DoxyCompactList}\item 
 \hyperlink{FractureHandler_8h_af23fb7a30aaff864bd42587af4f1e78a}{Fracture\-Handler\-Ptr\-\_\-\-Type} \& \hyperlink{classFracturesSet_a12773c5c1e5a11703ed905ea6e47fcae}{get\-Fracture} (const size\-\_\-type \&f)
-\item 
+\begin{DoxyCompactList}\small\item\em Funzione che restituisce il puntatore ad una frattura. \end{DoxyCompactList}\item 
 const \hyperlink{FractureIntersect_8h_a5486417d11465ffafe3034ce22c1c85b}{Fracture\-Intersect\-Ptr\-\_\-\-Type} \& \hyperlink{classFracturesSet_ae1d7e53adc5d8acaad0a37dd227aee03}{get\-Intersections} () const 
-\item 
+\begin{DoxyCompactList}\small\item\em Funzione che retituisce l'insieme di tutte le intersezioni. \end{DoxyCompactList}\item 
 \hyperlink{FractureIntersect_8h_a5486417d11465ffafe3034ce22c1c85b}{Fracture\-Intersect\-Ptr\-\_\-\-Type} \& \hyperlink{classFracturesSet_a36e5a26e790e439e3aa8e516838c28ce}{get\-Intersections} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Funzione che retituisce l'insieme di tutte le intersezioni. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Descrizione dettagliata}
@@ -64,10 +64,22 @@ Fracture\-Set.\-cc.
 \end{DoxyParamCaption}
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFracturesSet_afa7100ac44d32e51e193380bf6d9d5f9}
 
+
+Funzione che restituisce il puntatore ad una frattura. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em size\-\_\-type\&} & f\-: id della frattura che mi interessa \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Fracture\-Handler\-Ptr\-\_\-\-Type\& M\-\_\-fractures\mbox{[}f\mbox{]}\-: frattura di indice \char`\"{} f \char`\"{} nell'insieme delle fratture 
+\end{DoxyReturn}
+
 \begin{DoxyCode}
-44     \{
-45             \textcolor{keywordflow}{return} M\_fractures[f];
-46     \}
+53     \{
+54             \textcolor{keywordflow}{return} M\_fractures[f];
+55     \}
 \end{DoxyCode}
 \hypertarget{classFracturesSet_a12773c5c1e5a11703ed905ea6e47fcae}{\index{Fractures\-Set@{Fractures\-Set}!get\-Fracture@{get\-Fracture}}
 \index{get\-Fracture@{get\-Fracture}!FracturesSet@{Fractures\-Set}}
@@ -77,10 +89,22 @@ Fracture\-Set.\-cc.
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFracturesSet_a12773c5c1e5a11703ed905ea6e47fcae}
 
+
+Funzione che restituisce il puntatore ad una frattura. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em size\-\_\-type\&} & f\-: id della frattura che mi interessa \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Fracture\-Handler\-Ptr\-\_\-\-Type\& M\-\_\-fractures\mbox{[}f\mbox{]}\-: frattura di indice \char`\"{} f \char`\"{} nell'insieme delle fratture 
+\end{DoxyReturn}
+
 \begin{DoxyCode}
-50     \{
-51             \textcolor{keywordflow}{return} M\_fractures[f];
-52     \}
+64     \{
+65             \textcolor{keywordflow}{return} M\_fractures[f];
+66     \}
 \end{DoxyCode}
 \hypertarget{classFracturesSet_ae1d7e53adc5d8acaad0a37dd227aee03}{\index{Fractures\-Set@{Fractures\-Set}!get\-Intersections@{get\-Intersections}}
 \index{get\-Intersections@{get\-Intersections}!FracturesSet@{Fractures\-Set}}
@@ -90,10 +114,17 @@ Fracture\-Set.\-cc.
 \end{DoxyParamCaption}
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFracturesSet_ae1d7e53adc5d8acaad0a37dd227aee03}
 
+
+Funzione che retituisce l'insieme di tutte le intersezioni. 
+
+\begin{DoxyReturn}{Restituisce}
+Fracture\-Intersect\-Ptr\-\_\-\-Type\& M\-\_\-intersections\-: puntatore alla classe delle intersezioni 
+\end{DoxyReturn}
+
 \begin{DoxyCode}
-56     \{
-57             \textcolor{keywordflow}{return} M\_intersections;
-58     \}
+74     \{
+75             \textcolor{keywordflow}{return} M\_intersections;
+76     \}
 \end{DoxyCode}
 \hypertarget{classFracturesSet_a36e5a26e790e439e3aa8e516838c28ce}{\index{Fractures\-Set@{Fractures\-Set}!get\-Intersections@{get\-Intersections}}
 \index{get\-Intersections@{get\-Intersections}!FracturesSet@{Fractures\-Set}}
@@ -103,10 +134,17 @@ Fracture\-Set.\-cc.
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFracturesSet_a36e5a26e790e439e3aa8e516838c28ce}
 
+
+Funzione che retituisce l'insieme di tutte le intersezioni. 
+
+\begin{DoxyReturn}{Restituisce}
+Fracture\-Intersect\-Ptr\-\_\-\-Type\& M\-\_\-intersections\-: puntatore alla classe delle intersezioni 
+\end{DoxyReturn}
+
 \begin{DoxyCode}
-62     \{
-63             \textcolor{keywordflow}{return} M\_intersections;
-64     \}
+85     \{
+86             \textcolor{keywordflow}{return} M\_intersections;
+87     \}
 \end{DoxyCode}
 \hypertarget{classFracturesSet_ad0d608408d6b65c83c2eb013d4daacdf}{\index{Fractures\-Set@{Fractures\-Set}!get\-Number\-Fractures@{get\-Number\-Fractures}}
 \index{get\-Number\-Fractures@{get\-Number\-Fractures}!FracturesSet@{Fractures\-Set}}
@@ -116,10 +154,14 @@ Fracture\-Set.\-cc.
 \end{DoxyParamCaption}
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFracturesSet_ad0d608408d6b65c83c2eb013d4daacdf}
 
+
+Funzione che restituisce il numero totale di fratture. 
+
+
 \begin{DoxyCode}
-38     \{
-39             \textcolor{keywordflow}{return} M\_fractures.size();
-40     \}
+42     \{
+43             \textcolor{keywordflow}{return} M\_fractures.size();
+44     \}
 \end{DoxyCode}
 \hypertarget{classFracturesSet_a451f55adca2cd36076294c3c3d2d5b6d}{\index{Fractures\-Set@{Fractures\-Set}!init@{init}}
 \index{init@{init}!FracturesSet@{Fractures\-Set}}
@@ -137,7 +179,7 @@ Fracture\-Set.\-cc.
 )}}\label{classFracturesSet_a451f55adca2cd36076294c3c3d2d5b6d}
 
 
-funzione che inizializza l'insieme delle fratture definendo un vettore con le fratture e una classe delle intersezioni 
+Funzione che inizializza l'insieme delle fratture definendo un vettore con le fratture e una classe delle intersezioni. 
 
 
 \begin{DoxyCode}

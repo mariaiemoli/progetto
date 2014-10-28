@@ -29,23 +29,23 @@ size\-\_\-type $>$ \hyperlink{classFractureIntersect_aea039e89cb4b4314c25c7a3626
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{classFractureIntersect_a2416c29105bde5cbf9032b04db47ba31}{Fracture\-Intersect} ()
-\begin{DoxyCompactList}\small\item\em Costruttore nullo l'idea è quella di assegnare dei flags ad ogni sottoregione per poter distinguere il tipo di intersezione in particolare abbiamo tre tipi di intersezione\-: \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Costruttore nullo. \end{DoxyCompactList}\item 
 void \hyperlink{classFractureIntersect_a2c2e9ee88e96b0fafffc596237b44549}{construct\-Intesection} (const Get\-Pot \&data\-File, getfem\-::mesh\-\_\-level\-\_\-set \&mesh\-Level\-Set, const \hyperlink{FractureHandler_8h_a2f0b57e18ecf89912d7de0c87158009e}{Fracture\-Ptr\-Container\-\_\-\-Type} \&fractures)
 \begin{DoxyCompactList}\small\item\em Funzione che costruisce la classe delle intersezioni. \end{DoxyCompactList}\item 
 \hyperlink{IntersectData_8h_a822ec3b760dfb603e1cf0bfe3ad5636a}{Intersect\-Data\-Container\-\_\-\-Type} \& \hyperlink{classFractureIntersect_a891c902329fde6f8de70bb1bf371ccbc}{get\-Intersections\-Of\-Type} (\hyperlink{classFractureIntersect_a9a4e4a784fa4c8e359767ed543f89dc5}{Intersection\-Type} type)
 \begin{DoxyCompactList}\small\item\em Funzione che restituisce tutte le intersezioni del tipo richiesto. \end{DoxyCompactList}\item 
 \hyperlink{IntersectData_8h_a822ec3b760dfb603e1cf0bfe3ad5636a}{Intersect\-Data\-Container\-\_\-\-Type} \hyperlink{classFractureIntersect_a248df8f326f844e34d807234efdfd693}{get\-Cross\-Intersections} () const 
-\begin{DoxyCompactList}\small\item\em Funzione che restituisce tutte le intersezioni di tipo Cross. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Funzione che restituisce tutte le intersezioni di tipo \char`\"{} Cross \char`\"{}. \end{DoxyCompactList}\item 
 \hyperlink{IntersectData_8h_a822ec3b760dfb603e1cf0bfe3ad5636a}{Intersect\-Data\-Container\-\_\-\-Type} \hyperlink{classFractureIntersect_a18ff664767b7e8ffa876b80a6100e74d}{get\-Bifurcation\-Intersections} () const 
-\begin{DoxyCompactList}\small\item\em Funzione che restituisce tutte le intersezioni di tipo Bifurcation. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Funzione che restituisce tutte le intersezioni di tipo \char`\"{} Bifurcation \char`\"{}. \end{DoxyCompactList}\item 
 \hyperlink{classFractureIntersect_a4eea7d0aca48cdd36ea1756e75280332}{map\-Intersection\-\_\-\-Type} \& \hyperlink{classFractureIntersect_a1b785b0ed94d3a403b9f0e21f092b4ab}{get\-Intersections} ()
-\begin{DoxyCompactList}\small\item\em Funzione che restituisce tutto l'insieme delle intersezioni con i rispettivi tipi ( una mappa ) \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Funzione che restituisce tutto l'insieme delle intersezioni con i rispettivi tipi ( una mappa ). \end{DoxyCompactList}\item 
 size\-\_\-type \hyperlink{classFractureIntersect_a1cd070dda9460d884c1b1d92edfecc12}{get\-Number\-Intersection\-Of\-Type} (\hyperlink{classFractureIntersect_a9a4e4a784fa4c8e359767ed543f89dc5}{Intersection\-Type} type) const 
 \begin{DoxyCompactList}\small\item\em Funzione restituisce il numero di intersezioni trovate del tipo type. \end{DoxyCompactList}\item 
 size\-\_\-type \hyperlink{classFractureIntersect_a8d9f707319b9b83744b6e03f19003734}{get\-Number\-Cross} () const 
-\begin{DoxyCompactList}\small\item\em Funzione che restituisce il numero di intersezioni trovate di tipo Cross. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Funzione che restituisce il numero di intersezioni trovate di tipo \char`\"{} Cross \char`\"{}. \end{DoxyCompactList}\item 
 size\-\_\-type \hyperlink{classFractureIntersect_afba7c92096a4b92a27fcb4f1158c7279}{get\-Number\-Bifurcation} () const 
-\begin{DoxyCompactList}\small\item\em Funzione che restituisce il numero di intersezioni trovate di tipo Bifurcation. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Funzione che restituisce il numero di intersezioni trovate di tipo \char`\"{} Bifurcation \char`\"{}. \end{DoxyCompactList}\item 
 size\-\_\-type \hyperlink{classFractureIntersect_aaff97a1338251e796ce44db631961459}{get\-Number\-Intersections} () const 
 \begin{DoxyCompactList}\small\item\em Funzione che restituisce il numero totale di intersezioni. \end{DoxyCompactList}\item 
 size\-\_\-type \hyperlink{classFractureIntersect_a86195f7e54a79412d2d54fa5efad9af2}{get\-Number\-Type} () const 
@@ -108,11 +108,11 @@ Classe che contiene tutte le intersezioni divise in base al loro tipo ( Cross, B
 )}}\label{classFractureIntersect_a2416c29105bde5cbf9032b04db47ba31}
 
 
-Costruttore nullo l'idea è quella di assegnare dei flags ad ogni sottoregione per poter distinguere il tipo di intersezione in particolare abbiamo tre tipi di intersezione\-: 
+Costruttore nullo. 
 
 \hyperlink{FractureIntersect_8cc}{Fracture\-Intersect.\-cc}.
 
-
+L'idea è quella di assegnare dei flags ad ogni sottoregione per poter distinguere il tipo di intersezione. In particolare abbiamo tre tipi di intersezione\-:
 \begin{DoxyItemize}
 \item Cross\-: quando due fratture di intersecano in un punto formando una X
 \item Bifurcation\-: quando tre fratture si intersecano in un punto comune formando una Y
@@ -159,7 +159,16 @@ Costruttore nullo l'idea è quella di assegnare dei flags ad ogni sottoregione p
 
 Funzione che costruisce la classe delle intersezioni. 
 
-Per ogni elemento della mesh di supporto verifica quanti level set lo attraversano. Se vi passano due o più fratture lo considero come una possibile intersezione e verifico se effettivamente lo è e di che tipo 
+Per ogni elemento della mesh di supporto verifica quanti level set lo attraversano. Se vi passano due o più fratture lo considero come una possibile intersezione e verifico se effettivamente lo è e di che tipo. 
+\begin{DoxyParams}{Parametri}
+{\em Get\-Pot\&} & data\-File\-: dome del file data dove leggere i dati \\
+\hline
+{\em getfem\-::mesh\-\_\-level\-\_\-set\&} & mesh\-Level\-Set\-: mesh che tiene conto della presenza dei levelset e che va aggiornata in presenza di intersezioni \\
+\hline
+{\em Fracture\-Ptr\-Container\-\_\-\-Type\&} & fractures\-: puntatore all'insieme di tutte le fratture \\
+\hline
+\end{DoxyParams}
+
 \begin{DoxyCode}
 37 \{
 38     \textcolor{keyword}{const} size\_type numFractures = fractures.size();
@@ -445,10 +454,10 @@ Per ogni elemento della mesh di supporto verifica quanti level set lo attraversa
 ) const}}\label{classFractureIntersect_a18ff664767b7e8ffa876b80a6100e74d}
 
 
-Funzione che restituisce tutte le intersezioni di tipo Bifurcation. 
+Funzione che restituisce tutte le intersezioni di tipo \char`\"{} Bifurcation \char`\"{}. 
 
 \begin{DoxyReturn}{Restituisce}
-Intersect\-Data\-Container\-\_\-\-Type\-: std\-::vector $<$ Intersect\-Data\-\_\-\-Type $>$ 
+Intersect\-Data\-Container\-\_\-\-Type\-: restituisce il vettore di tutte le intersezioni del tipo \char`\"{} Bifurcation \char`\"{} 
 \end{DoxyReturn}
 
 \begin{DoxyCode}
@@ -477,10 +486,10 @@ Intersect\-Data\-Container\-\_\-\-Type\-: std\-::vector $<$ Intersect\-Data\-\_\
 ) const}}\label{classFractureIntersect_a248df8f326f844e34d807234efdfd693}
 
 
-Funzione che restituisce tutte le intersezioni di tipo Cross. 
+Funzione che restituisce tutte le intersezioni di tipo \char`\"{} Cross \char`\"{}. 
 
 \begin{DoxyReturn}{Restituisce}
-Intersect\-Data\-Container\-\_\-\-Type\-: std\-::vector $<$ Intersect\-Data\-\_\-\-Type $>$ 
+Intersect\-Data\-Container\-\_\-\-Type\-: restituisce il vettore di tutte le intersezioni del tipo \char`\"{} Cross \char`\"{} 
 \end{DoxyReturn}
 
 \begin{DoxyCode}
@@ -509,16 +518,16 @@ Intersect\-Data\-Container\-\_\-\-Type\-: std\-::vector $<$ Intersect\-Data\-\_\
 )\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureIntersect_a1b785b0ed94d3a403b9f0e21f092b4ab}
 
 
-Funzione che restituisce tutto l'insieme delle intersezioni con i rispettivi tipi ( una mappa ) 
+Funzione che restituisce tutto l'insieme delle intersezioni con i rispettivi tipi ( una mappa ). 
 
 \begin{DoxyReturn}{Restituisce}
 map\-Intersection\-\_\-\-Type\-: std\-::map $<$ Intersection\-Type, Intersect\-Data\-Container\-\_\-\-Type $>$ 
 \end{DoxyReturn}
 
 \begin{DoxyCode}
-89         \{
-90                 \textcolor{keywordflow}{return} M\_intersections;
-91         \}
+93         \{
+94                 \textcolor{keywordflow}{return} M\_intersections;
+95         \}
 \end{DoxyCode}
 \hypertarget{classFractureIntersect_a891c902329fde6f8de70bb1bf371ccbc}{\index{Fracture\-Intersect@{Fracture\-Intersect}!get\-Intersections\-Of\-Type@{get\-Intersections\-Of\-Type}}
 \index{get\-Intersections\-Of\-Type@{get\-Intersections\-Of\-Type}!FractureIntersect@{Fracture\-Intersect}}
@@ -533,17 +542,17 @@ Funzione che restituisce tutte le intersezioni del tipo richiesto.
 
 
 \begin{DoxyParams}{Parametri}
-{\em Intersection\-Type} & enum Intersection\-Type \{ Parallel = 400000, Cross = 500000, Bifurcation = 600000 \}; \\
+{\em Intersection\-Type} & type\-: contiene il tipo delle intersezioni che mi interessano \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Restituisce}
-Intersect\-Data\-Container\-\_\-\-Type\-: std\-::vector $<$ Intersect\-Data\-\_\-\-Type $>$ 
+Intersect\-Data\-Container\-\_\-\-Type M\-\_\-intersections \mbox{[} type \mbox{]}\-: restituisce il vettore di tutte le intersezioni del tipo richiesto 
 \end{DoxyReturn}
 
 \begin{DoxyCode}
-65         \{
-66                 \textcolor{keywordflow}{return} M\_intersections [ type ];
-67         \}
+69         \{
+70                 \textcolor{keywordflow}{return} M\_intersections [ type ];
+71         \}
 \end{DoxyCode}
 \hypertarget{classFractureIntersect_afba7c92096a4b92a27fcb4f1158c7279}{\index{Fracture\-Intersect@{Fracture\-Intersect}!get\-Number\-Bifurcation@{get\-Number\-Bifurcation}}
 \index{get\-Number\-Bifurcation@{get\-Number\-Bifurcation}!FractureIntersect@{Fracture\-Intersect}}
@@ -554,7 +563,7 @@ Intersect\-Data\-Container\-\_\-\-Type\-: std\-::vector $<$ Intersect\-Data\-\_\
 ) const}}\label{classFractureIntersect_afba7c92096a4b92a27fcb4f1158c7279}
 
 
-Funzione che restituisce il numero di intersezioni trovate di tipo Bifurcation. 
+Funzione che restituisce il numero di intersezioni trovate di tipo \char`\"{} Bifurcation \char`\"{}. 
 
 
 \begin{DoxyCode}
@@ -585,7 +594,7 @@ Funzione che restituisce il numero di intersezioni trovate di tipo Bifurcation.
 ) const}}\label{classFractureIntersect_a8d9f707319b9b83744b6e03f19003734}
 
 
-Funzione che restituisce il numero di intersezioni trovate di tipo Cross. 
+Funzione che restituisce il numero di intersezioni trovate di tipo \char`\"{} Cross \char`\"{}. 
 
 
 \begin{DoxyCode}
@@ -621,7 +630,7 @@ Funzione restituisce il numero di intersezioni trovate del tipo type.
 
 
 \begin{DoxyParams}{Parametri}
-{\em Intersection\-Type} & enum Intersection\-Type \{ Parallel = 400000, Cross = 500000, Bifurcation = 600000 \}; \\
+{\em Intersection\-Type} & enum Intersection\-Type \{ Parallel = 400000, Cross = 500000, Bifurcation = 600000 \}, contiene il tipo delle intersezioni che mi interessano \\
 \hline
 \end{DoxyParams}
 

@@ -26,9 +26,9 @@ scalar\-\_\-type \hyperlink{classFractureData_a31383de9b3236dd9a2af7b113cab88eb}
 scalar\-\_\-type \hyperlink{classFractureData_acf5e3a5d756aaf5b1ec7f446f388cf15}{concentration\-Initial\-Condition} (const base\-\_\-node \&x)
 \item 
 scalar\-\_\-type \hyperlink{classFractureData_a0aaeeb3d9eedd46175759cd6b9536484}{eta\-Normal\-Distribution} (const base\-\_\-node \&x)
-\item 
+\begin{DoxyCompactList}\small\item\em Funzione che restituisce un'eventuale modulazione del coefficiente di permeabilità in direzione normale. \end{DoxyCompactList}\item 
 scalar\-\_\-type \hyperlink{classFractureData_a0f989b64832a1f0fc77632c6803f102c}{eta\-Tangential\-Distribution} (const base\-\_\-node \&x)
-\item 
+\begin{DoxyCompactList}\small\item\em Funzione che restituisce un'eventuale modulazione del coefficiente di permeabilità in direzione tangenziale. \end{DoxyCompactList}\item 
 scalar\-\_\-type \hyperlink{classFractureData_a4ae566f9148893e47279097cab215e7b}{mu\-Normal\-Distribution} (const base\-\_\-node \&x)
 \item 
 scalar\-\_\-type \hyperlink{classFractureData_a9a3e1a75231b55be01ad198b824c0d56}{mu\-Tangential\-Distribution} (const base\-\_\-node \&x)
@@ -258,6 +258,10 @@ Sostanzialmente questa classe ci serve per partire dal file data e portare tutte
 \end{DoxyParamCaption}
 )}}\label{classFractureData_a0aaeeb3d9eedd46175759cd6b9536484}
 
+
+Funzione che restituisce un'eventuale modulazione del coefficiente di permeabilità in direzione normale. 
+
+
 \begin{DoxyCode}
 77 \{
 78     M\_parser.\hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString} ( M\_etaNormalDistribution );
@@ -272,6 +276,10 @@ Sostanzialmente questa classe ci serve per partire dal file data e portare tutte
 \item[{const base\-\_\-node \&}]{x}
 \end{DoxyParamCaption}
 )}}\label{classFractureData_a0f989b64832a1f0fc77632c6803f102c}
+
+
+Funzione che restituisce un'eventuale modulazione del coefficiente di permeabilità in direzione tangenziale. 
+
 
 \begin{DoxyCode}
 85 \{
@@ -310,9 +318,9 @@ Sostanzialmente questa classe ci serve per partire dal file data e portare tutte
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureData_a7b75512224a34953960a9bd09f1af661}
 
 \begin{DoxyCode}
-110     \{
-111         \textcolor{keywordflow}{return} M\_csi0;
-112     \}
+116     \{
+117         \textcolor{keywordflow}{return} M\_csi0;
+118     \}
 \end{DoxyCode}
 \hypertarget{classFractureData_a9acc76c77282d4b5d0cdca18c2b1b9ea}{\index{Fracture\-Data@{Fracture\-Data}!get\-Eta\-Normal@{get\-Eta\-Normal}}
 \index{get\-Eta\-Normal@{get\-Eta\-Normal}!FractureData@{Fracture\-Data}}
@@ -323,9 +331,9 @@ Sostanzialmente questa classe ci serve per partire dal file data e portare tutte
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureData_a9acc76c77282d4b5d0cdca18c2b1b9ea}
 
 \begin{DoxyCode}
-86     \{
-87         \textcolor{keywordflow}{return} M\_etaNormal;
-88     \}
+92     \{
+93         \textcolor{keywordflow}{return} M\_etaNormal;
+94     \}
 \end{DoxyCode}
 \hypertarget{classFractureData_a7378053b4009825b4a2957484cb2a5e8}{\index{Fracture\-Data@{Fracture\-Data}!get\-Eta\-Tangential@{get\-Eta\-Tangential}}
 \index{get\-Eta\-Tangential@{get\-Eta\-Tangential}!FractureData@{Fracture\-Data}}
@@ -336,9 +344,9 @@ Sostanzialmente questa classe ci serve per partire dal file data e portare tutte
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureData_a7378053b4009825b4a2957484cb2a5e8}
 
 \begin{DoxyCode}
-92     \{
-93         \textcolor{keywordflow}{return} M\_etaTangential;
-94     \}
+98     \{
+99         \textcolor{keywordflow}{return} M\_etaTangential;
+100     \}
 \end{DoxyCode}
 \hypertarget{classFractureData_a606c22e054fdb5f8602ce39fa6ae15cc}{\index{Fracture\-Data@{Fracture\-Data}!get\-F\-E\-M\-Type\-Linear@{get\-F\-E\-M\-Type\-Linear}}
 \index{get\-F\-E\-M\-Type\-Linear@{get\-F\-E\-M\-Type\-Linear}!FractureData@{Fracture\-Data}}
@@ -349,9 +357,9 @@ Sostanzialmente questa classe ci serve per partire dal file data e portare tutte
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureData_a606c22e054fdb5f8602ce39fa6ae15cc}
 
 \begin{DoxyCode}
-182     \{
-183         \textcolor{keywordflow}{return} M\_fEMTypeLinear;
-184     \}
+188     \{
+189         \textcolor{keywordflow}{return} M\_fEMTypeLinear;
+190     \}
 \end{DoxyCode}
 \hypertarget{classFractureData_a643b9a8a33405ec7aaa6b5612cb81d57}{\index{Fracture\-Data@{Fracture\-Data}!get\-F\-E\-M\-Type\-Pressure@{get\-F\-E\-M\-Type\-Pressure}}
 \index{get\-F\-E\-M\-Type\-Pressure@{get\-F\-E\-M\-Type\-Pressure}!FractureData@{Fracture\-Data}}
@@ -362,9 +370,9 @@ Sostanzialmente questa classe ci serve per partire dal file data e portare tutte
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureData_a643b9a8a33405ec7aaa6b5612cb81d57}
 
 \begin{DoxyCode}
-170     \{
-171         \textcolor{keywordflow}{return} M\_fEMTypePressure;
-172     \}
+176     \{
+177         \textcolor{keywordflow}{return} M\_fEMTypePressure;
+178     \}
 \end{DoxyCode}
 \hypertarget{classFractureData_a7396b67399a1ae8e5550841907c0dcb5}{\index{Fracture\-Data@{Fracture\-Data}!get\-F\-E\-M\-Type\-Velocity@{get\-F\-E\-M\-Type\-Velocity}}
 \index{get\-F\-E\-M\-Type\-Velocity@{get\-F\-E\-M\-Type\-Velocity}!FractureData@{Fracture\-Data}}
@@ -375,9 +383,9 @@ Sostanzialmente questa classe ci serve per partire dal file data e portare tutte
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureData_a7396b67399a1ae8e5550841907c0dcb5}
 
 \begin{DoxyCode}
-176     \{
-177         \textcolor{keywordflow}{return} M\_fEMTypeVelocity;
-178     \}
+182     \{
+183         \textcolor{keywordflow}{return} M\_fEMTypeVelocity;
+184     \}
 \end{DoxyCode}
 \hypertarget{classFractureData_a9333d8e89dc92023d97a48c1905ada76}{\index{Fracture\-Data@{Fracture\-Data}!get\-Integration\-Type\-Pressure@{get\-Integration\-Type\-Pressure}}
 \index{get\-Integration\-Type\-Pressure@{get\-Integration\-Type\-Pressure}!FractureData@{Fracture\-Data}}
@@ -388,9 +396,9 @@ Sostanzialmente questa classe ci serve per partire dal file data e portare tutte
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureData_a9333d8e89dc92023d97a48c1905ada76}
 
 \begin{DoxyCode}
-158     \{
-159         \textcolor{keywordflow}{return} M\_integrationTypePressure;
-160     \}
+164     \{
+165         \textcolor{keywordflow}{return} M\_integrationTypePressure;
+166     \}
 \end{DoxyCode}
 \hypertarget{classFractureData_a8a8a198482de6bf4104746bc1d0510c6}{\index{Fracture\-Data@{Fracture\-Data}!get\-Integration\-Type\-Velocity@{get\-Integration\-Type\-Velocity}}
 \index{get\-Integration\-Type\-Velocity@{get\-Integration\-Type\-Velocity}!FractureData@{Fracture\-Data}}
@@ -401,9 +409,9 @@ Sostanzialmente questa classe ci serve per partire dal file data e portare tutte
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureData_a8a8a198482de6bf4104746bc1d0510c6}
 
 \begin{DoxyCode}
-152     \{
-153         \textcolor{keywordflow}{return} M\_integrationTypeVelocity;
-154     \}
+158     \{
+159         \textcolor{keywordflow}{return} M\_integrationTypeVelocity;
+160     \}
 \end{DoxyCode}
 \hypertarget{classFractureData_abaebcf16d83713858e25837939ad3161}{\index{Fracture\-Data@{Fracture\-Data}!get\-Length\-Abscissa@{get\-Length\-Abscissa}}
 \index{get\-Length\-Abscissa@{get\-Length\-Abscissa}!FractureData@{Fracture\-Data}}
@@ -414,9 +422,9 @@ Sostanzialmente questa classe ci serve per partire dal file data e portare tutte
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureData_abaebcf16d83713858e25837939ad3161}
 
 \begin{DoxyCode}
-116     \{
-117         \textcolor{keywordflow}{return} M\_lengthAbscissa;
-118     \}
+122     \{
+123         \textcolor{keywordflow}{return} M\_lengthAbscissa;
+124     \}
 \end{DoxyCode}
 \hypertarget{classFractureData_a905e953f685b1329ddcc7ee56f8302b1}{\index{Fracture\-Data@{Fracture\-Data}!get\-Length\-Ordinate@{get\-Length\-Ordinate}}
 \index{get\-Length\-Ordinate@{get\-Length\-Ordinate}!FractureData@{Fracture\-Data}}
@@ -427,9 +435,9 @@ Sostanzialmente questa classe ci serve per partire dal file data e portare tutte
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureData_a905e953f685b1329ddcc7ee56f8302b1}
 
 \begin{DoxyCode}
-122     \{
-123         \textcolor{keywordflow}{return} M\_lengthOrdinate;
-124     \}
+128     \{
+129         \textcolor{keywordflow}{return} M\_lengthOrdinate;
+130     \}
 \end{DoxyCode}
 \hypertarget{classFractureData_a79747fff53da9d858950d83ad0114288}{\index{Fracture\-Data@{Fracture\-Data}!get\-Length\-Quota@{get\-Length\-Quota}}
 \index{get\-Length\-Quota@{get\-Length\-Quota}!FractureData@{Fracture\-Data}}
@@ -440,9 +448,9 @@ Sostanzialmente questa classe ci serve per partire dal file data e portare tutte
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureData_a79747fff53da9d858950d83ad0114288}
 
 \begin{DoxyCode}
-128     \{
-129         \textcolor{keywordflow}{return} M\_lengthQuota;
-130     \}
+134     \{
+135         \textcolor{keywordflow}{return} M\_lengthQuota;
+136     \}
 \end{DoxyCode}
 \hypertarget{classFractureData_aaded6c0452470489beb4ab95b5f4158f}{\index{Fracture\-Data@{Fracture\-Data}!get\-Mesh\-Type@{get\-Mesh\-Type}}
 \index{get\-Mesh\-Type@{get\-Mesh\-Type}!FractureData@{Fracture\-Data}}
@@ -453,9 +461,9 @@ Sostanzialmente questa classe ci serve per partire dal file data e portare tutte
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureData_aaded6c0452470489beb4ab95b5f4158f}
 
 \begin{DoxyCode}
-164     \{
-165         \textcolor{keywordflow}{return} M\_meshType;
-166     \}
+170     \{
+171         \textcolor{keywordflow}{return} M\_meshType;
+172     \}
 \end{DoxyCode}
 \hypertarget{classFractureData_ab059ac23b93115e05029e1b6cadd1cd9}{\index{Fracture\-Data@{Fracture\-Data}!get\-Mu\-Normal@{get\-Mu\-Normal}}
 \index{get\-Mu\-Normal@{get\-Mu\-Normal}!FractureData@{Fracture\-Data}}
@@ -466,9 +474,9 @@ Sostanzialmente questa classe ci serve per partire dal file data e portare tutte
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureData_ab059ac23b93115e05029e1b6cadd1cd9}
 
 \begin{DoxyCode}
-98     \{
-99         \textcolor{keywordflow}{return} M\_muNormal;
-100     \}
+104     \{
+105         \textcolor{keywordflow}{return} M\_muNormal;
+106     \}
 \end{DoxyCode}
 \hypertarget{classFractureData_a1ac3cca1ae035eedb2ec89c0517f8b1f}{\index{Fracture\-Data@{Fracture\-Data}!get\-Mu\-Tangential@{get\-Mu\-Tangential}}
 \index{get\-Mu\-Tangential@{get\-Mu\-Tangential}!FractureData@{Fracture\-Data}}
@@ -479,9 +487,9 @@ Sostanzialmente questa classe ci serve per partire dal file data e portare tutte
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureData_a1ac3cca1ae035eedb2ec89c0517f8b1f}
 
 \begin{DoxyCode}
-104     \{
-105         \textcolor{keywordflow}{return} M\_muTangential;
-106     \}
+110     \{
+111         \textcolor{keywordflow}{return} M\_muTangential;
+112     \}
 \end{DoxyCode}
 \hypertarget{classFractureData_af86187ca0c7cc0ea6f4c3cd6e1a4cf41}{\index{Fracture\-Data@{Fracture\-Data}!get\-Position@{get\-Position}}
 \index{get\-Position@{get\-Position}!FractureData@{Fracture\-Data}}
@@ -492,9 +500,9 @@ Sostanzialmente questa classe ci serve per partire dal file data e portare tutte
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureData_af86187ca0c7cc0ea6f4c3cd6e1a4cf41}
 
 \begin{DoxyCode}
-74     \{
-75         \textcolor{keywordflow}{return} M\_position;
-76     \}
+80     \{
+81         \textcolor{keywordflow}{return} M\_position;
+82     \}
 \end{DoxyCode}
 \hypertarget{classFractureData_a4ead03266295fe14fa3285692f945d89}{\index{Fracture\-Data@{Fracture\-Data}!get\-Space\-Dimension@{get\-Space\-Dimension}}
 \index{get\-Space\-Dimension@{get\-Space\-Dimension}!FractureData@{Fracture\-Data}}
@@ -505,9 +513,9 @@ Sostanzialmente questa classe ci serve per partire dal file data e portare tutte
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureData_a4ead03266295fe14fa3285692f945d89}
 
 \begin{DoxyCode}
-146     \{
-147         \textcolor{keywordflow}{return} M\_spaceDimension;
-148     \}
+152     \{
+153         \textcolor{keywordflow}{return} M\_spaceDimension;
+154     \}
 \end{DoxyCode}
 \hypertarget{classFractureData_a5c10d579be7849be1a126c24982f8a23}{\index{Fracture\-Data@{Fracture\-Data}!get\-Spatial\-Discretization@{get\-Spatial\-Discretization}}
 \index{get\-Spatial\-Discretization@{get\-Spatial\-Discretization}!FractureData@{Fracture\-Data}}
@@ -518,9 +526,9 @@ Sostanzialmente questa classe ci serve per partire dal file data e portare tutte
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureData_a5c10d579be7849be1a126c24982f8a23}
 
 \begin{DoxyCode}
-134     \{
-135         \textcolor{keywordflow}{return} M\_spatialDiscretization;
-136     \}
+140     \{
+141         \textcolor{keywordflow}{return} M\_spatialDiscretization;
+142     \}
 \end{DoxyCode}
 \hypertarget{classFractureData_a3ecc0d132f9cc105af6b24d676a7b9c5}{\index{Fracture\-Data@{Fracture\-Data}!get\-Thickness@{get\-Thickness}}
 \index{get\-Thickness@{get\-Thickness}!FractureData@{Fracture\-Data}}
@@ -531,9 +539,9 @@ Sostanzialmente questa classe ci serve per partire dal file data e portare tutte
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureData_a3ecc0d132f9cc105af6b24d676a7b9c5}
 
 \begin{DoxyCode}
-80     \{
-81         \textcolor{keywordflow}{return} M\_thickness;
-82     \}
+86     \{
+87         \textcolor{keywordflow}{return} M\_thickness;
+88     \}
 \end{DoxyCode}
 \hypertarget{classFractureData_a485e084e083d9181750f19db6842a5e0}{\index{Fracture\-Data@{Fracture\-Data}!get\-Translate\-Abscissa@{get\-Translate\-Abscissa}}
 \index{get\-Translate\-Abscissa@{get\-Translate\-Abscissa}!FractureData@{Fracture\-Data}}
@@ -544,9 +552,9 @@ Sostanzialmente questa classe ci serve per partire dal file data e portare tutte
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureData_a485e084e083d9181750f19db6842a5e0}
 
 \begin{DoxyCode}
-140     \{
-141         \textcolor{keywordflow}{return} M\_translateAbscissa;
-142     \}
+146     \{
+147         \textcolor{keywordflow}{return} M\_translateAbscissa;
+148     \}
 \end{DoxyCode}
 \hypertarget{classFractureData_ab79d66dd830b6e1c55ade0d940c5c8cf}{\index{Fracture\-Data@{Fracture\-Data}!mesh\-Spacing@{mesh\-Spacing}}
 \index{mesh\-Spacing@{mesh\-Spacing}!FractureData@{Fracture\-Data}}

@@ -101,7 +101,7 @@ Tipi pubblici</h2></td></tr>
 <tr class="memitem:a495ad4fc72d0c47c8f0424842f1153aa"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="classFractureHandler.html#a495ad4fc72d0c47c8f0424842f1153aaaa992cc3ad024a030ecd798dc319c95ac">FRACTURE_UNCUT</a> = 10000, 
 <a class="el" href="classFractureHandler.html#a495ad4fc72d0c47c8f0424842f1153aaa781cae3f3b99bf9357fed2833d315537">FRACTURE_INTERSECT</a> = 10000
  }</td></tr>
-<tr class="memdesc:a495ad4fc72d0c47c8f0424842f1153aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">flags che uso per distinguere sulla mesh di ogni level set le regioni " non tagliate ", cioè dove non vi è intersezione con altre fratture, dalle regioni " tagliate ", cioè dove il level set ha un'intersezione  <a href="classFractureHandler.html#a495ad4fc72d0c47c8f0424842f1153aa">Continua...</a><br/></td></tr>
+<tr class="memdesc:a495ad4fc72d0c47c8f0424842f1153aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flags che uso per distinguere sulla mesh di ogni level set le regioni " non tagliate ", cioè dove non vi è intersezione con altre fratture, dalle regioni " tagliate ", cioè dove il level set ha un'intersezione.  <a href="classFractureHandler.html#a495ad4fc72d0c47c8f0424842f1153aa">Continua...</a><br/></td></tr>
 <tr class="separator:a495ad4fc72d0c47c8f0424842f1153aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -110,13 +110,13 @@ Membri pubblici</h2></td></tr>
 <tr class="memdesc:aa3872456d95550cdd424908bbb5a15ec"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="FractureHandler_8cc.html">FractureHandler.cc</a>.  <a href="#aa3872456d95550cdd424908bbb5a15ec">Continua...</a><br/></td></tr>
 <tr class="separator:aa3872456d95550cdd424908bbb5a15ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa28ce054ba2a2679214956c71f8cf1e0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFractureHandler.html#aa28ce054ba2a2679214956c71f8cf1e0">init</a> ()</td></tr>
-<tr class="memdesc:aa28ce054ba2a2679214956c71f8cf1e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">funzione che inizializza la frattura Ogni frattura ha una rappresentazione 1d, ma la mesh reale è una mesh di punti 2d ( sono i punti del tipo (x,y) che stanno sulla curva y=f(x) ) e questo comporta dei problemi per l'integrazione.  <a href="#aa28ce054ba2a2679214956c71f8cf1e0">Continua...</a><br/></td></tr>
+<tr class="memdesc:aa28ce054ba2a2679214956c71f8cf1e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funzione che inizializza la frattura.  <a href="#aa28ce054ba2a2679214956c71f8cf1e0">Continua...</a><br/></td></tr>
 <tr class="separator:aa28ce054ba2a2679214956c71f8cf1e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aec1fc4e2664b3fe60877b63024af3605"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFractureHandler.html#aec1fc4e2664b3fe60877b63024af3605">normalVectorAndMap</a> (const getfem::mesh_fem &amp;mediumMeshFEMPressure)</td></tr>
-<tr class="memdesc:aec1fc4e2664b3fe60877b63024af3605"><td class="mdescLeft">&#160;</td><td class="mdescRight">funzione che calcola il vettore normale alla frattura e la mappa di conversione dalla mesh reale alla mesh piatta  <a href="#aec1fc4e2664b3fe60877b63024af3605">Continua...</a><br/></td></tr>
+<tr class="memdesc:aec1fc4e2664b3fe60877b63024af3605"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funzione che calcola il vettore normale alla frattura e la mappa di conversione dalla mesh reale alla mesh piatta.  <a href="#aec1fc4e2664b3fe60877b63024af3605">Continua...</a><br/></td></tr>
 <tr class="separator:aec1fc4e2664b3fe60877b63024af3605"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a87f0f8e2998b621b481173ec8d9aaa2a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFractureHandler.html#a87f0f8e2998b621b481173ec8d9aaa2a">computeInvH</a> (const <a class="el" href="BCHandler_8h.html#aa175884cb453788647f17f2230a2a762">BCHandlerPtr_Type</a> &amp;bcHandler)</td></tr>
-<tr class="memdesc:a87f0f8e2998b621b481173ec8d9aaa2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">funzione che calcola il passo di griglia, h^-1  <a href="#a87f0f8e2998b621b481173ec8d9aaa2a">Continua...</a><br/></td></tr>
+<tr class="memdesc:a87f0f8e2998b621b481173ec8d9aaa2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funzione che calcola il passo di griglia, h^-1.  <a href="#a87f0f8e2998b621b481173ec8d9aaa2a">Continua...</a><br/></td></tr>
 <tr class="separator:a87f0f8e2998b621b481173ec8d9aaa2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ff9f584b850d6b750981befdbefbdbe"><td class="memItemLeft" align="right" valign="top">const getfem::mesh &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFractureHandler.html#a9ff9f584b850d6b750981befdbefbdbe">getMeshFlat</a> () const </td></tr>
 <tr class="separator:a9ff9f584b850d6b750981befdbefbdbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -177,22 +177,26 @@ Membri pubblici</h2></td></tr>
 <tr class="memitem:a002e255a1976918ffbe6ea63b0fdae1b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFractureHandler.html#a002e255a1976918ffbe6ea63b0fdae1b">numFractures</a> (const size_type &amp;numFractures)</td></tr>
 <tr class="separator:a002e255a1976918ffbe6ea63b0fdae1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae4204c592df2afe9c3dc6171f8bbb042"><td class="memItemLeft" align="right" valign="top">size_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFractureHandler.html#ae4204c592df2afe9c3dc6171f8bbb042">setMeshLevelSetFracture</a> (<a class="el" href="classFractureHandler.html">FractureHandler</a> &amp;otherFracture, size_type &amp;globalIndex)</td></tr>
-<tr class="memdesc:ae4204c592df2afe9c3dc6171f8bbb042"><td class="mdescLeft">&#160;</td><td class="mdescRight">funzione che, data un'altra frattura con cui si interseca, imposta i valori legati all'intersezione: costruisce sulla mesh la regione " tagliata ", aggiunge i gradi di libertà estesi, e imposta che tali gradi di libertà siano gli stessi sulle due fratture  <a href="#ae4204c592df2afe9c3dc6171f8bbb042">Continua...</a><br/></td></tr>
+<tr class="memdesc:ae4204c592df2afe9c3dc6171f8bbb042"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funzione che, data un'altra frattura con cui si interseca, imposta i valori legati all'intersezione: costruisce sulla mesh la regione " tagliata ", aggiunge i gradi di libertà estesi, e imposta che tali gradi di libertà siano gli stessi sulle due fratture.  <a href="#ae4204c592df2afe9c3dc6171f8bbb042">Continua...</a><br/></td></tr>
 <tr class="separator:ae4204c592df2afe9c3dc6171f8bbb042"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a585b1c169be23022e25e07bd9666d18d"><td class="memItemLeft" align="right" valign="top">size_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFractureHandler.html#a585b1c169be23022e25e07bd9666d18d">getNumExtendedPressure</a> () const </td></tr>
+<tr class="memdesc:a585b1c169be23022e25e07bd9666d18d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funzione che restituisce il numero di gradi di libertà estesi per la pressione per la frattura.  <a href="#a585b1c169be23022e25e07bd9666d18d">Continua...</a><br/></td></tr>
 <tr class="separator:a585b1c169be23022e25e07bd9666d18d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d8a3c910ba9a5d156decb747040e41f"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="Core_8h.html#a83c51913d041a5001e8683434c09857f">sizeVector_Type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFractureHandler.html#a5d8a3c910ba9a5d156decb747040e41f">getExtendedPressure</a> () const </td></tr>
+<tr class="memdesc:a5d8a3c910ba9a5d156decb747040e41f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funzione che restituisce ilvettore dei gradi di libertà estesi per la pressione per la frattura.  <a href="#a5d8a3c910ba9a5d156decb747040e41f">Continua...</a><br/></td></tr>
 <tr class="separator:a5d8a3c910ba9a5d156decb747040e41f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af5b7cdadefe6993813e76fd6238b1771"><td class="memItemLeft" align="right" valign="top">size_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFractureHandler.html#af5b7cdadefe6993813e76fd6238b1771">getNumExtendedVelocity</a> () const </td></tr>
+<tr class="memdesc:af5b7cdadefe6993813e76fd6238b1771"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funzione che restituisce il numero di gradi di libertà estesi per la velocità per la frattura.  <a href="#af5b7cdadefe6993813e76fd6238b1771">Continua...</a><br/></td></tr>
 <tr class="separator:af5b7cdadefe6993813e76fd6238b1771"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acfb03361fe0e1060fdf07dd997065519"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="Core_8h.html#a83c51913d041a5001e8683434c09857f">sizeVector_Type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFractureHandler.html#acfb03361fe0e1060fdf07dd997065519">getExtendedVelocity</a> () const </td></tr>
+<tr class="memdesc:acfb03361fe0e1060fdf07dd997065519"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funzione che restituisce il vettore dei gradi di libertà estesi per la velocità per la frattura.  <a href="#acfb03361fe0e1060fdf07dd997065519">Continua...</a><br/></td></tr>
 <tr class="separator:acfb03361fe0e1060fdf07dd997065519"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a69b5921703089ac725df60b08eb821c1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="Core_8h.html#a1cbde831f5a62206e084de1c5de27000">GFMeshLevelSetPtr_Type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFractureHandler.html#a69b5921703089ac725df60b08eb821c1">getMeshLevelSetIntersect</a> (const size_type &amp;f)</td></tr>
 <tr class="separator:a69b5921703089ac725df60b08eb821c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c2efa9ded1347b095e2b3247e728894"><td class="memItemLeft" align="right" valign="top"><a class="el" href="Core_8h.html#a036173458a8a25c7c03f8c76d97e9580">GFLevelSetPtr_Type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFractureHandler.html#a3c2efa9ded1347b095e2b3247e728894">getLevelSetIntersect</a> (const size_type &amp;f)</td></tr>
 <tr class="separator:a3c2efa9ded1347b095e2b3247e728894"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa66dc3447c3bafc87e61f5b232c98acb"><td class="memItemLeft" align="right" valign="top">size_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFractureHandler.html#aa66dc3447c3bafc87e61f5b232c98acb">getNumIntersections</a> () const </td></tr>
-<tr class="memdesc:aa66dc3447c3bafc87e61f5b232c98acb"><td class="mdescLeft">&#160;</td><td class="mdescRight">funzione che calcola in numero totale di intersezione della frattura corrente  <a href="#aa66dc3447c3bafc87e61f5b232c98acb">Continua...</a><br/></td></tr>
+<tr class="memdesc:aa66dc3447c3bafc87e61f5b232c98acb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funzione che calcola in numero totale di intersezione della frattura corrente.  <a href="#aa66dc3447c3bafc87e61f5b232c98acb">Continua...</a><br/></td></tr>
 <tr class="separator:aa66dc3447c3bafc87e61f5b232c98acb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab722c7fb4c48e062a8060251c4cb80c3"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="Core_8h.html#a80e8381d86ecb0a7f4f87ff84d1a0be5">sizeVectorContainer_Type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFractureHandler.html#ab722c7fb4c48e062a8060251c4cb80c3">getFractureIntersectElements</a> () const </td></tr>
 <tr class="separator:ab722c7fb4c48e062a8060251c4cb80c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -216,7 +220,7 @@ Membri pubblici</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>flags che uso per distinguere sulla mesh di ogni level set le regioni " non tagliate ", cioè dove non vi è intersezione con altre fratture, dalle regioni " tagliate ", cioè dove il level set ha un'intersezione </p>
+<p>Flags che uso per distinguere sulla mesh di ogni level set le regioni " non tagliate ", cioè dove non vi è intersezione con altre fratture, dalle regioni " tagliate ", cioè dove il level set ha un'intersezione. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Valori del tipo enumerato</th></tr><tr><td class="fieldname"><em><a class="anchor" id="a495ad4fc72d0c47c8f0424842f1153aaaa992cc3ad024a030ecd798dc319c95ac"></a>FRACTURE_UNCUT</em>&#160;</td><td class="fielddoc">
 </td></tr>
@@ -298,7 +302,7 @@ Membri pubblici</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>funzione che calcola il passo di griglia, h^-1 </p>
+<p>Funzione che calcola il passo di griglia, h^-1. </p>
 <div class="fragment"><div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;{</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <span class="comment">// Computing h^(-1) on external boudaries of the fracture.</span></div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    <span class="comment">// Useful for impose the boundary condition with Nitsche penalisation</span></div>
@@ -452,10 +456,12 @@ Membri pubblici</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Restituisce</dt><dd>M_extendedPressure: vettore dei gradi di libertà estesi per la pressione per la frattura </dd></dl>
-<div class="fragment"><div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    {</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        <span class="keywordflow">return</span> M_extendedPressure;</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    }</div>
+
+<p>Funzione che restituisce ilvettore dei gradi di libertà estesi per la pressione per la frattura. </p>
+<dl class="section return"><dt>Restituisce</dt><dd>M_extendedPressure: vettore dei gradi di libertà estesi per la pressione per la frattura. </dd></dl>
+<div class="fragment"><div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    {</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        <span class="keywordflow">return</span> M_extendedPressure;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -479,10 +485,12 @@ Membri pubblici</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Restituisce</dt><dd>M_extendedVelocity: vettore dei gradi di libertà estesi per la velocità per la frattura </dd></dl>
-<div class="fragment"><div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    {</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;        <span class="keywordflow">return</span> M_extendedVelocity;</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    }</div>
+
+<p>Funzione che restituisce il vettore dei gradi di libertà estesi per la velocità per la frattura. </p>
+<dl class="section return"><dt>Restituisce</dt><dd>M_extendedVelocity: vettore dei gradi di libertà estesi per la velocità per la frattura. </dd></dl>
+<div class="fragment"><div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    {</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        <span class="keywordflow">return</span> M_extendedVelocity;</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -506,9 +514,9 @@ Membri pubblici</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    {</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        <span class="keywordflow">return</span> M_fractureIntersectElements;</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    {</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        <span class="keywordflow">return</span> M_fractureIntersectElements;</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -532,9 +540,9 @@ Membri pubblici</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    {</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;        <span class="keywordflow">return</span> M_fractureIntersectElementsGlobalIndex;</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    {</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        <span class="keywordflow">return</span> M_fractureIntersectElementsGlobalIndex;</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -558,9 +566,9 @@ Membri pubblici</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    {</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;        <span class="keywordflow">return</span> M_fractureIntersectElementsGlobalIndex;</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    {</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;        <span class="keywordflow">return</span> M_fractureIntersectElementsGlobalIndex;</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -795,9 +803,9 @@ Membri pubblici</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <dl class="section return"><dt>Restituisce</dt><dd>M_LevelSetIntersect[f]: level set di indice f intersecato dalla frattura corrente </dd></dl>
-<div class="fragment"><div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    {</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        <span class="keywordflow">return</span> M_levelSetIntersect[f];</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    {</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        <span class="keywordflow">return</span> M_levelSetIntersect[f];</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1085,9 +1093,9 @@ Membri pubblici</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <dl class="section return"><dt>Restituisce</dt><dd>M_meshLevelSetIntersect[f]: mesh del level set di indice f intersecato dalla frattura corrente </dd></dl>
-<div class="fragment"><div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    {</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        <span class="keywordflow">return</span> M_meshLevelSetIntersect[f];</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    {</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        <span class="keywordflow">return</span> M_meshLevelSetIntersect[f];</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1267,7 +1275,9 @@ Membri pubblici</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Restituisce</dt><dd>M_extendedPressure.size(): numero di gradi di libertà estesi per la pressione per la frattura, uno per ogni intersezione di tipo Cross e tre per ogni intersezione di tipo Biforcazione </dd></dl>
+
+<p>Funzione che restituisce il numero di gradi di libertà estesi per la pressione per la frattura. </p>
+<dl class="section return"><dt>Restituisce</dt><dd>M_extendedPressure.size(): numero di gradi di libertà estesi per la pressione per la frattura. </dd></dl>
 <div class="fragment"><div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    {</div>
 <div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        <span class="keywordflow">return</span> M_extendedPressure.size();</div>
 <div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    }</div>
@@ -1294,10 +1304,12 @@ Membri pubblici</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Restituisce</dt><dd>M_extendedVelocity.size(): numero di gradi di libertà estesi per la velocità per la frattura, due per ogni intersezione di tipo Cross e sei per ogni intersezione di tipo Biforcazione </dd></dl>
-<div class="fragment"><div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    {</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        <span class="keywordflow">return</span> M_extendedVelocity.size();</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    }</div>
+
+<p>Funzione che restituisce il numero di gradi di libertà estesi per la velocità per la frattura. </p>
+<dl class="section return"><dt>Restituisce</dt><dd>M_extendedVelocity.size(): numero di gradi di libertà estesi per la velocità per la frattura. </dd></dl>
+<div class="fragment"><div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    {</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        <span class="keywordflow">return</span> M_extendedVelocity.size();</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1314,7 +1326,7 @@ Membri pubblici</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>funzione che calcola in numero totale di intersezione della frattura corrente </p>
+<p>Funzione che calcola in numero totale di intersezione della frattura corrente. </p>
 <div class="fragment"><div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;{</div>
 <div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    size_type total = 0;</div>
 <div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;</div>
@@ -1341,8 +1353,8 @@ Membri pubblici</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>funzione che inizializza la frattura Ogni frattura ha una rappresentazione 1d, ma la mesh reale è una mesh di punti 2d ( sono i punti del tipo (x,y) che stanno sulla curva y=f(x) ) e questo comporta dei problemi per l'integrazione. </p>
-<p>Per risolvere il problema per ogni frattura costruiamo una mesh 1d ottenuta proiettando lungo l'asse delle ascisse la mesh reale. Una volta risolto il problema si ritorna sulla mesh reale interpolando i risultati ottenuti. </p>
+<p>Funzione che inizializza la frattura. </p>
+<p>Ogni frattura ha una rappresentazione 1d, ma la mesh reale è una mesh di punti 2d ( sono i punti del tipo (x,y) che stanno sulla curva y=f(x) ) e questo comporta dei problemi per l'integrazione. Per risolvere il problema per ogni frattura costruiamo una mesh 1d ottenuta proiettando lungo l'asse delle ascisse la mesh reale. Una volta risolto il problema si ritorna sulla mesh reale interpolando i risultati ottenuti. </p>
 <div class="fragment"><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;{</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="comment">// Geometric transformation usign primal finite elements type in the fracture</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    M_geometricTransformation = bgeot::geometric_trans_descriptor( M_data.<a class="code" href="classFractureData.html#aaded6c0452470489beb4ab95b5f4158f">getMeshType</a>() );</div>
@@ -1491,27 +1503,27 @@ Membri pubblici</h2></td></tr>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;}<span class="comment">// init</span></div>
 <div class="ttc" id="Core_8h_html_a83c51913d041a5001e8683434c09857f"><div class="ttname"><a href="Core_8h.html#a83c51913d041a5001e8683434c09857f">sizeVector_Type</a></div><div class="ttdeci">std::vector&lt; size_type &gt; sizeVector_Type</div><div class="ttdef"><b>Definition:</b> Core.h:69</div></div>
 <div class="ttc" id="Core_8h_html_a4e75b5863535ba1dd79942de2846eff0"><div class="ttname"><a href="Core_8h.html#a4e75b5863535ba1dd79942de2846eff0">scalarVector_Type</a></div><div class="ttdeci">std::vector&lt; scalar_type &gt; scalarVector_Type</div><div class="ttdef"><b>Definition:</b> Core.h:63</div></div>
-<div class="ttc" id="classFractureData_html_a4ead03266295fe14fa3285692f945d89"><div class="ttname"><a href="classFractureData.html#a4ead03266295fe14fa3285692f945d89">FractureData::getSpaceDimension</a></div><div class="ttdeci">bgeot::dim_type getSpaceDimension() const </div><div class="ttdef"><b>Definition:</b> FractureData.h:145</div></div>
-<div class="ttc" id="classFractureData_html_a9333d8e89dc92023d97a48c1905ada76"><div class="ttname"><a href="classFractureData.html#a9333d8e89dc92023d97a48c1905ada76">FractureData::getIntegrationTypePressure</a></div><div class="ttdeci">std::string getIntegrationTypePressure() const </div><div class="ttdef"><b>Definition:</b> FractureData.h:157</div></div>
-<div class="ttc" id="classFractureData_html_a1ac3cca1ae035eedb2ec89c0517f8b1f"><div class="ttname"><a href="classFractureData.html#a1ac3cca1ae035eedb2ec89c0517f8b1f">FractureData::getMuTangential</a></div><div class="ttdeci">scalar_type getMuTangential() const </div><div class="ttdef"><b>Definition:</b> FractureData.h:103</div></div>
-<div class="ttc" id="classFractureData_html_a8a8a198482de6bf4104746bc1d0510c6"><div class="ttname"><a href="classFractureData.html#a8a8a198482de6bf4104746bc1d0510c6">FractureData::getIntegrationTypeVelocity</a></div><div class="ttdeci">std::string getIntegrationTypeVelocity() const </div><div class="ttdef"><b>Definition:</b> FractureData.h:151</div></div>
-<div class="ttc" id="classFractureData_html_a905e953f685b1329ddcc7ee56f8302b1"><div class="ttname"><a href="classFractureData.html#a905e953f685b1329ddcc7ee56f8302b1">FractureData::getLengthOrdinate</a></div><div class="ttdeci">scalar_type getLengthOrdinate() const </div><div class="ttdef"><b>Definition:</b> FractureData.h:121</div></div>
-<div class="ttc" id="classFractureData_html_abaebcf16d83713858e25837939ad3161"><div class="ttname"><a href="classFractureData.html#abaebcf16d83713858e25837939ad3161">FractureData::getLengthAbscissa</a></div><div class="ttdeci">scalar_type getLengthAbscissa() const </div><div class="ttdef"><b>Definition:</b> FractureData.h:115</div></div>
-<div class="ttc" id="classFractureData_html_a79747fff53da9d858950d83ad0114288"><div class="ttname"><a href="classFractureData.html#a79747fff53da9d858950d83ad0114288">FractureData::getLengthQuota</a></div><div class="ttdeci">scalar_type getLengthQuota() const </div><div class="ttdef"><b>Definition:</b> FractureData.h:127</div></div>
+<div class="ttc" id="classFractureData_html_a4ead03266295fe14fa3285692f945d89"><div class="ttname"><a href="classFractureData.html#a4ead03266295fe14fa3285692f945d89">FractureData::getSpaceDimension</a></div><div class="ttdeci">bgeot::dim_type getSpaceDimension() const </div><div class="ttdef"><b>Definition:</b> FractureData.h:151</div></div>
+<div class="ttc" id="classFractureData_html_a9333d8e89dc92023d97a48c1905ada76"><div class="ttname"><a href="classFractureData.html#a9333d8e89dc92023d97a48c1905ada76">FractureData::getIntegrationTypePressure</a></div><div class="ttdeci">std::string getIntegrationTypePressure() const </div><div class="ttdef"><b>Definition:</b> FractureData.h:163</div></div>
+<div class="ttc" id="classFractureData_html_a1ac3cca1ae035eedb2ec89c0517f8b1f"><div class="ttname"><a href="classFractureData.html#a1ac3cca1ae035eedb2ec89c0517f8b1f">FractureData::getMuTangential</a></div><div class="ttdeci">scalar_type getMuTangential() const </div><div class="ttdef"><b>Definition:</b> FractureData.h:109</div></div>
+<div class="ttc" id="classFractureData_html_a8a8a198482de6bf4104746bc1d0510c6"><div class="ttname"><a href="classFractureData.html#a8a8a198482de6bf4104746bc1d0510c6">FractureData::getIntegrationTypeVelocity</a></div><div class="ttdeci">std::string getIntegrationTypeVelocity() const </div><div class="ttdef"><b>Definition:</b> FractureData.h:157</div></div>
+<div class="ttc" id="classFractureData_html_a905e953f685b1329ddcc7ee56f8302b1"><div class="ttname"><a href="classFractureData.html#a905e953f685b1329ddcc7ee56f8302b1">FractureData::getLengthOrdinate</a></div><div class="ttdeci">scalar_type getLengthOrdinate() const </div><div class="ttdef"><b>Definition:</b> FractureData.h:127</div></div>
+<div class="ttc" id="classFractureData_html_abaebcf16d83713858e25837939ad3161"><div class="ttname"><a href="classFractureData.html#abaebcf16d83713858e25837939ad3161">FractureData::getLengthAbscissa</a></div><div class="ttdeci">scalar_type getLengthAbscissa() const </div><div class="ttdef"><b>Definition:</b> FractureData.h:121</div></div>
+<div class="ttc" id="classFractureData_html_a79747fff53da9d858950d83ad0114288"><div class="ttname"><a href="classFractureData.html#a79747fff53da9d858950d83ad0114288">FractureData::getLengthQuota</a></div><div class="ttdeci">scalar_type getLengthQuota() const </div><div class="ttdef"><b>Definition:</b> FractureData.h:133</div></div>
 <div class="ttc" id="classFractureData_html_a4ae566f9148893e47279097cab215e7b"><div class="ttname"><a href="classFractureData.html#a4ae566f9148893e47279097cab215e7b">FractureData::muNormalDistribution</a></div><div class="ttdeci">scalar_type muNormalDistribution(const base_node &amp;x)</div><div class="ttdef"><b>Definition:</b> FractureData.cc:91</div></div>
-<div class="ttc" id="classFractureData_html_a0f989b64832a1f0fc77632c6803f102c"><div class="ttname"><a href="classFractureData.html#a0f989b64832a1f0fc77632c6803f102c">FractureData::etaTangentialDistribution</a></div><div class="ttdeci">scalar_type etaTangentialDistribution(const base_node &amp;x)</div><div class="ttdef"><b>Definition:</b> FractureData.cc:84</div></div>
-<div class="ttc" id="classFractureData_html_a7396b67399a1ae8e5550841907c0dcb5"><div class="ttname"><a href="classFractureData.html#a7396b67399a1ae8e5550841907c0dcb5">FractureData::getFEMTypeVelocity</a></div><div class="ttdeci">std::string getFEMTypeVelocity() const </div><div class="ttdef"><b>Definition:</b> FractureData.h:175</div></div>
-<div class="ttc" id="classFractureData_html_ab059ac23b93115e05029e1b6cadd1cd9"><div class="ttname"><a href="classFractureData.html#ab059ac23b93115e05029e1b6cadd1cd9">FractureData::getMuNormal</a></div><div class="ttdeci">scalar_type getMuNormal() const </div><div class="ttdef"><b>Definition:</b> FractureData.h:97</div></div>
-<div class="ttc" id="classFractureData_html_a9acc76c77282d4b5d0cdca18c2b1b9ea"><div class="ttname"><a href="classFractureData.html#a9acc76c77282d4b5d0cdca18c2b1b9ea">FractureData::getEtaNormal</a></div><div class="ttdeci">scalar_type getEtaNormal() const </div><div class="ttdef"><b>Definition:</b> FractureData.h:85</div></div>
-<div class="ttc" id="classFractureData_html_a7378053b4009825b4a2957484cb2a5e8"><div class="ttname"><a href="classFractureData.html#a7378053b4009825b4a2957484cb2a5e8">FractureData::getEtaTangential</a></div><div class="ttdeci">scalar_type getEtaTangential() const </div><div class="ttdef"><b>Definition:</b> FractureData.h:91</div></div>
+<div class="ttc" id="classFractureData_html_a0f989b64832a1f0fc77632c6803f102c"><div class="ttname"><a href="classFractureData.html#a0f989b64832a1f0fc77632c6803f102c">FractureData::etaTangentialDistribution</a></div><div class="ttdeci">scalar_type etaTangentialDistribution(const base_node &amp;x)</div><div class="ttdoc">Funzione che restituisce un&#39;eventuale modulazione del coefficiente di permeabilità in direzione tange...</div><div class="ttdef"><b>Definition:</b> FractureData.cc:84</div></div>
+<div class="ttc" id="classFractureData_html_a7396b67399a1ae8e5550841907c0dcb5"><div class="ttname"><a href="classFractureData.html#a7396b67399a1ae8e5550841907c0dcb5">FractureData::getFEMTypeVelocity</a></div><div class="ttdeci">std::string getFEMTypeVelocity() const </div><div class="ttdef"><b>Definition:</b> FractureData.h:181</div></div>
+<div class="ttc" id="classFractureData_html_ab059ac23b93115e05029e1b6cadd1cd9"><div class="ttname"><a href="classFractureData.html#ab059ac23b93115e05029e1b6cadd1cd9">FractureData::getMuNormal</a></div><div class="ttdeci">scalar_type getMuNormal() const </div><div class="ttdef"><b>Definition:</b> FractureData.h:103</div></div>
+<div class="ttc" id="classFractureData_html_a9acc76c77282d4b5d0cdca18c2b1b9ea"><div class="ttname"><a href="classFractureData.html#a9acc76c77282d4b5d0cdca18c2b1b9ea">FractureData::getEtaNormal</a></div><div class="ttdeci">scalar_type getEtaNormal() const </div><div class="ttdef"><b>Definition:</b> FractureData.h:91</div></div>
+<div class="ttc" id="classFractureData_html_a7378053b4009825b4a2957484cb2a5e8"><div class="ttname"><a href="classFractureData.html#a7378053b4009825b4a2957484cb2a5e8">FractureData::getEtaTangential</a></div><div class="ttdeci">scalar_type getEtaTangential() const </div><div class="ttdef"><b>Definition:</b> FractureData.h:97</div></div>
 <div class="ttc" id="classFractureData_html_ab79d66dd830b6e1c55ade0d940c5c8cf"><div class="ttname"><a href="classFractureData.html#ab79d66dd830b6e1c55ade0d940c5c8cf">FractureData::meshSpacing</a></div><div class="ttdeci">scalar_type meshSpacing(const scalar_type &amp;x)</div><div class="ttdef"><b>Definition:</b> FractureData.cc:169</div></div>
 <div class="ttc" id="classFractureData_html_a9a3e1a75231b55be01ad198b824c0d56"><div class="ttname"><a href="classFractureData.html#a9a3e1a75231b55be01ad198b824c0d56">FractureData::muTangentialDistribution</a></div><div class="ttdeci">scalar_type muTangentialDistribution(const base_node &amp;x)</div><div class="ttdef"><b>Definition:</b> FractureData.cc:98</div></div>
-<div class="ttc" id="classFractureData_html_a0aaeeb3d9eedd46175759cd6b9536484"><div class="ttname"><a href="classFractureData.html#a0aaeeb3d9eedd46175759cd6b9536484">FractureData::etaNormalDistribution</a></div><div class="ttdeci">scalar_type etaNormalDistribution(const base_node &amp;x)</div><div class="ttdef"><b>Definition:</b> FractureData.cc:76</div></div>
-<div class="ttc" id="classFractureData_html_a643b9a8a33405ec7aaa6b5612cb81d57"><div class="ttname"><a href="classFractureData.html#a643b9a8a33405ec7aaa6b5612cb81d57">FractureData::getFEMTypePressure</a></div><div class="ttdeci">std::string getFEMTypePressure() const </div><div class="ttdef"><b>Definition:</b> FractureData.h:169</div></div>
+<div class="ttc" id="classFractureData_html_a0aaeeb3d9eedd46175759cd6b9536484"><div class="ttname"><a href="classFractureData.html#a0aaeeb3d9eedd46175759cd6b9536484">FractureData::etaNormalDistribution</a></div><div class="ttdeci">scalar_type etaNormalDistribution(const base_node &amp;x)</div><div class="ttdoc">Funzione che restituisce un&#39;eventuale modulazione del coefficiente di permeabilità in direzione norma...</div><div class="ttdef"><b>Definition:</b> FractureData.cc:76</div></div>
+<div class="ttc" id="classFractureData_html_a643b9a8a33405ec7aaa6b5612cb81d57"><div class="ttname"><a href="classFractureData.html#a643b9a8a33405ec7aaa6b5612cb81d57">FractureData::getFEMTypePressure</a></div><div class="ttdeci">std::string getFEMTypePressure() const </div><div class="ttdef"><b>Definition:</b> FractureData.h:175</div></div>
 <div class="ttc" id="classFractureHandler_html_a495ad4fc72d0c47c8f0424842f1153aaaa992cc3ad024a030ecd798dc319c95ac"><div class="ttname"><a href="classFractureHandler.html#a495ad4fc72d0c47c8f0424842f1153aaaa992cc3ad024a030ecd798dc319c95ac">FractureHandler::FRACTURE_UNCUT</a></div><div class="ttdef"><b>Definition:</b> FractureHandler.h:24</div></div>
-<div class="ttc" id="classFractureData_html_a606c22e054fdb5f8602ce39fa6ae15cc"><div class="ttname"><a href="classFractureData.html#a606c22e054fdb5f8602ce39fa6ae15cc">FractureData::getFEMTypeLinear</a></div><div class="ttdeci">std::string getFEMTypeLinear() const </div><div class="ttdef"><b>Definition:</b> FractureData.h:181</div></div>
-<div class="ttc" id="classFractureData_html_aaded6c0452470489beb4ab95b5f4158f"><div class="ttname"><a href="classFractureData.html#aaded6c0452470489beb4ab95b5f4158f">FractureData::getMeshType</a></div><div class="ttdeci">std::string getMeshType() const </div><div class="ttdef"><b>Definition:</b> FractureData.h:163</div></div>
-<div class="ttc" id="classFractureData_html_a5c10d579be7849be1a126c24982f8a23"><div class="ttname"><a href="classFractureData.html#a5c10d579be7849be1a126c24982f8a23">FractureData::getSpatialDiscretization</a></div><div class="ttdeci">size_type getSpatialDiscretization() const </div><div class="ttdef"><b>Definition:</b> FractureData.h:133</div></div>
+<div class="ttc" id="classFractureData_html_a606c22e054fdb5f8602ce39fa6ae15cc"><div class="ttname"><a href="classFractureData.html#a606c22e054fdb5f8602ce39fa6ae15cc">FractureData::getFEMTypeLinear</a></div><div class="ttdeci">std::string getFEMTypeLinear() const </div><div class="ttdef"><b>Definition:</b> FractureData.h:187</div></div>
+<div class="ttc" id="classFractureData_html_aaded6c0452470489beb4ab95b5f4158f"><div class="ttname"><a href="classFractureData.html#aaded6c0452470489beb4ab95b5f4158f">FractureData::getMeshType</a></div><div class="ttdeci">std::string getMeshType() const </div><div class="ttdef"><b>Definition:</b> FractureData.h:169</div></div>
+<div class="ttc" id="classFractureData_html_a5c10d579be7849be1a126c24982f8a23"><div class="ttname"><a href="classFractureData.html#a5c10d579be7849be1a126c24982f8a23">FractureData::getSpatialDiscretization</a></div><div class="ttdeci">size_type getSpatialDiscretization() const </div><div class="ttdef"><b>Definition:</b> FractureData.h:139</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1529,7 +1541,7 @@ Membri pubblici</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>funzione che calcola il vettore normale alla frattura e la mappa di conversione dalla mesh reale alla mesh piatta </p>
+<p>Funzione che calcola il vettore normale alla frattura e la mappa di conversione dalla mesh reale alla mesh piatta. </p>
 <div class="fragment"><div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;{</div>
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <span class="comment">// Assegno il vettore normale e la mappa per la frattura</span></div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <span class="keywordflow">for</span> ( size_type i = 0; i &lt; M_meshFEMPressure.nb_dof(); ++i )</div>
@@ -1547,7 +1559,7 @@ Membri pubblici</h2></td></tr>
 <div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    }</div>
 <div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;}<span class="comment">// normalVectorAndMap</span></div>
 <div class="ttc" id="Core_8h_html_a4e75b5863535ba1dd79942de2846eff0"><div class="ttname"><a href="Core_8h.html#a4e75b5863535ba1dd79942de2846eff0">scalarVector_Type</a></div><div class="ttdeci">std::vector&lt; scalar_type &gt; scalarVector_Type</div><div class="ttdef"><b>Definition:</b> Core.h:63</div></div>
-<div class="ttc" id="classFractureData_html_a4ead03266295fe14fa3285692f945d89"><div class="ttname"><a href="classFractureData.html#a4ead03266295fe14fa3285692f945d89">FractureData::getSpaceDimension</a></div><div class="ttdeci">bgeot::dim_type getSpaceDimension() const </div><div class="ttdef"><b>Definition:</b> FractureData.h:145</div></div>
+<div class="ttc" id="classFractureData_html_a4ead03266295fe14fa3285692f945d89"><div class="ttname"><a href="classFractureData.html#a4ead03266295fe14fa3285692f945d89">FractureData::getSpaceDimension</a></div><div class="ttdeci">bgeot::dim_type getSpaceDimension() const </div><div class="ttdef"><b>Definition:</b> FractureData.h:151</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1606,7 +1618,7 @@ Membri pubblici</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>funzione che, data un'altra frattura con cui si interseca, imposta i valori legati all'intersezione: costruisce sulla mesh la regione " tagliata ", aggiunge i gradi di libertà estesi, e imposta che tali gradi di libertà siano gli stessi sulle due fratture </p>
+<p>Funzione che, data un'altra frattura con cui si interseca, imposta i valori legati all'intersezione: costruisce sulla mesh la regione " tagliata ", aggiunge i gradi di libertà estesi, e imposta che tali gradi di libertà siano gli stessi sulle due fratture. </p>
 <div class="fragment"><div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;{</div>
 <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    <span class="keyword">const</span> size_type otherFractureId = otherFracture.<a class="code" href="classFractureHandler.html#a7f7ec5b15315791f76d8deb0874511d6">getId</a>();</div>
 <div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    size_type numIntersect = 0;</div>
@@ -1679,7 +1691,7 @@ Membri pubblici</h2></td></tr>
 <div class="ttc" id="Core_8h_html_a6453867d4e9bd858ad9577b4a1078511"><div class="ttname"><a href="Core_8h.html#a6453867d4e9bd858ad9577b4a1078511">pairSize_Type</a></div><div class="ttdeci">std::pair&lt; size_type, size_type &gt; pairSize_Type</div><div class="ttdef"><b>Definition:</b> Core.h:74</div></div>
 <div class="ttc" id="classFractureHandler_html_a7f7ec5b15315791f76d8deb0874511d6"><div class="ttname"><a href="classFractureHandler.html#a7f7ec5b15315791f76d8deb0874511d6">FractureHandler::getId</a></div><div class="ttdeci">const size_type &amp; getId() const </div><div class="ttdef"><b>Definition:</b> FractureHandler.h:217</div></div>
 <div class="ttc" id="classFractureHandler_html_a495ad4fc72d0c47c8f0424842f1153aaaa992cc3ad024a030ecd798dc319c95ac"><div class="ttname"><a href="classFractureHandler.html#a495ad4fc72d0c47c8f0424842f1153aaaa992cc3ad024a030ecd798dc319c95ac">FractureHandler::FRACTURE_UNCUT</a></div><div class="ttdef"><b>Definition:</b> FractureHandler.h:24</div></div>
-<div class="ttc" id="classFractureData_html_a5c10d579be7849be1a126c24982f8a23"><div class="ttname"><a href="classFractureData.html#a5c10d579be7849be1a126c24982f8a23">FractureData::getSpatialDiscretization</a></div><div class="ttdeci">size_type getSpatialDiscretization() const </div><div class="ttdef"><b>Definition:</b> FractureData.h:133</div></div>
+<div class="ttc" id="classFractureData_html_a5c10d579be7849be1a126c24982f8a23"><div class="ttname"><a href="classFractureData.html#a5c10d579be7849be1a126c24982f8a23">FractureData::getSpatialDiscretization</a></div><div class="ttdeci">size_type getSpatialDiscretization() const </div><div class="ttdef"><b>Definition:</b> FractureData.h:139</div></div>
 <div class="ttc" id="Core_8h_html_a126f7165f04db4ed0b72454469145a08"><div class="ttname"><a href="Core_8h.html#a126f7165f04db4ed0b72454469145a08">GFMeshLevelSet_Type</a></div><div class="ttdeci">getfem::mesh_level_set GFMeshLevelSet_Type</div><div class="ttdef"><b>Definition:</b> Core.h:84</div></div>
 <div class="ttc" id="classFractureHandler_html_af37ab12a17f812a960da2aa71699ba0f"><div class="ttname"><a href="classFractureHandler.html#af37ab12a17f812a960da2aa71699ba0f">FractureHandler::getLevelSet</a></div><div class="ttdeci">LevelSetHandlerPtr_Type &amp; getLevelSet()</div><div class="ttdef"><b>Definition:</b> FractureHandler.h:97</div></div>
 </div><!-- fragment -->
@@ -1692,7 +1704,7 @@ Membri pubblici</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generato Mar 28 Ott 2014 09:35:35 per Progetto PACS da &#160;<a href="http://www.doxygen.org/index.html">
+Generato Mar 28 Ott 2014 10:32:54 per Progetto PACS da &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -16,18 +16,18 @@
 enum \{ \hyperlink{classFractureHandler_a495ad4fc72d0c47c8f0424842f1153aaaa992cc3ad024a030ecd798dc319c95ac}{F\-R\-A\-C\-T\-U\-R\-E\-\_\-\-U\-N\-C\-U\-T} = 10000, 
 \hyperlink{classFractureHandler_a495ad4fc72d0c47c8f0424842f1153aaa781cae3f3b99bf9357fed2833d315537}{F\-R\-A\-C\-T\-U\-R\-E\-\_\-\-I\-N\-T\-E\-R\-S\-E\-C\-T} = 10000
  \}
-\begin{DoxyCompactList}\small\item\em flags che uso per distinguere sulla mesh di ogni level set le regioni \char`\"{} non tagliate \char`\"{}, cioè dove non vi è intersezione con altre fratture, dalle regioni \char`\"{} tagliate \char`\"{}, cioè dove il level set ha un'intersezione \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Flags che uso per distinguere sulla mesh di ogni level set le regioni \char`\"{} non tagliate \char`\"{}, cioè dove non vi è intersezione con altre fratture, dalle regioni \char`\"{} tagliate \char`\"{}, cioè dove il level set ha un'intersezione. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Membri pubblici}
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{classFractureHandler_aa3872456d95550cdd424908bbb5a15ec}{Fracture\-Handler} (const Get\-Pot \&data\-File, const size\-\_\-type \&I\-D, const std\-::string \&section=\char`\"{}fracture\-Data/\char`\"{})
 \begin{DoxyCompactList}\small\item\em \hyperlink{FractureHandler_8cc}{Fracture\-Handler.\-cc}. \end{DoxyCompactList}\item 
 void \hyperlink{classFractureHandler_aa28ce054ba2a2679214956c71f8cf1e0}{init} ()
-\begin{DoxyCompactList}\small\item\em funzione che inizializza la frattura Ogni frattura ha una rappresentazione 1d, ma la mesh reale è una mesh di punti 2d ( sono i punti del tipo (x,y) che stanno sulla curva y=f(x) ) e questo comporta dei problemi per l'integrazione. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Funzione che inizializza la frattura. \end{DoxyCompactList}\item 
 void \hyperlink{classFractureHandler_aec1fc4e2664b3fe60877b63024af3605}{normal\-Vector\-And\-Map} (const getfem\-::mesh\-\_\-fem \&medium\-Mesh\-F\-E\-M\-Pressure)
-\begin{DoxyCompactList}\small\item\em funzione che calcola il vettore normale alla frattura e la mappa di conversione dalla mesh reale alla mesh piatta \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Funzione che calcola il vettore normale alla frattura e la mappa di conversione dalla mesh reale alla mesh piatta. \end{DoxyCompactList}\item 
 void \hyperlink{classFractureHandler_a87f0f8e2998b621b481173ec8d9aaa2a}{compute\-Inv\-H} (const \hyperlink{BCHandler_8h_aa175884cb453788647f17f2230a2a762}{B\-C\-Handler\-Ptr\-\_\-\-Type} \&bc\-Handler)
-\begin{DoxyCompactList}\small\item\em funzione che calcola il passo di griglia, h$^\wedge$-\/1 \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Funzione che calcola il passo di griglia, h$^\wedge$-\/1. \end{DoxyCompactList}\item 
 const getfem\-::mesh \& \hyperlink{classFractureHandler_a9ff9f584b850d6b750981befdbefbdbe}{get\-Mesh\-Flat} () const 
 \item 
 getfem\-::mesh \& \hyperlink{classFractureHandler_ad9b02a825d444016b3ab8ee901f887f6}{get\-Mesh\-Flat} ()
@@ -87,21 +87,21 @@ const size\-\_\-type \& \hyperlink{classFractureHandler_a7f7ec5b15315791f76d8deb
 void \hyperlink{classFractureHandler_a002e255a1976918ffbe6ea63b0fdae1b}{num\-Fractures} (const size\-\_\-type \&num\-Fractures)
 \item 
 size\-\_\-type \hyperlink{classFractureHandler_ae4204c592df2afe9c3dc6171f8bbb042}{set\-Mesh\-Level\-Set\-Fracture} (\hyperlink{classFractureHandler}{Fracture\-Handler} \&other\-Fracture, size\-\_\-type \&global\-Index)
-\begin{DoxyCompactList}\small\item\em funzione che, data un'altra frattura con cui si interseca, imposta i valori legati all'intersezione\-: costruisce sulla mesh la regione \char`\"{} tagliata \char`\"{}, aggiunge i gradi di libertà estesi, e imposta che tali gradi di libertà siano gli stessi sulle due fratture \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Funzione che, data un'altra frattura con cui si interseca, imposta i valori legati all'intersezione\-: costruisce sulla mesh la regione \char`\"{} tagliata \char`\"{}, aggiunge i gradi di libertà estesi, e imposta che tali gradi di libertà siano gli stessi sulle due fratture. \end{DoxyCompactList}\item 
 size\-\_\-type \hyperlink{classFractureHandler_a585b1c169be23022e25e07bd9666d18d}{get\-Num\-Extended\-Pressure} () const 
-\item 
+\begin{DoxyCompactList}\small\item\em Funzione che restituisce il numero di gradi di libertà estesi per la pressione per la frattura. \end{DoxyCompactList}\item 
 const \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{size\-Vector\-\_\-\-Type} \& \hyperlink{classFractureHandler_a5d8a3c910ba9a5d156decb747040e41f}{get\-Extended\-Pressure} () const 
-\item 
+\begin{DoxyCompactList}\small\item\em Funzione che restituisce ilvettore dei gradi di libertà estesi per la pressione per la frattura. \end{DoxyCompactList}\item 
 size\-\_\-type \hyperlink{classFractureHandler_af5b7cdadefe6993813e76fd6238b1771}{get\-Num\-Extended\-Velocity} () const 
-\item 
+\begin{DoxyCompactList}\small\item\em Funzione che restituisce il numero di gradi di libertà estesi per la velocità per la frattura. \end{DoxyCompactList}\item 
 const \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{size\-Vector\-\_\-\-Type} \& \hyperlink{classFractureHandler_acfb03361fe0e1060fdf07dd997065519}{get\-Extended\-Velocity} () const 
-\item 
+\begin{DoxyCompactList}\small\item\em Funzione che restituisce il vettore dei gradi di libertà estesi per la velocità per la frattura. \end{DoxyCompactList}\item 
 \hyperlink{Core_8h_a1cbde831f5a62206e084de1c5de27000}{G\-F\-Mesh\-Level\-Set\-Ptr\-\_\-\-Type} \hyperlink{classFractureHandler_a69b5921703089ac725df60b08eb821c1}{get\-Mesh\-Level\-Set\-Intersect} (const size\-\_\-type \&f)
 \item 
 \hyperlink{Core_8h_a036173458a8a25c7c03f8c76d97e9580}{G\-F\-Level\-Set\-Ptr\-\_\-\-Type} \hyperlink{classFractureHandler_a3c2efa9ded1347b095e2b3247e728894}{get\-Level\-Set\-Intersect} (const size\-\_\-type \&f)
 \item 
 size\-\_\-type \hyperlink{classFractureHandler_aa66dc3447c3bafc87e61f5b232c98acb}{get\-Num\-Intersections} () const 
-\begin{DoxyCompactList}\small\item\em funzione che calcola in numero totale di intersezione della frattura corrente \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Funzione che calcola in numero totale di intersezione della frattura corrente. \end{DoxyCompactList}\item 
 const \hyperlink{Core_8h_a80e8381d86ecb0a7f4f87ff84d1a0be5}{size\-Vector\-Container\-\_\-\-Type} \& \hyperlink{classFractureHandler_ab722c7fb4c48e062a8060251c4cb80c3}{get\-Fracture\-Intersect\-Elements} () const 
 \item 
 const \\*
@@ -120,7 +120,7 @@ classe che inizializza e gestisce una frattura
 \hypertarget{classFractureHandler_a495ad4fc72d0c47c8f0424842f1153aa}{\subsubsection[{anonymous enum}]{\setlength{\rightskip}{0pt plus 5cm}anonymous enum}}\label{classFractureHandler_a495ad4fc72d0c47c8f0424842f1153aa}
 
 
-flags che uso per distinguere sulla mesh di ogni level set le regioni \char`\"{} non tagliate \char`\"{}, cioè dove non vi è intersezione con altre fratture, dalle regioni \char`\"{} tagliate \char`\"{}, cioè dove il level set ha un'intersezione 
+Flags che uso per distinguere sulla mesh di ogni level set le regioni \char`\"{} non tagliate \char`\"{}, cioè dove non vi è intersezione con altre fratture, dalle regioni \char`\"{} tagliate \char`\"{}, cioè dove il level set ha un'intersezione. 
 
 \begin{Desc}
 \item[Valori del tipo enumerato]\par
@@ -183,7 +183,7 @@ flags che uso per distinguere sulla mesh di ogni level set le regioni \char`\"{}
 )}}\label{classFractureHandler_a87f0f8e2998b621b481173ec8d9aaa2a}
 
 
-funzione che calcola il passo di griglia, h$^\wedge$-\/1 
+Funzione che calcola il passo di griglia, h$^\wedge$-\/1. 
 
 
 \begin{DoxyCode}
@@ -273,14 +273,18 @@ funzione che calcola il passo di griglia, h$^\wedge$-\/1
 {}
 \end{DoxyParamCaption}
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_a5d8a3c910ba9a5d156decb747040e41f}
+
+
+Funzione che restituisce ilvettore dei gradi di libertà estesi per la pressione per la frattura. 
+
 \begin{DoxyReturn}{Restituisce}
-M\-\_\-extended\-Pressure\-: vettore dei gradi di libertà estesi per la pressione per la frattura 
+M\-\_\-extended\-Pressure\-: vettore dei gradi di libertà estesi per la pressione per la frattura. 
 \end{DoxyReturn}
 
 \begin{DoxyCode}
-252     \{
-253         \textcolor{keywordflow}{return} M\_extendedPressure;
-254     \}
+253     \{
+254         \textcolor{keywordflow}{return} M\_extendedPressure;
+255     \}
 \end{DoxyCode}
 \hypertarget{classFractureHandler_acfb03361fe0e1060fdf07dd997065519}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Extended\-Velocity@{get\-Extended\-Velocity}}
 \index{get\-Extended\-Velocity@{get\-Extended\-Velocity}!FractureHandler@{Fracture\-Handler}}
@@ -289,14 +293,18 @@ M\-\_\-extended\-Pressure\-: vettore dei gradi di libertà estesi per la pressio
 {}
 \end{DoxyParamCaption}
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_acfb03361fe0e1060fdf07dd997065519}
+
+
+Funzione che restituisce il vettore dei gradi di libertà estesi per la velocità per la frattura. 
+
 \begin{DoxyReturn}{Restituisce}
-M\-\_\-extended\-Velocity\-: vettore dei gradi di libertà estesi per la velocità per la frattura 
+M\-\_\-extended\-Velocity\-: vettore dei gradi di libertà estesi per la velocità per la frattura. 
 \end{DoxyReturn}
 
 \begin{DoxyCode}
-271     \{
-272         \textcolor{keywordflow}{return} M\_extendedVelocity;
-273     \}
+273     \{
+274         \textcolor{keywordflow}{return} M\_extendedVelocity;
+275     \}
 \end{DoxyCode}
 \hypertarget{classFractureHandler_ab722c7fb4c48e062a8060251c4cb80c3}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Fracture\-Intersect\-Elements@{get\-Fracture\-Intersect\-Elements}}
 \index{get\-Fracture\-Intersect\-Elements@{get\-Fracture\-Intersect\-Elements}!FractureHandler@{Fracture\-Handler}}
@@ -307,9 +315,9 @@ M\-\_\-extended\-Velocity\-: vettore dei gradi di libertà estesi per la velocit
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_ab722c7fb4c48e062a8060251c4cb80c3}
 
 \begin{DoxyCode}
-301     \{
-302         \textcolor{keywordflow}{return} M\_fractureIntersectElements;
-303     \}
+303     \{
+304         \textcolor{keywordflow}{return} M\_fractureIntersectElements;
+305     \}
 \end{DoxyCode}
 \hypertarget{classFractureHandler_a7f439a7c14b6064d52984130f8bcb7c1}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Fracture\-Intersect\-Elements\-Global\-Index@{get\-Fracture\-Intersect\-Elements\-Global\-Index}}
 \index{get\-Fracture\-Intersect\-Elements\-Global\-Index@{get\-Fracture\-Intersect\-Elements\-Global\-Index}!FractureHandler@{Fracture\-Handler}}
@@ -320,9 +328,9 @@ M\-\_\-extended\-Velocity\-: vettore dei gradi di libertà estesi per la velocit
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_a7f439a7c14b6064d52984130f8bcb7c1}
 
 \begin{DoxyCode}
-307     \{
-308         \textcolor{keywordflow}{return} M\_fractureIntersectElementsGlobalIndex;
-309     \}
+309     \{
+310         \textcolor{keywordflow}{return} M\_fractureIntersectElementsGlobalIndex;
+311     \}
 \end{DoxyCode}
 \hypertarget{classFractureHandler_ac4156ff43fcdc7a4641aef8cdabf2357}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Fracture\-Intersect\-Elements\-Global\-Index@{get\-Fracture\-Intersect\-Elements\-Global\-Index}}
 \index{get\-Fracture\-Intersect\-Elements\-Global\-Index@{get\-Fracture\-Intersect\-Elements\-Global\-Index}!FractureHandler@{Fracture\-Handler}}
@@ -333,9 +341,9 @@ M\-\_\-extended\-Velocity\-: vettore dei gradi di libertà estesi per la velocit
 )\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_ac4156ff43fcdc7a4641aef8cdabf2357}
 
 \begin{DoxyCode}
-313     \{
-314         \textcolor{keywordflow}{return} M\_fractureIntersectElementsGlobalIndex;
-315     \}
+315     \{
+316         \textcolor{keywordflow}{return} M\_fractureIntersectElementsGlobalIndex;
+317     \}
 \end{DoxyCode}
 \hypertarget{classFractureHandler_a2e1d27efecfa84246375be5f4262bab2}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Geometric\-Transformation@{get\-Geometric\-Transformation}}
 \index{get\-Geometric\-Transformation@{get\-Geometric\-Transformation}!FractureHandler@{Fracture\-Handler}}
@@ -453,9 +461,9 @@ M\-\_\-\-Level\-Set\-Intersect\mbox{[}f\mbox{]}\-: level set di indice f interse
 \end{DoxyReturn}
 
 \begin{DoxyCode}
-289     \{
-290         \textcolor{keywordflow}{return} M\_levelSetIntersect[f];
-291     \}
+291     \{
+292         \textcolor{keywordflow}{return} M\_levelSetIntersect[f];
+293     \}
 \end{DoxyCode}
 \hypertarget{classFractureHandler_abaf5f99ba68775a587d6b3f0222e8b9a}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Magnification\-Map\-Factor1@{get\-Magnification\-Map\-Factor1}}
 \index{get\-Magnification\-Map\-Factor1@{get\-Magnification\-Map\-Factor1}!FractureHandler@{Fracture\-Handler}}
@@ -599,9 +607,9 @@ M\-\_\-mesh\-Level\-Set\-Intersect\mbox{[}f\mbox{]}\-: mesh del level set di ind
 \end{DoxyReturn}
 
 \begin{DoxyCode}
-280     \{
-281         \textcolor{keywordflow}{return} M\_meshLevelSetIntersect[f];
-282     \}
+282     \{
+283         \textcolor{keywordflow}{return} M\_meshLevelSetIntersect[f];
+284     \}
 \end{DoxyCode}
 \hypertarget{classFractureHandler_a79b2fbb306b2bc045d5bef0b73d12ec8}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Mesh\-Mapped@{get\-Mesh\-Mapped}}
 \index{get\-Mesh\-Mapped@{get\-Mesh\-Mapped}!FractureHandler@{Fracture\-Handler}}
@@ -688,8 +696,12 @@ M\-\_\-mesh\-Level\-Set\-Intersect\mbox{[}f\mbox{]}\-: mesh del level set di ind
 {}
 \end{DoxyParamCaption}
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_a585b1c169be23022e25e07bd9666d18d}
+
+
+Funzione che restituisce il numero di gradi di libertà estesi per la pressione per la frattura. 
+
 \begin{DoxyReturn}{Restituisce}
-M\-\_\-extended\-Pressure.\-size()\-: numero di gradi di libertà estesi per la pressione per la frattura, uno per ogni intersezione di tipo Cross e tre per ogni intersezione di tipo Biforcazione 
+M\-\_\-extended\-Pressure.\-size()\-: numero di gradi di libertà estesi per la pressione per la frattura. 
 \end{DoxyReturn}
 
 \begin{DoxyCode}
@@ -704,14 +716,18 @@ M\-\_\-extended\-Pressure.\-size()\-: numero di gradi di libertà estesi per la 
 {}
 \end{DoxyParamCaption}
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureHandler_af5b7cdadefe6993813e76fd6238b1771}
+
+
+Funzione che restituisce il numero di gradi di libertà estesi per la velocità per la frattura. 
+
 \begin{DoxyReturn}{Restituisce}
-M\-\_\-extended\-Velocity.\-size()\-: numero di gradi di libertà estesi per la velocità per la frattura, due per ogni intersezione di tipo Cross e sei per ogni intersezione di tipo Biforcazione 
+M\-\_\-extended\-Velocity.\-size()\-: numero di gradi di libertà estesi per la velocità per la frattura. 
 \end{DoxyReturn}
 
 \begin{DoxyCode}
-262     \{
-263         \textcolor{keywordflow}{return} M\_extendedVelocity.size();
-264     \}
+263     \{
+264         \textcolor{keywordflow}{return} M\_extendedVelocity.size();
+265     \}
 \end{DoxyCode}
 \hypertarget{classFractureHandler_aa66dc3447c3bafc87e61f5b232c98acb}{\index{Fracture\-Handler@{Fracture\-Handler}!get\-Num\-Intersections@{get\-Num\-Intersections}}
 \index{get\-Num\-Intersections@{get\-Num\-Intersections}!FractureHandler@{Fracture\-Handler}}
@@ -722,7 +738,7 @@ M\-\_\-extended\-Velocity.\-size()\-: numero di gradi di libertà estesi per la 
 ) const}}\label{classFractureHandler_aa66dc3447c3bafc87e61f5b232c98acb}
 
 
-funzione che calcola in numero totale di intersezione della frattura corrente 
+Funzione che calcola in numero totale di intersezione della frattura corrente. 
 
 
 \begin{DoxyCode}
@@ -746,9 +762,9 @@ funzione che calcola in numero totale di intersezione della frattura corrente
 )}}\label{classFractureHandler_aa28ce054ba2a2679214956c71f8cf1e0}
 
 
-funzione che inizializza la frattura Ogni frattura ha una rappresentazione 1d, ma la mesh reale è una mesh di punti 2d ( sono i punti del tipo (x,y) che stanno sulla curva y=f(x) ) e questo comporta dei problemi per l'integrazione. 
+Funzione che inizializza la frattura. 
 
-Per risolvere il problema per ogni frattura costruiamo una mesh 1d ottenuta proiettando lungo l'asse delle ascisse la mesh reale. Una volta risolto il problema si ritorna sulla mesh reale interpolando i risultati ottenuti. 
+Ogni frattura ha una rappresentazione 1d, ma la mesh reale è una mesh di punti 2d ( sono i punti del tipo (x,y) che stanno sulla curva y=f(x) ) e questo comporta dei problemi per l'integrazione. Per risolvere il problema per ogni frattura costruiamo una mesh 1d ottenuta proiettando lungo l'asse delle ascisse la mesh reale. Una volta risolto il problema si ritorna sulla mesh reale interpolando i risultati ottenuti. 
 \begin{DoxyCode}
 27 \{
 28     \textcolor{comment}{// Geometric transformation usign primal finite elements type in the fracture}
@@ -928,7 +944,7 @@ Per risolvere il problema per ogni frattura costruiamo una mesh 1d ottenuta proi
 )}}\label{classFractureHandler_aec1fc4e2664b3fe60877b63024af3605}
 
 
-funzione che calcola il vettore normale alla frattura e la mappa di conversione dalla mesh reale alla mesh piatta 
+Funzione che calcola il vettore normale alla frattura e la mappa di conversione dalla mesh reale alla mesh piatta. 
 
 
 \begin{DoxyCode}
@@ -976,7 +992,7 @@ funzione che calcola il vettore normale alla frattura e la mappa di conversione 
 )}}\label{classFractureHandler_ae4204c592df2afe9c3dc6171f8bbb042}
 
 
-funzione che, data un'altra frattura con cui si interseca, imposta i valori legati all'intersezione\-: costruisce sulla mesh la regione \char`\"{} tagliata \char`\"{}, aggiunge i gradi di libertà estesi, e imposta che tali gradi di libertà siano gli stessi sulle due fratture 
+Funzione che, data un'altra frattura con cui si interseca, imposta i valori legati all'intersezione\-: costruisce sulla mesh la regione \char`\"{} tagliata \char`\"{}, aggiunge i gradi di libertà estesi, e imposta che tali gradi di libertà siano gli stessi sulle due fratture. 
 
 
 \begin{DoxyCode}
