@@ -71,6 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
       <li><a href="globals_type.html"><span>Ridefinizioni&#160;di&#160;tipo&#160;(typedef)</span></a></li>
       <li><a href="globals_enum.html"><span>Tipi&#160;enumerati&#160;(enum)</span></a></li>
       <li><a href="globals_eval.html"><span>Valori&#160;del&#160;tipo&#160;enumerato</span></a></li>
+      <li><a href="globals_defs.html"><span>Definizioni</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -79,7 +80,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tutto</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classi</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespace</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>File</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funzioni</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Ridefinizioni di tipo (typedef)</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Tipi enumerati (enum)</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Valori del tipo enumerato</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tutto</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classi</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespace</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>File</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funzioni</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variabili</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Ridefinizioni di tipo (typedef)</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Tipi enumerati (enum)</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Valori del tipo enumerato</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friend</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Definizioni</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -99,12 +100,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
 , <a class="el" href="UsefulFunctions_8cc.html#ae4bd400c144e72bee180107bb41ae72a">UsefulFunctions.cc</a>
 </li>
 <li>exportSolution()
-: <a class="el" href="UsefulFunctions_8h.html#add7b8b88dc68d93addd88b9a4dc6e8bf">UsefulFunctions.h</a>
-, <a class="el" href="UsefulFunctions_8cc.html#add7b8b88dc68d93addd88b9a4dc6e8bf">UsefulFunctions.cc</a>
+: <a class="el" href="UsefulFunctions_8cc.html#add7b8b88dc68d93addd88b9a4dc6e8bf">UsefulFunctions.cc</a>
+, <a class="el" href="UsefulFunctions_8h.html#add7b8b88dc68d93addd88b9a4dc6e8bf">UsefulFunctions.h</a>
 </li>
 <li>exportSolutionInCell()
-: <a class="el" href="UsefulFunctions_8h.html#a08d7eb25d2acdceda04b336d0c75f0ca">UsefulFunctions.h</a>
-, <a class="el" href="UsefulFunctions_8cc.html#a08d7eb25d2acdceda04b336d0c75f0ca">UsefulFunctions.cc</a>
+: <a class="el" href="UsefulFunctions_8cc.html#a08d7eb25d2acdceda04b336d0c75f0ca">UsefulFunctions.cc</a>
+, <a class="el" href="UsefulFunctions_8h.html#a08d7eb25d2acdceda04b336d0c75f0ca">UsefulFunctions.h</a>
 </li>
 <li>fromBitVectorToStdVector()
 : <a class="el" href="UsefulFunctions_8h.html#a0ea0b08a12a1e6a94718cf3bcd60edeb">UsefulFunctions.h</a>
@@ -126,8 +127,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
 : <a class="el" href="main_8cc.html#a0ddf1224851353fc92bfbff6f499fa97">main.cc</a>
 </li>
 <li>massLumping()
-: <a class="el" href="UsefulFunctions_8h.html#ac9c4dffc2df78de82445b5a1a7bf3116">UsefulFunctions.h</a>
-, <a class="el" href="UsefulFunctions_8cc.html#ac9c4dffc2df78de82445b5a1a7bf3116">UsefulFunctions.cc</a>
+: <a class="el" href="UsefulFunctions_8cc.html#ac9c4dffc2df78de82445b5a1a7bf3116">UsefulFunctions.cc</a>
+, <a class="el" href="UsefulFunctions_8h.html#ac9c4dffc2df78de82445b5a1a7bf3116">UsefulFunctions.h</a>
+</li>
+<li>operator*()
+: <a class="el" href="PointData_8cc.html#a366cfe417d483e7cb1b689b52f294e03">PointData.cc</a>
+</li>
+<li>operator+()
+: <a class="el" href="PointData_8cc.html#acdd6a398d9bbf1552c309bf854df4a10">PointData.cc</a>
+</li>
+<li>operator-()
+: <a class="el" href="PointData_8cc.html#a2468a63a40cab54a468719f2a3f28643">PointData.cc</a>
+</li>
+<li>operator&lt;&lt;()
+: <a class="el" href="PointData_8cc.html#a66faab14b19458cf79ac85d61365a123">PointData.cc</a>
+, <a class="el" href="TriangleData_8cc.html#a1969193778fec204e689f25ff14c0488">TriangleData.cc</a>
 </li>
 <li>pointDistance()
 : <a class="el" href="UsefulFunctions_8h.html#ad9cf8f3fe42287349e8e1b2f1f824958">UsefulFunctions.h</a>
@@ -141,7 +155,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generato Lun 20 Ott 2014 14:09:04 per Progetto PACS da &#160;<a href="http://www.doxygen.org/index.html">
+Generato Mar 28 Ott 2014 09:35:36 per Progetto PACS da &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

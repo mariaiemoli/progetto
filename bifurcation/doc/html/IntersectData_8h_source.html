@@ -69,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tutto</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classi</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespace</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>File</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funzioni</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Ridefinizioni di tipo (typedef)</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Tipi enumerati (enum)</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Valori del tipo enumerato</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tutto</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classi</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespace</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>File</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funzioni</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variabili</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Ridefinizioni di tipo (typedef)</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Tipi enumerati (enum)</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Valori del tipo enumerato</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friend</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Definizioni</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -93,132 +93,131 @@ var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _INTERSECTDATA_ 1</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="FractureHandler_8h.html">FractureHandler.h</a>&quot;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="classIntersectData.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="classIntersectData.html">IntersectData</a></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="MatrixBifurcationHandler_8h.html">MatrixBifurcationHandler.h</a>&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classIntersectData.html">   12</a></span>&#160;<span class="keyword">class </span><a class="code" href="classIntersectData.html">IntersectData</a></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classIntersectData.html#ac86ac869672ccd193327ce246e7969d6">   15</a></span>&#160;    <a class="code" href="classIntersectData.html#ac86ac869672ccd193327ce246e7969d6">IntersectData</a> ()</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        ;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    } <span class="comment">// costruttore nullo</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classIntersectData.html#a6f368be5c978f120623bdef4b6acab12">   17</a></span>&#160;    <a class="code" href="classIntersectData.html#a6f368be5c978f120623bdef4b6acab12">IntersectData</a> ( <span class="keyword">const</span> GetPot&amp; dataFile ) : M_matrices ( dataFile )</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    } <span class="comment">// costruttore nullo</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="classIntersectData.html#a731a27ad828cdc8146679a292cbd4582">   21</a></span>&#160;    <a class="code" href="classIntersectData.html#a731a27ad828cdc8146679a292cbd4582">IntersectData</a> ( <span class="keyword">const</span> <a class="code" href="classIntersectData.html">IntersectData</a>&amp; in )</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        copy ( in );</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    } <span class="comment">// costruttore di copia</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classIntersectData.html#a306be572e6e9a2359310ba908e693b2e">   27</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classIntersectData.html#a306be572e6e9a2359310ba908e693b2e">setIntersection</a> ( <span class="keyword">const</span> size_type&amp; elementID,</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                           <span class="keyword">const</span> <a class="code" href="FractureHandler_8h.html#a2f0b57e18ecf89912d7de0c87158009e">FracturePtrContainer_Type</a>&amp; fractures)</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        M_elementID = elementID;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        M_fractures = fractures;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    } <span class="comment">// setIntersection</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classIntersectData.html#ac4e5826b88471e0f1514cae82c49bcae">   35</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classIntersectData.html#ac4e5826b88471e0f1514cae82c49bcae">setDOFPosition</a> ( <span class="keyword">const</span> <a class="code" href="Core_8h.html#a83c51913d041a5001e8683434c09857f">sizeVector_Type</a>&amp; dofPressure,</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                          <span class="keyword">const</span> <a class="code" href="Core_8h.html#a80e8381d86ecb0a7f4f87ff84d1a0be5">sizeVectorContainer_Type</a>&amp; dofVelocity )</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    {</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        M_dofPressure = dofPressure;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        M_dofVelocity = dofVelocity;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    } <span class="comment">// setDofPosition</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="classIntersectData.html#a50b33fda9608ffc678057b08e7aed405">   43</a></span>&#160;    size_type <a class="code" href="classIntersectData.html#a50b33fda9608ffc678057b08e7aed405">getDOFPressure</a> ( <span class="keyword">const</span> size_type&amp; component )<span class="keyword"> const</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">    </span>{</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordflow">return</span> M_dofPressure [ component ];</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    } <span class="comment">// getDOFPressure</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="classIntersectData.html#a8a5946e35f80576da495a107464cd2cb">   49</a></span>&#160;    size_type <a class="code" href="classIntersectData.html#a8a5946e35f80576da495a107464cd2cb">getDOFVelocity</a> ( <span class="keyword">const</span> size_type&amp; component, <span class="keyword">const</span> size_type&amp; region )<span class="keyword"> const</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">    </span>{</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">return</span> M_dofVelocity [ component ] [ region ];</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    } <span class="comment">//  getDOFVelocity</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classIntersectData.html#ae4cc921b5f9bee74c9a20b25ae7a6f37">   55</a></span>&#160;    <span class="keyword">const</span> <a class="code" href="Core_8h.html#a83c51913d041a5001e8683434c09857f">sizeVector_Type</a>&amp; <a class="code" href="classIntersectData.html#ae4cc921b5f9bee74c9a20b25ae7a6f37">getDOFVelocity</a> ( <span class="keyword">const</span> size_type&amp; region )<span class="keyword"> const</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">    </span>{</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordflow">return</span> M_dofVelocity [ region ];</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    } <span class="comment">// getDOFVelocity</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="classIntersectData.html#a1c43bd327ed8dedaa89870f60cdb4606">   61</a></span>&#160;    <span class="keyword">const</span> <a class="code" href="FractureHandler_8h.html#a2f0b57e18ecf89912d7de0c87158009e">FracturePtrContainer_Type</a>&amp; <a class="code" href="classIntersectData.html#a1c43bd327ed8dedaa89870f60cdb4606">getFractures</a> ()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keyword">    </span>{</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">return</span> M_fractures;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    } <span class="comment">// getFractures</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="classIntersectData.html#afef7730d6a494464350ebce088e488ee">   67</a></span>&#160;    <span class="keyword">const</span> <a class="code" href="FractureHandler_8h.html#af23fb7a30aaff864bd42587af4f1e78a">FractureHandlerPtr_Type</a>&amp; <a class="code" href="classIntersectData.html#afef7730d6a494464350ebce088e488ee">getFracture</a> ( <span class="keyword">const</span> size_type&amp; f )<span class="keyword"> const</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keyword">    </span>{</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">return</span> M_fractures [ f ];</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    } <span class="comment">// getFracture</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="classIntersectData.html#a25def82d58f9508d33ab1a43b2b03ceb">   73</a></span>&#160;    size_type <a class="code" href="classIntersectData.html#a25def82d58f9508d33ab1a43b2b03ceb">getNumFractures</a> ()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keyword">    </span>{</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">return</span> M_fractures.size();</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    } <span class="comment">// getNumFractures</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
-<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="classIntersectData.html#a1872122295e3fec0fb3e81d4098e9949">   79</a></span>&#160;    <span class="keyword">const</span> size_type&amp; <a class="code" href="classIntersectData.html#a1872122295e3fec0fb3e81d4098e9949">getElementID</a> ()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keyword">    </span>{</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordflow">return</span> M_elementID;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    } <span class="comment">// getElementID</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
-<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="classIntersectData.html#a046a91173e4427a741101bcc01a622b1">   85</a></span>&#160;    <span class="keyword">const</span> <a class="code" href="classIntersectData.html">IntersectData</a>&amp; <a class="code" href="classIntersectData.html#a046a91173e4427a741101bcc01a622b1">operator = </a>( <span class="keyword">const</span> <a class="code" href="classIntersectData.html">IntersectData</a> &amp; in )</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    {</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        copy ( in );</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    } <span class="comment">// operator =</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">    IntersectData ( const IntersectData&amp; in )</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">    {</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">        copy ( in );</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">    } // costruttore di copia</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classIntersectData.html#a51a3df0f499c8150c32fe1f12f44ff8d">setIntersection</a> ( <span class="keyword">const</span> size_type&amp; elementID,</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                           <span class="keyword">const</span> <a class="code" href="FractureHandler_8h.html#a2f0b57e18ecf89912d7de0c87158009e">FracturePtrContainer_Type</a>&amp; fractures, <span class="keyword">const</span> size_type k);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    </div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="classIntersectData.html#ac4e5826b88471e0f1514cae82c49bcae">   32</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classIntersectData.html#ac4e5826b88471e0f1514cae82c49bcae">setDOFPosition</a> ( <span class="keyword">const</span> <a class="code" href="Core_8h.html#a83c51913d041a5001e8683434c09857f">sizeVector_Type</a>&amp; dofPressure,</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                          <span class="keyword">const</span> <a class="code" href="Core_8h.html#a80e8381d86ecb0a7f4f87ff84d1a0be5">sizeVectorContainer_Type</a>&amp; dofVelocity )</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        M_dofPressure = dofPressure;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        M_dofVelocity = dofVelocity;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    } <span class="comment">// setDofPosition</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="classIntersectData.html#a50b33fda9608ffc678057b08e7aed405">   40</a></span>&#160;    size_type <a class="code" href="classIntersectData.html#a50b33fda9608ffc678057b08e7aed405">getDOFPressure</a> ( <span class="keyword">const</span> size_type&amp; component )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordflow">return</span> M_dofPressure [ component ];</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    } <span class="comment">// getDOFPressure</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="classIntersectData.html#a8a5946e35f80576da495a107464cd2cb">   46</a></span>&#160;    size_type <a class="code" href="classIntersectData.html#a8a5946e35f80576da495a107464cd2cb">getDOFVelocity</a> ( <span class="keyword">const</span> size_type&amp; component, <span class="keyword">const</span> size_type&amp; region )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordflow">return</span> M_dofVelocity [ component ] [ region ];</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    } <span class="comment">//  getDOFVelocity</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="classIntersectData.html#ae4cc921b5f9bee74c9a20b25ae7a6f37">   52</a></span>&#160;    <span class="keyword">const</span> <a class="code" href="Core_8h.html#a83c51913d041a5001e8683434c09857f">sizeVector_Type</a>&amp; <a class="code" href="classIntersectData.html#ae4cc921b5f9bee74c9a20b25ae7a6f37">getDOFVelocity</a> ( <span class="keyword">const</span> size_type&amp; region )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordflow">return</span> M_dofVelocity [ region ];</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    } <span class="comment">// getDOFVelocity</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="classIntersectData.html#a1c43bd327ed8dedaa89870f60cdb4606">   58</a></span>&#160;    <span class="keyword">const</span> <a class="code" href="FractureHandler_8h.html#a2f0b57e18ecf89912d7de0c87158009e">FracturePtrContainer_Type</a>&amp; <a class="code" href="classIntersectData.html#a1c43bd327ed8dedaa89870f60cdb4606">getFractures</a> ()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordflow">return</span> M_fractures;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    } <span class="comment">// getFractures</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="classIntersectData.html#afef7730d6a494464350ebce088e488ee">   64</a></span>&#160;    <span class="keyword">const</span> <a class="code" href="FractureHandler_8h.html#af23fb7a30aaff864bd42587af4f1e78a">FractureHandlerPtr_Type</a>&amp; <a class="code" href="classIntersectData.html#afef7730d6a494464350ebce088e488ee">getFracture</a> ( <span class="keyword">const</span> size_type&amp; f )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordflow">return</span> M_fractures [ f ];</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    } <span class="comment">// getFracture</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="classIntersectData.html#a25def82d58f9508d33ab1a43b2b03ceb">   70</a></span>&#160;    size_type <a class="code" href="classIntersectData.html#a25def82d58f9508d33ab1a43b2b03ceb">getNumFractures</a> ()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">return</span> M_fractures.size();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    } <span class="comment">// getNumFractures</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="classIntersectData.html#a1872122295e3fec0fb3e81d4098e9949">   76</a></span>&#160;    <span class="keyword">const</span> size_type&amp; <a class="code" href="classIntersectData.html#a1872122295e3fec0fb3e81d4098e9949">getElementID</a> ()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordflow">return</span> M_elementID;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    } <span class="comment">// getElementID</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="classIntersectData.html#a046a91173e4427a741101bcc01a622b1">   82</a></span>&#160;    <span class="keyword">const</span> <a class="code" href="classIntersectData.html">IntersectData</a>&amp; <a class="code" href="classIntersectData.html#a046a91173e4427a741101bcc01a622b1">operator = </a>( <span class="keyword">const</span> <a class="code" href="classIntersectData.html">IntersectData</a> &amp; in )</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        copy ( in );</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    } <span class="comment">// operator =</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordtype">void</span> copy ( <span class="keyword">const</span> <a class="code" href="classIntersectData.html">IntersectData</a>&amp; in );</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <a class="code" href="FractureHandler_8h.html#a2f0b57e18ecf89912d7de0c87158009e">FracturePtrContainer_Type</a> M_fractures;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    size_type M_elementID;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <a class="code" href="Core_8h.html#a83c51913d041a5001e8683434c09857f">sizeVector_Type</a> M_dofPressure;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <a class="code" href="Core_8h.html#a80e8381d86ecb0a7f4f87ff84d1a0be5">sizeVectorContainer_Type</a> M_dofVelocity;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">void</span> copy ( <span class="keyword">const</span> <a class="code" href="classIntersectData.html">IntersectData</a>&amp; in );</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <a class="code" href="FractureHandler_8h.html#a2f0b57e18ecf89912d7de0c87158009e">FracturePtrContainer_Type</a> M_fractures;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    size_type M_elementID;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <a class="code" href="Core_8h.html#a83c51913d041a5001e8683434c09857f">sizeVector_Type</a> M_dofPressure;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <a class="code" href="Core_8h.html#a80e8381d86ecb0a7f4f87ff84d1a0be5">sizeVectorContainer_Type</a> M_dofVelocity;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <a class="code" href="classMatrixBifurcationHandler.html">MatrixBifurcationHandler_Type</a> M_matrices;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;};</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;};</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
-<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="IntersectData_8h.html#a4440e180484694f70bc87213bcc208d1">  102</a></span>&#160;<span class="keyword">typedef</span> <a class="code" href="classIntersectData.html">IntersectData</a> <a class="code" href="IntersectData_8h.html#a4440e180484694f70bc87213bcc208d1">IntersectData_Type</a>;</div>
-<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="IntersectData_8h.html#a822ec3b760dfb603e1cf0bfe3ad5636a">  103</a></span>&#160;<span class="keyword">typedef</span> std::vector &lt; IntersectData_Type &gt; <a class="code" href="IntersectData_8h.html#a822ec3b760dfb603e1cf0bfe3ad5636a">IntersectDataContainer_Type</a>;</div>
-<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="IntersectData_8h.html#a3a0e09f3c2e91f5247a4d504ed90bd7a">  104</a></span>&#160;<span class="keyword">typedef</span> boost::shared_ptr &lt; IntersectData_Type &gt; <a class="code" href="IntersectData_8h.html#a3a0e09f3c2e91f5247a4d504ed90bd7a">IntersectDataPtr_Type</a>;</div>
-<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="IntersectData_8h.html#a55afaad4bc03163c4bf7ae8beb4a9057">  105</a></span>&#160;<span class="keyword">typedef</span> std::vector &lt; IntersectDataPtr_Type &gt; <a class="code" href="IntersectData_8h.html#a55afaad4bc03163c4bf7ae8beb4a9057">IntersectDataPtrContainer_Type</a>;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _INTERSECTDATA_H_ */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="Core_8h_html_a83c51913d041a5001e8683434c09857f"><div class="ttname"><a href="Core_8h.html#a83c51913d041a5001e8683434c09857f">sizeVector_Type</a></div><div class="ttdeci">std::vector&lt; size_type &gt; sizeVector_Type</div><div class="ttdef"><b>Definition:</b> Core.h:67</div></div>
-<div class="ttc" id="Core_8h_html_a80e8381d86ecb0a7f4f87ff84d1a0be5"><div class="ttname"><a href="Core_8h.html#a80e8381d86ecb0a7f4f87ff84d1a0be5">sizeVectorContainer_Type</a></div><div class="ttdeci">std::vector&lt; sizeVector_Type &gt; sizeVectorContainer_Type</div><div class="ttdef"><b>Definition:</b> Core.h:69</div></div>
-<div class="ttc" id="classIntersectData_html_a731a27ad828cdc8146679a292cbd4582"><div class="ttname"><a href="classIntersectData.html#a731a27ad828cdc8146679a292cbd4582">IntersectData::IntersectData</a></div><div class="ttdeci">IntersectData(const IntersectData &amp;in)</div><div class="ttdef"><b>Definition:</b> IntersectData.h:21</div></div>
-<div class="ttc" id="classIntersectData_html_ac86ac869672ccd193327ce246e7969d6"><div class="ttname"><a href="classIntersectData.html#ac86ac869672ccd193327ce246e7969d6">IntersectData::IntersectData</a></div><div class="ttdeci">IntersectData()</div><div class="ttdef"><b>Definition:</b> IntersectData.h:15</div></div>
-<div class="ttc" id="classIntersectData_html_a25def82d58f9508d33ab1a43b2b03ceb"><div class="ttname"><a href="classIntersectData.html#a25def82d58f9508d33ab1a43b2b03ceb">IntersectData::getNumFractures</a></div><div class="ttdeci">size_type getNumFractures() const </div><div class="ttdef"><b>Definition:</b> IntersectData.h:73</div></div>
-<div class="ttc" id="classIntersectData_html_a046a91173e4427a741101bcc01a622b1"><div class="ttname"><a href="classIntersectData.html#a046a91173e4427a741101bcc01a622b1">IntersectData::operator=</a></div><div class="ttdeci">const IntersectData &amp; operator=(const IntersectData &amp;in)</div><div class="ttdef"><b>Definition:</b> IntersectData.h:85</div></div>
-<div class="ttc" id="classIntersectData_html_a306be572e6e9a2359310ba908e693b2e"><div class="ttname"><a href="classIntersectData.html#a306be572e6e9a2359310ba908e693b2e">IntersectData::setIntersection</a></div><div class="ttdeci">void setIntersection(const size_type &amp;elementID, const FracturePtrContainer_Type &amp;fractures)</div><div class="ttdef"><b>Definition:</b> IntersectData.h:27</div></div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="IntersectData_8h.html#a4440e180484694f70bc87213bcc208d1">  100</a></span>&#160;<span class="keyword">typedef</span> <a class="code" href="classIntersectData.html">IntersectData</a> <a class="code" href="IntersectData_8h.html#a4440e180484694f70bc87213bcc208d1">IntersectData_Type</a>;</div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="IntersectData_8h.html#a822ec3b760dfb603e1cf0bfe3ad5636a">  101</a></span>&#160;<span class="keyword">typedef</span> std::vector &lt; IntersectData_Type &gt; <a class="code" href="IntersectData_8h.html#a822ec3b760dfb603e1cf0bfe3ad5636a">IntersectDataContainer_Type</a>;</div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="IntersectData_8h.html#a3a0e09f3c2e91f5247a4d504ed90bd7a">  102</a></span>&#160;<span class="keyword">typedef</span> boost::shared_ptr &lt; IntersectData_Type &gt; <a class="code" href="IntersectData_8h.html#a3a0e09f3c2e91f5247a4d504ed90bd7a">IntersectDataPtr_Type</a>;</div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="IntersectData_8h.html#a55afaad4bc03163c4bf7ae8beb4a9057">  103</a></span>&#160;<span class="keyword">typedef</span> std::vector &lt; IntersectDataPtr_Type &gt; <a class="code" href="IntersectData_8h.html#a55afaad4bc03163c4bf7ae8beb4a9057">IntersectDataPtrContainer_Type</a>;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _INTERSECTDATA_H_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="Core_8h_html_a83c51913d041a5001e8683434c09857f"><div class="ttname"><a href="Core_8h.html#a83c51913d041a5001e8683434c09857f">sizeVector_Type</a></div><div class="ttdeci">std::vector&lt; size_type &gt; sizeVector_Type</div><div class="ttdef"><b>Definition:</b> Core.h:69</div></div>
+<div class="ttc" id="MatrixBifurcationHandler_8h_html"><div class="ttname"><a href="MatrixBifurcationHandler_8h.html">MatrixBifurcationHandler.h</a></div></div>
+<div class="ttc" id="classMatrixBifurcationHandler_html"><div class="ttname"><a href="classMatrixBifurcationHandler.html">MatrixBifurcationHandler</a></div><div class="ttdef"><b>Definition:</b> MatrixBifurcationHandler.h:18</div></div>
+<div class="ttc" id="Core_8h_html_a80e8381d86ecb0a7f4f87ff84d1a0be5"><div class="ttname"><a href="Core_8h.html#a80e8381d86ecb0a7f4f87ff84d1a0be5">sizeVectorContainer_Type</a></div><div class="ttdeci">std::vector&lt; sizeVector_Type &gt; sizeVectorContainer_Type</div><div class="ttdef"><b>Definition:</b> Core.h:71</div></div>
+<div class="ttc" id="classIntersectData_html_a25def82d58f9508d33ab1a43b2b03ceb"><div class="ttname"><a href="classIntersectData.html#a25def82d58f9508d33ab1a43b2b03ceb">IntersectData::getNumFractures</a></div><div class="ttdeci">size_type getNumFractures() const </div><div class="ttdef"><b>Definition:</b> IntersectData.h:70</div></div>
+<div class="ttc" id="classIntersectData_html_a046a91173e4427a741101bcc01a622b1"><div class="ttname"><a href="classIntersectData.html#a046a91173e4427a741101bcc01a622b1">IntersectData::operator=</a></div><div class="ttdeci">const IntersectData &amp; operator=(const IntersectData &amp;in)</div><div class="ttdef"><b>Definition:</b> IntersectData.h:82</div></div>
 <div class="ttc" id="FractureHandler_8h_html"><div class="ttname"><a href="FractureHandler_8h.html">FractureHandler.h</a></div></div>
-<div class="ttc" id="classIntersectData_html_a8a5946e35f80576da495a107464cd2cb"><div class="ttname"><a href="classIntersectData.html#a8a5946e35f80576da495a107464cd2cb">IntersectData::getDOFVelocity</a></div><div class="ttdeci">size_type getDOFVelocity(const size_type &amp;component, const size_type &amp;region) const </div><div class="ttdef"><b>Definition:</b> IntersectData.h:49</div></div>
+<div class="ttc" id="classIntersectData_html_a8a5946e35f80576da495a107464cd2cb"><div class="ttname"><a href="classIntersectData.html#a8a5946e35f80576da495a107464cd2cb">IntersectData::getDOFVelocity</a></div><div class="ttdeci">size_type getDOFVelocity(const size_type &amp;component, const size_type &amp;region) const </div><div class="ttdef"><b>Definition:</b> IntersectData.h:46</div></div>
 <div class="ttc" id="FractureHandler_8h_html_af23fb7a30aaff864bd42587af4f1e78a"><div class="ttname"><a href="FractureHandler_8h.html#af23fb7a30aaff864bd42587af4f1e78a">FractureHandlerPtr_Type</a></div><div class="ttdeci">boost::shared_ptr&lt; FractureHandler_Type &gt; FractureHandlerPtr_Type</div><div class="ttdef"><b>Definition:</b> FractureHandler.h:387</div></div>
-<div class="ttc" id="classIntersectData_html_ac4e5826b88471e0f1514cae82c49bcae"><div class="ttname"><a href="classIntersectData.html#ac4e5826b88471e0f1514cae82c49bcae">IntersectData::setDOFPosition</a></div><div class="ttdeci">void setDOFPosition(const sizeVector_Type &amp;dofPressure, const sizeVectorContainer_Type &amp;dofVelocity)</div><div class="ttdef"><b>Definition:</b> IntersectData.h:35</div></div>
-<div class="ttc" id="IntersectData_8h_html_a3a0e09f3c2e91f5247a4d504ed90bd7a"><div class="ttname"><a href="IntersectData_8h.html#a3a0e09f3c2e91f5247a4d504ed90bd7a">IntersectDataPtr_Type</a></div><div class="ttdeci">boost::shared_ptr&lt; IntersectData_Type &gt; IntersectDataPtr_Type</div><div class="ttdef"><b>Definition:</b> IntersectData.h:104</div></div>
-<div class="ttc" id="classIntersectData_html_a50b33fda9608ffc678057b08e7aed405"><div class="ttname"><a href="classIntersectData.html#a50b33fda9608ffc678057b08e7aed405">IntersectData::getDOFPressure</a></div><div class="ttdeci">size_type getDOFPressure(const size_type &amp;component) const </div><div class="ttdef"><b>Definition:</b> IntersectData.h:43</div></div>
+<div class="ttc" id="classIntersectData_html_ac4e5826b88471e0f1514cae82c49bcae"><div class="ttname"><a href="classIntersectData.html#ac4e5826b88471e0f1514cae82c49bcae">IntersectData::setDOFPosition</a></div><div class="ttdeci">void setDOFPosition(const sizeVector_Type &amp;dofPressure, const sizeVectorContainer_Type &amp;dofVelocity)</div><div class="ttdef"><b>Definition:</b> IntersectData.h:32</div></div>
+<div class="ttc" id="IntersectData_8h_html_a3a0e09f3c2e91f5247a4d504ed90bd7a"><div class="ttname"><a href="IntersectData_8h.html#a3a0e09f3c2e91f5247a4d504ed90bd7a">IntersectDataPtr_Type</a></div><div class="ttdeci">boost::shared_ptr&lt; IntersectData_Type &gt; IntersectDataPtr_Type</div><div class="ttdef"><b>Definition:</b> IntersectData.h:102</div></div>
+<div class="ttc" id="classIntersectData_html_a50b33fda9608ffc678057b08e7aed405"><div class="ttname"><a href="classIntersectData.html#a50b33fda9608ffc678057b08e7aed405">IntersectData::getDOFPressure</a></div><div class="ttdeci">size_type getDOFPressure(const size_type &amp;component) const </div><div class="ttdef"><b>Definition:</b> IntersectData.h:40</div></div>
+<div class="ttc" id="classIntersectData_html_a51a3df0f499c8150c32fe1f12f44ff8d"><div class="ttname"><a href="classIntersectData.html#a51a3df0f499c8150c32fe1f12f44ff8d">IntersectData::setIntersection</a></div><div class="ttdeci">void setIntersection(const size_type &amp;elementID, const FracturePtrContainer_Type &amp;fractures, const size_type k)</div><div class="ttdef"><b>Definition:</b> IntersectData.cc:36</div></div>
 <div class="ttc" id="FractureHandler_8h_html_a2f0b57e18ecf89912d7de0c87158009e"><div class="ttname"><a href="FractureHandler_8h.html#a2f0b57e18ecf89912d7de0c87158009e">FracturePtrContainer_Type</a></div><div class="ttdeci">std::vector&lt; FractureHandlerPtr_Type &gt; FracturePtrContainer_Type</div><div class="ttdef"><b>Definition:</b> FractureHandler.h:388</div></div>
-<div class="ttc" id="IntersectData_8h_html_a822ec3b760dfb603e1cf0bfe3ad5636a"><div class="ttname"><a href="IntersectData_8h.html#a822ec3b760dfb603e1cf0bfe3ad5636a">IntersectDataContainer_Type</a></div><div class="ttdeci">std::vector&lt; IntersectData_Type &gt; IntersectDataContainer_Type</div><div class="ttdef"><b>Definition:</b> IntersectData.h:103</div></div>
-<div class="ttc" id="IntersectData_8h_html_a4440e180484694f70bc87213bcc208d1"><div class="ttname"><a href="IntersectData_8h.html#a4440e180484694f70bc87213bcc208d1">IntersectData_Type</a></div><div class="ttdeci">IntersectData IntersectData_Type</div><div class="ttdef"><b>Definition:</b> IntersectData.h:102</div></div>
-<div class="ttc" id="IntersectData_8h_html_a55afaad4bc03163c4bf7ae8beb4a9057"><div class="ttname"><a href="IntersectData_8h.html#a55afaad4bc03163c4bf7ae8beb4a9057">IntersectDataPtrContainer_Type</a></div><div class="ttdeci">std::vector&lt; IntersectDataPtr_Type &gt; IntersectDataPtrContainer_Type</div><div class="ttdef"><b>Definition:</b> IntersectData.h:105</div></div>
-<div class="ttc" id="classIntersectData_html_a1c43bd327ed8dedaa89870f60cdb4606"><div class="ttname"><a href="classIntersectData.html#a1c43bd327ed8dedaa89870f60cdb4606">IntersectData::getFractures</a></div><div class="ttdeci">const FracturePtrContainer_Type &amp; getFractures() const </div><div class="ttdef"><b>Definition:</b> IntersectData.h:61</div></div>
-<div class="ttc" id="classIntersectData_html"><div class="ttname"><a href="classIntersectData.html">IntersectData</a></div><div class="ttdoc">IntersectData.h. </div><div class="ttdef"><b>Definition:</b> IntersectData.h:10</div></div>
-<div class="ttc" id="classIntersectData_html_afef7730d6a494464350ebce088e488ee"><div class="ttname"><a href="classIntersectData.html#afef7730d6a494464350ebce088e488ee">IntersectData::getFracture</a></div><div class="ttdeci">const FractureHandlerPtr_Type &amp; getFracture(const size_type &amp;f) const </div><div class="ttdef"><b>Definition:</b> IntersectData.h:67</div></div>
-<div class="ttc" id="classIntersectData_html_ae4cc921b5f9bee74c9a20b25ae7a6f37"><div class="ttname"><a href="classIntersectData.html#ae4cc921b5f9bee74c9a20b25ae7a6f37">IntersectData::getDOFVelocity</a></div><div class="ttdeci">const sizeVector_Type &amp; getDOFVelocity(const size_type &amp;region) const </div><div class="ttdef"><b>Definition:</b> IntersectData.h:55</div></div>
-<div class="ttc" id="classIntersectData_html_a1872122295e3fec0fb3e81d4098e9949"><div class="ttname"><a href="classIntersectData.html#a1872122295e3fec0fb3e81d4098e9949">IntersectData::getElementID</a></div><div class="ttdeci">const size_type &amp; getElementID() const </div><div class="ttdef"><b>Definition:</b> IntersectData.h:79</div></div>
+<div class="ttc" id="IntersectData_8h_html_a822ec3b760dfb603e1cf0bfe3ad5636a"><div class="ttname"><a href="IntersectData_8h.html#a822ec3b760dfb603e1cf0bfe3ad5636a">IntersectDataContainer_Type</a></div><div class="ttdeci">std::vector&lt; IntersectData_Type &gt; IntersectDataContainer_Type</div><div class="ttdef"><b>Definition:</b> IntersectData.h:101</div></div>
+<div class="ttc" id="IntersectData_8h_html_a4440e180484694f70bc87213bcc208d1"><div class="ttname"><a href="IntersectData_8h.html#a4440e180484694f70bc87213bcc208d1">IntersectData_Type</a></div><div class="ttdeci">IntersectData IntersectData_Type</div><div class="ttdef"><b>Definition:</b> IntersectData.h:100</div></div>
+<div class="ttc" id="classIntersectData_html_a6f368be5c978f120623bdef4b6acab12"><div class="ttname"><a href="classIntersectData.html#a6f368be5c978f120623bdef4b6acab12">IntersectData::IntersectData</a></div><div class="ttdeci">IntersectData(const GetPot &amp;dataFile)</div><div class="ttdef"><b>Definition:</b> IntersectData.h:17</div></div>
+<div class="ttc" id="IntersectData_8h_html_a55afaad4bc03163c4bf7ae8beb4a9057"><div class="ttname"><a href="IntersectData_8h.html#a55afaad4bc03163c4bf7ae8beb4a9057">IntersectDataPtrContainer_Type</a></div><div class="ttdeci">std::vector&lt; IntersectDataPtr_Type &gt; IntersectDataPtrContainer_Type</div><div class="ttdef"><b>Definition:</b> IntersectData.h:103</div></div>
+<div class="ttc" id="classIntersectData_html_a1c43bd327ed8dedaa89870f60cdb4606"><div class="ttname"><a href="classIntersectData.html#a1c43bd327ed8dedaa89870f60cdb4606">IntersectData::getFractures</a></div><div class="ttdeci">const FracturePtrContainer_Type &amp; getFractures() const </div><div class="ttdef"><b>Definition:</b> IntersectData.h:58</div></div>
+<div class="ttc" id="classIntersectData_html"><div class="ttname"><a href="classIntersectData.html">IntersectData</a></div><div class="ttdoc">IntersectData.h. </div><div class="ttdef"><b>Definition:</b> IntersectData.h:12</div></div>
+<div class="ttc" id="classIntersectData_html_afef7730d6a494464350ebce088e488ee"><div class="ttname"><a href="classIntersectData.html#afef7730d6a494464350ebce088e488ee">IntersectData::getFracture</a></div><div class="ttdeci">const FractureHandlerPtr_Type &amp; getFracture(const size_type &amp;f) const </div><div class="ttdef"><b>Definition:</b> IntersectData.h:64</div></div>
+<div class="ttc" id="classIntersectData_html_ae4cc921b5f9bee74c9a20b25ae7a6f37"><div class="ttname"><a href="classIntersectData.html#ae4cc921b5f9bee74c9a20b25ae7a6f37">IntersectData::getDOFVelocity</a></div><div class="ttdeci">const sizeVector_Type &amp; getDOFVelocity(const size_type &amp;region) const </div><div class="ttdef"><b>Definition:</b> IntersectData.h:52</div></div>
+<div class="ttc" id="classIntersectData_html_a1872122295e3fec0fb3e81d4098e9949"><div class="ttname"><a href="classIntersectData.html#a1872122295e3fec0fb3e81d4098e9949">IntersectData::getElementID</a></div><div class="ttdeci">const size_type &amp; getElementID() const </div><div class="ttdef"><b>Definition:</b> IntersectData.h:76</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generato Lun 20 Ott 2014 14:09:03 per Progetto PACS da &#160;<a href="http://www.doxygen.org/index.html">
+Generato Mar 28 Ott 2014 09:35:35 per Progetto PACS da &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

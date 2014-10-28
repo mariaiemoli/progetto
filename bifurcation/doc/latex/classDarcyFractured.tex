@@ -14,7 +14,7 @@
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{classDarcyFractured_accc03f979ab787754e26d9f06b553c96}{Darcy\-Fractured} (const \hyperlink{MediumData_8h_ab4e5446269b79f019405fbe1b6e4b1fe}{Medium\-Data\-Ptr\-\_\-\-Type} \&medium, const \hyperlink{MeshHandler_8h_a1e5fc39dfda19e81b21756ab7719ef4c}{Mesh\-Handler\-Ptr\-\_\-\-Type} \&mesh, const \hyperlink{BCHandler_8h_aa175884cb453788647f17f2230a2a762}{B\-C\-Handler\-Ptr\-\_\-\-Type} \&bc\-Handler, const \hyperlink{FracturesSet_8h_ac29a2a91d3af77fb459980a7db47f420}{Fractures\-Set\-Ptr\-\_\-\-Type} \&fractures, const \hyperlink{Exporter_8h_ac9d7f94fea8b91459a536bfaa2f3910c}{Exporter\-Ptr\-\_\-\-Type} \&exporter)
-\begin{DoxyCompactList}\small\item\em \hyperlink{DarcyFractured_8cc}{Darcy\-Fractured.\-cc}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Darcy\-Fractured.\-cc. \end{DoxyCompactList}\item 
 void \hyperlink{classDarcyFractured_a7832c9317b9764da96fc8ee112860824}{init} ()
 \begin{DoxyCompactList}\small\item\em Funzione che costruisce M\-\_\-medium\-Mesh, definisce gli elementi finiti e i metodi di integrazione e seleziona i contorni. \end{DoxyCompactList}\item 
 void \hyperlink{classDarcyFractured_a1e218bc0eda8f55db644dda95503491b}{assembly} ()
@@ -44,7 +44,7 @@ const \hyperlink{Core_8h_ab09b6fa3c23db1b8c60456f8690c44a7}{scalar\-Vector\-Ptr\
 )}}\label{classDarcyFractured_accc03f979ab787754e26d9f06b553c96}
 
 
-\hyperlink{DarcyFractured_8cc}{Darcy\-Fractured.\-cc}. 
+Darcy\-Fractured.\-cc. 
 
 structure for the Darcy fractured problem 
 \begin{DoxyCode}
@@ -146,503 +146,602 @@ B\-V = Mvd $\ast$ Vdirichlet + Bstress B\-P = Mpd $\ast$ Vdirichlet
 134         \textcolor{comment}{// numero di gradi di libertà per i bordi per la frattura f}
 135         fractureNumberBoundaryDOF [ f ] = M\_bcHandler->getFractureBC(f)->getMeshFEM().nb\_dof();
 136 
-137         \textcolor{comment}{// numero totale di intersezioni}
-138         fractureNumberIntersections += M\_fractures->getFracture( f )->getNumIntersections();
-139 
-140         
-141         std::cout << \textcolor{stringliteral}{"fractureNumberDOFPressure [ "} << f << \textcolor{stringliteral}{" ]:  "} << fractureNumberDOFPressure [ f ] << 
-      std::endl;
-142         
-143         std::cout << \textcolor{stringliteral}{"fractureNumberGlobalDOFPressure [ "}<< f <<\textcolor{stringliteral}{" ]:  "} << fractureNumberGlobalDOFPressure 
-      [ f ] << std::endl;
-144         
-145         std::cout << \textcolor{stringliteral}{"fractureNumberDOFVelocity [ "} << f << \textcolor{stringliteral}{" ]:  "} << fractureNumberDOFVelocity [ f ] << 
-      std::endl;
-146         
-147         std::cout << \textcolor{stringliteral}{"fractureNumberGlobalDOFVelocity [ "} << f << \textcolor{stringliteral}{" ]:  "} << 
-      fractureNumberGlobalDOFVelocity [ f ] << std::endl;
-148         
-149         std::cout << \textcolor{stringliteral}{"fractureNumberDOFVelocityPressure [ "} << f << \textcolor{stringliteral}{" ]:  "} << 
-      fractureNumberDOFVelocityPressure [ f ] << std::endl;
+137      \textcolor{comment}{/*   }
+138 \textcolor{comment}{        std::cout << "fractureNumberDOFPressure [ " << f << " ]:  " << fractureNumberDOFPressure [ f ] <<
+       std::endl;}
+139 \textcolor{comment}{        }
+140 \textcolor{comment}{        std::cout << "fractureNumberGlobalDOFPressure [ "<< f <<" ]:  " << fractureNumberGlobalDOFPressure
+       [ f ] << std::endl;}
+141 \textcolor{comment}{        }
+142 \textcolor{comment}{        std::cout << "fractureNumberDOFVelocity [ " << f << " ]:  " << fractureNumberDOFVelocity [ f ] <<
+       std::endl;}
+143 \textcolor{comment}{        }
+144 \textcolor{comment}{        std::cout << "fractureNumberGlobalDOFVelocity [ " << f << " ]:  " <<
+       fractureNumberGlobalDOFVelocity [ f ] << std::endl;}
+145 \textcolor{comment}{        }
+146 \textcolor{comment}{        std::cout << "fractureNumberDOFVelocityPressure [ " << f << " ]:  " <<
+       fractureNumberDOFVelocityPressure [ f ] << std::endl;}
+147 \textcolor{comment}{        }
+148 \textcolor{comment}{        std::cout << "fractureNumberBoundaryDOF [ " << f << " ]:  " << fractureNumberBoundaryDOF [ f ] <<
+       std::endl;}
+149 \textcolor{comment}{      */}    
 150         
-151         std::cout << \textcolor{stringliteral}{"fractureNumberBoundaryDOF [ "} << f << \textcolor{stringliteral}{" ]:  "} << fractureNumberBoundaryDOF [ f ] << 
-      std::endl;
-152         
-153         
-154     \}
-155     
-156     std::cout << \textcolor{stringliteral}{"fractureTotalNumberDOFPressure:  "} << fractureTotalNumberDOFPressure << std::endl;
-157       
-158     std::cout << \textcolor{stringliteral}{"fractureTotalNumberDOFVelocityPressure:  "} << fractureTotalNumberDOFVelocityPressure << 
-      std::endl;
-159 
-160     std::cout << \textcolor{stringliteral}{"fractureNumberIntersections:  "} << fractureNumberIntersections << std::endl;
-161     
-162     
-163 
-164     \textcolor{comment}{// numero intersezioni}
-165     fractureNumberCross = M\_fractures->getIntersections ()->getNumberCross ();
-166    
-167     fractureNumberBifurcation = M\_fractures->getIntersections ()->getNumberBifurcation ();
-168     
-169     fractureNumberIntersections = fractureNumberCross + 5*fractureNumberBifurcation;
-170     
-171     globalFractureNumber = fractureNumberCross*2 + fractureNumberBifurcation*6;
-172         
-173     \textcolor{comment}{// inizializziamo tutte le matrici a blocchi, la matrice globale e il termine di destra per il sistema
-       e il vettore delle soluzioni }
-174     
-175     \textcolor{comment}{// Allochiamo la matrice globale del sistema:  M\_darcyGlobalMatrix}
-176     M\_globalMatrix.reset( \textcolor{keyword}{new} \hyperlink{Core_8h_afba9f623673e2ae32054015bdb5500f9}{sparseMatrix\_Type}( fractureTotalNumberDOFVelocityPressure + 
-      globalFractureNumber,
-177                                                  fractureTotalNumberDOFVelocityPressure + 
-      globalFractureNumber ));
-178     gmm::clear( *M\_globalMatrix );
-179     
-180     \textcolor{comment}{// Allochiamo il vettore del termine noto di destra del sistema: M\_darcyGlobalRightHandSide}
-181     M\_globalRightHandSide.reset( \textcolor{keyword}{new} \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type}( 
-      fractureTotalNumberDOFVelocityPressure + globalFractureNumber ));
-182     gmm::clear( *M\_globalRightHandSide );
-183 
+151     \}
+152     \textcolor{comment}{/*}
+153 \textcolor{comment}{    std::cout << "fractureTotalNumberDOFPressure:  " << fractureTotalNumberDOFPressure << std::endl;}
+154 \textcolor{comment}{      }
+155 \textcolor{comment}{    std::cout << "fractureTotalNumberDOFVelocityPressure:  " << fractureTotalNumberDOFVelocityPressure <<
+       std::endl;}
+156 \textcolor{comment}{}
+157 \textcolor{comment}{    std::cout << "fractureNumberIntersections:  " << fractureNumberIntersections << std::endl;}
+158 \textcolor{comment}{    */}
+159     
+160 
+161     \textcolor{comment}{// Numero intersezioni}
+162     fractureNumberCross = M\_fractures->getIntersections ()->getNumberCross ();
+163        
+164    \textcolor{comment}{// size\_type g = M\_fractures->getIntersections ()->getNumberCross ();}
+165 
+166     \textcolor{comment}{//fractureNumberCross = g;}
+167     
+168     fractureNumberBifurcation = M\_fractures->getIntersections ()->getNumberBifurcation ();
+169     
+170     fractureNumberIntersections = fractureNumberCross + 5*fractureNumberBifurcation;
+171     
+172     globalFractureNumber = fractureNumberCross*2 + fractureNumberBifurcation*6;
+173     
+174 
+175     \textcolor{comment}{/*}
+176 \textcolor{comment}{    std::cout << " globalFractureNumber: " << globalFractureNumber << std::endl;}
+177 \textcolor{comment}{    }
+178 \textcolor{comment}{    std::cout << " fractureNumberCross: " << fractureNumberCross << std::endl;}
+179 \textcolor{comment}{    }
+180 \textcolor{comment}{    std::cout << " fractureNumberBifurcation: " << fractureNumberBifurcation << std::endl;}
+181 \textcolor{comment}{   }
+182 \textcolor{comment}{    std::cout << " M\_fractures->getIntersections ()->getNumberCross (): " << M\_fractures->getIntersections
+       ()->getNumberCross () << std::endl; }
+183 \textcolor{comment}{    */}
 184     
-185     \textcolor{comment}{// Allochiamo il vettore globale del termine incognito del sistema: M\_darcyVelocityAndPressure}
-186     M\_velocityAndPressure.reset(\textcolor{keyword}{new} \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type}( 
+185     \textcolor{comment}{// Inizializziamo tutte le matrici a blocchi, la matrice globale e il termine di destra per il sistema
+       e il vettore delle soluzioni }
+186     
+187     \textcolor{comment}{// Allochiamo la matrice globale del sistema:  M\_darcyGlobalMatrix}
+188     M\_globalMatrix.reset( \textcolor{keyword}{new} \hyperlink{Core_8h_afba9f623673e2ae32054015bdb5500f9}{sparseMatrix\_Type}( fractureTotalNumberDOFVelocityPressure + 
+      globalFractureNumber,
+189                                                  fractureTotalNumberDOFVelocityPressure + 
+      globalFractureNumber ));
+190     gmm::clear( *M\_globalMatrix );
+191     
+192     \textcolor{comment}{// Allochiamo il vettore del termine noto di destra del sistema: M\_darcyGlobalRightHandSide}
+193     M\_globalRightHandSide.reset( \textcolor{keyword}{new} \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type}( 
       fractureTotalNumberDOFVelocityPressure + globalFractureNumber ));
-187     gmm::clear(*M\_velocityAndPressure);
-188 
-189     
-190     \textcolor{comment}{// Allochiamo la matrice che usereme per accoppiare le fratture che si intersecano}
-191     \hyperlink{Core_8h_a87137a9501b38c724ac80bc955164bb7}{sparseMatrixPtr\_Type}  App;
-192 
-193     App.reset(\textcolor{keyword}{new} \hyperlink{Core_8h_afba9f623673e2ae32054015bdb5500f9}{sparseMatrix\_Type}( fractureNumberIntersections , globalFractureNumber ))
-      ;
-194     gmm::clear(*App);
+194     gmm::clear( *M\_globalRightHandSide );
 195 
-196     
-197     \textcolor{comment}{// Matrici a blocchi per le fratture}
-198     \hyperlink{Core_8h_a2f5e086fbce840d40be38c016488fd91}{sparseMatrixPtrContainer\_Type} A11F(numberFractures), A12F(numberFractures)
-      , E(numberFractures);
+196     \textcolor{comment}{// Allochiamo il vettore globale del termine incognito del sistema: M\_darcyVelocityAndPressure}
+197     M\_velocityAndPressure.reset(\textcolor{keyword}{new} \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type}( 
+      fractureTotalNumberDOFVelocityPressure + globalFractureNumber ));
+198     gmm::clear(*M\_velocityAndPressure);
 199 
-200     \textcolor{keywordflow}{for} ( size\_type f = 0; f < numberFractures; ++f )
-201     \{
-202         \textcolor{comment}{// Alloco la matrice A11F per la fratture f-esima}
-203         A11F [ f ].reset(\textcolor{keyword}{new} \hyperlink{Core_8h_afba9f623673e2ae32054015bdb5500f9}{sparseMatrix\_Type} ( fractureNumberGlobalDOFVelocity [ f ], 
-      fractureNumberGlobalDOFVelocity [ f ]) );
-204         gmm::clear(*(A11F [ f ]));
-205 
-206         \textcolor{comment}{// Alloco la matrice A12F per la fratture f-esima}
-207         A12F [ f ].reset(\textcolor{keyword}{new} \hyperlink{Core_8h_afba9f623673e2ae32054015bdb5500f9}{sparseMatrix\_Type} ( fractureNumberGlobalDOFVelocity [ f ], 
-      fractureNumberGlobalDOFPressure [ f ]) );
-208         gmm::clear(*(A12F [ f ]));
-209     \}
+200     
+201     \textcolor{comment}{// Allochiamo la matrice che usereme per accoppiare le fratture che si intersecano}
+202     \hyperlink{Core_8h_a87137a9501b38c724ac80bc955164bb7}{sparseMatrixPtr\_Type}  App;
+203 
+204     App.reset(\textcolor{keyword}{new} \hyperlink{Core_8h_afba9f623673e2ae32054015bdb5500f9}{sparseMatrix\_Type}( fractureNumberIntersections , globalFractureNumber ))
+      ;
+205     gmm::clear(*App);
+206 
+207     
+208     \textcolor{comment}{// Matrici a blocchi per le fratture}
+209     \hyperlink{Core_8h_a2f5e086fbce840d40be38c016488fd91}{sparseMatrixPtrContainer\_Type} A11F(numberFractures), A12F(numberFractures)
+      , E(numberFractures);
 210 
-211  
-212     
-213     \textcolor{comment}{// Accoppio le fratture}
-214     \hyperlink{namespacegetfem_a9a0b9f7498668cda8b547b10ac914a34}{getfem::coupleFractures} ( App, M\_fractures );
-215     \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{sizeVector\_Type} shiftIntersect ( numberFractures );
-216     
-217     shiftIntersect [ 0 ] = 0;
-218     
-219     \textcolor{comment}{// Calcolo i blocchi di matrici per ogni frattura}
-220     \textcolor{keywordflow}{for} ( size\_type f = 0; f < numberFractures; ++f )
-221     \{
-222         std::cout <<std::endl<< \textcolor{stringliteral}{"Fracture "} << f << std::endl;
-223 
-224         
-225         \textcolor{comment}{// Computes the matrix \(\backslash\)int\_\(\backslash\)gamma \(\backslash\)tau\_i \(\backslash\)cdot \(\backslash\)tau\_j}
-226         \hyperlink{namespacegetfem_aba6f1b4f1d395aae3d96071cad4953a2}{getfem::darcy\_A11F} ( A11F [ f ], M\_fractures->getFracture( f ),
-227                              M\_mediumData->getPenaltyVector(),
-228                              M\_fractures->getFracture( f )->getEtaTangentialInterpolated(),
-229                              M\_bcHandler->getFractureBC(f)->getDirichlet(), 
+211     \textcolor{keywordflow}{for} ( size\_type f = 0; f < numberFractures; ++f )
+212     \{
+213         \textcolor{comment}{// Alloco la matrice A11F per la fratture f-esima}
+214         A11F [ f ].reset(\textcolor{keyword}{new} \hyperlink{Core_8h_afba9f623673e2ae32054015bdb5500f9}{sparseMatrix\_Type} ( fractureNumberGlobalDOFVelocity [ f ], 
+      fractureNumberGlobalDOFVelocity [ f ]) );
+215         gmm::clear(*(A11F [ f ]));
+216 
+217         \textcolor{comment}{// Alloco la matrice A12F per la fratture f-esima}
+218         A12F [ f ].reset(\textcolor{keyword}{new} \hyperlink{Core_8h_afba9f623673e2ae32054015bdb5500f9}{sparseMatrix\_Type} ( fractureNumberGlobalDOFVelocity [ f ], 
+      fractureNumberGlobalDOFPressure [ f ]) );
+219         gmm::clear(*(A12F [ f ]));
+220     \}
+221 
+222     
+223     \textcolor{comment}{// Accoppio le fratture}
+224     \hyperlink{namespacegetfem_a9a0b9f7498668cda8b547b10ac914a34}{getfem::coupleFractures} ( App, M\_fractures );
+225     \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{sizeVector\_Type} shiftIntersect ( numberFractures );
+226     
+227     shiftIntersect [ 0 ] = 0;
+228     
+229     \textcolor{comment}{// Calcolo i blocchi di matrici per ogni frattura}
+230     \textcolor{keywordflow}{for} ( size\_type f = 0; f < numberFractures; ++f )
+231     \{
+232         std::cout <<std::endl<< \textcolor{stringliteral}{"Fracture "} << f << std::endl;
+233 
+234         
+235         \textcolor{comment}{// Computes the matrix \(\backslash\)int\_\(\backslash\)gamma \(\backslash\)tau\_i \(\backslash\)cdot \(\backslash\)tau\_j}
+236         \hyperlink{namespacegetfem_aba6f1b4f1d395aae3d96071cad4953a2}{getfem::darcy\_A11F} ( A11F [ f ], M\_fractures->getFracture( f ),
+237                              M\_mediumData->getPenaltyVector(),
+238                              M\_fractures->getFracture( f )->getEtaTangentialInterpolated(),
+239                              M\_bcHandler->getFractureBC(f)->getDirichlet(), 
       \hyperlink{classFractureHandler_a495ad4fc72d0c47c8f0424842f1153aaaa992cc3ad024a030ecd798dc319c95ac}{FractureHandler::FRACTURE\_UNCUT} * ( f + 1 ) );
-230 
-231         \textcolor{comment}{// Computes the matrix \(\backslash\)int\_\(\backslash\)gamma \(\backslash\)nabla v\_i \(\backslash\)cdot \(\backslash\)tau\_j}
-232         \hyperlink{namespacegetfem_ab62aa98cfcf55810e1518906202cbedc}{getfem::darcy\_A12F} ( A12F [ f ], M\_fractures->getFracture( f ), 
-      \hyperlink{classFractureHandler_a495ad4fc72d0c47c8f0424842f1153aaaa992cc3ad024a030ecd798dc319c95ac}{FractureHandler::FRACTURE\_UNCUT} * ( f + 1 ) );
-233         
-234         \textcolor{keywordflow}{if}( f != 0)
-235         \{
-236             shiftIntersect [ f ] = shiftIntersect [ f-1 ] + fractureNumberDOFVelocityPressure [ f-1 ];  
-237         \}
-238         
-239       \}
 240 
-241     
-242     \textcolor{comment}{// Introduco il termine legato all'intersezione}
-243     \textcolor{comment}{// A seconda del tipo di intersezione, Cross o Biforcazine, devo introdurre dei termini diversi}
-244     size\_type NumIntersections = fractureNumberCross + fractureNumberBifurcation;
-245   
-246     \hyperlink{IntersectData_8h_a822ec3b760dfb603e1cf0bfe3ad5636a}{IntersectDataContainer\_Type} IntCross = M\_fractures->getIntersections ()-> 
+241         \textcolor{comment}{// Computes the matrix \(\backslash\)int\_\(\backslash\)gamma \(\backslash\)nabla v\_i \(\backslash\)cdot \(\backslash\)tau\_j}
+242         \hyperlink{namespacegetfem_ab62aa98cfcf55810e1518906202cbedc}{getfem::darcy\_A12F} ( A12F [ f ], M\_fractures->getFracture( f ), 
+      \hyperlink{classFractureHandler_a495ad4fc72d0c47c8f0424842f1153aaaa992cc3ad024a030ecd798dc319c95ac}{FractureHandler::FRACTURE\_UNCUT} * ( f + 1 ) );
+243         
+244         \textcolor{keywordflow}{if}( f != 0)
+245         \{
+246             shiftIntersect [ f ] = shiftIntersect [ f-1 ] + fractureNumberDOFVelocityPressure [ f-1 ];  
+247         \}
+248         
+249     \}
+250 
+251     std::cout << std::endl;
+252     
+253     \textcolor{comment}{// Introduco il termine legato all'intersezione}
+254     \textcolor{comment}{// A seconda del tipo di intersezione, Cross o Biforcazione, devo introdurre dei termini diversi}
+255     size\_type NumIntersections = fractureNumberCross + fractureNumberBifurcation;
+256   
+257     \hyperlink{IntersectData_8h_a822ec3b760dfb603e1cf0bfe3ad5636a}{IntersectDataContainer\_Type} IntCross = M\_fractures->getIntersections ()-> 
       getCrossIntersections ();
-247     
-248     \hyperlink{IntersectData_8h_a822ec3b760dfb603e1cf0bfe3ad5636a}{IntersectDataContainer\_Type} IntBifurcation = M\_fractures->getIntersections (
+258     
+259     \hyperlink{IntersectData_8h_a822ec3b760dfb603e1cf0bfe3ad5636a}{IntersectDataContainer\_Type} IntBifurcation = M\_fractures->getIntersections (
       )-> getBifurcationIntersections ();
-249     
-250     \textcolor{comment}{// Aggiorno prima le matrici di tutte le fratture che si intersecano formando un " Cross "}
-251     \textcolor{keywordflow}{for} ( size\_type i = 0; i < IntCross.size(); i++ )
-252     \{
-253         
-254         \hyperlink{Core_8h_a87137a9501b38c724ac80bc955164bb7}{sparseMatrixPtr\_Type} Aup0, Aup1;
-255             
-256         \hyperlink{FractureHandler_8h_af23fb7a30aaff864bd42587af4f1e78a}{FractureHandlerPtr\_Type} f0 = IntCross [ i ].getFracture (0);
-257         \hyperlink{FractureHandler_8h_af23fb7a30aaff864bd42587af4f1e78a}{FractureHandlerPtr\_Type} f1 = IntCross [ i ].getFracture (1);
-258         
-259         size\_type id0 = f0->getId();
-260         size\_type id1 = f1->getId();
-261         
-262         
-263         Aup0.reset ( \textcolor{keyword}{new} \hyperlink{Core_8h_afba9f623673e2ae32054015bdb5500f9}{sparseMatrix\_Type} ( fractureNumberGlobalDOFVelocity [ id0 ], 1 ) 
+260     
+261     \textcolor{comment}{// Aggiorno prima le matrici di tutte le fratture che si intersecano formando un " Cross "}
+262     \textcolor{keywordflow}{for} ( size\_type i = 0; i < IntCross.size(); i++ )
+263     \{
+264         
+265         \hyperlink{Core_8h_a87137a9501b38c724ac80bc955164bb7}{sparseMatrixPtr\_Type} Aup0, Aup1;
+266             
+267         \hyperlink{FractureHandler_8h_af23fb7a30aaff864bd42587af4f1e78a}{FractureHandlerPtr\_Type} f0 = IntCross [ i ].getFracture (0);
+268         \hyperlink{FractureHandler_8h_af23fb7a30aaff864bd42587af4f1e78a}{FractureHandlerPtr\_Type} f1 = IntCross [ i ].getFracture (1);
+269         
+270         size\_type id0 = f0->getId();
+271         size\_type id1 = f1->getId();
+272         
+273         Aup0.reset ( \textcolor{keyword}{new} \hyperlink{Core_8h_afba9f623673e2ae32054015bdb5500f9}{sparseMatrix\_Type} ( fractureNumberGlobalDOFVelocity [ id0 ], 1 ) 
       );
-264         gmm::clear(*Aup0);
-265 
-266         Aup1.reset ( \textcolor{keyword}{new} \hyperlink{Core_8h_afba9f623673e2ae32054015bdb5500f9}{sparseMatrix\_Type} ( fractureNumberGlobalDOFVelocity [ id1 ], 1 ) 
+274         gmm::clear(*Aup0);
+275 
+276         Aup1.reset ( \textcolor{keyword}{new} \hyperlink{Core_8h_afba9f623673e2ae32054015bdb5500f9}{sparseMatrix\_Type} ( fractureNumberGlobalDOFVelocity [ id1 ], 1 ) 
       );
-267         gmm::clear(*Aup1);
-268 
-269         \textcolor{comment}{// aggiorno per la frattura 0}
-270         \hyperlink{namespacegetfem_a9b6ded8fe1019aa04e66d2047d0f29dd}{getfem::darcy\_A11F\_Cross} ( A11F [ id0 ],f0,
-271                                    f0->getEtaTangentialInterpolated(), 
-272                                    f1,
-273                                    \hyperlink{classFractureHandler_a495ad4fc72d0c47c8f0424842f1153aaa781cae3f3b99bf9357fed2833d315537}{FractureHandler::FRACTURE\_INTERSECT} *
+277         gmm::clear(*Aup1);
+278 
+279         \textcolor{comment}{// aggiorno per la frattura 0}
+280         std::cout << \textcolor{stringliteral}{"Cross: "} << std::endl;
+281         
+282         std::cout << \textcolor{stringliteral}{" Fracture "} << id0 << std::endl;
+283         
+284         \hyperlink{namespacegetfem_a9b6ded8fe1019aa04e66d2047d0f29dd}{getfem::darcy\_A11F\_Cross} ( A11F [ id0 ],f0,
+285                                    f0->getEtaTangentialInterpolated(), 
+286                                    f1,
+287                                    \hyperlink{classFractureHandler_a495ad4fc72d0c47c8f0424842f1153aaa781cae3f3b99bf9357fed2833d315537}{FractureHandler::FRACTURE\_INTERSECT} *
        ( id0 + 1 ) + id1 + 1);
-274 
-275         \hyperlink{namespacegetfem_a88df6c0cb0765d5ab0fae27679cd30f4}{getfem::darcy\_A12F\_Cross} ( A12F [ id0 ], f0, f1,
-276                                    \hyperlink{classFractureHandler_a495ad4fc72d0c47c8f0424842f1153aaa781cae3f3b99bf9357fed2833d315537}{FractureHandler::FRACTURE\_INTERSECT} *
+288 
+289         \hyperlink{namespacegetfem_a88df6c0cb0765d5ab0fae27679cd30f4}{getfem::darcy\_A12F\_Cross} ( A12F [ id0 ], f0, f1,
+290                                    \hyperlink{classFractureHandler_a495ad4fc72d0c47c8f0424842f1153aaa781cae3f3b99bf9357fed2833d315537}{FractureHandler::FRACTURE\_INTERSECT} *
        ( id0 + 1 ) + id1 + 1 );
-277 
-278         \textcolor{comment}{// aggiorno per la frattura 1}
-279         \hyperlink{namespacegetfem_a9b6ded8fe1019aa04e66d2047d0f29dd}{getfem::darcy\_A11F\_Cross} ( A11F [ id1 ],f1,
-280                                    f1->getEtaTangentialInterpolated(),
-281                                    f0,
-282                                    \hyperlink{classFractureHandler_a495ad4fc72d0c47c8f0424842f1153aaa781cae3f3b99bf9357fed2833d315537}{FractureHandler::FRACTURE\_INTERSECT} *
+291         std::cout << std::endl;
+292         
+293         \textcolor{comment}{// aggiorno per la frattura 1}
+294         std::cout << \textcolor{stringliteral}{" Fracture "} << id1 << std::endl;
+295         \hyperlink{namespacegetfem_a9b6ded8fe1019aa04e66d2047d0f29dd}{getfem::darcy\_A11F\_Cross} ( A11F [ id1 ],f1,
+296                                    f1->getEtaTangentialInterpolated(),
+297                                    f0,
+298                                    \hyperlink{classFractureHandler_a495ad4fc72d0c47c8f0424842f1153aaa781cae3f3b99bf9357fed2833d315537}{FractureHandler::FRACTURE\_INTERSECT} *
        ( id1 + 1 ) + id0 + 1 );
-283 
-284         \hyperlink{namespacegetfem_a88df6c0cb0765d5ab0fae27679cd30f4}{getfem::darcy\_A12F\_Cross} ( A12F [ id1 ], f1, f0,
-285                                    \hyperlink{classFractureHandler_a495ad4fc72d0c47c8f0424842f1153aaa781cae3f3b99bf9357fed2833d315537}{FractureHandler::FRACTURE\_INTERSECT} *
-       ( id1 + 1 ) + id0 + 1 );
-286 
-287         \textcolor{keyword}{const} \hyperlink{Core_8h_a9bc476e433f99b82a9c2b8560735c7b5}{pairSizeVectorContainer\_Type}& intersectElementsGlobalIndex0 = f0
-      ->getFractureIntersectElementsGlobalIndex ();
-288         \textcolor{keyword}{const} \hyperlink{Core_8h_a9bc476e433f99b82a9c2b8560735c7b5}{pairSizeVectorContainer\_Type}& intersectElementsGlobalIndex1 = f1
-      ->getFractureIntersectElementsGlobalIndex ();
-289         
-290         \textcolor{keyword}{const} size\_type numIntersections = intersectElementsGlobalIndex0 [id1].size();
-291         
-292         \textcolor{keyword}{const} \hyperlink{Core_8h_a80e8381d86ecb0a7f4f87ff84d1a0be5}{sizeVectorContainer\_Type}& intersectElements0 = f0->
-      getFractureIntersectElements ();
-293         \textcolor{keyword}{const} \hyperlink{Core_8h_a80e8381d86ecb0a7f4f87ff84d1a0be5}{sizeVectorContainer\_Type}& intersectElements1 = f1->
-      getFractureIntersectElements ();
-294         
-295         \textcolor{keywordflow}{for} ( size\_type k = 0; k < numIntersections; ++k )
-296         \{
-297             gmm::clear (*Aup0);
-298             gmm::clear (*Aup1);
 299 
-300             \hyperlink{namespacegetfem_acc74b86734c3814042e614d015f23876}{getfem::velocityJump\_Cross} ( Aup0, f0, f1, intersectElements0 [id1][k
-      ] );
-301             \hyperlink{namespacegetfem_acc74b86734c3814042e614d015f23876}{getfem::velocityJump\_Cross} ( Aup1, f1, f0, intersectElements1 [id0][k
-      ] );
+300         \hyperlink{namespacegetfem_a88df6c0cb0765d5ab0fae27679cd30f4}{getfem::darcy\_A12F\_Cross} ( A12F [ id1 ], f1, f0,
+301                                    \hyperlink{classFractureHandler_a495ad4fc72d0c47c8f0424842f1153aaa781cae3f3b99bf9357fed2833d315537}{FractureHandler::FRACTURE\_INTERSECT} *
+       ( id1 + 1 ) + id0 + 1 );
 302 
-303             \textcolor{keyword}{const} size\_type globalIndex = intersectElementsGlobalIndex0 [id1] [k].first;
-304             \textcolor{keyword}{const} size\_type globalIndex2 = intersectElementsGlobalIndex0 [id1] [k].second;
-305             
-306             gmm::copy ( *Aup0, 
-307                         gmm::sub\_matrix (*M\_globalMatrix,
-308                                         gmm::sub\_interval ( shiftIntersect [ id0 ], 
+303         std::cout << std::endl;
+304         
+305         \textcolor{keyword}{const} \hyperlink{Core_8h_a9bc476e433f99b82a9c2b8560735c7b5}{pairSizeVectorContainer\_Type}& intersectElementsGlobalIndex0 = f0
+      ->getFractureIntersectElementsGlobalIndex ();
+306         \textcolor{keyword}{const} \hyperlink{Core_8h_a9bc476e433f99b82a9c2b8560735c7b5}{pairSizeVectorContainer\_Type}& intersectElementsGlobalIndex1 = f1
+      ->getFractureIntersectElementsGlobalIndex ();
+307         
+308         \textcolor{keyword}{const} size\_type numIntersections = intersectElementsGlobalIndex0 [id1].size();
+309         
+310         \textcolor{keyword}{const} \hyperlink{Core_8h_a80e8381d86ecb0a7f4f87ff84d1a0be5}{sizeVectorContainer\_Type}& intersectElements0 = f0->
+      getFractureIntersectElements ();
+311         \textcolor{keyword}{const} \hyperlink{Core_8h_a80e8381d86ecb0a7f4f87ff84d1a0be5}{sizeVectorContainer\_Type}& intersectElements1 = f1->
+      getFractureIntersectElements ();
+312         
+313         
+314         \textcolor{keywordflow}{for} ( size\_type k = 0; k < numIntersections; ++k )
+315         \{
+316             gmm::clear (*Aup0);
+317             gmm::clear (*Aup1);
+318 
+319             \hyperlink{namespacegetfem_acc74b86734c3814042e614d015f23876}{getfem::velocityJump\_Cross} ( Aup0, f0, f1, intersectElements0 [id1][k
+      ] );
+320             \hyperlink{namespacegetfem_acc74b86734c3814042e614d015f23876}{getfem::velocityJump\_Cross} ( Aup1, f1, f0, intersectElements1 [id0][k
+      ] );
+321 
+322             \textcolor{keyword}{const} size\_type globalIndex = intersectElementsGlobalIndex0 [id1] [k].first;
+323             \textcolor{keyword}{const} size\_type globalIndex2 = intersectElementsGlobalIndex0 [id1] [k].second;
+324             
+325             gmm::copy ( *Aup0, 
+326                         gmm::sub\_matrix (*M\_globalMatrix,
+327                                         gmm::sub\_interval ( shiftIntersect [ id0 ], 
       fractureNumberGlobalDOFVelocity [ id0 ] ),
-309                                         gmm::sub\_interval (  fractureTotalNumberDOFVelocityPressure + 
+328                                         gmm::sub\_interval (  fractureTotalNumberDOFVelocityPressure + 
       globalIndex, 1 ) ) );
-310 
-311             gmm::copy ( gmm::transposed(*Aup0), 
-312                         gmm::sub\_matrix (*M\_globalMatrix,
-313                                         gmm::sub\_interval (  fractureTotalNumberDOFVelocityPressure + 
+329 
+330             gmm::copy ( gmm::transposed(*Aup0), 
+331                         gmm::sub\_matrix (*M\_globalMatrix,
+332                                         gmm::sub\_interval (  fractureTotalNumberDOFVelocityPressure + 
       std::max(globalIndex, globalIndex2), 1 ),
-314                                         gmm::sub\_interval ( shiftIntersect [ id0 ], 
+333                                         gmm::sub\_interval ( shiftIntersect [ id0 ], 
       fractureNumberGlobalDOFVelocity [ id0 ] ) ) );
-315 
-316             gmm::copy ( *Aup1, 
-317                         gmm::sub\_matrix (*M\_globalMatrix,
-318                                         gmm::sub\_interval ( shiftIntersect [ id1 ], 
+334 
+335             gmm::copy ( *Aup1, 
+336                         gmm::sub\_matrix (*M\_globalMatrix,
+337                                         gmm::sub\_interval ( shiftIntersect [ id1 ], 
       fractureNumberGlobalDOFVelocity [ id1 ] ),
-319                                         gmm::sub\_interval (  fractureTotalNumberDOFVelocityPressure + 
+338                                         gmm::sub\_interval (  fractureTotalNumberDOFVelocityPressure + 
       globalIndex2, 1 ) ) );
-320 
-321             gmm::copy ( gmm::transposed(*Aup1), 
-322                         gmm::sub\_matrix (*M\_globalMatrix,
-323                                         gmm::sub\_interval (  fractureTotalNumberDOFVelocityPressure + 
+339 
+340             gmm::copy ( gmm::transposed(*Aup1), 
+341                         gmm::sub\_matrix (*M\_globalMatrix,
+342                                         gmm::sub\_interval (  fractureTotalNumberDOFVelocityPressure + 
       std::max(globalIndex, globalIndex2), 1 ),
-324                                         gmm::sub\_interval ( shiftIntersect [ id1 ], 
+343                                         gmm::sub\_interval ( shiftIntersect [ id1 ], 
       fractureNumberGlobalDOFVelocity [ id1 ] ) ) );
-325 
-326          \}
-327         
-328     \}
-329     
-330     \textcolor{comment}{// Aggiorno ora le matrici di tutte le fratture che si intersecano formando una " Bifurcation "}
-331     \textcolor{keywordflow}{for} ( size\_type i = 0; i < IntBifurcation.size(); i++ )
-332     \{
-333         
-334         \hyperlink{Core_8h_a87137a9501b38c724ac80bc955164bb7}{sparseMatrixPtr\_Type} Aup0, Aup1, Aup2;
-335             
-336         \hyperlink{FractureHandler_8h_af23fb7a30aaff864bd42587af4f1e78a}{FractureHandlerPtr\_Type} f0 = IntBifurcation [ i ].getFracture (0);
-337         \hyperlink{FractureHandler_8h_af23fb7a30aaff864bd42587af4f1e78a}{FractureHandlerPtr\_Type} f1 = IntBifurcation [ i ].getFracture (1);
-338         \hyperlink{FractureHandler_8h_af23fb7a30aaff864bd42587af4f1e78a}{FractureHandlerPtr\_Type} f2 = IntBifurcation [ i ].getFracture (1);
-339         
-340         size\_type id0 = f0->getId();
-341         size\_type id1 = f1->getId();
-342         size\_type id2 = f2->getId();
-343         
-344         \textcolor{keyword}{const} \hyperlink{Core_8h_a80e8381d86ecb0a7f4f87ff84d1a0be5}{sizeVectorContainer\_Type}& intersectElements0 =  f0->
+344 
+345          \}
+346         
+347     \}
+348     
+349     
+350     \textcolor{comment}{// Aggiorno ora le matrici di tutte le fratture che si intersecano formando una " Bifurcation "}
+351     \textcolor{keywordflow}{for} ( size\_type i = 0; i < IntBifurcation.size(); i++ )
+352     \{
+353         
+354         \hyperlink{Core_8h_a87137a9501b38c724ac80bc955164bb7}{sparseMatrixPtr\_Type} Aup0, Aup1, Aup2;
+355             
+356         \hyperlink{FractureHandler_8h_af23fb7a30aaff864bd42587af4f1e78a}{FractureHandlerPtr\_Type} f0 = IntBifurcation [ i ].getFracture (0);
+357         \hyperlink{FractureHandler_8h_af23fb7a30aaff864bd42587af4f1e78a}{FractureHandlerPtr\_Type} f1 = IntBifurcation [ i ].getFracture (1);
+358         \hyperlink{FractureHandler_8h_af23fb7a30aaff864bd42587af4f1e78a}{FractureHandlerPtr\_Type} f2 = IntBifurcation [ i ].getFracture (2);
+359         
+360         size\_type id0 = f0->getId();
+361         size\_type id1 = f1->getId();
+362         size\_type id2 = f2->getId();
+363         
+364         \textcolor{keyword}{const} \hyperlink{Core_8h_a80e8381d86ecb0a7f4f87ff84d1a0be5}{sizeVectorContainer\_Type}& intersectElements0 =  f0->
       getFractureIntersectElements ();
-345         \textcolor{keyword}{const} \hyperlink{Core_8h_a80e8381d86ecb0a7f4f87ff84d1a0be5}{sizeVectorContainer\_Type}& intersectElements1 =  f1->
+365         \textcolor{keyword}{const} \hyperlink{Core_8h_a80e8381d86ecb0a7f4f87ff84d1a0be5}{sizeVectorContainer\_Type}& intersectElements1 =  f1->
       getFractureIntersectElements ();
-346         \textcolor{keyword}{const} \hyperlink{Core_8h_a80e8381d86ecb0a7f4f87ff84d1a0be5}{sizeVectorContainer\_Type}& intersectElements2 =  f2->
+366         \textcolor{keyword}{const} \hyperlink{Core_8h_a80e8381d86ecb0a7f4f87ff84d1a0be5}{sizeVectorContainer\_Type}& intersectElements2 =  f2->
       getFractureIntersectElements ();
-347 
-348         
-349         Aup01.reset ( \textcolor{keyword}{new} \hyperlink{Core_8h_afba9f623673e2ae32054015bdb5500f9}{sparseMatrix\_Type} ( fractureNumberGlobalDOFVelocity [ id0 ], 1 )
-       );
-350         gmm::clear(*Aup01);
-351 
-352         Aup02.reset ( \textcolor{keyword}{new} \hyperlink{Core_8h_afba9f623673e2ae32054015bdb5500f9}{sparseMatrix\_Type} ( fractureNumberGlobalDOFVelocity [ id0 ], 1 )
-       );
-353         gmm::clear(*Aup02);
-354 
-355         Aup10.reset ( \textcolor{keyword}{new} \hyperlink{Core_8h_afba9f623673e2ae32054015bdb5500f9}{sparseMatrix\_Type} ( fractureNumberGlobalDOFVelocity [ id1 ], 1 )
-       );
-356         gmm::clear(*Aup10);
-357 
-358         Aup12.reset ( \textcolor{keyword}{new} \hyperlink{Core_8h_afba9f623673e2ae32054015bdb5500f9}{sparseMatrix\_Type} ( fractureNumberGlobalDOFVelocity [ id1 ], 1 )
-       );
-359         gmm::clear(*Aup12);
-360 
-361         Aup20.reset ( \textcolor{keyword}{new} \hyperlink{Core_8h_afba9f623673e2ae32054015bdb5500f9}{sparseMatrix\_Type} ( fractureNumberGlobalDOFVelocity [ id2 ], 1 )
-       );
-362         gmm::clear(*Aup20);
-363 
-364         Aup22.reset ( \textcolor{keyword}{new} \hyperlink{Core_8h_afba9f623673e2ae32054015bdb5500f9}{sparseMatrix\_Type} ( fractureNumberGlobalDOFVelocity [ id2 ], 1 )
-       );
-365         gmm::clear(*Aup22);
-366 
-367         \hyperlink{namespacegetfem_a41dedc9759949101293821b324cf5ac6}{getfem::velocityJump\_Bifurcation} ( Aup01, f0, f1, 
-      intersectElements0[id1][0] );
-368         
-369         \hyperlink{namespacegetfem_a41dedc9759949101293821b324cf5ac6}{getfem::velocityJump\_Bifurcation} ( Aup02, f0, f2, 
-      intersectElements0[id2][0] );
-370         
-371         \hyperlink{namespacegetfem_a41dedc9759949101293821b324cf5ac6}{getfem::velocityJump\_Bifurcation} ( Aup10, f1, f0, 
-      intersectElements1[id0][0] );
+367 
+368         \textcolor{keyword}{const} \hyperlink{Core_8h_a9bc476e433f99b82a9c2b8560735c7b5}{pairSizeVectorContainer\_Type}& intersectElementsGlobalIndex0 = 
+      M\_fractures->getFracture( id0 )->getFractureIntersectElementsGlobalIndex ();
+369         \textcolor{keyword}{const} \hyperlink{Core_8h_a9bc476e433f99b82a9c2b8560735c7b5}{pairSizeVectorContainer\_Type}& intersectElementsGlobalIndex1 = 
+      M\_fractures->getFracture( id1 )->getFractureIntersectElementsGlobalIndex ();
+370         \textcolor{keyword}{const} \hyperlink{Core_8h_a9bc476e433f99b82a9c2b8560735c7b5}{pairSizeVectorContainer\_Type}& intersectElementsGlobalIndex2 = 
+      M\_fractures->getFracture( id2 )->getFractureIntersectElementsGlobalIndex ();
+371 
 372         
-373         \hyperlink{namespacegetfem_a41dedc9759949101293821b324cf5ac6}{getfem::velocityJump\_Bifurcation} ( Aup12, f1, f2, 
-      intersectElements1[id2][0] );
-374         
-375         \hyperlink{namespacegetfem_a41dedc9759949101293821b324cf5ac6}{getfem::velocityJump\_Bifurcation} ( Aup20, f2, f0, 
-      intersectElements2[id0][0] );
-376         
-377         \hyperlink{namespacegetfem_a41dedc9759949101293821b324cf5ac6}{getfem::velocityJump\_Bifurcation} ( Aup21, f2, f1, 
-      intersectElements2[id1][0] );
+373         Aup0.reset ( \textcolor{keyword}{new} \hyperlink{Core_8h_afba9f623673e2ae32054015bdb5500f9}{sparseMatrix\_Type} ( 1, fractureTotalNumberDOFVelocityPressure + 
+      globalFractureNumber) );
+374         gmm::clear(*Aup0);
+375 
+376         Aup1.reset ( \textcolor{keyword}{new} \hyperlink{Core_8h_afba9f623673e2ae32054015bdb5500f9}{sparseMatrix\_Type} ( 1, fractureTotalNumberDOFVelocityPressure + 
+      globalFractureNumber) );
+377         gmm::clear(*Aup1);
 378 
-379 
-380     \}
-381     
-382     \textcolor{comment}{/*}
-383 \textcolor{comment}{     *      Copy blocks into the system matrix M\_darcyGlobalMatrix}
-384 \textcolor{comment}{     *      }
-385 \textcolor{comment}{     *              [  A11  A12  0          ]}
-386 \textcolor{comment}{     *          M = [ -A12  A22  0          ]}
-387 \textcolor{comment}{     *              [  0    0    A11F  A12F ]}
-388 \textcolor{comment}{     *              [  0    0   -A12F  0    ]       }
-389 \textcolor{comment}{     */} 
-390  
-391     \textcolor{comment}{// Shift for the fracture}
-392     size\_type fractureShift = 0;
-393     \textcolor{keywordflow}{for} ( size\_type f = 0; f < numberFractures; ++f )
-394     \{
-395 
-396         \textcolor{comment}{// Copy the matrix A11F in M\_darcyGlobalMatrix in the correct position}
-397         gmm::copy(*(A11F [ f ]), gmm::sub\_matrix(*M\_globalMatrix, gmm::sub\_interval( fractureShift, 
+379         Aup2.reset ( \textcolor{keyword}{new} \hyperlink{Core_8h_afba9f623673e2ae32054015bdb5500f9}{sparseMatrix\_Type} ( 1, fractureTotalNumberDOFVelocityPressure + 
+      globalFractureNumber) );
+380         gmm::clear(*Aup2);
+381         
+382         
+383         
+384         \textcolor{comment}{// Aggiorno la frattura 0}
+385 
+386     
+387         \textcolor{comment}{// Aggiorno la frattura 1}
+388 
+389         
+390         \textcolor{comment}{// Aggiorno la frattura 2}
+391 
+392         std::cout << \textcolor{stringliteral}{" ATTENZIONE: scrivere una funzione che copi le matrici, così il codice resta più
+       pulito "} << std::endl;
+393         
+394         \textcolor{comment}{/*}
+395 \textcolor{comment}{        // Calcolo i termini legati alla pressione nell'intersezione}
+396 \textcolor{comment}{        getfem::velocityJump\_Bifurcation ( Aup01, f0, f1, intersectElements0[id1][0] );}
+397 \textcolor{comment}{        }
+398 \textcolor{comment}{        getfem::velocityJump\_Bifurcation ( Aup02, f0, f2, intersectElements0[id2][0] );}
+399 \textcolor{comment}{        }
+400 \textcolor{comment}{        getfem::velocityJump\_Bifurcation ( Aup10, f1, f0, intersectElements1[id0][0] );}
+401 \textcolor{comment}{        }
+402 \textcolor{comment}{        getfem::velocityJump\_Bifurcation ( Aup12, f1, f2, intersectElements1[id2][0] );}
+403 \textcolor{comment}{        }
+404 \textcolor{comment}{        getfem::velocityJump\_Bifurcation ( Aup20, f2, f0, intersectElements2[id0][0] );}
+405 \textcolor{comment}{        }
+406 \textcolor{comment}{        getfem::velocityJump\_Bifurcation ( Aup21, f2, f1, intersectElements2[id1][0] );}
+407 \textcolor{comment}{        }
+408 \textcolor{comment}{        }
+409 \textcolor{comment}{        const size\_type globalIndex0 = intersectElementsGlobalIndex0 [ id1 ] [0].first;}
+410 \textcolor{comment}{        const size\_type globalIndex1 = intersectElementsGlobalIndex0 [ id2 ] [0].first;}
+411 \textcolor{comment}{        const size\_type globalIndex2 = intersectElementsGlobalIndex1 [ id0 ] [0].first;}
+412 \textcolor{comment}{        const size\_type globalIndex3 = intersectElementsGlobalIndex1 [ id2 ] [0].first;}
+413 \textcolor{comment}{        const size\_type globalIndex4 = intersectElementsGlobalIndex2 [ id0 ] [0].first;}
+414 \textcolor{comment}{        const size\_type globalIndex5 = intersectElementsGlobalIndex2 [ id1 ] [0].first;}
+415 \textcolor{comment}{        }
+416 \textcolor{comment}{        size\_type maxInd =  std::max( globalIndex0, std::max ( globalIndex1, std::max ( globalIndex2,
+       std::max ( globalIndex3, std::max ( globalIndex4, globalIndex5 )))));}
+417 \textcolor{comment}{}
+418 \textcolor{comment}{        gmm::copy ( *Aup01, gmm::sub\_matrix (*M\_globalMatrix,}
+419 \textcolor{comment}{                                            gmm::sub\_interval ( shiftIntersect [ id0 ],
+       fractureNumberGlobalDOFVelocity [ id0 ] ),}
+420 \textcolor{comment}{                                            gmm::sub\_interval (  fractureTotalNumberDOFVelocityPressure +
+       globalIndex0, 1 ) ) );}
+421 \textcolor{comment}{}
+422 \textcolor{comment}{        gmm::copy ( gmm::transposed(*Aup01), gmm::sub\_matrix (*M\_globalMatrix,}
+423 \textcolor{comment}{                            gmm::sub\_interval (  fractureTotalNumberDOFVelocityPressure + maxInd, 1 ),}
+424 \textcolor{comment}{                            gmm::sub\_interval ( shiftIntersect [ id0 ], fractureNumberGlobalDOFVelocity [
+       id0 ] ) ) );}
+425 \textcolor{comment}{}
+426 \textcolor{comment}{        gmm::copy ( *Aup02, gmm::sub\_matrix (*M\_globalMatrix,}
+427 \textcolor{comment}{                                            gmm::sub\_interval ( shiftIntersect [ id0 ],
+       fractureNumberGlobalDOFVelocity [ id0 ] ),}
+428 \textcolor{comment}{                                            gmm::sub\_interval (  fractureTotalNumberDOFVelocityPressure +
+       globalIndex1, 1 ) ) );}
+429 \textcolor{comment}{}
+430 \textcolor{comment}{}
+431 \textcolor{comment}{        gmm::copy ( *Aup10, gmm::sub\_matrix (*M\_globalMatrix,}
+432 \textcolor{comment}{                                            gmm::sub\_interval ( shiftIntersect [ id1 ],
+       fractureNumberGlobalDOFVelocity [ id1 ] ),}
+433 \textcolor{comment}{                                            gmm::sub\_interval (  fractureTotalNumberDOFVelocityPressure +
+       globalIndex2, 1 ) ) );}
+434 \textcolor{comment}{}
+435 \textcolor{comment}{        gmm::copy ( gmm::transposed(*Aup10), gmm::sub\_matrix (*M\_globalMatrix,}
+436 \textcolor{comment}{                            gmm::sub\_interval (  fractureTotalNumberDOFVelocityPressure + maxInd, 1 ),}
+437 \textcolor{comment}{                            gmm::sub\_interval ( shiftIntersect [ id1 ], fractureNumberGlobalDOFVelocity [
+       id1 ] ) ) );}
+438 \textcolor{comment}{}
+439 \textcolor{comment}{        gmm::copy ( *Aup12, gmm::sub\_matrix (*M\_globalMatrix,}
+440 \textcolor{comment}{                                            gmm::sub\_interval ( shiftIntersect [ id1 ],
+       fractureNumberGlobalDOFVelocity [ id1 ] ),}
+441 \textcolor{comment}{                                            gmm::sub\_interval (  fractureTotalNumberDOFVelocityPressure +
+       globalIndex3, 1 ) ) );}
+442 \textcolor{comment}{}
+443 \textcolor{comment}{        gmm::copy ( *Aup20, gmm::sub\_matrix (*M\_globalMatrix,}
+444 \textcolor{comment}{                                            gmm::sub\_interval ( shiftIntersect [ id2 ],
+       fractureNumberGlobalDOFVelocity [ id2 ] ),}
+445 \textcolor{comment}{                                            gmm::sub\_interval (  fractureTotalNumberDOFVelocityPressure +
+       globalIndex4, 1 ) ) );}
+446 \textcolor{comment}{}
+447 \textcolor{comment}{        gmm::copy ( gmm::transposed(*Aup20), gmm::sub\_matrix (*M\_globalMatrix,}
+448 \textcolor{comment}{                            gmm::sub\_interval (  fractureTotalNumberDOFVelocityPressure + maxInd, 1 ),}
+449 \textcolor{comment}{                            gmm::sub\_interval ( shiftIntersect [ id2 ], fractureNumberGlobalDOFVelocity [
+       id2 ] ) ) );}
+450 \textcolor{comment}{}
+451 \textcolor{comment}{        gmm::copy ( *Aup21, gmm::sub\_matrix (*M\_globalMatrix,}
+452 \textcolor{comment}{                                            gmm::sub\_interval ( shiftIntersect [ id2 ],
+       fractureNumberGlobalDOFVelocity [ id2 ] ),}
+453 \textcolor{comment}{                                            gmm::sub\_interval (  fractureTotalNumberDOFVelocityPressure +
+       globalIndex5, 1 ) ) );}
+454 \textcolor{comment}{}
+455 \textcolor{comment}{        }
+456 \textcolor{comment}{        }
+457 \textcolor{comment}{}
+458 \textcolor{comment}{     */}  
+459         
+460     \}
+461     
+462     \textcolor{comment}{/*}
+463 \textcolor{comment}{     *      Copy blocks into the system matrix M\_darcyGlobalMatrix}
+464 \textcolor{comment}{     *      }
+465 \textcolor{comment}{     *              [  A11  A12  0          ]}
+466 \textcolor{comment}{     *          M = [ -A12  A22  0          ]}
+467 \textcolor{comment}{     *              [  0    0    A11F  A12F ]}
+468 \textcolor{comment}{     *              [  0    0   -A12F  0    ]       }
+469 \textcolor{comment}{     */} 
+470  
+471     \textcolor{comment}{// Shift for the fracture}
+472     size\_type fractureShift = 0;
+473     \textcolor{keywordflow}{for} ( size\_type f = 0; f < numberFractures; ++f )
+474     \{
+475 
+476         \textcolor{comment}{// Copy the matrix A11F in M\_darcyGlobalMatrix in the correct position}
+477         gmm::copy( *( A11F [ f ] ), gmm::sub\_matrix( *M\_globalMatrix, gmm::sub\_interval( fractureShift, 
+      fractureNumberGlobalDOFVelocity [ f ] ),
+478                                                                      gmm::sub\_interval(fractureShift, 
+      fractureNumberGlobalDOFVelocity [ f ] )));
+479 
+480         \textcolor{comment}{// Copy the matrix A12F in M\_darcyGlobalMatrix in the correct position}
+481         gmm::copy( *( A12F [ f ] ), gmm::sub\_matrix(*M\_globalMatrix, gmm::sub\_interval( fractureShift, 
       fractureNumberGlobalDOFVelocity [ f ]),
-398                                                                   gmm::sub\_interval(fractureShift, 
-      fractureNumberGlobalDOFVelocity [ f ])));
-399 
-400         \textcolor{comment}{// Copy the matrix A12F in M\_darcyGlobalMatrix in the correct position}
-401         gmm::copy(*(A12F [ f ]), gmm::sub\_matrix(*M\_globalMatrix, gmm::sub\_interval( fractureShift, 
-      fractureNumberGlobalDOFVelocity [ f ]),
-402                                                                   gmm::sub\_interval(fractureShift + 
+482                                                                   gmm::sub\_interval(fractureShift + 
       fractureNumberGlobalDOFVelocity [ f ], 
-403                                                                                     
+483                                                                                     
       fractureNumberGlobalDOFPressure [ f ])));
-404 
-405         \textcolor{comment}{// Copy the matrix -A12F in M\_darcyGlobalMatrix in the correct position}
-406         gmm::copy(gmm::transposed(gmm::scaled(*(A12F [ f ]), -1.0)), 
-407                                   gmm::sub\_matrix( *M\_globalMatrix, 
-408                                           gmm::sub\_interval( fractureShift + 
-      fractureNumberGlobalDOFVelocity [ f ], fractureNumberGlobalDOFPressure [ f ]), 
-409                                           gmm::sub\_interval( fractureShift, fractureNumberGlobalDOFVelocity
-       [ f ])));
-410    
-411         \textcolor{comment}{// Update the shift}
-412         fractureShift += fractureNumberDOFVelocityPressure [ f ];
-413 
-414     \}
-415 
-416     gmm::copy(*App, gmm::sub\_matrix(*M\_globalMatrix, 
-417             gmm::sub\_interval( fractureTotalNumberDOFVelocityPressure, fractureNumberIntersections ), 
-418             gmm::sub\_interval( fractureTotalNumberDOFVelocityPressure, globalFractureNumber ) ));
-419   
-420     
-421     \textcolor{comment}{//Costruiamo il termine noto}
-422     
-423     \textcolor{comment}{// Vector, Neumann conditions}
-424     \hyperlink{Core_8h_a20f0354ac7b92989514c678f4cdfcb6b}{scalarVectorPtrContainer\_Type} BstressF(numberFractures);
-425 
-426     \textcolor{comment}{// Pressure term (Neumann)}
-427     \hyperlink{Core_8h_a20f0354ac7b92989514c678f4cdfcb6b}{scalarVectorPtrContainer\_Type} PneumannF(numberFractures);
-428 
-429     \textcolor{comment}{// Velocity term (Dirichilet)}
-430     \hyperlink{Core_8h_a20f0354ac7b92989514c678f4cdfcb6b}{scalarVectorPtrContainer\_Type} VdirichletF(numberFractures);
-431 
-432     \textcolor{comment}{// Right Hand Side: velocity and pressure}
-433     \hyperlink{Core_8h_a20f0354ac7b92989514c678f4cdfcb6b}{scalarVectorPtrContainer\_Type} B\_vF(numberFractures);
-434 
-435     \textcolor{comment}{// Right Hand Side: velocity and pressure}
-436     \hyperlink{Core_8h_a20f0354ac7b92989514c678f4cdfcb6b}{scalarVectorPtrContainer\_Type} B\_pF(numberFractures);
-437     
-438     \textcolor{keywordflow}{for} ( size\_type f = 0; f < numberFractures; ++f )
-439     \{
-440         BstressF [ f ].reset(\textcolor{keyword}{new} \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type}( fractureNumberGlobalDOFVelocity [ f ],
-       0.));
-441 
-442         PneumannF [ f ].reset(\textcolor{keyword}{new} \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type}( fractureNumberBoundaryDOF [ f ], 0.))
-      ;
-443 
-444         VdirichletF [ f ].reset(\textcolor{keyword}{new} \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type}( fractureNumberDOFPressure [ f ], 0.
-      ));
-445 
-446         B\_vF [ f ].reset(\textcolor{keyword}{new} \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type}(fractureNumberGlobalDOFVelocity [ f ], 0.))
-      ;
-447 
-448         B\_pF [ f ].reset(\textcolor{keyword}{new} \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type}(fractureNumberGlobalDOFPressure [ f ], 0.))
-      ;
-449         
-450     \}
-451 
-452     \textcolor{keywordflow}{for} ( size\_type f = 0; f < numberFractures; ++f )
-453     \{
-454         \textcolor{keyword}{const} \hyperlink{BC_8h_a088c36f945ad8f6e7e0c7c423994c6ec}{BCPtr\_Type}& fractureBC = M\_bcHandler->getFractureBC( f );
-455 
-456         \textcolor{keywordflow}{for} ( size\_type i = 0; i < fractureNumberBoundaryDOF [ f ]; i++ )
-457         \{
-458             \textcolor{keyword}{const} base\_node node = fractureBC->getMeshFEM().point\_of\_basic\_dof( i );
-459 
-460             (*(PneumannF [ f ])) [ i ] = M\_fractures->getFracture( f )->getData().pressureExact( node );
-461         \}
-462 
-463         (*(PneumannF [ f ])) [ 0 ] *= -1; \textcolor{comment}{//perché la normale ha il segno meno all'inizio di una roba 1D}
-464     \}
-465 
-466     \textcolor{keywordflow}{for} ( size\_type f = 0; f < numberFractures; ++f )
-467     \{
-468         \textcolor{comment}{// Computes the right hand side rhs which stores the boundary conditions for the fracture}
-469         \hyperlink{namespacegetfem_ad6e90b309c01f6b4fc91c9369cba376a}{getfem::darcy\_dataF} ( BstressF [ f ], B\_vF [ f ], M\_bcHandler,
-470                               M\_fractures->getFracture( f ), M\_mediumData->getPenaltyVector(),
-471                               M\_mediumData->getInvK(), PneumannF [ f ], VdirichletF [ f ] );
-472     \}
-473 
-474     fractureShift = 0;
-475     
-476     \textcolor{keywordflow}{for} ( size\_type f = 0; f < numberFractures; ++f )
-477     \{   
-478         \textcolor{keywordflow}{for} ( size\_type i = 0; i < fractureNumberGlobalDOFVelocity [ f ]; ++i )
-479         \{   
-480             (*M\_globalRightHandSide) [ fractureShift + i ] += (*(BstressF [ f ])) [ i ];
-481 
-482             (*M\_globalRightHandSide) [ fractureShift + i ] += (*(B\_vF [ f ])) [ i ];
-483         \}
 484 
-485         \textcolor{comment}{// Update the shift}
-486         fractureShift += fractureNumberDOFVelocityPressure [ f ];
-487     \}
-488 
-489 
-490     \hyperlink{Core_8h_a20f0354ac7b92989514c678f4cdfcb6b}{scalarVectorPtrContainer\_Type} divF(numberFractures);
-491 
-492     fractureShift = 0;
-493     
-494     \textcolor{keywordflow}{for} ( size\_type f = 0; f < numberFractures; ++f )
-495     \{
-496         divF [ f ].reset(\textcolor{keyword}{new} \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type}(fractureNumberDOFPressure [ f ], 0.));
-497 
-498         \textcolor{keywordflow}{for} ( size\_type i = 0; i < fractureNumberDOFPressure [ f ]; i++ )
-499         \{
-500             \textcolor{keyword}{const} base\_node node = M\_fractures->getFracture( f )->getMeshFEMPressure().point\_of\_basic\_dof( 
-      i );
-501 
-502             (*(divF [ f ])) [ i ] = M\_fractures->getFracture( f )->getData().darcySource( node );
-503         \}
-504 
-505         gmm::clear(*(B\_vF [ f ]));
-506         gmm::clear(*(B\_pF [ f ]));
-507 
-508         \hyperlink{namespacegetfem_ac08fe08fb325eede94ffe4968b7980de}{getfem::assembling\_Source\_BoundaryF} ( B\_pF [ f ], divF [ f ], 
-      M\_fractures->getFracture( f ), \hyperlink{classFractureHandler_a495ad4fc72d0c47c8f0424842f1153aaaa992cc3ad024a030ecd798dc319c95ac}{FractureHandler::FRACTURE\_UNCUT} * ( f + 1 ) );
-509 
-510         \textcolor{keywordflow}{for} ( size\_type otherFracture = 0; otherFracture < numberFractures; ++otherFracture )
-511         \{
-512             \textcolor{keywordflow}{if} ( M\_fractures->getFracture( f )->getMeshLevelSetIntersect ( otherFracture ).get() )
-513             \{
-514                 \hyperlink{namespacegetfem_a5efeefe94dfb5427c3ecf63d0b342c57}{getfem::assembling\_SourceF} ( B\_pF [ f ], divF [ f ], M\_fractures
-      ->getFracture( f ),
-515                                              M\_fractures->getFracture ( otherFracture ),
-516                                              \hyperlink{classFractureHandler_a495ad4fc72d0c47c8f0424842f1153aaa781cae3f3b99bf9357fed2833d315537}{FractureHandler::FRACTURE\_INTERSECT}
-       * ( f + 1 ) + otherFracture + 1 );
-517                                              
-518                 std::cout << \textcolor{stringliteral}{"sistemare intersezione"} << std::endl;
-519             \}
-520         \}
+485         \textcolor{comment}{// Copy the matrix -A12F in M\_darcyGlobalMatrix in the correct position}
+486         gmm::copy(gmm::transposed(gmm::scaled(*(A12F [ f ]), -1.0)), 
+487                                   gmm::sub\_matrix( *M\_globalMatrix, 
+488                                           gmm::sub\_interval( fractureShift + 
+      fractureNumberGlobalDOFVelocity [ f ], fractureNumberGlobalDOFPressure [ f ]), 
+489                                           gmm::sub\_interval( fractureShift, fractureNumberGlobalDOFVelocity
+       [ f ])));
+490    
+491         \textcolor{comment}{// Update the shift}
+492         fractureShift += fractureNumberDOFVelocityPressure [ f ];
+493 
+494     \}
+495 
+496     gmm::copy(*App, gmm::sub\_matrix(*M\_globalMatrix, 
+497             gmm::sub\_interval( fractureTotalNumberDOFVelocityPressure, fractureNumberIntersections ), 
+498             gmm::sub\_interval( fractureTotalNumberDOFVelocityPressure, globalFractureNumber ) ));
+499   
+500     
+501     \textcolor{comment}{//Costruiamo il termine noto}
+502     
+503     \textcolor{comment}{// Vector, Neumann conditions}
+504     \hyperlink{Core_8h_a20f0354ac7b92989514c678f4cdfcb6b}{scalarVectorPtrContainer\_Type} BstressF(numberFractures);
+505 
+506     \textcolor{comment}{// Pressure term (Neumann)}
+507     \hyperlink{Core_8h_a20f0354ac7b92989514c678f4cdfcb6b}{scalarVectorPtrContainer\_Type} PneumannF(numberFractures);
+508 
+509     \textcolor{comment}{// Velocity term (Dirichilet)}
+510     \hyperlink{Core_8h_a20f0354ac7b92989514c678f4cdfcb6b}{scalarVectorPtrContainer\_Type} VdirichletF(numberFractures);
+511 
+512     \textcolor{comment}{// Right Hand Side: velocity and pressure}
+513     \hyperlink{Core_8h_a20f0354ac7b92989514c678f4cdfcb6b}{scalarVectorPtrContainer\_Type} B\_vF(numberFractures);
+514 
+515     \textcolor{comment}{// Right Hand Side: velocity and pressure}
+516     \hyperlink{Core_8h_a20f0354ac7b92989514c678f4cdfcb6b}{scalarVectorPtrContainer\_Type} B\_pF(numberFractures);
+517     
+518     \textcolor{keywordflow}{for} ( size\_type f = 0; f < numberFractures; ++f )
+519     \{
+520         BstressF [ f ].reset(\textcolor{keyword}{new} \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type}( fractureNumberGlobalDOFVelocity [ f ],
+       0.));
 521 
-522         \textcolor{keywordflow}{for} ( size\_type i = 0; i < fractureNumberGlobalDOFVelocity [ f ]; ++i )
-523         \{
-524             (*M\_globalRightHandSide) [ fractureShift + i ] += (*(B\_vF [ f ])) [ i ];
-525         \}
-526 
-527         \textcolor{keywordflow}{for} ( size\_type i = fractureNumberGlobalDOFVelocity [ f ]; i < fractureNumberDOFVelocityPressure [ 
-      f ]; ++i )
-528         \{
-529                 (*M\_globalRightHandSide) [ fractureShift + i ] += (*(B\_pF [ f ])) [ i - 
-      fractureNumberGlobalDOFVelocity [ f ] ];
-530         \}
-531        
-532         \textcolor{comment}{// Update the shift}
-533         fractureShift += fractureNumberDOFVelocityPressure [ f ];
-534 
+522         PneumannF [ f ].reset(\textcolor{keyword}{new} \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type}( fractureNumberBoundaryDOF [ f ], 0.))
+      ;
+523 
+524         VdirichletF [ f ].reset(\textcolor{keyword}{new} \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type}( fractureNumberDOFPressure [ f ], 0.
+      ));
+525 
+526         B\_vF [ f ].reset(\textcolor{keyword}{new} \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type}(fractureNumberGlobalDOFVelocity [ f ], 0.))
+      ;
+527 
+528         B\_pF [ f ].reset(\textcolor{keyword}{new} \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type}(fractureNumberGlobalDOFPressure [ f ], 0.))
+      ;
+529         
+530     \}
+531 
+532     \textcolor{keywordflow}{for} ( size\_type f = 0; f < numberFractures; ++f )
+533     \{
+534         \textcolor{keyword}{const} \hyperlink{BC_8h_a088c36f945ad8f6e7e0c7c423994c6ec}{BCPtr\_Type}& fractureBC = M\_bcHandler->getFractureBC( f );
 535 
-536     \}
-537 
-538 
-539     \textcolor{comment}{// Curo la matrice}
-540     \textcolor{keywordflow}{for} ( size\_type i = 0; i < M\_globalRightHandSide->size(); ++i )
-541     \{
-542         scalar\_type somma = 0;
-543 
-544         \textcolor{keywordflow}{for} ( size\_type j = 0; j < M\_globalRightHandSide->size(); ++j )
-545         \{
-546             somma += std::fabs( (*M\_globalMatrix) (i, j) );
-547         \}
-548 
-549         \textcolor{keywordflow}{if} ( somma == 0 )
-550         \{
-551             (*M\_globalRightHandSide) [ i ] = 0.;
-552             (*M\_globalMatrix) (i, i) = 1.;
-553         \}
-554     \}
-555 
-556     M\_exporter->spy(M\_globalMatrix, \textcolor{stringliteral}{"./matrice.mm"});
-557     M\_exporter->spy(M\_globalRightHandSide, \textcolor{stringliteral}{"./rhs.mm"});
-558 
+536         \textcolor{keywordflow}{for} ( size\_type i = 0; i < fractureNumberBoundaryDOF [ f ]; i++ )
+537         \{
+538             \textcolor{keyword}{const} base\_node node = fractureBC->getMeshFEM().point\_of\_basic\_dof( i );
+539 
+540             (*(PneumannF [ f ])) [ i ] = M\_fractures->getFracture( f )->getData().pressureExact( node );
+541         \}
+542 
+543         (*(PneumannF [ f ])) [ 0 ] *= -1; \textcolor{comment}{//perché la normale ha il segno meno all'inizio di una roba 1D}
+544     \}
+545 
+546     \textcolor{keywordflow}{for} ( size\_type f = 0; f < numberFractures; ++f )
+547     \{
+548         std::cout << \textcolor{stringliteral}{"Fracture "} << f << std::endl;
+549         
+550         \textcolor{comment}{// Computes the right hand side rhs which stores the boundary conditions for the fracture}
+551         \hyperlink{namespacegetfem_ad6e90b309c01f6b4fc91c9369cba376a}{getfem::darcy\_dataF} ( BstressF [ f ], B\_vF [ f ], M\_bcHandler,
+552                               M\_fractures->getFracture( f ), M\_mediumData->getPenaltyVector(),
+553                               M\_mediumData->getInvK(), PneumannF [ f ], VdirichletF [ f ] );
+554         
+555         std::cout<< std::endl;
+556     \}
+557 
+558     fractureShift = 0;
 559     
-560 \}\textcolor{comment}{// assembly}
+560     \textcolor{keywordflow}{for} ( size\_type f = 0; f < numberFractures; ++f )
+561     \{   
+562         \textcolor{keywordflow}{for} ( size\_type i = 0; i < fractureNumberGlobalDOFVelocity [ f ]; ++i )
+563         \{   
+564             (*M\_globalRightHandSide) [ fractureShift + i ] += (*(BstressF [ f ])) [ i ];
+565 
+566             (*M\_globalRightHandSide) [ fractureShift + i ] += (*(B\_vF [ f ])) [ i ];
+567         \}
+568 
+569         \textcolor{comment}{// Update the shift}
+570         fractureShift += fractureNumberDOFVelocityPressure [ f ];
+571     \}
+572 
+573 
+574     \hyperlink{Core_8h_a20f0354ac7b92989514c678f4cdfcb6b}{scalarVectorPtrContainer\_Type} divF(numberFractures);
+575 
+576     fractureShift = 0;
+577     
+578     \textcolor{keywordflow}{for} ( size\_type f = 0; f < numberFractures; ++f )
+579     \{
+580         divF [ f ].reset(\textcolor{keyword}{new} \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type}(fractureNumberDOFPressure [ f ], 0.));
+581 
+582         \textcolor{keywordflow}{for} ( size\_type i = 0; i < fractureNumberDOFPressure [ f ]; i++ )
+583         \{
+584             \textcolor{keyword}{const} base\_node node = M\_fractures->getFracture( f )->getMeshFEMPressure().point\_of\_basic\_dof( 
+      i );
+585 
+586             (*(divF [ f ])) [ i ] = M\_fractures->getFracture( f )->getData().darcySource( node );
+587         \}
+588 
+589         gmm::clear(*(B\_pF [ f ]));
+590 
+591         \hyperlink{namespacegetfem_ac08fe08fb325eede94ffe4968b7980de}{getfem::assembling\_Source\_BoundaryF} ( B\_pF [ f ], divF [ f ], 
+      M\_fractures->getFracture( f ), \hyperlink{classFractureHandler_a495ad4fc72d0c47c8f0424842f1153aaaa992cc3ad024a030ecd798dc319c95ac}{FractureHandler::FRACTURE\_UNCUT} * ( f + 1 ) );
+592 \textcolor{comment}{/*}
+593 \textcolor{comment}{    \}}
+594 \textcolor{comment}{    }
+595 \textcolor{comment}{    // Aggiorno prima le matrici di tutte le fratture che si intersecano formando un " Cross "}
+596 \textcolor{comment}{    for ( size\_type i = 0; i < IntCross.size(); i++ )}
+597 \textcolor{comment}{    \{}
+598 \textcolor{comment}{        }
+599 \textcolor{comment}{        }
+600 \textcolor{comment}{    \}}
+601 \textcolor{comment}{}
+602 \textcolor{comment}{*/}     \textcolor{comment}{/*}
+603 \textcolor{comment}{       for ( size\_type otherFracture = 0; otherFracture < numberFractures; ++otherFracture )}
+604 \textcolor{comment}{        \{}
+605 \textcolor{comment}{            if ( M\_fractures->getFracture( f )->getMeshLevelSetIntersect ( otherFracture ).get() )}
+606 \textcolor{comment}{            \{}
+607 \textcolor{comment}{                getfem::assembling\_SourceF ( B\_pF [ f ], divF [ f ], M\_fractures->getFracture( f ),}
+608 \textcolor{comment}{                                             M\_fractures->getFracture ( otherFracture ),}
+609 \textcolor{comment}{                                             FractureHandler::FRACTURE\_INTERSECT * ( f + 1 ) +
+       otherFracture + 1 );}
+610 \textcolor{comment}{                                             }
+611 \textcolor{comment}{                std::cout << "sistemare intersezione" << std::endl;}
+612 \textcolor{comment}{            \}}
+613 \textcolor{comment}{        \}}
+614 \textcolor{comment}{*/}
+615         \textcolor{keywordflow}{for} ( size\_type i = fractureNumberGlobalDOFVelocity [ f ]; i < fractureNumberDOFVelocityPressure [ 
+      f ]; ++i )
+616         \{
+617                 (*M\_globalRightHandSide) [ fractureShift + i ] += (*(B\_pF [ f ])) [ i - 
+      fractureNumberGlobalDOFVelocity [ f ] ];
+618         \}
+619         
+620         \textcolor{comment}{// Update the shift}
+621         fractureShift += fractureNumberDOFVelocityPressure [ f ];
+622 
+623 
+624     \}
+625 
+626 
+627     \textcolor{comment}{// Curo la matrice}
+628     \textcolor{keywordflow}{for} ( size\_type i = 0; i < M\_globalRightHandSide->size(); ++i )
+629     \{
+630         scalar\_type somma = 0;
+631 
+632         \textcolor{keywordflow}{for} ( size\_type j = 0; j < M\_globalRightHandSide->size(); ++j )
+633         \{
+634             somma += std::fabs( (*M\_globalMatrix) (i, j) );
+635         \}
+636 
+637         \textcolor{keywordflow}{if} ( somma == 0 )
+638         \{
+639             (*M\_globalRightHandSide) [ i ] = 0.;
+640             (*M\_globalMatrix) (i, i) = 1.;
+641         \}
+642     \}
+643 
+644     M\_exporter->spy(M\_globalMatrix, \textcolor{stringliteral}{"./matrice.mm"});
+645     M\_exporter->spy(M\_globalRightHandSide, \textcolor{stringliteral}{"./rhs.mm"});
+646 
+647     
+648 \}\textcolor{comment}{// assembly}
 \end{DoxyCode}
 \hypertarget{classDarcyFractured_a7ea359d5998a00804db8fc1ae1f4739a}{\index{Darcy\-Fractured@{Darcy\-Fractured}!get\-Fracture\-Velocity@{get\-Fracture\-Velocity}}
 \index{get\-Fracture\-Velocity@{get\-Fracture\-Velocity}!DarcyFractured@{Darcy\-Fractured}}
@@ -653,9 +752,9 @@ B\-V = Mvd $\ast$ Vdirichlet + Bstress B\-P = Mpd $\ast$ Vdirichlet
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classDarcyFractured_a7ea359d5998a00804db8fc1ae1f4739a}
 
 \begin{DoxyCode}
-66     \{
-67         \textcolor{keywordflow}{return} M\_fractureVelocity [ f ];
-68     \}
+68     \{
+69         \textcolor{keywordflow}{return} M\_fractureVelocity [ f ];
+70     \}
 \end{DoxyCode}
 \hypertarget{classDarcyFractured_a7832c9317b9764da96fc8ee112860824}{\index{Darcy\-Fractured@{Darcy\-Fractured}!init@{init}}
 \index{init@{init}!DarcyFractured@{Darcy\-Fractured}}
@@ -736,290 +835,324 @@ Funzione che risolve il sistema ottenuto assemblando il problema di Darcy per tu
 
 Una volta risolto il sistema esporta i risultati ottenuti per la pressione per ogni frattura in formato vtk 
 \begin{DoxyCode}
-566 \{  
-567     \textcolor{keyword}{const} scalar\_type numberFractures = M\_fractures->getNumberFractures();
-568    
-569     \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{sizeVector\_Type} fractureNumberDOFVelocity(numberFractures);
-570     \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{sizeVector\_Type} fractureNumberGlobalDOFVelocity(numberFractures);
-571 
-572     \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{sizeVector\_Type} fractureNumberDOFPressure(numberFractures);
-573     \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{sizeVector\_Type} fractureNumberGlobalDOFPressure(numberFractures);
-574 
-575     \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{sizeVector\_Type} fractureNumberDOFVelocityPressure(numberFractures);
-576 
-577     size\_type fractureTotalNumberDOFVelocityPressure(0);
-578 
-579     size\_type fractureNumberIntersections = 0;
-580 
-581     \textcolor{keywordflow}{for} ( size\_type f = 0; f < numberFractures; ++f )
-582     \{
-583         fractureNumberDOFVelocity [ f ] = M\_fractures->getFracture( f )->getMeshFEMVelocity().nb\_dof();
-584 
-585         fractureNumberGlobalDOFVelocity [ f ] = fractureNumberDOFVelocity [ f ] + M\_fractures->getFracture(
-       f )->getNumExtendedVelocity();
-586 
-587         fractureNumberDOFPressure [ f ] = M\_fractures->getFracture( f )->getMeshFEMPressure().nb\_dof();
-588 
-589         fractureNumberGlobalDOFPressure [ f ] = fractureNumberDOFPressure [ f ] + M\_fractures->getFracture(
-       f )->getNumExtendedPressure();
-590 
-591         fractureNumberDOFVelocityPressure [ f ] = fractureNumberGlobalDOFVelocity [ f ] + 
-      fractureNumberGlobalDOFPressure [ f ];
-592 
-593         fractureTotalNumberDOFVelocityPressure += fractureNumberDOFVelocityPressure [ f ];
-594 
-595         M\_fracturePressure [ f ].reset(\textcolor{keyword}{new} \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type}( 
-      fractureNumberGlobalDOFPressure [ f ], 0));
-596 
-597         M\_fractureVelocity [ f ].reset(\textcolor{keyword}{new} \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type}( 
-      fractureNumberGlobalDOFVelocity [ f ], 0));
-598 
-599         fractureNumberIntersections += M\_fractures->getFracture( f )->getNumIntersections();
-600 
-601     \}
-602 
-603     \textcolor{comment}{// Solve the Darcy problem}
-604     std::cout << std::endl << \textcolor{stringliteral}{"Solving problem in Omega..."} << std::flush;
-605     scalar\_type roundConditionNumber;
-606 
-607     SuperLU\_solve(*M\_globalMatrix, *M\_velocityAndPressure,
-608                   *M\_globalRightHandSide, roundConditionNumber);
-609 
-610     std::cout << \textcolor{stringliteral}{" completed!"} << std::endl;
-611     size\_type fractureShift = 0;
-612 
-613     \textcolor{keywordflow}{for} ( size\_type f = 0; f < numberFractures; ++f )
-614     \{ 
-615         \textcolor{comment}{// Extract the dual in the fracture}
-616         gmm::copy( gmm::sub\_vector( *M\_velocityAndPressure, gmm::sub\_interval( fractureShift, 
-      fractureNumberGlobalDOFVelocity [ f ])),
-617                   *( M\_fractureVelocity [ f ] ) );
-618 
-619         \textcolor{comment}{// Extract the primal in the fracture}
-620         gmm::copy( gmm::sub\_vector( *M\_velocityAndPressure, 
-621                                     gmm::sub\_interval( fractureShift + fractureNumberGlobalDOFVelocity [ f 
-      ], fractureNumberGlobalDOFPressure [ f ])), 
-622                    *(M\_fracturePressure [ f ]));
-623 
-624         \textcolor{comment}{// Update the shift}
-625         fractureShift += fractureNumberDOFVelocityPressure [ f ];
-626     \}
-627 
-628     \textcolor{comment}{// the extra dof start at the end of the fracture dofs}
-629   
-630     getfem::pfem fractureFETypePressure;
-631     \textcolor{keywordflow}{if} ( numberFractures > 0 )
-632     \{
-633         fractureFETypePressure = getfem::fem\_descriptor( M\_fractures->getFracture( 0 )->getData().
-      getFEMTypePressure());
-634     \}
-635 
-636 
-637     \textcolor{comment}{//--------export solution in the fracture-------------------}
-638     \textcolor{keywordflow}{for} ( size\_type f = 0; f < numberFractures; ++f )
-639     \{
-640         \hyperlink{FractureHandler_8h_af23fb7a30aaff864bd42587af4f1e78a}{FractureHandlerPtr\_Type}& fracture = M\_fractures->getFracture(f);
-641         std::ostringstream osFileName;
-642 
-643         getfem::mesh\_level\_set meshFLevelSetCutFlat ( fracture->getMeshFlat() );
-644         \textcolor{keywordflow}{for} ( size\_type otherF = 0; otherF < numberFractures; ++otherF )
-645         \{
-646             \hyperlink{Core_8h_a036173458a8a25c7c03f8c76d97e9580}{GFLevelSetPtr\_Type} levelSetPtr = fracture->getLevelSetIntersect ( otherF );
-647 
-648             \textcolor{keywordflow}{if} ( levelSetPtr.get() != NULL )
-649             \{
-650                 meshFLevelSetCutFlat.add\_level\_set ( *levelSetPtr );
-651             \}
-652         \}
-653 
-654 
-655         meshFLevelSetCutFlat.adapt();
-656 
-657         getfem::mesh meshFcutFlat;
-658         getfem::mesh meshFcutMapped;
-659         meshFLevelSetCutFlat.global\_cut\_mesh ( meshFcutFlat );
-660 
-661         getfem::mesh\_fem meshFEMcutFlat ( meshFcutFlat, fracture->getMeshFEMPressure().get\_qdim());
-662         meshFEMcutFlat.set\_finite\_element ( fracture->getMeshFEMVelocity().fem\_of\_element(0) );
+654 \{  
+655     \textcolor{comment}{// numero totale delle fratture}
+656     \textcolor{keyword}{const} scalar\_type numberFractures = M\_fractures->getNumberFractures();
+657    
+658     \textcolor{comment}{// vettore dei gradi di libertà per la velocità per le fratture}
+659     \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{sizeVector\_Type} fractureNumberDOFVelocity(numberFractures);
+660     
+661     \textcolor{comment}{// numero di gradi di libertà totali per la velocità (con quelli estesi) per ogni frattura }
+662     \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{sizeVector\_Type} fractureNumberGlobalDOFVelocity(numberFractures);
 663 
-664         \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} ordinataUncut ( fractureNumberDOFVelocity [ f ], 0. );
-665         \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} ordinataCut ( meshFEMcutFlat.nb\_dof(), 0. );
-666 
-667     
-668         \textcolor{keywordflow}{for} ( size\_type i = 0; i < fractureNumberDOFVelocity [ f ]; ++i )
-669         \{
-670             \textcolor{keyword}{const} bgeot::base\_node P = fracture->getMeshFEMVelocity().point\_of\_basic\_dof(i);
-671 
-672             bgeot::base\_node P1 = fracture->getMeshMapped().points( ) [i];
-673 
-674 
-675             scalar\_type c= 1./fracture->getData().getSpatialDiscretization ();
-676 
-677             P1 [0] =  i*c;
-678 
-679             ordinataUncut [ i ] = fracture->getLevelSet()->getData()->y\_map(P1);
-680         \}
+664     \textcolor{comment}{// vettore dei gradi di libertà per la pressione per le fratture}
+665     \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{sizeVector\_Type} fractureNumberDOFPressure(numberFractures);
+666     
+667     \textcolor{comment}{// numero di gradi di libertà totali per la pressione (con quelli estesi) per ogni frattura }
+668     \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{sizeVector\_Type} fractureNumberGlobalDOFPressure(numberFractures);
+669 
+670     \textcolor{comment}{// numero totale dei gradi di libertà ( velocità + pressione ) per ogni frattura}
+671     \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{sizeVector\_Type} fractureNumberDOFVelocityPressure(numberFractures);
+672 
+673     \textcolor{comment}{// numero complessivo dei gradi di libertà ( pressione + velocità ) }
+674     size\_type fractureTotalNumberDOFVelocityPressure(0);
+675 
+676     \textcolor{comment}{// numero totale di intersezioni}
+677     size\_type fractureNumberCross = 0;
+678     size\_type fractureNumberBifurcation = 0;
+679     size\_type fractureNumberIntersections = 0;
+680     size\_type globalFractureNumber =0;
 681 
-682         getfem::interpolation ( fracture->getMeshFEMVelocity(), meshFEMcutFlat, ordinataUncut, ordinataCut 
-      );
-683 
-684         \textcolor{keywordflow}{for} ( size\_type i = 0; i < meshFEMcutFlat.nb\_dof(); ++i )
-685         \{
-686             bgeot::base\_node P ( fracture->getData().getSpaceDimension() + 2 );
-687             
-688             P [ 0 ] = meshFEMcutFlat.point\_of\_basic\_dof(i)[0];
-689             P [ 1 ] = ordinataCut [ i ];
-690             
-691             meshFcutMapped.add\_point(P);
-692         \}
+682     
+683     \textcolor{keywordflow}{for} ( size\_type f = 0; f < numberFractures; ++f )
+684     \{
+685         \textcolor{comment}{// numero di gradi di libertà per la velocità senza quelli estesi per la frattura f}
+686         fractureNumberDOFVelocity [ f ] = M\_fractures->getFracture( f )->getMeshFEMVelocity().nb\_dof();
+687 
+688         \textcolor{comment}{// numero di gradi di libertà per la velocità con quelli estesi per la frattura f}
+689         fractureNumberGlobalDOFVelocity [ f ] = fractureNumberDOFVelocity [ f ] + M\_fractures->getFracture(
+       f )->getNumExtendedVelocity();
+690 
+691         \textcolor{comment}{// numero di gradi di libertà per la pressione senza quelli estesi per la frattura f}
+692         fractureNumberDOFPressure [ f ] = M\_fractures->getFracture( f )->getMeshFEMPressure().nb\_dof();
 693 
-694 
-695         \textcolor{keyword}{const} size\_type numConvex = meshFcutFlat.convex\_index().size();
+694         \textcolor{comment}{// numero di gradi di libertà per la pressione con quelli estesi per la frattura f}
+695         fractureNumberGlobalDOFPressure [ f ] = fractureNumberDOFPressure [ f ] + M\_fractures->getFracture(
+       f )->getNumExtendedPressure();
 696 
-697         \textcolor{keywordflow}{for} ( size\_type i = 0; i < numConvex; ++i )
-698         \{
-699             std::vector<bgeot::size\_type> point(3);
-700            
-701             point [ 0 ] = meshFcutFlat.ind\_points\_of\_convex(i) [ 0 ];
-702             point [ 1 ] = meshFcutFlat.ind\_points\_of\_convex(i) [ 1 ];
-703             point [ 2 ] = meshFcutFlat.ind\_points\_of\_convex(i) [ 2 ];
-704             
-705             meshFcutMapped.add\_convex( fracture->getGeometricTransformation(), point.begin() );
-706         \}
-707 
-708         \textcolor{comment}{// per ogni frattura esporto la mesh reale}
-709         osFileName << \textcolor{stringliteral}{"cmeshF2-"} << f << \textcolor{stringliteral}{".vtk"};
-710         \hyperlink{UsefulFunctions_8h_ae4bd400c144e72bee180107bb41ae72a}{exportMesh}(M\_exporter->getFolder() + osFileName.str().c\_str(), meshFcutMapped );
-711 
-712         getfem::mesh\_fem mfproj ( meshFcutMapped, fracture->getMeshFEMPressure().get\_qdim() );
-713 
-714         mfproj.set\_classical\_discontinuous\_finite\_element ( 0, 0.01 );
-715 
-716         \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} fracturePressureMeanUNCUT ( fractureNumberDOFPressure [ f ], 0. 
-      );
-717         \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} fracturePressureInCut ( fractureNumberDOFPressure [ f ], 0. );
-718         \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} fracturePressureOutCut ( fractureNumberDOFPressure [ f ], 0. );
-719 
-720         \textcolor{keywordflow}{for} ( size\_type i = 0; i < fractureNumberDOFPressure [ f ]; ++i )
-721         \{
-722             \textcolor{keyword}{const} size\_type el =  fracture->getMeshFEMPressure().first\_convex\_of\_basic\_dof(i);
-723         
-724             \textcolor{keywordflow}{if} ( fracture->getMeshFlat().region ( 
-      \hyperlink{classFractureHandler_a495ad4fc72d0c47c8f0424842f1153aaaa992cc3ad024a030ecd798dc319c95ac}{FractureHandler::FRACTURE\_UNCUT} * ( f + 1 ) ).is\_in(el) )
-725             \{   
-726                 fracturePressureMeanUNCUT [ i ] = (*(M\_fracturePressure [ f ])) [ i ];
-727             \}
-728         \}
-729 
-730         
-731         \textcolor{comment}{/*}
-732 \textcolor{comment}{         * getfem risolve il sistema per la mesh piatta, per avere i corretti valori di pressione devo
-       interpolare}
-733 \textcolor{comment}{         * sulla mesh mappata i valori che ho ottenuto}
-734 \textcolor{comment}{         * }
-735 \textcolor{comment}{         */}
-736         \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} fracturePressureMeanUNCUTInterpolated ( mfproj.nb\_dof(), 0. );
-737         \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} fracturePressureMeanInCutInterpolated ( mfproj.nb\_dof(), 0. );
-738         \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} fracturePressureMeanOutCutInterpolated ( mfproj.nb\_dof(), 0. );
-739 
-740         getfem::mesh\_fem mfprojUncut ( fracture->getMeshMapped(), fracture->getMeshFEMPressure().get\_qdim()
-      );
-741         mfprojUncut.set\_finite\_element ( fractureFETypePressure );
-742 
-743         getfem::interpolation ( mfprojUncut, mfproj, fracturePressureMeanUNCUT, 
-      fracturePressureMeanUNCUTInterpolated );
-744 
-745         \textcolor{keyword}{const} \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{sizeVector\_Type}& extendedPressure = fracture->getExtendedPressure();
-746 
-747         \textcolor{keywordflow}{for} ( size\_type otherFracture = 0; otherFracture < numberFractures; ++otherFracture )
-748         \{
-749             \textcolor{keywordflow}{if} ( fracture->getLevelSetIntersect( otherFracture ).get() )
-750             \{
-751                 getfem::mesh\_region regionMesh = fracture->getMeshFlat().region ( 
-      \hyperlink{classFractureHandler_a495ad4fc72d0c47c8f0424842f1153aaa781cae3f3b99bf9357fed2833d315537}{FractureHandler::FRACTURE\_INTERSECT} * ( f + 1 ) + otherFracture + 1 );
-752                 size\_type i\_cv = 0;
-753                 dal::bit\_vector bc\_cv = regionMesh.index();
-754                 gmm::clear ( fracturePressureInCut );
-755                 gmm::clear ( fracturePressureOutCut );
-756 
-757                 \textcolor{keywordflow}{for} ( i\_cv << bc\_cv; i\_cv != size\_type(-1); i\_cv << bc\_cv )
-758                 \{
-759                     \textcolor{keyword}{const} size\_type ibase = fracture->getMeshFEMPressure().ind\_basic\_dof\_of\_element ( i\_cv 
-      )[0];
-760                     \textcolor{keyword}{const} size\_type position = size\_type ( std::find ( extendedPressure.begin(), 
-      extendedPressure.end(), ibase )
-761                                                 - extendedPressure.begin());
-762 
-763                     \textcolor{keyword}{const} base\_node point = mfprojUncut.point\_of\_basic\_dof ( ibase );
-764                     \textcolor{keyword}{const} scalar\_type levelSetValue = M\_fractures->getFracture( otherFracture )->
-      getLevelSet()->getData()->levelSetFunction( point );
-765 
-766                     \textcolor{keywordflow}{if} ( levelSetValue < 0 )
-767                     \{
-768                         fracturePressureInCut [ ibase ] = (*(M\_fracturePressure [ f ])) [ ibase ];
-769                         fracturePressureOutCut [ ibase ] = (*(M\_fracturePressure [ f ])) [ 
-      fractureNumberDOFPressure [ f ] + position ];
-770                     \}
-771                     \textcolor{keywordflow}{else}
-772                     \{
-773                         fracturePressureOutCut [ ibase ] = (*(M\_fracturePressure [ f ])) [ ibase ];
-774                         fracturePressureInCut [ ibase ] = (*(M\_fracturePressure [ f ])) [ 
-      fractureNumberDOFPressure [ f ] + position ];
-775                     \}
+697         \textcolor{comment}{// numero totale di gradi di libertà per la velocità e la pressione per la frattura f}
+698         fractureNumberDOFVelocityPressure [ f ] = fractureNumberGlobalDOFVelocity [ f ] + 
+      fractureNumberGlobalDOFPressure [ f ];
+699 
+700         \textcolor{comment}{// numero totale di gradi di libertà per la pressione e la velocità}
+701         fractureTotalNumberDOFVelocityPressure += fractureNumberDOFVelocityPressure [ f ];
+702 
+703         M\_fracturePressure [ f ].reset(\textcolor{keyword}{new} \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type}( 
+      fractureNumberGlobalDOFPressure [ f ], 0));
+704 
+705         M\_fractureVelocity [ f ].reset(\textcolor{keyword}{new} \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type}( 
+      fractureNumberGlobalDOFVelocity [ f ], 0));
+706 
+707     \}
+708 
+709     \textcolor{comment}{// Numero intersezioni}
+710     fractureNumberCross = M\_fractures->getIntersections ()->getNumberCross ();
+711    
+712     fractureNumberBifurcation = M\_fractures->getIntersections ()->getNumberBifurcation ();
+713     
+714     fractureNumberIntersections = fractureNumberCross + 5*fractureNumberBifurcation;
+715     
+716     globalFractureNumber = fractureNumberCross*2 + fractureNumberBifurcation*6;
+717 
+718 
+719     \textcolor{comment}{// Solve the Darcy problem}
+720     std::cout << std::endl << \textcolor{stringliteral}{"Solving problem in Omega..."} << std::flush;
+721     scalar\_type roundConditionNumber;
+722 
+723     SuperLU\_solve(*M\_globalMatrix, *M\_velocityAndPressure,
+724                   *M\_globalRightHandSide, roundConditionNumber);
+725 \textcolor{comment}{/*}
+726 \textcolor{comment}{    std::cout << " completed!" << std::endl;}
+727 \textcolor{comment}{}
+728 \textcolor{comment}{    std::ofstream f("file.txt");}
+729 \textcolor{comment}{    }
+730 \textcolor{comment}{    f << *M\_globalRightHandSide; }
+731 \textcolor{comment}{    f.close();}
+732 \textcolor{comment}{  */}  
+733     size\_type fractureShift = 0;
+734     
+735     \textcolor{keywordflow}{for} ( size\_type f = 0; f < numberFractures; ++f )
+736     \{ 
+737         \textcolor{comment}{// Extract the dual in the fracture}
+738         gmm::copy( gmm::sub\_vector( *M\_velocityAndPressure, gmm::sub\_interval( fractureShift, 
+      fractureNumberGlobalDOFVelocity [ f ])),
+739                   *( M\_fractureVelocity [ f ] ) );
+740 
+741         \textcolor{comment}{// Extract the primal in the fracture}
+742         gmm::copy( gmm::sub\_vector( *M\_velocityAndPressure, 
+743                                     gmm::sub\_interval( fractureShift + fractureNumberGlobalDOFVelocity [ f 
+      ], fractureNumberGlobalDOFPressure [ f ])), 
+744                    *(M\_fracturePressure [ f ]));
+745 
+746         \textcolor{comment}{// Update the shift}
+747         fractureShift += fractureNumberDOFVelocityPressure [ f ];
+748     \}
+749 
+750     \textcolor{comment}{// the extra dof start at the end of the fracture dofs}
+751   
+752     getfem::pfem fractureFETypePressure;
+753     \textcolor{keywordflow}{if} ( numberFractures > 0 )
+754     \{
+755         fractureFETypePressure = getfem::fem\_descriptor( M\_fractures->getFracture( 0 )->getData().
+      getFEMTypePressure());
+756     \}
+757 
+758 
+759     \textcolor{comment}{//--------export solution in the fracture-------------------}
+760     \textcolor{keywordflow}{for} ( size\_type f = 0; f < numberFractures; ++f )
+761     \{
+762         \hyperlink{FractureHandler_8h_af23fb7a30aaff864bd42587af4f1e78a}{FractureHandlerPtr\_Type}& fracture = M\_fractures->getFracture(f);
+763         std::ostringstream osFileName;
+764 
+765         getfem::mesh\_level\_set meshFLevelSetCutFlat ( fracture->getMeshFlat() );
+766         \textcolor{keywordflow}{for} ( size\_type otherF = 0; otherF < numberFractures; ++otherF )
+767         \{
+768             \hyperlink{Core_8h_a036173458a8a25c7c03f8c76d97e9580}{GFLevelSetPtr\_Type} levelSetPtr = fracture->getLevelSetIntersect ( otherF );
+769 
+770             \textcolor{keywordflow}{if} ( levelSetPtr.get() != NULL )
+771             \{
+772                 meshFLevelSetCutFlat.add\_level\_set ( *levelSetPtr );
+773             \}
+774         \}
+775 
 776 
-777                 \}
+777         meshFLevelSetCutFlat.adapt();
 778 
-779                 gmm::clear ( fracturePressureMeanInCutInterpolated );
-780 
-781                 getfem::interpolation ( mfprojUncut, mfproj,
-782                                         fracturePressureInCut, fracturePressureMeanInCutInterpolated );
-783 
-784                 gmm::clear ( fracturePressureMeanOutCutInterpolated );
+779         getfem::mesh meshFcutFlat;
+780         getfem::mesh meshFcutMapped;
+781         meshFLevelSetCutFlat.global\_cut\_mesh ( meshFcutFlat );
+782 
+783         getfem::mesh\_fem meshFEMcutFlat ( meshFcutFlat, fracture->getMeshFEMPressure().get\_qdim());
+784         meshFEMcutFlat.set\_finite\_element ( fracture->getMeshFEMVelocity().fem\_of\_element(0) );
 785 
-786                 getfem::interpolation ( mfprojUncut, mfproj,
-787                                         fracturePressureOutCut, fracturePressureMeanOutCutInterpolated );
+786         \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} ordinataUncut ( fractureNumberDOFVelocity [ f ], 0. );
+787         \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} ordinataCut ( meshFEMcutFlat.nb\_dof(), 0. );
 788 
-789                 i\_cv = 0;
-790                 bc\_cv = meshFcutMapped.convex\_index();
-791                 \textcolor{keywordflow}{for} ( i\_cv << bc\_cv; i\_cv != size\_type(-1); i\_cv << bc\_cv )
-792                 \{
-793                     getfem::mesh\_fem::ind\_dof\_ct idofs = mfproj.ind\_basic\_dof\_of\_element ( i\_cv );
-794                     \textcolor{keywordflow}{for} ( size\_type k = 0; k < idofs.size(); ++k )
-795                     \{
-796                         \textcolor{keyword}{const} base\_node node = mfproj.point\_of\_basic\_dof(idofs [ k ]);
-797                         \textcolor{keyword}{const} scalar\_type levelSetValue = M\_fractures->getFracture( otherFracture )->
-      getLevelSet()->getData()->levelSetFunction( node );
-798                         \textcolor{keywordflow}{if} ( levelSetValue < 0 )
-799                         \{
-800                             fracturePressureMeanUNCUTInterpolated [ idofs[k] ] += 
-      fracturePressureMeanInCutInterpolated [ idofs[k] ];
-801                         \}
-802                         \textcolor{keywordflow}{else}
-803                         \{
-804                             fracturePressureMeanUNCUTInterpolated [ idofs[k] ] += 
-      fracturePressureMeanOutCutInterpolated [ idofs[k] ];
-805                         \}
-806 
-807                     \}
-808 
-809                 \}
-810 
-811             \}
-812         \}
-813 
-814         osFileName.str(\textcolor{stringliteral}{""});
-815         osFileName << \textcolor{stringliteral}{"fracturePressure"} << f << \textcolor{stringliteral}{".vtk"};
+789     
+790         \textcolor{keywordflow}{for} ( size\_type i = 0; i < fractureNumberDOFVelocity [ f ]; ++i )
+791         \{
+792             \textcolor{keyword}{const} bgeot::base\_node P = fracture->getMeshFEMVelocity().point\_of\_basic\_dof(i);
+793 
+794             bgeot::base\_node P1 = fracture->getMeshMapped().points( ) [i];
+795 
+796 
+797             scalar\_type c= 1./fracture->getData().getSpatialDiscretization ();
+798 
+799             P1 [0] =  i*c;
+800 
+801             ordinataUncut [ i ] = fracture->getLevelSet()->getData()->y\_map(P1);
+802         \}
+803 
+804         getfem::interpolation ( fracture->getMeshFEMVelocity(), meshFEMcutFlat, ordinataUncut, ordinataCut 
+      );
+805 
+806         \textcolor{keywordflow}{for} ( size\_type i = 0; i < meshFEMcutFlat.nb\_dof(); ++i )
+807         \{
+808             bgeot::base\_node P ( fracture->getData().getSpaceDimension() + 2 );
+809             
+810             P [ 0 ] = meshFEMcutFlat.point\_of\_basic\_dof(i)[0];
+811             P [ 1 ] = ordinataCut [ i ];
+812             
+813             meshFcutMapped.add\_point(P);
+814         \}
+815 
 816 
-817         \hyperlink{UsefulFunctions_8h_add7b8b88dc68d93addd88b9a4dc6e8bf}{exportSolution} ( M\_exporter->getFolder() + osFileName.str(), \textcolor{stringliteral}{"Pressure"},
-818                      mfproj, fracturePressureMeanUNCUTInterpolated );
-819     \}
-820 
-821    
-822    
-823 \}\end{DoxyCode}
+817         \textcolor{keyword}{const} size\_type numConvex = meshFcutFlat.convex\_index().size();
+818 
+819         \textcolor{keywordflow}{for} ( size\_type i = 0; i < numConvex; ++i )
+820         \{
+821             std::vector<bgeot::size\_type> point(3);
+822            
+823             point [ 0 ] = meshFcutFlat.ind\_points\_of\_convex(i) [ 0 ];
+824             point [ 1 ] = meshFcutFlat.ind\_points\_of\_convex(i) [ 1 ];
+825             point [ 2 ] = meshFcutFlat.ind\_points\_of\_convex(i) [ 2 ];
+826             
+827             meshFcutMapped.add\_convex( fracture->getGeometricTransformation(), point.begin() );
+828         \}
+829 
+830         \textcolor{comment}{// per ogni frattura esporto la mesh reale}
+831         osFileName << \textcolor{stringliteral}{"cmeshF2-"} << f << \textcolor{stringliteral}{".vtk"};
+832         \hyperlink{UsefulFunctions_8h_ae4bd400c144e72bee180107bb41ae72a}{exportMesh}(M\_exporter->getFolder() + osFileName.str().c\_str(), meshFcutMapped );
+833 
+834         getfem::mesh\_fem mfproj ( meshFcutMapped, fracture->getMeshFEMPressure().get\_qdim() );
+835 
+836         mfproj.set\_classical\_discontinuous\_finite\_element ( 0, 0.01 );
+837 
+838         \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} fracturePressureMeanUNCUT ( fractureNumberDOFPressure [ f ], 0. 
+      );
+839         \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} fracturePressureInCut ( fractureNumberDOFPressure [ f ], 0. );
+840         \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} fracturePressureOutCut ( fractureNumberDOFPressure [ f ], 0. );
+841 
+842         \textcolor{keywordflow}{for} ( size\_type i = 0; i < fractureNumberDOFPressure [ f ]; ++i )
+843         \{
+844             \textcolor{keyword}{const} size\_type el =  fracture->getMeshFEMPressure().first\_convex\_of\_basic\_dof(i);
+845         
+846             \textcolor{keywordflow}{if} ( fracture->getMeshFlat().region ( 
+      \hyperlink{classFractureHandler_a495ad4fc72d0c47c8f0424842f1153aaaa992cc3ad024a030ecd798dc319c95ac}{FractureHandler::FRACTURE\_UNCUT} * ( f + 1 ) ).is\_in(el) )
+847             \{   
+848                 fracturePressureMeanUNCUT [ i ] = (*(M\_fracturePressure [ f ])) [ i ];
+849             \}
+850         \}
+851 
+852         
+853         \textcolor{comment}{/*}
+854 \textcolor{comment}{         * getfem risolve il sistema per la mesh piatta, per avere i corretti valori di pressione devo
+       interpolare}
+855 \textcolor{comment}{         * sulla mesh mappata i valori che ho ottenuto}
+856 \textcolor{comment}{         * }
+857 \textcolor{comment}{         */}
+858         \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} fracturePressureMeanUNCUTInterpolated ( mfproj.nb\_dof(), 0. );
+859         \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} fracturePressureMeanInCutInterpolated ( mfproj.nb\_dof(), 0. );
+860         \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} fracturePressureMeanOutCutInterpolated ( mfproj.nb\_dof(), 0. );
+861 
+862         getfem::mesh\_fem mfprojUncut ( fracture->getMeshMapped(), fracture->getMeshFEMPressure().get\_qdim()
+      );
+863         mfprojUncut.set\_finite\_element ( fractureFETypePressure );
+864 
+865         getfem::interpolation ( mfprojUncut, mfproj, fracturePressureMeanUNCUT, 
+      fracturePressureMeanUNCUTInterpolated );
+866 
+867         \textcolor{keyword}{const} \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{sizeVector\_Type}& extendedPressure = fracture->getExtendedPressure();
+868 
+869         \textcolor{keywordflow}{for} ( size\_type otherFracture = 0; otherFracture < numberFractures; ++otherFracture )
+870         \{
+871             \textcolor{keywordflow}{if} ( fracture->getLevelSetIntersect( otherFracture ).get() )
+872             \{
+873                 getfem::mesh\_region regionMesh = fracture->getMeshFlat().region ( 
+      \hyperlink{classFractureHandler_a495ad4fc72d0c47c8f0424842f1153aaa781cae3f3b99bf9357fed2833d315537}{FractureHandler::FRACTURE\_INTERSECT} * ( f + 1 ) + otherFracture + 1 );
+874                 size\_type i\_cv = 0;
+875                 dal::bit\_vector bc\_cv = regionMesh.index();
+876                 gmm::clear ( fracturePressureInCut );
+877                 gmm::clear ( fracturePressureOutCut );
+878 
+879                 \textcolor{keywordflow}{for} ( i\_cv << bc\_cv; i\_cv != size\_type(-1); i\_cv << bc\_cv )
+880                 \{
+881                     \textcolor{keyword}{const} size\_type ibase = fracture->getMeshFEMPressure().ind\_basic\_dof\_of\_element ( i\_cv 
+      )[0];
+882                     \textcolor{keyword}{const} size\_type position = size\_type ( std::find ( extendedPressure.begin(), 
+      extendedPressure.end(), ibase )
+883                                                 - extendedPressure.begin());
+884 
+885                     \textcolor{keyword}{const} base\_node point = mfprojUncut.point\_of\_basic\_dof ( ibase );
+886                     \textcolor{keyword}{const} scalar\_type levelSetValue = M\_fractures->getFracture( otherFracture )->
+      getLevelSet()->getData()->levelSetFunction( point );
+887 
+888                     \textcolor{keywordflow}{if} ( levelSetValue < 0 )
+889                     \{
+890                         fracturePressureInCut [ ibase ] = (*(M\_fracturePressure [ f ])) [ ibase ];
+891                         fracturePressureOutCut [ ibase ] = (*(M\_fracturePressure [ f ])) [ 
+      fractureNumberDOFPressure [ f ] + position ];
+892                     \}
+893                     \textcolor{keywordflow}{else}
+894                     \{
+895                         fracturePressureOutCut [ ibase ] = (*(M\_fracturePressure [ f ])) [ ibase ];
+896                         fracturePressureInCut [ ibase ] = (*(M\_fracturePressure [ f ])) [ 
+      fractureNumberDOFPressure [ f ] + position ];
+897                     \}
+898 
+899                 \}
+900 
+901                 gmm::clear ( fracturePressureMeanInCutInterpolated );
+902 
+903                 getfem::interpolation ( mfprojUncut, mfproj,
+904                                         fracturePressureInCut, fracturePressureMeanInCutInterpolated );
+905 
+906                 gmm::clear ( fracturePressureMeanOutCutInterpolated );
+907 
+908                 getfem::interpolation ( mfprojUncut, mfproj,
+909                                         fracturePressureOutCut, fracturePressureMeanOutCutInterpolated );
+910 
+911                 i\_cv = 0;
+912                 bc\_cv = meshFcutMapped.convex\_index();
+913                 \textcolor{keywordflow}{for} ( i\_cv << bc\_cv; i\_cv != size\_type(-1); i\_cv << bc\_cv )
+914                 \{
+915                     getfem::mesh\_fem::ind\_dof\_ct idofs = mfproj.ind\_basic\_dof\_of\_element ( i\_cv );
+916                     \textcolor{keywordflow}{for} ( size\_type k = 0; k < idofs.size(); ++k )
+917                     \{
+918                         \textcolor{keyword}{const} base\_node node = mfproj.point\_of\_basic\_dof(idofs [ k ]);
+919                         \textcolor{keyword}{const} scalar\_type levelSetValue = M\_fractures->getFracture( otherFracture )->
+      getLevelSet()->getData()->levelSetFunction( node );
+920                         \textcolor{keywordflow}{if} ( levelSetValue < 0 )
+921                         \{
+922                             fracturePressureMeanUNCUTInterpolated [ idofs[k] ] += 
+      fracturePressureMeanInCutInterpolated [ idofs[k] ];
+923                         \}
+924                         \textcolor{keywordflow}{else}
+925                         \{
+926                             fracturePressureMeanUNCUTInterpolated [ idofs[k] ] += 
+      fracturePressureMeanOutCutInterpolated [ idofs[k] ];
+927                         \}
+928 
+929                     \}
+930 
+931                 \}
+932 
+933             \}
+934         \}
+935 
+936         osFileName.str(\textcolor{stringliteral}{""});
+937         osFileName << \textcolor{stringliteral}{"fracturePressure"} << f << \textcolor{stringliteral}{".vtk"};
+938 
+939         \hyperlink{UsefulFunctions_8h_add7b8b88dc68d93addd88b9a4dc6e8bf}{exportSolution} ( M\_exporter->getFolder() + osFileName.str(), \textcolor{stringliteral}{"Pressure"},
+940                      mfproj, fracturePressureMeanUNCUTInterpolated );
+941     \}
+942 
+943    
+944    
+945 \}\end{DoxyCode}
 
 
 La documentazione per questa classe è stata generata a partire dai seguenti file\-:\begin{DoxyCompactItemize}
 \item 
 include/\hyperlink{DarcyFractured_8h}{Darcy\-Fractured.\-h}\item 
-src/\hyperlink{DarcyFractured_8cc}{Darcy\-Fractured.\-cc}\end{DoxyCompactItemize}
+src/\hyperlink{src_2DarcyFractured_8cc}{Darcy\-Fractured.\-cc}\end{DoxyCompactItemize}

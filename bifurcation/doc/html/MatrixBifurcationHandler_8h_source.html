@@ -1,0 +1,229 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>Progetto PACS:  File sorgente include/MatrixBifurcationHandler.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Progetto PACS
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generato da Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Pagina&#160;Principale</span></a></li>
+      <li><a href="namespaces.html"><span>Namespace</span></a></li>
+      <li><a href="annotated.html"><span>Classi</span></a></li>
+      <li class="current"><a href="files.html"><span>File</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Cerca" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Elenco&#160;dei&#160;file</span></a></li>
+      <li><a href="globals.html"><span>Elementi&#160;dei&#160;file</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tutto</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classi</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespace</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>File</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funzioni</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variabili</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Ridefinizioni di tipo (typedef)</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Tipi enumerati (enum)</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Valori del tipo enumerato</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friend</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Definizioni</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">MatrixBifurcationHandler.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="MatrixBifurcationHandler_8h.html">Vai alla documentazione di questo file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef __MATRIXBIFURCATIONHANDLER_H__</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="MatrixBifurcationHandler_8h.html#ad58eac6f4729df840cb32da045c88a93">    9</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define __MATRIXBIFURCATIONHANDLER_H__1</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Core_8h.html">Core.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="TriangleHandler_8h.html">TriangleHandler.h</a>&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Parser_8h.html">Parser.h</a>&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="FractureHandler_8h.html">FractureHandler.h</a>&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;eigen3/Eigen/Dense&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classMatrixBifurcationHandler.html">   18</a></span>&#160;<span class="keyword">class </span><a class="code" href="classMatrixBifurcationHandler.html">MatrixBifurcationHandler</a></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="classMatrixBifurcationHandler.html#a57f9791749acd9b699bf737193c2e87a">MatrixBifurcationHandler</a>( <span class="keyword">const</span> GetPot&amp; dataFile,</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                              <span class="keyword">const</span> std::string&amp; section = <span class="stringliteral">&quot;mediumData/&quot;</span>,</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                              <span class="keyword">const</span> std::string&amp; subsection = <span class="stringliteral">&quot;darcy/&quot;</span>);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="classMatrixBifurcationHandler.html#a57f9791749acd9b699bf737193c2e87a">MatrixBifurcationHandler</a>(<a class="code" href="Core_8h.html#a1694976dd66ed00e5f0618f4f8821163">Matrix2d</a> <a class="code" href="classMatrixBifurcationHandler.html#ac7d63c6d730079862dd8238928d94b26">K</a>);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classMatrixBifurcationHandler.html#a57f9791749acd9b699bf737193c2e87a">MatrixBifurcationHandler</a>(scalar_type K);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMatrixBifurcationHandler.html#a94433cf28ec2af6ba06b7f63a081d787">setMatrices</a> ( <a class="code" href="FractureHandler_8h.html#a2f0b57e18ecf89912d7de0c87158009e">FracturePtrContainer_Type</a>&amp; fractures );</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    </div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="classMatrixBifurcationHandler.html#aa7e601bac77856cac8db77c58023c1b4">   65</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMatrixBifurcationHandler.html#aa7e601bac77856cac8db77c58023c1b4">setTriangle</a>(<a class="code" href="classTriangleData.html">TriangleData</a> <span class="keyword">const</span> &amp; <a class="code" href="classMatrixBifurcationHandler.html#a3b7305f6106add811e7b4b69f5642e86">T</a>)</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        M_intersection.<a class="code" href="classIntersection.html#ae071ecb3d3f2d6f9723e310764535883">setTriangle</a> ( T );</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    </div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="classMatrixBifurcationHandler.html#acbc7b99389ad5eacd86f73b0ed08829b">   75</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMatrixBifurcationHandler.html#acbc7b99389ad5eacd86f73b0ed08829b">setK</a>(<a class="code" href="Core_8h.html#a1694976dd66ed00e5f0618f4f8821163">Matrix2d</a> K){K_=<a class="code" href="classMatrixBifurcationHandler.html#ac7d63c6d730079862dd8238928d94b26">K</a>;}</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    </div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="classMatrixBifurcationHandler.html#ac7d63c6d730079862dd8238928d94b26">   82</a></span>&#160;    <a class="code" href="Core_8h.html#a1694976dd66ed00e5f0618f4f8821163">Matrix2d</a> <a class="code" href="classMatrixBifurcationHandler.html#ac7d63c6d730079862dd8238928d94b26">K</a>()<span class="keyword">const</span>{ <span class="keywordflow">return</span> K_;}</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMatrixBifurcationHandler.html#ac134a5731e6614e543241a018ccf8c34">computeN</a>();</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    </div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="classMatrixBifurcationHandler.html#a77f006579fad0f0f08c10bf684bbd16a">   96</a></span>&#160;    <a class="code" href="Core_8h.html#aee82131e398edee47a44d675ee802368">Matrix32</a> <a class="code" href="classMatrixBifurcationHandler.html#a77f006579fad0f0f08c10bf684bbd16a">N</a>()<span class="keyword">const </span>{<span class="keywordflow">return</span> N_;}</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMatrixBifurcationHandler.html#ac179ca406307a3d2ee5d5b5af94d265e">computeC</a>();</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    </div>
+<div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="classMatrixBifurcationHandler.html#a4701fef8d864cb7d61521c8fbe5db2cc">  113</a></span>&#160;    <a class="code" href="Core_8h.html#aee82131e398edee47a44d675ee802368">Matrix32</a> <a class="code" href="classMatrixBifurcationHandler.html#a4701fef8d864cb7d61521c8fbe5db2cc">C</a>(){<span class="keywordflow">return</span> C_;}</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMatrixBifurcationHandler.html#a203b6bfcdef418ffa927aebaeedc6da2">computeQc</a>();</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    </div>
+<div class="line"><a name="l00127"></a><span class="lineno"><a class="line" href="classMatrixBifurcationHandler.html#add50b813d3bd773ddf794c4e05b37e38">  127</a></span>&#160;    <a class="code" href="Core_8h.html#aee82131e398edee47a44d675ee802368">Matrix32</a> <a class="code" href="classMatrixBifurcationHandler.html#add50b813d3bd773ddf794c4e05b37e38">Qc</a>()<span class="keyword">const </span>{ <span class="keywordflow">return</span> Qc_; }</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        </div>
+<div class="line"><a name="l00134"></a><span class="lineno"><a class="line" href="classMatrixBifurcationHandler.html#ad84675e9be6d56de69c0e25bf1cd77cd">  134</a></span>&#160;    <a class="code" href="Core_8h.html#acd816705c6602062b91975525c4e3f6f">Matrix3d</a> <a class="code" href="classMatrixBifurcationHandler.html#ad84675e9be6d56de69c0e25bf1cd77cd">Pc</a>()<span class="keyword">const </span>{ <span class="keywordflow">return</span> Pc_; }</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    </div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    </div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMatrixBifurcationHandler.html#a46ee3c60eedda32abe36700ab2ce2d16">computeT</a>( scalar_type t = 6.0 );</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    </div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMatrixBifurcationHandler.html#a2153adb36bdbba82ca18ae74eb9e2ea7">computeTsimple</a>(scalar_type t=6.0);</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMatrixBifurcationHandler.html#acafb7a17c3d639068938a21dad6bb0ec">inversion2X2</a> ( <span class="keyword">const</span> <a class="code" href="Core_8h.html#a1694976dd66ed00e5f0618f4f8821163">Matrix2d</a>&amp; invk, scalar_type det );</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    </div>
+<div class="line"><a name="l00153"></a><span class="lineno"><a class="line" href="classMatrixBifurcationHandler.html#a2d67172a5034f104d08cb53e5dbda926">  153</a></span>&#160;    <a class="code" href="classMatrixBifurcationHandler.html">MatrixBifurcationHandler</a> &amp; <a class="code" href="classMatrixBifurcationHandler.html#a2d67172a5034f104d08cb53e5dbda926">operator =</a>(<span class="keyword">const</span> <a class="code" href="classMatrixBifurcationHandler.html">MatrixBifurcationHandler</a> &amp; mat)</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    {</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        M_intersection = mat.M_intersection;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        K_ = mat.K_;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        N_ = mat.N_;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        C_ = mat.C_;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        Qc_ = mat.Qc_;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        Pc_ = mat.Pc_;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        T_ = mat.T_;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    }</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    </div>
+<div class="line"><a name="l00165"></a><span class="lineno"><a class="line" href="classMatrixBifurcationHandler.html#a3b7305f6106add811e7b4b69f5642e86">  165</a></span>&#160;    <a class="code" href="Core_8h.html#acd816705c6602062b91975525c4e3f6f">Matrix3d</a> <a class="code" href="classMatrixBifurcationHandler.html#a3b7305f6106add811e7b4b69f5642e86">T</a>()<span class="keyword">const </span>{<span class="keywordflow">return</span> T_;}</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    </div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    EIGEN_MAKE_ALIGNED_OPERATOR_NEW </div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <a class="code" href="Core_8h.html#a1694976dd66ed00e5f0618f4f8821163">Matrix2d</a> K_;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <a class="code" href="classIntersection.html">Intersection_Type</a> M_intersection;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <a class="code" href="Core_8h.html#aee82131e398edee47a44d675ee802368">Matrix32</a> N_;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <a class="code" href="Core_8h.html#aee82131e398edee47a44d675ee802368">Matrix32</a> C_;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <a class="code" href="Core_8h.html#aee82131e398edee47a44d675ee802368">Matrix32</a> Qc_;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    <a class="code" href="Core_8h.html#acd816705c6602062b91975525c4e3f6f">Matrix3d</a> Pc_;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <a class="code" href="Core_8h.html#acd816705c6602062b91975525c4e3f6f">Matrix3d</a> T_;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;};</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;</div>
+<div class="line"><a name="l00180"></a><span class="lineno"><a class="line" href="MatrixBifurcationHandler_8h.html#a8c9916c78759dc6895c2c930240a5c8a">  180</a></span>&#160;<span class="keyword">typedef</span> <a class="code" href="classMatrixBifurcationHandler.html">MatrixBifurcationHandler</a> <a class="code" href="MatrixBifurcationHandler_8h.html#a8c9916c78759dc6895c2c930240a5c8a">MatrixBifurcationHandler_Type</a>;</div>
+<div class="ttc" id="classMatrixBifurcationHandler_html_a3b7305f6106add811e7b4b69f5642e86"><div class="ttname"><a href="classMatrixBifurcationHandler.html#a3b7305f6106add811e7b4b69f5642e86">MatrixBifurcationHandler::T</a></div><div class="ttdeci">Matrix3d T() const </div><div class="ttdef"><b>Definition:</b> MatrixBifurcationHandler.h:165</div></div>
+<div class="ttc" id="classMatrixBifurcationHandler_html_ac179ca406307a3d2ee5d5b5af94d265e"><div class="ttname"><a href="classMatrixBifurcationHandler.html#ac179ca406307a3d2ee5d5b5af94d265e">MatrixBifurcationHandler::computeC</a></div><div class="ttdeci">void computeC()</div><div class="ttdoc">Funzione che calcola la matrice C_, matrice che ha per righe i vettori che uniscono il baricentro del...</div><div class="ttdef"><b>Definition:</b> MatrixBifurcationHandler.cc:47</div></div>
+<div class="ttc" id="classMatrixBifurcationHandler_html_a2153adb36bdbba82ca18ae74eb9e2ea7"><div class="ttname"><a href="classMatrixBifurcationHandler.html#a2153adb36bdbba82ca18ae74eb9e2ea7">MatrixBifurcationHandler::computeTsimple</a></div><div class="ttdeci">void computeTsimple(scalar_type t=6.0)</div><div class="ttdef"><b>Definition:</b> MatrixBifurcationHandler.cc:81</div></div>
+<div class="ttc" id="classMatrixBifurcationHandler_html"><div class="ttname"><a href="classMatrixBifurcationHandler.html">MatrixBifurcationHandler</a></div><div class="ttdef"><b>Definition:</b> MatrixBifurcationHandler.h:18</div></div>
+<div class="ttc" id="Core_8h_html_a1694976dd66ed00e5f0618f4f8821163"><div class="ttname"><a href="Core_8h.html#a1694976dd66ed00e5f0618f4f8821163">Matrix2d</a></div><div class="ttdeci">Eigen::Matrix2d Matrix2d</div><div class="ttdef"><b>Definition:</b> Core.h:111</div></div>
+<div class="ttc" id="Core_8h_html_aee82131e398edee47a44d675ee802368"><div class="ttname"><a href="Core_8h.html#aee82131e398edee47a44d675ee802368">Matrix32</a></div><div class="ttdeci">Eigen::Matrix&lt; scalar_type, 3, 2 &gt; Matrix32</div><div class="ttdef"><b>Definition:</b> Core.h:110</div></div>
+<div class="ttc" id="classMatrixBifurcationHandler_html_a203b6bfcdef418ffa927aebaeedc6da2"><div class="ttname"><a href="classMatrixBifurcationHandler.html#a203b6bfcdef418ffa927aebaeedc6da2">MatrixBifurcationHandler::computeQc</a></div><div class="ttdeci">void computeQc()</div><div class="ttdoc">Funzione che costruisce la matrice Qc_, matrice che ha per colonne una base ortonormale per la matric...</div><div class="ttdef"><b>Definition:</b> MatrixBifurcationHandler.cc:55</div></div>
+<div class="ttc" id="classMatrixBifurcationHandler_html_a57f9791749acd9b699bf737193c2e87a"><div class="ttname"><a href="classMatrixBifurcationHandler.html#a57f9791749acd9b699bf737193c2e87a">MatrixBifurcationHandler::MatrixBifurcationHandler</a></div><div class="ttdeci">MatrixBifurcationHandler(const GetPot &amp;dataFile, const std::string &amp;section=&quot;mediumData/&quot;, const std::string &amp;subsection=&quot;darcy/&quot;)</div><div class="ttdoc">Costruttore vuoto di defult. </div><div class="ttdef"><b>Definition:</b> MatrixBifurcationHandler.cc:4</div></div>
+<div class="ttc" id="classMatrixBifurcationHandler_html_add50b813d3bd773ddf794c4e05b37e38"><div class="ttname"><a href="classMatrixBifurcationHandler.html#add50b813d3bd773ddf794c4e05b37e38">MatrixBifurcationHandler::Qc</a></div><div class="ttdeci">Matrix32 Qc() const </div><div class="ttdoc">Funzione che restituisce la matrice Qc_, matrice che ha per colonne una base ortonormale per la matri...</div><div class="ttdef"><b>Definition:</b> MatrixBifurcationHandler.h:127</div></div>
+<div class="ttc" id="classMatrixBifurcationHandler_html_ac134a5731e6614e543241a018ccf8c34"><div class="ttname"><a href="classMatrixBifurcationHandler.html#ac134a5731e6614e543241a018ccf8c34">MatrixBifurcationHandler::computeN</a></div><div class="ttdeci">void computeN()</div><div class="ttdoc">Funzione che calcola la matrice N_, matrice che ha per righe le normali ai lati. </div><div class="ttdef"><b>Definition:</b> MatrixBifurcationHandler.cc:40</div></div>
+<div class="ttc" id="Parser_8h_html"><div class="ttname"><a href="Parser_8h.html">Parser.h</a></div><div class="ttdoc">File containing the Parser interface. </div></div>
+<div class="ttc" id="Core_8h_html"><div class="ttname"><a href="Core_8h.html">Core.h</a></div></div>
+<div class="ttc" id="TriangleHandler_8h_html"><div class="ttname"><a href="TriangleHandler_8h.html">TriangleHandler.h</a></div></div>
+<div class="ttc" id="MatrixBifurcationHandler_8h_html_a8c9916c78759dc6895c2c930240a5c8a"><div class="ttname"><a href="MatrixBifurcationHandler_8h.html#a8c9916c78759dc6895c2c930240a5c8a">MatrixBifurcationHandler_Type</a></div><div class="ttdeci">MatrixBifurcationHandler MatrixBifurcationHandler_Type</div><div class="ttdef"><b>Definition:</b> MatrixBifurcationHandler.h:180</div></div>
+<div class="ttc" id="classIntersection_html"><div class="ttname"><a href="classIntersection.html">Intersection</a></div><div class="ttdoc">Classe che rappresenta l&#39;intersezione. </div><div class="ttdef"><b>Definition:</b> TriangleHandler.h:64</div></div>
+<div class="ttc" id="classMatrixBifurcationHandler_html_a94433cf28ec2af6ba06b7f63a081d787"><div class="ttname"><a href="classMatrixBifurcationHandler.html#a94433cf28ec2af6ba06b7f63a081d787">MatrixBifurcationHandler::setMatrices</a></div><div class="ttdeci">void setMatrices(FracturePtrContainer_Type &amp;fractures)</div><div class="ttdoc">Funzione che inizializza M_intersection, la classe che rappresenta il triangolo di intersezione...</div><div class="ttdef"><b>Definition:</b> MatrixBifurcationHandler.cc:32</div></div>
+<div class="ttc" id="classMatrixBifurcationHandler_html_a4701fef8d864cb7d61521c8fbe5db2cc"><div class="ttname"><a href="classMatrixBifurcationHandler.html#a4701fef8d864cb7d61521c8fbe5db2cc">MatrixBifurcationHandler::C</a></div><div class="ttdeci">Matrix32 C()</div><div class="ttdoc">Funzione che restituisce la matrice C_, matrice che ha per righe i vettori che uniscono il baricentro...</div><div class="ttdef"><b>Definition:</b> MatrixBifurcationHandler.h:113</div></div>
+<div class="ttc" id="FractureHandler_8h_html"><div class="ttname"><a href="FractureHandler_8h.html">FractureHandler.h</a></div></div>
+<div class="ttc" id="classTriangleData_html"><div class="ttname"><a href="classTriangleData.html">TriangleData</a></div><div class="ttdoc">TriangleData.h. </div><div class="ttdef"><b>Definition:</b> TriangleData.h:17</div></div>
+<div class="ttc" id="Core_8h_html_acd816705c6602062b91975525c4e3f6f"><div class="ttname"><a href="Core_8h.html#acd816705c6602062b91975525c4e3f6f">Matrix3d</a></div><div class="ttdeci">Eigen::Matrix3d Matrix3d</div><div class="ttdef"><b>Definition:</b> Core.h:113</div></div>
+<div class="ttc" id="FractureHandler_8h_html_a2f0b57e18ecf89912d7de0c87158009e"><div class="ttname"><a href="FractureHandler_8h.html#a2f0b57e18ecf89912d7de0c87158009e">FracturePtrContainer_Type</a></div><div class="ttdeci">std::vector&lt; FractureHandlerPtr_Type &gt; FracturePtrContainer_Type</div><div class="ttdef"><b>Definition:</b> FractureHandler.h:388</div></div>
+<div class="ttc" id="classMatrixBifurcationHandler_html_aa7e601bac77856cac8db77c58023c1b4"><div class="ttname"><a href="classMatrixBifurcationHandler.html#aa7e601bac77856cac8db77c58023c1b4">MatrixBifurcationHandler::setTriangle</a></div><div class="ttdeci">void setTriangle(TriangleData const &amp;T)</div><div class="ttdoc">Funzione che costruisce il triangolo di intersezione a partire da un trangolo già esistente...</div><div class="ttdef"><b>Definition:</b> MatrixBifurcationHandler.h:65</div></div>
+<div class="ttc" id="classMatrixBifurcationHandler_html_a77f006579fad0f0f08c10bf684bbd16a"><div class="ttname"><a href="classMatrixBifurcationHandler.html#a77f006579fad0f0f08c10bf684bbd16a">MatrixBifurcationHandler::N</a></div><div class="ttdeci">Matrix32 N() const </div><div class="ttdoc">Funzione che restituisce la matrice N_, matrice che ha per righe le normali ai lati. </div><div class="ttdef"><b>Definition:</b> MatrixBifurcationHandler.h:96</div></div>
+<div class="ttc" id="classMatrixBifurcationHandler_html_acafb7a17c3d639068938a21dad6bb0ec"><div class="ttname"><a href="classMatrixBifurcationHandler.html#acafb7a17c3d639068938a21dad6bb0ec">MatrixBifurcationHandler::inversion2X2</a></div><div class="ttdeci">void inversion2X2(const Matrix2d &amp;invk, scalar_type det)</div><div class="ttdef"><b>Definition:</b> MatrixBifurcationHandler.cc:97</div></div>
+<div class="ttc" id="classMatrixBifurcationHandler_html_ad84675e9be6d56de69c0e25bf1cd77cd"><div class="ttname"><a href="classMatrixBifurcationHandler.html#ad84675e9be6d56de69c0e25bf1cd77cd">MatrixBifurcationHandler::Pc</a></div><div class="ttdeci">Matrix3d Pc() const </div><div class="ttdoc">Funzione che restituisce la matrice Pc_, matrice di proiezione sullo spazio nullo di Qc_...</div><div class="ttdef"><b>Definition:</b> MatrixBifurcationHandler.h:134</div></div>
+<div class="ttc" id="classIntersection_html_ae071ecb3d3f2d6f9723e310764535883"><div class="ttname"><a href="classIntersection.html#ae071ecb3d3f2d6f9723e310764535883">Intersection::setTriangle</a></div><div class="ttdeci">void setTriangle(const TriangleData &amp;triangle)</div><div class="ttdef"><b>Definition:</b> TriangleHandler.h:85</div></div>
+<div class="ttc" id="classMatrixBifurcationHandler_html_a2d67172a5034f104d08cb53e5dbda926"><div class="ttname"><a href="classMatrixBifurcationHandler.html#a2d67172a5034f104d08cb53e5dbda926">MatrixBifurcationHandler::operator=</a></div><div class="ttdeci">MatrixBifurcationHandler &amp; operator=(const MatrixBifurcationHandler &amp;mat)</div><div class="ttdef"><b>Definition:</b> MatrixBifurcationHandler.h:153</div></div>
+<div class="ttc" id="classMatrixBifurcationHandler_html_ac7d63c6d730079862dd8238928d94b26"><div class="ttname"><a href="classMatrixBifurcationHandler.html#ac7d63c6d730079862dd8238928d94b26">MatrixBifurcationHandler::K</a></div><div class="ttdeci">Matrix2d K() const </div><div class="ttdoc">Funzione che restituisce la matrice di permeabilità. </div><div class="ttdef"><b>Definition:</b> MatrixBifurcationHandler.h:82</div></div>
+<div class="ttc" id="classMatrixBifurcationHandler_html_a46ee3c60eedda32abe36700ab2ce2d16"><div class="ttname"><a href="classMatrixBifurcationHandler.html#a46ee3c60eedda32abe36700ab2ce2d16">MatrixBifurcationHandler::computeT</a></div><div class="ttdeci">void computeT(scalar_type t=6.0)</div><div class="ttdoc">Funzione che calcola la matrice T_, matrice di trasmissibilità. </div><div class="ttdef"><b>Definition:</b> MatrixBifurcationHandler.cc:65</div></div>
+<div class="ttc" id="classMatrixBifurcationHandler_html_acbc7b99389ad5eacd86f73b0ed08829b"><div class="ttname"><a href="classMatrixBifurcationHandler.html#acbc7b99389ad5eacd86f73b0ed08829b">MatrixBifurcationHandler::setK</a></div><div class="ttdeci">void setK(Matrix2d K)</div><div class="ttdoc">Funzione che cambia la matrice di permeabilità a partire da una matrice data. </div><div class="ttdef"><b>Definition:</b> MatrixBifurcationHandler.h:75</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generato Mar 28 Ott 2014 09:35:35 per Progetto PACS da &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.6
+</small></address>
+</body>
+</html>

@@ -21,7 +21,7 @@ public:
 	
 
 	/** 
-	 * Costruttore che fissa la cartella dove esportare i risultati
+	 * Costruttore che fissa la cartella dove esportare i risultati.
 	 * \param dataFile: variabile di tipo GetPot che contiene il nome del file data 
 	 * \param section: stringa con il nome della sezione in cui leggere
 	 */
@@ -29,7 +29,7 @@ public:
 
     
     /**
-     * \return M_vtkFolder: stringa col nome della cartella di esportazione
+     * \return std::string& M_vtkFolder: stringa col nome della cartella di esportazione
      */
     inline const std::string& getFolder ( ) const
     {
@@ -38,25 +38,25 @@ public:
 
     
     /**
-     * Funzione che esporta una matrice di tipo sparso
-     * \param matrix: matrice sparsa
-     * \param nameFile: nome del file in cui esportare 
+     * Funzione che esporta una matrice di tipo sparso.
+     * \param sparseMatrixPtr_Type& matrix: matrice sparsa
+     * \param td::string& nameFile: nome del file in cui esportare 
      */
     void spy ( const sparseMatrixPtr_Type& matrix, const std::string& nameFile ) const;
 
     
     /**
-     * Funzione che esporta un vettore di scalari
-     * \param vector: vettore di scalari
-     * \param nameFile: nome del file in cui esportare 
+     * Funzione che esporta un vettore di scalari.
+     * \param scalarVectorPtr_Type& vector: vettore di scalari
+     * \param std::string& nameFile: nome del file in cui esportare 
      */
     void spy ( const scalarVectorPtr_Type& vector, const std::string& nameFile ) const;
 
     
     /**
-     * Funzione che esporta le regioni della mesh
-     * \param mesh: mesh di supporto
-     * \param nameFile: nome del file su cui scrivere la soluzione
+     * Funzione che esporta le regioni della mesh.
+     * \param getfem::mesh& mesh: mesh di supporto
+     * \param std::string& nameFile = "RegionMesh.vtk": nome del file su cui scrivere la soluzione, se non è dato è posto di default pari a "RegionMesh.vtk"
      */
     void meshRegion ( const getfem::mesh& mesh,
                       const std::string& nameFile = "RegionMesh.vtk" ) const;

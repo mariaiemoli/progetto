@@ -35,9 +35,9 @@ public:
 
         
         /**
-         * Costruttore nullo
-         * l'idea è quella di assegnare dei flags ad ogni sottoregione per poter distinguere il tipo di intersezione
-         * in particolare abbiamo tre tipi di intersezione:
+         * Costruttore nullo.
+         * L'idea è quella di assegnare dei flags ad ogni sottoregione per poter distinguere il tipo di intersezione.
+         * In particolare abbiamo tre tipi di intersezione:
          * 		- Cross: quando due fratture di intersecano in un punto formando una X
          * 		- Bifurcation: quando tre fratture si intersecano in un punto comune formando una Y
          * 		- Parallel: quando due o più fratture passano nello stesso elemento della mesh di supporto ma non si intersecano, 
@@ -49,7 +49,11 @@ public:
         /**
          * Funzione che costruisce la classe delle intersezioni.
          * Per ogni elemento della mesh di supporto verifica quanti level set lo attraversano. Se vi passano due o più fratture
-         * lo considero come una possibile intersezione e verifico se effettivamente lo è e di che tipo
+         * lo considero come una possibile intersezione e verifico se effettivamente lo è e di che tipo.
+         * \param GetPot& dataFile: dome del file data dove leggere i dati
+         * \param getfem::mesh_level_set& meshLevelSet: mesh che tiene conto della presenza dei levelset e che va aggiornata in
+         * 												presenza di intersezioni
+         * \param FracturePtrContainer_Type& fractures: puntatore all'insieme di tutte le fratture
          * 
          */
         void constructIntesection ( const GetPot& dataFile, getfem::mesh_level_set& meshLevelSet,
@@ -57,9 +61,9 @@ public:
 
         
         /**
-         * Funzione che restituisce tutte le intersezioni del tipo richiesto
-         * \param IntersectionType: enum IntersectionType { Parallel = 400000, Cross = 500000, Bifurcation = 600000 };
-         * \return IntersectDataContainer_Type: std::vector < IntersectData_Type >
+         * Funzione che restituisce tutte le intersezioni del tipo richiesto.
+         * \param IntersectionType type: contiene il tipo delle intersezioni che mi interessano
+         * \return IntersectDataContainer_Type M_intersections [ type ]: restituisce il vettore di tutte le intersezioni del tipo richiesto
          */
         IntersectDataContainer_Type& getIntersectionsOfType ( IntersectionType type )
         {
@@ -68,21 +72,21 @@ public:
         
         
         /**
-         * Funzione che restituisce tutte le intersezioni di tipo Cross
-         * \return IntersectDataContainer_Type: std::vector < IntersectData_Type >
+         * Funzione che restituisce tutte le intersezioni di tipo " Cross ".
+         * \return IntersectDataContainer_Type: restituisce il vettore di tutte le intersezioni del tipo " Cross "
          */
         IntersectDataContainer_Type getCrossIntersections () const;
         
 
         /**
-         * Funzione che restituisce tutte le intersezioni di tipo Bifurcation
-         * \return IntersectDataContainer_Type: std::vector < IntersectData_Type >
+         * Funzione che restituisce tutte le intersezioni di tipo " Bifurcation ".
+         * \return IntersectDataContainer_Type: restituisce il vettore di tutte le intersezioni del tipo " Bifurcation "
          */
         IntersectDataContainer_Type getBifurcationIntersections () const;
         
 
         /**
-         * Funzione che restituisce tutto l'insieme delle intersezioni con i rispettivi tipi ( una mappa )
+         * Funzione che restituisce tutto l'insieme delle intersezioni con i rispettivi tipi ( una mappa ).
          * \return mapIntersection_Type: std::map < IntersectionType, IntersectDataContainer_Type >
          */
         mapIntersection_Type& getIntersections ()
@@ -92,20 +96,21 @@ public:
 
 
         /** 
-         * Funzione  restituisce il numero di intersezioni trovate del tipo type
-         * \param IntersectionType: enum IntersectionType { Parallel = 400000, Cross = 500000, Bifurcation = 600000 };
+         * Funzione  restituisce il numero di intersezioni trovate del tipo type.
+         * \param IntersectionType: enum IntersectionType { Parallel = 400000, Cross = 500000, Bifurcation = 600000 }, 
+         * 							contiene il tipo delle intersezioni che mi interessano
          */
         size_type getNumberIntersectionOfType ( IntersectionType type ) const;
         
         
         /**
-         * Funzione che restituisce il numero di intersezioni trovate di tipo Cross
+         * Funzione che restituisce il numero di intersezioni trovate di tipo " Cross ".
          */
         size_type getNumberCross () const;
         
         
         /**
-		 * Funzione che restituisce il numero di intersezioni trovate di tipo Bifurcation
+		 * Funzione che restituisce il numero di intersezioni trovate di tipo " Bifurcation ".
 		 */
         size_type getNumberBifurcation () const;
 

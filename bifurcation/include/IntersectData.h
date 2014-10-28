@@ -25,6 +25,11 @@ public:
     } // costruttore di copia
 */
 
+    
+    /**
+     * Funzione che assegna a M_fractures le fratture che si intersecano, M_elementID l'ID dell'elemento in cui avviene l'intersezione e,
+     * se l'intersezione è di tipo " Bifurcation ", costruisce il triangolo dell'intersezione.
+     */
     void setIntersection ( const size_type& elementID,
                            const FracturePtrContainer_Type& fractures, const size_type k);
 

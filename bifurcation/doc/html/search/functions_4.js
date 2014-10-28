@@ -2,6 +2,9 @@ var searchData=
 [
   ['eatcomments',['eatComments',['../namespaceLifeV.html#aecf5099a32c6f096d09d0506ee79255b',1,'LifeV']]],
   ['eatline',['eatLine',['../namespaceLifeV.html#aa91d4c3fafd93fcbfb7d0aca2b771a02',1,'LifeV']]],
+  ['edge',['edge',['../classTriangleData.html#a32634f5f869bda807ccde85f226fd4ff',1,'TriangleData']]],
+  ['edgebaricenter',['edgeBaricenter',['../classTriangleData.html#a66a0b23811864409754be95f5c4d4793',1,'TriangleData']]],
+  ['edgepoint',['edgePoint',['../classTriangleData.html#a6b8d98b054e9b094ba6b6ccf4217246b',1,'TriangleData::edgePoint(size_type edgenum, size_type endnum)'],['../classTriangleData.html#a30665b2010f85d6b9223581e31e79308',1,'TriangleData::edgePoint(size_type edgenum, size_type endnum) const ']]],
   ['enum2string',['enum2String',['../namespaceLifeV.html#a2e64a35012f78d9ab021477590e3bfaf',1,'LifeV']]],
   ['etanormaldistribution',['etaNormalDistribution',['../classFractureData.html#a0aaeeb3d9eedd46175759cd6b9536484',1,'FractureData']]],
   ['etatangentialdistribution',['etaTangentialDistribution',['../classFractureData.html#a0f989b64832a1f0fc77632c6803f102c',1,'FractureData']]],

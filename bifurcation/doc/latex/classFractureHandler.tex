@@ -726,16 +726,16 @@ funzione che calcola in numero totale di intersezione della frattura corrente
 
 
 \begin{DoxyCode}
-290 \{
-291     size\_type total = 0;
-292 
-293     \textcolor{keywordflow}{for} ( size\_type i = 0; i < M\_fractureIntersectElements.size(); ++i )
-294     \{
-295         total += M\_fractureIntersectElements[i].size();
-296     \}
-297 
-298     \textcolor{keywordflow}{return} total;
-299 \}\textcolor{comment}{// getNumIntersections}
+291 \{
+292     size\_type total = 0;
+293 
+294     \textcolor{keywordflow}{for} ( size\_type i = 0; i < M\_fractureIntersectElements.size(); ++i )
+295     \{
+296         total += M\_fractureIntersectElements[i].size();
+297     \}
+298 
+299     \textcolor{keywordflow}{return} total;
+300 \}\textcolor{comment}{// getNumIntersections}
 \end{DoxyCode}
 \hypertarget{classFractureHandler_aa28ce054ba2a2679214956c71f8cf1e0}{\index{Fracture\-Handler@{Fracture\-Handler}!init@{init}}
 \index{init@{init}!FractureHandler@{Fracture\-Handler}}
@@ -1033,25 +1033,26 @@ funzione che, data un'altra frattura con cui si interseca, imposta i valori lega
 266                 
 267                 M\_meshFlat.region ( \hyperlink{classFractureHandler_a495ad4fc72d0c47c8f0424842f1153aaa781cae3f3b99bf9357fed2833d315537}{FractureHandler::FRACTURE\_INTERSECT} 
       * ( M\_ID + 1 ) + otherFractureId + 1 ).add( i\_cv );
-268                 M\_extendedPressure.push\_back ( M\_meshFEMPressure.ind\_basic\_dof\_of\_element ( i\_cv )[0] );
-269                 M\_extendedVelocity.push\_back ( M\_meshFEMVelocity.ind\_basic\_dof\_of\_element ( i\_cv )[0] );
-270                 M\_extendedVelocity.push\_back ( M\_meshFEMVelocity.ind\_basic\_dof\_of\_element ( i\_cv )[1] );
-271 
-272                 M\_fractureIntersectElements [ otherFractureId ].push\_back ( i\_cv );
-273 
-274                 \hyperlink{Core_8h_a6453867d4e9bd858ad9577b4a1078511}{pairSize\_Type} coppia;
-275                 coppia.first = globalIndex;
-276                 coppia.second = 0;
-277                 M\_fractureIntersectElementsGlobalIndex [ otherFractureId ].push\_back ( coppia );
-278                 ++globalIndex;
-279                 ++numIntersect;
-280            
-281                 \}
-282         \}
-283     \}
-284 
-285     \textcolor{keywordflow}{return} numIntersect;
-286 \}\textcolor{comment}{// setMeshLevelSetFracture}
+268 
+269                 M\_extendedPressure.push\_back ( M\_meshFEMPressure.ind\_basic\_dof\_of\_element ( i\_cv )[0] );
+270                 M\_extendedVelocity.push\_back ( M\_meshFEMVelocity.ind\_basic\_dof\_of\_element ( i\_cv )[0] );
+271                 M\_extendedVelocity.push\_back ( M\_meshFEMVelocity.ind\_basic\_dof\_of\_element ( i\_cv )[1] );
+272 
+273                 M\_fractureIntersectElements [ otherFractureId ].push\_back ( i\_cv );
+274 
+275                 \hyperlink{Core_8h_a6453867d4e9bd858ad9577b4a1078511}{pairSize\_Type} coppia;
+276                 coppia.first = globalIndex;
+277                 coppia.second = 0;
+278                 M\_fractureIntersectElementsGlobalIndex [ otherFractureId ].push\_back ( coppia );
+279                 ++globalIndex;
+280                 ++numIntersect;
+281            
+282                 \}
+283         \}
+284     \}
+285 
+286     \textcolor{keywordflow}{return} numIntersect;
+287 \}\textcolor{comment}{// setMeshLevelSetFracture}
 \end{DoxyCode}
 
 

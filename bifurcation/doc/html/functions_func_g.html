@@ -70,9 +70,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
     <ul class="tablist">
       <li><a href="functions.html"><span>Tutto</span></a></li>
       <li class="current"><a href="functions_func.html"><span>Funzioni</span></a></li>
+      <li><a href="functions_vars.html"><span>Variabili</span></a></li>
       <li><a href="functions_type.html"><span>Ridefinizioni&#160;di&#160;tipo&#160;(typedef)</span></a></li>
       <li><a href="functions_enum.html"><span>Tipi&#160;enumerati&#160;(enum)</span></a></li>
       <li><a href="functions_eval.html"><span>Valori&#160;del&#160;tipo&#160;enumerato</span></a></li>
+      <li><a href="functions_rela.html"><span>Funzioni&#160;collegate</span></a></li>
     </ul>
   </div>
   <div id="navrow4" class="tabs3">
@@ -85,13 +87,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
       <li><a href="functions_func_f.html#index_f"><span>f</span></a></li>
       <li class="current"><a href="functions_func_g.html#index_g"><span>g</span></a></li>
       <li><a href="functions_func_i.html#index_i"><span>i</span></a></li>
+      <li><a href="functions_func_k.html#index_k"><span>k</span></a></li>
       <li><a href="functions_func_l.html#index_l"><span>l</span></a></li>
       <li><a href="functions_func_m.html#index_m"><span>m</span></a></li>
       <li><a href="functions_func_n.html#index_n"><span>n</span></a></li>
       <li><a href="functions_func_o.html#index_o"><span>o</span></a></li>
       <li><a href="functions_func_p.html#index_p"><span>p</span></a></li>
+      <li><a href="functions_func_q.html#index_q"><span>q</span></a></li>
       <li><a href="functions_func_s.html#index_s"><span>s</span></a></li>
       <li><a href="functions_func_t.html#index_t"><span>t</span></a></li>
+      <li><a href="functions_func_u.html#index_u"><span>u</span></a></li>
       <li><a href="functions_func_v.html#index_v"><span>v</span></a></li>
       <li><a href="functions_func_x.html#index_x"><span>x</span></a></li>
       <li><a href="functions_func_y.html#index_y"><span>y</span></a></li>
@@ -104,7 +109,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tutto</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classi</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespace</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>File</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funzioni</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Ridefinizioni di tipo (typedef)</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Tipi enumerati (enum)</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Valori del tipo enumerato</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tutto</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classi</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespace</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>File</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funzioni</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variabili</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Ridefinizioni di tipo (typedef)</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Tipi enumerati (enum)</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Valori del tipo enumerato</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friend</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Definizioni</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -128,6 +133,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
 </li>
 <li>getCircumcentersDistance()
 : <a class="el" href="classMeshHandler.html#a616fa00edafb858d897fb64d80c69c15">MeshHandler</a>
+</li>
+<li>getCoordinates()
+: <a class="el" href="classPointData.html#a9cbe93016a271a90a23c44fe4830cc68">PointData</a>
 </li>
 <li>getCountExtendedDOFScalar()
 : <a class="el" href="classMeshHandler.html#a15243aa9754c8b96f35f49d16cee4c1e">MeshHandler</a>
@@ -155,7 +163,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
 : <a class="el" href="classTimeData.html#a857df66fb2f19d5bd314daf854910465">TimeData</a>
 </li>
 <li>getDirichlet()
-: <a class="el" href="classBC.html#ae61f04dfbb377e38e4c43e0516e51c36">BC</a>
+: <a class="el" href="classBC.html#af2d22ae9848e3bed61f2106610bde5b7">BC</a>
 </li>
 <li>getDirichletCut()
 : <a class="el" href="classBCHandler.html#a1efb6389dbecbcd38e53422ffc6f29c7">BCHandler</a>
@@ -320,7 +328,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
 </li>
 <li>getLevelSet()
 : <a class="el" href="classFractureHandler.html#af37ab12a17f812a960da2aa71699ba0f">FractureHandler</a>
-, <a class="el" href="classLevelSetHandler.html#a88f16d61da1d2a2a68d5ef33fa77a41d">LevelSetHandler</a>
+, <a class="el" href="classLevelSetHandler.html#aa899ffbee62631067378346d61fd172a">LevelSetHandler</a>
 </li>
 <li>getLevelSetFunctionString()
 : <a class="el" href="classLevelSetData.html#a672418971ce9b1bf71d3c6bccd278bd7">LevelSetData</a>
@@ -375,7 +383,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
 : <a class="el" href="classFractureHandler.html#a69b5921703089ac725df60b08eb821c1">FractureHandler</a>
 </li>
 <li>getMeshMapped()
-: <a class="el" href="classFractureHandler.html#a79b2fbb306b2bc045d5bef0b73d12ec8">FractureHandler</a>
+: <a class="el" href="classFractureHandler.html#ad3fa0255b0e57f6562dc98bbf71588b1">FractureHandler</a>
 </li>
 <li>getMeshSize()
 : <a class="el" href="classMeshHandler.html#ae176155967a168d4342ee9dfb72689e5">MeshHandler</a>
@@ -397,10 +405,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
 : <a class="el" href="classFractureHandler.html#a868f8aeaeec90df8211d091612e03593">FractureHandler</a>
 </li>
 <li>getNeumann()
-: <a class="el" href="classBC.html#a88bd7cd141cda536ce128f13b17d61b5">BC</a>
+: <a class="el" href="classBC.html#a9541adfa180ca9783052349c373b0228">BC</a>
 </li>
 <li>getNeumannCut()
-: <a class="el" href="classBCHandler.html#a5e71b2adeaa281e88275bff504dc67d8">BCHandler</a>
+: <a class="el" href="classBCHandler.html#a726f1bfbc76113bbb3b5057b25a53871">BCHandler</a>
 </li>
 <li>getNeumannUncut()
 : <a class="el" href="classBCHandler.html#a5b1c86a6c303abf33850132d1bc12693">BCHandler</a>
@@ -453,6 +461,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
 <li>getPlotAtEachTimeStep()
 : <a class="el" href="classTimeData.html#a9a893d010866a48770c1592bff2582fc">TimeData</a>
 </li>
+<li>getPoint()
+: <a class="el" href="classFractureEnd.html#a48187852ce2e959d00577fe4d66c2e0f">FractureEnd</a>
+, <a class="el" href="classTriangleData.html#a88917dafcb5155d2359e5aeb4f8f36e2">TriangleData</a>
+</li>
 <li>getPosition()
 : <a class="el" href="classFractureData.html#af86187ca0c7cc0ea6f4c3cd6e1a4cf41">FractureData</a>
 </li>
@@ -470,6 +482,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
 </li>
 <li>getThickness()
 : <a class="el" href="classFractureData.html#a3ecc0d132f9cc105af6b24d676a7b9c5">FractureData</a>
+, <a class="el" href="classFractureEnd.html#a2b70172b4593324288f5779b7998d4a3">FractureEnd</a>
 </li>
 <li>getTimeSteps()
 : <a class="el" href="classTimeData.html#aa7e7bd74db16d77d82ea5f0f48b9617b">TimeData</a>
@@ -481,7 +494,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generato Lun 20 Ott 2014 14:09:04 per Progetto PACS da &#160;<a href="http://www.doxygen.org/index.html">
+Generato Mar 28 Ott 2014 09:35:36 per Progetto PACS da &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -4,6 +4,7 @@ var searchData=
   ['getbasisfunctionoftype',['getBasisFunctionOfType',['../classFractureIntersect.html#a8293ef859c572a375c7c5f6e79399b1e',1,'FractureIntersect']]],
   ['getbifurcationintersections',['getBifurcationIntersections',['../classFractureIntersect.html#a18ff664767b7e8ffa876b80a6100e74d',1,'FractureIntersect']]],
   ['getcircumcentersdistance',['getCircumcentersDistance',['../classMeshHandler.html#a616fa00edafb858d897fb64d80c69c15',1,'MeshHandler']]],
+  ['getcoordinates',['getCoordinates',['../classPointData.html#a9cbe93016a271a90a23c44fe4830cc68',1,'PointData']]],
   ['getcountextendeddofscalar',['getCountExtendedDOFScalar',['../classMeshHandler.html#a15243aa9754c8b96f35f49d16cee4c1e',1,'MeshHandler']]],
   ['getcountextendeddofvector',['getCountExtendedDOFVector',['../classMeshHandler.html#a31feb5b56638ea15982435239f196d7d',1,'MeshHandler']]],
   ['getcountextendedintersectdofscalar',['getCountExtendedIntersectDOFScalar',['../classMeshHandler.html#acdc0169a2f27d56c390c83c913cc2004',1,'MeshHandler']]],
@@ -108,11 +109,12 @@ var searchData=
   ['getpenaltyscalar',['getPenaltyScalar',['../classMediumData.html#a627f26f5f80bb4139a548e2d2cce1a47',1,'MediumData']]],
   ['getpenaltyvector',['getPenaltyVector',['../classMediumData.html#ac1646aa22f5ed8ea92a14560dfc0905f',1,'MediumData']]],
   ['getplotateachtimestep',['getPlotAtEachTimeStep',['../classTimeData.html#a9a893d010866a48770c1592bff2582fc',1,'TimeData']]],
+  ['getpoint',['getPoint',['../classTriangleData.html#a88917dafcb5155d2359e5aeb4f8f36e2',1,'TriangleData::getPoint()'],['../classFractureEnd.html#a48187852ce2e959d00577fe4d66c2e0f',1,'FractureEnd::getPoint()']]],
   ['getposition',['getPosition',['../classFractureData.html#af86187ca0c7cc0ea6f4c3cd6e1a4cf41',1,'FractureData']]],
   ['getregion',['getRegion',['../classMeshHandler.html#adfb74826f08fd62a92200ebfe8ce3fbe',1,'MeshHandler::getRegion(const size_type &amp;regionFlag) const '],['../classMeshHandler.html#a36ba76b0940684abab86ef6e56fe1086',1,'MeshHandler::getRegion(const size_type &amp;regionFlag)']]],
   ['getspacedimension',['getSpaceDimension',['../classFractureData.html#a4ead03266295fe14fa3285692f945d89',1,'FractureData::getSpaceDimension()'],['../classLevelSetData.html#aa4c3e1f7876cd318e80f5052689fe9e3',1,'LevelSetData::getSpaceDimension()'],['../classMeshHandler.html#a804b1168383f92f35f3c472f7ec58861',1,'MeshHandler::getSpaceDimension()']]],
   ['getspatialdiscretization',['getSpatialDiscretization',['../classFractureData.html#a5c10d579be7849be1a126c24982f8a23',1,'FractureData::getSpatialDiscretization()'],['../classMeshHandler.html#af0c391bcac1ee103838b78d540b2b326',1,'MeshHandler::getSpatialDiscretization()']]],
-  ['getthickness',['getThickness',['../classFractureData.html#a3ecc0d132f9cc105af6b24d676a7b9c5',1,'FractureData']]],
+  ['getthickness',['getThickness',['../classFractureData.html#a3ecc0d132f9cc105af6b24d676a7b9c5',1,'FractureData::getThickness()'],['../classFractureEnd.html#a2b70172b4593324288f5779b7998d4a3',1,'FractureEnd::getThickness()']]],
   ['gettimesteps',['getTimeSteps',['../classTimeData.html#aa7e7bd74db16d77d82ea5f0f48b9617b',1,'TimeData']]],
   ['gettranslateabscissa',['getTranslateAbscissa',['../classFractureData.html#a485e084e083d9181750f19db6842a5e0',1,'FractureData']]]
 ];

@@ -71,7 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tutto</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classi</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespace</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>File</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funzioni</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Ridefinizioni di tipo (typedef)</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Tipi enumerati (enum)</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Valori del tipo enumerato</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tutto</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classi</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespace</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>File</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funzioni</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variabili</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Ridefinizioni di tipo (typedef)</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Tipi enumerati (enum)</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Valori del tipo enumerato</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friend</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Definizioni</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -279,7 +279,7 @@ Membri pubblici</h2></td></tr>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    M_levelSet.reset( <span class="keyword">new</span> <a class="code" href="classLevelSetHandler.html">LevelSetHandler_Type</a> ( dataFile, section ) );</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}<span class="comment">// costruttore</span></div>
 <div class="ttc" id="classLevelSetHandler_html"><div class="ttname"><a href="classLevelSetHandler.html">LevelSetHandler</a></div><div class="ttdoc">LevelSetHandler.h. </div><div class="ttdef"><b>Definition:</b> LevelSetHandler.h:15</div></div>
-<div class="ttc" id="namespaceLifeV_html_a7c0e64679fcd30daa5471b87a57601e9"><div class="ttname"><a href="namespaceLifeV.html#a7c0e64679fcd30daa5471b87a57601e9">LifeV::ID</a></div><div class="ttdeci">size_type ID</div><div class="ttdef"><b>Definition:</b> Core.h:98</div></div>
+<div class="ttc" id="namespaceLifeV_html_a7c0e64679fcd30daa5471b87a57601e9"><div class="ttname"><a href="namespaceLifeV.html#a7c0e64679fcd30daa5471b87a57601e9">LifeV::ID</a></div><div class="ttdeci">size_type ID</div><div class="ttdef"><b>Definition:</b> Core.h:100</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -323,7 +323,7 @@ Membri pubblici</h2></td></tr>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    }</div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    </div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;}<span class="comment">// computeInvH</span></div>
-<div class="ttc" id="Core_8h_html_a83c51913d041a5001e8683434c09857f"><div class="ttname"><a href="Core_8h.html#a83c51913d041a5001e8683434c09857f">sizeVector_Type</a></div><div class="ttdeci">std::vector&lt; size_type &gt; sizeVector_Type</div><div class="ttdef"><b>Definition:</b> Core.h:67</div></div>
+<div class="ttc" id="Core_8h_html_a83c51913d041a5001e8683434c09857f"><div class="ttname"><a href="Core_8h.html#a83c51913d041a5001e8683434c09857f">sizeVector_Type</a></div><div class="ttdeci">std::vector&lt; size_type &gt; sizeVector_Type</div><div class="ttdef"><b>Definition:</b> Core.h:69</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1315,16 +1315,16 @@ Membri pubblici</h2></td></tr>
 </div><div class="memdoc">
 
 <p>funzione che calcola in numero totale di intersezione della frattura corrente </p>
-<div class="fragment"><div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;{</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    size_type total = 0;</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    <span class="keywordflow">for</span> ( size_type i = 0; i &lt; M_fractureIntersectElements.size(); ++i )</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    {</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;        total += M_fractureIntersectElements[i].size();</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    }</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    <span class="keywordflow">return</span> total;</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;}<span class="comment">// getNumIntersections</span></div>
+<div class="fragment"><div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;{</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    size_type total = 0;</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    <span class="keywordflow">for</span> ( size_type i = 0; i &lt; M_fractureIntersectElements.size(); ++i )</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    {</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        total += M_fractureIntersectElements[i].size();</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    }</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    <span class="keywordflow">return</span> total;</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;}<span class="comment">// getNumIntersections</span></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1489,8 +1489,8 @@ Membri pubblici</h2></td></tr>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    M_meshFlat.region ( <a class="code" href="classFractureHandler.html#a495ad4fc72d0c47c8f0424842f1153aaaa992cc3ad024a030ecd798dc319c95ac">FractureHandler::FRACTURE_UNCUT</a> * ( M_ID + 1 ) ).add ( M_meshFlat.convex_index() );</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;}<span class="comment">// init</span></div>
-<div class="ttc" id="Core_8h_html_a83c51913d041a5001e8683434c09857f"><div class="ttname"><a href="Core_8h.html#a83c51913d041a5001e8683434c09857f">sizeVector_Type</a></div><div class="ttdeci">std::vector&lt; size_type &gt; sizeVector_Type</div><div class="ttdef"><b>Definition:</b> Core.h:67</div></div>
-<div class="ttc" id="Core_8h_html_a4e75b5863535ba1dd79942de2846eff0"><div class="ttname"><a href="Core_8h.html#a4e75b5863535ba1dd79942de2846eff0">scalarVector_Type</a></div><div class="ttdeci">std::vector&lt; scalar_type &gt; scalarVector_Type</div><div class="ttdef"><b>Definition:</b> Core.h:61</div></div>
+<div class="ttc" id="Core_8h_html_a83c51913d041a5001e8683434c09857f"><div class="ttname"><a href="Core_8h.html#a83c51913d041a5001e8683434c09857f">sizeVector_Type</a></div><div class="ttdeci">std::vector&lt; size_type &gt; sizeVector_Type</div><div class="ttdef"><b>Definition:</b> Core.h:69</div></div>
+<div class="ttc" id="Core_8h_html_a4e75b5863535ba1dd79942de2846eff0"><div class="ttname"><a href="Core_8h.html#a4e75b5863535ba1dd79942de2846eff0">scalarVector_Type</a></div><div class="ttdeci">std::vector&lt; scalar_type &gt; scalarVector_Type</div><div class="ttdef"><b>Definition:</b> Core.h:63</div></div>
 <div class="ttc" id="classFractureData_html_a4ead03266295fe14fa3285692f945d89"><div class="ttname"><a href="classFractureData.html#a4ead03266295fe14fa3285692f945d89">FractureData::getSpaceDimension</a></div><div class="ttdeci">bgeot::dim_type getSpaceDimension() const </div><div class="ttdef"><b>Definition:</b> FractureData.h:145</div></div>
 <div class="ttc" id="classFractureData_html_a9333d8e89dc92023d97a48c1905ada76"><div class="ttname"><a href="classFractureData.html#a9333d8e89dc92023d97a48c1905ada76">FractureData::getIntegrationTypePressure</a></div><div class="ttdeci">std::string getIntegrationTypePressure() const </div><div class="ttdef"><b>Definition:</b> FractureData.h:157</div></div>
 <div class="ttc" id="classFractureData_html_a1ac3cca1ae035eedb2ec89c0517f8b1f"><div class="ttname"><a href="classFractureData.html#a1ac3cca1ae035eedb2ec89c0517f8b1f">FractureData::getMuTangential</a></div><div class="ttdeci">scalar_type getMuTangential() const </div><div class="ttdef"><b>Definition:</b> FractureData.h:103</div></div>
@@ -1546,7 +1546,7 @@ Membri pubblici</h2></td></tr>
 <div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        M_normal2.push_back ( fractureNormal [ 1 ] );</div>
 <div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    }</div>
 <div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;}<span class="comment">// normalVectorAndMap</span></div>
-<div class="ttc" id="Core_8h_html_a4e75b5863535ba1dd79942de2846eff0"><div class="ttname"><a href="Core_8h.html#a4e75b5863535ba1dd79942de2846eff0">scalarVector_Type</a></div><div class="ttdeci">std::vector&lt; scalar_type &gt; scalarVector_Type</div><div class="ttdef"><b>Definition:</b> Core.h:61</div></div>
+<div class="ttc" id="Core_8h_html_a4e75b5863535ba1dd79942de2846eff0"><div class="ttname"><a href="Core_8h.html#a4e75b5863535ba1dd79942de2846eff0">scalarVector_Type</a></div><div class="ttdeci">std::vector&lt; scalar_type &gt; scalarVector_Type</div><div class="ttdef"><b>Definition:</b> Core.h:63</div></div>
 <div class="ttc" id="classFractureData_html_a4ead03266295fe14fa3285692f945d89"><div class="ttname"><a href="classFractureData.html#a4ead03266295fe14fa3285692f945d89">FractureData::getSpaceDimension</a></div><div class="ttdeci">bgeot::dim_type getSpaceDimension() const </div><div class="ttdef"><b>Definition:</b> FractureData.h:145</div></div>
 </div><!-- fragment -->
 </div>
@@ -1653,33 +1653,34 @@ Membri pubblici</h2></td></tr>
 <div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                M_meshFlat.region ( <a class="code" href="classFractureHandler.html#a495ad4fc72d0c47c8f0424842f1153aaaa992cc3ad024a030ecd798dc319c95ac">FractureHandler::FRACTURE_UNCUT</a> * ( M_ID + 1 ) ).sup ( i_cv );</div>
 <div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                </div>
 <div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                M_meshFlat.region ( <a class="code" href="classFractureHandler.html#a495ad4fc72d0c47c8f0424842f1153aaa781cae3f3b99bf9357fed2833d315537">FractureHandler::FRACTURE_INTERSECT</a> * ( M_ID + 1 ) + otherFractureId + 1 ).add( i_cv );</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                M_extendedPressure.push_back ( M_meshFEMPressure.ind_basic_dof_of_element ( i_cv )[0] );</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                M_extendedVelocity.push_back ( M_meshFEMVelocity.ind_basic_dof_of_element ( i_cv )[0] );</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                M_extendedVelocity.push_back ( M_meshFEMVelocity.ind_basic_dof_of_element ( i_cv )[1] );</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                M_fractureIntersectElements [ otherFractureId ].push_back ( i_cv );</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                <a class="code" href="Core_8h.html#a6453867d4e9bd858ad9577b4a1078511">pairSize_Type</a> coppia;</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                coppia.first = globalIndex;</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                coppia.second = 0;</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                M_fractureIntersectElementsGlobalIndex [ otherFractureId ].push_back ( coppia );</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                ++globalIndex;</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                ++numIntersect;</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;           </div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                }</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;        }</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    }</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    <span class="keywordflow">return</span> numIntersect;</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;}<span class="comment">// setMeshLevelSetFracture</span></div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                M_extendedPressure.push_back ( M_meshFEMPressure.ind_basic_dof_of_element ( i_cv )[0] );</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                M_extendedVelocity.push_back ( M_meshFEMVelocity.ind_basic_dof_of_element ( i_cv )[0] );</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                M_extendedVelocity.push_back ( M_meshFEMVelocity.ind_basic_dof_of_element ( i_cv )[1] );</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                M_fractureIntersectElements [ otherFractureId ].push_back ( i_cv );</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                <a class="code" href="Core_8h.html#a6453867d4e9bd858ad9577b4a1078511">pairSize_Type</a> coppia;</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                coppia.first = globalIndex;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                coppia.second = 0;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                M_fractureIntersectElementsGlobalIndex [ otherFractureId ].push_back ( coppia );</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                ++globalIndex;</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                ++numIntersect;</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;           </div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                }</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        }</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    }</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    <span class="keywordflow">return</span> numIntersect;</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;}<span class="comment">// setMeshLevelSetFracture</span></div>
 <div class="ttc" id="LevelSetHandler_8h_html_aba343569cb3213c103252f69c39cad0b"><div class="ttname"><a href="LevelSetHandler_8h.html#aba343569cb3213c103252f69c39cad0b">LevelSetHandlerPtr_Type</a></div><div class="ttdeci">boost::shared_ptr&lt; LevelSetHandler_Type &gt; LevelSetHandlerPtr_Type</div><div class="ttdef"><b>Definition:</b> LevelSetHandler.h:133</div></div>
-<div class="ttc" id="Core_8h_html_a71358a15bd3925629e26ccbb214a0133"><div class="ttname"><a href="Core_8h.html#a71358a15bd3925629e26ccbb214a0133">GFLevelSet_Type</a></div><div class="ttdeci">getfem::level_set GFLevelSet_Type</div><div class="ttdef"><b>Definition:</b> Core.h:86</div></div>
+<div class="ttc" id="Core_8h_html_a71358a15bd3925629e26ccbb214a0133"><div class="ttname"><a href="Core_8h.html#a71358a15bd3925629e26ccbb214a0133">GFLevelSet_Type</a></div><div class="ttdeci">getfem::level_set GFLevelSet_Type</div><div class="ttdef"><b>Definition:</b> Core.h:88</div></div>
 <div class="ttc" id="classFractureHandler_html_a495ad4fc72d0c47c8f0424842f1153aaa781cae3f3b99bf9357fed2833d315537"><div class="ttname"><a href="classFractureHandler.html#a495ad4fc72d0c47c8f0424842f1153aaa781cae3f3b99bf9357fed2833d315537">FractureHandler::FRACTURE_INTERSECT</a></div><div class="ttdef"><b>Definition:</b> FractureHandler.h:25</div></div>
-<div class="ttc" id="Core_8h_html_a6453867d4e9bd858ad9577b4a1078511"><div class="ttname"><a href="Core_8h.html#a6453867d4e9bd858ad9577b4a1078511">pairSize_Type</a></div><div class="ttdeci">std::pair&lt; size_type, size_type &gt; pairSize_Type</div><div class="ttdef"><b>Definition:</b> Core.h:72</div></div>
+<div class="ttc" id="Core_8h_html_a6453867d4e9bd858ad9577b4a1078511"><div class="ttname"><a href="Core_8h.html#a6453867d4e9bd858ad9577b4a1078511">pairSize_Type</a></div><div class="ttdeci">std::pair&lt; size_type, size_type &gt; pairSize_Type</div><div class="ttdef"><b>Definition:</b> Core.h:74</div></div>
 <div class="ttc" id="classFractureHandler_html_a7f7ec5b15315791f76d8deb0874511d6"><div class="ttname"><a href="classFractureHandler.html#a7f7ec5b15315791f76d8deb0874511d6">FractureHandler::getId</a></div><div class="ttdeci">const size_type &amp; getId() const </div><div class="ttdef"><b>Definition:</b> FractureHandler.h:217</div></div>
 <div class="ttc" id="classFractureHandler_html_a495ad4fc72d0c47c8f0424842f1153aaaa992cc3ad024a030ecd798dc319c95ac"><div class="ttname"><a href="classFractureHandler.html#a495ad4fc72d0c47c8f0424842f1153aaaa992cc3ad024a030ecd798dc319c95ac">FractureHandler::FRACTURE_UNCUT</a></div><div class="ttdef"><b>Definition:</b> FractureHandler.h:24</div></div>
 <div class="ttc" id="classFractureData_html_a5c10d579be7849be1a126c24982f8a23"><div class="ttname"><a href="classFractureData.html#a5c10d579be7849be1a126c24982f8a23">FractureData::getSpatialDiscretization</a></div><div class="ttdeci">size_type getSpatialDiscretization() const </div><div class="ttdef"><b>Definition:</b> FractureData.h:133</div></div>
-<div class="ttc" id="Core_8h_html_a126f7165f04db4ed0b72454469145a08"><div class="ttname"><a href="Core_8h.html#a126f7165f04db4ed0b72454469145a08">GFMeshLevelSet_Type</a></div><div class="ttdeci">getfem::mesh_level_set GFMeshLevelSet_Type</div><div class="ttdef"><b>Definition:</b> Core.h:82</div></div>
+<div class="ttc" id="Core_8h_html_a126f7165f04db4ed0b72454469145a08"><div class="ttname"><a href="Core_8h.html#a126f7165f04db4ed0b72454469145a08">GFMeshLevelSet_Type</a></div><div class="ttdeci">getfem::mesh_level_set GFMeshLevelSet_Type</div><div class="ttdef"><b>Definition:</b> Core.h:84</div></div>
 <div class="ttc" id="classFractureHandler_html_af37ab12a17f812a960da2aa71699ba0f"><div class="ttname"><a href="classFractureHandler.html#af37ab12a17f812a960da2aa71699ba0f">FractureHandler::getLevelSet</a></div><div class="ttdeci">LevelSetHandlerPtr_Type &amp; getLevelSet()</div><div class="ttdef"><b>Definition:</b> FractureHandler.h:97</div></div>
 </div><!-- fragment -->
 </div>
@@ -1691,7 +1692,7 @@ Membri pubblici</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generato Lun 20 Ott 2014 14:09:03 per Progetto PACS da &#160;<a href="http://www.doxygen.org/index.html">
+Generato Mar 28 Ott 2014 09:35:35 per Progetto PACS da &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

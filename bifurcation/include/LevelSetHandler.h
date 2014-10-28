@@ -21,11 +21,11 @@ public:
 
     
     /**
-     * funzione che inizializza il level set. Partendo dalle informazioni contenute nel file data costrusce le mesh e i metodi di integrazione
-     * \param mediumMesh: mesh di supporto del mezzo
-     * \param mediumIntegrationTypeVelocity: metodo di integrazione per la velocità 
-     * \param mediumMeshFEMPressure: mesh di integrazione per la pressione
-     * \param mediumMeshFEMVelocity: mesh di integrazione per la velocità
+     * Funzione che inizializza il level set. Partendo dalle informazioni contenute nel file data costrusce le mesh e i metodi di integrazione
+     * \param getfem::mesh& mediumMesh: mesh di supporto del mezzo
+     * \param std::string& mediumIntegrationTypeVelocity: metodo di integrazione per la velocità 
+     * \param getfem::mesh_fem& mediumMeshFEMPressure: mesh di integrazione per la pressione
+     * \param getfem::mesh_fem& mediumMeshFEMVelocity: mesh di integrazione per la velocità
      */
     void init ( getfem::mesh& mediumMesh,
 			    const std::string& mediumIntegrationTypeVelocity,
@@ -129,7 +129,7 @@ private:
 
 };
 
-typedef LevelSetHandler LevelSetHandler_Type;									/*!< classe LevelSetHandler */
-typedef boost::shared_ptr<LevelSetHandler_Type> LevelSetHandlerPtr_Type;		/*!< puntatore alla classe LeverSetHandler */
+typedef LevelSetHandler LevelSetHandler_Type;									/*!< Classe LevelSetHandler */
+typedef boost::shared_ptr<LevelSetHandler_Type> LevelSetHandlerPtr_Type;		/*!< Puntatore alla classe LeverSetHandler */
 
 #endif /* LEVELSETHANDLER_H_ */

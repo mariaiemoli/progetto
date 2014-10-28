@@ -1,0 +1,34 @@
+\hypertarget{TriangleData_8cc}{\section{Riferimenti per il file src/\-Triangle\-Data.cc}
+\label{TriangleData_8cc}\index{src/\-Triangle\-Data.\-cc@{src/\-Triangle\-Data.\-cc}}
+}
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include \char`\"{}../include/\-Triangle\-Data.\-h\char`\"{}}\\*
+\subsection*{Funzioni}
+\begin{DoxyCompactItemize}
+\item 
+std\-::ostream \& \hyperlink{TriangleData_8cc_a1969193778fec204e689f25ff14c0488}{operator$<$$<$} (std\-::ostream \&stream, \hyperlink{classTriangleData}{Triangle\-Data} const \&t)
+\end{DoxyCompactItemize}
+
+
+\subsection{Documentazione delle funzioni}
+\hypertarget{TriangleData_8cc_a1969193778fec204e689f25ff14c0488}{\index{Triangle\-Data.\-cc@{Triangle\-Data.\-cc}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!TriangleData.cc@{Triangle\-Data.\-cc}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}std\-::ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{stream, }
+\item[{{\bf Triangle\-Data} const \&}]{t}
+\end{DoxyParamCaption}
+)}}\label{TriangleData_8cc_a1969193778fec204e689f25ff14c0488}
+
+\begin{DoxyCode}
+110 \{
+111     stream<<\textcolor{stringliteral}{" ************* TRIANGLE  POINTS ********"}<<std::endl;
+112     \textcolor{keywordflow}{for} (size\_type i=0;i<3;++i)
+113     \{
+114         stream<< t.M\_point[i]<<std::endl;
+115     \}
+116     stream<<\textcolor{stringliteral}{"****************************************"}<<std::endl;
+117     
+118     \textcolor{keywordflow}{return} stream;
+119 \}
+\end{DoxyCode}

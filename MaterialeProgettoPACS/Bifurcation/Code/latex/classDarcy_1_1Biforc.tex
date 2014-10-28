@@ -1,0 +1,115 @@
+\hypertarget{classDarcy_1_1Biforc}{\section{Darcy\-:\-:Biforc Class Reference}
+\label{classDarcy_1_1Biforc}\index{Darcy\-::\-Biforc@{Darcy\-::\-Biforc}}
+}
+
+
+Computes the matrices needed for building the trasmissibility.  
+
+
+
+
+{\ttfamily \#include $<$biforc.\-hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classDarcy_1_1Biforc_ac0433612f97987156e946ef88af98d80}{\hyperlink{classDarcy_1_1Biforc_ac0433612f97987156e946ef88af98d80}{Biforc} ()}\label{classDarcy_1_1Biforc_ac0433612f97987156e946ef88af98d80}
+
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\hypertarget{classDarcy_1_1Biforc_a0efda6216cf08420007a1858ac67ec99}{\hyperlink{classDarcy_1_1Biforc_a0efda6216cf08420007a1858ac67ec99}{Biforc} (Matrix2d \hyperlink{classDarcy_1_1Biforc_a62f510963e60c24ba57380e7ea3337af}{K})}\label{classDarcy_1_1Biforc_a0efda6216cf08420007a1858ac67ec99}
+
+\begin{DoxyCompactList}\small\item\em Passing the permeability tensor. \end{DoxyCompactList}\item 
+\hypertarget{classDarcy_1_1Biforc_a46fb42a34795a8ed1a878dd5b232992b}{\hyperlink{classDarcy_1_1Biforc_a46fb42a34795a8ed1a878dd5b232992b}{Biforc} (double \hyperlink{classDarcy_1_1Biforc_a62f510963e60c24ba57380e7ea3337af}{K})}\label{classDarcy_1_1Biforc_a46fb42a34795a8ed1a878dd5b232992b}
+
+\begin{DoxyCompactList}\small\item\em Passing a scalar permeability. \end{DoxyCompactList}\item 
+\hypertarget{classDarcy_1_1Biforc_a249cdadea31643807a1299a30b6548a8}{void \hyperlink{classDarcy_1_1Biforc_a249cdadea31643807a1299a30b6548a8}{set\-Triangle} (\hyperlink{classGeometry_1_1Triangle}{Triangle} const \&T)}\label{classDarcy_1_1Biforc_a249cdadea31643807a1299a30b6548a8}
+
+\begin{DoxyCompactList}\small\item\em Give the triangle. \end{DoxyCompactList}\item 
+\hypertarget{classDarcy_1_1Biforc_a1451c7a710f536220cba1cb18801779a}{void \hyperlink{classDarcy_1_1Biforc_a1451c7a710f536220cba1cb18801779a}{set\-K} (Matrix2d \hyperlink{classDarcy_1_1Biforc_a62f510963e60c24ba57380e7ea3337af}{K})}\label{classDarcy_1_1Biforc_a1451c7a710f536220cba1cb18801779a}
+
+\begin{DoxyCompactList}\small\item\em Change the permeability. \end{DoxyCompactList}\item 
+\hypertarget{classDarcy_1_1Biforc_a62f510963e60c24ba57380e7ea3337af}{Matrix2d \hyperlink{classDarcy_1_1Biforc_a62f510963e60c24ba57380e7ea3337af}{K} () const }\label{classDarcy_1_1Biforc_a62f510963e60c24ba57380e7ea3337af}
+
+\begin{DoxyCompactList}\small\item\em Get permeability. \end{DoxyCompactList}\item 
+void \hyperlink{classDarcy_1_1Biforc_a12234283e832836d1e89bb480ba4fa9b}{compute\-N} ()
+\begin{DoxyCompactList}\small\item\em Compute matrix N having unscaled normals as rows. \end{DoxyCompactList}\item 
+\hypertarget{classDarcy_1_1Biforc_a93f664e4a8e2215f66315c958a80d504}{Matrix32 \hyperlink{classDarcy_1_1Biforc_a93f664e4a8e2215f66315c958a80d504}{N} () const }\label{classDarcy_1_1Biforc_a93f664e4a8e2215f66315c958a80d504}
+
+\begin{DoxyCompactList}\small\item\em Get matrix N;. \end{DoxyCompactList}\item 
+void \hyperlink{classDarcy_1_1Biforc_a893d75d07a8947f3f6764303aad2a0a3}{compute\-C} ()
+\begin{DoxyCompactList}\small\item\em compute matrix C. \end{DoxyCompactList}\item 
+\hypertarget{classDarcy_1_1Biforc_a3a09cd29eabeff78097c1afa38ad25a2}{Matrix32 \hyperlink{classDarcy_1_1Biforc_a3a09cd29eabeff78097c1afa38ad25a2}{C} ()}\label{classDarcy_1_1Biforc_a3a09cd29eabeff78097c1afa38ad25a2}
+
+\begin{DoxyCompactList}\small\item\em get matrix C; \end{DoxyCompactList}\item 
+void \hyperlink{classDarcy_1_1Biforc_a1cab51fc0e6a7a4f87f96861a2fdaeb4}{compute\-Qc} ()
+\begin{DoxyCompactList}\small\item\em compute matric Qc \end{DoxyCompactList}\item 
+\hypertarget{classDarcy_1_1Biforc_a9b8f6f2c9b2b740d2b02ddb47690c431}{Matrix32 \hyperlink{classDarcy_1_1Biforc_a9b8f6f2c9b2b740d2b02ddb47690c431}{Qc} () const }\label{classDarcy_1_1Biforc_a9b8f6f2c9b2b740d2b02ddb47690c431}
+
+\begin{DoxyCompactList}\small\item\em get Qc. \end{DoxyCompactList}\item 
+\hypertarget{classDarcy_1_1Biforc_a17cd51ee8740b7898bf6b50953c68ccc}{void \hyperlink{classDarcy_1_1Biforc_a17cd51ee8740b7898bf6b50953c68ccc}{compute\-Pc} ()}\label{classDarcy_1_1Biforc_a17cd51ee8740b7898bf6b50953c68ccc}
+
+\begin{DoxyCompactList}\small\item\em Compute Projection matrix on the null space of Qc. \end{DoxyCompactList}\item 
+\hypertarget{classDarcy_1_1Biforc_a617a47a860e60ddf074e2c309c612ac4}{Matrix3d \hyperlink{classDarcy_1_1Biforc_a617a47a860e60ddf074e2c309c612ac4}{Pc} () const }\label{classDarcy_1_1Biforc_a617a47a860e60ddf074e2c309c612ac4}
+
+\begin{DoxyCompactList}\small\item\em Get Pc. I computes also Qc and C. \end{DoxyCompactList}\item 
+void \hyperlink{classDarcy_1_1Biforc_ae641e782a677c39798bf23dd813f7949}{compute\-Tsimple} (double t=6.\-0)
+\begin{DoxyCompactList}\small\item\em Computes the Trasmissibility matrix. \end{DoxyCompactList}\item 
+\hypertarget{classDarcy_1_1Biforc_a7c1311c8c0e36efbf4b15ec7ce9b046b}{Matrix3d {\bfseries T} () const }\label{classDarcy_1_1Biforc_a7c1311c8c0e36efbf4b15ec7ce9b046b}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Computes the matrices needed for building the trasmissibility. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classDarcy_1_1Biforc_a893d75d07a8947f3f6764303aad2a0a3}{\index{Darcy\-::\-Biforc@{Darcy\-::\-Biforc}!compute\-C@{compute\-C}}
+\index{compute\-C@{compute\-C}!Darcy::Biforc@{Darcy\-::\-Biforc}}
+\subsubsection[{compute\-C}]{\setlength{\rightskip}{0pt plus 5cm}void Darcy\-::\-Biforc\-::compute\-C (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classDarcy_1_1Biforc_a893d75d07a8947f3f6764303aad2a0a3}
+
+
+compute matrix C. 
+
+The matrix containing as rows the vector from triangle baricenter to triangle edge baricenter. \hypertarget{classDarcy_1_1Biforc_a12234283e832836d1e89bb480ba4fa9b}{\index{Darcy\-::\-Biforc@{Darcy\-::\-Biforc}!compute\-N@{compute\-N}}
+\index{compute\-N@{compute\-N}!Darcy::Biforc@{Darcy\-::\-Biforc}}
+\subsubsection[{compute\-N}]{\setlength{\rightskip}{0pt plus 5cm}void Darcy\-::\-Biforc\-::compute\-N (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classDarcy_1_1Biforc_a12234283e832836d1e89bb480ba4fa9b}
+
+
+Compute matrix N having unscaled normals as rows. 
+
+The internal triangle must have been set before calling this method. \hypertarget{classDarcy_1_1Biforc_a1cab51fc0e6a7a4f87f96861a2fdaeb4}{\index{Darcy\-::\-Biforc@{Darcy\-::\-Biforc}!compute\-Qc@{compute\-Qc}}
+\index{compute\-Qc@{compute\-Qc}!Darcy::Biforc@{Darcy\-::\-Biforc}}
+\subsubsection[{compute\-Qc}]{\setlength{\rightskip}{0pt plus 5cm}void Darcy\-::\-Biforc\-::compute\-Qc (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classDarcy_1_1Biforc_a1cab51fc0e6a7a4f87f96861a2fdaeb4}
+
+
+compute matric Qc 
+
+The columns form an orthonormal basis for the transpose of C. It computes also C \hypertarget{classDarcy_1_1Biforc_ae641e782a677c39798bf23dd813f7949}{\index{Darcy\-::\-Biforc@{Darcy\-::\-Biforc}!compute\-Tsimple@{compute\-Tsimple}}
+\index{compute\-Tsimple@{compute\-Tsimple}!Darcy::Biforc@{Darcy\-::\-Biforc}}
+\subsubsection[{compute\-Tsimple}]{\setlength{\rightskip}{0pt plus 5cm}void Darcy\-::\-Biforc\-::compute\-Tsimple (
+\begin{DoxyParamCaption}
+\item[{double}]{t = {\ttfamily 6.0}}
+\end{DoxyParamCaption}
+)}}\label{classDarcy_1_1Biforc_ae641e782a677c39798bf23dd813f7949}
+
+
+Computes the Trasmissibility matrix. 
+
+It computes also C, N e Qc It uses the formula $ T= N K N^T + t P_c \operatorname{diag}(N K N^T) P_c */ void computeT(double t=6.0); //! Computes the Trasmissibility matrix /*! It computes also C, N e Qc It uses the formula $ T= N K N$^\wedge$\-T + t \{trace\}(N\-K\-N$^\wedge$\-T)P\-\_\-c 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+biforc.\-hpp\item 
+biforc.\-cpp\end{DoxyCompactItemize}

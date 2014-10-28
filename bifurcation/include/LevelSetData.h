@@ -12,78 +12,61 @@ class LevelSetData
 {
 public:
 
+	// Costruttore
     LevelSetData ( const GetPot& dataFile,
                    const std::string& section = "fractureData/",
                    const std::string& sectionLevelSet = "levelSet/" );
 
-    /** scalar_type ylevelSetFunction ( const base_node& x, int num = 0 )
+    /** 
      *
-     * prima funzione level set che definisce la frattura, level set valutato in (x,y)
-     *
-     */
-    scalar_type ylevelSetFunction ( const base_node& x,
-                                   int num = 0 );
-
-
-    /** scalar_type levelSetFunction ( const base_node& x, int num = 0 )
-     *
-     * seconda funzione level set che definisce la frattura, level set valutato in (t,y)
+     * Questa funzione definisce il level set che rappresenta la frattura, level set valutato in (x,y).
+     * \param base_node& x: nodo in coordinate ( x, y ) in cui valutare il levelset
+     * \return scalar_type: valore del levelset nel nodo x
      *
      */
-    scalar_type levelSetFunction ( const base_node& x,
-                                   int num = 0 );
+    scalar_type ylevelSetFunction ( const base_node& x, int num = 0 );
+
+
+    /** 
+     *
+     * Questa funzione definisce il level set che rappresenta la frattura, level set valutato in (t,y).
+     * \param base_node& x: nodo in coordinate ( t, y ) in cui valutare il levelset
+     * \return scalar_type: valore del levelset nel nodo x
+     */
+    scalar_type levelSetFunction ( const base_node& x, int num = 0 );
 
 
     /** scalar_type levelSetCutFunction ( const base_node& x, int num = 0 )
      *
-     * terza funzione level set che definisce la frattura, se per caso voglio "tagliare la frattura"
-     *
+     * Questa funzione definisce il  level set che rappresenta la frattura, se per caso voglio "tagliare la frattura".
+     * \param base_node& x: nodo in coordinate ( t, y ) in cui valutare il levelset
+     * \return scalar_type: valore del levelset nel nodo x
      */
-    scalar_type levelSetCutFunction ( const base_node& x,
-                                      int num = 0 );
+    scalar_type levelSetCutFunction ( const base_node& x, int num = 0 );
 
 
-    /** scalar_type y_map ( const base_node& t )
-     *
-     * mappa dalla frattura piatta a quella y(t)
-     *
+    /** 
+     * Questa funzione rappresenta la mappa dalla frattura piatta, y(t).
      */
     scalar_type y_map ( const base_node& t );
 
 
-    /** scalar_type x_map ( const base_node& t )
-     *
-     * mappa dalla frattura piatta a quella x(t)
-     *
-     */
+    /** 
+	 * Questa funzione rappresenta la mappa dalla frattura piatta, x(t).
+	 */
     scalar_type x_map ( const base_node& t );
 
 
-    /** scalar_type t_map ( const base_node& t )
-     *
-     * mappa inversa per trovare t dato x
-     *
+    /** 
+     * Questa funzione serve per convertire la lunghezza/area degli elementi dalla frattura piatta a quella mappata.
      */
-    scalar_type t_map ( const base_node& t );
+    scalarVector_Type map_jac ( const base_node& x, const size_type& num );
 
 
-
-    /** scalarVector_Type map_jac ( const base_node& x, const size_type& num );
-     *
-     * questa funzione serve per convertire la lunghezza/area degli elementi dalla frattura piatta a quella mappata
-     *
+    /** 
+     * Funzione che calcola la normale alla frattura - può anche dipendere da x
      */
-    scalarVector_Type map_jac ( const base_node& x,
-                           const size_type& num );
-
-
-    /**    scalarVector_Type normal_map ( const base_node& P, const size_type& num );
-     *
-     * questa funzione calcola la normale alla frattura - può anche dipendere da x
-     *
-     */
-    scalarVector_Type normal_map ( const base_node& P,
-                              const size_type& num );
+    scalarVector_Type normal_map ( const base_node& P, const size_type& num );
 
 
     inline bgeot::dim_type getSpaceDimension () const
@@ -118,7 +101,6 @@ private:
 
     std::string M_x_map;
     std::string M_y_map;
-    std::string M_map_inv;
     std::string M_map_jac;
     std::string M_normal_map;
 
@@ -129,7 +111,7 @@ private:
 
 };
 
-typedef LevelSetData LevelSetData_Type;
-typedef boost::shared_ptr<LevelSetData_Type> LevelSetDataPtr_Type;
+typedef LevelSetData LevelSetData_Type;								/*!< Classe LevelSetData */
+typedef boost::shared_ptr<LevelSetData_Type> LevelSetDataPtr_Type;	/*!< Puntatore alla classe LevelSetData */
 
 #endif /* LEVELSETDATA_H_ */

@@ -1,0 +1,270 @@
+\hypertarget{classIntersection}{\section{Riferimenti per la classe Intersection}
+\label{classIntersection}\index{Intersection@{Intersection}}
+}
+
+
+Classe che rappresenta l'intersezione.  
+
+
+
+
+{\ttfamily \#include $<$Triangle\-Handler.\-h$>$}
+
+\subsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classIntersection_ad0bef2cc1bd1f80e72e4b265e19225ca}{Intersection} (\hyperlink{classFractureEnd}{Fracture\-End} const \&gamma0, \hyperlink{classFractureEnd}{Fracture\-End} const \&gamma1, \hyperlink{classFractureEnd}{Fracture\-End} const \&gamma2, \hyperlink{classPointData}{Point\-Data} const \&intersection\-Point)
+\begin{DoxyCompactList}\small\item\em Le fratture devono essere date in senso orario. \end{DoxyCompactList}\item 
+\hyperlink{classIntersection_a67497e3efe2793b23909052eeb82c4f3}{Intersection} ()
+\item 
+void \hyperlink{classIntersection_a6694ead6072e98dffe4a7c70379ca83b}{set\-Intersection} (const \hyperlink{FractureHandler_8h_a2f0b57e18ecf89912d7de0c87158009e}{Fracture\-Ptr\-Container\-\_\-\-Type} \&M\-\_\-fractures)
+\item 
+\hyperlink{classTriangleData}{Triangle\-Data} const \& \hyperlink{classIntersection_ae9d2fb8951a9f5a2bd7c1a96d73226f4}{compute\-Intersection\-Triangle} ()
+\item 
+void \hyperlink{classIntersection_ae071ecb3d3f2d6f9723e310764535883}{set\-Triangle} (const \hyperlink{classTriangleData}{Triangle\-Data} \&triangle)
+\item 
+\hyperlink{classTriangleData}{Triangle\-Data} const \& \hyperlink{classIntersection_a603d1cb4b33762c72999968ceec95a39}{intersection\-Triangle} () const 
+\item 
+\hyperlink{classIntersection}{Intersection} \& \hyperlink{classIntersection_a8cc823fe1b873994d49bc46b3b4136ef}{operator=} (const \hyperlink{classIntersection}{Intersection} \&Int)
+\end{DoxyCompactItemize}
+
+
+\subsection{Descrizione dettagliata}
+Classe che rappresenta l'intersezione. 
+
+\subsection{Documentazione dei costruttori e dei distruttori}
+\hypertarget{classIntersection_ad0bef2cc1bd1f80e72e4b265e19225ca}{\index{Intersection@{Intersection}!Intersection@{Intersection}}
+\index{Intersection@{Intersection}!Intersection@{Intersection}}
+\subsubsection[{Intersection}]{\setlength{\rightskip}{0pt plus 5cm}Intersection\-::\-Intersection (
+\begin{DoxyParamCaption}
+\item[{{\bf Fracture\-End} const \&}]{gamma0, }
+\item[{{\bf Fracture\-End} const \&}]{gamma1, }
+\item[{{\bf Fracture\-End} const \&}]{gamma2, }
+\item[{{\bf Point\-Data} const \&}]{intersection\-Point}
+\end{DoxyParamCaption}
+)}}\label{classIntersection_ad0bef2cc1bd1f80e72e4b265e19225ca}
+
+
+Le fratture devono essere date in senso orario. 
+
+
+\begin{DoxyCode}
+13 \{
+14     \textcolor{comment}{//QUESTO é DA RISCRIVERE NELLA FORMA : }
+15     fractures.clear();
+16     fractures.push\_back( gamma0 ); 
+17     fractures.push\_back( gamma1 );
+18     fractures.push\_back( gamma2 );
+19     
+20     intersection\_ = intersectionPoint;
+21     
+22     \hyperlink{Core_8h_a09205951ae66bf900cc5cc57e2192667}{Vector2d} ttmp;
+23     \hyperlink{Core_8h_a09205951ae66bf900cc5cc57e2192667}{Vector2d} ntmp;
+24         
+25     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} i=0;i<3;++i)
+26     \{
+27         \textcolor{comment}{// get tangent at the end}
+28         ttmp(0) = intersectionPoint.\hyperlink{classPointData_a5accef5ea9e813dd4517eb050f276ccf}{x}()-fractures[i].getPoint ().x();
+29         ttmp(1) = intersectionPoint.y()-fractures[i].getPoint ().y();
+30         ttmp.normalize();
+31 
+32         tangents [ i ] = ttmp;
+33         ntmp(0) = -ttmp(1); 
+34         ntmp(1) = ttmp(0); 
+35 
+36         normals [ i ] = ntmp;
+37     \}
+38     
+39     intersectionTriangle\_ = this->\hyperlink{classIntersection_ae9d2fb8951a9f5a2bd7c1a96d73226f4}{computeIntersectionTriangle}();
+40 \}\textcolor{comment}{// costruttore intersezione}
+\end{DoxyCode}
+\hypertarget{classIntersection_a67497e3efe2793b23909052eeb82c4f3}{\index{Intersection@{Intersection}!Intersection@{Intersection}}
+\index{Intersection@{Intersection}!Intersection@{Intersection}}
+\subsubsection[{Intersection}]{\setlength{\rightskip}{0pt plus 5cm}Intersection\-::\-Intersection (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classIntersection_a67497e3efe2793b23909052eeb82c4f3}
+
+\begin{DoxyCode}
+76         \{\};
+\end{DoxyCode}
+
+
+\subsection{Documentazione delle funzioni membro}
+\hypertarget{classIntersection_ae9d2fb8951a9f5a2bd7c1a96d73226f4}{\index{Intersection@{Intersection}!compute\-Intersection\-Triangle@{compute\-Intersection\-Triangle}}
+\index{compute\-Intersection\-Triangle@{compute\-Intersection\-Triangle}!Intersection@{Intersection}}
+\subsubsection[{compute\-Intersection\-Triangle}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Triangle\-Data} const \& Intersection\-::compute\-Intersection\-Triangle (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classIntersection_ae9d2fb8951a9f5a2bd7c1a96d73226f4}
+
+\begin{DoxyCode}
+111 \{
+112     \hyperlink{classPointData}{PointData} point;
+113     \textcolor{keyword}{const} \textcolor{keywordtype}{double} tol=1.e-5;
+114     \textcolor{keywordtype}{double} s(0.);
+115     
+116     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} i=0; i<3;++i)
+117     \{
+118         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} j = (i +1 ) % 3;
+119         \textcolor{keywordtype}{double} ninj = normals[i].dot(normals[j] );
+120         \textcolor{keywordtype}{double} nitj = normals[i].dot(tangents[j]);
+121         
+122         \textcolor{keywordflow}{if}(std::fabs(nitj)<tol)
+123         \{
+124             point = intersection\_ + 
+125                     \hyperlink{classPointData}{PointData} ( normals [ i ] ( 0 ), normals [ i ] ( 1 ) ) * ( 0.5 * ( fractures [
+       j ].getThickness() + fractures [ i ].getThickness() ));
+126         \}
+127         \textcolor{keywordflow}{else}
+128         \{
+129             \textcolor{comment}{// parametric coordinate}
+130             s    = 0.5 * ( fractures [ j ].getThickness() * ninj + fractures [ i ].getThickness() )/nitj;
+131         
+132             \textcolor{comment}{// the ith point is Pji in the note}
+133             point = intersection\_ + ( \hyperlink{classPointData}{PointData} ( tangents [ j ] ( 0 ), tangents [ j ] ( 1 ) ) * s
+       )- 
+134                                     ( \hyperlink{classPointData}{PointData} ( normals [ j ] ( 0 ), normals [ j ] ( 1 ) ) * ( 0
+      .5 * fractures [ j ].getThickness() ) );
+135         \}
+136     
+137         intersectionTriangle\_.\hyperlink{classTriangleData_a24c79732610361d5e11ee7ac2d577467}{setPoint}(i,point);
+138     \}
+139     
+140     \textcolor{keywordflow}{return} intersectionTriangle\_;
+141 
+142 \}\textcolor{comment}{// computeIntersectionTriangle}
+\end{DoxyCode}
+\hypertarget{classIntersection_a603d1cb4b33762c72999968ceec95a39}{\index{Intersection@{Intersection}!intersection\-Triangle@{intersection\-Triangle}}
+\index{intersection\-Triangle@{intersection\-Triangle}!Intersection@{Intersection}}
+\subsubsection[{intersection\-Triangle}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Triangle\-Data} const\& Intersection\-::intersection\-Triangle (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classIntersection_a603d1cb4b33762c72999968ceec95a39}
+
+\begin{DoxyCode}
+91         \{
+92             \textcolor{keywordflow}{return} intersectionTriangle\_;
+93         \}
+\end{DoxyCode}
+\hypertarget{classIntersection_a8cc823fe1b873994d49bc46b3b4136ef}{\index{Intersection@{Intersection}!operator=@{operator=}}
+\index{operator=@{operator=}!Intersection@{Intersection}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Intersection}\& Intersection\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Intersection} \&}]{Int}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classIntersection_a8cc823fe1b873994d49bc46b3b4136ef}
+
+\begin{DoxyCode}
+97         \{
+98             this-> fractures = Int.fractures;
+99             this-> intersection\_ = Int.intersection\_;
+100             
+101             this-> tangents [ 0 ] = Int.tangents [ 0 ];
+102             this-> tangents [ 1 ] = Int.tangents [ 1 ];
+103             this-> tangents [ 2 ] = Int.tangents [ 2 ];
+104             
+105             this-> normals [ 0 ] = Int.normals [ 0 ];
+106             this-> normals [ 1 ] = Int.normals [ 1 ];
+107             this-> normals [ 2 ] = Int.normals [ 2 ];
+108             
+109             this-> intersectionTriangle\_ = Int.intersectionTriangle\_; 
+110             
+111         \}
+\end{DoxyCode}
+\hypertarget{classIntersection_a6694ead6072e98dffe4a7c70379ca83b}{\index{Intersection@{Intersection}!set\-Intersection@{set\-Intersection}}
+\index{set\-Intersection@{set\-Intersection}!Intersection@{Intersection}}
+\subsubsection[{set\-Intersection}]{\setlength{\rightskip}{0pt plus 5cm}void Intersection\-::set\-Intersection (
+\begin{DoxyParamCaption}
+\item[{const {\bf Fracture\-Ptr\-Container\-\_\-\-Type} \&}]{M\-\_\-fractures}
+\end{DoxyParamCaption}
+)}}\label{classIntersection_a6694ead6072e98dffe4a7c70379ca83b}
+
+\begin{DoxyCode}
+44 \{   
+45     assert ( M\_fractures.size() == 3 );
+46     
+47     \hyperlink{LevelSetHandler_8h_aba343569cb3213c103252f69c39cad0b}{LevelSetHandlerPtr\_Type} l0 = M\_fractures [ 0 ]-> getLevelSet ();
+48     \hyperlink{LevelSetHandler_8h_aba343569cb3213c103252f69c39cad0b}{LevelSetHandlerPtr\_Type} l1 = M\_fractures [ 1 ]-> getLevelSet ();
+49     \hyperlink{LevelSetHandler_8h_aba343569cb3213c103252f69c39cad0b}{LevelSetHandlerPtr\_Type} l2 = M\_fractures [ 2 ]-> getLevelSet ();
+50     
+51     \textcolor{keyword}{const} size\_type nbDof0 = l0 ->getLevelSet().get\_mesh\_fem().nb\_basic\_dof();
+52     \textcolor{keyword}{const} size\_type nbDof1 = l1 ->getLevelSet().get\_mesh\_fem().nb\_basic\_dof();
+53     \textcolor{keyword}{const} size\_type nbDof2 = l2 ->getLevelSet().get\_mesh\_fem().nb\_basic\_dof();
+54     
+55     base\_node node0 = l0-> getLevelSet().get\_mesh\_fem().point\_of\_basic\_dof( 0 );
+56     base\_node node1 = l1-> getLevelSet().get\_mesh\_fem().point\_of\_basic\_dof( 0 );
+57     base\_node node2 = l2-> getLevelSet().get\_mesh\_fem().point\_of\_basic\_dof( 0 );
+58     base\_node nodeI = l0-> getLevelSet().get\_mesh\_fem().point\_of\_basic\_dof( nbDof0-1 );
+59 
+60     \textcolor{keywordflow}{if} ( l1->getData()->levelSetFunction ( node0 ) == 0 )
+61     \{
+62         node0 = l0-> getLevelSet().get\_mesh\_fem().point\_of\_basic\_dof( nbDof0-1 );
+63         nodeI = l0-> getLevelSet().get\_mesh\_fem().point\_of\_basic\_dof( 0 );
+64     \}
+65 
+66     \textcolor{keywordflow}{if} ( l0->getData()->levelSetFunction ( node1 ) == 0 )
+67     \{
+68         node1 = l1-> getLevelSet().get\_mesh\_fem().point\_of\_basic\_dof( nbDof1-1 );
+69     \}
+70 
+71     \textcolor{keywordflow}{if} ( l1->getData()->levelSetFunction ( node2 ) == 0 )
+72     \{
+73         node2 = l2->  getLevelSet().get\_mesh\_fem().point\_of\_basic\_dof( nbDof2-1 );
+74     \}
+75 
+76     \textcolor{comment}{//Estremi liberi delle fratture +  punto di intersezione}
+77     \hyperlink{classPointData}{PointData} p0( node0[0], node0[1] );
+78     \hyperlink{classPointData}{PointData} p1( node1[0], node1[1] );
+79     \hyperlink{classPointData}{PointData} p2( node2[0], node2[1] );
+80     \hyperlink{classPointData}{PointData} pi( nodeI[0], nodeI[1] );
+81     
+82     \textcolor{comment}{//Spessori delle mie fratture}
+83     scalar\_type t0,t1,t2;
+84     t0 = M\_fractures [ 0 ] -> getData().getThickness();
+85     t1 = M\_fractures [ 1 ] -> getData().getThickness();
+86     t2 = M\_fractures [ 2 ] -> getData().getThickness();
+87     
+88     \hyperlink{classFractureEnd}{FractureEnd} f0( p0, t0 );
+89     \hyperlink{classFractureEnd}{FractureEnd} f1( p1, t1 );
+90     \hyperlink{classFractureEnd}{FractureEnd} f2( p2, t2 );
+91     
+92     \hyperlink{classIntersection}{Intersection} tmp(f0,f1,f2,pi);
+93     
+94     this-> fractures = tmp.fractures;
+95     this-> intersection\_ = tmp.intersection\_;
+96     
+97     this-> tangents [ 0 ] = tmp.tangents [ 0 ];
+98     this-> tangents [ 1 ] = tmp.tangents [ 1 ];
+99     this-> tangents [ 2 ] = tmp.tangents [ 2 ];
+100     
+101     this-> normals [ 0 ] = tmp.normals [ 0 ];
+102     this-> normals [ 1 ] = tmp.normals [ 1 ];
+103     this-> normals [ 2 ] = tmp.normals [ 2 ];
+104     
+105     this-> intersectionTriangle\_ = tmp.intersectionTriangle\_; 
+106     
+107 \}\textcolor{comment}{// costruttore intersezione}
+\end{DoxyCode}
+\hypertarget{classIntersection_ae071ecb3d3f2d6f9723e310764535883}{\index{Intersection@{Intersection}!set\-Triangle@{set\-Triangle}}
+\index{set\-Triangle@{set\-Triangle}!Intersection@{Intersection}}
+\subsubsection[{set\-Triangle}]{\setlength{\rightskip}{0pt plus 5cm}void Intersection\-::set\-Triangle (
+\begin{DoxyParamCaption}
+\item[{const {\bf Triangle\-Data} \&}]{triangle}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classIntersection_ae071ecb3d3f2d6f9723e310764535883}
+
+\begin{DoxyCode}
+86         \{
+87             intersectionTriangle\_ = triangle;
+88         \}
+\end{DoxyCode}
+
+
+La documentazione per questa classe è stata generata a partire dai seguenti file\-:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{TriangleHandler_8h}{Triangle\-Handler.\-h}\item 
+src/\hyperlink{TriangleHandler_8cc}{Triangle\-Handler.\-cc}\end{DoxyCompactItemize}

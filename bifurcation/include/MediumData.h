@@ -17,9 +17,10 @@ class MediumData
 public:
 
 	/**
-	 * \param dataFile: variabile di tipo GetPot che contiene il nome del file data
-	 * \param section: nome della sezione corrispondente al mezzo
-	 * \param sectionDomain: noe della sezione del mezzo corrispondente alle caratteristiche del dominio
+	 * \param GetPot& dataFile: variabile di tipo GetPot che contiene il nome del file data
+	 * \param std::string& section: nome della sezione corrispondente al mezzo
+	 * \param std::string& section = "mediumData/": nome della sezione del mezzo corrispondente alle caratteristiche del dominio,
+	 * 												se non fornito è posto di default pari a mediumData/"
 	 */
 	MediumData ( const GetPot& dataFile,
 				 const std::string& sectionSolver,
@@ -28,32 +29,32 @@ public:
 
 
     /** 
-     * funzione che valuta la soluzione esatta in un dato nodo
-     * \param x: bgeot::base_node, nodo geometrico
+     * Funzione che valuta la soluzione esatta in un dato nodo.
+     * \param base_node& x: bgeot::base_node, nodo geometrico
      *
      */
     scalar_type exact ( const base_node& x, const scalar_type& t = 0 ) const;
 
 
     /** 
-     * funzione che valuta la soluzione esatta in un dato nodo nella regione in cui level set > 0 
-     * \param x: bgeot::base_node, nodo geometrico
+     * Funzione che valuta la soluzione esatta in un dato nodo nella regione in cui level set > 0. 
+     * \param base_node& x: bgeot::base_node, nodo geometrico
      */
     scalar_type exactOutlet ( const base_node& x, const scalar_type& t = 0 ) const;
 
 
 
     /** 
-     * funzione che valuta la soluzione esatta in un dato nodo nella regione in cui level set < 0 
-     * \param x: bgeot::base_node, nodo geometrico
+     * Funzione che valuta la soluzione esatta in un dato nodo nella regione in cui level set < 0. 
+     * \param base_node& x: bgeot::base_node, nodo geometrico
      */
     scalar_type exactInlet ( const base_node& x, const scalar_type& t = 0 ) const;
 
 
     /** 
-     * funzione che valuta il flusso esatto in un dato nodo  
-     * \param x: bgeot::base_node, nodo geometrico
-     * \param n: bgeot::base_node, vettore normale
+     * Funzione che valuta il flusso esatto in un dato nodo.  
+     * \param base_node& x: bgeot::base_node, nodo geometrico
+     * \param base_node& n: bgeot::base_node, vettore normale
      */
     scalar_type exactFlux ( const base_node& x,
                             const base_node& n,
@@ -61,29 +62,29 @@ public:
 
 
     /** 
-     * funzione che valuta il termine sorgente in un dato nodo 
-     * \param x: bgeot::base_node, nodo geometrico
+     * Funzione che valuta il termine sorgente in un dato nodo. 
+     * \param base_node& x: bgeot::base_node, nodo geometrico
      */
     scalar_type source ( const base_node& x, const scalar_type& t = 0 ) const;
 
 
     /**
-     * funzione che restituisce un'eventuale modulazione del coefficiente di permeabilità
-     * \param x: bgeot::base_node, nodo geometrico
+     * Funzione che restituisce un'eventuale modulazione del coefficiente di permeabilità.
+     * \param base_node& x: bgeot::base_node, nodo geometrico
      */
     scalar_type invKDistribution11 ( const base_node& x ) const;
 
 
     /**
-     * funzione che restituisce un'eventuale modulazione del coefficiente di permeabilità
-     * \param x: bgeot::base_node, nodo geometrico
+     * Funzione che restituisce un'eventuale modulazione del coefficiente di permeabilità.
+     * \param base_node& x: bgeot::base_node, nodo geometrico
      */
     scalar_type invKDistribution12 ( const base_node& x ) const;
 
 
     /**
-     * funzione che restituisce un'eventuale modulazione del coefficiente di permeabilità
-     * \param x: bgeot::base_node, nodo geometrico
+     * Funzione che restituisce un'eventuale modulazione del coefficiente di permeabilità.
+     * \param base_node& x: bgeot::base_node, nodo geometrico
      */
     scalar_type invKDistribution22 ( const base_node& x ) const;
 

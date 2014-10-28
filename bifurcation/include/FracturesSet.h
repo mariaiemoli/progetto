@@ -18,11 +18,12 @@ class FracturesSet
 {
 public:
 	
+	// Costruttore nullo
 	FracturesSet ();
 
 
 	/**
-	 * funzione che inizializza l'insieme delle fratture definendo un vettore con le fratture e una classe delle intersezioni
+	 * Funzione che inizializza l'insieme delle fratture definendo un vettore con le fratture e una classe delle intersezioni.
 	 */
     void init ( const GetPot& dataFile,
                 const std::string& section,
@@ -34,29 +35,51 @@ public:
                 const getfem::mesh_fem& meshFEMVector );
 
 
+    /**
+     * Funzione che restituisce il numero totale di fratture.
+     */
     size_type getNumberFractures () const
     {
             return M_fractures.size();
     }
 
 
+    /**
+     * Funzione che restituisce il puntatore ad una frattura.
+     * \param size_type& f: id della frattura che mi interessa
+     * \return FractureHandlerPtr_Type& M_fractures[f]: frattura di indice " f " nell'insieme delle fratture
+     */
     const FractureHandlerPtr_Type& getFracture ( const size_type& f ) const
     {
             return M_fractures[f];
     }
 
 
+    /**
+     * Funzione che restituisce il puntatore ad una frattura.
+     * \param size_type& f: id della frattura che mi interessa
+     * \return FractureHandlerPtr_Type& M_fractures[f]: frattura di indice " f " nell'insieme delle fratture
+     */
     FractureHandlerPtr_Type& getFracture ( const size_type& f )
     {
             return M_fractures[f];
     }
 
 
+    /**
+     * Funzione che retituisce l'insieme di tutte le intersezioni.
+     * \return FractureIntersectPtr_Type& M_intersections: puntatore alla classe delle intersezioni
+     */
     const FractureIntersectPtr_Type& getIntersections () const
     {
             return M_intersections;
     }
 
+
+    /**
+     * Funzione che retituisce l'insieme di tutte le intersezioni.
+     * \return FractureIntersectPtr_Type& M_intersections: puntatore alla classe delle intersezioni
+     */
 
     FractureIntersectPtr_Type& getIntersections ()
     {

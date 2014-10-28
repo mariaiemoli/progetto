@@ -18,9 +18,13 @@ void \hyperlink{namespacegetfem_aba6f1b4f1d395aae3d96071cad4953a2}{darcy\-\_\-\-
 \item 
 void \hyperlink{namespacegetfem_a9b6ded8fe1019aa04e66d2047d0f29dd}{darcy\-\_\-\-A11\-F\-\_\-\-Cross} (\hyperlink{Core_8h_a87137a9501b38c724ac80bc955164bb7}{sparse\-Matrix\-Ptr\-\_\-\-Type} \&M, const \hyperlink{FractureHandler_8h_af23fb7a30aaff864bd42587af4f1e78a}{Fracture\-Handler\-Ptr\-\_\-\-Type} \&fracture, const \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalar\-Vector\-\_\-\-Type} \&inv\-K\-Tangential\-Interpolated, const \hyperlink{FractureHandler_8h_af23fb7a30aaff864bd42587af4f1e78a}{Fracture\-Handler\-Ptr\-\_\-\-Type} \&other\-Fracture, const size\-\_\-type \&cut\-Region\-Flag)
 \item 
+void \hyperlink{namespacegetfem_a5e7b6fdaa0e505514d42982b3a33b69b}{darcy\-\_\-\-A11\-F\-\_\-\-Bifurcation} (\hyperlink{Core_8h_a87137a9501b38c724ac80bc955164bb7}{sparse\-Matrix\-Ptr\-\_\-\-Type} \&M, const \hyperlink{FractureHandler_8h_af23fb7a30aaff864bd42587af4f1e78a}{Fracture\-Handler\-Ptr\-\_\-\-Type} \&fracture, const \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalar\-Vector\-\_\-\-Type} \&inv\-K\-Tangential\-Interpolated, const \hyperlink{FractureHandler_8h_af23fb7a30aaff864bd42587af4f1e78a}{Fracture\-Handler\-Ptr\-\_\-\-Type} \&other\-Fracture, const size\-\_\-type \&cut\-Region\-Flag)
+\item 
 void \hyperlink{namespacegetfem_ab62aa98cfcf55810e1518906202cbedc}{darcy\-\_\-\-A12\-F} (\hyperlink{Core_8h_a87137a9501b38c724ac80bc955164bb7}{sparse\-Matrix\-Ptr\-\_\-\-Type} \&M, const \hyperlink{FractureHandler_8h_af23fb7a30aaff864bd42587af4f1e78a}{Fracture\-Handler\-Ptr\-\_\-\-Type} \&fracture, const size\-\_\-type \&uncut\-Region\-Flag)
 \item 
 void \hyperlink{namespacegetfem_a88df6c0cb0765d5ab0fae27679cd30f4}{darcy\-\_\-\-A12\-F\-\_\-\-Cross} (\hyperlink{Core_8h_a87137a9501b38c724ac80bc955164bb7}{sparse\-Matrix\-Ptr\-\_\-\-Type} \&M, const \hyperlink{FractureHandler_8h_af23fb7a30aaff864bd42587af4f1e78a}{Fracture\-Handler\-Ptr\-\_\-\-Type} \&fracture, const \hyperlink{FractureHandler_8h_af23fb7a30aaff864bd42587af4f1e78a}{Fracture\-Handler\-Ptr\-\_\-\-Type} \&other\-Fracture, const size\-\_\-type \&cut\-Region\-Flag)
+\item 
+void \hyperlink{namespacegetfem_a8ec373049ba9d4784a98751bc4134221}{darcy\-\_\-\-A12\-F\-\_\-\-Bifurcation} (\hyperlink{Core_8h_a87137a9501b38c724ac80bc955164bb7}{sparse\-Matrix\-Ptr\-\_\-\-Type} \&M, const \hyperlink{FractureHandler_8h_af23fb7a30aaff864bd42587af4f1e78a}{Fracture\-Handler\-Ptr\-\_\-\-Type} \&fracture, const \hyperlink{FractureHandler_8h_af23fb7a30aaff864bd42587af4f1e78a}{Fracture\-Handler\-Ptr\-\_\-\-Type} \&other\-Fracture, const size\-\_\-type \&cut\-Region\-Flag)
 \item 
 void \hyperlink{namespacegetfem_ad6e90b309c01f6b4fc91c9369cba376a}{darcy\-\_\-data\-F} (\hyperlink{Core_8h_ab09b6fa3c23db1b8c60456f8690c44a7}{scalar\-Vector\-Ptr\-\_\-\-Type} \&Bstress, \hyperlink{Core_8h_ab09b6fa3c23db1b8c60456f8690c44a7}{scalar\-Vector\-Ptr\-\_\-\-Type} \&Bvel, const \hyperlink{BCHandler_8h_aa175884cb453788647f17f2230a2a762}{B\-C\-Handler\-Ptr\-\_\-\-Type} \&bc\-Handler, const \hyperlink{FractureHandler_8h_af23fb7a30aaff864bd42587af4f1e78a}{Fracture\-Handler\-Ptr\-\_\-\-Type} \&fracture, const scalar\-\_\-type \&gamma\-U, const scalar\-\_\-type \&inv\-K, const \hyperlink{Core_8h_ab09b6fa3c23db1b8c60456f8690c44a7}{scalar\-Vector\-Ptr\-\_\-\-Type} \&Pneumann, const \hyperlink{Core_8h_ab09b6fa3c23db1b8c60456f8690c44a7}{scalar\-Vector\-Ptr\-\_\-\-Type} \&v\-\_\-diri)
 \item 
@@ -56,69 +60,69 @@ R\-E\-M\-E\-M\-B\-E\-R\-: the matrix corresponding to a(u,v) is Aij = a(, )
 )}}\label{namespacegetfem_ac08fe08fb325eede94ffe4968b7980de}
 
 \begin{DoxyCode}
-736 \{
-737 
-738     \textcolor{keyword}{const} size\_type shiftPressure = fracture->getMeshFEMPressure().nb\_dof();
-739     \textcolor{keyword}{const} size\_type shiftMapFactor = fracture->getMagnificationMapFactor1().size();
-740     
-741     \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} D\_(shiftPressure, 0.0), invF(shiftMapFactor, 0);
-742 
-743     generic\_assembly assem\_Source, assem\_Vx, assem\_Vy;
-744 
-745     \textcolor{keywordflow}{if} ( fracture->getMeshFEMPressure().get\_qdim() == 1 )
-746     \{
-747         \textcolor{keywordflow}{for} ( size\_type i = 0; i < shiftMapFactor; ++i )
-748         \{
-749             invF [ i ] = 1.0 / (fracture->getMagnificationMapFactor1(i));
-750         \}
-751 
-752         \textcolor{comment}{/*}
-753 \textcolor{comment}{         * assembla il termine noto}
-754 \textcolor{comment}{         * }
-755 \textcolor{comment}{         *      sum(i) \{ - (f\_i, q\_i) \}}
-756 \textcolor{comment}{         */}
-757         assem\_Source.set(\textcolor{stringliteral}{"w=data$1(#2);"} \textcolor{stringliteral}{"q=data$2(#2);"}
-758             \textcolor{stringliteral}{"a=comp(Base(#1).Base(#2).Base(#2));"}
-759             \textcolor{stringliteral}{"V(#1)+=a(:, k,j).w(k).q(j)"});
-760 
-761     \}
-762     \textcolor{keywordflow}{else}
-763     \{
-764         \textcolor{keywordflow}{for} ( size\_type i = 0; i < shiftMapFactor; ++i )
-765         \{
-766             invF [ i ] = 1.0 / (fracture->getMagnificationMapFactor1(i) * fracture->
+906 \{
+907 
+908     \textcolor{keyword}{const} size\_type shiftPressure = fracture->getMeshFEMPressure().nb\_dof();
+909     \textcolor{keyword}{const} size\_type shiftMapFactor = fracture->getMagnificationMapFactor1().size();
+910     
+911     \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} D\_(shiftPressure, 0.0), invF(shiftMapFactor, 0);
+912 
+913     generic\_assembly assem\_Source, assem\_Vx, assem\_Vy;
+914 
+915     \textcolor{keywordflow}{if} ( fracture->getMeshFEMPressure().get\_qdim() == 1 )
+916     \{
+917         \textcolor{keywordflow}{for} ( size\_type i = 0; i < shiftMapFactor; ++i )
+918         \{
+919             invF [ i ] = 1.0 / (fracture->getMagnificationMapFactor1(i));
+920         \}
+921 
+922         \textcolor{comment}{/*}
+923 \textcolor{comment}{         * assembla il termine noto}
+924 \textcolor{comment}{         * }
+925 \textcolor{comment}{         *      sum(i) \{ - (f\_i, q\_i) \}}
+926 \textcolor{comment}{         */}
+927         assem\_Source.set(\textcolor{stringliteral}{"w=data$1(#2);"} \textcolor{stringliteral}{"q=data$2(#2);"}
+928             \textcolor{stringliteral}{"a=comp(Base(#1).Base(#2).Base(#2));"}
+929             \textcolor{stringliteral}{"V(#1)+=a(:, k,j).w(k).q(j)"});
+930 
+931     \}
+932     \textcolor{keywordflow}{else}
+933     \{
+934         \textcolor{keywordflow}{for} ( size\_type i = 0; i < shiftMapFactor; ++i )
+935         \{
+936             invF [ i ] = 1.0 / (fracture->getMagnificationMapFactor1(i) * fracture->
       getMagnificationMapFactor2(i));
-767         \}
-768 
-769         assem\_Source.set(\textcolor{stringliteral}{"w=data$1(#2);"} \textcolor{stringliteral}{"q=data$2(#2);"}
-770             \textcolor{stringliteral}{"a=comp(Base(#1).Base(#2).Base(#2));"}
-771             \textcolor{stringliteral}{"V(#1)+=a(:, k,j).w(k).q(j)"});
-772 
-773     \}
-774 
-775     \textcolor{comment}{// Assign the M\_mediumMesh integration method}
-776     assem\_Source.push\_mi(fracture->getIntegrationMethodPressure());
-777 
-778     \textcolor{comment}{// Assign the M\_mediumMesh finite element space}
-779     assem\_Source.push\_mf(fracture->getMeshFEMPressure());
-780 
-781     \textcolor{comment}{// Assign the M\_mediumMesh finite element space for the coefficients}
-782     assem\_Source.push\_mf(fracture->getMeshFEMPressure());
-783     assem\_Source.push\_mf(fracture->getMeshFEMPressure());
-784 
-785     \textcolor{comment}{// Assign the coefficients}
-786     assem\_Source.push\_data(*source);
-787     assem\_Source.push\_data(invF);
-788 
-789     \textcolor{comment}{// Set the vector to save the evaluations}
-790     assem\_Source.push\_vec(D\_);
-791 
-792     \textcolor{comment}{// Computes the matrices}
-793     assem\_Source.assembly ( uncutRegionFlag );
-794 
-795     gmm::add(D\_, gmm::sub\_vector(*D, gmm::sub\_interval(0, shiftPressure)));
-796 
-797 \} \textcolor{comment}{// assembling\_Source\_BoundaryF}
+937         \}
+938 
+939         assem\_Source.set(\textcolor{stringliteral}{"w=data$1(#2);"} \textcolor{stringliteral}{"q=data$2(#2);"}
+940             \textcolor{stringliteral}{"a=comp(Base(#1).Base(#2).Base(#2));"}
+941             \textcolor{stringliteral}{"V(#1)+=a(:, k,j).w(k).q(j)"});
+942 
+943     \}
+944 
+945     \textcolor{comment}{// Assign the M\_mediumMesh integration method}
+946     assem\_Source.push\_mi(fracture->getIntegrationMethodPressure());
+947 
+948     \textcolor{comment}{// Assign the M\_mediumMesh finite element space}
+949     assem\_Source.push\_mf(fracture->getMeshFEMPressure());
+950 
+951     \textcolor{comment}{// Assign the M\_mediumMesh finite element space for the coefficients}
+952     assem\_Source.push\_mf(fracture->getMeshFEMPressure());
+953     assem\_Source.push\_mf(fracture->getMeshFEMPressure());
+954 
+955     \textcolor{comment}{// Assign the coefficients}
+956     assem\_Source.push\_data(*source);
+957     assem\_Source.push\_data(invF);
+958 
+959     \textcolor{comment}{// Set the vector to save the evaluations}
+960     assem\_Source.push\_vec(D\_);
+961 
+962     \textcolor{comment}{// Computes the matrices}
+963     assem\_Source.assembly ( uncutRegionFlag );
+964 
+965     gmm::add(D\_, gmm::sub\_vector(*D, gmm::sub\_interval(0, shiftPressure)));
+966 
+967 \} \textcolor{comment}{// assembling\_Source\_BoundaryF}
 \end{DoxyCode}
 \hypertarget{namespacegetfem_a5efeefe94dfb5427c3ecf63d0b342c57}{\index{getfem@{getfem}!assembling\-\_\-\-Source\-F@{assembling\-\_\-\-Source\-F}}
 \index{assembling\-\_\-\-Source\-F@{assembling\-\_\-\-Source\-F}!getfem@{getfem}}
@@ -133,100 +137,102 @@ R\-E\-M\-E\-M\-B\-E\-R\-: the matrix corresponding to a(u,v) is Aij = a(, )
 )}}\label{namespacegetfem_a5efeefe94dfb5427c3ecf63d0b342c57}
 
 \begin{DoxyCode}
-806 \{
-807     \textcolor{keyword}{const} size\_type shiftPressure = fracture->getMeshFEMPressure().nb\_dof();
-808     \textcolor{keyword}{const} size\_type shiftMapFactor = fracture->getMagnificationMapFactor1().size();
-809     \textcolor{keyword}{const} size\_type otherFractureId = otherFracture->getId();
-810     \hyperlink{LevelSetHandler_8h_aba343569cb3213c103252f69c39cad0b}{LevelSetHandlerPtr\_Type}& levelSetOtherFracture = otherFracture->getLevelSet();
-811 
-812     \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} DIn ( shiftPressure, 0.0 ), DOut ( shiftPressure, 0.0 ),
-813                       invF ( shiftMapFactor, 0 );
-814 
-815     generic\_assembly assemIn, assemOut;
-816 
-817     \textcolor{keywordflow}{for} ( size\_type i = 0; i < shiftMapFactor; ++i )
-818     \{
-819         invF [ i ] = 1.0 / (fracture->getMagnificationMapFactor1(i));
-820     \}
-821 
-822     assemIn.set( \textcolor{stringliteral}{"w=data$1(#2);"} \textcolor{stringliteral}{"q=data$2(#2);"}
-823                  \textcolor{stringliteral}{"a=comp(Base(#1).Base(#2).Base(#2));"}
-824                  \textcolor{stringliteral}{"V(#1)+=a(:, k,j).w(k).q(j)"} );
-825 
-826     assemOut.set( \textcolor{stringliteral}{"w=data$1(#2);"} \textcolor{stringliteral}{"q=data$2(#2);"}
-827                   \textcolor{stringliteral}{"a=comp(Base(#1).Base(#2).Base(#2));"}
-828                   \textcolor{stringliteral}{"V(#1)+=a(:, k,j).w(k).q(j)"} );
-829 
-830     \textcolor{keyword}{const} getfem::pintegration\_method intTypeIM = getfem::int\_method\_descriptor ( \textcolor{stringliteral}{"IM\_GAUSS1D(3)"} );
-831     getfem::mesh\_im\_level\_set meshImLevelSetOut ( *fracture->getMeshLevelSetIntersect ( otherFractureId ),
-832                                                   getfem::mesh\_im\_level\_set::INTEGRATE\_OUTSIDE );
-833 
-834     getfem::mesh\_im\_level\_set meshImLevelSetIn ( *fracture->getMeshLevelSetIntersect ( otherFractureId ),
-835                                                  getfem::mesh\_im\_level\_set::INTEGRATE\_INSIDE );
-836 
-837     meshImLevelSetOut.set\_integration\_method ( fracture->getMeshFlat().convex\_index(), intTypeIM );
-838     meshImLevelSetIn.set\_integration\_method ( fracture->getMeshFlat().convex\_index(), intTypeIM );
-839 
-840     meshImLevelSetOut.set\_simplex\_im ( intTypeIM );
-841     meshImLevelSetIn.set\_simplex\_im ( intTypeIM );
-842 
-843     \textcolor{comment}{// Assign the M\_mediumMesh integration method}
-844     assemIn.push\_mi ( meshImLevelSetIn );
-845     assemOut.push\_mi ( meshImLevelSetOut );
-846 
-847     \textcolor{comment}{// Assign the M\_mediumMesh finite element space}
-848     assemIn.push\_mf ( fracture->getMeshFEMPressure() );
-849     assemOut.push\_mf ( fracture->getMeshFEMPressure() );
-850 
-851     \textcolor{comment}{// Assign the M\_mediumMesh finite element space for the coefficients}
-852     assemIn.push\_mf ( fracture->getMeshFEMPressure() );
-853     assemIn.push\_mf ( fracture->getMeshFEMPressure() );
-854     assemOut.push\_mf ( fracture->getMeshFEMPressure() );
-855     assemOut.push\_mf ( fracture->getMeshFEMPressure() );
-856 
-857     \textcolor{comment}{// Assign the coefficients}
-858     assemIn.push\_data ( *source );
-859     assemIn.push\_data ( invF );
-860     assemOut.push\_data ( *source );
-861     assemOut.push\_data ( invF );
-862 
-863     \textcolor{comment}{// Set the vector to save the evaluations}
-864     assemIn.push\_vec ( DIn );
-865     assemOut.push\_vec ( DOut );
-866 
-867     \textcolor{comment}{// Computes the matrices}
-868     assemIn.assembly ( cutRegionFlag );
-869     assemOut.assembly ( cutRegionFlag );
-870 
-871     \textcolor{keyword}{const} \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{sizeVector\_Type}& extendedPressure = fracture->getExtendedPressure();
-872     \textcolor{keyword}{const} size\_type extendedNumPressure = fracture->getNumExtendedPressure();
-873 
-874     \textcolor{keywordflow}{for} ( size\_type i = 0; i < extendedNumPressure; ++i )
-875     \{
-876         \textcolor{keyword}{const} size\_type ii = extendedPressure [ i ];
-877         \textcolor{keyword}{const} base\_node pointFlat = fracture->getMeshFEMPressure().point\_of\_basic\_dof(ii);
-878         base\_node pointMapped(0,0);
-879         base\_node pointMapped1(0,0);
-880     scalar\_type t = ii*1./(fracture->getData().getSpatialDiscretization () );
-881         pointMapped[0] = t;
-882         pointMapped1[0] = pointFlat[0];
-883         pointMapped1[1] = fracture->getLevelSet()->getData()->y\_map( pointMapped );
-884         
-885     \textcolor{keyword}{const} scalar\_type levelSetValue = levelSetOtherFracture->getData()->ylevelSetFunction ( pointMapped1 );
-886 
-887         \textcolor{keywordflow}{if} ( levelSetValue < 0 )
-888         \{
-889             (*D) [ ii ] += DIn [ ii ];
-890             (*D) [ i + shiftPressure ] += DOut [ ii ];
-891         \}
-892         \textcolor{keywordflow}{else}
-893         \{
-894             (*D) [ ii ] += DOut [ ii ];
-895             (*D) [ i + shiftPressure ] += DIn [ ii ];
-896         \}
-897     \}
-898 
-899 \} \textcolor{comment}{// assembling\_SourceF}
+976 \{
+977     \textcolor{keyword}{const} size\_type shiftPressure = fracture->getMeshFEMPressure().nb\_dof();
+978     \textcolor{keyword}{const} size\_type shiftMapFactor = fracture->getMagnificationMapFactor1().size();
+979     \textcolor{keyword}{const} size\_type otherFractureId = otherFracture->getId();
+980     \hyperlink{LevelSetHandler_8h_aba343569cb3213c103252f69c39cad0b}{LevelSetHandlerPtr\_Type}& levelSetOtherFracture = otherFracture->getLevelSet();
+981 
+982     \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} DIn ( shiftPressure, 0.0 ), DOut ( shiftPressure, 0.0 ),
+983                       invF ( shiftMapFactor, 0 );
+984 
+985     generic\_assembly assemIn, assemOut;
+986 
+987     \textcolor{keywordflow}{for} ( size\_type i = 0; i < shiftMapFactor; ++i )
+988     \{
+989         invF [ i ] = 1.0 / (fracture->getMagnificationMapFactor1(i));
+990     \}
+991 
+992     assemIn.set( \textcolor{stringliteral}{"w=data$1(#2);"} \textcolor{stringliteral}{"q=data$2(#2);"}
+993                  \textcolor{stringliteral}{"a=comp(Base(#1).Base(#2).Base(#2));"}
+994                  \textcolor{stringliteral}{"V(#1)+=a(:, k,j).w(k).q(j)"} );
+995 
+996     assemOut.set( \textcolor{stringliteral}{"w=data$1(#2);"} \textcolor{stringliteral}{"q=data$2(#2);"}
+997                   \textcolor{stringliteral}{"a=comp(Base(#1).Base(#2).Base(#2));"}
+998                   \textcolor{stringliteral}{"V(#1)+=a(:, k,j).w(k).q(j)"} );
+999 
+1000     \textcolor{keyword}{const} getfem::pintegration\_method intTypeIM = getfem::int\_method\_descriptor ( \textcolor{stringliteral}{"IM\_GAUSS1D(3)"} );
+1001     getfem::mesh\_im\_level\_set meshImLevelSetOut ( *fracture->getMeshLevelSetIntersect ( otherFractureId ),
+1002                                                   getfem::mesh\_im\_level\_set::INTEGRATE\_OUTSIDE );
+1003 
+1004     getfem::mesh\_im\_level\_set meshImLevelSetIn ( *fracture->getMeshLevelSetIntersect ( otherFractureId ),
+1005                                                  getfem::mesh\_im\_level\_set::INTEGRATE\_INSIDE );
+1006 
+1007     meshImLevelSetOut.set\_integration\_method ( fracture->getMeshFlat().convex\_index(), intTypeIM );
+1008     meshImLevelSetIn.set\_integration\_method ( fracture->getMeshFlat().convex\_index(), intTypeIM );
+1009 
+1010     meshImLevelSetOut.set\_simplex\_im ( intTypeIM );
+1011     meshImLevelSetIn.set\_simplex\_im ( intTypeIM );
+1012 
+1013     \textcolor{comment}{// Assign the M\_mediumMesh integration method}
+1014     assemIn.push\_mi ( meshImLevelSetIn );
+1015     assemOut.push\_mi ( meshImLevelSetOut );
+1016 
+1017     \textcolor{comment}{// Assign the M\_mediumMesh finite element space}
+1018     assemIn.push\_mf ( fracture->getMeshFEMPressure() );
+1019     assemOut.push\_mf ( fracture->getMeshFEMPressure() );
+1020 
+1021     \textcolor{comment}{// Assign the M\_mediumMesh finite element space for the coefficients}
+1022     assemIn.push\_mf ( fracture->getMeshFEMPressure() );
+1023     assemIn.push\_mf ( fracture->getMeshFEMPressure() );
+1024     assemOut.push\_mf ( fracture->getMeshFEMPressure() );
+1025     assemOut.push\_mf ( fracture->getMeshFEMPressure() );
+1026 
+1027     \textcolor{comment}{// Assign the coefficients}
+1028     assemIn.push\_data ( *source );
+1029     assemIn.push\_data ( invF );
+1030     assemOut.push\_data ( *source );
+1031     assemOut.push\_data ( invF );
+1032 
+1033     \textcolor{comment}{// Set the vector to save the evaluations}
+1034     assemIn.push\_vec ( DIn );
+1035     assemOut.push\_vec ( DOut );
+1036 
+1037     \textcolor{comment}{// Computes the matrices}
+1038     assemIn.assembly ( cutRegionFlag );
+1039     assemOut.assembly ( cutRegionFlag );
+1040 
+1041     \textcolor{keyword}{const} \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{sizeVector\_Type}& extendedPressure = fracture->getExtendedPressure();
+1042     \textcolor{keyword}{const} size\_type extendedNumPressure = fracture->getNumExtendedPressure();
+1043 
+1044     \textcolor{keywordflow}{for} ( size\_type i = 0; i < extendedNumPressure; ++i )
+1045     \{
+1046         \textcolor{keyword}{const} size\_type ii = extendedPressure [ i ];
+1047         \textcolor{keyword}{const} base\_node pointFlat = fracture->getMeshFEMPressure().point\_of\_basic\_dof(ii);
+1048         
+1049         base\_node pointMapped(0,0);
+1050         base\_node pointMapped1(0,0);
+1051         scalar\_type t = ii*1./(fracture->getData().getSpatialDiscretization () );
+1052         pointMapped[0] = t;
+1053         pointMapped1[0] = pointFlat[0];
+1054         pointMapped1[1] = fracture->getLevelSet()->getData()->y\_map( pointMapped );
+1055         
+1056         \textcolor{keyword}{const} scalar\_type levelSetValue = levelSetOtherFracture->getData()->ylevelSetFunction ( 
+      pointMapped1 );
+1057 
+1058         \textcolor{keywordflow}{if} ( levelSetValue < 0 )
+1059         \{
+1060             (*D) [ ii ] += DIn [ ii ];
+1061             (*D) [ i + shiftPressure ] += DOut [ ii ];
+1062         \}
+1063         \textcolor{keywordflow}{else}
+1064         \{
+1065             (*D) [ ii ] += DOut [ ii ];
+1066             (*D) [ i + shiftPressure ] += DIn [ ii ];
+1067         \}
+1068     \}
+1069 
+1070 \} \textcolor{comment}{// assembling\_SourceF}
 \end{DoxyCode}
 \hypertarget{namespacegetfem_a9a0b9f7498668cda8b547b10ac914a34}{\index{getfem@{getfem}!couple\-Fractures@{couple\-Fractures}}
 \index{couple\-Fractures@{couple\-Fractures}!getfem@{getfem}}
@@ -238,44 +244,44 @@ R\-E\-M\-E\-M\-B\-E\-R\-: the matrix corresponding to a(u,v) is Aij = a(, )
 )}}\label{namespacegetfem_a9a0b9f7498668cda8b547b10ac914a34}
 
 \begin{DoxyCode}
-903 \{
-904     \textcolor{keyword}{const} size\_type numFractures = fractures->getNumberFractures ();
-905     
-906     \textcolor{keyword}{const} size\_type numCross = fractures-> getIntersections ()-> getNumberCross ();
-907     \textcolor{keyword}{const} size\_type numBifurcation = fractures-> getIntersections ()-> getNumberBifurcation ();
-908 
-909     \textcolor{keywordflow}{for} ( size\_type i = 0; i < numFractures; ++i )
-910     \{
-911         \textcolor{keyword}{const} \hyperlink{FractureHandler_8h_af23fb7a30aaff864bd42587af4f1e78a}{FractureHandlerPtr\_Type}& fracture = fractures->getFracture(i);
-912         \textcolor{keyword}{const} \hyperlink{Core_8h_a9bc476e433f99b82a9c2b8560735c7b5}{pairSizeVectorContainer\_Type}& intersectElementsGlobalIndex = 
+1074 \{
+1075     \textcolor{keyword}{const} size\_type numFractures = fractures->getNumberFractures ();
+1076     
+1077     \textcolor{keyword}{const} size\_type numCross = fractures-> getIntersections ()-> getNumberCross ();
+1078     \textcolor{keyword}{const} size\_type numBifurcation = fractures-> getIntersections ()-> getNumberBifurcation ();
+1079 
+1080     \textcolor{keywordflow}{for} ( size\_type i = 0; i < numFractures; ++i )
+1081     \{
+1082         \textcolor{keyword}{const} \hyperlink{FractureHandler_8h_af23fb7a30aaff864bd42587af4f1e78a}{FractureHandlerPtr\_Type}& fracture = fractures->getFracture(i);
+1083         \textcolor{keyword}{const} \hyperlink{Core_8h_a9bc476e433f99b82a9c2b8560735c7b5}{pairSizeVectorContainer\_Type}& intersectElementsGlobalIndex = 
       fracture->getFractureIntersectElementsGlobalIndex ();
-913 
-914         \textcolor{keywordflow}{for} ( size\_type j = 0; j < numFractures; ++j )
-915         \{
-916             \textcolor{keyword}{const} size\_type numIntersections = intersectElementsGlobalIndex [j].size();
-917             \textcolor{keywordflow}{for} ( size\_type k = 0; k < numIntersections; ++k )
-918             \{
-919                 \textcolor{keyword}{const} size\_type first = intersectElementsGlobalIndex [j] [k].first;
-920                 \textcolor{keyword}{const} size\_type second = intersectElementsGlobalIndex [j] [k].second;
-921                 
-922                 \textcolor{keywordflow}{if} ( first < numCross )
-923                 \{
-924                     (*M)( first, first ) = 1;
-925                     (*M)( first, second ) = -1;
-926                 \}
-927                 
-928                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (first >= 2*numCross && first < 2*numCross + 5*numBifurcation )
-929                 \{
-930                     (*M)( first, first ) = 1;
-931                     (*M)( first, second ) = -1;
-932                     
-933                 \}
-934                 
-935             \}
-936         \}
-937     \}
-938 
-939 \} \textcolor{comment}{// coupleFractures}
+1084 
+1085         \textcolor{keywordflow}{for} ( size\_type j = 0; j < numFractures; ++j )
+1086         \{
+1087             \textcolor{keyword}{const} size\_type numIntersections = intersectElementsGlobalIndex [j].size();
+1088             \textcolor{keywordflow}{for} ( size\_type k = 0; k < numIntersections; ++k )
+1089             \{
+1090                 \textcolor{keyword}{const} size\_type first = intersectElementsGlobalIndex [j] [k].first;
+1091                 \textcolor{keyword}{const} size\_type second = intersectElementsGlobalIndex [j] [k].second;
+1092                 
+1093                 \textcolor{keywordflow}{if} ( first < numCross )
+1094                 \{
+1095                     (*M)( first, first ) = 1;
+1096                     (*M)( first, second ) = -1;
+1097                 \}
+1098                 
+1099                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (first >= 2*numCross && first < 2*numCross + 5*numBifurcation )
+1100                 \{
+1101                     (*M)( first, first ) = 1;
+1102                     (*M)( first, second ) = -1;
+1103                     
+1104                 \}
+1105                 
+1106             \}
+1107         \}
+1108     \}
+1109 
+1110 \} \textcolor{comment}{// coupleFractures}
 \end{DoxyCode}
 \hypertarget{namespacegetfem_aba6f1b4f1d395aae3d96071cad4953a2}{\index{getfem@{getfem}!darcy\-\_\-\-A11\-F@{darcy\-\_\-\-A11\-F}}
 \index{darcy\-\_\-\-A11\-F@{darcy\-\_\-\-A11\-F}!getfem@{getfem}}
@@ -452,6 +458,106 @@ The integration method used inside comp(Base(\#1).Base(\#2)) is taken from mim.
 206     cout << \textcolor{stringliteral}{"DARCY :: operator a(surface)     [OK]"} << endl;
 207 
 208 \} \textcolor{comment}{// darcy\_A11F}
+\end{DoxyCode}
+\hypertarget{namespacegetfem_a5e7b6fdaa0e505514d42982b3a33b69b}{\index{getfem@{getfem}!darcy\-\_\-\-A11\-F\-\_\-\-Bifurcation@{darcy\-\_\-\-A11\-F\-\_\-\-Bifurcation}}
+\index{darcy\-\_\-\-A11\-F\-\_\-\-Bifurcation@{darcy\-\_\-\-A11\-F\-\_\-\-Bifurcation}!getfem@{getfem}}
+\subsubsection[{darcy\-\_\-\-A11\-F\-\_\-\-Bifurcation}]{\setlength{\rightskip}{0pt plus 5cm}void getfem\-::darcy\-\_\-\-A11\-F\-\_\-\-Bifurcation (
+\begin{DoxyParamCaption}
+\item[{{\bf sparse\-Matrix\-Ptr\-\_\-\-Type} \&}]{M, }
+\item[{const {\bf Fracture\-Handler\-Ptr\-\_\-\-Type} \&}]{fracture, }
+\item[{const {\bf scalar\-Vector\-\_\-\-Type} \&}]{inv\-K\-Tangential\-Interpolated, }
+\item[{const {\bf Fracture\-Handler\-Ptr\-\_\-\-Type} \&}]{other\-Fracture, }
+\item[{const size\-\_\-type \&}]{cut\-Region\-Flag}
+\end{DoxyParamCaption}
+)}}\label{namespacegetfem_a5e7b6fdaa0e505514d42982b3a33b69b}
+
+\begin{DoxyCode}
+420 \{
+421     \textcolor{keyword}{const} size\_type shiftVelocity = fracture->getMeshFEMVelocity().nb\_dof();
+422     \hyperlink{Core_8h_afba9f623673e2ae32054015bdb5500f9}{sparseMatrix\_Type} M\_;
+423     gmm::resize(M\_, shiftVelocity, shiftVelocity);
+424     gmm::clear(M\_);
+425 
+426     \textcolor{keyword}{const} size\_type otherFractureId = otherFracture->getId();
+427     \hyperlink{LevelSetHandler_8h_aba343569cb3213c103252f69c39cad0b}{LevelSetHandlerPtr\_Type}& levelSetOtherFracture = otherFracture->getLevelSet();
+428 
+429     \textcolor{keyword}{const} size\_type shiftMapFactor = fracture->getMagnificationMapFactor1().size();
+430 
+431     generic\_assembly assem;
+432     
+433     \textcolor{comment}{// Computes the integral \{u dot n\}\{v dot n\}}
+434 
+435     \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} otherFractureEtaNormal ( fracture->getMeshFEMPressure().nb\_dof(), 0.
+       );
+436 
+437     \textcolor{keywordflow}{for} ( size\_type i = 0; i < fracture->getMeshFEMPressure().nb\_dof(); ++i )
+438     \{
+439         base\_node nodo = fracture->getMeshFEMPressure().point\_of\_basic\_dof( i );
+440         otherFractureEtaNormal [ i ] = otherFracture->getData().getEtaNormal () *
+441                     otherFracture->getData().etaNormalDistribution ( nodo ) / fracture->getData().
+      getThickness();
+442     \}
+443 
+444     assem.set(\textcolor{stringliteral}{"w=data(#2);"}
+445               \textcolor{stringliteral}{"a=comp(vBase(#1).NonLin(#3).vBase(#1).NonLin(#3).Base(#2));"}
+446               \textcolor{stringliteral}{"M(#1,#1)+=a(:,j,j,:,i,i,k).w(k);"});
+447 
+448     level\_set\_unit\_normal nterm ( fracture->getMeshLevelSetIntersect ( otherFractureId )->get\_level\_set(0)
+      ->get\_mesh\_fem(),
+449                                   fracture->getMeshLevelSetIntersect ( otherFractureId )->get\_level\_set(0)
+      ->values() );
+450 
+451     \textcolor{keyword}{const} getfem::pintegration\_method intTypeIM = getfem::int\_method\_descriptor ( \textcolor{stringliteral}{"IM\_GAUSS1D(3)"} );
+452     
+453     getfem::mesh\_im\_level\_set meshImLevel ( *fracture->getMeshLevelSetIntersect ( otherFractureId ), 
+      getfem::mesh\_im\_level\_set::INTEGRATE\_BOUNDARY );
+454 
+455     meshImLevel.set\_integration\_method ( fracture->getMeshFlat().convex\_index(), intTypeIM );
+456 
+457     meshImLevel.set\_simplex\_im ( intTypeIM );
+458 
+459     \textcolor{comment}{// Assign the mesh integration method}
+460     assem.push\_mi ( meshImLevel );
+461 
+462     \textcolor{comment}{// Assign the mesh finite element space}
+463     assem.push\_mf ( fracture->getMeshFEMVelocity() );
+464     assem.push\_mf ( fracture->getMeshFEMPressure() );
+465 
+466     \textcolor{comment}{// Assign the non linear term}
+467     assem.push\_nonlinear\_term ( &nterm );
+468 
+469     \textcolor{comment}{// Assign the mesh finite element space for the coefficients}
+470     assem.push\_mf ( fracture->getMeshLevelSetIntersect ( otherFractureId )->get\_level\_set(0)->get\_mesh\_fem(
+      ) );
+471 
+472     \textcolor{comment}{// Assign the coefficients}
+473     assem.push\_data ( otherFractureEtaNormal ); \textcolor{comment}{//  CONTROLLARE CHE SIA GIUSTO}
+474 
+475     \textcolor{comment}{// Set the matrices to save the evaluations}
+476     assem.push\_mat ( M\_ );
+477 
+478     \textcolor{comment}{// Computes the matrices}
+479     assem.assembly ( cutRegionFlag );
+480 
+481     \textcolor{comment}{// Add the extended degrees of freedom}
+482     \textcolor{comment}{// Update the extended degrees of freedom}
+483     \textcolor{keyword}{const} \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{sizeVector\_Type}& extendedVelocity = fracture->getExtendedVelocity();
+484     \textcolor{keyword}{const} size\_type extendedNumVelocity = fracture->getNumExtendedVelocity();
+485 
+486     \textcolor{keywordflow}{for} ( size\_type i = 0; i < extendedNumVelocity; ++i )
+487     \{
+488         \textcolor{keyword}{const} size\_type ii = extendedVelocity [ i ];
+489         \textcolor{keywordflow}{for} ( size\_type j = 0; j < extendedNumVelocity; ++j )
+490         \{
+491             \textcolor{keyword}{const} size\_type jj = extendedVelocity [ j ];
+492             (*M)(ii, jj) +=  0.5* M\_(ii, jj);
+493             (*M)(i + shiftVelocity, j + shiftVelocity) +=  M\_(ii, jj);
+494             (*M)(i + shiftVelocity, jj) += 0.5 * M\_(ii, jj);
+495             (*M)(ii, j + shiftVelocity) += M\_(ii, jj);
+496         \}
+497     \}
+498     
+499 \}\textcolor{comment}{// darcy\_A11F\_Bifurcation}
 \end{DoxyCode}
 \hypertarget{namespacegetfem_a9b6ded8fe1019aa04e66d2047d0f29dd}{\index{getfem@{getfem}!darcy\-\_\-\-A11\-F\-\_\-\-Cross@{darcy\-\_\-\-A11\-F\-\_\-\-Cross}}
 \index{darcy\-\_\-\-A11\-F\-\_\-\-Cross@{darcy\-\_\-\-A11\-F\-\_\-\-Cross}!getfem@{getfem}}
@@ -666,7 +772,7 @@ The integration method used inside comp(Base(\#1).Base(\#2)) is taken from mim.
 407         \}
 408     \}
 409 
-410 \} \textcolor{comment}{// darcy\_A11F}
+410 \} \textcolor{comment}{// darcy\_A11F\_Cross}
 \end{DoxyCode}
 \hypertarget{namespacegetfem_ab62aa98cfcf55810e1518906202cbedc}{\index{getfem@{getfem}!darcy\-\_\-\-A12\-F@{darcy\-\_\-\-A12\-F}}
 \index{darcy\-\_\-\-A12\-F@{darcy\-\_\-\-A12\-F}!getfem@{getfem}}
@@ -679,61 +785,150 @@ The integration method used inside comp(Base(\#1).Base(\#2)) is taken from mim.
 )}}\label{namespacegetfem_ab62aa98cfcf55810e1518906202cbedc}
 
 \begin{DoxyCode}
-418 \{
-419     \textcolor{keyword}{const} size\_type velocityShift = fracture->getMeshFEMVelocity().nb\_dof();
-420     \textcolor{keyword}{const} size\_type pressureShift = fracture->getMeshFEMPressure().nb\_dof();
-421 
-422     \hyperlink{Core_8h_afba9f623673e2ae32054015bdb5500f9}{sparseMatrix\_Type} M\_;
-423 
-424     gmm::resize(M\_, velocityShift, pressureShift);
-425     gmm::clear(M\_);
-426 
-427     \textcolor{comment}{// Volume integration}
-428     getfem::generic\_assembly assem;
-429 
-430     \textcolor{keywordflow}{if} ( fracture->getMeshFEMVelocity().get\_qdim() == 1 )
-431     \{
-432         \textcolor{comment}{/*}
-433 \textcolor{comment}{         * definisce la forma bilineare}
-434 \textcolor{comment}{         * }
-435 \textcolor{comment}{         *      b\_i(q,w) = - (q, div(w))\_L2}
-436 \textcolor{comment}{         *  }
-437 \textcolor{comment}{         *  w funzione test per la velocità}
-438 \textcolor{comment}{         *  q funzione test per la pressione}
-439 \textcolor{comment}{         *  }
-440 \textcolor{comment}{         */}
-441         assem.set(\textcolor{stringliteral}{"M(#1,#2)+=-comp(vGrad(#1).Base(#2))"} \textcolor{stringliteral}{"(:, i,i,:);"}); \textcolor{comment}{// ma non ci va un prodotto scalare
+506 \{
+507     \textcolor{keyword}{const} size\_type velocityShift = fracture->getMeshFEMVelocity().nb\_dof();
+508     \textcolor{keyword}{const} size\_type pressureShift = fracture->getMeshFEMPressure().nb\_dof();
+509 
+510     \hyperlink{Core_8h_afba9f623673e2ae32054015bdb5500f9}{sparseMatrix\_Type} M\_;
+511 
+512     gmm::resize(M\_, velocityShift, pressureShift);
+513     gmm::clear(M\_);
+514 
+515     \textcolor{comment}{// Volume integration}
+516     getfem::generic\_assembly assem;
+517 
+518     \textcolor{keywordflow}{if} ( fracture->getMeshFEMVelocity().get\_qdim() == 1 )
+519     \{
+520         \textcolor{comment}{/*}
+521 \textcolor{comment}{         * definisce la forma bilineare}
+522 \textcolor{comment}{         * }
+523 \textcolor{comment}{         *      b\_i(q,w) = - (q, div(w))\_L2}
+524 \textcolor{comment}{         *  }
+525 \textcolor{comment}{         *  w funzione test per la velocità}
+526 \textcolor{comment}{         *  q funzione test per la pressione}
+527 \textcolor{comment}{         *  }
+528 \textcolor{comment}{         */}
+529         assem.set(\textcolor{stringliteral}{"M(#1,#2)+=-comp(vGrad(#1).Base(#2))"} \textcolor{stringliteral}{"(:, i,i,:);"}); \textcolor{comment}{// ma non ci va un prodotto scalare
        in L2?}
-442     \}
-443     \textcolor{keywordflow}{else}
-444     \{
-445         assem.set(\textcolor{stringliteral}{"M(#1,#2)+=-comp(vGrad(#1).Base(#2))"} \textcolor{stringliteral}{"(:,i,i, :);"});
-446     \}
-447 
-448     \textcolor{comment}{// Assign the M\_mediumMesh integration method}
-449     assem.push\_mi(fracture->getIntegrationMethodVelocity());
-450 
-451     \textcolor{comment}{// Assign the M\_mediumMesh finite element space}
-452     assem.push\_mf(fracture->getMeshFEMVelocity());
-453     assem.push\_mf(fracture->getMeshFEMPressure());
-454 
-455     \textcolor{comment}{// Set the matrices to save the evaluations}
-456     assem.push\_mat(M\_);
-457 
-458     \textcolor{comment}{// Computes the matrices}
-459     assem.assembly ( uncutRegionFlag );
-460 
-461     \textcolor{keywordflow}{for} ( size\_type i = 0; i < velocityShift; ++i )
-462     \{
-463         \textcolor{keywordflow}{for} ( size\_type j = 0; j < pressureShift; ++j )
-464         \{
-465             (*M)(i, j) = M\_(i, j);
-466         \}
-467     \};
-468 
-469     cout << \textcolor{stringliteral}{"DARCY :: operator b(volumic)     [OK]"} << endl;
-470 
-471 \} \textcolor{comment}{// darcy\_A12F}
+530     \}
+531     \textcolor{keywordflow}{else}
+532     \{
+533         assem.set(\textcolor{stringliteral}{"M(#1,#2)+=-comp(vGrad(#1).Base(#2))"} \textcolor{stringliteral}{"(:,i,i, :);"});
+534     \}
+535 
+536     \textcolor{comment}{// Assign the M\_mediumMesh integration method}
+537     assem.push\_mi(fracture->getIntegrationMethodVelocity());
+538 
+539     \textcolor{comment}{// Assign the M\_mediumMesh finite element space}
+540     assem.push\_mf(fracture->getMeshFEMVelocity());
+541     assem.push\_mf(fracture->getMeshFEMPressure());
+542 
+543     \textcolor{comment}{// Set the matrices to save the evaluations}
+544     assem.push\_mat(M\_);
+545 
+546     \textcolor{comment}{// Computes the matrices}
+547     assem.assembly ( uncutRegionFlag );
+548 
+549     \textcolor{keywordflow}{for} ( size\_type i = 0; i < velocityShift; ++i )
+550     \{
+551         \textcolor{keywordflow}{for} ( size\_type j = 0; j < pressureShift; ++j )
+552         \{
+553             (*M)(i, j) = M\_(i, j);
+554         \}
+555     \};
+556 
+557     cout << \textcolor{stringliteral}{"DARCY :: operator b(volumic)     [OK]"} << endl;
+558 
+559 \} \textcolor{comment}{// darcy\_A12F}
+\end{DoxyCode}
+\hypertarget{namespacegetfem_a8ec373049ba9d4784a98751bc4134221}{\index{getfem@{getfem}!darcy\-\_\-\-A12\-F\-\_\-\-Bifurcation@{darcy\-\_\-\-A12\-F\-\_\-\-Bifurcation}}
+\index{darcy\-\_\-\-A12\-F\-\_\-\-Bifurcation@{darcy\-\_\-\-A12\-F\-\_\-\-Bifurcation}!getfem@{getfem}}
+\subsubsection[{darcy\-\_\-\-A12\-F\-\_\-\-Bifurcation}]{\setlength{\rightskip}{0pt plus 5cm}void getfem\-::darcy\-\_\-\-A12\-F\-\_\-\-Bifurcation (
+\begin{DoxyParamCaption}
+\item[{{\bf sparse\-Matrix\-Ptr\-\_\-\-Type} \&}]{M, }
+\item[{const {\bf Fracture\-Handler\-Ptr\-\_\-\-Type} \&}]{fracture, }
+\item[{const {\bf Fracture\-Handler\-Ptr\-\_\-\-Type} \&}]{other\-Fracture, }
+\item[{const size\-\_\-type \&}]{cut\-Region\-Flag}
+\end{DoxyParamCaption}
+)}}\label{namespacegetfem_a8ec373049ba9d4784a98751bc4134221}
+
+\begin{DoxyCode}
+691 \{
+692     \textcolor{keyword}{const} size\_type velocityShift = fracture->getMeshFEMVelocity().nb\_dof();
+693     \textcolor{keyword}{const} size\_type pressureShift = fracture->getMeshFEMPressure().nb\_dof();
+694 
+695     \hyperlink{Core_8h_afba9f623673e2ae32054015bdb5500f9}{sparseMatrix\_Type} M\_;
+696 
+697     gmm::resize(M\_, velocityShift, pressureShift);
+698     gmm::clear(M\_);
+699 
+700     \textcolor{keyword}{const} size\_type otherFractureId = otherFracture->getId();
+701     \hyperlink{LevelSetHandler_8h_aba343569cb3213c103252f69c39cad0b}{LevelSetHandlerPtr\_Type}& levelSetOtherFracture = otherFracture->getLevelSet();
+702 
+703     \textcolor{comment}{// Volume integration}
+704     getfem::generic\_assembly assem;
+705 
+706     assem.set(\textcolor{stringliteral}{"M(#1,#2)+=-comp(vBase(#1).NonLin(#3).Base(#2))"}
+707                 \textcolor{stringliteral}{"(:, i,i,:);"});
+708 
+709     level\_set\_unit\_normal nterm ( fracture->getMeshLevelSetIntersect ( otherFractureId )->get\_level\_set(0)
+      ->get\_mesh\_fem(),
+710                                   fracture->getMeshLevelSetIntersect ( otherFractureId )->get\_level\_set(0)
+      ->values() );
+711     
+712     \textcolor{keyword}{const} getfem::pintegration\_method intTypeIM = getfem::int\_method\_descriptor ( \textcolor{stringliteral}{"IM\_GAUSS1D(3)"} );
+713     
+714     getfem::mesh\_im\_level\_set meshIm ( *fracture->getMeshLevelSetIntersect ( otherFractureId ),
+715                                             getfem::mesh\_im\_level\_set::INTEGRATE\_BOUNDARY );
+716 
+717 
+718     meshIm.set\_integration\_method ( fracture->getMeshFlat().convex\_index(), intTypeIM );
+719 
+720     meshIm.set\_simplex\_im ( intTypeIM );
+721 
+722     \textcolor{comment}{// Assign the mesh integration method}
+723     assem.push\_mi ( meshIm );
+724 
+725     \textcolor{comment}{// Assign the M\_mediumMesh finite element space}
+726     assem.push\_mf ( fracture->getMeshFEMVelocity() );
+727     assem.push\_mf ( fracture->getMeshFEMPressure() );
+728     
+729     \textcolor{comment}{// Assign the non linear term}
+730     assem.push\_nonlinear\_term ( &nterm );
+731 
+732     \textcolor{comment}{// Assign the mesh finite element space for the coefficients}
+733     assem.push\_mf ( fracture->getMeshLevelSetIntersect ( otherFractureId )->get\_level\_set(0)->get\_mesh\_fem(
+      ) );
+734 
+735     \textcolor{comment}{// Set the matrices to save the evaluations}
+736     assem.push\_mat ( M\_ );
+737 
+738     \textcolor{comment}{// Computes the matrices}
+739     assem.assembly ( cutRegionFlag );
+740 
+741     \textcolor{comment}{// Update the extended degrees of freedom}
+742     \textcolor{keyword}{const} \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{sizeVector\_Type}& extendedVelocity = fracture->getExtendedVelocity();
+743     \textcolor{keyword}{const} size\_type extendedNumVelocity = fracture->getNumExtendedVelocity();
+744     \textcolor{keyword}{const} \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{sizeVector\_Type}& extendedPressure = fracture->getExtendedPressure();
+745     \textcolor{keyword}{const} size\_type extendedNumPressure = fracture->getNumExtendedPressure();
+746 
+747  
+748     \textcolor{keywordflow}{for} ( size\_type i = 0; i < extendedNumVelocity; ++i )
+749     \{
+750         \textcolor{keyword}{const} size\_type ii = extendedVelocity [ i ];
+751 
+752         \textcolor{keywordflow}{for} ( size\_type j = 0; j < extendedNumPressure; ++j )
+753         \{
+754             \textcolor{keyword}{const} size\_type jj = extendedPressure [ j ];
+755 
+756             (*M)(ii, jj) += 0.5*M\_ ( ii, jj );
+757             (*M)(i + velocityShift, j + pressureShift) += M\_ ( ii, jj );
+758             (*M)(i + velocityShift, jj) += 0.5* M\_(ii, jj);
+759             (*M)(ii, j + pressureShift) += M\_(ii, jj);
+760         \}
+761     \}
+762 
+763 \} \textcolor{comment}{// darcy\_A12F\_Bifurcation}
 \end{DoxyCode}
 \hypertarget{namespacegetfem_a88df6c0cb0765d5ab0fae27679cd30f4}{\index{getfem@{getfem}!darcy\-\_\-\-A12\-F\-\_\-\-Cross@{darcy\-\_\-\-A12\-F\-\_\-\-Cross}}
 \index{darcy\-\_\-\-A12\-F\-\_\-\-Cross@{darcy\-\_\-\-A12\-F\-\_\-\-Cross}!getfem@{getfem}}
@@ -747,123 +942,125 @@ The integration method used inside comp(Base(\#1).Base(\#2)) is taken from mim.
 )}}\label{namespacegetfem_a88df6c0cb0765d5ab0fae27679cd30f4}
 
 \begin{DoxyCode}
-479 \{
-480     \textcolor{keyword}{const} size\_type velocityShift = fracture->getMeshFEMVelocity().nb\_dof();
-481     \textcolor{keyword}{const} size\_type pressureShift = fracture->getMeshFEMPressure().nb\_dof();
-482 
-483     \hyperlink{Core_8h_afba9f623673e2ae32054015bdb5500f9}{sparseMatrix\_Type} MIn, MOut;
-484 
-485     gmm::resize(MIn, velocityShift, pressureShift);
-486     gmm::clear(MIn);
-487     gmm::resize(MOut, velocityShift, pressureShift);
-488     gmm::clear(MOut);
-489 
-490     \textcolor{keyword}{const} size\_type otherFractureId = otherFracture->getId();
-491     \hyperlink{LevelSetHandler_8h_aba343569cb3213c103252f69c39cad0b}{LevelSetHandlerPtr\_Type}& levelSetOtherFracture = otherFracture->getLevelSet();
-492 
-493     \textcolor{comment}{// Volume integration}
-494     getfem::generic\_assembly assemIn, assemOut;
-495 
-496     assemIn.set(\textcolor{stringliteral}{"M(#1,#2)+=-comp(vGrad(#1).Base(#2))"}
-497                 \textcolor{stringliteral}{"(:, i,i,:);"});
-498     assemOut.set(\textcolor{stringliteral}{"M(#1,#2)+=-comp(vGrad(#1).Base(#2))"}
-499                  \textcolor{stringliteral}{"(:, i,i,:);"});
-500 
-501     \textcolor{keyword}{const} getfem::pintegration\_method intTypeIM = getfem::int\_method\_descriptor ( \textcolor{stringliteral}{"IM\_GAUSS1D(3)"} );
-502     getfem::mesh\_im\_level\_set meshImLevelSetOut ( *fracture->getMeshLevelSetIntersect ( otherFractureId ),
-503                                                   getfem::mesh\_im\_level\_set::INTEGRATE\_OUTSIDE );
-504 
-505     getfem::mesh\_im\_level\_set meshImLevelSetIn ( *fracture->getMeshLevelSetIntersect ( otherFractureId ),
-506                                                  getfem::mesh\_im\_level\_set::INTEGRATE\_INSIDE );
-507 
-508     meshImLevelSetOut.set\_integration\_method ( fracture->getMeshFlat().convex\_index(), intTypeIM );
-509     meshImLevelSetIn.set\_integration\_method ( fracture->getMeshFlat().convex\_index(), intTypeIM );
-510 
-511     meshImLevelSetOut.set\_simplex\_im ( intTypeIM );
-512     meshImLevelSetIn.set\_simplex\_im ( intTypeIM );
-513 
-514     \textcolor{comment}{// Assign the mesh integration method}
-515     assemIn.push\_mi ( meshImLevelSetIn );
-516     assemOut.push\_mi ( meshImLevelSetOut );
-517 
-518     \textcolor{comment}{// Assign the M\_mediumMesh finite element space}
-519     assemIn.push\_mf ( fracture->getMeshFEMVelocity() );
-520     assemIn.push\_mf ( fracture->getMeshFEMPressure() );
-521 
-522     assemOut.push\_mf ( fracture->getMeshFEMVelocity() );
-523     assemOut.push\_mf ( fracture->getMeshFEMPressure() );
-524 
-525     \textcolor{comment}{// Set the matrices to save the evaluations}
-526     assemIn.push\_mat ( MIn );
-527     assemOut.push\_mat ( MOut );
-528 
-529     \textcolor{comment}{// Computes the matrices}
-530     assemIn.assembly ( cutRegionFlag );
-531     assemOut.assembly ( cutRegionFlag );
-532 
-533     \textcolor{comment}{// Update the extended degrees of freedom}
-534     \textcolor{keyword}{const} \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{sizeVector\_Type}& extendedVelocity = fracture->getExtendedVelocity();
-535     \textcolor{keyword}{const} size\_type extendedNumVelocity = fracture->getNumExtendedVelocity();
-536     \textcolor{keyword}{const} \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{sizeVector\_Type}& extendedPressure = fracture->getExtendedPressure();
-537     \textcolor{keyword}{const} size\_type extendedNumPressure = fracture->getNumExtendedPressure();
-538 
-539     \textcolor{keywordflow}{for} ( size\_type i = 0; i < extendedNumVelocity; ++i )
-540     \{
-541         \textcolor{keyword}{const} size\_type ii = extendedVelocity [ i ];
-542         \textcolor{keyword}{const} base\_node pointFlat = fracture->getMeshFEMVelocity().point\_of\_basic\_dof(ii);
-543         base\_node pointMapped(0,0);
-544         base\_node pointMapped1(0,0);
-545     scalar\_type t = ii*1./(fracture->getData().getSpatialDiscretization () );
-546         pointMapped[0] = t;
-547         pointMapped1[0] = pointFlat[0];
-548         pointMapped1[1] = fracture->getLevelSet()->getData()->y\_map( pointMapped );
-549 
-550         \textcolor{keyword}{const} scalar\_type levelSetValue1 = levelSetOtherFracture->getData()->ylevelSetFunction ( 
-      pointMapped1 );
-551 
-552         \textcolor{keywordflow}{for} ( size\_type j = 0; j < extendedNumPressure; ++j )
-553         \{
-554             \textcolor{keyword}{const} size\_type jj = extendedPressure [ j ];
-555             \textcolor{keyword}{const} base\_node pointFlat = fracture->getMeshFEMPressure().point\_of\_basic\_dof(jj);
-556             base\_node pointMapped(0,0);
-557             base\_node pointMapped1(0,0);
-558             scalar\_type t = jj*1./(fracture->getData().getSpatialDiscretization () );
-559             pointMapped[0] = t;
-560             pointMapped1[0] = pointFlat[0];
-561             pointMapped1[1] = fracture->getLevelSet()->getData()->y\_map( pointMapped );
-562            
-563         \textcolor{keyword}{const} scalar\_type levelSetValue2 = levelSetOtherFracture->getData()->ylevelSetFunction ( 
-      pointMapped1 );
-564 
-565             \textcolor{keywordflow}{if} ( levelSetValue1 < 0 && levelSetValue2 < 0 )
-566             \{
-567                 \textcolor{comment}{// i and j are both In}
-568                 (*M)(ii, jj) += MIn ( ii, jj );
-569                 (*M)(i + velocityShift, j + pressureShift) += MOut ( ii, jj );
-570             \}
-571 
-572             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ( levelSetValue1 >= 0 && levelSetValue2 >= 0 )
-573             \{
-574                 \textcolor{comment}{// i and j are both Out}
-575                 (*M)(ii, jj) += MOut(ii, jj);
-576                 (*M)(i + velocityShift, j + pressureShift) += MIn(ii, jj);
-577             \}
-578             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ( levelSetValue1 < 0 && levelSetValue2 >= 0 )
-579             \{
-580                 \textcolor{comment}{// i is In, j is Out}
-581                 (*M)(ii, j + pressureShift) += MIn(ii, jj);
-582                 (*M)(i + velocityShift, jj) += MOut(ii, jj);
-583             \}
-584             \textcolor{keywordflow}{else}
-585             \{
-586                 \textcolor{comment}{// i is Out, j is In}
-587                 (*M)(i + velocityShift, jj) += MIn(ii, jj);
-588                 (*M)(ii, j + pressureShift) += MOut(ii, jj);
-589             \}
-590         \}
-591     \}
+567 \{
+568     \textcolor{keyword}{const} size\_type velocityShift = fracture->getMeshFEMVelocity().nb\_dof();
+569     \textcolor{keyword}{const} size\_type pressureShift = fracture->getMeshFEMPressure().nb\_dof();
+570 
+571     \hyperlink{Core_8h_afba9f623673e2ae32054015bdb5500f9}{sparseMatrix\_Type} MIn, MOut;
+572 
+573     gmm::resize(MIn, velocityShift, pressureShift);
+574     gmm::clear(MIn);
+575     gmm::resize(MOut, velocityShift, pressureShift);
+576     gmm::clear(MOut);
+577 
+578     \textcolor{keyword}{const} size\_type otherFractureId = otherFracture->getId();
+579     \hyperlink{LevelSetHandler_8h_aba343569cb3213c103252f69c39cad0b}{LevelSetHandlerPtr\_Type}& levelSetOtherFracture = otherFracture->getLevelSet();
+580 
+581     \textcolor{comment}{// Volume integration}
+582     getfem::generic\_assembly assemIn, assemOut;
+583 
+584     assemIn.set(\textcolor{stringliteral}{"M(#1,#2)+=-comp(vGrad(#1).Base(#2))"}
+585                 \textcolor{stringliteral}{"(:, i,i,:);"});
+586     assemOut.set(\textcolor{stringliteral}{"M(#1,#2)+=-comp(vGrad(#1).Base(#2))"}
+587                  \textcolor{stringliteral}{"(:, i,i,:);"});
+588 
+589     \textcolor{keyword}{const} getfem::pintegration\_method intTypeIM = getfem::int\_method\_descriptor ( \textcolor{stringliteral}{"IM\_GAUSS1D(3)"} );
+590     getfem::mesh\_im\_level\_set meshImLevelSetOut ( *fracture->getMeshLevelSetIntersect ( otherFractureId ),
+591                                                   getfem::mesh\_im\_level\_set::INTEGRATE\_OUTSIDE );
 592 
-593 \} \textcolor{comment}{// darcy\_A12F}
+593     getfem::mesh\_im\_level\_set meshImLevelSetIn ( *fracture->getMeshLevelSetIntersect ( otherFractureId ),
+594                                                  getfem::mesh\_im\_level\_set::INTEGRATE\_INSIDE );
+595 
+596     meshImLevelSetOut.set\_integration\_method ( fracture->getMeshFlat().convex\_index(), intTypeIM );
+597     meshImLevelSetIn.set\_integration\_method ( fracture->getMeshFlat().convex\_index(), intTypeIM );
+598 
+599     meshImLevelSetOut.set\_simplex\_im ( intTypeIM );
+600     meshImLevelSetIn.set\_simplex\_im ( intTypeIM );
+601 
+602     \textcolor{comment}{// Assign the mesh integration method}
+603     assemIn.push\_mi ( meshImLevelSetIn );
+604     assemOut.push\_mi ( meshImLevelSetOut );
+605 
+606     \textcolor{comment}{// Assign the M\_mediumMesh finite element space}
+607     assemIn.push\_mf ( fracture->getMeshFEMVelocity() );
+608     assemIn.push\_mf ( fracture->getMeshFEMPressure() );
+609 
+610     assemOut.push\_mf ( fracture->getMeshFEMVelocity() );
+611     assemOut.push\_mf ( fracture->getMeshFEMPressure() );
+612 
+613     \textcolor{comment}{// Set the matrices to save the evaluations}
+614     assemIn.push\_mat ( MIn );
+615     assemOut.push\_mat ( MOut );
+616 
+617     \textcolor{comment}{// Computes the matrices}
+618     assemIn.assembly ( cutRegionFlag );
+619     assemOut.assembly ( cutRegionFlag );
+620 
+621     \textcolor{comment}{// Update the extended degrees of freedom}
+622     \textcolor{keyword}{const} \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{sizeVector\_Type}& extendedVelocity = fracture->getExtendedVelocity();
+623     \textcolor{keyword}{const} size\_type extendedNumVelocity = fracture->getNumExtendedVelocity();
+624     \textcolor{keyword}{const} \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{sizeVector\_Type}& extendedPressure = fracture->getExtendedPressure();
+625     \textcolor{keyword}{const} size\_type extendedNumPressure = fracture->getNumExtendedPressure();
+626 
+627     \textcolor{keywordflow}{for} ( size\_type i = 0; i < extendedNumVelocity; ++i )
+628     \{
+629         \textcolor{keyword}{const} size\_type ii = extendedVelocity [ i ];
+630         \textcolor{keyword}{const} base\_node pointFlat = fracture->getMeshFEMVelocity().point\_of\_basic\_dof(ii);
+631        
+632         base\_node pointMapped(0,0);
+633         base\_node pointMapped1(0,0);
+634         scalar\_type t = ii*1./(fracture->getData().getSpatialDiscretization () );
+635         pointMapped[0] = t;
+636         pointMapped1[0] = pointFlat[0];
+637         pointMapped1[1] = fracture->getLevelSet()->getData()->y\_map( pointMapped );
+638 
+639         \textcolor{keyword}{const} scalar\_type levelSetValue1 = levelSetOtherFracture->getData()->ylevelSetFunction ( 
+      pointMapped1 );
+640 
+641         \textcolor{keywordflow}{for} ( size\_type j = 0; j < extendedNumPressure; ++j )
+642         \{
+643             \textcolor{keyword}{const} size\_type jj = extendedPressure [ j ];
+644             \textcolor{keyword}{const} base\_node pointFlat = fracture->getMeshFEMPressure().point\_of\_basic\_dof(jj);
+645             
+646             base\_node pointMapped(0,0);
+647             base\_node pointMapped1(0,0);
+648             scalar\_type t = jj*1./(fracture->getData().getSpatialDiscretization () );
+649             pointMapped[0] = t;
+650             pointMapped1[0] = pointFlat[0];
+651             pointMapped1[1] = fracture->getLevelSet()->getData()->y\_map( pointMapped );
+652            
+653             \textcolor{keyword}{const} scalar\_type levelSetValue2 = levelSetOtherFracture->getData()->ylevelSetFunction ( 
+      pointMapped1 );
+654 
+655             \textcolor{keywordflow}{if} ( levelSetValue1 < 0 && levelSetValue2 < 0 )
+656             \{
+657                 \textcolor{comment}{// i and j are both In}
+658                 (*M)(ii, jj) += MIn ( ii, jj );
+659                 (*M)(i + velocityShift, j + pressureShift) += MOut ( ii, jj );
+660             \}
+661 
+662             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ( levelSetValue1 >= 0 && levelSetValue2 >= 0 )
+663             \{
+664                 \textcolor{comment}{// i and j are both Out}
+665                 (*M)(ii, jj) += MOut(ii, jj);
+666                 (*M)(i + velocityShift, j + pressureShift) += MIn(ii, jj);
+667             \}
+668             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ( levelSetValue1 < 0 && levelSetValue2 >= 0 )
+669             \{
+670                 \textcolor{comment}{// i is In, j is Out}
+671                 (*M)(ii, j + pressureShift) += MIn(ii, jj);
+672                 (*M)(i + velocityShift, jj) += MOut(ii, jj);
+673             \}
+674             \textcolor{keywordflow}{else}
+675             \{
+676                 \textcolor{comment}{// i is Out, j is In}
+677                 (*M)(i + velocityShift, jj) += MIn(ii, jj);
+678                 (*M)(ii, j + pressureShift) += MOut(ii, jj);
+679             \}
+680         \}
+681     \}
+682 
+683 \} \textcolor{comment}{// darcy\_A12F\_Cross}
 \end{DoxyCode}
 \hypertarget{namespacegetfem_ad6e90b309c01f6b4fc91c9369cba376a}{\index{getfem@{getfem}!darcy\-\_\-data\-F@{darcy\-\_\-data\-F}}
 \index{darcy\-\_\-data\-F@{darcy\-\_\-data\-F}!getfem@{getfem}}
@@ -881,130 +1078,130 @@ The integration method used inside comp(Base(\#1).Base(\#2)) is taken from mim.
 )}}\label{namespacegetfem_ad6e90b309c01f6b4fc91c9369cba376a}
 
 \begin{DoxyCode}
-606 \{
-607 
-608     \textcolor{comment}{// ----------------- Penalty    ---------------}
-609 
-610     \textcolor{keyword}{const} scalar\_type fractureID = fracture->getId();
-611     \textcolor{keyword}{const} \hyperlink{LevelSetHandler_8h_aba343569cb3213c103252f69c39cad0b}{LevelSetHandlerPtr\_Type}& levelSet = fracture->getLevelSet();
-612     \textcolor{keyword}{const} size\_type shiftVelocity = fracture->getMeshFEMVelocity().nb\_dof();
-613     \textcolor{keyword}{const} size\_type shiftCoefficinents =
-614             fracture->getMeshFEMPressure().nb\_dof();
-615 
-616     \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} etaGammaUinvh(shiftCoefficinents, 0.), Bvel\_tot(
-617             shiftVelocity, 0.);
-618 
-619     \textcolor{keywordflow}{for} ( size\_type i = 0; i < shiftCoefficinents; ++i )
-620     \{
-621         etaGammaUinvh [ i ] = invK * gammaU * fracture->getInverseMeshSize(i);
-622     \}
-623 
-624     getfem::generic\_assembly assem2;
-625 
-626     assem2.set(\textcolor{stringliteral}{"gamma=data$1(#2);"} \textcolor{stringliteral}{"vel=data$2(#2);"}
-627         \textcolor{stringliteral}{"t=comp(Base(#2).vBase(#1).Normal().Base(#2));"}
-628         \textcolor{stringliteral}{"V(#1)+=(t(m, :,j, j, k).gamma(k).vel(m));"});
-629 
-630     \textcolor{comment}{// Assign the M\_mediumMesh integration method}
-631     assem2.push\_mi(fracture->getIntegrationMethodVelocity());
-632 
-633     \textcolor{comment}{// Assign the M\_mediumMesh finite element space}
-634     assem2.push\_mf(fracture->getMeshFEMVelocity());
-635 
-636     \textcolor{comment}{// Assign the M\_mediumMesh finite element space for the coefficients}
-637     assem2.push\_mf(fracture->getMeshFEMPressure());
-638     assem2.push\_mf(fracture->getMeshFEMPressure());
-639 
-640     \textcolor{comment}{// Assign the coefficients}
-641     assem2.push\_data(etaGammaUinvh);
-642     assem2.push\_data(*v\_diri);
-643 
-644     \textcolor{comment}{// Set the matrices to save the evaluations}
-645     assem2.push\_vec(Bvel\_tot);
-646 
-647     \textcolor{comment}{// Assemble in each sub region}
-648     \textcolor{keyword}{const} size\_type shiftDirichlet =
-649             bcHandler->getFractureBC(fractureID)->getDirichlet().size();
-650     \textcolor{keywordflow}{for} ( size\_type bndID = 0; bndID < shiftDirichlet; bndID++ )
-651     \{
-652         \textcolor{keyword}{const} size\_type val = bcHandler->getFractureBC(fractureID)->getDirichlet(bndID);
-653         assem2.assembly( fracture->getMeshFEMVelocity().linked\_mesh().get\_mpi\_sub\_region( val));
-654     \}
-655 
-656     \textcolor{keywordflow}{for} ( size\_type i = 0; i < shiftVelocity; ++i )
-657     \{
-658         (*Bvel) [ i ] += Bvel\_tot [ i ];
-659     \}
-660 
-661     cout << \textcolor{stringliteral}{"DARCY :: DATA (penal. bound.)    [OK]"} << endl;
-662 
-663     \textcolor{comment}{// ----------------- Ext Stress ---------------}
-664 
-665     \textcolor{keyword}{const} size\_type shiftMapFactor1 =
-666             fracture->getMagnificationMapFactor1().size();
-667     \textcolor{keyword}{const} size\_type shiftMapFactor2 =
-668             fracture->getMagnificationMapFactor2().size();
-669 
-670     \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} Bs(shiftVelocity, 0.), coefx(shiftMapFactor1);
-671     \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} coefy(shiftMapFactor2);
-672 
-673     getfem::generic\_assembly assemb;
-674 
-675     \textcolor{keywordflow}{if} ( fracture->getMeshFEMVelocity().get\_qdim() == 1 )
-676     \{
-677         \textcolor{keywordflow}{for} ( size\_type i = 0; i < shiftMapFactor1; ++i )
-678         \{
-679             coefx [ i ] = 1 / fracture->getMagnificationMapFactor1(i);
-680         \}
-681         assemb.set(\textcolor{stringliteral}{"p=data$1(#2);"}
-682             \textcolor{stringliteral}{"V(#1)+=-comp(vBase(#1).Base(#2))"}
-683             \textcolor{stringliteral}{"(:,1, h).p(h)"});
-684     \}
-685     \textcolor{keywordflow}{else}
-686     \{
-687 
-688         \textcolor{comment}{//attenzione, quando integro sulla frattura devo tenere conto che quella vera non è flat quindi le
+776 \{
+777 
+778     \textcolor{comment}{// ----------------- Penalty    ---------------}
+779 
+780     \textcolor{keyword}{const} scalar\_type fractureID = fracture->getId();
+781     \textcolor{keyword}{const} \hyperlink{LevelSetHandler_8h_aba343569cb3213c103252f69c39cad0b}{LevelSetHandlerPtr\_Type}& levelSet = fracture->getLevelSet();
+782     \textcolor{keyword}{const} size\_type shiftVelocity = fracture->getMeshFEMVelocity().nb\_dof();
+783     \textcolor{keyword}{const} size\_type shiftCoefficinents =
+784             fracture->getMeshFEMPressure().nb\_dof();
+785 
+786     \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} etaGammaUinvh(shiftCoefficinents, 0.), Bvel\_tot(
+787             shiftVelocity, 0.);
+788 
+789     \textcolor{keywordflow}{for} ( size\_type i = 0; i < shiftCoefficinents; ++i )
+790     \{
+791         etaGammaUinvh [ i ] = invK * gammaU * fracture->getInverseMeshSize(i);
+792     \}
+793 
+794     getfem::generic\_assembly assem2;
+795 
+796     assem2.set(\textcolor{stringliteral}{"gamma=data$1(#2);"} \textcolor{stringliteral}{"vel=data$2(#2);"}
+797         \textcolor{stringliteral}{"t=comp(Base(#2).vBase(#1).Normal().Base(#2));"}
+798         \textcolor{stringliteral}{"V(#1)+=(t(m, :,j, j, k).gamma(k).vel(m));"});
+799 
+800     \textcolor{comment}{// Assign the M\_mediumMesh integration method}
+801     assem2.push\_mi(fracture->getIntegrationMethodVelocity());
+802 
+803     \textcolor{comment}{// Assign the M\_mediumMesh finite element space}
+804     assem2.push\_mf(fracture->getMeshFEMVelocity());
+805 
+806     \textcolor{comment}{// Assign the M\_mediumMesh finite element space for the coefficients}
+807     assem2.push\_mf(fracture->getMeshFEMPressure());
+808     assem2.push\_mf(fracture->getMeshFEMPressure());
+809 
+810     \textcolor{comment}{// Assign the coefficients}
+811     assem2.push\_data(etaGammaUinvh);
+812     assem2.push\_data(*v\_diri);
+813 
+814     \textcolor{comment}{// Set the matrices to save the evaluations}
+815     assem2.push\_vec(Bvel\_tot);
+816 
+817     \textcolor{comment}{// Assemble in each sub region}
+818     \textcolor{keyword}{const} size\_type shiftDirichlet =
+819             bcHandler->getFractureBC(fractureID)->getDirichlet().size();
+820     \textcolor{keywordflow}{for} ( size\_type bndID = 0; bndID < shiftDirichlet; bndID++ )
+821     \{
+822         \textcolor{keyword}{const} size\_type val = bcHandler->getFractureBC(fractureID)->getDirichlet(bndID);
+823         assem2.assembly( fracture->getMeshFEMVelocity().linked\_mesh().get\_mpi\_sub\_region( val));
+824     \}
+825 
+826     \textcolor{keywordflow}{for} ( size\_type i = 0; i < shiftVelocity; ++i )
+827     \{
+828         (*Bvel) [ i ] += Bvel\_tot [ i ];
+829     \}
+830 
+831     cout << \textcolor{stringliteral}{"DARCY :: DATA (penal. bound.)    [OK]"} << endl;
+832 
+833     \textcolor{comment}{// ----------------- Ext Stress ---------------}
+834 
+835     \textcolor{keyword}{const} size\_type shiftMapFactor1 =
+836             fracture->getMagnificationMapFactor1().size();
+837     \textcolor{keyword}{const} size\_type shiftMapFactor2 =
+838             fracture->getMagnificationMapFactor2().size();
+839 
+840     \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} Bs(shiftVelocity, 0.), coefx(shiftMapFactor1);
+841     \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} coefy(shiftMapFactor2);
+842 
+843     getfem::generic\_assembly assemb;
+844 
+845     \textcolor{keywordflow}{if} ( fracture->getMeshFEMVelocity().get\_qdim() == 1 )
+846     \{
+847         \textcolor{keywordflow}{for} ( size\_type i = 0; i < shiftMapFactor1; ++i )
+848         \{
+849             coefx [ i ] = 1 / fracture->getMagnificationMapFactor1(i);
+850         \}
+851         assemb.set(\textcolor{stringliteral}{"p=data$1(#2);"}
+852             \textcolor{stringliteral}{"V(#1)+=-comp(vBase(#1).Base(#2))"}
+853             \textcolor{stringliteral}{"(:,1, h).p(h)"});
+854     \}
+855     \textcolor{keywordflow}{else}
+856     \{
+857 
+858         \textcolor{comment}{//attenzione, quando integro sulla frattura devo tenere conto che quella vera non è flat quindi le
        lunghezze/aree devono essere convertite}
-689         \textcolor{keywordflow}{for} ( size\_type i = 0; i < shiftMapFactor1; ++i )
-690         \{
-691             coefx [ i ] = 1 / fracture->getMagnificationMapFactor1(i);
-692             coefy [ i ] = 1 / fracture->getMagnificationMapFactor2(i);
-693         \}
-694         assemb.set(\textcolor{stringliteral}{"p=data$1(#2);"}
-695             \textcolor{stringliteral}{"V(#1)+=-comp(vBase(#1).Normal().Base(#2))"}
-696             \textcolor{stringliteral}{"(:,k, k, h).p(h)"});
-697     \}
-698 
-699     \textcolor{comment}{// Assign the M\_mediumMesh integration method}
-700     assemb.push\_mi(fracture->getIntegrationMethodVelocity());
-701 
-702     \textcolor{comment}{// Assign the M\_mediumMesh finite element space}
-703     assemb.push\_mf(fracture->getMeshFEMVelocity());
-704 
-705     \textcolor{comment}{// Assign the M\_mediumMesh finite element space for the coefficients}
-706     assemb.push\_mf(bcHandler->getFractureBC(fracture->getId())->getMeshFEM());
-707 
-708     \textcolor{comment}{// Assign the coefficients}
-709     assemb.push\_data(*Pneumann);
-710 
-711     \textcolor{comment}{// Set the vector to save the evaluations}
-712     assemb.push\_vec(Bs);
-713 
-714     \textcolor{comment}{// Assemble in each sub region}
-715     \textcolor{keyword}{const} size\_type shiftNeumann =
-716             bcHandler->getFractureBC(fractureID)->getNeumann().size();
-717     \textcolor{keywordflow}{for} ( size\_type bndID = 0; bndID < shiftNeumann; bndID++ )
-718     \{
-719         \textcolor{keyword}{const} size\_type val = bcHandler->getFractureBC(fractureID)->getNeumann( bndID);
-720         assemb.assembly( fracture->getMeshFEMVelocity().linked\_mesh().get\_mpi\_sub\_region( val ));
-721     \}
-722 
-723     \textcolor{keywordflow}{for} ( size\_type i = 0; i < shiftVelocity; ++i )
-724     \{
-725         (*Bstress) [ i ] = Bs [ i ];
-726     \}
-727 
-728 \} \textcolor{comment}{// darcy\_dataF}
+859         \textcolor{keywordflow}{for} ( size\_type i = 0; i < shiftMapFactor1; ++i )
+860         \{
+861             coefx [ i ] = 1 / fracture->getMagnificationMapFactor1(i);
+862             coefy [ i ] = 1 / fracture->getMagnificationMapFactor2(i);
+863         \}
+864         assemb.set(\textcolor{stringliteral}{"p=data$1(#2);"}
+865             \textcolor{stringliteral}{"V(#1)+=-comp(vBase(#1).Normal().Base(#2))"}
+866             \textcolor{stringliteral}{"(:,k, k, h).p(h)"});
+867     \}
+868 
+869     \textcolor{comment}{// Assign the M\_mediumMesh integration method}
+870     assemb.push\_mi(fracture->getIntegrationMethodVelocity());
+871 
+872     \textcolor{comment}{// Assign the M\_mediumMesh finite element space}
+873     assemb.push\_mf(fracture->getMeshFEMVelocity());
+874 
+875     \textcolor{comment}{// Assign the M\_mediumMesh finite element space for the coefficients}
+876     assemb.push\_mf(bcHandler->getFractureBC(fracture->getId())->getMeshFEM());
+877 
+878     \textcolor{comment}{// Assign the coefficients}
+879     assemb.push\_data(*Pneumann);
+880 
+881     \textcolor{comment}{// Set the vector to save the evaluations}
+882     assemb.push\_vec(Bs);
+883 
+884     \textcolor{comment}{// Assemble in each sub region}
+885     \textcolor{keyword}{const} size\_type shiftNeumann =
+886             bcHandler->getFractureBC(fractureID)->getNeumann().size();
+887     \textcolor{keywordflow}{for} ( size\_type bndID = 0; bndID < shiftNeumann; bndID++ )
+888     \{
+889         \textcolor{keyword}{const} size\_type val = bcHandler->getFractureBC(fractureID)->getNeumann( bndID);
+890         assemb.assembly( fracture->getMeshFEMVelocity().linked\_mesh().get\_mpi\_sub\_region( val ));
+891     \}
+892 
+893     \textcolor{keywordflow}{for} ( size\_type i = 0; i < shiftVelocity; ++i )
+894     \{
+895         (*Bstress) [ i ] = Bs [ i ];
+896     \}
+897 
+898 \} \textcolor{comment}{// darcy\_dataF}
 \end{DoxyCode}
 \hypertarget{namespacegetfem_a41dedc9759949101293821b324cf5ac6}{\index{getfem@{getfem}!velocity\-Jump\-\_\-\-Bifurcation@{velocity\-Jump\-\_\-\-Bifurcation}}
 \index{velocity\-Jump\-\_\-\-Bifurcation@{velocity\-Jump\-\_\-\-Bifurcation}!getfem@{getfem}}
@@ -1018,35 +1215,76 @@ The integration method used inside comp(Base(\#1).Base(\#2)) is taken from mim.
 )}}\label{namespacegetfem_a41dedc9759949101293821b324cf5ac6}
 
 \begin{DoxyCode}
-1025 \{
-1026 
-1027     \textcolor{keyword}{const} size\_type shiftVelocity = fracture->getMeshFEMVelocity().nb\_dof();
-1028     \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} V ( shiftVelocity, 0. );
-1029 
-1030     \textcolor{keyword}{const} size\_type otherFractureId = otherFracture->getId();
-1031     \hyperlink{LevelSetHandler_8h_aba343569cb3213c103252f69c39cad0b}{LevelSetHandlerPtr\_Type}& levelSetOtherFracture = otherFracture->getLevelSet();
-1032 
-1033     \textcolor{keyword}{const} getfem::pintegration\_method intTypeIM = getfem::int\_method\_descriptor ( \textcolor{stringliteral}{"IM\_GAUSS1D(3)"} );
-1034     getfem::mesh\_im\_level\_set meshImLevel ( *fracture->getMeshLevelSetIntersect ( otherFractureId ), 
+1196 \{
+1197 
+1198     \textcolor{keyword}{const} size\_type shiftVelocity = fracture->getMeshFEMVelocity().nb\_dof();
+1199     \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} V ( shiftVelocity, 0. );
+1200 
+1201     \textcolor{keyword}{const} size\_type otherFractureId = otherFracture->getId();
+1202     \hyperlink{LevelSetHandler_8h_aba343569cb3213c103252f69c39cad0b}{LevelSetHandlerPtr\_Type}& levelSetOtherFracture = otherFracture->getLevelSet();
+1203 
+1204     \textcolor{keyword}{const} getfem::pintegration\_method intTypeIM = getfem::int\_method\_descriptor ( \textcolor{stringliteral}{"IM\_GAUSS1D(3)"} );
+1205     getfem::mesh\_im\_level\_set meshImLevel ( *fracture->getMeshLevelSetIntersect ( otherFractureId ), 
       getfem::mesh\_im\_level\_set::INTEGRATE\_BOUNDARY );
-1035 
-1036     meshImLevel.set\_integration\_method ( fracture->getMeshFlat().convex\_index(), intTypeIM );
-1037 
-1038     meshImLevel.set\_simplex\_im ( intTypeIM );
-1039 
-1040     getfem::mesh\_region meshElement;
-1041     meshElement.add ( convex );
-1042 
-1043     generic\_assembly assem;
-1044 
-1045     
-1046     
-1047     
-1048     
-1049     
-1050     
-1051     
-1052 \}\textcolor{comment}{// velocutyJump\_Bifurcation}
+1206 
+1207     meshImLevel.set\_integration\_method ( fracture->getMeshFlat().convex\_index(), intTypeIM );
+1208 
+1209     meshImLevel.set\_simplex\_im ( intTypeIM );
+1210 
+1211     getfem::mesh\_region meshElement;
+1212     meshElement.add ( convex );
+1213 
+1214     generic\_assembly assem;
+1215 
+1216     assem.set ( \textcolor{stringliteral}{"V(#1)+=comp(vBase(#1).NonLin(#2))"}
+1217                 \textcolor{stringliteral}{"(:,1,1)"} );
+1218 
+1219     level\_set\_unit\_normal nterm ( fracture->getMeshLevelSetIntersect ( otherFractureId )->get\_level\_set(0)
+      ->get\_mesh\_fem(),
+1220                                   fracture->getMeshLevelSetIntersect ( otherFractureId )->get\_level\_set(0)
+      ->values() );
+1221 
+1222     assem.push\_mi ( meshImLevel );
+1223     
+1224     \textcolor{comment}{// Assign the mesh finite element space}
+1225     assem.push\_mf ( fracture->getMeshFEMVelocity() );
+1226 
+1227     \textcolor{comment}{// Assign the mesh finite element space for the coefficients}
+1228     assem.push\_mf ( fracture->getMeshLevelSetIntersect ( otherFractureId )->get\_level\_set(0)->get\_mesh\_fem(
+      ) );
+1229 
+1230     \textcolor{comment}{// Assign the non linear term}
+1231     assem.push\_nonlinear\_term ( &nterm );
+1232 
+1233     \textcolor{comment}{// Set the matrices to save the evaluations}
+1234     assem.push\_vec ( V );
+1235 
+1236     assem.assembly ( meshElement );
+1237 
+1238     \textcolor{keyword}{const} \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{sizeVector\_Type}& extendedVelocity = fracture->getExtendedVelocity();
+1239     \textcolor{keyword}{const} size\_type extendedNumVelocity = fracture->getNumExtendedVelocity();
+1240 
+1241     \textcolor{keywordflow}{for} ( size\_type i = 0; i < extendedNumVelocity; ++i )
+1242     \{
+1243         \textcolor{keyword}{const} size\_type ii = extendedVelocity [ i ];
+1244         \textcolor{keyword}{const} base\_node pointFlat = fracture->getMeshFEMVelocity().point\_of\_basic\_dof(ii);
+1245         
+1246         base\_node pointMapped(0,0);
+1247         base\_node pointMapped1(0,0);
+1248         scalar\_type t = ii*1./(fracture->getData().getSpatialDiscretization () );
+1249         
+1250         pointMapped[0] = t;
+1251         pointMapped1[0] = pointFlat[0];
+1252         pointMapped1[1] = fracture->getLevelSet()->getData()->y\_map( pointMapped );
+1253 
+1254         \textcolor{keyword}{const} scalar\_type levelSetValue = levelSetOtherFracture->getData()->ylevelSetFunction ( 
+      pointMapped1 );
+1255 
+1256         (*M) ( ii, 0 ) += 0.5*V [ ii ];
+1257 
+1258     \}
+1259     
+1260 \}\textcolor{comment}{// velocutyJump\_Bifurcation}
 \end{DoxyCode}
 \hypertarget{namespacegetfem_acc74b86734c3814042e614d015f23876}{\index{getfem@{getfem}!velocity\-Jump\-\_\-\-Cross@{velocity\-Jump\-\_\-\-Cross}}
 \index{velocity\-Jump\-\_\-\-Cross@{velocity\-Jump\-\_\-\-Cross}!getfem@{getfem}}
@@ -1060,80 +1298,80 @@ The integration method used inside comp(Base(\#1).Base(\#2)) is taken from mim.
 )}}\label{namespacegetfem_acc74b86734c3814042e614d015f23876}
 
 \begin{DoxyCode}
-946 \{
-947     \textcolor{keyword}{const} size\_type shiftVelocity = fracture->getMeshFEMVelocity().nb\_dof();
-948     \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} V ( shiftVelocity, 0. );
-949 
-950     \textcolor{keyword}{const} size\_type otherFractureId = otherFracture->getId();
-951     \hyperlink{LevelSetHandler_8h_aba343569cb3213c103252f69c39cad0b}{LevelSetHandlerPtr\_Type}& levelSetOtherFracture = otherFracture->getLevelSet();
-952 
-953     \textcolor{keyword}{const} getfem::pintegration\_method intTypeIM = getfem::int\_method\_descriptor ( \textcolor{stringliteral}{"IM\_GAUSS1D(3)"} );
-954     getfem::mesh\_im\_level\_set meshImLevel ( *fracture->getMeshLevelSetIntersect ( otherFractureId ),
-955                                             getfem::mesh\_im\_level\_set::INTEGRATE\_BOUNDARY );
-956 
-957     meshImLevel.set\_integration\_method ( fracture->getMeshFlat().convex\_index(), intTypeIM );
-958 
-959     meshImLevel.set\_simplex\_im ( intTypeIM );
-960 
-961     getfem::mesh\_region meshElement;
-962     meshElement.add ( convex );
-963 
-964     generic\_assembly assem;
-965 
-966     assem.set ( \textcolor{stringliteral}{"V(#1)+=comp(vBase(#1).NonLin(#2))"}
-967                 \textcolor{stringliteral}{"(:,1,1)"} );
-968 
-969     level\_set\_unit\_normal nterm ( fracture->getMeshLevelSetIntersect ( otherFractureId )->get\_level\_set(0)
+1117 \{
+1118     \textcolor{keyword}{const} size\_type shiftVelocity = fracture->getMeshFEMVelocity().nb\_dof();
+1119     \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} V ( shiftVelocity, 0. );
+1120 
+1121     \textcolor{keyword}{const} size\_type otherFractureId = otherFracture->getId();
+1122     \hyperlink{LevelSetHandler_8h_aba343569cb3213c103252f69c39cad0b}{LevelSetHandlerPtr\_Type}& levelSetOtherFracture = otherFracture->getLevelSet();
+1123 
+1124     \textcolor{keyword}{const} getfem::pintegration\_method intTypeIM = getfem::int\_method\_descriptor ( \textcolor{stringliteral}{"IM\_GAUSS1D(3)"} );
+1125     getfem::mesh\_im\_level\_set meshImLevel ( *fracture->getMeshLevelSetIntersect ( otherFractureId ),
+1126                                             getfem::mesh\_im\_level\_set::INTEGRATE\_BOUNDARY );
+1127 
+1128     meshImLevel.set\_integration\_method ( fracture->getMeshFlat().convex\_index(), intTypeIM );
+1129 
+1130     meshImLevel.set\_simplex\_im ( intTypeIM );
+1131 
+1132     getfem::mesh\_region meshElement;
+1133     meshElement.add ( convex );
+1134 
+1135     generic\_assembly assem;
+1136 
+1137     assem.set ( \textcolor{stringliteral}{"V(#1)+=comp(vBase(#1).NonLin(#2))"}
+1138                 \textcolor{stringliteral}{"(:,1,1)"} );
+1139 
+1140     level\_set\_unit\_normal nterm ( fracture->getMeshLevelSetIntersect ( otherFractureId )->get\_level\_set(0)
       ->get\_mesh\_fem(),
-970                                   fracture->getMeshLevelSetIntersect ( otherFractureId )->get\_level\_set(0)
+1141                                   fracture->getMeshLevelSetIntersect ( otherFractureId )->get\_level\_set(0)
       ->values() );
-971 
-972     assem.push\_mi ( meshImLevel );
-973 
-974     \textcolor{comment}{// Assign the mesh finite element space}
-975     assem.push\_mf ( fracture->getMeshFEMVelocity() );
-976 
-977     \textcolor{comment}{// Assign the mesh finite element space for the coefficients}
-978     assem.push\_mf ( fracture->getMeshLevelSetIntersect ( otherFractureId )->get\_level\_set(0)->get\_mesh\_fem(
+1142 
+1143     assem.push\_mi ( meshImLevel );
+1144 
+1145     \textcolor{comment}{// Assign the mesh finite element space}
+1146     assem.push\_mf ( fracture->getMeshFEMVelocity() );
+1147 
+1148     \textcolor{comment}{// Assign the mesh finite element space for the coefficients}
+1149     assem.push\_mf ( fracture->getMeshLevelSetIntersect ( otherFractureId )->get\_level\_set(0)->get\_mesh\_fem(
       ) );
-979 
-980     \textcolor{comment}{// Assign the non linear term}
-981     assem.push\_nonlinear\_term ( &nterm );
-982 
-983     \textcolor{comment}{// Set the matrices to save the evaluations}
-984     assem.push\_vec ( V );
-985 
-986     assem.assembly ( meshElement );
-987 
-988     \textcolor{keyword}{const} \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{sizeVector\_Type}& extendedVelocity = fracture->getExtendedVelocity();
-989     \textcolor{keyword}{const} size\_type extendedNumVelocity = fracture->getNumExtendedVelocity();
-990 
-991     \textcolor{keywordflow}{for} ( size\_type i = 0; i < extendedNumVelocity; ++i )
-992     \{
-993         \textcolor{keyword}{const} size\_type ii = extendedVelocity [ i ];
-994         \textcolor{keyword}{const} base\_node pointFlat = fracture->getMeshFEMVelocity().point\_of\_basic\_dof(ii);
-995         base\_node pointMapped(0,0);
-996         base\_node pointMapped1(0,0);
-997     scalar\_type t = ii*1./(fracture->getData().getSpatialDiscretization () );
-998         pointMapped[0] = t;
-999         pointMapped1[0] = pointFlat[0];
-1000         pointMapped1[1] = fracture->getLevelSet()->getData()->y\_map( pointMapped );
-1001 
-1002     \textcolor{keyword}{const} scalar\_type levelSetValue = levelSetOtherFracture->getData()->ylevelSetFunction ( pointMapped1 );
-1003 
-1004         \textcolor{keywordflow}{if} ( levelSetValue < 0 )
-1005         \{
-1006             (*M) ( ii, 0 ) += V [ ii ];
-1007             (*M) ( i + shiftVelocity, 0 ) -= V [ ii ];
-1008         \}
-1009         \textcolor{keywordflow}{else}
-1010         \{
-1011             (*M) ( ii, 0 ) -= V [ ii ];
-1012             (*M) ( i + shiftVelocity, 0 ) += V [ ii ];
-1013 
-1014         \}
-1015 
-1016     \}
-1017 
-1018 \} \textcolor{comment}{// velocityJump\_Cross}
+1150 
+1151     \textcolor{comment}{// Assign the non linear term}
+1152     assem.push\_nonlinear\_term ( &nterm );
+1153 
+1154     \textcolor{comment}{// Set the matrices to save the evaluations}
+1155     assem.push\_vec ( V );
+1156 
+1157     assem.assembly ( meshElement );
+1158 
+1159     \textcolor{keyword}{const} \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{sizeVector\_Type}& extendedVelocity = fracture->getExtendedVelocity();
+1160     \textcolor{keyword}{const} size\_type extendedNumVelocity = fracture->getNumExtendedVelocity();
+1161 
+1162     \textcolor{keywordflow}{for} ( size\_type i = 0; i < extendedNumVelocity; ++i )
+1163     \{
+1164         \textcolor{keyword}{const} size\_type ii = extendedVelocity [ i ];
+1165         \textcolor{keyword}{const} base\_node pointFlat = fracture->getMeshFEMVelocity().point\_of\_basic\_dof(ii);
+1166         base\_node pointMapped(0,0);
+1167         base\_node pointMapped1(0,0);
+1168     scalar\_type t = ii*1./(fracture->getData().getSpatialDiscretization () );
+1169         pointMapped[0] = t;
+1170         pointMapped1[0] = pointFlat[0];
+1171         pointMapped1[1] = fracture->getLevelSet()->getData()->y\_map( pointMapped );
+1172 
+1173     \textcolor{keyword}{const} scalar\_type levelSetValue = levelSetOtherFracture->getData()->ylevelSetFunction ( pointMapped1 );
+1174 
+1175         \textcolor{keywordflow}{if} ( levelSetValue < 0 )
+1176         \{
+1177             (*M) ( ii, 0 ) += V [ ii ];
+1178             (*M) ( i + shiftVelocity, 0 ) -= V [ ii ];
+1179         \}
+1180         \textcolor{keywordflow}{else}
+1181         \{
+1182             (*M) ( ii, 0 ) -= V [ ii ];
+1183             (*M) ( i + shiftVelocity, 0 ) += V [ ii ];
+1184 
+1185         \}
+1186 
+1187     \}
+1188 
+1189 \} \textcolor{comment}{// velocityJump\_Cross}
 \end{DoxyCode}

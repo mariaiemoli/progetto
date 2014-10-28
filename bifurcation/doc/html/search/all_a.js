@@ -1,11 +1,18 @@
 var searchData=
 [
-  ['neumann_5fboundary_5fcut',['NEUMANN_BOUNDARY_CUT',['../classBCHandler.html#a2bc86209db0836dbc6ca56e1ca4e4ac1add7397a06718591b0c27c067225b1d5f',1,'BCHandler']]],
-  ['neumann_5fboundary_5fnum',['NEUMANN_BOUNDARY_NUM',['../classBC.html#ad1b507696802f73b95c0ca59f4c41390a432aa77a00d8eb4929463ef8d57b5c04',1,'BC']]],
-  ['neumann_5fboundary_5funcut',['NEUMANN_BOUNDARY_UNCUT',['../classBCHandler.html#a2bc86209db0836dbc6ca56e1ca4e4ac1aa538eee48606669ac37073ca65144007',1,'BCHandler']]],
-  ['nextgoodline',['nextGoodLine',['../namespaceLifeV.html#a2c4dd8a300964aa48909fce6ad5c72f5',1,'LifeV']]],
-  ['normal_5fmap',['normal_map',['../classLevelSetData.html#a674d56690f4e22cbca38bf4b5f176a5e',1,'LevelSetData']]],
-  ['normalvectorandmap',['normalVectorAndMap',['../classFractureHandler.html#aec1fc4e2664b3fe60877b63024af3605',1,'FractureHandler']]],
-  ['number2string',['number2string',['../namespaceLifeV.html#a3c2a31cefb08654a69273a1a3bf11fac',1,'LifeV']]],
-  ['numfractures',['numFractures',['../classFractureHandler.html#a002e255a1976918ffbe6ea63b0fdae1b',1,'FractureHandler']]]
+  ['level_5fset_5funit_5fnormal',['level_set_unit_normal',['../classgetfem_1_1level__set__unit__normal.html',1,'getfem']]],
+  ['level_5fset_5funit_5fnormal',['level_set_unit_normal',['../classgetfem_1_1level__set__unit__normal.html#ab3614c6046c7f4875bf7f295dc858463',1,'getfem::level_set_unit_normal']]],
+  ['levelsetcutfunction',['levelSetCutFunction',['../classLevelSetData.html#a080eb321db2710b115ea6ea4344551e8',1,'LevelSetData']]],
+  ['levelsetdata',['LevelSetData',['../classLevelSetData.html',1,'LevelSetData'],['../classLevelSetData.html#a8b2ab7808f47d9a951327891d65e84be',1,'LevelSetData::LevelSetData()']]],
+  ['levelsetdata_2ecc',['LevelSetData.cc',['../LevelSetData_8cc.html',1,'']]],
+  ['levelsetdata_2eh',['LevelSetData.h',['../LevelSetData_8h.html',1,'']]],
+  ['levelsetdata_5ftype',['LevelSetData_Type',['../LevelSetData_8h.html#ad9acd4c7e96919475361341469698bb4',1,'LevelSetData.h']]],
+  ['levelsetdataptr_5ftype',['LevelSetDataPtr_Type',['../LevelSetData_8h.html#a7750f14ec1c622b3c69aa0c5c2894972',1,'LevelSetData.h']]],
+  ['levelsetfunction',['levelSetFunction',['../classLevelSetData.html#a15b4379080b2320c54467c89c3642c4a',1,'LevelSetData']]],
+  ['levelsethandler',['LevelSetHandler',['../classLevelSetHandler.html',1,'LevelSetHandler'],['../classLevelSetHandler.html#a9dbe142d7d4f677abe8c204714c004ed',1,'LevelSetHandler::LevelSetHandler()']]],
+  ['levelsethandler_2ecc',['LevelSetHandler.cc',['../LevelSetHandler_8cc.html',1,'']]],
+  ['levelsethandler_2eh',['LevelSetHandler.h',['../LevelSetHandler_8h.html',1,'']]],
+  ['levelsethandler_5ftype',['LevelSetHandler_Type',['../LevelSetHandler_8h.html#aec7e3fe65715d8ad08a7933cc99d5db9',1,'LevelSetHandler.h']]],
+  ['levelsethandlerptr_5ftype',['LevelSetHandlerPtr_Type',['../LevelSetHandler_8h.html#aba343569cb3213c103252f69c39cad0b',1,'LevelSetHandler.h']]],
+  ['lifev',['LifeV',['../namespaceLifeV.html',1,'']]]
 ];

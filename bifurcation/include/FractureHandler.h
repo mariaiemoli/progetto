@@ -16,8 +16,8 @@ class FractureHandler
 public:
 
 	/**
-	 * flags che uso per distinguere sulla mesh di ogni level set le regioni " non tagliate ", 
-	 * cioè dove non vi è intersezione con altre fratture, dalle regioni " tagliate ", cioè dove il level set ha un'intersezione
+	 * Flags che uso per distinguere sulla mesh di ogni level set le regioni " non tagliate ", 
+	 * cioè dove non vi è intersezione con altre fratture, dalle regioni " tagliate ", cioè dove il level set ha un'intersezione.
 	 */
     enum
     {
@@ -31,7 +31,7 @@ public:
                       const std::string& section = "fractureData/" );
 
     /**
-     * funzione che inizializza la frattura
+     * Funzione che inizializza la frattura.
      * Ogni frattura ha una rappresentazione 1d, ma la mesh reale è una mesh di punti 2d ( sono i punti del tipo (x,y) che stanno sulla 
      * curva y=f(x) ) e questo comporta dei problemi per l'integrazione. Per risolvere il problema per ogni frattura costruiamo una mesh
      * 1d ottenuta proiettando lungo l'asse delle ascisse la mesh reale. Una volta risolto il problema si ritorna sulla mesh reale 
@@ -41,13 +41,13 @@ public:
 
 
     /**
-     * funzione che calcola il vettore normale alla frattura e la mappa di conversione dalla mesh reale alla mesh piatta
+     * Funzione che calcola il vettore normale alla frattura e la mappa di conversione dalla mesh reale alla mesh piatta.
      */
     void normalVectorAndMap ( const getfem::mesh_fem& mediumMeshFEMPressure );
 
 
     /**
-     * funzione che calcola il passo di griglia, h^-1
+     * Funzione che calcola il passo di griglia, h^-1.
      */
     void computeInvH ( const BCHandlerPtr_Type& bcHandler );
 
@@ -229,15 +229,15 @@ public:
     }
 
     /**
-     * funzione che, data un'altra frattura con cui si interseca, imposta i  valori legati all'intersezione: costruisce sulla mesh 
-     * la regione " tagliata ", aggiunge i gradi di libertà estesi,  e imposta che tali gradi di libertà siano gli stessi sulle due fratture
+     * Funzione che, data un'altra frattura con cui si interseca, imposta i  valori legati all'intersezione: costruisce sulla mesh 
+     * la regione " tagliata ", aggiunge i gradi di libertà estesi,  e imposta che tali gradi di libertà siano gli stessi sulle due fratture.
      */
     size_type setMeshLevelSetFracture ( FractureHandler& otherFracture, size_type& globalIndex );
 
 
     /**
-     * \return M_extendedPressure.size(): numero di gradi di libertà estesi per la pressione per la frattura, uno per ogni intersezione
-     * di tipo Cross e tre per ogni intersezione di tipo Biforcazione
+     * Funzione che restituisce il numero di gradi di libertà estesi per la pressione per la frattura.
+     * \return M_extendedPressure.size(): numero di gradi di libertà estesi per la pressione per la frattura.
      */
     size_type getNumExtendedPressure () const
     {
@@ -246,7 +246,8 @@ public:
 
 
     /**
-     * \return M_extendedPressure: vettore dei gradi di libertà estesi per la pressione per la frattura 
+     * Funzione che restituisce ilvettore dei gradi di libertà estesi per la pressione per la frattura.
+     * \return M_extendedPressure: vettore dei gradi di libertà estesi per la pressione per la frattura. 
      */
     const sizeVector_Type& getExtendedPressure () const
     {
@@ -255,8 +256,8 @@ public:
 
 
     /**
-     * \return M_extendedVelocity.size(): numero di gradi di libertà estesi per la velocità per la frattura, due per ogni intersezione
-     * di tipo Cross e sei per ogni intersezione di tipo Biforcazione
+     * Funzione che restituisce il numero di gradi di libertà estesi per la velocità per la frattura.
+     * \return M_extendedVelocity.size(): numero di gradi di libertà estesi per la velocità per la frattura.
      */
     size_type getNumExtendedVelocity () const
     {
@@ -265,7 +266,8 @@ public:
 
 
     /**
-     * \return M_extendedVelocity: vettore dei gradi di libertà estesi per la velocità per la frattura 
+     * Funzione che restituisce il vettore dei gradi di libertà estesi per la velocità per la frattura.
+     * \return M_extendedVelocity: vettore dei gradi di libertà estesi per la velocità per la frattura. 
      */
     const sizeVector_Type& getExtendedVelocity () const
     {
@@ -292,7 +294,7 @@ public:
 
 
     /**
-     * funzione che calcola in numero totale di intersezione della frattura corrente
+     * Funzione che calcola in numero totale di intersezione della frattura corrente
      */
     size_type getNumIntersections () const;
 
@@ -323,7 +325,7 @@ private:
 
     LevelSetHandlerPtr_Type M_levelSet;
 
-    // the M_mediummesh for the fracture: M_meshFlat is "flat", M_meshMapped is mapped (x(t),y(t))
+    // M_mediummesh per la fratture: M_meshFlat è " piatta " (1d), M_meshMapped è mappata (x(t),y(t))
     getfem::mesh M_meshFlat;
     getfem::mesh M_meshMapped;
 

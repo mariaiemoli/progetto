@@ -71,16 +71,6 @@ scalar_type LevelSetData::x_map ( const base_node& t )
 }
 
 
-scalar_type LevelSetData::t_map ( const base_node& x )
-{
-    M_parser.setString ( M_map_inv );
-    M_parser.setVariable ( "x", x [ 0 ] );
-    M_parser.setVariable ( "y", x [ 1 ] );
-    return M_parser.evaluate ();
-
-}
-
-
 scalarVector_Type LevelSetData::map_jac ( const base_node& x,
                                      const size_type& num )
 {

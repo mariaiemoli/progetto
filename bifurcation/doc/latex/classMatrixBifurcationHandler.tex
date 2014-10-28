@@ -1,0 +1,457 @@
+\hypertarget{classMatrixBifurcationHandler}{\section{Riferimenti per la classe Matrix\-Bifurcation\-Handler}
+\label{classMatrixBifurcationHandler}\index{Matrix\-Bifurcation\-Handler@{Matrix\-Bifurcation\-Handler}}
+}
+
+
+{\ttfamily \#include $<$Matrix\-Bifurcation\-Handler.\-h$>$}
+
+\subsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classMatrixBifurcationHandler_a57f9791749acd9b699bf737193c2e87a}{Matrix\-Bifurcation\-Handler} (const Get\-Pot \&data\-File, const std\-::string \&section=\char`\"{}medium\-Data/\char`\"{}, const std\-::string \&subsection=\char`\"{}darcy/\char`\"{})
+\begin{DoxyCompactList}\small\item\em Costruttore vuoto di defult. \end{DoxyCompactList}\item 
+\hyperlink{classMatrixBifurcationHandler_ad65c01c578ef41e0513e6915cadb068e}{Matrix\-Bifurcation\-Handler} (\hyperlink{Core_8h_a1694976dd66ed00e5f0618f4f8821163}{Matrix2d} \hyperlink{classMatrixBifurcationHandler_ac7d63c6d730079862dd8238928d94b26}{K})
+\begin{DoxyCompactList}\small\item\em Costruttore che prende in input la matrice di permeabilità. \end{DoxyCompactList}\item 
+\hyperlink{classMatrixBifurcationHandler_a86e7580758aa9a2ec5ef4285e70d06bf}{Matrix\-Bifurcation\-Handler} (scalar\-\_\-type \hyperlink{classMatrixBifurcationHandler_ac7d63c6d730079862dd8238928d94b26}{K})
+\begin{DoxyCompactList}\small\item\em Costruttore a partire dalla permeabilità. \end{DoxyCompactList}\item 
+void \hyperlink{classMatrixBifurcationHandler_a94433cf28ec2af6ba06b7f63a081d787}{set\-Matrices} (\hyperlink{FractureHandler_8h_a2f0b57e18ecf89912d7de0c87158009e}{Fracture\-Ptr\-Container\-\_\-\-Type} \&fractures)
+\begin{DoxyCompactList}\small\item\em Funzione che inizializza M\-\_\-intersection, la classe che rappresenta il triangolo di intersezione, e calcola la matrice T\-\_\- a partire dall'insieme delle fratture che costituiscono l'intersezione. \end{DoxyCompactList}\item 
+void \hyperlink{classMatrixBifurcationHandler_aa7e601bac77856cac8db77c58023c1b4}{set\-Triangle} (\hyperlink{classTriangleData}{Triangle\-Data} const \&\hyperlink{classMatrixBifurcationHandler_a3b7305f6106add811e7b4b69f5642e86}{T})
+\begin{DoxyCompactList}\small\item\em Funzione che costruisce il triangolo di intersezione a partire da un trangolo già esistente. \end{DoxyCompactList}\item 
+void \hyperlink{classMatrixBifurcationHandler_acbc7b99389ad5eacd86f73b0ed08829b}{set\-K} (\hyperlink{Core_8h_a1694976dd66ed00e5f0618f4f8821163}{Matrix2d} \hyperlink{classMatrixBifurcationHandler_ac7d63c6d730079862dd8238928d94b26}{K})
+\begin{DoxyCompactList}\small\item\em Funzione che cambia la matrice di permeabilità a partire da una matrice data. \end{DoxyCompactList}\item 
+\hyperlink{Core_8h_a1694976dd66ed00e5f0618f4f8821163}{Matrix2d} \hyperlink{classMatrixBifurcationHandler_ac7d63c6d730079862dd8238928d94b26}{K} () const 
+\begin{DoxyCompactList}\small\item\em Funzione che restituisce la matrice di permeabilità. \end{DoxyCompactList}\item 
+void \hyperlink{classMatrixBifurcationHandler_ac134a5731e6614e543241a018ccf8c34}{compute\-N} ()
+\begin{DoxyCompactList}\small\item\em Funzione che calcola la matrice N\-\_\-, matrice che ha per righe le normali ai lati. \end{DoxyCompactList}\item 
+\hyperlink{Core_8h_aee82131e398edee47a44d675ee802368}{Matrix32} \hyperlink{classMatrixBifurcationHandler_a77f006579fad0f0f08c10bf684bbd16a}{N} () const 
+\begin{DoxyCompactList}\small\item\em Funzione che restituisce la matrice N\-\_\-, matrice che ha per righe le normali ai lati. \end{DoxyCompactList}\item 
+void \hyperlink{classMatrixBifurcationHandler_ac179ca406307a3d2ee5d5b5af94d265e}{compute\-C} ()
+\begin{DoxyCompactList}\small\item\em Funzione che calcola la matrice C\-\_\-, matrice che ha per righe i vettori che uniscono il baricentro del triangolo con il punto medio di ogni lato. \end{DoxyCompactList}\item 
+\hyperlink{Core_8h_aee82131e398edee47a44d675ee802368}{Matrix32} \hyperlink{classMatrixBifurcationHandler_a4701fef8d864cb7d61521c8fbe5db2cc}{C} ()
+\begin{DoxyCompactList}\small\item\em Funzione che restituisce la matrice C\-\_\-, matrice che ha per righe i vettori che uniscono il baricentro del triangolo con il punto medio di ogni lato. \end{DoxyCompactList}\item 
+void \hyperlink{classMatrixBifurcationHandler_a203b6bfcdef418ffa927aebaeedc6da2}{compute\-Qc} ()
+\begin{DoxyCompactList}\small\item\em Funzione che costruisce la matrice Qc\-\_\-, matrice che ha per colonne una base ortonormale per la matrice trasposta di C. \end{DoxyCompactList}\item 
+\hyperlink{Core_8h_aee82131e398edee47a44d675ee802368}{Matrix32} \hyperlink{classMatrixBifurcationHandler_add50b813d3bd773ddf794c4e05b37e38}{Qc} () const 
+\begin{DoxyCompactList}\small\item\em Funzione che restituisce la matrice Qc\-\_\-, matrice che ha per colonne una base ortonormale per la matrice trasposta di C. \end{DoxyCompactList}\item 
+\hyperlink{Core_8h_acd816705c6602062b91975525c4e3f6f}{Matrix3d} \hyperlink{classMatrixBifurcationHandler_ad84675e9be6d56de69c0e25bf1cd77cd}{Pc} () const 
+\begin{DoxyCompactList}\small\item\em Funzione che restituisce la matrice Pc\-\_\-, matrice di proiezione sullo spazio nullo di Qc\-\_\-. \end{DoxyCompactList}\item 
+void \hyperlink{classMatrixBifurcationHandler_a46ee3c60eedda32abe36700ab2ce2d16}{compute\-T} (scalar\-\_\-type t=6.\-0)
+\begin{DoxyCompactList}\small\item\em Funzione che calcola la matrice T\-\_\-, matrice di trasmissibilità. \end{DoxyCompactList}\item 
+void \hyperlink{classMatrixBifurcationHandler_a2153adb36bdbba82ca18ae74eb9e2ea7}{compute\-Tsimple} (scalar\-\_\-type t=6.\-0)
+\item 
+void \hyperlink{classMatrixBifurcationHandler_acafb7a17c3d639068938a21dad6bb0ec}{inversion2\-X2} (const \hyperlink{Core_8h_a1694976dd66ed00e5f0618f4f8821163}{Matrix2d} \&invk, scalar\-\_\-type det)
+\item 
+\hyperlink{classMatrixBifurcationHandler}{Matrix\-Bifurcation\-Handler} \& \hyperlink{classMatrixBifurcationHandler_a2d67172a5034f104d08cb53e5dbda926}{operator=} (const \hyperlink{classMatrixBifurcationHandler}{Matrix\-Bifurcation\-Handler} \&mat)
+\item 
+\hyperlink{Core_8h_acd816705c6602062b91975525c4e3f6f}{Matrix3d} \hyperlink{classMatrixBifurcationHandler_a3b7305f6106add811e7b4b69f5642e86}{T} () const 
+\end{DoxyCompactItemize}
+
+
+\subsection{Documentazione dei costruttori e dei distruttori}
+\hypertarget{classMatrixBifurcationHandler_a57f9791749acd9b699bf737193c2e87a}{\index{Matrix\-Bifurcation\-Handler@{Matrix\-Bifurcation\-Handler}!Matrix\-Bifurcation\-Handler@{Matrix\-Bifurcation\-Handler}}
+\index{Matrix\-Bifurcation\-Handler@{Matrix\-Bifurcation\-Handler}!MatrixBifurcationHandler@{Matrix\-Bifurcation\-Handler}}
+\subsubsection[{Matrix\-Bifurcation\-Handler}]{\setlength{\rightskip}{0pt plus 5cm}Matrix\-Bifurcation\-Handler\-::\-Matrix\-Bifurcation\-Handler (
+\begin{DoxyParamCaption}
+\item[{const Get\-Pot \&}]{data\-File, }
+\item[{const std\-::string \&}]{section = {\ttfamily \char`\"{}mediumData/\char`\"{}}, }
+\item[{const std\-::string \&}]{subsection = {\ttfamily \char`\"{}darcy/\char`\"{}}}
+\end{DoxyParamCaption}
+)}}\label{classMatrixBifurcationHandler_a57f9791749acd9b699bf737193c2e87a}
+
+
+Costruttore vuoto di defult. 
+
+Definisce la matrice 3x3 Pc\-\_\- costante pari a 1/3 e riempie la matrice 2x2 K\-\_\-, leggendo dal file \char`\"{}data\char`\"{} 
+\begin{DoxyParams}{Parametri}
+{\em Get\-Pot\&} & data\-File\-: nome del file data da cui leggere i dati \\
+\hline
+{\em std\-::string\&} & section = \char`\"{}medium\-Data/\char`\"{}\-: nome della sezione nel file data in cui leggere, se non è fornita è posta di default pari a \char`\"{}medium\-Data/\char`\"{} \\
+\hline
+{\em std\-::string\&} & subsection = \char`\"{}darcy/\char`\"{}\-: nome della sottosezione nel file data in cui leggere, se non è fornita è posta di default pari a \char`\"{}darcy/\char`\"{} \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+6                                                                                 :Pc\_(Matrix3d::Constant(1./
+      3.0))
+7 \{
+8     \hyperlink{Core_8h_a1694976dd66ed00e5f0618f4f8821163}{Matrix2d} invk; 
+9     scalar\_type det = dataFile ( (section + subsection + \textcolor{stringliteral}{"invK"}).data(), 1. );
+10     
+11     invk(0,0) = dataFile ( ( section + subsection + \textcolor{stringliteral}{"invKDist11"} ).data (), 1. );
+12     invk(0,1) = dataFile ( ( section + subsection + \textcolor{stringliteral}{"invKDist12"} ).data (), 0. );
+13     invk(1,0) = dataFile ( ( section + subsection + \textcolor{stringliteral}{"invKDist12"} ).data (), 0. );
+14     invk(1,1) = dataFile ( ( section + subsection + \textcolor{stringliteral}{"invKDist22"} ).data (), 1. );
+15     
+16     
+17     this-> \hyperlink{classMatrixBifurcationHandler_acafb7a17c3d639068938a21dad6bb0ec}{inversion2X2} ( invk, det );
+18     
+19 \}\textcolor{comment}{// costruttore}
+\end{DoxyCode}
+\hypertarget{classMatrixBifurcationHandler_ad65c01c578ef41e0513e6915cadb068e}{\index{Matrix\-Bifurcation\-Handler@{Matrix\-Bifurcation\-Handler}!Matrix\-Bifurcation\-Handler@{Matrix\-Bifurcation\-Handler}}
+\index{Matrix\-Bifurcation\-Handler@{Matrix\-Bifurcation\-Handler}!MatrixBifurcationHandler@{Matrix\-Bifurcation\-Handler}}
+\subsubsection[{Matrix\-Bifurcation\-Handler}]{\setlength{\rightskip}{0pt plus 5cm}Matrix\-Bifurcation\-Handler\-::\-Matrix\-Bifurcation\-Handler (
+\begin{DoxyParamCaption}
+\item[{{\bf Matrix2d}}]{K}
+\end{DoxyParamCaption}
+)}}\label{classMatrixBifurcationHandler_ad65c01c578ef41e0513e6915cadb068e}
+
+
+Costruttore che prende in input la matrice di permeabilità. 
+
+Definisce la matrice 3x3 Pc\-\_\- costante pari a 1/3 e riempie la matrice 2x2 K\-\_\- usando la matrice K fornita. 
+\begin{DoxyParams}{Parametri}
+{\em Matrix2d} & K\-: matrice di permeabilità da usare per modificare K\-\_\- \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+29 :K\_(\hyperlink{classMatrixBifurcationHandler_ac7d63c6d730079862dd8238928d94b26}{K}),Pc\_(Matrix3d::Constant(1./3.0))\{\};
+\end{DoxyCode}
+\hypertarget{classMatrixBifurcationHandler_a86e7580758aa9a2ec5ef4285e70d06bf}{\index{Matrix\-Bifurcation\-Handler@{Matrix\-Bifurcation\-Handler}!Matrix\-Bifurcation\-Handler@{Matrix\-Bifurcation\-Handler}}
+\index{Matrix\-Bifurcation\-Handler@{Matrix\-Bifurcation\-Handler}!MatrixBifurcationHandler@{Matrix\-Bifurcation\-Handler}}
+\subsubsection[{Matrix\-Bifurcation\-Handler}]{\setlength{\rightskip}{0pt plus 5cm}Matrix\-Bifurcation\-Handler\-::\-Matrix\-Bifurcation\-Handler (
+\begin{DoxyParamCaption}
+\item[{scalar\-\_\-type}]{K}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}}\label{classMatrixBifurcationHandler_a86e7580758aa9a2ec5ef4285e70d06bf}
+
+
+Costruttore a partire dalla permeabilità. 
+
+Definisce la matrice 3x3 Pc\-\_\- costante pari a 1/3 e riempie la matrice 2x2 K\-\_\- usando lo scalare K, inizializzandola come una matrice con K sulla diagonale e 0 fuori. 
+\begin{DoxyCode}
+22                                                                :Pc\_(Matrix3d::Constant(1./3.0))
+23 \{
+24     K\_(0,0)=\hyperlink{classMatrixBifurcationHandler_ac7d63c6d730079862dd8238928d94b26}{K};
+25     K\_(0,1)=K\_(1,0)=0.0;
+26     K\_(1,1)=\hyperlink{classMatrixBifurcationHandler_ac7d63c6d730079862dd8238928d94b26}{K};
+27 \}\textcolor{comment}{// costruttore}
+\end{DoxyCode}
+
+
+\subsection{Documentazione delle funzioni membro}
+\hypertarget{classMatrixBifurcationHandler_a4701fef8d864cb7d61521c8fbe5db2cc}{\index{Matrix\-Bifurcation\-Handler@{Matrix\-Bifurcation\-Handler}!C@{C}}
+\index{C@{C}!MatrixBifurcationHandler@{Matrix\-Bifurcation\-Handler}}
+\subsubsection[{C}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix32} Matrix\-Bifurcation\-Handler\-::\-C (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classMatrixBifurcationHandler_a4701fef8d864cb7d61521c8fbe5db2cc}
+
+
+Funzione che restituisce la matrice C\-\_\-, matrice che ha per righe i vettori che uniscono il baricentro del triangolo con il punto medio di ogni lato. 
+
+\begin{DoxyReturn}{Restituisce}
+Matrix32 C\-\_\-\-: matrice 3x2 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+113 \{\textcolor{keywordflow}{return} C\_;\}
+\end{DoxyCode}
+\hypertarget{classMatrixBifurcationHandler_ac179ca406307a3d2ee5d5b5af94d265e}{\index{Matrix\-Bifurcation\-Handler@{Matrix\-Bifurcation\-Handler}!compute\-C@{compute\-C}}
+\index{compute\-C@{compute\-C}!MatrixBifurcationHandler@{Matrix\-Bifurcation\-Handler}}
+\subsubsection[{compute\-C}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix\-Bifurcation\-Handler\-::compute\-C (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classMatrixBifurcationHandler_ac179ca406307a3d2ee5d5b5af94d265e}
+
+
+Funzione che calcola la matrice C\-\_\-, matrice che ha per righe i vettori che uniscono il baricentro del triangolo con il punto medio di ogni lato. 
+
+Ovviamente per poter chiamare questo metodo è necessario che il triangolo che rappresenta l'intersezione sia stato già definito. 
+\begin{DoxyCode}
+48 \{
+49     C\_.row(0) = M\_intersection.\hyperlink{classIntersection_a603d1cb4b33762c72999968ceec95a39}{intersectionTriangle} ().\hyperlink{classTriangleData_a4278f62058529df47e095421d02599ad}{c}(0).transpose();
+50     C\_.row(1) = M\_intersection.\hyperlink{classIntersection_a603d1cb4b33762c72999968ceec95a39}{intersectionTriangle} ().\hyperlink{classTriangleData_a4278f62058529df47e095421d02599ad}{c}(1).transpose();
+51     C\_.row(2) = M\_intersection.\hyperlink{classIntersection_a603d1cb4b33762c72999968ceec95a39}{intersectionTriangle} ().\hyperlink{classTriangleData_a4278f62058529df47e095421d02599ad}{c}(2).transpose();
+52 \}\textcolor{comment}{// computeC}
+\end{DoxyCode}
+\hypertarget{classMatrixBifurcationHandler_ac134a5731e6614e543241a018ccf8c34}{\index{Matrix\-Bifurcation\-Handler@{Matrix\-Bifurcation\-Handler}!compute\-N@{compute\-N}}
+\index{compute\-N@{compute\-N}!MatrixBifurcationHandler@{Matrix\-Bifurcation\-Handler}}
+\subsubsection[{compute\-N}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix\-Bifurcation\-Handler\-::compute\-N (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classMatrixBifurcationHandler_ac134a5731e6614e543241a018ccf8c34}
+
+
+Funzione che calcola la matrice N\-\_\-, matrice che ha per righe le normali ai lati. 
+
+Ovviamente per poter chiamare questo metodo è necessario che il triangolo che rappresenta l'intersezione sia stato già definito. 
+\begin{DoxyCode}
+41 \{
+42     N\_.row(0)=M\_intersection.\hyperlink{classIntersection_a603d1cb4b33762c72999968ceec95a39}{intersectionTriangle} ().
+      \hyperlink{classTriangleData_a3b110e4ceb09cc5368fcecad9938a1c8}{unscaledNormal}(0).transpose();
+43     N\_.row(1)=M\_intersection.\hyperlink{classIntersection_a603d1cb4b33762c72999968ceec95a39}{intersectionTriangle} ().
+      \hyperlink{classTriangleData_a3b110e4ceb09cc5368fcecad9938a1c8}{unscaledNormal}(1).transpose();
+44     N\_.row(2)=M\_intersection.\hyperlink{classIntersection_a603d1cb4b33762c72999968ceec95a39}{intersectionTriangle} ().
+      \hyperlink{classTriangleData_a3b110e4ceb09cc5368fcecad9938a1c8}{unscaledNormal}(2).transpose();
+45 \}\textcolor{comment}{// computeN}
+\end{DoxyCode}
+\hypertarget{classMatrixBifurcationHandler_a203b6bfcdef418ffa927aebaeedc6da2}{\index{Matrix\-Bifurcation\-Handler@{Matrix\-Bifurcation\-Handler}!compute\-Qc@{compute\-Qc}}
+\index{compute\-Qc@{compute\-Qc}!MatrixBifurcationHandler@{Matrix\-Bifurcation\-Handler}}
+\subsubsection[{compute\-Qc}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix\-Bifurcation\-Handler\-::compute\-Qc (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classMatrixBifurcationHandler_a203b6bfcdef418ffa927aebaeedc6da2}
+
+
+Funzione che costruisce la matrice Qc\-\_\-, matrice che ha per colonne una base ortonormale per la matrice trasposta di C. 
+
+La funzione richiama il calcolo di C\-\_\-, quindi non è necessario che sia stata precedentemente calcolata. 
+\begin{DoxyCode}
+56 \{
+57     this->\hyperlink{classMatrixBifurcationHandler_ac179ca406307a3d2ee5d5b5af94d265e}{computeC}();
+58     Qc\_.col(0)  = C\_.col(0).normalized();
+59     \hyperlink{Core_8h_aab1614cfe385b1f15b9ce723bacfaec9}{Vector3d} v0 = Qc\_.col(0);
+60     \hyperlink{Core_8h_aab1614cfe385b1f15b9ce723bacfaec9}{Vector3d} v1 = C\_.col(1) - ( v0.dot(C\_.col(1)) )*v0;
+61     Qc\_.col(1)  = v1.normalized();
+62 \}\textcolor{comment}{// computeQc}
+\end{DoxyCode}
+\hypertarget{classMatrixBifurcationHandler_a46ee3c60eedda32abe36700ab2ce2d16}{\index{Matrix\-Bifurcation\-Handler@{Matrix\-Bifurcation\-Handler}!compute\-T@{compute\-T}}
+\index{compute\-T@{compute\-T}!MatrixBifurcationHandler@{Matrix\-Bifurcation\-Handler}}
+\subsubsection[{compute\-T}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix\-Bifurcation\-Handler\-::compute\-T (
+\begin{DoxyParamCaption}
+\item[{scalar\-\_\-type}]{t = {\ttfamily 6.0}}
+\end{DoxyParamCaption}
+)}}\label{classMatrixBifurcationHandler_a46ee3c60eedda32abe36700ab2ce2d16}
+
+
+Funzione che calcola la matrice T\-\_\-, matrice di trasmissibilità. 
+
+La matrice T\-\_\- deriva dall'applicazione di uno schema alle differenze finite mimetiche sul triangolo di intersezione per la legge di Darcy, ignorando l'effetto della gravità. Questa funzione richiama il calcolo delle matrici C\-\_\-, N\-\_\- e Qc\-\_\-. L'approssimazione di T\-\_\- assume la seguente forma\-: T= N K N$^\wedge$\-T + t \{trace\}(N\-K\-N$^\wedge$\-T)P\-\_\-c 
+\begin{DoxyCode}
+66 \{
+67     this->\hyperlink{classMatrixBifurcationHandler_a203b6bfcdef418ffa927aebaeedc6da2}{computeQc}();
+68     this->\hyperlink{classMatrixBifurcationHandler_ac134a5731e6614e543241a018ccf8c34}{computeN}();
+69 
+70     scalar\_type area = M\_intersection.\hyperlink{classIntersection_a603d1cb4b33762c72999968ceec95a39}{intersectionTriangle} ().
+      \hyperlink{classTriangleData_acbfbc62d5221ecd37437012fe8b68c8d}{measure}();
+71     \hyperlink{Core_8h_acd816705c6602062b91975525c4e3f6f}{Matrix3d} Nkn = N\_*K\_*N\_.transpose();
+72     
+73     Eigen::DiagonalMatrix<scalar\_type,3,3> Nd (Nkn.diagonal());
+74     
+75     \hyperlink{Core_8h_acd816705c6602062b91975525c4e3f6f}{Matrix3d} tmp = Pc\_ *Nd *Pc\_;
+76     
+77     T\_=(1./area)*( Nkn + t*tmp );
+78 \}\textcolor{comment}{// computeT}
+\end{DoxyCode}
+\hypertarget{classMatrixBifurcationHandler_a2153adb36bdbba82ca18ae74eb9e2ea7}{\index{Matrix\-Bifurcation\-Handler@{Matrix\-Bifurcation\-Handler}!compute\-Tsimple@{compute\-Tsimple}}
+\index{compute\-Tsimple@{compute\-Tsimple}!MatrixBifurcationHandler@{Matrix\-Bifurcation\-Handler}}
+\subsubsection[{compute\-Tsimple}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix\-Bifurcation\-Handler\-::compute\-Tsimple (
+\begin{DoxyParamCaption}
+\item[{scalar\-\_\-type}]{t = {\ttfamily 6.0}}
+\end{DoxyParamCaption}
+)}}\label{classMatrixBifurcationHandler_a2153adb36bdbba82ca18ae74eb9e2ea7}
+
+\begin{DoxyCode}
+82 \{
+83     this->\hyperlink{classMatrixBifurcationHandler_a203b6bfcdef418ffa927aebaeedc6da2}{computeQc}();
+84     this->\hyperlink{classMatrixBifurcationHandler_ac134a5731e6614e543241a018ccf8c34}{computeN}();
+85 
+86     scalar\_type area = M\_intersection.\hyperlink{classIntersection_a603d1cb4b33762c72999968ceec95a39}{intersectionTriangle} ().
+      \hyperlink{classTriangleData_acbfbc62d5221ecd37437012fe8b68c8d}{measure}();
+87     \hyperlink{Core_8h_acd816705c6602062b91975525c4e3f6f}{Matrix3d} Nkn = N\_*K\_*N\_.transpose();
+88     
+89     scalar\_type Nd=Nkn.trace();
+90     
+91     \hyperlink{Core_8h_acd816705c6602062b91975525c4e3f6f}{Matrix3d} tmp = Nd *Pc\_;
+92     
+93     T\_=(1./area)*( Nkn + t*tmp );
+94 \}\textcolor{comment}{// computeTsimple}
+\end{DoxyCode}
+\hypertarget{classMatrixBifurcationHandler_acafb7a17c3d639068938a21dad6bb0ec}{\index{Matrix\-Bifurcation\-Handler@{Matrix\-Bifurcation\-Handler}!inversion2\-X2@{inversion2\-X2}}
+\index{inversion2\-X2@{inversion2\-X2}!MatrixBifurcationHandler@{Matrix\-Bifurcation\-Handler}}
+\subsubsection[{inversion2\-X2}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix\-Bifurcation\-Handler\-::inversion2\-X2 (
+\begin{DoxyParamCaption}
+\item[{const {\bf Matrix2d} \&}]{invk, }
+\item[{scalar\-\_\-type}]{det}
+\end{DoxyParamCaption}
+)}}\label{classMatrixBifurcationHandler_acafb7a17c3d639068938a21dad6bb0ec}
+
+\begin{DoxyCode}
+98 \{
+99     this-> K\_ ( 0, 0 ) = invk ( 1, 1 )*1./det;
+100     this-> K\_ ( 0, 1 ) = -invk ( 0, 1 )*1./det;
+101     this-> K\_ ( 1, 0 ) = -invk ( 1, 0 )*1./det;
+102     this-> K\_ ( 1, 1 ) = invk ( 0, 0 )*1./det;
+103 \}\textcolor{comment}{// inversion2X2}
+\end{DoxyCode}
+\hypertarget{classMatrixBifurcationHandler_ac7d63c6d730079862dd8238928d94b26}{\index{Matrix\-Bifurcation\-Handler@{Matrix\-Bifurcation\-Handler}!K@{K}}
+\index{K@{K}!MatrixBifurcationHandler@{Matrix\-Bifurcation\-Handler}}
+\subsubsection[{K}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix2d} Matrix\-Bifurcation\-Handler\-::\-K (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classMatrixBifurcationHandler_ac7d63c6d730079862dd8238928d94b26}
+
+
+Funzione che restituisce la matrice di permeabilità. 
+
+\begin{DoxyReturn}{Restituisce}
+Matrix2d K\-\_\-\-: matrice di permeabilità 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+82 \{ \textcolor{keywordflow}{return} K\_;\}
+\end{DoxyCode}
+\hypertarget{classMatrixBifurcationHandler_a77f006579fad0f0f08c10bf684bbd16a}{\index{Matrix\-Bifurcation\-Handler@{Matrix\-Bifurcation\-Handler}!N@{N}}
+\index{N@{N}!MatrixBifurcationHandler@{Matrix\-Bifurcation\-Handler}}
+\subsubsection[{N}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix32} Matrix\-Bifurcation\-Handler\-::\-N (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classMatrixBifurcationHandler_a77f006579fad0f0f08c10bf684bbd16a}
+
+
+Funzione che restituisce la matrice N\-\_\-, matrice che ha per righe le normali ai lati. 
+
+\begin{DoxyReturn}{Restituisce}
+Matrix32 N\-\_\-\-: matrice 3x2 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+96 \{\textcolor{keywordflow}{return} N\_;\}
+\end{DoxyCode}
+\hypertarget{classMatrixBifurcationHandler_a2d67172a5034f104d08cb53e5dbda926}{\index{Matrix\-Bifurcation\-Handler@{Matrix\-Bifurcation\-Handler}!operator=@{operator=}}
+\index{operator=@{operator=}!MatrixBifurcationHandler@{Matrix\-Bifurcation\-Handler}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix\-Bifurcation\-Handler}\& Matrix\-Bifurcation\-Handler\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Matrix\-Bifurcation\-Handler} \&}]{mat}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classMatrixBifurcationHandler_a2d67172a5034f104d08cb53e5dbda926}
+
+\begin{DoxyCode}
+154     \{
+155         M\_intersection = mat.M\_intersection;
+156         K\_ = mat.K\_;
+157         N\_ = mat.N\_;
+158         C\_ = mat.C\_;
+159         Qc\_ = mat.Qc\_;
+160         Pc\_ = mat.Pc\_;
+161         T\_ = mat.T\_;
+162     \}
+\end{DoxyCode}
+\hypertarget{classMatrixBifurcationHandler_ad84675e9be6d56de69c0e25bf1cd77cd}{\index{Matrix\-Bifurcation\-Handler@{Matrix\-Bifurcation\-Handler}!Pc@{Pc}}
+\index{Pc@{Pc}!MatrixBifurcationHandler@{Matrix\-Bifurcation\-Handler}}
+\subsubsection[{Pc}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix3d} Matrix\-Bifurcation\-Handler\-::\-Pc (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classMatrixBifurcationHandler_ad84675e9be6d56de69c0e25bf1cd77cd}
+
+
+Funzione che restituisce la matrice Pc\-\_\-, matrice di proiezione sullo spazio nullo di Qc\-\_\-. 
+
+\begin{DoxyReturn}{Restituisce}
+Matrix3d Pc\-\_\-\-: matrice 3x3 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+134 \{ \textcolor{keywordflow}{return} Pc\_; \}
+\end{DoxyCode}
+\hypertarget{classMatrixBifurcationHandler_add50b813d3bd773ddf794c4e05b37e38}{\index{Matrix\-Bifurcation\-Handler@{Matrix\-Bifurcation\-Handler}!Qc@{Qc}}
+\index{Qc@{Qc}!MatrixBifurcationHandler@{Matrix\-Bifurcation\-Handler}}
+\subsubsection[{Qc}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix32} Matrix\-Bifurcation\-Handler\-::\-Qc (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classMatrixBifurcationHandler_add50b813d3bd773ddf794c4e05b37e38}
+
+
+Funzione che restituisce la matrice Qc\-\_\-, matrice che ha per colonne una base ortonormale per la matrice trasposta di C. 
+
+\begin{DoxyReturn}{Restituisce}
+Matrix32 Qc\-\_\-\-: matrice 3x2 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+127 \{ \textcolor{keywordflow}{return} Qc\_; \}
+\end{DoxyCode}
+\hypertarget{classMatrixBifurcationHandler_acbc7b99389ad5eacd86f73b0ed08829b}{\index{Matrix\-Bifurcation\-Handler@{Matrix\-Bifurcation\-Handler}!set\-K@{set\-K}}
+\index{set\-K@{set\-K}!MatrixBifurcationHandler@{Matrix\-Bifurcation\-Handler}}
+\subsubsection[{set\-K}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix\-Bifurcation\-Handler\-::set\-K (
+\begin{DoxyParamCaption}
+\item[{{\bf Matrix2d}}]{K}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classMatrixBifurcationHandler_acbc7b99389ad5eacd86f73b0ed08829b}
+
+
+Funzione che cambia la matrice di permeabilità a partire da una matrice data. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em Matrix2d} & K\-: matrice di permeabilità da sostituire \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+75 \{K\_=\hyperlink{classMatrixBifurcationHandler_ac7d63c6d730079862dd8238928d94b26}{K};\}
+\end{DoxyCode}
+\hypertarget{classMatrixBifurcationHandler_a94433cf28ec2af6ba06b7f63a081d787}{\index{Matrix\-Bifurcation\-Handler@{Matrix\-Bifurcation\-Handler}!set\-Matrices@{set\-Matrices}}
+\index{set\-Matrices@{set\-Matrices}!MatrixBifurcationHandler@{Matrix\-Bifurcation\-Handler}}
+\subsubsection[{set\-Matrices}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix\-Bifurcation\-Handler\-::set\-Matrices (
+\begin{DoxyParamCaption}
+\item[{{\bf Fracture\-Ptr\-Container\-\_\-\-Type} \&}]{fractures}
+\end{DoxyParamCaption}
+)}}\label{classMatrixBifurcationHandler_a94433cf28ec2af6ba06b7f63a081d787}
+
+
+Funzione che inizializza M\-\_\-intersection, la classe che rappresenta il triangolo di intersezione, e calcola la matrice T\-\_\- a partire dall'insieme delle fratture che costituiscono l'intersezione. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em Fracture\-Ptr\-Container\-\_\-\-Type\&} & fractures\-: vettore delle fratture che costituiscono l'intersezione \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+33 \{
+34     M\_intersection.\hyperlink{classIntersection_a6694ead6072e98dffe4a7c70379ca83b}{setIntersection} ( fractures );
+35     
+36     \hyperlink{classMatrixBifurcationHandler_a46ee3c60eedda32abe36700ab2ce2d16}{computeT}(); 
+37 \}\textcolor{comment}{// setMatrices}
+\end{DoxyCode}
+\hypertarget{classMatrixBifurcationHandler_aa7e601bac77856cac8db77c58023c1b4}{\index{Matrix\-Bifurcation\-Handler@{Matrix\-Bifurcation\-Handler}!set\-Triangle@{set\-Triangle}}
+\index{set\-Triangle@{set\-Triangle}!MatrixBifurcationHandler@{Matrix\-Bifurcation\-Handler}}
+\subsubsection[{set\-Triangle}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix\-Bifurcation\-Handler\-::set\-Triangle (
+\begin{DoxyParamCaption}
+\item[{{\bf Triangle\-Data} const \&}]{T}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classMatrixBifurcationHandler_aa7e601bac77856cac8db77c58023c1b4}
+
+
+Funzione che costruisce il triangolo di intersezione a partire da un trangolo già esistente. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em \hyperlink{classTriangleData}{Triangle\-Data}} & const \& T\-: triangolo già esistente da cui partire per costruire l'intersezione \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+66     \{
+67         M\_intersection.\hyperlink{classIntersection_ae071ecb3d3f2d6f9723e310764535883}{setTriangle} ( \hyperlink{classMatrixBifurcationHandler_a3b7305f6106add811e7b4b69f5642e86}{T} );
+68     \}
+\end{DoxyCode}
+\hypertarget{classMatrixBifurcationHandler_a3b7305f6106add811e7b4b69f5642e86}{\index{Matrix\-Bifurcation\-Handler@{Matrix\-Bifurcation\-Handler}!T@{T}}
+\index{T@{T}!MatrixBifurcationHandler@{Matrix\-Bifurcation\-Handler}}
+\subsubsection[{T}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix3d} Matrix\-Bifurcation\-Handler\-::\-T (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classMatrixBifurcationHandler_a3b7305f6106add811e7b4b69f5642e86}
+
+\begin{DoxyCode}
+165 \{\textcolor{keywordflow}{return} T\_;\}
+\end{DoxyCode}
+
+
+La documentazione per questa classe è stata generata a partire dai seguenti file\-:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{MatrixBifurcationHandler_8h}{Matrix\-Bifurcation\-Handler.\-h}\item 
+src/\hyperlink{MatrixBifurcationHandler_8cc}{Matrix\-Bifurcation\-Handler.\-cc}\end{DoxyCompactItemize}

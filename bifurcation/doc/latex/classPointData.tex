@@ -1,0 +1,343 @@
+\hypertarget{classPointData}{\section{Riferimenti per la classe Point\-Data}
+\label{classPointData}\index{Point\-Data@{Point\-Data}}
+}
+
+
+{\ttfamily \#include $<$Point\-Data.\-h$>$}
+
+\subsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classPointData_a533a569f3a96d571b47cb7417c3b8b09}{Point\-Data} (scalar\-\_\-type \hyperlink{classPointData_a5accef5ea9e813dd4517eb050f276ccf}{x}=0, scalar\-\_\-type \hyperlink{classPointData_a90dbf32a9579cb1cde67458d4ad38209}{y}=0)
+\item 
+\hyperlink{classPointData_a110696aaa98e78579880de5b83a93c9e}{Point\-Data} (const \hyperlink{classPointData}{Point\-Data} \&)
+\item 
+void \hyperlink{classPointData_ab78a09aa5b435105ea30c3b3d327bb82}{set\-Coordinates} (scalar\-\_\-type \hyperlink{classPointData_a5accef5ea9e813dd4517eb050f276ccf}{x}, scalar\-\_\-type \hyperlink{classPointData_a90dbf32a9579cb1cde67458d4ad38209}{y})
+\item 
+void \hyperlink{classPointData_a9cbe93016a271a90a23c44fe4830cc68}{get\-Coordinates} (scalar\-\_\-type \&\hyperlink{classPointData_a5accef5ea9e813dd4517eb050f276ccf}{x}, scalar\-\_\-type \&\hyperlink{classPointData_a90dbf32a9579cb1cde67458d4ad38209}{y}) const 
+\item 
+scalar\-\_\-type const \hyperlink{classPointData_a0dc393437f21f7d81f3befc323ef5ff2}{operator\mbox{[}$\,$\mbox{]}} (int i) const 
+\item 
+scalar\-\_\-type \& \hyperlink{classPointData_a1a78e025d26ab02f1217095cf8114d73}{operator\mbox{[}$\,$\mbox{]}} (int i)
+\item 
+scalar\-\_\-type const \hyperlink{classPointData_a5accef5ea9e813dd4517eb050f276ccf}{x} () const 
+\item 
+scalar\-\_\-type const \hyperlink{classPointData_a90dbf32a9579cb1cde67458d4ad38209}{y} () const 
+\item 
+\hyperlink{classPointData}{Point\-Data} \& \hyperlink{classPointData_aee654398556253e58e2eac86dacd6bc8}{operator=} (const \hyperlink{classPointData}{Point\-Data} \&)
+\item 
+\hyperlink{classPointData}{Point\-Data} \hyperlink{classPointData_a2a1e7d5a276c675e92c4cb4daad1c6c3}{operator+=} (const \hyperlink{classPointData}{Point\-Data} \&)
+\item 
+\hyperlink{classPointData}{Point\-Data} \hyperlink{classPointData_ac96b0706201f8fa9d47a11b8ca41f50f}{operator-\/=} (const \hyperlink{classPointData}{Point\-Data} \&)
+\item 
+\hyperlink{classPointData}{Point\-Data} \hyperlink{classPointData_ad19da242c16ae018a91b058dd1f71c5c}{operator$\ast$} (const scalar\-\_\-type \&) const 
+\item 
+scalar\-\_\-type \hyperlink{classPointData_aaa93107dbb5690747c82fccf45a13d6b}{dot} (\hyperlink{classPointData}{Point\-Data} const \&) const 
+\begin{DoxyCompactList}\small\item\em Dot product. \end{DoxyCompactList}\item 
+\hyperlink{Core_8h_a09205951ae66bf900cc5cc57e2192667}{Vector2d} \hyperlink{classPointData_a262fed95726ae252592717fe3cf2f9dd}{as\-Vector} () const 
+\begin{DoxyCompactList}\small\item\em Conversione Point da vettore di scalari a Vector2d eigen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Attributi pubblici statici}
+\begin{DoxyCompactItemize}
+\item 
+static int const \hyperlink{classPointData_a71cd9807bc1c94983debb8bbe034916f}{my\-Dim} =0
+\end{DoxyCompactItemize}
+\subsection*{Friend}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classPointData}{Point\-Data} \hyperlink{classPointData_ab370e3eb69ea46d1e823df7e5392af8f}{operator+} (const \hyperlink{classPointData}{Point\-Data} \&, const \hyperlink{classPointData}{Point\-Data} \&)
+\item 
+\hyperlink{classPointData}{Point\-Data} \hyperlink{classPointData_a6f2701482f365408126d5090cc25fa88}{operator-\/} (const \hyperlink{classPointData}{Point\-Data} \&, const \hyperlink{classPointData}{Point\-Data} \&)
+\item 
+std\-::ostream \& \hyperlink{classPointData_a38fd8a123c3c43359de04ddf1323f078}{operator$<$$<$} (std\-::ostream \&, \hyperlink{classPointData}{Point\-Data} const \&)
+\item 
+\hyperlink{classPointData}{Point\-Data} \hyperlink{classPointData_a4a177673740fbaa6db21b438c2b26357}{operator$\ast$} (const scalar\-\_\-type \&, const \hyperlink{classPointData}{Point\-Data} \&)
+\end{DoxyCompactItemize}
+
+
+\subsection{Documentazione dei costruttori e dei distruttori}
+\hypertarget{classPointData_a533a569f3a96d571b47cb7417c3b8b09}{\index{Point\-Data@{Point\-Data}!Point\-Data@{Point\-Data}}
+\index{Point\-Data@{Point\-Data}!PointData@{Point\-Data}}
+\subsubsection[{Point\-Data}]{\setlength{\rightskip}{0pt plus 5cm}Point\-Data\-::\-Point\-Data (
+\begin{DoxyParamCaption}
+\item[{scalar\-\_\-type}]{x = {\ttfamily 0}, }
+\item[{scalar\-\_\-type}]{y = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}}\label{classPointData_a533a569f3a96d571b47cb7417c3b8b09}
+
+\begin{DoxyCode}
+4 \{
+5     M\_coor.clear();
+6     M\_coor.push\_back(\hyperlink{classPointData_a5accef5ea9e813dd4517eb050f276ccf}{x}); 
+7     M\_coor.push\_back(\hyperlink{classPointData_a90dbf32a9579cb1cde67458d4ad38209}{y});
+8 \}
+\end{DoxyCode}
+\hypertarget{classPointData_a110696aaa98e78579880de5b83a93c9e}{\index{Point\-Data@{Point\-Data}!Point\-Data@{Point\-Data}}
+\index{Point\-Data@{Point\-Data}!PointData@{Point\-Data}}
+\subsubsection[{Point\-Data}]{\setlength{\rightskip}{0pt plus 5cm}Point\-Data\-::\-Point\-Data (
+\begin{DoxyParamCaption}
+\item[{const {\bf Point\-Data} \&}]{p}
+\end{DoxyParamCaption}
+)}}\label{classPointData_a110696aaa98e78579880de5b83a93c9e}
+
+\begin{DoxyCode}
+11 \{
+12     M\_coor.clear();
+13     M\_coor.push\_back(p.\hyperlink{classPointData_a5accef5ea9e813dd4517eb050f276ccf}{x}());
+14     M\_coor.push\_back(p.\hyperlink{classPointData_a90dbf32a9579cb1cde67458d4ad38209}{y}());
+15 \}
+\end{DoxyCode}
+
+
+\subsection{Documentazione delle funzioni membro}
+\hypertarget{classPointData_a262fed95726ae252592717fe3cf2f9dd}{\index{Point\-Data@{Point\-Data}!as\-Vector@{as\-Vector}}
+\index{as\-Vector@{as\-Vector}!PointData@{Point\-Data}}
+\subsubsection[{as\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector2d} Point\-Data\-::as\-Vector (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classPointData_a262fed95726ae252592717fe3cf2f9dd}
+
+
+Conversione Point da vettore di scalari a Vector2d eigen. 
+
+
+\begin{DoxyCode}
+70             \{ 
+71                 \textcolor{keywordflow}{return} \hyperlink{Core_8h_a09205951ae66bf900cc5cc57e2192667}{Vector2d}(M\_coor[0],M\_coor[1]);
+72             \}\textcolor{comment}{//asVector}
+\end{DoxyCode}
+\hypertarget{classPointData_aaa93107dbb5690747c82fccf45a13d6b}{\index{Point\-Data@{Point\-Data}!dot@{dot}}
+\index{dot@{dot}!PointData@{Point\-Data}}
+\subsubsection[{dot}]{\setlength{\rightskip}{0pt plus 5cm}scalar\-\_\-type Point\-Data\-::dot (
+\begin{DoxyParamCaption}
+\item[{{\bf Point\-Data} const \&}]{p}
+\end{DoxyParamCaption}
+) const}}\label{classPointData_aaa93107dbb5690747c82fccf45a13d6b}
+
+
+Dot product. 
+
+
+\begin{DoxyCode}
+80 \{
+81   \textcolor{keywordflow}{return} this->\hyperlink{classPointData_a5accef5ea9e813dd4517eb050f276ccf}{x}()*p.x() + this->\hyperlink{classPointData_a90dbf32a9579cb1cde67458d4ad38209}{y}()*p.y();
+82 \}
+\end{DoxyCode}
+\hypertarget{classPointData_a9cbe93016a271a90a23c44fe4830cc68}{\index{Point\-Data@{Point\-Data}!get\-Coordinates@{get\-Coordinates}}
+\index{get\-Coordinates@{get\-Coordinates}!PointData@{Point\-Data}}
+\subsubsection[{get\-Coordinates}]{\setlength{\rightskip}{0pt plus 5cm}void Point\-Data\-::get\-Coordinates (
+\begin{DoxyParamCaption}
+\item[{scalar\-\_\-type \&}]{x, }
+\item[{scalar\-\_\-type \&}]{y}
+\end{DoxyParamCaption}
+) const}}\label{classPointData_a9cbe93016a271a90a23c44fe4830cc68}
+
+\begin{DoxyCode}
+25 \{
+26     \hyperlink{classPointData_a5accef5ea9e813dd4517eb050f276ccf}{x}=this->\hyperlink{classPointData_a5accef5ea9e813dd4517eb050f276ccf}{x}();
+27     \hyperlink{classPointData_a90dbf32a9579cb1cde67458d4ad38209}{y}=this->\hyperlink{classPointData_a90dbf32a9579cb1cde67458d4ad38209}{y}();
+28 \}\textcolor{comment}{//getCoordinates}
+\end{DoxyCode}
+\hypertarget{classPointData_ad19da242c16ae018a91b058dd1f71c5c}{\index{Point\-Data@{Point\-Data}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!PointData@{Point\-Data}}
+\subsubsection[{operator$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Point\-Data} Point\-Data\-::operator$\ast$ (
+\begin{DoxyParamCaption}
+\item[{const scalar\-\_\-type \&}]{d}
+\end{DoxyParamCaption}
+) const}}\label{classPointData_ad19da242c16ae018a91b058dd1f71c5c}
+
+\begin{DoxyCode}
+58 \{
+59   \textcolor{keywordflow}{return} \hyperlink{classPointData_a533a569f3a96d571b47cb7417c3b8b09}{PointData}( d*this->\hyperlink{classPointData_a5accef5ea9e813dd4517eb050f276ccf}{x}(), d*this->\hyperlink{classPointData_a90dbf32a9579cb1cde67458d4ad38209}{y}() );
+60 \}
+\end{DoxyCode}
+\hypertarget{classPointData_a2a1e7d5a276c675e92c4cb4daad1c6c3}{\index{Point\-Data@{Point\-Data}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!PointData@{Point\-Data}}
+\subsubsection[{operator+=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Point\-Data} Point\-Data\-::operator+= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Point\-Data} \&}]{rhs}
+\end{DoxyParamCaption}
+)}}\label{classPointData_a2a1e7d5a276c675e92c4cb4daad1c6c3}
+
+\begin{DoxyCode}
+31 \{
+32   M\_coor[0]+=rhs.\hyperlink{classPointData_a5accef5ea9e813dd4517eb050f276ccf}{x}();
+33   M\_coor[1]+=rhs.\hyperlink{classPointData_a90dbf32a9579cb1cde67458d4ad38209}{y}();
+34   \textcolor{keywordflow}{return} *\textcolor{keyword}{this};
+35 \}
+\end{DoxyCode}
+\hypertarget{classPointData_ac96b0706201f8fa9d47a11b8ca41f50f}{\index{Point\-Data@{Point\-Data}!operator-\/=@{operator-\/=}}
+\index{operator-\/=@{operator-\/=}!PointData@{Point\-Data}}
+\subsubsection[{operator-\/=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Point\-Data} Point\-Data\-::operator-\/= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Point\-Data} \&}]{rhs}
+\end{DoxyParamCaption}
+)}}\label{classPointData_ac96b0706201f8fa9d47a11b8ca41f50f}
+
+\begin{DoxyCode}
+38 \{
+39   M\_coor[0]-=rhs.\hyperlink{classPointData_a5accef5ea9e813dd4517eb050f276ccf}{x}();
+40   M\_coor[1]-=rhs.\hyperlink{classPointData_a90dbf32a9579cb1cde67458d4ad38209}{y}();
+41   \textcolor{keywordflow}{return} *\textcolor{keyword}{this};
+42 \}
+\end{DoxyCode}
+\hypertarget{classPointData_aee654398556253e58e2eac86dacd6bc8}{\index{Point\-Data@{Point\-Data}!operator=@{operator=}}
+\index{operator=@{operator=}!PointData@{Point\-Data}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Point\-Data} \& Point\-Data\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Point\-Data} \&}]{p}
+\end{DoxyParamCaption}
+)}}\label{classPointData_aee654398556253e58e2eac86dacd6bc8}
+
+\begin{DoxyCode}
+64 \{
+65   \textcolor{keywordflow}{if}(\textcolor{keyword}{this}!=&p)
+66   \{
+67         M\_coor.clear();
+68         M\_coor.push\_back(p.\hyperlink{classPointData_a5accef5ea9e813dd4517eb050f276ccf}{x}());
+69         M\_coor.push\_back(p.\hyperlink{classPointData_a90dbf32a9579cb1cde67458d4ad38209}{y}());
+70   \}
+71   \textcolor{keywordflow}{return} *\textcolor{keyword}{this};
+72 \}
+\end{DoxyCode}
+\hypertarget{classPointData_a0dc393437f21f7d81f3befc323ef5ff2}{\index{Point\-Data@{Point\-Data}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!PointData@{Point\-Data}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}scalar\-\_\-type const Point\-Data\-::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{int}]{i}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classPointData_a0dc393437f21f7d81f3befc323ef5ff2}
+
+\begin{DoxyCode}
+27             \{
+28                 \textcolor{keywordflow}{return} M\_coor[i];
+29             \} \textcolor{comment}{//operator []}
+\end{DoxyCode}
+\hypertarget{classPointData_a1a78e025d26ab02f1217095cf8114d73}{\index{Point\-Data@{Point\-Data}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!PointData@{Point\-Data}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}scalar\-\_\-type\& Point\-Data\-::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{int}]{i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classPointData_a1a78e025d26ab02f1217095cf8114d73}
+
+\begin{DoxyCode}
+32             \{
+33                 \textcolor{keywordflow}{return} M\_coor[i];
+34             \} \textcolor{comment}{//operator []}
+\end{DoxyCode}
+\hypertarget{classPointData_ab78a09aa5b435105ea30c3b3d327bb82}{\index{Point\-Data@{Point\-Data}!set\-Coordinates@{set\-Coordinates}}
+\index{set\-Coordinates@{set\-Coordinates}!PointData@{Point\-Data}}
+\subsubsection[{set\-Coordinates}]{\setlength{\rightskip}{0pt plus 5cm}void Point\-Data\-::set\-Coordinates (
+\begin{DoxyParamCaption}
+\item[{scalar\-\_\-type}]{x, }
+\item[{scalar\-\_\-type}]{y}
+\end{DoxyParamCaption}
+)}}\label{classPointData_ab78a09aa5b435105ea30c3b3d327bb82}
+
+\begin{DoxyCode}
+18 \{
+19     M\_coor.clear();
+20     M\_coor.push\_back(\hyperlink{classPointData_a5accef5ea9e813dd4517eb050f276ccf}{x}); 
+21     M\_coor.push\_back(\hyperlink{classPointData_a90dbf32a9579cb1cde67458d4ad38209}{y});
+22 \}\textcolor{comment}{//setCoordinates}
+\end{DoxyCode}
+\hypertarget{classPointData_a5accef5ea9e813dd4517eb050f276ccf}{\index{Point\-Data@{Point\-Data}!x@{x}}
+\index{x@{x}!PointData@{Point\-Data}}
+\subsubsection[{x}]{\setlength{\rightskip}{0pt plus 5cm}scalar\-\_\-type const Point\-Data\-::x (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classPointData_a5accef5ea9e813dd4517eb050f276ccf}
+
+\begin{DoxyCode}
+38             \{
+39                 \textcolor{keywordflow}{return} M\_coor[0];
+40             \} \textcolor{comment}{//x()}
+\end{DoxyCode}
+\hypertarget{classPointData_a90dbf32a9579cb1cde67458d4ad38209}{\index{Point\-Data@{Point\-Data}!y@{y}}
+\index{y@{y}!PointData@{Point\-Data}}
+\subsubsection[{y}]{\setlength{\rightskip}{0pt plus 5cm}scalar\-\_\-type const Point\-Data\-::y (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classPointData_a90dbf32a9579cb1cde67458d4ad38209}
+
+\begin{DoxyCode}
+43             \{
+44                 \textcolor{keywordflow}{return} M\_coor[1];
+45             \} \textcolor{comment}{//y()}
+\end{DoxyCode}
+
+
+\subsection{Documentazione dei friend e delle funzioni collegate}
+\hypertarget{classPointData_a4a177673740fbaa6db21b438c2b26357}{\index{Point\-Data@{Point\-Data}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!PointData@{Point\-Data}}
+\subsubsection[{operator$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Point\-Data} operator$\ast$ (
+\begin{DoxyParamCaption}
+\item[{const scalar\-\_\-type \&}]{d, }
+\item[{const {\bf Point\-Data} \&}]{p}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classPointData_a4a177673740fbaa6db21b438c2b26357}
+
+\begin{DoxyCode}
+75 \{
+76   \textcolor{keywordflow}{return} p*d;
+77 \}
+\end{DoxyCode}
+\hypertarget{classPointData_ab370e3eb69ea46d1e823df7e5392af8f}{\index{Point\-Data@{Point\-Data}!operator+@{operator+}}
+\index{operator+@{operator+}!PointData@{Point\-Data}}
+\subsubsection[{operator+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Point\-Data} operator+ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Point\-Data} \&}]{a, }
+\item[{const {\bf Point\-Data} \&}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classPointData_ab370e3eb69ea46d1e823df7e5392af8f}
+
+\begin{DoxyCode}
+51 \{
+52   \textcolor{keywordflow}{return} \hyperlink{classPointData_a533a569f3a96d571b47cb7417c3b8b09}{PointData}( a.\hyperlink{classPointData_a5accef5ea9e813dd4517eb050f276ccf}{x}()+b.\hyperlink{classPointData_a5accef5ea9e813dd4517eb050f276ccf}{x}(),
+53                     a.\hyperlink{classPointData_a90dbf32a9579cb1cde67458d4ad38209}{y}()+b.\hyperlink{classPointData_a90dbf32a9579cb1cde67458d4ad38209}{y}() );
+54 \}
+\end{DoxyCode}
+\hypertarget{classPointData_a6f2701482f365408126d5090cc25fa88}{\index{Point\-Data@{Point\-Data}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!PointData@{Point\-Data}}
+\subsubsection[{operator-\/}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Point\-Data} operator-\/ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Point\-Data} \&}]{a, }
+\item[{const {\bf Point\-Data} \&}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classPointData_a6f2701482f365408126d5090cc25fa88}
+
+\begin{DoxyCode}
+45 \{
+46   \textcolor{keywordflow}{return} \hyperlink{classPointData_a533a569f3a96d571b47cb7417c3b8b09}{PointData}( a.\hyperlink{classPointData_a5accef5ea9e813dd4517eb050f276ccf}{x}()-b.\hyperlink{classPointData_a5accef5ea9e813dd4517eb050f276ccf}{x}(),
+47                     a.\hyperlink{classPointData_a90dbf32a9579cb1cde67458d4ad38209}{y}()-b.\hyperlink{classPointData_a90dbf32a9579cb1cde67458d4ad38209}{y}() );
+48 \}
+\end{DoxyCode}
+\hypertarget{classPointData_a38fd8a123c3c43359de04ddf1323f078}{\index{Point\-Data@{Point\-Data}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!PointData@{Point\-Data}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}std\-::ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{stream, }
+\item[{{\bf Point\-Data} const \&}]{p}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classPointData_a38fd8a123c3c43359de04ddf1323f078}
+
+\begin{DoxyCode}
+85 \{
+86     stream << \textcolor{stringliteral}{" ( "} << p.x() << \textcolor{stringliteral}{", "} << p.y() << \textcolor{stringliteral}{" ) "} << std::endl;
+87     \textcolor{keywordflow}{return} stream;
+88 \}\end{DoxyCode}
+
+
+\subsection{Documentazione dei membri dato}
+\hypertarget{classPointData_a71cd9807bc1c94983debb8bbe034916f}{\index{Point\-Data@{Point\-Data}!my\-Dim@{my\-Dim}}
+\index{my\-Dim@{my\-Dim}!PointData@{Point\-Data}}
+\subsubsection[{my\-Dim}]{\setlength{\rightskip}{0pt plus 5cm}int const Point\-Data\-::my\-Dim =0\hspace{0.3cm}{\ttfamily [static]}}}\label{classPointData_a71cd9807bc1c94983debb8bbe034916f}
+
+
+La documentazione per questa classe è stata generata a partire dai seguenti file\-:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{PointData_8h}{Point\-Data.\-h}\item 
+src/\hyperlink{PointData_8cc}{Point\-Data.\-cc}\end{DoxyCompactItemize}

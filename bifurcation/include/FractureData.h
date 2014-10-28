@@ -25,44 +25,50 @@ public:
                    const std::string& sectionDarcy = "darcy/",
                    const std::string& sectionTransport = "transport/" );
 
-    // termine sorgente per il tracciante, problema di trasporto
+    // Termine sorgente per il tracciante, problema di trasporto
     scalar_type transportSource ( const base_node& x,
                                   const scalar_type& time );
 
-    // condizioni iniziali per il problema della concentrazione
+    // Condizioni iniziali per il problema della concentrazione
     scalar_type concentrationInitialCondition ( const base_node& x );
 
-    //questa bells funzione restituisce un'eventuale modulazione del coefficiente
-    //di permeabilità in direzione normale
+
+    /**
+     * Funzione che restituisce un'eventuale modulazione del coefficiente di permeabilità in direzione normale.
+     */
     scalar_type etaNormalDistribution ( const base_node& x );
 
-    //questa bells funzione restituisce un'eventuale modulazione del coefficiente
-    //di permeabilità in direzione tangenziale
+    /**
+     * Funzione che restituisce un'eventuale modulazione del coefficiente di permeabilità in direzione tangenziale.
+     */
     scalar_type etaTangentialDistribution ( const base_node& x );
 
+    
     scalar_type muNormalDistribution ( const base_node& x );
 
+    
     scalar_type muTangentialDistribution ( const base_node& x );
 
-    // Exact solution, concentration - dipende anche dal tempo!
+    
+    // Soluzione esatta, concentrazione - dipende anche dal tempo!
     scalar_type concentrationExact ( const base_node& x,
                                      const scalar_type& time );
 
-    // Exact solution, concentration IN/OUT con una flag
+    // Soluzione esatta, concentrazione IN/OUT con una flag
     scalar_type Concentration_inout ( const base_node& x,
                                       const scalar_type& time,
                                       const size_type flag );
 
-    // Exact solution, velocity (non ho ancora impostato quella corretta)
+    // Soluzione esatta, velocità 
     scalar_type velocityExact ( const base_node& x,
                                 const base_node& n );
 
-    // Exact solution, flusso per la concentrazione - dipende anche dal tempo!
+    // Soluzione esatta, flusso per la concentrazione - dipende anche dal tempo!
     scalar_type fluxExact ( const base_node& x,
                             const base_node& n,
                             const scalar_type& time );
 
-    // Exact solution, div(Velocity) -- SET = 0 WITH NO MASS SOURCES/SINKS !
+    // Soluzione esatta, div(Velocity) -- SET = 0 WITH NO MASS SOURCES/SINKS !
     scalar_type darcySource ( const base_node& x );
 
     scalar_type pressureExact ( const base_node& x );
@@ -194,7 +200,7 @@ private:
 
     scalar_type M_position; //posizione della frattura nel caso di frattura orizzontale a y=M_fracturePosition
 
-    //properties of the media
+    // Proprietà del mezzo
 
     scalar_type M_thickness; // thickness of the fracture
 
