@@ -449,8 +449,38 @@ void DarcyFractured::assembly ( const GetPot& dataFile )
 		gmm::copy(*Aup0, gmm::sub_matrix(*M_globalMatrix, 
 	    		gmm::sub_interval( shiftIntersect[ id0 ] + DOF[ 0 ], 1), 
 	    		gmm::sub_interval( 0, fractureTotalNumberDOFVelocityPressure + globalFractureNumber ) ));
+				
+		(*Aup1) ( 0 , shiftIntersect[ id1 ] + DOF[ 1 ] )  = 1.;
+		(*Aup1) ( 0 , shiftIntersect[ id1 ] + DOF[ 0 ] + fractureNumberGlobalDOFVelocity [ id0 ] ) = 1.*T( 1 , 0 );
+		(*Aup1) ( 0 , shiftIntersect[ id1 ] + DOF[ 1 ] + fractureNumberGlobalDOFVelocity [ id1 ] ) = 1.*T( 1 , 1 );
+		(*Aup1) ( 0 , shiftIntersect[ id1 ] + DOF[ 2 ] + fractureNumberGlobalDOFVelocity [ id2 ] ) = 1.*T( 1 , 2 );
+		(*Aup1) ( 0 , fractureTotalNumberDOFVelocityPressure + globalIndex0 ) = 1.*( T( 1 , 0 ) + T( 1 , 1 ) + T( 1 , 2 ) )/6.0;
+		(*Aup1) ( 0 , fractureTotalNumberDOFVelocityPressure + globalIndex1 ) = 1.*( T( 1 , 0 ) + T( 1 , 1 ) + T( 1 , 2 ) )/6.0;
+		(*Aup1) ( 0 , fractureTotalNumberDOFVelocityPressure + globalIndex2 ) = 1.*( T( 1 , 0 ) + T( 1 , 1 ) + T( 1 , 2 ) )/6.0;
+		(*Aup1) ( 0 , fractureTotalNumberDOFVelocityPressure + globalIndex3 ) = 1.*( T( 1 , 0 ) + T( 1 , 1 ) + T( 1 , 2 ) )/6.0;
+		(*Aup1) ( 0 , fractureTotalNumberDOFVelocityPressure + globalIndex4 ) = 1.*( T( 1 , 0 ) + T( 1 , 1 ) + T( 1 , 2 ) )/6.0;
+		(*Aup1) ( 0 , fractureTotalNumberDOFVelocityPressure + globalIndex5 ) = 1.*( T( 1 , 0 ) + T( 1 , 1 ) + T( 1 , 2 ) )/6.0;
+
+		gmm::copy(*Aup1, gmm::sub_matrix(*M_globalMatrix, 
+	    		gmm::sub_interval( shiftIntersect[ id1 ] + DOF[ 1 ], 1), 
+	    		gmm::sub_interval( 0, fractureTotalNumberDOFVelocityPressure + globalFractureNumber ) ));
+				
+		(*Aup2) ( 0 , shiftIntersect[ id2 ] + DOF[ 2 ] )  = 1.;
+		(*Aup2) ( 0 , shiftIntersect[ id2 ] + DOF[ 0 ] + fractureNumberGlobalDOFVelocity [ id2 ] ) = 1.*T( 2 , 0 );
+		(*Aup2) ( 0 , shiftIntersect[ id1 ] + DOF[ 1 ] + fractureNumberGlobalDOFVelocity [ id1 ] ) = 1.*T( 2 , 1 );
+		(*Aup2) ( 0 , shiftIntersect[ id2 ] + DOF[ 2 ] + fractureNumberGlobalDOFVelocity [ id2 ] ) = 1.*T( 2 , 2 );
+		(*Aup2) ( 0 , fractureTotalNumberDOFVelocityPressure + globalIndex0 ) = 1.*( T( 2 , 0 ) + T( 2 , 1 ) + T( 2 , 2 ) )/6.0;
+		(*Aup2) ( 0 , fractureTotalNumberDOFVelocityPressure + globalIndex1 ) = 1.*( T( 2 , 0 ) + T( 2 , 1 ) + T( 2 , 2 ) )/6.0;
+		(*Aup2) ( 0 , fractureTotalNumberDOFVelocityPressure + globalIndex2 ) = 1.*( T( 2 , 0 ) + T( 2 , 1 ) + T( 2 , 2 ) )/6.0;
+		(*Aup2) ( 0 , fractureTotalNumberDOFVelocityPressure + globalIndex3 ) = 1.*( T( 2 , 0 ) + T( 2 , 1 ) + T( 2 , 2 ) )/6.0;
+		(*Aup2) ( 0 , fractureTotalNumberDOFVelocityPressure + globalIndex4 ) = 1.*( T( 2 , 0 ) + T( 2 , 1 ) + T( 2 , 2 ) )/6.0;
+		(*Aup2) ( 0 , fractureTotalNumberDOFVelocityPressure + globalIndex5 ) = 1.*( T( 2 , 0 ) + T( 2 , 1 ) + T( 2 , 2 ) )/6.0;
+
+		gmm::copy(*Aup2, gmm::sub_matrix(*M_globalMatrix, 
+	    		gmm::sub_interval( shiftIntersect[ id2 ] + DOF[ 2 ], 1), 
+	    		gmm::sub_interval( 0, fractureTotalNumberDOFVelocityPressure + globalFractureNumber ) ));
 		
-		
+				
     }
 
     gmm::copy(*App, gmm::sub_matrix(*M_globalMatrix, 
