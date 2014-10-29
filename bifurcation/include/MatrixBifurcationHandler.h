@@ -154,6 +154,9 @@ public:
 	void computeTsimple( scalar_type t=6.0 );
 
 	
+	void computeScap( scalar_type& s, scalar_type t=6.0 );
+	
+	
 	/**
 	 * Funzione che inverte una matrice 2x2.
 	 * \param Matrix2d& invk: matrice 2x2 da invertire

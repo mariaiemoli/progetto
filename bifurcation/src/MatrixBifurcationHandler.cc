@@ -91,7 +91,23 @@ void MatrixBifurcationHandler::computeTsimple(scalar_type t)
 	Matrix3d tmp = Nd *M_Pc;
 	
 	M_T=(1./area)*( Nkn + t*tmp );
+	
+	return;
 }// computeTsimple
+
+
+void MatrixBifurcationHandler::computeScap( scalar_type& s, scalar_type t )
+{
+	Matrix3d Nkn = M_N*M_K*M_N.transpose();
+	
+	Eigen::DiagonalMatrix<scalar_type,3,3> Nd (Nkn.diagonal());
+	
+	Matrix3d S = t*Nd;
+	
+	s = S.trace()*1./3.0;
+	
+	return; 
+}// computeS
 
 
 void MatrixBifurcationHandler::inversion2X2 ( const Matrix2d& invk, scalar_type det )
@@ -100,6 +116,8 @@ void MatrixBifurcationHandler::inversion2X2 ( const Matrix2d& invk, scalar_type 
 	this-> M_K ( 0, 1 ) = -invk ( 0, 1 )*1./det;
 	this-> M_K ( 1, 0 ) = -invk ( 1, 0 )*1./det;
 	this-> M_K ( 1, 1 ) = invk ( 0, 0 )*1./det;
+	
+	return;
 }// inversion2X2
 
 

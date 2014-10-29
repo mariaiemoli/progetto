@@ -218,7 +218,7 @@ void FractureHandler::normalVectorAndMap ( const getfem::mesh_fem& mediumMeshFEM
 }// normalVectorAndMap
 
 
-size_type FractureHandler::setMeshLevelSetFracture ( FractureHandler& otherFracture, size_type& globalIndex )
+size_type FractureHandler::setMeshLevelSetFracture ( FractureHandler& otherFracture, size_type& globalIndex, const std::string& type )
 {
     const size_type otherFractureId = otherFracture.getId();
     size_type numIntersect = 0;
@@ -259,23 +259,28 @@ size_type FractureHandler::setMeshLevelSetFracture ( FractureHandler& otherFract
 		
         for ( i_cv << bc_cv; i_cv != size_type(-1); i_cv << bc_cv )
         {
-            if (M_meshLevelSetIntersect[ otherFractureId ]->is_convex_cut ( i_cv ) )
+            if ( M_meshLevelSetIntersect[ otherFractureId ]->is_convex_cut ( i_cv ) )
             {  
+ 
+            	if ( type == "Cross")
+            	{	
+					M_meshFlat.region ( FractureHandler::FRACTURE_UNCUT * ( M_ID + 1 ) ).sup ( i_cv );
+					
+					M_meshFlat.region ( FractureHandler::FRACTURE_INTERSECT * ( M_ID + 1 ) + otherFractureId + 1 ).add( i_cv );
+	
+					M_extendedPressure.push_back ( M_meshFEMPressure.ind_basic_dof_of_element ( i_cv )[0] );
+					M_extendedVelocity.push_back ( M_meshFEMVelocity.ind_basic_dof_of_element ( i_cv )[0] );
+					M_extendedVelocity.push_back ( M_meshFEMVelocity.ind_basic_dof_of_element ( i_cv )[1] );
+					
+            	}
             	
-				M_meshFlat.region ( FractureHandler::FRACTURE_UNCUT * ( M_ID + 1 ) ).sup ( i_cv );
-				
-				M_meshFlat.region ( FractureHandler::FRACTURE_INTERSECT * ( M_ID + 1 ) + otherFractureId + 1 ).add( i_cv );
-
-				M_extendedPressure.push_back ( M_meshFEMPressure.ind_basic_dof_of_element ( i_cv )[0] );
-				M_extendedVelocity.push_back ( M_meshFEMVelocity.ind_basic_dof_of_element ( i_cv )[0] );
-				M_extendedVelocity.push_back ( M_meshFEMVelocity.ind_basic_dof_of_element ( i_cv )[1] );
-
 				M_fractureIntersectElements [ otherFractureId ].push_back ( i_cv );
 
 				pairSize_Type coppia;
 				coppia.first = globalIndex;
 				coppia.second = 0;
 				M_fractureIntersectElementsGlobalIndex [ otherFractureId ].push_back ( coppia );
+
 				++globalIndex;
 				++numIntersect;
 		   

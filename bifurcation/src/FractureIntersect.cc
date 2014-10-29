@@ -76,18 +76,9 @@ constructIntesection ( const GetPot& dataFile, getfem::mesh_level_set& meshLevel
 			}
 
 			// Costruisco la classe IntersectData per la nuova intersezione e la aggiungo in base al tipo
-			IntersectData intersection /*( dataFile )*/ ;
-			
-			/*
-			size_type k = 0;
-			
-			if ( type == Bifurcation)
-			{
-				k = 1;
-			}
-			*/
-			
-			intersection.setIntersection ( listOfConvex[i], fracturesInvolved /*, k */);
+			IntersectData intersection;
+
+			intersection.setIntersection ( listOfConvex[i], fracturesInvolved );
 
 			M_intersections [ type ].push_back ( intersection );
 
@@ -134,10 +125,12 @@ constructIntesection ( const GetPot& dataFile, getfem::mesh_level_set& meshLevel
                      * l'idea è quella di considerare prima tutte le intersezioni di tipo Cross e poi quelle di tipo Bifurcation 
                      */
                     size_type indexTmp = globalIndexCross;
-                    fracturesInvolved [ 0 ]->setMeshLevelSetFracture ( *fracturesInvolved [ 1 ], indexTmp );
+                    
+                    std::string C ( "Cross" );
+                    fracturesInvolved [ 0 ]->setMeshLevelSetFracture ( *fracturesInvolved [ 1 ], indexTmp, C );
                     
                     indexTmp = globalIndexCross + crossNum;
-                    globalIndexCross += fracturesInvolved [ 1 ]->setMeshLevelSetFracture ( *fracturesInvolved [ 0 ], indexTmp );
+                    globalIndexCross += fracturesInvolved [ 1 ]->setMeshLevelSetFracture ( *fracturesInvolved [ 0 ], indexTmp, C );
                     std::cout << " fracturesInvolved [ 0 ]: " << fracturesInvolved[0]->getId() << std::endl;
                                         std::cout << " fracturesInvolved [ 1 ]: " << fracturesInvolved[1]->getId() << std::endl;
                 }
@@ -155,24 +148,26 @@ constructIntesection ( const GetPot& dataFile, getfem::mesh_level_set& meshLevel
         	   // Anche per le intersezioni di tipo Bifurcation assegno una numerazione globale
                std::cout << " globalIndexBifurcation " << globalIndexBifurcation << std::endl;
                
+               std::string B ( "Bifurcation" );
+               
                // Attenzione: nel caso della biforcazione ogni frattura interseca due altre fratture!
                size_type indexTmp = 2*crossNum + globalIndexBifurcation;
-               fracturesInvolved [ 0 ]->setMeshLevelSetFracture ( *fracturesInvolved [ 1 ], indexTmp );
+               fracturesInvolved [ 0 ]->setMeshLevelSetFracture ( *fracturesInvolved [ 1 ], indexTmp, B );
                
                indexTmp = 2*crossNum + globalIndexBifurcation + bifuNum;
-               fracturesInvolved [ 0 ]->setMeshLevelSetFracture ( *fracturesInvolved [ 2 ], indexTmp );
+               fracturesInvolved [ 0 ]->setMeshLevelSetFracture ( *fracturesInvolved [ 2 ], indexTmp, B );
 
                indexTmp = 2*crossNum + globalIndexBifurcation + 2*bifuNum;
-               fracturesInvolved [ 1 ]->setMeshLevelSetFracture ( *fracturesInvolved [ 0 ], indexTmp );
+               fracturesInvolved [ 1 ]->setMeshLevelSetFracture ( *fracturesInvolved [ 0 ], indexTmp, B );
                
                indexTmp = 2*crossNum + globalIndexBifurcation + 3*bifuNum ;
-               fracturesInvolved [ 1 ]->setMeshLevelSetFracture ( *fracturesInvolved [ 2 ], indexTmp );
+               fracturesInvolved [ 1 ]->setMeshLevelSetFracture ( *fracturesInvolved [ 2 ], indexTmp, B );
 
                indexTmp = 2*crossNum + globalIndexBifurcation + 4*bifuNum;
-               fracturesInvolved [ 2 ]->setMeshLevelSetFracture ( *fracturesInvolved [ 0 ], indexTmp );
+               fracturesInvolved [ 2 ]->setMeshLevelSetFracture ( *fracturesInvolved [ 0 ], indexTmp, B );
                
                indexTmp = 2*crossNum + globalIndexBifurcation + 5*bifuNum;
-               fracturesInvolved [ 2 ]->setMeshLevelSetFracture ( *fracturesInvolved [ 1 ], indexTmp );
+               fracturesInvolved [ 2 ]->setMeshLevelSetFracture ( *fracturesInvolved [ 1 ], indexTmp, B );
 
                globalIndexBifurcation++;
 

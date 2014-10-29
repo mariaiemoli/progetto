@@ -12,7 +12,6 @@
 #ifndef _FRACTUREINTERSECT_
 #define _FRACTUREINTERSECT_ 1
 
-#include "StringUtility.h"
 #include "Core.h"
 #include "IntersectData.h"
 #include "FractureHandler.h"

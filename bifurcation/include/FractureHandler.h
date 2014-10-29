@@ -7,6 +7,7 @@
 #ifndef FRACTUREHANDLER_H_
 #define FRACTUREHANDLER_H_ 1
 
+#include "StringUtility.h"
 #include "FractureData.h"
 #include "BCHandler.h"
 #include "LevelSetHandler.h"
@@ -232,7 +233,7 @@ public:
      * Funzione che, data un'altra frattura con cui si interseca, imposta i  valori legati all'intersezione: costruisce sulla mesh 
      * la regione " tagliata ", aggiunge i gradi di libertà estesi,  e imposta che tali gradi di libertà siano gli stessi sulle due fratture.
      */
-    size_type setMeshLevelSetFracture ( FractureHandler& otherFracture, size_type& globalIndex );
+    size_type setMeshLevelSetFracture ( FractureHandler& otherFracture, size_type& globalIndex, const std::string& type );
 
 
     /**

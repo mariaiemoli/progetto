@@ -1075,7 +1075,7 @@ void coupleFractures ( sparseMatrixPtr_Type& M, const FracturesSetPtr_Type& frac
     const size_type numFractures = fractures->getNumberFractures ();
     
     const size_type numCross = fractures-> getIntersections ()-> getNumberCross ();
-    const size_type numBifurcation = fractures-> getIntersections ()-> getNumberBifurcation ();
+    //const size_type numBifurcation = fractures-> getIntersections ()-> getNumberBifurcation ();
 
     for ( size_type i = 0; i < numFractures; ++i )
     {
@@ -1095,14 +1095,14 @@ void coupleFractures ( sparseMatrixPtr_Type& M, const FracturesSetPtr_Type& frac
                 	(*M)( first, first ) = 1;
                 	(*M)( first, second ) = -1;
                 }
-                
-                else if (first >= 2*numCross && first < 2*numCross + 5*numBifurcation )
+               /* 
+                else if (first >= 2*numCross && first < 2*numCross + numBifurcation )
                 {
 					(*M)( first, first ) = 1;
 					(*M)( first, second ) = -1;
                 	
                 }
-                
+                */
             }
         }
     }
