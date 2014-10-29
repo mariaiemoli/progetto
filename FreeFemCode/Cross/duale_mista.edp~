@@ -71,23 +71,23 @@ cout << "Lato 3 " << int1d(Th,43)( ph ) / int1d(Th, 43)( 1. ) << endl;
 
 if ( plotYesNo )
 {
-    plot ( ph, fill = true, nbiso = 20, value = true, wait = true);
-    plot ( [uh1, uh2], fill = true, value = true, wait = true);
+    plot ( ph, fill = true, nbiso = 20, value = true, wait = true, + );
+    plot ( [uh1, uh2], fill = true, value = true, wait = true, +);
 }
 
-{
+//{
 
-    // Spacing
-    int Nelem = 200;
-    int NelemI = 2;
+//    // Spacing
+//    int Nelem = 200;
+//    int NelemI = 2;
 
-    include "mesh_cross.edp"
+//    include "mesh_cross.edp"
 
-    fespace Qh1 ( Th, P1 );
+//    fespace Qh1 ( Th, P1 );
 
-    Qh1 ph1;
+//    Qh1 ph1;
 
-    ph1 = ph;
+//    ph1 = ph;
 
-    include "gnuplot.edp"
-}
+//    include "gnuplot.edp"
+//}

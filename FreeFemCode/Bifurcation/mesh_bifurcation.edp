@@ -50,11 +50,12 @@ real length0x = 0.31;
 real length1x = 0.1;
 real length2x = 0.69;
 
+/*
 cout << "Lunghezza fratture: " << endl
      << "Fracture0: " << length0 << endl
      << "Fracture1: " << length1 << endl
      << "Fracture2: " << length2 << endl;
-
+*/
 // punto di intersezione: è lo stesso per tutte e tre, sono certa che sia una biforcazione
 real interFrac = ( b1 + b0 ) / ( a0 + a1 );
 
@@ -108,7 +109,6 @@ real ext4 = ( ( interFrac + length2x )*( a2 + 1./a2 ) + b2 - ( b2 + d2/2. ) )/( 
 real ext5 = ( ( interFrac + length2x )*( a2 + 1./a2 ) + b2 - ( b2 - d2/2. ) )/( a2 + 1./a2 );
 
 
-
 // definiamo i bordi della mesh
 border long0 ( t = ext0, intx2 ) { x = t; y = -a0*t+b0+d0/2.; label = 3; }
 border long1 ( t = intx2, ext5 ) { x = t; y = a2*t+b2-d2/2.; label = 3; }
@@ -138,19 +138,19 @@ mesh Th = buildmesh ( long0(Nelem) + long1(Nelem) +
                       short1(Nelem*d2) +
                       long4(Nelem) + long5(Nelem) +
                       short2(Nelem*d0) +
-                      inside0(NelemI*Nelem*d1) + inside1(NelemI*Nelem*d2) +
-                      inside2(NelemI*Nelem*d0) );
+                      inside0(NelemI*Nelem*d0) + inside1(NelemI*Nelem*d2) +
+                      inside2(NelemI*Nelem*d1) );
 
 
 //plot ( Th, wait = true );
 
-func part = (y-a3*x-b3 <=0)*(y-a4*x-b4<=0)*(y-a5*x-b5>=0);
+func part = (y-a3*x-b3 >=0)*(y-a4*x-b4<=0)*(y-a5*x-b5>=0);
 
-func fracture0 = (y+a0*x-b0-d0/2.<=0)*(y+a0*x-b0+d0/2.>=0)*(1.*(y-a5*x-b5>=0));
-func fracture1 = (y-a1*x+b1+d1/2.>=0)*(y-a1*x+b1-d1/2.<=0)*(1.*(y-a3*x-b3>=0));
+func fracture0 = (y+a0*x-b0-d0/2.<=0)*(y+a0*x-b0+d0/2.>=0)*(1.*(y-a5*x-b5<=0));
+func fracture1 = (y-a1*x+b1+d1/2.>=0)*(y-a1*x+b1-d1/2.<=0)*(1.*(y-a3*x-b3<=0));
 func fracture2 = (y-a2*x-b2-d2/2.<=0)*(y-a2*x-b2+d1/2.>=0)*(1.*(y-a4*x-b4>=0));
 
-mesh ThI = trunc ( Th, part, label = 10, split = 1 );
+mesh ThI = trunc ( Th, part, label = 11, split = 1 );
 
 
 if ( plotYesNo )
