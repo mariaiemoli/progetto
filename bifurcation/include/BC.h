@@ -29,7 +29,8 @@ public:
     // costruttore
     BC ( getfem::mesh& mesh,
          const std::string& MeshType,
-         const ElementDimension& dimension = MEDIUM );
+         const ElementDimension& dimension = MEDIUM,
+         const size_type f = 0 );
 
 
     inline const sizeVector_Type& getDirichlet ( ) const

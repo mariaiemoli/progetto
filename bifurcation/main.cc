@@ -93,9 +93,9 @@ int main ( int argc, char* argv [ ] )
 	BCPtrContainer_Type bcFracture(numberFractures);
 	for ( size_type f = 0; f < numberFractures; ++f )
 	{
-		bcFracture [ f ].reset(new BC_Type(fractures->getFracture( f )->getMeshFlat(),
+		bcFracture [ f ].reset(new BC_Type( fractures->getFracture( f )->getMeshFlat(),
 										   fractures->getFracture ( f )->getData().getMeshType(),
-										   FRACTURE));
+										   FRACTURE, f));
 	}
 	std::cout << " completed!" << std::endl;
 

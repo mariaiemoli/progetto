@@ -695,7 +695,6 @@ void DarcyFractured::solve ( )
     // numero totale di intersezioni
     size_type fractureNumberCross = 0;
     size_type fractureNumberBifurcation = 0;
-//    size_type fractureNumberIntersections = 0;
     size_type globalFractureNumber =0;
 
     
@@ -729,8 +728,6 @@ void DarcyFractured::solve ( )
     fractureNumberCross = M_fractures->getIntersections ()->getNumberCross ();
    
     fractureNumberBifurcation = M_fractures->getIntersections ()->getNumberBifurcation ();
-	
-//    fractureNumberIntersections = fractureNumberCross + 5*fractureNumberBifurcation;
     
     globalFractureNumber = fractureNumberCross*2 + fractureNumberBifurcation;
 
@@ -770,9 +767,12 @@ void DarcyFractured::solve ( )
     // the extra dof start at the end of the fracture dofs
   
     getfem::pfem fractureFETypePressure;
+    getfem::pfem fractureFETypeVelocity;
+    
     if ( numberFractures > 0 )
     {
         fractureFETypePressure = getfem::fem_descriptor( M_fractures->getFracture( 0 )->getData().getFEMTypePressure());
+        fractureFETypeVelocity = getfem::fem_descriptor( M_fractures->getFracture( 0 )->getData().getFEMTypeVelocity());
     }
 
 
@@ -852,12 +852,18 @@ void DarcyFractured::solve ( )
         exportMesh(M_exporter->getFolder() + osFileName.str().c_str(), meshFcutMapped );
 
         getfem::mesh_fem mfproj ( meshFcutMapped, fracture->getMeshFEMPressure().get_qdim() );
+        getfem::mesh_fem mfproj_v ( meshFcutMapped, fracture->getMeshFEMVelocity().get_qdim() );
 
         mfproj.set_classical_discontinuous_finite_element ( 0, 0.01 );
+        mfproj_v.set_classical_discontinuous_finite_element ( 0, 0.01 );
 
         scalarVector_Type fracturePressureMeanUNCUT ( fractureNumberDOFPressure [ f ], 0. );
         scalarVector_Type fracturePressureInCut ( fractureNumberDOFPressure [ f ], 0. );
         scalarVector_Type fracturePressureOutCut ( fractureNumberDOFPressure [ f ], 0. );
+
+        scalarVector_Type fractureVelocityMeanUNCUT ( fractureNumberDOFVelocity [ f ], 0. );
+        scalarVector_Type fractureVelocityInCut ( fractureNumberDOFVelocity [ f ], 0. );
+        scalarVector_Type fractureVelocityOutCut ( fractureNumberDOFVelocity [ f ], 0. );
 
         for ( size_type i = 0; i < fractureNumberDOFPressure [ f ]; ++i )
         {
@@ -869,6 +875,15 @@ void DarcyFractured::solve ( )
             }
         }
 
+        for ( size_type i = 0; i < fractureNumberDOFVelocity [ f ]; ++i )
+        {
+            const size_type el =  fracture->getMeshFEMVelocity().first_convex_of_basic_dof(i);
+		
+            if ( fracture->getMeshFlat().region ( FractureHandler::FRACTURE_UNCUT * ( f + 1 ) ).is_in(el) )
+            {	
+                fractureVelocityMeanUNCUT [ i ] = (*(M_fractureVelocity [ f ])) [ i ];
+            }
+        }
         
         /*
          * getfem risolve il sistema per la mesh piatta, per avere i corretti valori di pressione devo interpolare
@@ -879,12 +894,24 @@ void DarcyFractured::solve ( )
         scalarVector_Type fracturePressureMeanInCutInterpolated ( mfproj.nb_dof(), 0. );
         scalarVector_Type fracturePressureMeanOutCutInterpolated ( mfproj.nb_dof(), 0. );
 
+        scalarVector_Type fractureVelocityMeanUNCUTInterpolated ( mfproj_v.nb_dof(), 0. );
+        scalarVector_Type fractureVelocityMeanInCutInterpolated ( mfproj_v.nb_dof(), 0. );
+        scalarVector_Type fractureVelocityMeanOutCutInterpolated ( mfproj_v.nb_dof(), 0. );
+
+        
         getfem::mesh_fem mfprojUncut ( fracture->getMeshMapped(), fracture->getMeshFEMPressure().get_qdim());
         mfprojUncut.set_finite_element ( fractureFETypePressure );
 
+        getfem::mesh_fem mfprojUncut_v ( fracture->getMeshMapped(), fracture->getMeshFEMVelocity().get_qdim());
+        mfprojUncut_v.set_finite_element ( fractureFETypeVelocity );
+
         getfem::interpolation ( mfprojUncut, mfproj, fracturePressureMeanUNCUT, fracturePressureMeanUNCUTInterpolated );
+        
+        getfem::interpolation ( mfprojUncut_v, mfproj_v, fractureVelocityMeanUNCUT, fractureVelocityMeanUNCUTInterpolated );
 
         const sizeVector_Type& extendedPressure = fracture->getExtendedPressure();
+        
+        const sizeVector_Type& extendedVelocity = fracture->getExtendedVelocity();
 
         for ( size_type otherFracture = 0; otherFracture < numberFractures; ++otherFracture )
         {
@@ -952,12 +979,88 @@ void DarcyFractured::solve ( )
 
             }
         }
+        
+        for ( size_type otherFracture = 0; otherFracture < numberFractures; ++otherFracture )
+        {
+            if ( fracture->getLevelSetIntersect( otherFracture ).get() )
+            {
+                getfem::mesh_region regionMesh = fracture->getMeshFlat().region ( FractureHandler::FRACTURE_INTERSECT * ( f + 1 ) + otherFracture + 1 );
+                size_type i_cv = 0;
+                dal::bit_vector bc_cv = regionMesh.index();
+                gmm::clear ( fractureVelocityInCut );
+                gmm::clear ( fractureVelocityOutCut );
+
+                for ( i_cv << bc_cv; i_cv != size_type(-1); i_cv << bc_cv )
+                {
+                    const size_type ibase = fracture->getMeshFEMVelocity().ind_basic_dof_of_element ( i_cv )[0];
+                    const size_type position = size_type ( std::find ( extendedVelocity.begin(), extendedVelocity.end(), ibase )
+                                                - extendedVelocity.begin());
+
+                    const base_node point = mfprojUncut_v.point_of_basic_dof ( ibase );
+                    const scalar_type levelSetValue = M_fractures->getFracture( otherFracture )->getLevelSet()->getData()->levelSetFunction( point );
+
+                    if ( levelSetValue < 0 )
+                    {
+                        fractureVelocityInCut [ ibase ] = (*(M_fractureVelocity [ f ])) [ ibase ];
+                        fractureVelocityOutCut [ ibase ] = (*(M_fractureVelocity [ f ])) [ fractureNumberDOFVelocity [ f ] + position ];
+                    }
+                    else
+                    {
+                        fractureVelocityOutCut [ ibase ] = (*(M_fractureVelocity [ f ])) [ ibase ];
+                        fractureVelocityInCut [ ibase ] = (*(M_fractureVelocity [ f ])) [ fractureNumberDOFVelocity [ f ] + position ];
+                    }
+
+                }
+
+                gmm::clear ( fractureVelocityMeanInCutInterpolated );
+
+                getfem::interpolation ( mfprojUncut_v, mfproj_v,
+                                        fractureVelocityInCut, fractureVelocityMeanInCutInterpolated );
+
+                gmm::clear ( fractureVelocityMeanOutCutInterpolated );
+
+                getfem::interpolation ( mfprojUncut_v, mfproj_v,
+                                        fractureVelocityOutCut, fractureVelocityMeanOutCutInterpolated );
+
+                i_cv = 0;
+                bc_cv = meshFcutMapped.convex_index();
+                for ( i_cv << bc_cv; i_cv != size_type(-1); i_cv << bc_cv )
+                {
+                    getfem::mesh_fem::ind_dof_ct idofs = mfproj_v.ind_basic_dof_of_element ( i_cv );
+                    for ( size_type k = 0; k < idofs.size(); ++k )
+                    {
+                        const base_node node = mfproj_v.point_of_basic_dof(idofs [ k ]);
+                        const scalar_type levelSetValue = M_fractures->getFracture( otherFracture )->getLevelSet()->getData()->levelSetFunction( node );
+                        if ( levelSetValue < 0 )
+                        {
+                            fractureVelocityMeanUNCUTInterpolated [ idofs[k] ] += fractureVelocityMeanInCutInterpolated [ idofs[k] ];
+                        }
+                        else
+                        {
+                            fractureVelocityMeanUNCUTInterpolated [ idofs[k] ] += fractureVelocityMeanOutCutInterpolated [ idofs[k] ];
+                        }
+
+                    }
+
+                }
+
+            }
+        }
+
 
         osFileName.str("");
         osFileName << "fracturePressure" << f << ".vtk";
 
         exportSolution ( M_exporter->getFolder() + osFileName.str(), "Pressure",
                      mfproj, fracturePressureMeanUNCUTInterpolated );
+        
+        osFileName.str("");
+        osFileName << "fractureVelocity" << f << ".vtk";
+        
+        exportSolution ( M_exporter->getFolder() + osFileName.str(), "Velocity",
+                     mfproj_v, fractureVelocityMeanUNCUTInterpolated );
+
+        
     }
 
    

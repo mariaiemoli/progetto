@@ -13,7 +13,8 @@
 
 BC::BC ( getfem::mesh& mesh,
          const std::string& MeshType,
-         const ElementDimension& dimension ) :
+         const ElementDimension& dimension,
+         const size_type f) :
     M_meshFEM(mesh)
 {
 
@@ -101,20 +102,50 @@ BC::BC ( getfem::mesh& mesh,
             base_node un = mesh.normal_of_face_of_convex(i.cv(), i.f());
             un /= gmm::vect_norm2(un);
 
-            if (false)//( gmm::abs(gmm::abs(un [ dimension - 1 ]) - 1.0) > 1.0E-7 )
-            {
-            // Dirichlet, flag 0
-            boundary_cv [ i.cv() ].push_back(i.f());
-            boundary_flags [ i.cv() ].push_back(boundaryFlags [ 1 ]);
-            //This        will enforce M_mediumMesh.region(0).add(i.cv(), i.f());
-	    }
-	    else
-            {
-                // Neumann, flag 1
-                boundary_cv [ i.cv() ].push_back(i.f());
-                boundary_flags [ i.cv() ].push_back(boundaryFlags [1 ]);
-                // This will enforce M_mediumMesh.region(1).add(i.cv(), i.f());
+            if (  f == 2 && un [ dimension - 1 ] == -1 )  
+            {	
+				if (false)//( gmm::abs(gmm::abs(un [ dimension - 1 ]) - 1.0) > 1.0E-7 )
+				{
+					// Dirichlet, flag 0
+					boundary_cv [ i.cv() ].push_back(i.f());
+					
+					boundary_flags [ i.cv() ].push_back(boundaryFlags [ 1 ]);
+					//This        will enforce M_mediumMesh.region(0).add(i.cv(), i.f());
+					
+				}
+				else
+				{
+					// Neumann, flag 1
+					boundary_cv [ i.cv() ].push_back(i.f());
+				
+					boundary_flags [ i.cv() ].push_back(boundaryFlags [1 ]);
+					// This will enforce M_mediumMesh.region(1).add(i.cv(), i.f());
+					
+				}
             }
+            
+            if  ( ( f == 0 || f == 1 ) &&  un [ dimension - 1 ] == 1 ) 
+            {	
+ 				if (false)//( gmm::abs(gmm::abs(un [ dimension - 1 ]) - 1.0) > 1.0E-7 )
+ 				{
+ 					// Dirichlet, flag 0
+ 					boundary_cv [ i.cv() ].push_back(i.f());
+ 					
+ 					boundary_flags [ i.cv() ].push_back(boundaryFlags [ 1 ]);
+ 					//This        will enforce M_mediumMesh.region(0).add(i.cv(), i.f());
+ 					
+ 				}
+ 				else
+ 				{
+ 					// Neumann, flag 1
+ 					boundary_cv [ i.cv() ].push_back(i.f());
+ 				
+ 					boundary_flags [ i.cv() ].push_back(boundaryFlags [1 ]);
+ 					// This will enforce M_mediumMesh.region(1).add(i.cv(), i.f());
+ 					
+ 				}
+             }
+
         }
     }
     // Bulk mesh
