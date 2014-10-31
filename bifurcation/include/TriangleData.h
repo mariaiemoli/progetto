@@ -14,84 +14,124 @@
 #include "PointData.h"
 #include "StringUtility.h"
 
-class TriangleData {
+class TriangleData 
+{
+public:
+	static int const myDim=2;
+	static const int numVertices=3;
+	static const int numSides=3;
+		
+	// Costruttore nullo
+	TriangleData(); 
 	
-	public:
-		static int const myDim=2;
-		static const int numVertices=3;
-		static const int numSides=3;
+	
+	// Costruisce il triangolo a partire da tre punti che rappresentano i vertici
+	TriangleData(PointData&,PointData&,PointData&); 
+	
+	// Costruttore di copia
+	TriangleData(const TriangleData&); 
+	
+	
+	/**
+	 * Funzione cbe mi permette di accedere al punto i-esimo del triangolo
+	 */
+	PointData& getPoint( size_type i ) 
+	{
+		assert ( i < M_point.size() );
 		
-		//Costruttori
-		TriangleData(); //vuoto
-		
-		TriangleData(PointData&,PointData&,PointData&); //Da tre punti presi per refernza
-		
-		TriangleData(const TriangleData&); // Da un altro triangolo == Copia
-		
-		//Mi permette di accedere al punto i-esimo del triangolo
-		PointData& getPoint( size_type i ) 
-		{
-			assert ( i < M_point.size() );
-			
-			return M_point[i];
-		}
-		
-		// We get the point by operator [] (defined in-class for inlining)
-		void setPoint(size_type i, PointData const &  p);
-		
-		//misura l'area del tringolo
-		scalar_type measure() const; 
-		
-		PointData& edgePoint(size_type edgenum,size_type endnum); // The posize_type on an edge
-		
-		PointData const & edgePoint(size_type edgenum,size_type endnum) const; // The const version
-		
-		//!Get baricenter
-		PointData baricenter()const;
-		
-		static size_type edge(size_type edgeNum, size_type endNum); // The edge numbering
-		
-		//!Get edge baricenter
-		PointData edgeBaricenter(size_type edgeNum) const;
-		
-		//!Get vector connecting edge baricenter with baricenter
-		Vector2d c(size_type edgeNum) const;
-		
-		// Outward normal to edge times edge length;
-		Vector2d unscaledNormal(size_type edgeNum)const;
-		
-		//Operatori
-		TriangleData& operator=(const TriangleData&);
-		
-		friend std::ostream & operator <<(std::ostream &, TriangleData const &);
-		
-		// Can be used ONLY if empty()==false
-		PointData const & operator[](size_type i) const 
-		{
-			return M_point[i];
-		}
-		
-		// Can be used ONLY if empty()==false
-		PointData & operator[](size_type i)
-		{
-			return M_point[i];
-		}
+		return M_point[i];
+	}
 		
 		
-	private:
-		PointDataContainer_Type  M_point;
-		static size_type const M_edge[numSides][2];
+	/**
+	 * Funzione che setta un punto del triangolo
+	 * \param size_type i: indice del punto da modificare
+	 * \param PointData const &  p: punto da inserire
+	 */
+	void setPoint(size_type i, PointData const &  p);
+	
+	
+	/**
+	 * Funzione che calcola l'area del triangolo
+	 */
+	scalar_type measure() const; 
+	
+	
+	/**
+	 * Funzione che restituisce uno dei due punti che costituiscono un lato del triangolo
+	 * \param size_type edgenum: lato di unteresse
+	 * \param size_type endnum: indice del punto che costituisce un vertice 
+	 */
+	PointData& edgePoint(size_type edgenum, size_type endnum); 
+	
+	
+	/**
+	 * Funzione che restituisce uno dei due punti che costituiscono un lato del triangolo
+	 * \param size_type edgenum: lato di unteresse
+	 * \param size_type endnum: indice del punto che costituisce un vertice 
+	 */
+	PointData const & edgePoint(size_type edgenum,size_type endnum) const;
+	
+	
+	/**
+	 * Funzione che restituisce le coordinate del baricentro del triangolo
+	 */
+	PointData baricenter()const;
+	
+	
+	// Numerazione dei lati
+	static size_type edge(size_type edgeNum, size_type endNum);
+	
+	
+	/**
+	 * Funzione che calcola il punto medio di un lato
+	 */
+	PointData edgeMean(size_type edgeNum) const;
+	
+	
+	/**
+	 * Funzione che restituisce il vettore che collega il punto medio di un lato con il baricentro
+	 */
+	Vector2d c(size_type edgeNum) const;
+	
+	/**
+	 * Funzione che restituisce il vettore che rappresenta la normale uscente da un lato
+	 */
+	Vector2d unscaledNormal(size_type edgeNum)const;
+	
+	//Operatori
+	TriangleData& operator=(const TriangleData&);
+	
+	friend std::ostream & operator <<(std::ostream &, TriangleData const &);
+	
+	// Can be used ONLY if empty()==false
+	PointData const & operator[](size_type i) const 
+	{
+		return M_point[i];
+	}
+	
+	// Can be used ONLY if empty()==false
+	PointData & operator[](size_type i)
+	{
+		return M_point[i];
+	}
 		
-		//static sizeVectorContainer_Type const M_edge = {{0, 1}, {1, 2}, {2, 0}};
 		
-
+private:
+	
+	// Vettore dei punti che costituiscono il triangolo
+	PointDataContainer_Type  M_point;
+	
+	// Lati del triangolo
+	static size_type const M_edge[numSides][2];
+		
 }; // TriangleData
 
 
-typedef TriangleData TriangleData_Type;
-typedef std::vector < TriangleData_Type > TriangleDataContainer_Type;
-typedef boost::shared_ptr < TriangleData_Type > TriangleDataPtr_Type;
-typedef std::vector < TriangleDataPtr_Type> TriangleDataPtrContainer_Type;
+typedef TriangleData TriangleData_Type;												/*!< Classe TriangleData */
+typedef std::vector < TriangleData_Type > TriangleDataContainer_Type;				/*!< Vettore di classi TriangleData */
+typedef boost::shared_ptr < TriangleData_Type > TriangleDataPtr_Type;				/*!< Puntatore alla classe TriangleData */
+typedef std::vector < TriangleDataPtr_Type> TriangleDataPtrContainer_Type;			/*!< Vettore di puntatori alla classe TriangleData */
 
 
 #endif

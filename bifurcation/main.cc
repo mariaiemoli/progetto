@@ -13,7 +13,6 @@
 #include "include/FracturesSet.h"
 #include "include/MediumData.h"
 #include "include/DarcyFractured.h"
-#include "include/TransportFractured.h"
 
 
 /**************************************************************************/
@@ -101,7 +100,7 @@ int main ( int argc, char* argv [ ] )
 
 	// Boundary conditions handler
 	std::cout << "Create boundary conditions handler..." << std::flush;
-	BCHandlerPtr_Type bcHandler(new BCHandler_Type(bcMedium, bcFracture));
+	BCHandlerPtr_Type bcHandler(new BCHandler_Type( bcFracture ));
 	std::cout << " completed!" << std::endl;
 
 	std::cout << "Setup boundary conditions handler..." << std::flush;

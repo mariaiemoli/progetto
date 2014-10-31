@@ -26,7 +26,7 @@ public:
     };
 
 
-    // costruttore
+    // Costruttore
     BC ( getfem::mesh& mesh,
          const std::string& MeshType,
          const ElementDimension& dimension = MEDIUM,
@@ -76,8 +76,8 @@ private:
     sizeVector_Type M_extBoundary;
 };
 
-typedef BC BC_Type;
-typedef boost::shared_ptr<BC> BCPtr_Type;
-typedef std::vector<BCPtr_Type> BCPtrContainer_Type;
+typedef BC BC_Type;												/*!< Classe BC */
+typedef boost::shared_ptr<BC> BCPtr_Type;						/*!< Puntatore alla classe BC */
+typedef std::vector<BCPtr_Type> BCPtrContainer_Type;			/*!< Vettore di puntatori alla classe BC */
 
 #endif /* BC_H_ */

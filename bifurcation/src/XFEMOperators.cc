@@ -21,14 +21,19 @@ void level_set_unit_normal::compute ( getfem::fem_interpolation_context& ctx, bg
 {
     size_type cv = ctx.convex_num();
     coeff.resize(mf.nb_basic_dof_of_element(cv));
-    gmm::copy(gmm::sub_vector(U,
-            gmm::sub_index(mf.ind_basic_dof_of_element(cv))), coeff);
-    ctx.pf()->interpolation_grad(ctx, coeff, gradU, 1);
-    scalar_type norm = gmm::vect_norm2(gmm::mat_row(gradU, 0));
+    
+    gmm::copy( gmm::sub_vector( U, gmm::sub_index( mf.ind_basic_dof_of_element( cv ) ) ), coeff );
+
+    ctx.pf()->interpolation_grad( ctx, coeff, gradU, 1);
+    
+    scalar_type norm = gmm::vect_norm2( gmm::mat_row( gradU, 0 ));
+    
     for ( size_type i = 0; i < N; ++i )
     {
         t [ i ] = gradU(0, i) / norm;
     }
+    
+    return;
 }
 
 
@@ -204,6 +209,8 @@ void darcy_A11F ( sparseMatrixPtr_Type& M,
         }
     }
     cout << "DARCY :: operator a(surface)     [OK]" << endl;
+    
+    return;
 
 } // darcy_A11F
 
@@ -407,96 +414,9 @@ void darcy_A11F_Cross ( sparseMatrixPtr_Type& M,
         }
     }
 
+    return;
+    
 } // darcy_A11F_Cross
-
-
-
-//matrice tau tau per la frattura con un'intersezione di tipo Bifurcation
-void darcy_A11F_Bifurcation ( sparseMatrixPtr_Type& M,
-							  const FractureHandlerPtr_Type& fracture,
-							  const scalarVector_Type& invKTangentialInterpolated,
-							  const FractureHandlerPtr_Type& otherFracture,
-							  const size_type& cutRegionFlag )
-{
-    const size_type shiftVelocity = fracture->getMeshFEMVelocity().nb_dof();
-    sparseMatrix_Type M_;
-    gmm::resize(M_, shiftVelocity, shiftVelocity);
-    gmm::clear(M_);
-
-    const size_type otherFractureId = otherFracture->getId();
-    LevelSetHandlerPtr_Type& levelSetOtherFracture = otherFracture->getLevelSet();
-
-    const size_type shiftMapFactor = fracture->getMagnificationMapFactor1().size();
-
-    generic_assembly assem;
-    
-    // Computes the integral {u dot n}{v dot n}
-
-    scalarVector_Type otherFractureEtaNormal ( fracture->getMeshFEMPressure().nb_dof(), 0. );
-
-    for ( size_type i = 0; i < fracture->getMeshFEMPressure().nb_dof(); ++i )
-    {
-        base_node nodo = fracture->getMeshFEMPressure().point_of_basic_dof( i );
-        otherFractureEtaNormal [ i ] = otherFracture->getData().getEtaNormal () *
-                    otherFracture->getData().etaNormalDistribution ( nodo ) / fracture->getData().getThickness();
-    }
-
-    assem.set("w=data(#2);"
-    		  "a=comp(vBase(#1).NonLin(#3).vBase(#1).NonLin(#3).Base(#2));"
-    		  "M(#1,#1)+=a(:,j,j,:,i,i,k).w(k);");
-
-    level_set_unit_normal nterm ( fracture->getMeshLevelSetIntersect ( otherFractureId )->get_level_set(0)->get_mesh_fem(),
-                                  fracture->getMeshLevelSetIntersect ( otherFractureId )->get_level_set(0)->values() );
-
-    const getfem::pintegration_method intTypeIM = getfem::int_method_descriptor ( "IM_GAUSS1D(3)" );
-    
-    getfem::mesh_im_level_set meshImLevel ( *fracture->getMeshLevelSetIntersect ( otherFractureId ), getfem::mesh_im_level_set::INTEGRATE_BOUNDARY );
-
-    meshImLevel.set_integration_method ( fracture->getMeshFlat().convex_index(), intTypeIM );
-
-    meshImLevel.set_simplex_im ( intTypeIM );
-
-    // Assign the mesh integration method
-    assem.push_mi ( meshImLevel );
-
-    // Assign the mesh finite element space
-    assem.push_mf ( fracture->getMeshFEMVelocity() );
-    assem.push_mf ( fracture->getMeshFEMPressure() );
-
-    // Assign the non linear term
-    assem.push_nonlinear_term ( &nterm );
-
-    // Assign the mesh finite element space for the coefficients
-    assem.push_mf ( fracture->getMeshLevelSetIntersect ( otherFractureId )->get_level_set(0)->get_mesh_fem() );
-
-    // Assign the coefficients
-    assem.push_data ( otherFractureEtaNormal );	//  CONTROLLARE CHE SIA GIUSTO
-
-    // Set the matrices to save the evaluations
-    assem.push_mat ( M_ );
-
-    // Computes the matrices
-    assem.assembly ( cutRegionFlag );
-
-    // Add the extended degrees of freedom
-    // Update the extended degrees of freedom
-    const sizeVector_Type& extendedVelocity = fracture->getExtendedVelocity();
-    const size_type extendedNumVelocity = fracture->getNumExtendedVelocity();
-
-    for ( size_type i = 0; i < extendedNumVelocity; ++i )
-    {
-        const size_type ii = extendedVelocity [ i ];
-        for ( size_type j = 0; j < extendedNumVelocity; ++j )
-        {
-            const size_type jj = extendedVelocity [ j ];
-            (*M)(ii, jj) +=  0.5* M_(ii, jj);
-            (*M)(i + shiftVelocity, j + shiftVelocity) +=  M_(ii, jj);
-            (*M)(i + shiftVelocity, jj) += 0.5 * M_(ii, jj);
-            (*M)(ii, j + shiftVelocity) += M_(ii, jj);
-        }
-    }
-	
-}// darcy_A11F_Bifurcation
 
 
 //matrice A12 per la frattura non intersecata
@@ -555,7 +475,9 @@ void darcy_A12F ( sparseMatrixPtr_Type& M,
     };
 
     cout << "DARCY :: operator b(volumic)     [OK]" << endl;
-
+    
+    return;
+    
 } // darcy_A12F
 
 
@@ -680,91 +602,11 @@ void darcy_A12F_Cross ( sparseMatrixPtr_Type& M,
         }
     }
 
+    return;
+    
 } // darcy_A12F_Cross
 
 
-//lo stesso per la frattura con un'intersezione di tipo Bifurcation 
-void darcy_A12F_Bifurcation ( sparseMatrixPtr_Type& M,
-                  	    const FractureHandlerPtr_Type& fracture,
-                  	    const FractureHandlerPtr_Type& otherFracture,
-                  	    const size_type& cutRegionFlag )
-{
-    const size_type velocityShift = fracture->getMeshFEMVelocity().nb_dof();
-    const size_type pressureShift = fracture->getMeshFEMPressure().nb_dof();
-
-    sparseMatrix_Type M_;
-
-    gmm::resize(M_, velocityShift, pressureShift);
-    gmm::clear(M_);
-
-    const size_type otherFractureId = otherFracture->getId();
-    LevelSetHandlerPtr_Type& levelSetOtherFracture = otherFracture->getLevelSet();
-
-    // Volume integration
-    getfem::generic_assembly assem;
-
-    assem.set("M(#1,#2)+=-comp(vBase(#1).NonLin(#3).Base(#2))"
-                "(:, i,i,:);");
-
-    level_set_unit_normal nterm ( fracture->getMeshLevelSetIntersect ( otherFractureId )->get_level_set(0)->get_mesh_fem(),
-                                  fracture->getMeshLevelSetIntersect ( otherFractureId )->get_level_set(0)->values() );
-    
-    const getfem::pintegration_method intTypeIM = getfem::int_method_descriptor ( "IM_GAUSS1D(3)" );
-    
-    getfem::mesh_im_level_set meshIm ( *fracture->getMeshLevelSetIntersect ( otherFractureId ),
-                                            getfem::mesh_im_level_set::INTEGRATE_BOUNDARY );
-
-
-    meshIm.set_integration_method ( fracture->getMeshFlat().convex_index(), intTypeIM );
-
-    meshIm.set_simplex_im ( intTypeIM );
-
-    // Assign the mesh integration method
-    assem.push_mi ( meshIm );
-
-    // Assign the M_mediumMesh finite element space
-    assem.push_mf ( fracture->getMeshFEMVelocity() );
-    assem.push_mf ( fracture->getMeshFEMPressure() );
-    
-    // Assign the non linear term
-    assem.push_nonlinear_term ( &nterm );
-
-    // Assign the mesh finite element space for the coefficients
-    assem.push_mf ( fracture->getMeshLevelSetIntersect ( otherFractureId )->get_level_set(0)->get_mesh_fem() );
-
-    // Set the matrices to save the evaluations
-    assem.push_mat ( M_ );
-
-    // Computes the matrices
-    assem.assembly ( cutRegionFlag );
-
-    // Update the extended degrees of freedom
-    const sizeVector_Type& extendedVelocity = fracture->getExtendedVelocity();
-    const size_type extendedNumVelocity = fracture->getNumExtendedVelocity();
-    const sizeVector_Type& extendedPressure = fracture->getExtendedPressure();
-    const size_type extendedNumPressure = fracture->getNumExtendedPressure();
-
- 
-    for ( size_type i = 0; i < extendedNumVelocity; ++i )
-    {
-        const size_type ii = extendedVelocity [ i ];
-
-        for ( size_type j = 0; j < extendedNumPressure; ++j )
-        {
-            const size_type jj = extendedPressure [ j ];
-
-			(*M)(ii, jj) += 0.5*M_ ( ii, jj );
-			(*M)(i + velocityShift, j + pressureShift) += M_ ( ii, jj );
-			(*M)(i + velocityShift, jj) += 0.5* M_(ii, jj);
-			(*M)(ii, j + pressureShift) += M_(ii, jj);
-        }
-    }
-
-} // darcy_A12F_Bifurcation
-
-
-
-//stesso lavoro con la frattura - più semplice
 void darcy_dataF ( scalarVectorPtr_Type &Bstress,
                    scalarVectorPtr_Type &Bvel,
                    const BCHandlerPtr_Type& bcHandler,
@@ -778,13 +620,10 @@ void darcy_dataF ( scalarVectorPtr_Type &Bstress,
     // ----------------- Penalty    ---------------
 
     const scalar_type fractureID = fracture->getId();
-    const LevelSetHandlerPtr_Type& levelSet = fracture->getLevelSet();
     const size_type shiftVelocity = fracture->getMeshFEMVelocity().nb_dof();
-    const size_type shiftCoefficinents =
-            fracture->getMeshFEMPressure().nb_dof();
+    const size_type shiftCoefficinents = fracture->getMeshFEMPressure().nb_dof();
 
-    scalarVector_Type etaGammaUinvh(shiftCoefficinents, 0.), Bvel_tot(
-            shiftVelocity, 0.);
+    scalarVector_Type etaGammaUinvh(shiftCoefficinents, 0.), Bvel_tot( shiftVelocity, 0.);
 
     for ( size_type i = 0; i < shiftCoefficinents; ++i )
     {
@@ -815,8 +654,7 @@ void darcy_dataF ( scalarVectorPtr_Type &Bstress,
     assem2.push_vec(Bvel_tot);
 
     // Assemble in each sub region
-    const size_type shiftDirichlet =
-            bcHandler->getFractureBC(fractureID)->getDirichlet().size();
+    const size_type shiftDirichlet = bcHandler->getFractureBC(fractureID)->getDirichlet().size();
     for ( size_type bndID = 0; bndID < shiftDirichlet; bndID++ )
     {
         const size_type val = bcHandler->getFractureBC(fractureID)->getDirichlet(bndID);
@@ -832,13 +670,11 @@ void darcy_dataF ( scalarVectorPtr_Type &Bstress,
 
     // ----------------- Ext Stress ---------------
 
-    const size_type shiftMapFactor1 =
-            fracture->getMagnificationMapFactor1().size();
-    const size_type shiftMapFactor2 =
-            fracture->getMagnificationMapFactor2().size();
+    const size_type shiftMapFactor1 = fracture->getMagnificationMapFactor1().size();
+    const size_type shiftMapFactor2 = fracture->getMagnificationMapFactor2().size();
 
-    scalarVector_Type Bs(shiftVelocity, 0.), coefx(shiftMapFactor1);
-    scalarVector_Type coefy(shiftMapFactor2);
+    scalarVector_Type Bs( shiftVelocity, 0. ), coefx( shiftMapFactor1 );
+    scalarVector_Type coefy( shiftMapFactor2 );
 
     getfem::generic_assembly assemb;
 
@@ -882,8 +718,8 @@ void darcy_dataF ( scalarVectorPtr_Type &Bstress,
     assemb.push_vec(Bs);
 
     // Assemble in each sub region
-    const size_type shiftNeumann =
-            bcHandler->getFractureBC(fractureID)->getNeumann().size();
+    const size_type shiftNeumann = bcHandler->getFractureBC(fractureID)->getNeumann().size();
+    
     for ( size_type bndID = 0; bndID < shiftNeumann; bndID++ )
     {
         const size_type val = bcHandler->getFractureBC(fractureID)->getNeumann( bndID);
@@ -895,6 +731,8 @@ void darcy_dataF ( scalarVectorPtr_Type &Bstress,
         (*Bstress) [ i ] = Bs [ i ];
     }
 
+    return;
+    
 } // darcy_dataF
 
 
@@ -963,11 +801,13 @@ void assembling_Source_BoundaryF ( scalarVectorPtr_Type& D,
     assem_Source.assembly ( uncutRegionFlag );
 
     gmm::add(D_, gmm::sub_vector(*D, gmm::sub_interval(0, shiftPressure)));
+    
+    return;
 
 } // assembling_Source_BoundaryF
 
 
-//termine sorgente per la frattura
+//termine sorgente per la frattura con intersezione
 void assembling_SourceF ( scalarVectorPtr_Type& D,
                           const scalarVectorPtr_Type& source,
                           const FractureHandlerPtr_Type& fracture,
@@ -1067,16 +907,18 @@ void assembling_SourceF ( scalarVectorPtr_Type& D,
         }
     }
 
+    return;
+    
 } // assembling_SourceF
 
 
+// creiamo l'accoppiamento tra le fratture che hanno intersezione di tipo " Cross "
 void coupleFractures ( sparseMatrixPtr_Type& M, const FracturesSetPtr_Type& fractures )
 {
     const size_type numFractures = fractures->getNumberFractures ();
     
     const size_type numCross = fractures-> getIntersections ()-> getNumberCross ();
-    //const size_type numBifurcation = fractures-> getIntersections ()-> getNumberBifurcation ();
-
+    
     for ( size_type i = 0; i < numFractures; ++i )
     {
         const FractureHandlerPtr_Type& fracture = fractures->getFracture(i);
@@ -1095,21 +937,17 @@ void coupleFractures ( sparseMatrixPtr_Type& M, const FracturesSetPtr_Type& frac
                 	(*M)( first, first ) = 1;
                 	(*M)( first, second ) = -1;
                 }
-               /* 
-                else if (first >= 2*numCross && first < 2*numCross + numBifurcation )
-                {
-					(*M)( first, first ) = 1;
-					(*M)( first, second ) = -1;
-                	
-                }
-                */
+               
             }
         }
     }
+    
+    return;
 
 } // coupleFractures
 
 
+// Salto di velocità in presenza di intersezione di tipo " Cross "
 void velocityJump_Cross ( sparseMatrixPtr_Type& M,
                     	  const FractureHandlerPtr_Type& fracture,
                     	  const FractureHandlerPtr_Type& otherFracture,
@@ -1185,79 +1023,10 @@ void velocityJump_Cross ( sparseMatrixPtr_Type& M,
         }
 
     }
+    
+    return;
 
 } // velocityJump_Cross
-
-
-void velocityJump_Bifurcation ( sparseMatrixPtr_Type& M,
-                    			const FractureHandlerPtr_Type& fracture,
-                    			const FractureHandlerPtr_Type& otherFracture,
-                    			const size_type& convex )
-{
-
-    const size_type shiftVelocity = fracture->getMeshFEMVelocity().nb_dof();
-    scalarVector_Type V ( shiftVelocity, 0. );
-
-    const size_type otherFractureId = otherFracture->getId();
-    LevelSetHandlerPtr_Type& levelSetOtherFracture = otherFracture->getLevelSet();
-
-    const getfem::pintegration_method intTypeIM = getfem::int_method_descriptor ( "IM_GAUSS1D(3)" );
-    getfem::mesh_im_level_set meshImLevel ( *fracture->getMeshLevelSetIntersect ( otherFractureId ), getfem::mesh_im_level_set::INTEGRATE_BOUNDARY );
-
-    meshImLevel.set_integration_method ( fracture->getMeshFlat().convex_index(), intTypeIM );
-
-    meshImLevel.set_simplex_im ( intTypeIM );
-
-    getfem::mesh_region meshElement;
-    meshElement.add ( convex );
-
-    generic_assembly assem;
-
-    assem.set ( "V(#1)+=comp(vBase(#1).NonLin(#2))"
-                "(:,1,1)" );
-
-    level_set_unit_normal nterm ( fracture->getMeshLevelSetIntersect ( otherFractureId )->get_level_set(0)->get_mesh_fem(),
-                                  fracture->getMeshLevelSetIntersect ( otherFractureId )->get_level_set(0)->values() );
-
-    assem.push_mi ( meshImLevel );
-    
-    // Assign the mesh finite element space
-    assem.push_mf ( fracture->getMeshFEMVelocity() );
-
-    // Assign the mesh finite element space for the coefficients
-    assem.push_mf ( fracture->getMeshLevelSetIntersect ( otherFractureId )->get_level_set(0)->get_mesh_fem() );
-
-    // Assign the non linear term
-    assem.push_nonlinear_term ( &nterm );
-
-    // Set the matrices to save the evaluations
-    assem.push_vec ( V );
-
-    assem.assembly ( meshElement );
-
-    const sizeVector_Type& extendedVelocity = fracture->getExtendedVelocity();
-    const size_type extendedNumVelocity = fracture->getNumExtendedVelocity();
-
-    for ( size_type i = 0; i < extendedNumVelocity; ++i )
-    {
-        const size_type ii = extendedVelocity [ i ];
-        const base_node pointFlat = fracture->getMeshFEMVelocity().point_of_basic_dof(ii);
-        
-        base_node pointMapped(0,0);
-        base_node pointMapped1(0,0);
-        scalar_type t = ii*1./(fracture->getData().getSpatialDiscretization () );
-        
-        pointMapped[0] = t;
-        pointMapped1[0] = pointFlat[0];
-        pointMapped1[1] = fracture->getLevelSet()->getData()->y_map( pointMapped );
-
-        const scalar_type levelSetValue = levelSetOtherFracture->getData()->ylevelSetFunction ( pointMapped1 );
-
-        (*M) ( ii, 0 ) += 0.5*V [ ii ];
-
-    }
-	
-}// velocutyJump_Bifurcation
 
 
 }// namespace getfem

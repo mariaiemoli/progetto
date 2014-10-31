@@ -33,10 +33,8 @@ FractureIntersect::FractureIntersect ()
 
 
 void FractureIntersect::
-constructIntesection ( const GetPot& dataFile, getfem::mesh_level_set& meshLevelSet, const FracturePtrContainer_Type& fractures )
+constructIntesection ( getfem::mesh_level_set& meshLevelSet, const FracturePtrContainer_Type& fractures )
 {
-	const size_type numFractures = fractures.size();
-
     // Assegno una numerazione globale ai Cross e alle Biforcazioni
     size_type globalIndexBifurcation = 0;
     size_type globalIndexCross = 0;
@@ -249,6 +247,8 @@ constructIntesection ( const GetPot& dataFile, getfem::mesh_level_set& meshLevel
 
         }
 	}
+    
+    return;
 
 } // constructIntesection
 
@@ -292,9 +292,6 @@ intersectionType ( getfem::mesh_level_set& meshLevelSet, const size_type& elemen
 	{
 		integrationValue [ i ] = integrateWithBooleanOperation ( meshLevelSet, elementID, booleanOperation [i] );
 	}
-
-    // count the number of zeros
-    const size_type numberZero = (size_type) std::count ( integrationValue.begin(), integrationValue.end(), 0 );
 
     regionLevelSetPair_Type coppia;
     coppia.first = (size_type) std::count ( integrationValue.begin(), integrationValue.end(), 0 );
@@ -398,20 +395,7 @@ size_type FractureIntersect::getNumberIntersectionOfType ( IntersectionType type
 
 size_type FractureIntersect::getNumberCross () const
 {
- /*   mapIntersection_Type::const_iterator it;
-    size_type numIntersect = 0;
-    for ( it = M_intersections.begin(); it != M_intersections.end(); ++it )
-    {
-    	if ( it->first == Cross)
-        {
-    		numIntersect++;
-        }
-    }
-
-    return numIntersect;
-*/
-	size_type NC = M_intersections.find( Cross )->second.size();
-	//std::cout << "numero Cross: " << NC << std::endl;
+ 	size_type NC = M_intersections.find( Cross )->second.size();
 	
 	return NC;
 } // getNumberCross
@@ -419,19 +403,7 @@ size_type FractureIntersect::getNumberCross () const
 
 size_type FractureIntersect::getNumberBifurcation () const
 {
- /*   mapIntersection_Type::const_iterator it;
-    size_type numIntersect = 0;
-    for ( it = M_intersections.begin(); it != M_intersections.end(); ++it )
-    {
-    	if ( it->first == Bifurcation)
-        {
-    		numIntersect++;
-        }
-    }
-
-    return numIntersect;
-*/
-	size_type NC = M_intersections.find( Bifurcation )->second.size();
+ 	size_type NC = M_intersections.find( Bifurcation )->second.size();
 	
 	return NC;
 } // getNumberBifurcation
@@ -469,9 +441,4 @@ size_type FractureIntersect::getBasisFunctionOfType ( IntersectionType type ) co
 {
     return M_basisFunctionOfType.find ( type )->second;
 } // getBasisFunctionOfType
-
-
-
-
-
 

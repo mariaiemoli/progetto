@@ -15,7 +15,7 @@ class IntersectData
 public:
 
 
-    IntersectData ( /*const GetPot& dataFile */ )// : M_matrices ( dataFile )
+    IntersectData ()
     {
     } // costruttore nullo
 	
@@ -88,6 +88,8 @@ public:
     const IntersectData& operator = ( const IntersectData & in )
     {
         copy ( in );
+        
+        return *this;
     } // operator =
 
 
@@ -95,18 +97,22 @@ private:
 
     void copy ( const IntersectData& in );
 
+    
+    // Insieme delle fratture che si intersecano
     FracturePtrContainer_Type M_fractures;
+    
+    // ID dell'elemento nella mesh di supporto dove le fratture si intersecani
     size_type M_elementID;
+    
     sizeVector_Type M_dofPressure;
     sizeVectorContainer_Type M_dofVelocity;
-    //MatrixBifurcationHandler_Type M_matrices;
 
 };
 
-typedef IntersectData IntersectData_Type;
-typedef std::vector < IntersectData_Type > IntersectDataContainer_Type;
-typedef boost::shared_ptr < IntersectData_Type > IntersectDataPtr_Type;
-typedef std::vector < IntersectDataPtr_Type > IntersectDataPtrContainer_Type;
+typedef IntersectData IntersectData_Type;											/*!< Classe IntersectData */
+typedef std::vector < IntersectData_Type > IntersectDataContainer_Type;				/*!< Vettore di classi IntersectData */
+typedef boost::shared_ptr < IntersectData_Type > IntersectDataPtr_Type;				/*!< Puntatore alla classe IntersectData */
+typedef std::vector < IntersectDataPtr_Type > IntersectDataPtrContainer_Type;		/*!< Vettore di puntatori alla classe IntersectData */
 
 
 #endif /* _INTERSECTDATA_H_ */

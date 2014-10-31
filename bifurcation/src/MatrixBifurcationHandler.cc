@@ -33,6 +33,8 @@ void MatrixBifurcationHandler::setMatrices ( FracturePtrContainer_Type& fracture
 	M_intersection.setIntersection ( fractures );
 	
 	computeT();	
+	
+	return;
 
 }// setMatrices
 
@@ -42,6 +44,8 @@ void MatrixBifurcationHandler::computeN()
 	M_N.row(0)=M_intersection.intersectionTriangle ().unscaledNormal(0).transpose();
 	M_N.row(1)=M_intersection.intersectionTriangle ().unscaledNormal(1).transpose();
 	M_N.row(2)=M_intersection.intersectionTriangle ().unscaledNormal(2).transpose();
+	
+	return;
 }// computeN
 
 void MatrixBifurcationHandler::computeC()
@@ -49,6 +53,8 @@ void MatrixBifurcationHandler::computeC()
 	M_C.row(0) = M_intersection.intersectionTriangle ().c(0).transpose();
 	M_C.row(1) = M_intersection.intersectionTriangle ().c(1).transpose();
 	M_C.row(2) = M_intersection.intersectionTriangle ().c(2).transpose();
+	
+	return;
 }// computeC
 
 
@@ -59,6 +65,8 @@ void MatrixBifurcationHandler::computeQc()
 	Vector3d v0 = M_Qc.col(0);
 	Vector3d v1 = M_C.col(1) - ( v0.dot(M_C.col(1)) )*v0;
 	M_Qc.col(1)  = v1.normalized();
+	
+	return;
 }// computeQc
 
 
@@ -75,6 +83,8 @@ void MatrixBifurcationHandler::computeT(scalar_type t)
 	Matrix3d tmp = M_Pc *Nd *M_Pc;
 	
 	M_T=(1./area)*( Nkn + t*tmp );
+	
+	return;
 }// computeT
 
 
@@ -149,21 +159,3 @@ void MatrixBifurcationHandler::SetDOFIntersecton( FractureHandlerPtr_Type& fract
 	return;
 			
 }//SetDOFIntersecton
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

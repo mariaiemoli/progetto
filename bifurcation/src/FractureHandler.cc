@@ -144,14 +144,6 @@ void FractureHandler::init ( )
     gmm::resize ( M_etaTangentialInterpolated, M_meshFEMPressure.nb_dof() );
     gmm::clear ( M_etaTangentialInterpolated );
 
-    // Allocate the vector for M_muNormalInterpolated
-    gmm::resize ( M_muNormalInterpolated, M_meshFEMPressure.nb_dof() );
-    gmm::clear ( M_muNormalInterpolated );
-
-    // Alloco il vettore per M_muTangentialInterpolated
-    gmm::resize ( M_muTangentialInterpolated, M_meshFEMPressure.nb_dof() );
-    gmm::clear ( M_muTangentialInterpolated );
-
     // Riempio i vettori M_etaNormalInterpolated, M_etaTangentialInterpolated, M_muNormalInterpolated e M_muTangentialInterpolated della frattura
     for ( size_type i = 0; i < M_meshFEMPressure.nb_dof(); ++i )
     {
@@ -159,9 +151,6 @@ void FractureHandler::init ( )
 
         M_etaTangentialInterpolated [ i ] = M_data.etaTangentialDistribution( M_meshFEMPressure.point_of_dof(i) ) * M_data.getEtaTangential();
 
-        M_muNormalInterpolated [ i ] = M_data.muNormalDistribution( M_meshFEMPressure.point_of_dof(i) ) * M_data.getMuNormal();
-
-        M_muTangentialInterpolated [ i ] = M_data.muTangentialDistribution( M_meshFEMPressure.point_of_dof(i) ) * M_data.getMuTangential();
     }
 
     gmm::resize ( M_inverseMeshSize, M_meshFEMPressure.nb_dof() );
@@ -169,6 +158,8 @@ void FractureHandler::init ( )
 
     M_meshFlat.region ( FractureHandler::FRACTURE_UNCUT * ( M_ID + 1 ) ).add ( M_meshFlat.convex_index() );
 
+    return;
+    
 }// init
 
 
@@ -196,6 +187,8 @@ void FractureHandler::computeInvH ( const BCHandlerPtr_Type& bcHandler )
         }
     }
     
+    return;
+    
 }// computeInvH
 
 
@@ -215,6 +208,9 @@ void FractureHandler::normalVectorAndMap ( const getfem::mesh_fem& mediumMeshFEM
         M_normal1.push_back ( fractureNormal [ 0 ] );
         M_normal2.push_back ( fractureNormal [ 1 ] );
     }
+    
+    return;
+    
 }// normalVectorAndMap
 
 
@@ -289,6 +285,7 @@ size_type FractureHandler::setMeshLevelSetFracture ( FractureHandler& otherFract
     }
 
     return numIntersect;
+    
 }// setMeshLevelSetFracture
 
 
@@ -302,4 +299,5 @@ size_type FractureHandler::getNumIntersections () const
     }
 
     return total;
+    
 }// getNumIntersections

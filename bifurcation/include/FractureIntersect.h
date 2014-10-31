@@ -55,7 +55,7 @@ public:
          * \param FracturePtrContainer_Type& fractures: puntatore all'insieme di tutte le fratture
          * 
          */
-        void constructIntesection ( const GetPot& dataFile, getfem::mesh_level_set& meshLevelSet,
+        void constructIntesection ( getfem::mesh_level_set& meshLevelSet,
                                     const FracturePtrContainer_Type& fractures );
 
         
@@ -131,6 +131,16 @@ public:
 private:
 
 
+        /**
+         * Funzione che restituisce il tipo di intersezione, " Cross ", " Bifurcation " o " Parallel".
+         * L'idea è quella di considerare gli elementi della mesh di supporto in cui passano due o più levelset e:
+         * - se non vi è intersezione la funzione restituisce " Parallel "
+         * - se due levelset si intersecano la funzione restituisce " Cross "
+         * - se tre levelset si interesecano la funzione restituisce " Bifurcation "
+         * \param getfem::mesh_level_set& meshLevelSet: mesh di supporto con i levelset
+         * \param size_type& elementID: ID dell'elemento di supporto dove passano i level set
+         * \param sizeVector_Type& levelSets: level set interessati
+         */
         IntersectionType intersectionType ( getfem::mesh_level_set& meshLevelSet,
                                             const size_type& elementID,
                                             const sizeVector_Type& levelSets );

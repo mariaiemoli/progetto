@@ -27,18 +27,22 @@ public:
         NEUMANN_BOUNDARY_UNCUT = 5000
     };
 
-    BCHandler ( const BCPtr_Type& mediumBC,
-                const BCPtrContainer_Type& fractureBC );
+    // Costruttore
+    BCHandler ( const BCPtrContainer_Type& fractureBC );
 
+    
+    /**
+     * Funzione che crea le regioni per le condizioni al contorno per il dominio, Neumann e Dirichlet
+     */
     void createBDRegions ( getfem::mesh& mesh );
 
+
+    /**
+     * Funzione che crea le regioni per le condizioni al contorno per le fratture, Neumann e Dirichlet
+     */
     void createBDRegionsFractures ( getfem::mesh& mesh );
 
-    inline const BCPtr_Type& getMediumBC ( ) const
-    {
-        return M_mediumBC;
-    }
-
+    
     inline const BCPtr_Type& getFractureBC ( const size_type& id ) const
     {
         return M_fractureBC [ id ];
@@ -88,7 +92,6 @@ public:
 
 private:
 
-    BCPtr_Type M_mediumBC;
     BCPtrContainer_Type M_fractureBC;
 
     // flags for BC  bordo tagliato
@@ -109,7 +112,7 @@ private:
 
 };
 
-typedef BCHandler BCHandler_Type;
-typedef boost::shared_ptr<BCHandler_Type> BCHandlerPtr_Type;
+typedef BCHandler BCHandler_Type;											/*!< Classe BCHandler */
+typedef boost::shared_ptr<BCHandler_Type> BCHandlerPtr_Type;				/*!< Puntatore alla classe BCHandler */
 
 #endif /* BCHANDLER_H_ */

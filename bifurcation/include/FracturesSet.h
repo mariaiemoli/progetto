@@ -95,8 +95,8 @@ private:
 };
 
 
-typedef FracturesSet FracturesSet_Type;
-typedef boost::shared_ptr < FracturesSet_Type > FracturesSetPtr_Type;
+typedef FracturesSet FracturesSet_Type;										/*!< Classe FracturesSet */
+typedef boost::shared_ptr < FracturesSet_Type > FracturesSetPtr_Type;		/*!< Puntatore alla classe FracturesSet */
 
 
 #endif /* _FRACTURESSET_H_ */

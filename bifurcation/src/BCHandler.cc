@@ -6,11 +6,11 @@
 
 #include "../include/BCHandler.h"
 
-BCHandler::BCHandler ( const BCPtr_Type& mediumBC,
-                       const BCPtrContainer_Type& fractureBC ) :
-    M_mediumBC(mediumBC), M_fractureBC(fractureBC), M_extBoundaryCut(
-            M_fractureBC.size()), M_dirichletCut(M_fractureBC.size()),
-            M_neumannCut(M_fractureBC.size())
+BCHandler::BCHandler ( const BCPtrContainer_Type& fractureBC ) :
+                       M_fractureBC(fractureBC), 
+                       M_extBoundaryCut( M_fractureBC.size()), 
+                       M_dirichletCut(M_fractureBC.size()),
+                       M_neumannCut(M_fractureBC.size())
 {
 }
 
@@ -26,7 +26,7 @@ void BCHandler::createBDRegions ( getfem::mesh& mesh )
     M_dirichletUncut.clear();
     M_dirichletUncut.push_back(DIRICHLET_BOUNDARY_UNCUT);
 
-    getfem::mesh_region& meshRegionNeumann = mesh.region(BC::NEUMANN_BOUNDARY_NUM);
+    getfem::mesh_region& meshRegionNeumann = mesh.region( BC::NEUMANN_BOUNDARY_NUM );
 /*
 a mesh_region can be built from a integer parameter (a region number in a mesh), but it won't be usable until 'from_mesh(m)' has been called Note that these regions are read-only, this constructor is mostly used for backward-compatibility.
 */
@@ -46,13 +46,11 @@ a mesh_region can be built from a integer parameter (a region number in a mesh),
         }
     }
 
-    getfem::mesh_region& meshRegionDirichlet = mesh.region(
-            BC::DIRICHLET_BOUNDARY_NUM);
+    getfem::mesh_region& meshRegionDirichlet = mesh.region( BC::DIRICHLET_BOUNDARY_NUM );
     mediumMeshRegionIndex = meshRegionDirichlet.index();
 
     i_cv = 0;
-    for ( i_cv << mediumMeshRegionIndex; i_cv != size_type(-1); i_cv
-            << mediumMeshRegionIndex )
+    for ( i_cv << mediumMeshRegionIndex; i_cv != size_type(-1); i_cv << mediumMeshRegionIndex )
     {
         for ( size_type jj = 0; jj < 3; ++jj )
         {
@@ -62,13 +60,16 @@ a mesh_region can be built from a integer parameter (a region number in a mesh),
             }
         }
     }
-}
+    
+    return;
+    
+}// createBDRegions
 
 void BCHandler::createBDRegionsFractures ( getfem::mesh& mesh )
 {
     const size_type numberFractures = M_fractureBC.size();
 
-    getfem::mesh_region& meshRegionNeumann = mesh.region(BC::NEUMANN_BOUNDARY_NUM);
+    getfem::mesh_region& meshRegionNeumann = mesh.region( BC::NEUMANN_BOUNDARY_NUM );
     size_type i_cv;
     dal::bit_vector mediumMeshRegionIndex;
 
@@ -76,11 +77,10 @@ void BCHandler::createBDRegionsFractures ( getfem::mesh& mesh )
     {
         mediumMeshRegionIndex = meshRegionNeumann.index();
         i_cv = 0;
-        for ( i_cv << mediumMeshRegionIndex; i_cv != size_type(-1); i_cv
-                << mediumMeshRegionIndex )
+        for ( i_cv << mediumMeshRegionIndex; i_cv != size_type(-1); i_cv << mediumMeshRegionIndex )
         {
             // If the current element is in the cut region update its boundary conditions
-            if ( mesh.region(f + FractureData::FRACTURE).is_in(i_cv) )
+            if ( mesh.region( f + FractureData::FRACTURE ).is_in( i_cv ) )
             {
 
                 if ( M_neumannCut [ f ].size() <= 0 )
@@ -99,7 +99,7 @@ void BCHandler::createBDRegionsFractures ( getfem::mesh& mesh )
         }
     }
 
-    getfem::mesh_region& meshRegionDirichlet = mesh.region(BC::DIRICHLET_BOUNDARY_NUM);
+    getfem::mesh_region& meshRegionDirichlet = mesh.region( BC::DIRICHLET_BOUNDARY_NUM );
 
     for ( size_type f = 0; f < numberFractures; ++f )
     {
@@ -126,4 +126,6 @@ void BCHandler::createBDRegionsFractures ( getfem::mesh& mesh )
         }
 
     }
-}
+    
+    return;
+}// createBDRegionsFractures

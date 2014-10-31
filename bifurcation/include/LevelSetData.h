@@ -24,7 +24,7 @@ public:
      * \return scalar_type: valore del levelset nel nodo x
      *
      */
-    scalar_type ylevelSetFunction ( const base_node& x, int num = 0 );
+    scalar_type ylevelSetFunction ( const base_node& x );
 
 
     /** 
@@ -33,7 +33,7 @@ public:
      * \param base_node& x: nodo in coordinate ( t, y ) in cui valutare il levelset
      * \return scalar_type: valore del levelset nel nodo x
      */
-    scalar_type levelSetFunction ( const base_node& x, int num = 0 );
+    scalar_type levelSetFunction ( const base_node& x );
 
 
     /** scalar_type levelSetCutFunction ( const base_node& x, int num = 0 )
@@ -42,7 +42,7 @@ public:
      * \param base_node& x: nodo in coordinate ( t, y ) in cui valutare il levelset
      * \return scalar_type: valore del levelset nel nodo x
      */
-    scalar_type levelSetCutFunction ( const base_node& x, int num = 0 );
+    scalar_type levelSetCutFunction ( const base_node& x );
 
 
     /** 

@@ -80,7 +80,7 @@ void LevelSetHandler::init ( getfem::mesh& mediumMesh,
     for ( size_type i = 0; i < shiftPressure; ++i )
     {
     	const base_node node = mediumMeshFEMPressure.point_of_basic_dof ( i );
-    	M_baricenterValue [ i ] = M_data->ylevelSetFunction ( node, 0.0 );
+    	M_baricenterValue [ i ] = M_data->ylevelSetFunction ( node );
     }
 
     // Valuto la funzione level set nei gradi di libertà secondari
@@ -92,7 +92,8 @@ void LevelSetHandler::init ( getfem::mesh& mediumMesh,
     for ( size_type i = 0; i < shiftVelocity; ++i )
     {
     	const base_node node = mediumMeshFEMVelocity.point_of_basic_dof ( i );
-    	M_DOFValue [ i ] = M_data->ylevelSetFunction ( node, 0.0 );
+    	M_DOFValue [ i ] = M_data->ylevelSetFunction ( node );
     }
 
+    return;
 }

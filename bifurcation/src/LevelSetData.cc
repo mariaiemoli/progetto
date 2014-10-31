@@ -24,32 +24,32 @@ LevelSetData::LevelSetData ( const GetPot& dataFile,
 {}
 
 
-scalar_type LevelSetData::ylevelSetFunction ( const base_node& t,
-                                             int num )
+scalar_type LevelSetData::ylevelSetFunction ( const base_node& t )
 {
     M_parser.setString ( M_function );
     M_parser.setVariable ( "x", t [ 0 ] );
     M_parser.setVariable ( "y", t [ 1 ] );
+    
     return M_parser.evaluate ();
 }
 
 
-scalar_type LevelSetData::levelSetFunction ( const base_node& t,
-                                             int num )
+scalar_type LevelSetData::levelSetFunction ( const base_node& t )
 {
     M_parser.setString ( M_yfunction );
     M_parser.setVariable ( "t", t [ 0 ] );
     M_parser.setVariable ( "y", t [ 1 ] );
+    
     return M_parser.evaluate ();
 }
 
 
-scalar_type LevelSetData::levelSetCutFunction ( const base_node& t,
-                                                int num )
+scalar_type LevelSetData::levelSetCutFunction ( const base_node& t )
 {
     M_parser.setString ( M_cutFunction );
     M_parser.setVariable ( "t", t [ 0 ] );
     M_parser.setVariable ( "y", t [ 1 ] );
+    
     return M_parser.evaluate ();
 }
 
@@ -58,6 +58,7 @@ scalar_type LevelSetData::y_map ( const base_node& t )
 {
     M_parser.setString ( M_y_map );
     M_parser.setVariable ( "t", t [ 0 ] );
+    
     return M_parser.evaluate ();
 }
 
@@ -66,6 +67,7 @@ scalar_type LevelSetData::x_map ( const base_node& t )
 {
     M_parser.setString ( M_x_map );
     M_parser.setVariable ( "t", t [ 0 ] );
+    
     return M_parser.evaluate ();
 }
 

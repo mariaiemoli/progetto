@@ -67,6 +67,8 @@ void MeshHandler::setUpMesh ( )
 	else
 		// se M_meshExternal != "none" importo la mesh già costruita
 		getfem::import_mesh((M_meshFolder + M_meshExternal).data(), M_mesh);
+	
+	return;
 
 }// setUpMesh
 
@@ -240,6 +242,8 @@ void MeshHandler::setUpRegions ( const FracturesSetPtr_Type& fractures )
         M_extendedIntersectDOFVector.resize ( itVect - M_extendedIntersectDOFVector.begin() );
 
     }
+    
+    return;
 
 }// setUpRegions
 
@@ -463,6 +467,8 @@ void MeshHandler::computeMeshMeasures ( )
         M_inverseMeshSize [ dofScalar ] = 1.0 / M_meshSize [ dofScalar ];
     }
 
+    return;
+    
 }// computeMeshMeasures
 
 
@@ -498,6 +504,8 @@ void MeshHandler::setUpFEM ( )
 
     // Finite element space the coefficients, the same as the primal finite element space
     M_meshFEMCoefficients.set_finite_element(M_mesh.convex_index(), FETypePressure);
+    
+    return;
 
 }// setUpFEM
 
@@ -522,6 +530,8 @@ void MeshHandler::printCuttedElements ( const std::string& vtkFolder,
     }
 
     exportSolutionInCell(vtkFolder + fileName, "CuttedElements", M_meshFEMScalar, cuttedElements);
+    
+    return;
 }// printCuttedElements
 
 
@@ -643,5 +653,7 @@ void MeshHandler::fixCutRegion ( const FractureHandlerPtr_Type& fracture )
             VaOut [ i ] = 2;
         }
     }
+    
+    return;
 
 } // fix_cut_region

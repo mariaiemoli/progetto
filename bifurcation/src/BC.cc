@@ -18,10 +18,6 @@ BC::BC ( getfem::mesh& mesh,
     M_meshFEM(mesh)
 {
 
-    // Dual variable spaces
-    //getfem::pfem FETypePressure = getfem::fem_descriptor(FEMType);
-
-    //M_meshFEM.set_finite_element(mesh.convex_index(), FETypePressure);
     bgeot::pgeometric_trans geometricTransformation;
 
     geometricTransformation = bgeot::geometric_trans_descriptor(MeshType);

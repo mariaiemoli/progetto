@@ -109,7 +109,7 @@ private:
 
 };
 
-typedef DarcyFractured DarcyFractured_Type;
-typedef boost::shared_ptr<DarcyFractured_Type> DarcyFracturedPtr_Type;
+typedef DarcyFractured DarcyFractured_Type;											/*!< Classe DarcyFractured */
+typedef boost::shared_ptr<DarcyFractured_Type> DarcyFracturedPtr_Type;				/*!< Puntatore alla classe DarcyFractured */
 
 #endif

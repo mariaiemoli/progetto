@@ -25,13 +25,6 @@ public:
                    const std::string& sectionDarcy = "darcy/",
                    const std::string& sectionTransport = "transport/" );
 
-    // Termine sorgente per il tracciante, problema di trasporto
-    scalar_type transportSource ( const base_node& x,
-                                  const scalar_type& time );
-
-    // Condizioni iniziali per il problema della concentrazione
-    scalar_type concentrationInitialCondition ( const base_node& x );
-
 
     /**
      * Funzione che restituisce un'eventuale modulazione del coefficiente di permeabilità in direzione normale.
@@ -43,44 +36,17 @@ public:
      */
     scalar_type etaTangentialDistribution ( const base_node& x );
 
-    
-    scalar_type muNormalDistribution ( const base_node& x );
-
-    
-    scalar_type muTangentialDistribution ( const base_node& x );
-
-    
-    // Soluzione esatta, concentrazione - dipende anche dal tempo!
-    scalar_type concentrationExact ( const base_node& x,
-                                     const scalar_type& time );
-
-    // Soluzione esatta, concentrazione IN/OUT con una flag
-    scalar_type Concentration_inout ( const base_node& x,
-                                      const scalar_type& time,
-                                      const size_type flag );
-
     // Soluzione esatta, velocità 
     scalar_type velocityExact ( const base_node& x,
                                 const base_node& n );
 
-    // Soluzione esatta, flusso per la concentrazione - dipende anche dal tempo!
-    scalar_type fluxExact ( const base_node& x,
-                            const base_node& n,
-                            const scalar_type& time );
-
+   
     // Soluzione esatta, div(Velocity) -- SET = 0 WITH NO MASS SOURCES/SINKS !
     scalar_type darcySource ( const base_node& x );
 
     scalar_type pressureExact ( const base_node& x );
 
     scalar_type meshSpacing ( const scalar_type& x );
-
-
-    inline scalar_type getPosition () const
-    {
-        return M_position;
-    }
-
 
     inline scalar_type getThickness () const
     {
@@ -97,18 +63,6 @@ public:
     inline scalar_type getEtaTangential () const
     {
         return M_etaTangential;
-    }
-
-
-    inline scalar_type getMuNormal () const
-    {
-        return M_muNormal;
-    }
-
-
-    inline scalar_type getMuTangential () const
-    {
-        return M_muTangential;
     }
 
 
@@ -196,9 +150,6 @@ private:
     std::string M_section;
     std::string M_sectionDomain;
     std::string M_sectionDarcy;
-    std::string M_sectionTransport;
-
-    scalar_type M_position; //posizione della frattura nel caso di frattura orizzontale a y=M_fracturePosition
 
     // Proprietà del mezzo
 
@@ -233,19 +184,6 @@ private:
     std::string M_darcySource;
     std::string M_pressureExact;
     std::string M_velocityExact;
-
-    //inverse diffusivities
-    scalar_type M_muNormal; // eta_gamma = d/K_normale
-    scalar_type M_muTangential; // eta_t=1/(K_t*d)
-    std::string M_muNormalDistribution;
-    std::string M_muTangentialDistribution;
-
-    std::string M_transportSource;
-    std::string M_concentrationInitialCondition;
-
-    std::string M_concentrationExact;
-    std::string M_Concentration_inout;
-    std::string M_fluxExact;
 
     std::string M_meshSpacing;
 

@@ -122,6 +122,8 @@ void Intersection::setIntersection( const FracturePtrContainer_Type& M_Fractures
     this-> M_intersectionTriangle = tmp.M_intersectionTriangle; 
 	
 	std::cout << tmp.M_intersectionTriangle << std::endl;
+	
+	return;
     
 }// costruttore intersezione
 

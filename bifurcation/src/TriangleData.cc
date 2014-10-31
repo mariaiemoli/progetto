@@ -4,7 +4,7 @@
 
 // Definition of the static variable edge
 const size_type TriangleData::M_edge[3][2] = {{0, 1}, {1, 2}, {2, 0}};
-//const sizeVectorContainer_Type  TriangleData::M_edge = [ [ 0, 1 ], [ 1, 2 ], [ 2, 0 ] ];
+
 
 //COSTRUTTORI	
 TriangleData::TriangleData()
@@ -33,6 +33,8 @@ TriangleData::TriangleData(const TriangleData & t)
 void TriangleData::setPoint(size_type i, PointData const & p)
 {
 	M_point[i] = p;
+	
+	return;
 }//setPoint
 
 scalar_type TriangleData::measure() const
@@ -69,19 +71,19 @@ size_type TriangleData::edge(size_type i, size_type j)
 	return M_edge[i][j];
 }//edge
 
-PointData TriangleData::edgeBaricenter(size_type edgeNum)const
+PointData TriangleData::edgeMean(size_type edgeNum)const
 {
 	PointData tmp(M_point[edge(edgeNum,0)]+M_point[edge(edgeNum,1)]);
 	
 	return tmp *0.5;
-}//edgeBaricenter
+}//edgeMedium
 
 Vector2d TriangleData::c(size_type edgeNum) const
 {
 	PointData baric = this->baricenter();
-	PointData eBaric= this->edgeBaricenter(edgeNum);
+	PointData eMean= this->edgeMean(edgeNum);
 	
-	return eBaric.asVector()-baric.asVector();
+	return eMean.asVector()-baric.asVector();
 }//c
 
 Vector2d TriangleData::unscaledNormal(size_type edgeNum) const

@@ -182,6 +182,8 @@ public:
 		M_Qc = mat.M_Qc;
 		M_Pc = mat.M_Pc;
 		M_T = mat.M_T;
+		
+		return *this;
 	}
 
 	

@@ -30,21 +30,18 @@ void IntersectData::copy ( const IntersectData& in )
 
        // M_matrices = in.M_matrices;
     }
+    
+    return;
 } // copy
 
 
 void IntersectData::setIntersection ( const size_type& elementID,
-									  const FracturePtrContainer_Type& fractures ) //, const size_type k
+									  const FracturePtrContainer_Type& fractures ) 
 {
     M_elementID = elementID;
     M_fractures = fractures;
     
-	/*
-    if ( k == 1) 	// k==1 -> Bifurcation
-    {
-    	M_matrices.setMatrices ( M_fractures );
-    }
-	*/
+    return;
     
 } // setIntersection
 

@@ -447,8 +447,8 @@ private:
 
 };
 
-typedef MeshHandler MeshHandler_Type;									/*!< classe MeshHandler */
-typedef boost::shared_ptr<MeshHandler_Type> MeshHandlerPtr_Type;		/*!< puntatore alla classe MeshHandler */
+typedef MeshHandler MeshHandler_Type;									/*!< Classe MeshHandler */
+typedef boost::shared_ptr<MeshHandler_Type> MeshHandlerPtr_Type;		/*!< Puntatore alla classe MeshHandler */
 
 
 #endif /* MESHHANDLER_H_ */

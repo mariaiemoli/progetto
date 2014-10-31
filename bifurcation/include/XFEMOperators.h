@@ -4,8 +4,6 @@
  * 
  * Darcy bilinear and linear forms.
  *
- * REMEMBER: the matrix corresponding to a(u,v) is Aij = a(\phi_j, \phi_i)
- *
  */
 
 #ifndef _DARCY_OPERATORSX_
@@ -20,15 +18,11 @@
 namespace getfem
 {
 
+/**
+ * Classe che rappresenta la normale ad un levelset
+ */
 class level_set_unit_normal : public getfem::nonlinear_elem_term
 {
-    const getfem::mesh_fem& mf;
-    scalarVector_Type U;
-    size_type N;
-    base_matrix gradU;
-    bgeot::base_vector coeff;
-    bgeot::multi_index sizes_;
-
 public:
 
     level_set_unit_normal ( const getfem::mesh_fem& mf_,
@@ -41,11 +35,22 @@ public:
 
     virtual void compute ( getfem::fem_interpolation_context& ctx,
                            bgeot::base_tensor& t );
-};
+    
+private:
+    const getfem::mesh_fem& mf;
+    scalarVector_Type U;
+    size_type N;
+    base_matrix gradU;
+    bgeot::base_vector coeff;
+    bgeot::multi_index sizes_;
+
+    
+};// level_set_unit_normal
 
 
-
-//matrice tau tau per la frattura
+/**
+ * Funzione che costruisce la matrice corrispondente alla forma bilineare a(u,v):  Aij = a(\phi_j, \phi_i) = A11
+ */
 void darcy_A11F ( sparseMatrixPtr_Type& M,
                   const FractureHandlerPtr_Type& fracture,
                   const scalar_type& gammaU,
@@ -53,7 +58,10 @@ void darcy_A11F ( sparseMatrixPtr_Type& M,
                   const sizeVector_Type &ExtBoundary,
                   const size_type& uncutRegionFlag );
 
-//matrice tau tau per la frattura con un'intersezione di tipo Cross
+/**
+ * Funzione che aggiorna la matrice corrispondente alla forma bilineare a(u,v):  Aij = a(\phi_j, \phi_i) = A11
+ * nel caso di frattura con intersezione di tipo " Cross "
+ */
 void darcy_A11F_Cross ( sparseMatrixPtr_Type& M,
 					    const FractureHandlerPtr_Type& fracture,
 					    const scalarVector_Type& invKTangentialInterpolated,
@@ -61,35 +69,26 @@ void darcy_A11F_Cross ( sparseMatrixPtr_Type& M,
 					    const size_type& cutRegionFlag );
 
 
-//matrice tau tau per la frattura con un'intersezione di tipo Bifurcation
-void darcy_A11F_Bifurcation ( sparseMatrixPtr_Type& M,
-							  const FractureHandlerPtr_Type& fracture,
-							  const scalarVector_Type& invKTangentialInterpolated,
-							  const FractureHandlerPtr_Type& otherFracture,
-							  const size_type& cutRegionFlag );
-
-
-//lo stesso per la frattura
+/**
+ * Funzione che costruisce la matrice tau tau corrispondente alla forma bilineare b(u,p):  Bij = b(\phi_j, \omega_i) = A12
+ */
 void darcy_A12F ( sparseMatrixPtr_Type& M,
                   const FractureHandlerPtr_Type& fracture,
                   const size_type& uncutRegionFlag );
 
-
-//lo stesso per la frattura intersecata con un'intersezione di tipo Cross
+/**
+ * Funzione che aggiorna la matrice tau tau corrispondente alla forma bilineare b(u,p):  Bij = b(\phi_j, \omega_i) = A12
+ * nel caso di frattura con intersezione di tipo " Cross "
+ */
 void darcy_A12F_Cross ( sparseMatrixPtr_Type& M,
                   	    const FractureHandlerPtr_Type& fracture,
                   	    const FractureHandlerPtr_Type& otherFracture,
                   	    const size_type& cutRegionFlag );
 
 
-//lo stesso per la frattura intersecata con un'intersezione di tipo Bifurcation
-void darcy_A12F_Bifurcation ( sparseMatrixPtr_Type& M,
-                  	  	  	  const FractureHandlerPtr_Type& fracture,
-                  	  	  	  const FractureHandlerPtr_Type& otherFracture,
-							  const size_type& cutRegionFlag );
-
-
-//stesso lavoro con la frattura - più semplice
+/**
+ * Funzione che calcola il termine noto del sistema F(u)
+ */
 void darcy_dataF ( scalarVectorPtr_Type &Bstress,
                    scalarVectorPtr_Type &Bvel,
                    const BCHandlerPtr_Type& bcHandler,
@@ -100,14 +99,19 @@ void darcy_dataF ( scalarVectorPtr_Type &Bstress,
                    const scalarVectorPtr_Type& v_diri );
 
 
-//termine sorgente per la frattura
+
+/**
+ * Funzione che calcola il termine noto del sistema Q(p)
+ */
 void assembling_Source_BoundaryF ( scalarVectorPtr_Type& D,
                                    const scalarVectorPtr_Type& source,
                                    const FractureHandlerPtr_Type& fracture,
                                    const size_type& uncutRegionFlag );
 
 
-//termine sorgente per la frattura
+/**
+ * Funzione che aggiorna il termine noto del sistema Q(p) nel caso di frattura con intersezione di tipo " Cross "
+ */
 void assembling_SourceF ( scalarVectorPtr_Type& D,
                           const scalarVectorPtr_Type& source,
                           const FractureHandlerPtr_Type& fracture,
@@ -115,20 +119,19 @@ void assembling_SourceF ( scalarVectorPtr_Type& D,
                           const size_type& cutRegionFlag );
 
 
-//funzione che accoppia le variabili corrispondenti alle fratture che si intersecano
+/**
+ * Funzione che accoppia le variabili corrispondenti alle fratture che si intersecano
+ */
 void coupleFractures ( sparseMatrixPtr_Type& M, const FracturesSetPtr_Type& fractures );
 
 
+/**
+ * Funzione che calcola il salto di velocità per una frattura con intersezione di tipo " Cross "
+ */
 void velocityJump_Cross ( sparseMatrixPtr_Type& M,
                     const FractureHandlerPtr_Type& fracture,
                     const FractureHandlerPtr_Type& otherFracture,
                     const size_type& convex );
-
-
-void velocityJump_Bifurcation ( sparseMatrixPtr_Type& M,
-                    			const FractureHandlerPtr_Type& fracture,
-                    			const FractureHandlerPtr_Type& otherFracture,
-                    			const size_type& convex );
 
 
 } // namespace getfem

@@ -184,19 +184,6 @@ public:
         return M_meshMapped;
     }
 
-
-    inline const scalarVector_Type& getMuNormalInterpolated ( ) const
-    {
-        return M_muNormalInterpolated;
-    }
-
-
-    inline const scalarVector_Type& getMuTangentialInterpolated ( ) const
-    {
-        return M_muTangentialInterpolated;
-    }
-
-
     inline const getfem::mesh_im& getIntegrationMethodPressureVisualization ( ) const
     {
         return M_integrationMethodPressureVisualization;
@@ -337,11 +324,6 @@ private:
     scalarVector_Type M_etaNormalInterpolated;
     // eta_t=1/(K_t*d) - vector
     scalarVector_Type M_etaTangentialInterpolated;
-
-    // mu_gamma = d/mu_normale - vector
-    scalarVector_Type M_muNormalInterpolated;
-    // mu_t=1/(mu_t*d) - vector
-    scalarVector_Type M_muTangentialInterpolated;
 
     // integration method (velocity)
     getfem::mesh_im M_integrationMethodVelocity;
