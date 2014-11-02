@@ -9,7 +9,7 @@ bool plotYesNo = true;
 // Import mesh file
 
 // Spacing
-int Nelem = 50;
+int Nelem = 1000;
 int NelemI = 10;
 
 include "mesh_bifurcation.edp"

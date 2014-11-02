@@ -23,12 +23,12 @@ real a2 = 1.;
 real b2 = 0.1;
 
 // spessore delle fratture
-/*real d0 = 0.0024;*/
-/*real d1 = 0.002;*/
-/*real d2 = 0.0022;*/
-real d0 = 0.24;
-real d1 = 0.2;
-real d2 = 0.22;
+real d0 = 0.0024;
+real d1 = 0.002;
+real d2 = 0.0022;
+/*real d0 = 0.24;*/
+/*real d1 = 0.2;*/
+/*real d2 = 0.22;*/
 
 // punti di inizio frattura
 real init0 = 0.21;
@@ -150,7 +150,7 @@ func fracture0 = (y+a0*x-b0-d0/2.<=0)*(y+a0*x-b0+d0/2.>=0)*(1.*(y-a5*x-b5<=0));
 func fracture1 = (y-a1*x+b1+d1/2.>=0)*(y-a1*x+b1-d1/2.<=0)*(1.*(y-a3*x-b3<=0));
 func fracture2 = (y-a2*x-b2-d2/2.<=0)*(y-a2*x-b2+d1/2.>=0)*(1.*(y-a4*x-b4>=0));
 
-mesh ThI = trunc ( Th, part, label = 10, split = 1 );
+mesh ThI = trunc ( Th, part, label = 11, split = 1 );
 
 
 if ( plotYesNo )
