@@ -26,9 +26,13 @@ real b2 = 0.1;
 /*real d0 = 0.0024;*/
 /*real d1 = 0.002;*/
 /*real d2 = 0.0022;*/
-real d0 = 0.24;
-real d1 = 0.2;
-real d2 = 0.22;
+/*real d0 = 0.024;*/
+/*real d1 = 0.02;*/
+/*real d2 = 0.022;*/
+real d0 = 0.012;
+real d1 = 0.01;
+real d2 = 0.011;
+
 
 // punti di inizio frattura
 real init0 = 0.21;
@@ -155,8 +159,8 @@ mesh ThI = trunc ( Th, part, label = 11, split = 1 );
 
 if ( plotYesNo )
 {
-    plot ( Th, wait = true );
-    plot ( ThI, wait = true );
+    plot ( Th ); //, wait = true );
+    plot ( ThI ); //, wait = true );
 }
 
 

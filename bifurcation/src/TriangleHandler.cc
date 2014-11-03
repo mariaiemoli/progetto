@@ -40,9 +40,13 @@ Intersection::Intersection(FractureEnd const & gamma0, FractureEnd const & gamma
 }// costruttore intersezione
 
 
-void Intersection::setIntersection( const FracturePtrContainer_Type& M_FracturesSet )
+void Intersection::setIntersection( FracturePtrContainer_Type& M_FracturesSet )
 {	
 	assert ( M_FracturesSet.size() == 3 );
+	
+
+	// ordino le fratture in senso orario
+	//sortFractures ( M_FracturesSet );
 	
 	const size_type nbDof0 =  M_FracturesSet [ 0 ]-> getMeshFEMVelocity().nb_basic_dof();
 	const size_type nbDof1 =  M_FracturesSet [ 1 ]-> getMeshFEMVelocity().nb_basic_dof();
@@ -163,3 +167,81 @@ TriangleData const & Intersection::computeIntersectionTriangle()
 
 }// computeIntersectionTriangle
 
+
+void Intersection::sortFractures ( FracturePtrContainer_Type& M_FracturesSet )
+{
+	std::cout << "facciamo il sort" << std::endl;
+	FractureHandlerPtr_Type f0 = M_FracturesSet [ 0 ];
+	FractureHandlerPtr_Type f1 = M_FracturesSet [ 1 ];
+	FractureHandlerPtr_Type f2 = M_FracturesSet [ 1 ];
+	
+	if ( isPos ( f0, f1) )
+	{	std::cout << "caso 1" << std::endl;
+		if ( !isPos ( f0, f2 ) )
+			return;
+		else if ( isPos ( f1, f2 ) )
+			return;
+		else
+		{	std::cout << "caso 1 inverto" << std::endl;
+			// devo invertire la due e la uno
+			FractureHandlerPtr_Type tmp = f1;
+			M_FracturesSet [ 1 ] = M_FracturesSet [ 2 ];
+			M_FracturesSet [ 2 ] = tmp;
+			
+			return;
+		}
+	}
+		
+	else 
+	{	std::cout << "caso 2" << std::endl;
+		if ( isPos ( f0, f2 ) )
+		{	
+			std::cout << "Noi siamo qui" << std::endl;
+			// devo invertire la 0 e la 1
+			FractureHandlerPtr_Type tmp = f1;
+			M_FracturesSet [ 1 ] = M_FracturesSet [ 0 ];
+			M_FracturesSet [ 0 ] = tmp;
+			
+			return;
+
+		}
+		else
+		{
+			if ( isPos ( f1, f2 ) )
+			{	
+				std::cout << "Caso 3 inverto" << std::endl;
+				// devo invertire la 2 e la 1
+				FractureHandlerPtr_Type tmp = f1;
+				M_FracturesSet [ 1 ] = M_FracturesSet [ 2 ];
+				M_FracturesSet [ 2 ] = tmp;
+				
+				return;
+
+			}
+
+		}
+	}
+	
+	return;
+}// sortFractures
+
+
+
+bool Intersection::isPos ( FractureHandlerPtr_Type& fracture, FractureHandlerPtr_Type& otherfracture)
+{
+	base_node n0(2);
+	n0 [ 0 ] = 0;
+	n0 [ 1 ] = otherfracture->getLevelSet()->getData()->y_map ( n0 );
+	n0 [ 0 ] = otherfracture->getLevelSet()->getData()->x_map ( n0 );
+
+	base_node n1(2);
+	n1 [ 0 ] = 1;
+	n1 [ 1 ] = otherfracture->getLevelSet()->getData()->y_map ( n0 );
+	n1 [ 0 ] = otherfracture->getLevelSet()->getData()->x_map ( n0 );
+
+	if ( fracture->getLevelSet()->getData()->ylevelSetFunction ( n0 ) >= 0 && fracture->getLevelSet()->getData()->ylevelSetFunction ( n1 ) >= 0 )
+		return true;
+	else 
+		return false;
+	
+}// isPos

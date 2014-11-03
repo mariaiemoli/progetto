@@ -9,7 +9,7 @@ bool plotYesNo = true;
 // Import mesh file
 
 // Spacing
-int Nelem = 1000;
+int Nelem = 100;
 int NelemI = 10;
 
 include "mesh_bifurcation.edp"
@@ -77,7 +77,7 @@ cout << "Lato 2 " << int1d(Th,40)( ph ) / int1d(Th, 40)( 1. ) << endl;
 
 if ( plotYesNo )
 {
-    plot ( ph, fill = true, nbiso = 20, value = true, wait = true );
-    plot ( [uh1, uh2], fill = true, value = true, wait = true );
+    plot ( ph, fill = true, nbiso = 20, value = true ); //, wait = true );
+    plot ( [uh1, uh2], fill = true, value = true ); //, wait = true );
 }
 

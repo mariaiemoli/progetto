@@ -22,8 +22,7 @@ public:
     FractureData ( const GetPot& dataFile,
                    const std::string& section = "fractureData/",
                    const std::string& sectionDomain = "domain/",
-                   const std::string& sectionDarcy = "darcy/",
-                   const std::string& sectionTransport = "transport/" );
+                   const std::string& sectionDarcy = "darcy/" );
 
 
     /**

@@ -64,6 +64,8 @@ constructIntesection ( getfem::mesh_level_set& meshLevelSet, const FracturePtrCo
 	        // Per ogni elemento della mesh di supporto in cui passano almeno due fratture verifico il tipo di intersezione
 	        IntersectionType type = intersectionType ( meshLevelSet, listOfConvex [ i ], listOfLevelSet [ i ] );
 	        
+	        std::cout << " il tipo è " << type << std::endl;
+	        
 			// Prendo i puntatori alle fratture coinvolte
 			FracturePtrContainer_Type fracturesInvolved ( listOfLevelSet[i].size() );
 
@@ -77,7 +79,9 @@ constructIntesection ( getfem::mesh_level_set& meshLevelSet, const FracturePtrCo
 			IntersectData intersection;
 
 			intersection.setIntersection ( listOfConvex[i], fracturesInvolved );
-
+			
+			if( type == Bifurcation )
+				std::cout << "Inserisco una biforcazione" << std::endl;
 			M_intersections [ type ].push_back ( intersection );
 
 
@@ -373,16 +377,23 @@ IntersectDataContainer_Type FractureIntersect::getBifurcationIntersections () co
 {
 	IntersectDataContainer_Type tmp;
 	
+	/*
     mapIntersection_Type::const_iterator it;
     
     for ( it = M_intersections.begin(); it != M_intersections.end(); ++it )
     {
     	if ( it->first == Bifurcation)
         {
-    		tmp = it->second;
+    		tmp.push_back( it->second );
+    		
         }
     }
-
+	*/
+	
+//	std::cout << "M_intersections.find( Bifurcation )->second.size() :" << M_intersections.find( Bifurcation )->second.size() << std::endl;
+	for ( size_type i = 0; i< M_intersections.find( Bifurcation )->second.size(); i++ )
+		tmp.push_back( M_intersections.find( Bifurcation )->second [ i ] );
+	
     return tmp;
 }
 

@@ -91,20 +91,20 @@ BC::BC ( getfem::mesh& mesh,
     }
     else
     {
-
+    	std::cout << " bc per fratture " << std::endl;
         for ( getfem::mr_visitor i(borderFaces); !i.finished(); ++i )
         {
             assert(i.is_face());
             base_node un = mesh.normal_of_face_of_convex(i.cv(), i.f());
             un /= gmm::vect_norm2(un);
 
-            if (  f == 2 && un [ dimension - 1 ] == -1 )  
-            {	
+            if (  f == 1 && un [ dimension - 1 ] == -1 )  
+           {	
 				if (false)//( gmm::abs(gmm::abs(un [ dimension - 1 ]) - 1.0) > 1.0E-7 )
 				{
 					// Dirichlet, flag 0
 					boundary_cv [ i.cv() ].push_back(i.f());
-					
+					std::cout << " frattura " << f << " dof " << i.cv() << std::endl;
 					boundary_flags [ i.cv() ].push_back(boundaryFlags [ 1 ]);
 					//This        will enforce M_mediumMesh.region(0).add(i.cv(), i.f());
 					
@@ -113,20 +113,20 @@ BC::BC ( getfem::mesh& mesh,
 				{
 					// Neumann, flag 1
 					boundary_cv [ i.cv() ].push_back(i.f());
-				
+					std::cout << "Neumann"  << f << std::endl;
 					boundary_flags [ i.cv() ].push_back(boundaryFlags [1 ]);
 					// This will enforce M_mediumMesh.region(1).add(i.cv(), i.f());
 					
 				}
-            }
+           }
             
-            if  ( ( f == 0 || f == 1 ) &&  un [ dimension - 1 ] == 1 ) 
+            if  ( ( f == 0 || f == 2 ) &&  un [ dimension - 1 ] == 1 ) 
             {	
  				if (false)//( gmm::abs(gmm::abs(un [ dimension - 1 ]) - 1.0) > 1.0E-7 )
  				{
  					// Dirichlet, flag 0
  					boundary_cv [ i.cv() ].push_back(i.f());
- 					
+ 					std::cout << " frattura " << f << " dof " << i.cv() << std::endl;
  					boundary_flags [ i.cv() ].push_back(boundaryFlags [ 1 ]);
  					//This        will enforce M_mediumMesh.region(0).add(i.cv(), i.f());
  					
@@ -135,7 +135,7 @@ BC::BC ( getfem::mesh& mesh,
  				{
  					// Neumann, flag 1
  					boundary_cv [ i.cv() ].push_back(i.f());
- 				
+ 					std::cout << "Neumann"  << f << std::endl;
  					boundary_flags [ i.cv() ].push_back(boundaryFlags [1 ]);
  					// This will enforce M_mediumMesh.region(1).add(i.cv(), i.f());
  					

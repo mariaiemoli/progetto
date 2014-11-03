@@ -79,7 +79,7 @@ public:
 	/**
 	 * Funzione che costruisce il triangolo di intersezione partendo dal vettore delle fratture che si intersecano
 	 */
-	void setIntersection( const FracturePtrContainer_Type& M_FracturesSet );
+	void setIntersection( FracturePtrContainer_Type& M_FracturesSet );
 	
 	
 	/**
@@ -114,6 +114,17 @@ public:
 		return M_intersection;
 	}
 	
+	
+	/**
+	 * Funzione che ordina le fratture in senso orario
+	 */
+	void sortFractures ( FracturePtrContainer_Type& M_FracturesSet );
+	
+	
+	/**
+	 * Funzione che mi restituisce vero o falso a seconda se una frattura si trovi o meno nella parte positiva di un'altra
+	 */
+	bool isPos ( FractureHandlerPtr_Type& fracture, FractureHandlerPtr_Type& otherfracture);
 	
 	Intersection & operator =(const Intersection & Int)
 	{

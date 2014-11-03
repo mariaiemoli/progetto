@@ -7,8 +7,7 @@
 FractureData::FractureData ( const GetPot& dataFile,
                              const std::string& section,
                              const std::string& sectionDomain,
-                             const std::string& sectionDarcy,
-                             const std::string& sectionTransport ) :
+                             const std::string& sectionDarcy ) :
             M_section ( section ),
             M_sectionDomain ( M_section + sectionDomain ),
             M_sectionDarcy ( M_section + sectionDarcy ),

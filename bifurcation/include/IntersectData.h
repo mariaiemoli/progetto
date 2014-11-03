@@ -32,7 +32,14 @@ public:
      * se l'intersezione è di tipo " Bifurcation ", costruisce il triangolo dell'intersezione.
      */
     void setIntersection ( const size_type& elementID,
-                           const FracturePtrContainer_Type& fractures /*, const size_type k*/ );
+                           const FracturePtrContainer_Type& fractures )
+    {
+        M_elementID = elementID;
+        M_fractures = fractures;
+        
+        return;
+        
+    }
 
     
     void setDOFPosition ( const sizeVector_Type& dofPressure,
