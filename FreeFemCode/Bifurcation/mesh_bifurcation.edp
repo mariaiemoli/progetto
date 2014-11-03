@@ -29,9 +29,9 @@ real b2 = 0.1;
 /*real d0 = 0.024;*/
 /*real d1 = 0.02;*/
 /*real d2 = 0.022;*/
-real d0 = 0.012;
-real d1 = 0.01;
-real d2 = 0.011;
+real d0 = 0.0013;
+real d1 = 0.0011;
+real d2 = 0.0012;
 
 
 // punti di inizio frattura
@@ -50,9 +50,10 @@ real length1 = sqrt( ( init1-fin1 )^2 + ( -a1*init1 + a1*fin1 )^2 );
 real length2 = sqrt( ( init2-fin2 )^2 + ( -a2*init2 + a2*fin2 )^2 );
 
 // lunghezza delle fratture lungo x
+
 real length0x = 0.31;
 real length1x = 0.1;
-real length2x = 0.69;
+real length2x = 0.41;
 
 /*
 cout << "Lunghezza fratture: " << endl
@@ -112,6 +113,23 @@ real ext3 = ( ( interFrac - length1x )*( a1 + 1./a1 ) - b1 + ( b1 - d1/2. ) )/( 
 real ext4 = ( ( interFrac + length2x )*( a2 + 1./a2 ) + b2 - ( b2 + d2/2. ) )/( a2 + 1./a2 );
 real ext5 = ( ( interFrac + length2x )*( a2 + 1./a2 ) + b2 - ( b2 - d2/2. ) )/( a2 + 1./a2 );
 
+/*
+ * cout << " Ext0 -> int2 " << endl;
+ * cout << "Ext0  = " << ext0 << endl;
+ * cout << "int2  = " << intx2 << endl;
+ * cout << " int2 -> ext5 " << endl;
+ * cout << "ext5  = " << ext5 << endl;
+ * cout << " ext4 -> int1  " << endl;
+ * cout << "Ext4  = " << ext4 << endl;
+ * cout << "int1  = " << intx1 << endl;
+ * cout << " int1 -> ext3  " << endl;
+ * cout << "ext3  = " << ext3 << endl;
+ * cout << " ext2 -> int0  " << endl;
+ * cout << "Ext2  = " << ext2 << endl;
+ * cout << "int0  = " << intx0 << endl;
+ * cout << " int0 -> ext1  " << endl;
+ * cout << "Ext0  = " << ext0 << endl;
+ */
 
 // definiamo i bordi della mesh
 border long0 ( t = ext0, intx2 ) { x = t; y = -a0*t+b0+d0/2.; label = 3; }
@@ -136,25 +154,27 @@ border inside2 ( t = intx1, intx0 ) { x = t; y = a3*t+b3; label = 40; }
 
 
 // costruiamo la mesh
-mesh Th = buildmesh ( long0(Nelem) + long1(Nelem) +
-                      short0(Nelem*d1) +
-                      long2(Nelem) + long3(Nelem) +
+
+
+mesh Th = buildmesh ( long0( Nelem ) + long1( Nelem ) + short0(Nelem*d1) + 
+					  long2( Nelem ) + long3( Nelem ) +
                       short1(Nelem*d2) +
-                      long4(Nelem) + long5(Nelem) +
-                      short2(Nelem*d0) +
-                      inside0(NelemI*Nelem*d0) + inside1(NelemI*Nelem*d2) +
-                      inside2(NelemI*Nelem*d1) );
+                      long4( Nelem ) + long5( Nelem ) +
+                      short2(Nelem*d0) + inside0(NelemI*Nelem*d0) +
+					  inside1(NelemI*Nelem*d2) + inside2(NelemI*Nelem*d1) );
 
 
 //plot ( Th, wait = true );
 
-func part = (y-a3*x-b3 >=0)*(y-a4*x-b4<=0)*(y-a5*x-b5>=0);
+
+func part = (y-a3*x-b3 <=0)*(y-a4*x-b4<=0)*(y-a5*x-b5>=0);
 
 func fracture0 = (y+a0*x-b0-d0/2.<=0)*(y+a0*x-b0+d0/2.>=0)*(1.*(y-a5*x-b5<=0));
 func fracture1 = (y-a1*x+b1+d1/2.>=0)*(y-a1*x+b1-d1/2.<=0)*(1.*(y-a3*x-b3<=0));
 func fracture2 = (y-a2*x-b2-d2/2.<=0)*(y-a2*x-b2+d1/2.>=0)*(1.*(y-a4*x-b4>=0));
 
-mesh ThI = trunc ( Th, part, label = 11, split = 1 );
+//mesh ThI = buildmesh ( inside0(NelemI*Nelem*d0) + inside1(NelemI*Nelem*d2) + inside2(NelemI*Nelem*d1) );
+mesh ThI = trunc ( Th, part, label = 10, split = 1 );
 
 
 if ( plotYesNo )

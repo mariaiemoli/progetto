@@ -976,13 +976,16 @@ void DarcyFractured::solve ( )
        //{
         	
         	std::cout<<std::endl;
-        	std::cout << " Pressione nel punto di intersezione: " << fracturePressureMeanUNCUTInterpolated << std::endl;
+			std::cout<<std::endl;
+        	std::cout << "Frattura " << f <<" Pressione nel punto di intersezione: " << fracturePressureMeanUNCUTInterpolated << std::endl;
         	std::cout<<std::endl;
         //}
 
+			/*
 		std::cout<<std::endl;
 		std::cout << " Velocità nel punto di intersezione: " << fractureVelocityMeanUNCUTInterpolated << std::endl;
 		std::cout<<std::endl;
+			*/
 	
         osFileName.str("");
         osFileName << "fracturePressure" << f << ".vtk";

@@ -97,9 +97,16 @@ BC::BC ( getfem::mesh& mesh,
             assert(i.is_face());
             base_node un = mesh.normal_of_face_of_convex(i.cv(), i.f());
             un /= gmm::vect_norm2(un);
-
-            if (  f == 1 && un [ dimension - 1 ] == -1 )  
-           {	
+			
+			if ( f==1 )
+			{
+				std::cout << " un " << un << std::endl;
+			}
+			
+            if (  f == 1 && gmm::abs(un [ dimension - 1 ] + 1.0 )< 1.0E-7 )  
+			{	
+				std::cout << " Sono la 1 " << std::endl;
+				
 				if (false)//( gmm::abs(gmm::abs(un [ dimension - 1 ]) - 1.0) > 1.0E-7 )
 				{
 					// Dirichlet, flag 0
@@ -118,11 +125,14 @@ BC::BC ( getfem::mesh& mesh,
 					// This will enforce M_mediumMesh.region(1).add(i.cv(), i.f());
 					
 				}
-           }
+			}
             
             if  ( ( f == 0 || f == 2 ) &&  un [ dimension - 1 ] == 1 ) 
             {	
- 				if (false)//( gmm::abs(gmm::abs(un [ dimension - 1 ]) - 1.0) > 1.0E-7 )
+ 				
+				std::cout << " Sono la 2 " << std::endl;
+				
+				if (false)//( gmm::abs(gmm::abs(un [ dimension - 1 ]) - 1.0) > 1.0E-7 )
  				{
  					// Dirichlet, flag 0
  					boundary_cv [ i.cv() ].push_back(i.f());
@@ -141,6 +151,7 @@ BC::BC ( getfem::mesh& mesh,
  					
  				}
              }
+			
 
         }
     }

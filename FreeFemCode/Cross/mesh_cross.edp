@@ -70,6 +70,7 @@ border inside1 ( t = int1, int2 ) { x = t; y = -a1*t+b1+d1/2.; label = 41; }
 border inside2 ( t = int2, int3 ) { x = t; y = a0*t+b0+d0/2.; label = 42; }
 border inside3 ( t = int3, int0 ) { x = t; y = -a1*t+b1-d1/2.; label = 43; }
 
+
 mesh Th = buildmesh ( long0(Nelem*length00/cos(atan(a0))) + long1(Nelem*length11/cos(atan(a1))) +
                       short0(Nelem*d1) +
                       long2(Nelem*length11/cos(atan(a1))) + long3(Nelem*length01/cos(atan(a0))) +
