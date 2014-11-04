@@ -1,5 +1,5 @@
-/** FractureData.cc
- *
+/** 
+ * FractureData.cc
  */
 
 #include "../include/FractureData.h"
@@ -42,7 +42,7 @@ FractureData::FractureData ( const GetPot& dataFile,
 
             M_meshSpacing( dataFile ( ( M_sectionDomain + "spacing" ).data (), "x" ) )
 {
-}
+}// costruttore
 
 
 //questa bella funzione restituisce un'eventuale modulazione del coefficiente di permeabilità normale
@@ -52,7 +52,7 @@ scalar_type FractureData::etaNormalDistribution ( const base_node& x )
     M_parser.setVariable ( "x", x [ 0 ] );
     
     return M_parser.evaluate ();
-}
+}// etaNormalDistribution
 
 //questa bella funzione restituisce un'eventuale modulazione del coefficiente di permeabilità tangenziale
 scalar_type FractureData::etaTangentialDistribution ( const base_node& x )
@@ -61,7 +61,7 @@ scalar_type FractureData::etaTangentialDistribution ( const base_node& x )
     M_parser.setVariable ( "x", x [ 0 ] );
     
     return M_parser.evaluate ();
-}
+}// etaTangentialDistribution
 
 
 // Exact solution, velocity (non ho ancora impostato quella corretta)
@@ -74,7 +74,7 @@ scalar_type FractureData::velocityExact ( const base_node& x, const base_node& n
     M_parser.setVariable ( "n2", n [ 1 ] );
     
     return M_parser.evaluate ();
-}
+}// velocityExact
 
 // Exact solution, div(Velocity) -- SET = 0 WITH NO MASS SOURCES/SINKS !
 scalar_type FractureData::darcySource ( const base_node& x )
@@ -83,7 +83,7 @@ scalar_type FractureData::darcySource ( const base_node& x )
     M_parser.setVariable ( "x", x [ 0 ] );
     
     return M_parser.evaluate ();
-}
+}// darcySource
 
 //pressione esatta nella frattura, se volessi fare il caso con p imposta - qui invece è predisposto per risolvere il problema accoppiato
 scalar_type FractureData::pressureExact ( const base_node& x )
@@ -92,7 +92,7 @@ scalar_type FractureData::pressureExact ( const base_node& x )
     M_parser.setVariable ( "x", x [ 0 ] );
     
     return M_parser.evaluate ();
-}
+}// pressureExact
 
 
 scalar_type FractureData::meshSpacing( const scalar_type& x )
@@ -101,4 +101,4 @@ scalar_type FractureData::meshSpacing( const scalar_type& x )
     M_parser.setVariable ( "x", x );
     
     return M_parser.evaluate ();
-}
+}// meshSpacing

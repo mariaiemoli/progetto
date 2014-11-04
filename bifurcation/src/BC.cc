@@ -1,10 +1,11 @@
-/** BC.cc
- *
+/** 
+ * BC.cc
+ * 
  * Libreria che introduce le condizioni al bordo sul problema
  *
- *  Created on: Apr 11, 2011
+ * Created on: Apr 11, 2011
  *
- *  Author: fumagalli
+ * \author Alessio Fumagalli
  *
  */
 
@@ -91,27 +92,19 @@ BC::BC ( getfem::mesh& mesh,
     }
     else
     {
-    	std::cout << " bc per fratture " << std::endl;
         for ( getfem::mr_visitor i(borderFaces); !i.finished(); ++i )
         {
             assert(i.is_face());
             base_node un = mesh.normal_of_face_of_convex(i.cv(), i.f());
             un /= gmm::vect_norm2(un);
 			
-			if ( f==1 )
-			{
-				std::cout << " un " << un << std::endl;
-			}
-			
             if (  f == 1 && gmm::abs(un [ dimension - 1 ] + 1.0 )< 1.0E-7 )  
 			{	
-				std::cout << " Sono la 1 " << std::endl;
-				
 				if (false)//( gmm::abs(gmm::abs(un [ dimension - 1 ]) - 1.0) > 1.0E-7 )
 				{
 					// Dirichlet, flag 0
 					boundary_cv [ i.cv() ].push_back(i.f());
-					std::cout << " frattura " << f << " dof " << i.cv() << std::endl;
+					
 					boundary_flags [ i.cv() ].push_back(boundaryFlags [ 1 ]);
 					//This        will enforce M_mediumMesh.region(0).add(i.cv(), i.f());
 					
@@ -120,7 +113,7 @@ BC::BC ( getfem::mesh& mesh,
 				{
 					// Neumann, flag 1
 					boundary_cv [ i.cv() ].push_back(i.f());
-					std::cout << "Neumann"  << f << std::endl;
+					
 					boundary_flags [ i.cv() ].push_back(boundaryFlags [1 ]);
 					// This will enforce M_mediumMesh.region(1).add(i.cv(), i.f());
 					
@@ -130,13 +123,11 @@ BC::BC ( getfem::mesh& mesh,
             if  ( ( f == 0 || f == 2 ) &&  un [ dimension - 1 ] == 1 ) 
             {	
  				
-				std::cout << " Sono la 2 " << std::endl;
-				
 				if (false)//( gmm::abs(gmm::abs(un [ dimension - 1 ]) - 1.0) > 1.0E-7 )
  				{
  					// Dirichlet, flag 0
  					boundary_cv [ i.cv() ].push_back(i.f());
- 					std::cout << " frattura " << f << " dof " << i.cv() << std::endl;
+ 			
  					boundary_flags [ i.cv() ].push_back(boundaryFlags [ 1 ]);
  					//This        will enforce M_mediumMesh.region(0).add(i.cv(), i.f());
  					
@@ -145,13 +136,12 @@ BC::BC ( getfem::mesh& mesh,
  				{
  					// Neumann, flag 1
  					boundary_cv [ i.cv() ].push_back(i.f());
- 					std::cout << "Neumann"  << f << std::endl;
+ 					
  					boundary_flags [ i.cv() ].push_back(boundaryFlags [1 ]);
  					// This will enforce M_mediumMesh.region(1).add(i.cv(), i.f());
  					
  				}
              }
-			
 
         }
     }

@@ -1,0 +1,168 @@
+/////////////////////////////////////////////////////////////////////////
+///////////////// 	PROGETTO PACS		        /////////////////
+/////////////////////////////////////////////////////////////////////////
+
+/// CODICE PER CONFRONTARE I RISULTATI OTTENUTI CON IL MODELLO RIDOTTO PER LA PRESSIONE SULLA BIFORCAZIONE
+
+bool plotYesNo = true;
+
+// Import mesh file
+
+// Spacing
+int Nelem = 1200;
+int NelemI = 10;
+
+// Spacing
+//int Nelem = 10;
+//int NelemI = 10;
+
+//bool plotYesNo = true;
+
+// prima frattura y = -a0*x+b0
+real a0 = 1.;
+real b0 = 0.52;
+
+// seconda frattura y = a1*x-b1
+real a1 = 3.1;
+real b1 = 0.341;
+
+// terza frattura  y = a2*x+b2
+real a2 = 1.;
+real b2 = 0.1;
+
+// spessore delle fratture
+/*real d0 = 0.0024;*/
+/*real d1 = 0.002;*/
+/*real d2 = 0.0022;*/
+/*real d0 = 0.024;*/
+/*real d1 = 0.02;*/
+/*real d2 = 0.022;*/
+real d0 = 0.0013;
+real d1 = 0.0011;
+real d2 = 0.0012;
+
+
+// punti di inizio frattura
+real init0 = 0.21;
+real init1 = 0.11;
+real init2 = 0.21;
+
+// punti di fine frattura 
+real fin0 = 0.52;
+real fin1 = 0.21;
+real fin2 = 0.9;
+
+// lunghezza delle fratture
+real length0 = sqrt( ( init0-fin0 )^2 + ( -a0*init0 + a0*fin0 )^2 );
+real length1 = sqrt( ( init1-fin1 )^2 + ( -a1*init1 + a1*fin1 )^2 );
+real length2 = sqrt( ( init2-fin2 )^2 + ( -a2*init2 + a2*fin2 )^2 );
+
+// lunghezza delle fratture lungo x
+
+real length0x = 0.31;
+real length1x = 0.1;
+real length2x = 0.41;
+
+/*
+cout << "Lunghezza fratture: " << endl
+     << "Fracture0: " << length0 << endl
+     << "Fracture1: " << length1 << endl
+     << "Fracture2: " << length2 << endl;
+*/
+// punto di intersezione: è lo stesso per tutte e tre, sono certa che sia una biforcazione
+real interFrac = ( b1 + b0 ) / ( a0 + a1 );
+
+cout << "Intersection Point: " << interFrac << endl;
+
+// punti che costituiscono il triangolo di intersezione
+real intx0 = ( ( b1 + d1/2. ) + ( b0 - d0/2. ) ) / ( a0 + a1 );
+real inty0 = -a0*intx0 + b0 - d0/2.;
+
+real intx1 = ( ( b2 + d2/2. ) + ( b1 - d1/2. ) ) / ( a1 - a2 );
+real inty1 = a1*intx1 - b1 + d1/2.;
+
+real intx2 = ( ( b0 + d0/2. ) - ( b2 - d2/2. ) ) / ( a0 + a2 );
+real inty2 = a2*intx2 + b2 - d2/2.;
+
+// segmenti che definiscono il triangolo
+// inside0: y = a3*x + b3
+real a3 = ( inty1 - inty0 )/( intx1 - intx0 );
+real b3 = ( inty0 - a3*intx0 );
+
+// inside1: y = a4*x + b4
+real a4 = ( inty1 - inty2 )/( intx1 - intx2 );
+real b4 = ( inty2 - a4*intx2 );
+
+// inside2: y = a5*x + b5
+real a5 = ( inty2 - inty0 )/( intx2 - intx0 );
+real b5 = ( inty0 - a5*intx0 );
+
+real ext4 = ( ( interFrac + length2x )*( a2 + 1./a2 ) + b2 - ( b2 + d2/2. ) )/( a2 + 1./a2 );
+real ext5 = ( ( interFrac + length2x )*( a2 + 1./a2 ) + b2 - ( b2 - d2/2. ) )/( a2 + 1./a2 );
+
+
+border long1 ( t = intx2, ext5 ) { x = t; y = a2*t+b2-d2/2.; label = 3; }
+
+border short0 ( t = ext5, ext4 ) { x = t; y = -x*1./a2+( interFrac + length2x )*( a2 + 1./a2 ) + b2; label = 54;}
+
+border long2 ( t = ext4, intx1 ) { x = t; y = a2*t+b2+d2/2.; label = 3; }
+
+border inside1 ( t = intx1, intx2 ) { x = t; y = a4*t+b4; label = 41; }
+
+mesh Th = buildmesh ( long1( Nelem ) + short0(Nelem*d1) + long2( Nelem ) + inside1(NelemI*Nelem*d2) );
+
+
+plot ( Th );
+
+// ************************************************************************* //
+// problema 
+
+func invK11 = 1.;
+func invK12 = 0.;//-part(x,y)*4999.5;
+func invK22 = 1.;
+func invK21 = invK12;
+
+func f = -0.04;
+
+// pressure at inflow
+real p0 = 1.;
+real p1 = 50.;
+real p2 = -1.;
+
+// Finite element spaces:
+// Vh is the space for the vectorial base function (flux), Qh for the scalar (p)
+fespace Vh ( Th, RT0 );
+fespace Qh ( Th, P0 );
+
+/*
+ * Qh part0=part;
+ * plot( part0, cmm= " Faccio schifo" );
+ */
+
+// solution and test function
+Vh [uh1, uh2], [tauh1, tauh2];
+Qh ph, qh;
+
+// problem definition
+problem Darcy ( [uh1, uh2, ph], [tauh1, tauh2, qh] , solver = GMRES, nbiter=5000 ) = -
+                int2d(Th)( ( invK11 * uh1 + invK12 * uh2 ) * tauh1 +
+                           ( invK21 * uh1 + invK22 * uh2 ) * tauh2 ) +
+                int2d(Th)( ph * ( dx(tauh1) + dy(tauh2) ) ) +
+                int2d(Th)( qh * ( dx(uh1)   + dy(uh2)   ) ) -
+                int2d(Th)( qh * f ) -
+                int1d(Th,54)(p2*(tauh1*N.x + tauh2*N.y) ) -
+                int1d(Th,41)(p2*(tauh1*N.x + tauh2*N.y) ) +
+                on(3, uh1 = 0., uh2 = 0. );
+
+
+//--------------------------------------------------------
+// problem resolution
+//--------------------------------------------------------
+
+
+Darcy;
+
+cout << "Pressure, min " << ph[].min << " max " << ph[].max << endl;
+cout << "Velocity min [" << uh1[].min << ", " << uh2[].min << "] max ["
+     << uh1[].max << ", " << uh2[].max << "]" << endl;
+

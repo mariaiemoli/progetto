@@ -1,3 +1,7 @@
+/**
+ * TriangleHandler.cc
+ */
+
 #include "../include/TriangleHandler.h"
 
 
@@ -36,6 +40,7 @@ Intersection::Intersection(FractureEnd const & gamma0, FractureEnd const & gamma
 	}
 	
 	M_intersectionTriangle = this->computeIntersectionTriangle();
+
 	
 }// costruttore intersezione
 
@@ -170,19 +175,19 @@ TriangleData const & Intersection::computeIntersectionTriangle()
 
 void Intersection::sortFractures ( FracturePtrContainer_Type& M_FracturesSet )
 {
-	std::cout << "facciamo il sort" << std::endl;
+
 	FractureHandlerPtr_Type f0 = M_FracturesSet [ 0 ];
 	FractureHandlerPtr_Type f1 = M_FracturesSet [ 1 ];
 	FractureHandlerPtr_Type f2 = M_FracturesSet [ 1 ];
 	
 	if ( isPos ( f0, f1) )
-	{	std::cout << "caso 1" << std::endl;
+	{	
 		if ( !isPos ( f0, f2 ) )
 			return;
 		else if ( isPos ( f1, f2 ) )
 			return;
 		else
-		{	std::cout << "caso 1 inverto" << std::endl;
+		{	
 			// devo invertire la due e la uno
 			FractureHandlerPtr_Type tmp = f1;
 			M_FracturesSet [ 1 ] = M_FracturesSet [ 2 ];
@@ -193,10 +198,9 @@ void Intersection::sortFractures ( FracturePtrContainer_Type& M_FracturesSet )
 	}
 		
 	else 
-	{	std::cout << "caso 2" << std::endl;
+	{	
 		if ( isPos ( f0, f2 ) )
-		{	
-			std::cout << "Noi siamo qui" << std::endl;
+		{
 			// devo invertire la 0 e la 1
 			FractureHandlerPtr_Type tmp = f1;
 			M_FracturesSet [ 1 ] = M_FracturesSet [ 0 ];
@@ -209,7 +213,6 @@ void Intersection::sortFractures ( FracturePtrContainer_Type& M_FracturesSet )
 		{
 			if ( isPos ( f1, f2 ) )
 			{	
-				std::cout << "Caso 3 inverto" << std::endl;
 				// devo invertire la 2 e la 1
 				FractureHandlerPtr_Type tmp = f1;
 				M_FracturesSet [ 1 ] = M_FracturesSet [ 2 ];

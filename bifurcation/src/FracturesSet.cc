@@ -1,7 +1,5 @@
 /**
- *
  * FractureSet.cc
- *
  */
 
 #include "../include/FracturesSet.h"

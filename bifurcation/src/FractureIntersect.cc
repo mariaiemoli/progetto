@@ -356,15 +356,8 @@ IntersectDataContainer_Type FractureIntersect::getCrossIntersections () const
 {
 	IntersectDataContainer_Type tmp;
 	
-    mapIntersection_Type::const_iterator it;
-    
-    for ( it = M_intersections.begin(); it != M_intersections.end(); ++it )
-    {
-    	if ( it->first == Cross)
-        {
-    		tmp = it->second;
-        }
-    }
+	for ( size_type i = 0; i< M_intersections.find( Cross )->second.size(); i++ )
+		tmp.push_back( M_intersections.find( Cross )->second [ i ] );
 
     return tmp;
 }
@@ -374,20 +367,6 @@ IntersectDataContainer_Type FractureIntersect::getBifurcationIntersections () co
 {
 	IntersectDataContainer_Type tmp;
 	
-	/*
-    mapIntersection_Type::const_iterator it;
-    
-    for ( it = M_intersections.begin(); it != M_intersections.end(); ++it )
-    {
-    	if ( it->first == Bifurcation)
-        {
-    		tmp.push_back( it->second );
-    		
-        }
-    }
-	*/
-	
-//	std::cout << "M_intersections.find( Bifurcation )->second.size() :" << M_intersections.find( Bifurcation )->second.size() << std::endl;
 	for ( size_type i = 0; i< M_intersections.find( Bifurcation )->second.size(); i++ )
 		tmp.push_back( M_intersections.find( Bifurcation )->second [ i ] );
 	

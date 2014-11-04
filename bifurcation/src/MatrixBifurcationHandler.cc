@@ -1,3 +1,7 @@
+/**
+ * MatrixBifurcationHandler.cc
+ */
+
 #include "../include/MatrixBifurcationHandler.h" 
 
 MatrixBifurcationHandler::MatrixBifurcationHandler( const GetPot& dataFile,

@@ -1,5 +1,5 @@
-/** LevelSetData.cc
- *
+/** 
+ * LevelSetData.cc
  */
 
 #include "../include/LevelSetData.h"

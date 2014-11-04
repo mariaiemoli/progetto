@@ -1,3 +1,7 @@
+/**
+ * TriangleData.cc
+ */
+
 #include <iostream>
 #include "../include/TriangleData.h"
 
@@ -11,6 +15,7 @@ TriangleData::TriangleData()
 {
 	M_point.clear();
 	M_point.resize(3);
+	
 }// costruttore vuoto
 
 
@@ -20,6 +25,7 @@ TriangleData::TriangleData(PointData & a, PointData & b, PointData & c)
   	M_point.push_back(a); 
   	M_point.push_back(b);
   	M_point.push_back(c);
+  	
 }//costruttore dati i punti
 
 TriangleData::TriangleData(const TriangleData & t)
@@ -49,11 +55,13 @@ scalar_type TriangleData::measure() const
 PointData & TriangleData::edgePoint(size_type edgenum, size_type endnum)
 {
 	return M_point[M_edge[edgenum][endnum]];
+	
 }//edgePoint
 
 const PointData & TriangleData::edgePoint(size_type edgenum, size_type endnum) const
 {
 	return M_point[M_edge[edgenum][endnum]];
+	
 }//edgePoint
 
 PointData TriangleData::baricenter()const
@@ -64,11 +72,13 @@ PointData TriangleData::baricenter()const
 	tmp += M_point[2];
 	
 	return tmp * (1./3.0);
+	
 }//baricenter
 
 size_type TriangleData::edge(size_type i, size_type j)
 {
 	return M_edge[i][j];
+	
 }//edge
 
 PointData TriangleData::edgeMean(size_type edgeNum)const
@@ -76,6 +86,7 @@ PointData TriangleData::edgeMean(size_type edgeNum)const
 	PointData tmp(M_point[edge(edgeNum,0)]+M_point[edge(edgeNum,1)]);
 	
 	return tmp *0.5;
+	
 }//edgeMedium
 
 Vector2d TriangleData::c(size_type edgeNum) const
@@ -105,7 +116,7 @@ TriangleData & TriangleData::operator =(const TriangleData & t)
     }
 	
 	return *this;
-}
+}// operator =
 
 std::ostream & operator <<(std::ostream & stream, TriangleData const & t)
 {
@@ -117,4 +128,4 @@ std::ostream & operator <<(std::ostream & stream, TriangleData const & t)
 	stream<<"****************************************"<<std::endl;
 	
 	return stream;
-}
+}// operator <<

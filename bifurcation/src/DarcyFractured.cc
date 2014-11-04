@@ -220,11 +220,10 @@ void DarcyFractured::assembly ( const GetPot& dataFile )
     IntersectDataContainer_Type IntCross = M_fractures->getIntersections ()-> getCrossIntersections ();
     
     IntersectDataContainer_Type IntBifurcation = M_fractures->getIntersections ()-> getBifurcationIntersections ();
-    
+        
     // Aggiorno prima le matrici di tutte le fratture che si intersecano formando un " Cross "
     for ( size_type i = 0; i < IntCross.size(); i++ )
     {
-    	
     	sparseMatrixPtr_Type Aup0, Aup1;
     	   	
     	FractureHandlerPtr_Type f0 = IntCross [ i ].getFracture (0);
@@ -378,7 +377,11 @@ void DarcyFractured::assembly ( const GetPot& dataFile )
 		Fracture[ 1 ] =f1;
 		Fracture[ 2 ] =f2;
 		
-		Matrix.setMatrices( Fracture );
+		FracturePtrContainer_Type Fracture_copy( 3 );
+		
+		Fracture_copy = Fracture;
+		
+		Matrix.setMatrices( Fracture_copy );
 		
 		Matrix3d T = Matrix.T();
 		
@@ -492,7 +495,7 @@ void DarcyFractured::assembly ( const GetPot& dataFile )
             (*(PneumannF [ f ])) [ i ] = M_fractures->getFracture( f )->getData().pressureExact( node );
         }
 
-        (*(PneumannF [ f ])) [ 0 ] *= -1; //perché la normale ha il segno meno all'inizio di una roba 1D
+        (*(PneumannF [ f ])) [ 0 ] *= -1; 
     }
 
     
@@ -628,11 +631,6 @@ void DarcyFractured::solve ( )
     // numero complessivo dei gradi di libertà ( pressione + velocità ) 
     size_type fractureTotalNumberDOFVelocityPressure(0);
 
-    // numero totale di intersezioni
-    size_type fractureNumberCross = 0;
-    size_type fractureNumberBifurcation = 0;
-  //  size_type globalFractureNumber =0;
-
     
     for ( size_type f = 0; f < numberFractures; ++f )
     {
@@ -659,11 +657,6 @@ void DarcyFractured::solve ( )
         M_fractureVelocity [ f ].reset(new scalarVector_Type( fractureNumberGlobalDOFVelocity [ f ], 0));
 
     }
-
-    // Numero intersezioni
-    fractureNumberCross = M_fractures->getIntersections ()->getNumberCross ();
-   
-    fractureNumberBifurcation = M_fractures->getIntersections ()->getNumberBifurcation ();
     
     // Solve the Darcy problem
     std::cout << std::endl << "Solving problem in Omega..." << std::flush;
@@ -811,7 +804,7 @@ void DarcyFractured::solve ( )
         }
         
         /*
-         * getfem risolve il sistema per la mesh piatta, per avere i corretti valori di pressione devo interpolare
+         * getfem risolve il sistema per la mesh " piatta ", per avere i corretti valori di pressione devo interpolare
          * sulla mesh mappata i valori che ho ottenuto
          * 
          */
@@ -971,15 +964,12 @@ void DarcyFractured::solve ( )
 
             }
         }
-
-       //if ( f == 0 )
-       //{
-        	
-        	std::cout<<std::endl;
-			std::cout<<std::endl;
-        	std::cout << "Frattura " << f <<" Pressione nel punto di intersezione: " << fracturePressureMeanUNCUTInterpolated << std::endl;
-        	std::cout<<std::endl;
-        //}
+    	
+		std::cout<<std::endl;
+		std::cout<<std::endl;
+		std::cout << "Frattura " << f <<" Pressione nel punto di intersezione: " << fracturePressureMeanUNCUTInterpolated << std::endl;
+		std::cout<<std::endl;
+	
 
 			/*
 		std::cout<<std::endl;

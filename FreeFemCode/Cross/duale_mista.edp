@@ -10,12 +10,18 @@ include "mesh_cross.edp"
 
 // dual-mixed mathod
 
-func invK11 = part(x,y)*50.5 + fracture1(x,y)*1 + fracture2(x,y)*100;
+//func invK11 = part(x,y)*50.5 + fracture1(x,y)*1 + fracture2(x,y)*100;
+//func invK12 = 0;//-part(x,y)*4999.5;
+//func invK22 = part(x,y)*50.5 + fracture1(x,y)*1 + fracture2(x,y)*100;
+//func invK21 = invK12;
+
+func invK11 = part(x,y)*1 + fracture1(x,y)*1 + fracture2(x,y)*1;
 func invK12 = 0;//-part(x,y)*4999.5;
-func invK22 = part(x,y)*50.5 + fracture1(x,y)*1 + fracture2(x,y)*100;
+func invK22 = part(x,y)*1 + fracture1(x,y)*1 + fracture2(x,y)*1;
 func invK21 = invK12;
 
-func f = 0;
+
+func f = -0.04;
 
 // pressure at inflow
 real p11 = 1;
@@ -34,7 +40,19 @@ Qh ph, qh, one;
 one = part(x,y);
 
 // problem definition
-problem Darcy ( [uh1, uh2, ph], [tauh1, tauh2, qh] ) = -
+//problem Darcy ( [uh1, uh2, ph], [tauh1, tauh2, qh] ) = -
+//                int2d(Th)( ( invK11 * uh1 + invK12 * uh2 ) * tauh1 +
+//                           ( invK21 * uh1 + invK22 * uh2 ) * tauh2 ) +
+//                int2d(Th)( ph * ( dx(tauh1) + dy(tauh2) ) ) +
+//                int2d(Th)( qh * ( dx(uh1)   + dy(uh2)   ) ) -
+//                int2d(Th)( qh * f ) -
+//                int1d(Th,11)(p11*(tauh1*N.x + tauh2*N.y) ) -
+//                int1d(Th,12)(p12*(tauh1*N.x + tauh2*N.y) ) -
+//                int1d(Th,21)(p21*(tauh1*N.x + tauh2*N.y) ) -
+//                int1d(Th,22)(p22*(tauh1*N.x + tauh2*N.y) ) +
+//                on(3, uh1 = 0, uh2 = 0 );
+
+problem Darcy ( [uh1, uh2, ph], [tauh1, tauh2, qh] /*, solver = GMRES, nbiter=5000*/ ) = -
                 int2d(Th)( ( invK11 * uh1 + invK12 * uh2 ) * tauh1 +
                            ( invK21 * uh1 + invK22 * uh2 ) * tauh2 ) +
                 int2d(Th)( ph * ( dx(tauh1) + dy(tauh2) ) ) +
@@ -44,7 +62,8 @@ problem Darcy ( [uh1, uh2, ph], [tauh1, tauh2, qh] ) = -
                 int1d(Th,12)(p12*(tauh1*N.x + tauh2*N.y) ) -
                 int1d(Th,21)(p21*(tauh1*N.x + tauh2*N.y) ) -
                 int1d(Th,22)(p22*(tauh1*N.x + tauh2*N.y) ) +
-                on(3, uh1 = 0, uh2 = 0 );
+                on(3, uh1 = 0, uh2 = 0);
+
 
 // da controllare se mette davvero i flussi giusto, anche se così pare
 

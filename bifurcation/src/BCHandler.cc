@@ -1,7 +1,9 @@
-/** BCHandler.cc
- *
- *  Created on: Apr 5, 2011
- *      Author: fumagalli
+/** 
+ * BCHandler.cc
+ * 
+ * Created on: Apr 5, 2011
+ * 
+ * \author Aessio Fumagalli
  */
 
 #include "../include/BCHandler.h"
