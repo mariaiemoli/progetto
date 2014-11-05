@@ -29,9 +29,9 @@ real b2 = 0.1;
 /*real d0 = 0.024;*/
 /*real d1 = 0.02;*/
 /*real d2 = 0.022;*/
-real d0 = 0.0013;
-real d1 = 0.0011;
-real d2 = 0.0012;
+real d0 = 0.013;
+real d1 = 0.011;
+real d2 = 0.012;
 
 
 // punti di inizio frattura

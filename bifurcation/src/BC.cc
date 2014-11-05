@@ -100,7 +100,7 @@ BC::BC ( getfem::mesh& mesh,
 			
             if (  f == 1 && gmm::abs(un [ dimension - 1 ] + 1.0 )< 1.0E-7 )  
 			{	
-				if (false)//( gmm::abs(gmm::abs(un [ dimension - 1 ]) - 1.0) > 1.0E-7 )
+				//if (false)//( gmm::abs(gmm::abs(un [ dimension - 1 ]) - 1.0) > 1.0E-7 )
 				{
 					// Dirichlet, flag 0
 					boundary_cv [ i.cv() ].push_back(i.f());
@@ -109,7 +109,7 @@ BC::BC ( getfem::mesh& mesh,
 					//This        will enforce M_mediumMesh.region(0).add(i.cv(), i.f());
 					
 				}
-				else
+				/*else
 				{
 					// Neumann, flag 1
 					boundary_cv [ i.cv() ].push_back(i.f());
@@ -117,13 +117,13 @@ BC::BC ( getfem::mesh& mesh,
 					boundary_flags [ i.cv() ].push_back(boundaryFlags [1 ]);
 					// This will enforce M_mediumMesh.region(1).add(i.cv(), i.f());
 					
-				}
+				}*/
 			}
             
             if  ( ( f == 0 || f == 2 ) &&  un [ dimension - 1 ] == 1 ) 
             {	
  				
-				if (false)//( gmm::abs(gmm::abs(un [ dimension - 1 ]) - 1.0) > 1.0E-7 )
+				//if (false)//( gmm::abs(gmm::abs(un [ dimension - 1 ]) - 1.0) > 1.0E-7 )
  				{
  					// Dirichlet, flag 0
  					boundary_cv [ i.cv() ].push_back(i.f());
@@ -132,7 +132,7 @@ BC::BC ( getfem::mesh& mesh,
  					//This        will enforce M_mediumMesh.region(0).add(i.cv(), i.f());
  					
  				}
- 				else
+ 				/*else
  				{
  					// Neumann, flag 1
  					boundary_cv [ i.cv() ].push_back(i.f());
@@ -140,7 +140,7 @@ BC::BC ( getfem::mesh& mesh,
  					boundary_flags [ i.cv() ].push_back(boundaryFlags [1 ]);
  					// This will enforce M_mediumMesh.region(1).add(i.cv(), i.f());
  					
- 				}
+ 				}*/
              }
 
         }
