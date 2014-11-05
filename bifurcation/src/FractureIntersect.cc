@@ -33,7 +33,7 @@ FractureIntersect::FractureIntersect ()
 
 
 void FractureIntersect::
-constructIntesection ( getfem::mesh_level_set& meshLevelSet, const FracturePtrContainer_Type& fractures )
+constructIntesection ( const getfem::mesh& mesh, getfem::mesh_level_set& meshLevelSet, const FracturePtrContainer_Type& fractures )
 {
     // Assegno una numerazione globale ai Cross e alle Biforcazioni
     size_type globalIndexBifurcation = 0;
@@ -44,6 +44,14 @@ constructIntesection ( getfem::mesh_level_set& meshLevelSet, const FracturePtrCo
     std::vector<dal::bit_vector> listOfLevelSet_bitVector;
 
     /*
+	 * Andiamo a pulire il vettore dei DOF_Free in modo che poi solo nel caso ci siano biforcazioni venga toccato
+	 */	
+	for ( size_type f=0; f < fractures.size(); f++ )
+	{
+		fractures[ f ] -> clearDofFree( );
+	}
+	
+	/*
      * La chiamata di funzione 
      * 				meshLevelSet.find_level_set_potential_intersections ( listOfConvex, listOfLevelSet_bitVector )
      * restituisce un vettore con gli indici degli elementi della mesh di supporto tagliati da più di una frattura e per ciascun elemento un
@@ -114,7 +122,7 @@ constructIntesection ( getfem::mesh_level_set& meshLevelSet, const FracturePtrCo
            // Intersezione di tipo Cross
            if ( type == Cross )
            {
-        	   if ( fracturesInvolved.size() == 2 )
+			    if ( fracturesInvolved.size() == 2 )
                 {
         		    // Do una numerazione globale alle intersezioni di tipo Cross
                     std::cout << " globalIndexCross " << globalIndexCross << std::endl;
@@ -144,7 +152,8 @@ constructIntesection ( getfem::mesh_level_set& meshLevelSet, const FracturePtrCo
            // Intersezione di tipo Bifurcation
            if ( type == Bifurcation )
            {
-        	   // Anche per le intersezioni di tipo Bifurcation assegno una numerazione globale
+			   
+			   // Anche per le intersezioni di tipo Bifurcation assegno una numerazione globale
                std::cout << " globalIndexBifurcation " << globalIndexBifurcation << std::endl;
                
                std::string B ( "Bifurcation" );
@@ -169,10 +178,17 @@ constructIntesection ( getfem::mesh_level_set& meshLevelSet, const FracturePtrCo
                fracturesInvolved [ 2 ]->setMeshLevelSetFracture ( *fracturesInvolved [ 1 ], indexTmp, B );
 
                globalIndexBifurcation++;
+			   
+			   //Andiamo a settare il vettore di DOF_FREE
+			   for( size_type f=0; f < fracturesInvolved.size(); f++ )
+			   {
+				   setDofFree( mesh, fracturesInvolved[ f ], listOfConvex[ i ] );
+			   }
 
            }
 
-        
+        	
+		   // Stampe dei GlobalIndex
            if ( type == Cross )
            {
         	   pairSizeVectorContainer_Type& fracture0 = fracturesInvolved[0]->getFractureIntersectElementsGlobalIndex();
@@ -199,22 +215,25 @@ constructIntesection ( getfem::mesh_level_set& meshLevelSet, const FracturePtrCo
 	
 			}
 
+			/*
 			else if ( type == Bifurcation )
 			{    
+				
 				pairSizeVectorContainer_Type& fracture0 = fracturesInvolved[0]->getFractureIntersectElementsGlobalIndex();
 				pairSizeVectorContainer_Type& fracture1 = fracturesInvolved[1]->getFractureIntersectElementsGlobalIndex();
 				pairSizeVectorContainer_Type& fracture2 = fracturesInvolved[2]->getFractureIntersectElementsGlobalIndex();
 				
+				
 				fracture0 [ fracturesInvolved[2]->getId() ][ 0 ].second = fracture0 [ fracturesInvolved[1]->getId() ][ 0 ].first;
-	 
+	 		    
 				fracture1 [ fracturesInvolved[0]->getId() ][ 0 ].second = fracture0 [ fracturesInvolved[2]->getId() ][ 0 ].first;
-	 
+	 		    
 				fracture1 [ fracturesInvolved[2]->getId() ][ 0 ].second = fracture1 [ fracturesInvolved[0]->getId() ][ 0 ].first;
-	 
+	 		    
 				fracture2 [ fracturesInvolved[0]->getId() ][ 0 ].second = fracture1 [ fracturesInvolved[2]->getId() ][ 0 ].first;
-	 
+	      	   
 				fracture2 [ fracturesInvolved[1]->getId() ][ 0 ].second = fracture2 [ fracturesInvolved[0]->getId() ][ 0 ].first;
-	 
+	 		    
 				fracture0 [ fracturesInvolved[1]->getId() ][ 0 ].second = fracture2 [ fracturesInvolved[1]->getId() ][ 0 ].first;
 	 
 				std::cout << "Fratture: " << fracturesInvolved[0]->getId() << "		" << fracturesInvolved[1]->getId() << "		" << fracturesInvolved[2]->getId() << std::endl;
@@ -245,6 +264,7 @@ constructIntesection ( getfem::mesh_level_set& meshLevelSet, const FracturePtrCo
 								<< " second " << fracture2 [ fracturesInvolved[1]->getId() ][ 0 ].second << std::endl;
 	
 			}
+			*/
 
         }
 	}
@@ -429,3 +449,111 @@ size_type FractureIntersect::getBasisFunctionOfType ( IntersectionType type ) co
     return M_basisFunctionOfType.find ( type )->second;
 } // getBasisFunctionOfType
 
+
+void FractureIntersect::setDofFree( const getfem::mesh& M_mesh, FractureHandlerPtr_Type& fracture , size_type i )
+{
+	bgeot::basic_mesh::ref_mesh_pt_ct nodes = M_mesh.points_of_convex ( i );
+	
+	if( FindDOF_Intersection( nodes, fracture ) == -1 )
+	{
+		fracture->pushDofFree( 0 );
+	}
+	
+	else if( FindDOF_Intersection( nodes, fracture ) == 1 )
+	{
+		size_type NDof = fracture -> getMeshFEMPressure().nb_basic_dof(); 
+		fracture->pushDofFree( NDof-1 );
+	}	
+	
+	return;
+	
+}
+
+size_type FractureIntersect::FindDOF_Intersection( const bgeot::basic_mesh::ref_mesh_pt_ct nodes, FractureHandlerPtr_Type& fracture )
+{
+	// x e y dei nodi geometrici che definiscono il convesso
+	scalar_type x1 = nodes [ 0 ] [ 0 ];
+    scalar_type x2 = nodes [ 1 ] [ 0 ];
+    scalar_type x3 = nodes [ 2 ] [ 0 ];
+
+    scalar_type y1 = nodes [ 0 ] [ 1 ];
+    scalar_type y2 = nodes [ 1 ] [ 1 ];
+    scalar_type y3 = nodes [ 2 ] [ 1 ];
+
+    scalar_type minx= fmin(x1, fmin( x2, x3 ) );
+    scalar_type maxx= fmax(x1, fmax( x2, x3 ) );
+
+    scalar_type miny= fmin(y1, fmin( y2, y3 ) );
+    scalar_type maxy= fmax(y1, fmax( y2, y3 ) );
+
+    // x_massima e x_minima dei punti appartenenti alla frattura
+    scalar_type translateAbscissa = fracture->getData().getTranslateAbscissa ();
+    scalar_type lengthAbscissa = fracture->getData().getLengthAbscissa ();
+
+    base_node nodo ( 1 );
+    nodo [ 0 ] = 0;
+    base_node nodo1 ( 1 );
+    nodo1 [ 0 ] = 1;
+
+    // y_massima e y_minima dei punti appartenenti alla frattura
+    scalar_type translateOrdinata = fmin( fracture->getLevelSet()->getData()->y_map(nodo), fracture->getLevelSet()->getData()->y_map(nodo1) );
+    scalar_type lengthOrdinata = fmax( fracture->getLevelSet()->getData()->y_map(nodo), fracture->getLevelSet()->getData()->y_map(nodo1) );
+
+    // controllo che, nel caso in cui la frattura non tagli tutta la mesh di supporto, il convesso sia effettivamente tagliato dalla frattura
+    if ( minx >= translateAbscissa && maxx <= translateAbscissa + lengthAbscissa)
+    {   
+		if ( miny >= translateOrdinata && maxy <= lengthOrdinata )
+		{	
+			return 0;
+		}
+		else if ( miny <= lengthOrdinata && maxy >= lengthOrdinata )
+		{	
+			return 0;
+		}
+		else if ( miny <= translateOrdinata && maxy >= translateOrdinata )
+		{	
+			return 0;
+		}
+		else
+		{	
+			return 3;
+		}
+
+    }
+
+    else if ( minx <= translateAbscissa && maxx >= translateAbscissa )
+    {
+		if ( miny < translateOrdinata && maxy < translateOrdinata )
+		{
+			return 3;
+		}
+		else if ( miny > lengthOrdinata && maxy > lengthOrdinata )
+		{
+			return 3;
+		}
+
+		else
+		{
+			return -1;
+		}
+    }
+
+    else if ( minx <= translateAbscissa  + lengthAbscissa && maxx >= translateAbscissa + lengthAbscissa )
+    {
+    	if ( miny >= lengthOrdinata && maxy >= lengthOrdinata )
+		{	
+			return 3;
+		}
+    	else if ( miny <= translateOrdinata && maxy <= translateOrdinata )
+		{	
+			return 3;
+		}
+		else
+		{	
+			return 1;
+		}
+    }
+	
+	return 3;
+
+}// compreso

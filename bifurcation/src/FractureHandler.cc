@@ -162,6 +162,26 @@ void FractureHandler::init ( )
     
 }// init
 
+void FractureHandler::normalVectorAndMap ( const getfem::mesh_fem& mediumMeshFEMPressure )
+{
+	// Assegno il vettore normale e la mappa per la frattura
+    for ( size_type i = 0; i < M_meshFEMPressure.nb_dof(); ++i )
+    {
+        const base_node& node = mediumMeshFEMPressure.point_of_basic_dof(i);
+        const bgeot::dim_type& dim = M_data.getSpaceDimension();
+        
+        scalarVector_Type magnificationMapFactor = M_levelSet->getData()->map_jac( node, dim );
+
+        scalarVector_Type fractureNormal = M_levelSet->getData()->normal_map( node, dim );
+
+        M_magnificationMapFactor1.push_back ( magnificationMapFactor [ 0 ] );
+        M_normal1.push_back ( fractureNormal [ 0 ] );
+        M_normal2.push_back ( fractureNormal [ 1 ] );
+    }
+    
+    return;
+    
+}// normalVectorAndMap
 
 void FractureHandler::computeInvH ( const BCHandlerPtr_Type& bcHandler )
 {
@@ -191,37 +211,16 @@ void FractureHandler::computeInvH ( const BCHandlerPtr_Type& bcHandler )
     
 }// computeInvH
 
-
-void FractureHandler::normalVectorAndMap ( const getfem::mesh_fem& mediumMeshFEMPressure )
-{
-	// Assegno il vettore normale e la mappa per la frattura
-    for ( size_type i = 0; i < M_meshFEMPressure.nb_dof(); ++i )
-    {
-        const base_node& node = mediumMeshFEMPressure.point_of_basic_dof(i);
-        const bgeot::dim_type& dim = M_data.getSpaceDimension();
-        
-        scalarVector_Type magnificationMapFactor = M_levelSet->getData()->map_jac( node, dim );
-
-        scalarVector_Type fractureNormal = M_levelSet->getData()->normal_map( node, dim );
-
-        M_magnificationMapFactor1.push_back ( magnificationMapFactor [ 0 ] );
-        M_normal1.push_back ( fractureNormal [ 0 ] );
-        M_normal2.push_back ( fractureNormal [ 1 ] );
-    }
-    
-    return;
-    
-}// normalVectorAndMap
-
-
 size_type FractureHandler::setMeshLevelSetFracture ( FractureHandler& otherFracture, size_type& globalIndex, const std::string& type )
 {
+	
     const size_type otherFractureId = otherFracture.getId();
     size_type numIntersect = 0;
     
     if ( !M_meshLevelSetIntersect[ otherFractureId ].get() )
     {
-        M_meshLevelSetIntersect[ otherFractureId ].reset ( new GFMeshLevelSet_Type ( M_meshFlat ) );
+        std::cout << " if + esterno " << globalIndex << std::endl;
+		M_meshLevelSetIntersect[ otherFractureId ].reset ( new GFMeshLevelSet_Type ( M_meshFlat ) );
         LevelSetHandlerPtr_Type otherLevelSet = otherFracture.getLevelSet();
         M_levelSetIntersect [ otherFractureId ].reset ( new GFLevelSet_Type ( M_meshFlat, 1, false )  );
         M_levelSetIntersect [ otherFractureId ]->reinit();
@@ -257,6 +256,7 @@ size_type FractureHandler::setMeshLevelSetFracture ( FractureHandler& otherFract
         {
             if ( M_meshLevelSetIntersect[ otherFractureId ]->is_convex_cut ( i_cv ) )
             {  
+				std::cout << " if + interno " << globalIndex << std::endl;
  
             	if ( type == "Cross")
             	{	
@@ -273,7 +273,9 @@ size_type FractureHandler::setMeshLevelSetFracture ( FractureHandler& otherFract
 				M_fractureIntersectElements [ otherFractureId ].push_back ( i_cv );
 
 				pairSize_Type coppia;
+				std::cout << " global index schifido" << std::endl;
 				coppia.first = globalIndex;
+				std::cout << " sono io " << coppia.first << std::endl;
 				coppia.second = 0;
 				M_fractureIntersectElementsGlobalIndex [ otherFractureId ].push_back ( coppia );
 

@@ -12,6 +12,7 @@
 #include "BCHandler.h"
 #include "LevelSetHandler.h"
 
+
 class FractureHandler
 {
 public:
@@ -100,6 +101,24 @@ public:
         return M_levelSet;
     }
 
+    inline sizeVector_Type& getDofFree( )
+    {
+        return  M_DOF_Free;
+    }
+	
+    inline void clearDofFree( )
+    {
+        M_DOF_Free.clear();
+		
+		return;
+    }
+	
+    void pushDofFree( size_type i )
+    {
+        M_DOF_Free.push_back( i );
+		
+		return;
+    }
 
     inline const scalarVector_Type& getEtaNormalInterpolated ( ) const
     {
@@ -312,6 +331,9 @@ private:
     FractureData M_data;
 
     LevelSetHandlerPtr_Type M_levelSet;
+	
+	// va a salvarsi, in caso ci fosse una biforcazione, in quale degli estremi della frattura cade
+	sizeVector_Type M_DOF_Free;
 
     // M_mediummesh per la fratture: M_meshFlat è " piatta " (1d), M_meshMapped è mappata (x(t),y(t))
     getfem::mesh M_meshFlat;

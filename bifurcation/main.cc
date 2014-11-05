@@ -82,8 +82,8 @@ int main ( int argc, char* argv [ ] )
 
 	// Medium boundary conditions
 	std::cout << "Create medium boundary conditions..." << std::flush;
-	BCPtr_Type bcMedium(new BC_Type(mesh->getMesh(), mesh->getMeshType(),
-			MEDIUM));
+	sizeVector_Type vuoto;
+	BCPtr_Type bcMedium(new BC_Type(mesh->getMesh(), mesh->getMeshType(), vuoto, MEDIUM));
 	std::cout << " completed!" << std::endl;
 
 
@@ -94,7 +94,8 @@ int main ( int argc, char* argv [ ] )
 	{
 		bcFracture [ f ].reset(new BC_Type( fractures->getFracture( f )->getMeshFlat(),
 										   fractures->getFracture ( f )->getData().getMeshType(),
-										   FRACTURE, f));
+										   fractures->getFracture ( f ) -> getDofFree(),
+										   FRACTURE ));
 	}
 	std::cout << " completed!" << std::endl;
 

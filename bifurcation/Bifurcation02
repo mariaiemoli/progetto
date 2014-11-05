@@ -74,14 +74,14 @@ spaceDimension = 1.
 
         [./levelSet]
 		
-				levelSet = y+x-0.52
-				ylevelSet = y-0.31+0.31*t
-				xlevelSet = x-0.21-0.31*t          
-				levelSetCut = -1
-				yMap = 0.31-0.31*t
-				xMap = 0.21+0.31*t
-				jacMap = [1./sqrt(2)]
-				normalMap = [1.,1.]
+			levelSet = y-1.186*x
+			ylevelSet = y-0.51*t
+			xlevelSet = x-0.43*t          
+			levelSetCut = -1
+			yMap = 0.51*t
+			xMap = 0.43*t
+			jacMap = [0.64459]
+			normalMap = [1.,1.]
 		
 		        integrationTypeSimplex = IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(3),1)
 
@@ -93,11 +93,11 @@ spaceDimension = 1.
 		
 		        csi0 = 0.25
 		
-		        spacing = x+0.21
+		        spacing = x
 		
 		        spatialDiscretization = 81
-		        translateAbscissa = 0.21
-		        lengthAbscissa = 0.31 #0.5
+		        translateAbscissa = 0.
+		        lengthAbscissa = 0.43 #0.5
 		        lengthOrdinate = 0.
 		        lengthQuota = 0.
 		        meshType = GT_PK(1,1)
@@ -120,7 +120,7 @@ spaceDimension = 1.
                 etaTangentialDistribution = 1.
 
                 source = -0.04
-                solution = -1.
+                solution = 1.
                 velocity = 0.
 
         [../]
@@ -129,22 +129,22 @@ spaceDimension = 1.
 [../]
 
 
-[fractureData1]
+[fractureData2]
 
 spaceDimension = 1.
 
         [./levelSet]
-			
-				levelSet = y-3.1*x+0.341
-		        ylevelSet = y-0.31*t
-				xlevelSet = x-0.11-0.1*t            
-				levelSetCut = -1
-				yMap = 0.31*t
-				xMap = 0.11+0.1*t
-	            jacMap = [0.307]
-	        	normalMap = [-2.,1.]
 	
-	            integrationTypeSimplex = IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(3),1)
+		levelSet = y-0.6842*x-0.21578
+	        ylevelSet = y-0.51-0.39*t
+		xlevelSet = x-0.43-0.57*t           
+		levelSetCut = -1
+		yMap = 0.51+0.39*t
+		xMap = 0.43+0.57*t   
+      	      	jacMap = [0.825]
+        	normalMap = [-2.,1.]
+	
+      		integrationTypeSimplex = IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(3),1)
 
         [../]
 
@@ -155,11 +155,11 @@ spaceDimension = 1.
 
                 csi0 = 0.25
 
-                spacing = x+0.11
+                spacing = x+0.43
 
                 spatialDiscretization = 81
-                translateAbscissa = 0.11
-                lengthAbscissa = 0.1 #0.5
+                translateAbscissa = 0.43
+                lengthAbscissa = 0.57 #0.5
                 lengthOrdinate = 0.
                 lengthQuota = 0.
                 meshType = GT_PK(1,1)
@@ -190,20 +190,20 @@ spaceDimension = 1.
 
 s[../]
 
-[fractureData2]
+[fractureData1]
 
 spaceDimension = 1.
 
         [./levelSet]
 
-				levelSet = y-x-0.1
-                ylevelSet = y-0.31-0.69*t
-				xlevelSet = x-0.21-0.69*t
+			levelSet = y+0.5*x-0.725
+                ylevelSet = y-0.725+0.215*t
+				xlevelSet = x-0.43*t
                 levelSetCut = -1
-                yMap = 0.31+0.69*t
-				xMap = 0.21+0.69*t
-                jacMap = [1./sqrt(2)] %here the mapped grid is shorter than the actual arc length
-                normalMap = [1.,-1.]
+                yMap = 0.725-0.215*t
+				xMap = 0.43*t
+                jacMap = [0.8944] %here the mapped grid is shorter than the actual arc length
+                normalMap = [2.,-1.]
 
                 integrationTypeSimplex = IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(3),1)
 
@@ -216,10 +216,10 @@ spaceDimension = 1.
 
                 csi0 = 0.25
 
-                spacing = x+0.21  %here the fracture starts at x=0.1 
+                spacing = x %here the fracture starts at x=0.1 
                 spatialDiscretization = 81 
-                translateAbscissa = 0.21
-                lengthAbscissa = 0.69 #1.
+                translateAbscissa = 0.
+                lengthAbscissa = 0.43 #1.
                 lengthOrdinate = 0.
                 lengthQuota = 0.
                 meshType = GT_PK(1,1)
@@ -241,10 +241,11 @@ spaceDimension = 1.
                 etaTangentialDistribution = 1.
 
                 source = -0.04
-                solution = 1.
+                solution = 0.
                 velocity = 0.
 
         [../]
 
 
 [../]
+

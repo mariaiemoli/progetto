@@ -55,7 +55,7 @@ public:
          * \param FracturePtrContainer_Type& fractures: puntatore all'insieme di tutte le fratture
          * 
          */
-        void constructIntesection ( getfem::mesh_level_set& meshLevelSet,
+        void constructIntesection ( const getfem::mesh& mesh, getfem::mesh_level_set& meshLevelSet,
                                     const FracturePtrContainer_Type& fractures );
 
         
@@ -125,6 +125,11 @@ public:
 
         size_type getBasisFunctionOfType ( IntersectionType type ) const;
         
+		
+		void setDofFree( const getfem::mesh& M_mesh, FractureHandlerPtr_Type& fracture , size_type i );
+		
+
+		size_type FindDOF_Intersection( const bgeot::basic_mesh::ref_mesh_pt_ct nodes, FractureHandlerPtr_Type& fracture );
 
 
 
