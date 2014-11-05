@@ -174,7 +174,7 @@ func fracture1 = (y-a1*x+b1+d1/2.>=0)*(y-a1*x+b1-d1/2.<=0)*(1.*(y-a3*x-b3<=0));
 func fracture2 = (y-a2*x-b2-d2/2.<=0)*(y-a2*x-b2+d1/2.>=0)*(1.*(y-a4*x-b4>=0));
 
 //mesh ThI = buildmesh ( inside0(NelemI*Nelem*d0) + inside1(NelemI*Nelem*d2) + inside2(NelemI*Nelem*d1) );
-mesh ThI = trunc ( Th, part, label = 10, split = 1 );
+mesh ThI = trunc ( Th, part, label = 11, split = 1 );
 
 
 if ( plotYesNo )

@@ -344,7 +344,6 @@ void DarcyFractured::assembly ( const GetPot& dataFile )
     // Aggiorno ora la matrice globale imponendo le condizioni di interfaccia per la biforcazione
     for ( size_type i = 0; i < IntBifurcation.size(); i++ )
     {
-    	
     	sparseMatrixPtr_Type Aup0, Aup1, Aup2, Aup3;
     	   	
     	FractureHandlerPtr_Type f0 = IntBifurcation [ i ].getFracture (0);
