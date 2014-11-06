@@ -137,7 +137,7 @@ void MatrixBifurcationHandler::inversion2X2 ( const Matrix2d& invk, scalar_type 
 
 void MatrixBifurcationHandler::SetDOFIntersecton( FractureHandlerPtr_Type& fractures, scalar_type& DOF )
 {
-	const size_type nbDof =  fractures-> getMeshFEMVelocity().nb_basic_dof();
+	const size_type nbDof =  fractures-> getMeshFEMPressure().nb_basic_dof();
 	
 	base_node node(2);
 	
@@ -146,12 +146,12 @@ void MatrixBifurcationHandler::SetDOFIntersecton( FractureHandlerPtr_Type& fract
 	tmp0[ 0 ]= 0.;
 	tmp1[ 0 ]= 1.;
 	
-	node[ 0 ] = fractures-> getMeshFEMVelocity().point_of_basic_dof( 0 )[ 0 ];
+	node[ 0 ] = fractures-> getMeshFEMPressure().point_of_basic_dof( 0 )[ 0 ];
 	node[ 1 ] = fractures-> getLevelSet()->getData()->y_map( tmp0 );
-	
+		
 	PointData temp = M_intersection.getPointIntersection();
 	
-	if( node[ 0 ] == temp.x() && node[ 1 ] == temp.y() )
+	if( ( gmm::abs( node[ 0 ] - temp.x() ) < 1.0E-2 ) && ( gmm::abs( node[ 1 ] - temp.y() ) < 1.0E-2 ) )
 	{
 		DOF = 0;
 	}

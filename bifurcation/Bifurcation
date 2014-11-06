@@ -120,7 +120,7 @@ spaceDimension = 1.
                 etaTangentialDistribution = 1.
 
                 source = -0.04
-                solution = 1.
+                solution = -1.
                 velocity = 0.
 
         [../]
@@ -241,7 +241,7 @@ spaceDimension = 1.
                 etaTangentialDistribution = 1.
 
                 source = -0.04
-                solution = 0.
+                solution = 1.
                 velocity = 0.
 
         [../]

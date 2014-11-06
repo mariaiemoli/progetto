@@ -14,8 +14,8 @@
 
 BC::BC ( getfem::mesh& mesh,
          const std::string& MeshType,
-         const ElementDimension& dimension,
-         const size_type f) :
+         const sizeVector_Type DOFs,
+         const ElementDimension& dimension) :
     M_meshFEM(mesh)
 {
 
@@ -92,58 +92,68 @@ BC::BC ( getfem::mesh& mesh,
     }
     else
     {
-        for ( getfem::mr_visitor i(borderFaces); !i.finished(); ++i )
-        {
-            assert(i.is_face());
-            base_node un = mesh.normal_of_face_of_convex(i.cv(), i.f());
-            un /= gmm::vect_norm2(un);
-			
-            if (  f == 1 && gmm::abs(un [ dimension - 1 ] + 1.0 )< 1.0E-7 )  
-			{	
-				//if (false)//( gmm::abs(gmm::abs(un [ dimension - 1 ]) - 1.0) > 1.0E-7 )
+		if ( DOFs.size() == 0)
+		{
+	        for ( getfem::mr_visitor i(borderFaces); !i.finished(); ++i )
+	        {
+	            assert(i.is_face());
+	            base_node un = mesh.normal_of_face_of_convex(i.cv(), i.f());
+	            un /= gmm::vect_norm2(un);
+	            if (false)//( gmm::abs(gmm::abs(un [ dimension - 1 ]) - 1.0) > 1.0E-7 )
 				{
 					// Dirichlet, flag 0
 					boundary_cv [ i.cv() ].push_back(i.f());
-					
+				
 					boundary_flags [ i.cv() ].push_back(boundaryFlags [ 1 ]);
 					//This        will enforce M_mediumMesh.region(0).add(i.cv(), i.f());
-					
+				
 				}
-				/*else
+				else
 				{
 					// Neumann, flag 1
 					boundary_cv [ i.cv() ].push_back(i.f());
-					
+				
 					boundary_flags [ i.cv() ].push_back(boundaryFlags [1 ]);
-					// This will enforce M_mediumMesh.region(1).add(i.cv(), i.f());
-					
-				}*/
-			}
-            
-            if  ( ( f == 0 || f == 2 ) &&  un [ dimension - 1 ] == 1 ) 
-            {	
- 				
-				//if (false)//( gmm::abs(gmm::abs(un [ dimension - 1 ]) - 1.0) > 1.0E-7 )
- 				{
- 					// Dirichlet, flag 0
- 					boundary_cv [ i.cv() ].push_back(i.f());
- 			
- 					boundary_flags [ i.cv() ].push_back(boundaryFlags [ 1 ]);
- 					//This        will enforce M_mediumMesh.region(0).add(i.cv(), i.f());
- 					
- 				}
- 				/*else
- 				{
- 					// Neumann, flag 1
- 					boundary_cv [ i.cv() ].push_back(i.f());
- 					
- 					boundary_flags [ i.cv() ].push_back(boundaryFlags [1 ]);
- 					// This will enforce M_mediumMesh.region(1).add(i.cv(), i.f());
- 					
- 				}*/
-             }
+					// This will enforce M_mediumMesh.region(1).add(i.cv(), i.f());		
+				}
 
-        }
+	        }
+		}
+		else
+		{
+	        for ( getfem::mr_visitor i(borderFaces); !i.finished(); ++i )
+	        {
+				bool ImAnIntersectionDOF = 0;
+				
+				for( size_type j=0; j<DOFs.size(); j++ )
+				{
+					
+					if( DOFs[ j ] == i.cv() )
+					{
+						ImAnIntersectionDOF = 1;
+					}
+				}
+				
+				if ( !ImAnIntersectionDOF )
+				{
+						if (false)//( gmm::abs(gmm::abs(un [ dimension - 1 ]) - 1.0) > 1.0E-7 )
+						{				// Dirichlet, flag 0
+						boundary_cv [ i.cv() ].push_back(i.f());
+
+						boundary_flags [ i.cv() ].push_back(boundaryFlags [ 1 ]);
+							//This will enforce M_mediumMesh.region(0).add(i.cv(), i.f());
+						}
+						else
+						{
+							// Neumann, flag 1
+							boundary_cv [ i.cv() ].push_back(i.f());
+	
+							boundary_flags [ i.cv() ].push_back(boundaryFlags [1 ]);
+							// This will enforce M_mediumMesh.region(1).add(i.cv(), i.f());
+						}
+				}
+			}
+		}
     }
     // Bulk mesh
     for ( size_type cv = 0; cv < boundary_flags.size(); ++cv )

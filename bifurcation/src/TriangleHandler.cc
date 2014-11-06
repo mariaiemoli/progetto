@@ -51,11 +51,12 @@ void Intersection::setIntersection( FracturePtrContainer_Type& M_FracturesSet )
 	
 
 	// ordino le fratture in senso orario
-	//sortFractures ( M_FracturesSet );
+	sortFractures ( M_FracturesSet );
+
 	
-	const size_type nbDof0 =  M_FracturesSet [ 0 ]-> getMeshFEMVelocity().nb_basic_dof();
-	const size_type nbDof1 =  M_FracturesSet [ 1 ]-> getMeshFEMVelocity().nb_basic_dof();
-	const size_type nbDof2 =  M_FracturesSet [ 2 ]-> getMeshFEMVelocity().nb_basic_dof();
+	const size_type nbDof0 =  M_FracturesSet [ 0 ]-> getMeshFEMPressure().nb_basic_dof();
+	const size_type nbDof1 =  M_FracturesSet [ 1 ]-> getMeshFEMPressure().nb_basic_dof();
+	const size_type nbDof2 =  M_FracturesSet [ 2 ]-> getMeshFEMPressure().nb_basic_dof();
 	
 	base_node node0(2);
 	base_node node1(2);
@@ -68,33 +69,35 @@ void Intersection::setIntersection( FracturePtrContainer_Type& M_FracturesSet )
 	tmp0[ 0 ]= 0.;
 	tmp1[ 0 ]= 1.;
 	
-	node0[ 0 ] = M_FracturesSet [ 0 ]-> getMeshFEMVelocity().point_of_basic_dof( 0 )[ 0 ];
-	node1[ 0 ] = M_FracturesSet [ 1 ]-> getMeshFEMVelocity().point_of_basic_dof( 0 )[ 0 ];
-	node2[ 0 ] = M_FracturesSet [ 2 ]-> getMeshFEMVelocity().point_of_basic_dof( 0 )[ 0 ];
-	nodeI[ 0 ] = M_FracturesSet [ 0 ]-> getMeshFEMVelocity().point_of_basic_dof( 0 )[ 0 ];
+	node0[ 0 ] = M_FracturesSet [ 0 ]-> getMeshFEMPressure().point_of_basic_dof( 0 )[ 0 ];
+	node1[ 0 ] = M_FracturesSet [ 1 ]-> getMeshFEMPressure().point_of_basic_dof( 0 )[ 0 ];
+	node2[ 0 ] = M_FracturesSet [ 2 ]-> getMeshFEMPressure().point_of_basic_dof( 0 )[ 0 ];
+	nodeI[ 0 ] = M_FracturesSet [ 0 ]-> getMeshFEMPressure().point_of_basic_dof( nbDof0-1 )[ 0 ];
 	
 	node0[ 1 ] = M_FracturesSet [ 0 ]-> getLevelSet()->getData()->y_map( tmp0 );
 	node1[ 1 ] = M_FracturesSet [ 1 ]-> getLevelSet()->getData()->y_map( tmp0 );
 	node2[ 1 ] = M_FracturesSet [ 2 ]-> getLevelSet()->getData()->y_map( tmp0 );
 	nodeI[ 1 ] = M_FracturesSet [ 0 ]-> getLevelSet()->getData()->y_map( tmp1 );
 	
-	if ( M_FracturesSet [ 1 ]-> getLevelSet()->getData()->ylevelSetFunction ( node0 ) == 0 )
+	if ( gmm::abs( M_FracturesSet [ 1 ]-> getLevelSet()->getData()->ylevelSetFunction ( node0 ) ) < 1.0E-2 )
 	{
-		node0 [ 0 ] = M_FracturesSet [ 0 ]-> getMeshFEMVelocity().point_of_basic_dof( nbDof0-1 )[ 0 ];
-		nodeI [ 0 ] = M_FracturesSet [ 0 ]-> getMeshFEMVelocity().point_of_basic_dof( 0 )[ 0 ];
+		node0 [ 0 ] = M_FracturesSet [ 0 ]-> getMeshFEMPressure().point_of_basic_dof( nbDof0-1 )[ 0 ];
+		node0 [ 0 ] = M_FracturesSet [ 0 ]-> getMeshFEMPressure().point_of_basic_dof( nbDof0-1 )[ 0 ];
+		nodeI [ 0 ] = M_FracturesSet [ 0 ]-> getMeshFEMPressure().point_of_basic_dof( 0 )[ 0 ];
 		node0 [ 1 ] = M_FracturesSet [ 0 ]-> getLevelSet()->getData()->y_map( tmp1 );
 		nodeI [ 1 ] = M_FracturesSet [ 0 ]-> getLevelSet()->getData()->y_map( tmp0 );
 	}
 
-	if ( M_FracturesSet [ 0 ]-> getLevelSet()->getData()->ylevelSetFunction ( node1 ) == 0 )
+	if ( gmm::abs( M_FracturesSet [ 0 ]-> getLevelSet()->getData()->ylevelSetFunction ( node1 ) ) < 1.0E-2 )
 	{
-		node1 [ 0 ] = M_FracturesSet [ 1 ]-> getMeshFEMVelocity().point_of_basic_dof( nbDof1-1 )[ 0 ];
+		
+		node1 [ 0 ] = M_FracturesSet [ 1 ]-> getMeshFEMPressure().point_of_basic_dof( nbDof1-1 )[ 0 ];
 		node1 [ 1 ] = M_FracturesSet [ 1 ]-> getLevelSet()->getData()->y_map( tmp1 );
 	}
 
-	if ( M_FracturesSet [ 1 ]-> getLevelSet()->getData()->ylevelSetFunction ( node2 ) == 0)
+	if ( gmm::abs( M_FracturesSet [ 1 ]-> getLevelSet()->getData()->ylevelSetFunction ( node2 ) ) < 1.0E-2 )
 	{
-		node2 [ 0 ] = M_FracturesSet [ 2 ]-> getMeshFEMVelocity().point_of_basic_dof( nbDof2-1 )[ 0 ];
+		node2 [ 0 ] = M_FracturesSet [ 2 ]-> getMeshFEMPressure().point_of_basic_dof( nbDof2-1 )[ 0 ];
 		node2 [ 1 ] = M_FracturesSet [ 2 ]-> getLevelSet()->getData()->y_map( tmp1 );
 	}
 

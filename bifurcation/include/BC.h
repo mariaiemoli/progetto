@@ -19,6 +19,8 @@ class BC
 {
 public:
 
+	//static sizeVector_Type DEFAULT_VECTOR;
+
     enum
     {
         DIRICHLET_BOUNDARY_NUM = 40,
@@ -29,8 +31,8 @@ public:
     // Costruttore
     BC ( getfem::mesh& mesh,
          const std::string& MeshType,
-         const ElementDimension& dimension = MEDIUM,
-         const size_type f = 0 );
+		 const sizeVector_Type DOFs /*= DEFAULT_VECTOR*/,
+         const ElementDimension& dimension = MEDIUM );
 
 
     inline const sizeVector_Type& getDirichlet ( ) const

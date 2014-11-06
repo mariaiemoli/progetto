@@ -47,7 +47,8 @@ void FracturesSet::init ( const GetPot& dataFile, const std::string& section,
 	meshLevelSet.adapt ();
 
 	// una volta costruito il vettore delle fratture inizializzo la classe per le intersezioni
-	M_intersections->constructIntesection ( meshLevelSet, M_fractures );
+
+	M_intersections->constructIntesection ( mesh, meshLevelSet, M_fractures );
 	
 	return;
 
