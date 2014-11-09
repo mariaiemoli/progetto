@@ -1,7 +1,10 @@
 // Spacing
-/*int Nelem = 1200;*/
-/*int NelemI = 10;*/
+/*
+int Nelem = 1200;
+int NelemI = 10;
 
+bool plotYesNo = true;
+*/
 /*bool plotYesNo = true;*/
 
 // first fracture y = a0*x+b0
@@ -12,8 +15,10 @@ real b0 = 0.;
 real a1 = 1.;
 real b1 = 1.;
 
-real d0 = 0.0025/cos(atan(a0));
-real d1 = 0.0025/cos(atan(a1));
+//real d0 = 0.0025/cos(atan(a0));
+//real d1 = 0.0025/cos(atan(a1));
+real d0 = 0.025/cos(atan(a0));
+real d1 = 0.025/cos(atan(a1));
 
 real length00 = 1.*cos(atan(a0));
 real length01 = 1.*cos(atan(a0));

@@ -1,0 +1,153 @@
+/////////////////////////////////////////////////////////////////////////
+///////////////// 	PROGETTO PACS		        /////////////////////////
+/////////////////////////////////////////////////////////////////////////
+
+/// CODICE PER CONFRONTARE I RISULTATI OTTENUTI CON IL MODELLO RIDOTTO PER LA PRESSIONE SULLA BIFORCAZIONE
+
+bool plotYesNo = true;
+
+// Import mesh file
+
+// Spacing
+int Nelem = 120;
+int NelemI = 10;
+
+include "mesh_bifurcation.edp"
+
+// dual-mixed mathod
+
+func invK11 = part(x,y)*1 + fracture0(x,y)*1 + fracture1(x,y)*1 + fracture2(x,y)*1;
+func invK12 = 0.;//-part(x,y)*4999.5;
+func invK22 = part(x,y)*1 + fracture0(x,y)*1 + fracture1(x,y)*1 + fracture2(x,y)*1;
+func invK21 = invK12;
+
+func ff = -0.04;
+
+// pressure at inflow
+real p00 = 1;
+real p01 = 1;
+real p02 = -1;
+
+// Finite element spaces:
+// Vh is the space for the vectorial base function (flux), Qh for the scalar (p)
+fespace Vh ( Th, RT0 );
+fespace Qh ( Th, P0 );
+
+
+// solution and test function
+Vh [uh1, uh2];
+Qh ph, one;
+one = part(x,y);
+ph=0;
+
+real dimVh=Vh.ndof;     
+real dimQh=Qh.ndof;  
+real dimtot=dimVh+dimQh;
+
+// Forme bilineari (senza il contributo delle condizioni al contorno di Dirichlet)
+// Definition of variational forms
+
+varf a([u1,u2],[v1,v2]) = int2d(Th)( ( invK11 * u1 + invK12 * u2 ) * v1 
+	                            +( invK21 * u1 + invK22 * u2 ) * v2 )
+	                 +int1d(Th,54)(p02*(v1*N.x + v2*N.y) ) 
+	                 +int1d(Th,32)(p01*(v1*N.x + v2*N.y) ) 
+	                 +int1d(Th,10)(p00*(v1*N.x + v2*N.y) )
+	                 +on(3, u1 = 0, u2 = 0);
+
+varf b([u1,u2],[q]) = -int2d(Th)((dx(u1)+dy(u2))*q);
+
+varf menob([u1,u2],[q]) = int2d(Th)((dx(u1)+dy(u2))*q);
+
+
+
+varf masspres(p,q) = int2d(Th)(p*q);
+
+// Construction of matrices
+matrix A=a(Vh,Vh);  
+matrix B=b(Vh,Qh);
+matrix menoB=menob(Vh,Qh);
+
+
+
+matrix MP=masspres(Qh,Qh);
+matrix MV=masspres(Vh,Vh);
+//matrix J0=1;
+
+//matrix Sigma=[[A,B'],[menoB,0]];
+matrix Sigma=[[A,B'],[menoB,0]];
+//matrix P=[[MP,0,0],[0,MV,0],[0,0,1]];
+matrix P=[[MV,0],[0,MP]];//,0],[0,0,1]];
+ 
+
+ofstream fout("matriceGrande");
+fout << Sigma;
+
+
+ofstream fout2("b");
+fout2 << B;
+
+
+ofstream fout1("p");
+fout1 << P;
+
+set(P,solver=UMFPACK);
+
+real[int]f(dimQh);
+f=ff;		// 	condizioni di Dirichlet
+
+real[int] FF(dimtot);
+FF=0;
+FF(dimVh:dimtot-1)=ff;
+//cout << "f: " << f<< endl;
+
+real[int] UU(dimtot),RR(dimtot); ; 
+
+// funzione che calcola il residuo precondizionato
+func real[int] BlockDiag(real[int] &xx)
+{
+	RR=P^-1*xx;
+	return RR;
+}
+
+
+
+
+// funzione che calcola il prodotto tra la matrice di Stokes e un vettore in ingresso
+func real[int] MatVecDarcy(real[int] &xx)
+{
+	RR=Sigma*xx;
+	return RR;
+}
+
+// risolvo il sistema monolitico con GMRES precondizionato
+LinearGMRES(MatVecDarcy, UU, FF, nbiter=10000, eps=1.e-6, precon=BlockDiag);
+
+
+uh1[]=UU(0:dimVh-1);
+ph[]=UU(dimVh:dimtot-1);
+
+
+
+cout << "Pressure, min " << ph[].min << " max " << ph[].max << endl;
+cout << "Velocity min [" << uh1[].min << ", " << uh2[].min << "] max ["
+     << uh1[].max << ", " << uh2[].max << "]" << endl;
+
+
+real I = int2d(ThI)( one );
+real pI = 1./I * int2d(ThI)( ph );
+
+cout << "Intersection pressure " << pI << endl;
+cout << "Intersect area " << I << endl;
+
+
+cout << "Lato 0 " << int1d(Th,42)( ph ) / int1d(Th, 42)( 1. ) << endl;
+cout << "Lato 1 " << int1d(Th,41)( ph ) / int1d(Th, 41)( 1. ) << endl;
+cout << "Lato 2 " << int1d(Th,40)( ph ) / int1d(Th, 40)( 1. ) << endl;
+
+
+if ( plotYesNo )
+{
+    plot ( ph, fill = true, nbiso = 20, value = true ); //, wait = true );
+    plot ( [uh1, uh2], fill = true, value = true ); //, wait = true );
+}
+

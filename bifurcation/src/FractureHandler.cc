@@ -256,7 +256,7 @@ size_type FractureHandler::setMeshLevelSetFracture ( FractureHandler& otherFract
         {
             if ( M_meshLevelSetIntersect[ otherFractureId ]->is_convex_cut ( i_cv ) )
             {  
-				std::cout << " if + interno " << globalIndex << std::endl;
+				//std::cout << " if + interno " << globalIndex << std::endl;
  
             	if ( type == "Cross")
             	{	
@@ -273,7 +273,7 @@ size_type FractureHandler::setMeshLevelSetFracture ( FractureHandler& otherFract
 				M_fractureIntersectElements [ otherFractureId ].push_back ( i_cv );
 
 				pairSize_Type coppia;
-				std::cout << " global index schifido" << std::endl;
+				//std::cout << " global index schifido" << std::endl;
 				coppia.first = globalIndex;
 				std::cout << " sono io " << coppia.first << std::endl;
 				coppia.second = 0;

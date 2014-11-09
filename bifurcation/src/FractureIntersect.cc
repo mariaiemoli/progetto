@@ -161,22 +161,22 @@ constructIntesection ( const getfem::mesh& mesh, getfem::mesh_level_set& meshLev
                // Attenzione: nel caso della biforcazione ogni frattura interseca due altre fratture!
                size_type indexTmp = 2*crossNum + globalIndexBifurcation;
                fracturesInvolved [ 0 ]->setMeshLevelSetFracture ( *fracturesInvolved [ 1 ], indexTmp, B );
-               
+               std::cout << " 0 chiama 1 " << std::endl; 
                indexTmp = 2*crossNum + globalIndexBifurcation + bifuNum;
                fracturesInvolved [ 0 ]->setMeshLevelSetFracture ( *fracturesInvolved [ 2 ], indexTmp, B );
-
+               std::cout << " 0 chiama 2 " << std::endl;
                indexTmp = 2*crossNum + globalIndexBifurcation + 2*bifuNum;
                fracturesInvolved [ 1 ]->setMeshLevelSetFracture ( *fracturesInvolved [ 0 ], indexTmp, B );
-               
+               std::cout << " 1 chiama 0 " << std::endl;
                indexTmp = 2*crossNum + globalIndexBifurcation + 3*bifuNum ;
                fracturesInvolved [ 1 ]->setMeshLevelSetFracture ( *fracturesInvolved [ 2 ], indexTmp, B );
-
+               std::cout << " 1 chiama 2 " << std::endl;
                indexTmp = 2*crossNum + globalIndexBifurcation + 4*bifuNum;
                fracturesInvolved [ 2 ]->setMeshLevelSetFracture ( *fracturesInvolved [ 0 ], indexTmp, B );
-               
+               std::cout << " 2 chiama 0 " << std::endl;
                indexTmp = 2*crossNum + globalIndexBifurcation + 5*bifuNum;
                fracturesInvolved [ 2 ]->setMeshLevelSetFracture ( *fracturesInvolved [ 1 ], indexTmp, B );
-
+               std::cout << " 2 chiama 1 " << std::endl;
                globalIndexBifurcation++;
 			   
 			   //Andiamo a settare il vettore di DOF_FREE

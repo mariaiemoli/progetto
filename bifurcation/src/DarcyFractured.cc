@@ -384,39 +384,55 @@ void DarcyFractured::assembly ( const GetPot& dataFile )
 		Matrix3d T = Matrix.T();
 				
 		scalarVector_Type DOF( 3 );
+		scalarVector_Type DOF_v( 3 );
 		
 		for( size_type i=0; i< DOF.size(); i++)
 		{
 			Matrix.SetDOFIntersecton( Fracture[ i ], DOF[ i ] );
     	}
 		
-		std::cout << " vettore dei DOF " << DOF << std::endl;
+		for( size_type i=0;  i< DOF.size(); i++)
+		{
+			if( DOF[ i ] == 0 )
+			{
+				DOF_v[ i ] = DOF[ i ];
+			}
+			else
+			{
+				DOF_v[ i ] = DOF[ i ] + 1.;
+			}
+		}
 		
-		(*Aup0) ( 0 , shiftIntersect[ id0 ] + DOF[ 0 ] )  = 1.;
+		std::cout << " ********************** " << std::endl;
+		std::cout << " vettore dei DOF " << DOF << std::endl;
+		std::cout << " vettore dei DOF_v " << DOF_v << std::endl;
+		std::cout << " ********************** " << std::endl;
+		
+		(*Aup0) ( 0 , shiftIntersect[ id0 ] + DOF_v[ 0 ] )  = 1.;
 		(*Aup0) ( 0 , shiftIntersect[ id0 ] + DOF[ 0 ] + fractureNumberGlobalDOFVelocity [ id0 ] ) = 1.*T( 0 , 0 );
 		(*Aup0) ( 0 , shiftIntersect[ id1 ] + DOF[ 1 ] + fractureNumberGlobalDOFVelocity [ id1 ] ) = 1.*T( 0 , 1 );
 		(*Aup0) ( 0 , shiftIntersect[ id2 ] + DOF[ 2 ] + fractureNumberGlobalDOFVelocity [ id2 ] ) = 1.*T( 0 , 2 );
-		(*Aup0) ( 0 , fractureTotalNumberDOFVelocityPressure + globalIndex0 ) = 1.*( T( 0 , 0 ) + T( 0 , 1 ) + T( 0 , 2 ) );
+		(*Aup0) ( 0 , fractureTotalNumberDOFVelocityPressure + globalIndex0 ) = -1.*( T( 0 , 0 ) + T( 0 , 1 ) + T( 0 , 2 ) );
 	    
 		gmm::copy(*Aup0, gmm::sub_matrix(*M_globalMatrix, 
 	    		gmm::sub_interval( shiftIntersect[ id0 ] + DOF[ 0 ], 1), 
 	    		gmm::sub_interval( 0, fractureTotalNumberDOFVelocityPressure + globalFractureNumber ) ));
 				
-		(*Aup1) ( 0 , shiftIntersect[ id1 ] + DOF[ 1 ] )  = 1.;
+		(*Aup1) ( 0 , shiftIntersect[ id1 ] + DOF_v[ 1 ] )  = 1.;
 		(*Aup1) ( 0 , shiftIntersect[ id0 ] + DOF[ 0 ] + fractureNumberGlobalDOFVelocity [ id0 ] ) = 1.*T( 1 , 0 );
 		(*Aup1) ( 0 , shiftIntersect[ id1 ] + DOF[ 1 ] + fractureNumberGlobalDOFVelocity [ id1 ] ) = 1.*T( 1 , 1 );
 		(*Aup1) ( 0 , shiftIntersect[ id2 ] + DOF[ 2 ] + fractureNumberGlobalDOFVelocity [ id2 ] ) = 1.*T( 1 , 2 );
-		(*Aup1) ( 0 , fractureTotalNumberDOFVelocityPressure + globalIndex0 ) = 1.*( T( 1 , 0 ) + T( 1 , 1 ) + T( 1 , 2 ) );
+		(*Aup1) ( 0 , fractureTotalNumberDOFVelocityPressure + globalIndex0 ) = -1.*( T( 1 , 0 ) + T( 1 , 1 ) + T( 1 , 2 ) );
 
 		gmm::copy(*Aup1, gmm::sub_matrix(*M_globalMatrix, 
 	    		gmm::sub_interval( shiftIntersect[ id1 ] + DOF[ 1 ], 1), 
 	    		gmm::sub_interval( 0, fractureTotalNumberDOFVelocityPressure + globalFractureNumber ) ));
 				
-		(*Aup2) ( 0 , shiftIntersect[ id2 ] + DOF[ 2 ] )  = 1.;
+		(*Aup2) ( 0 , shiftIntersect[ id2 ] + DOF_v[ 2 ] )  = 1.;
 		(*Aup2) ( 0 , shiftIntersect[ id0 ] + DOF[ 0 ] + fractureNumberGlobalDOFVelocity [ id0 ] ) = 1.*T( 2 , 0 );
 		(*Aup2) ( 0 , shiftIntersect[ id1 ] + DOF[ 1 ] + fractureNumberGlobalDOFVelocity [ id1 ] ) = 1.*T( 2 , 1 );
 		(*Aup2) ( 0 , shiftIntersect[ id2 ] + DOF[ 2 ] + fractureNumberGlobalDOFVelocity [ id2 ] ) = 1.*T( 2 , 2 );
-		(*Aup2) ( 0 , fractureTotalNumberDOFVelocityPressure + globalIndex0 ) = 1.*( T( 2 , 0 ) + T( 2 , 1 ) + T( 2 , 2 ) );
+		(*Aup2) ( 0 , fractureTotalNumberDOFVelocityPressure + globalIndex0 ) = -1.*( T( 2 , 0 ) + T( 2 , 1 ) + T( 2 , 2 ) );
 
 		gmm::copy(*Aup2, gmm::sub_matrix(*M_globalMatrix, 
 	    		gmm::sub_interval( shiftIntersect[ id2 ] + DOF[ 2 ], 1), 
@@ -428,9 +444,9 @@ void DarcyFractured::assembly ( const GetPot& dataFile )
 		Matrix.computeScap ( s );
 		
 		// velocità
-		(*Aup3) ( 0 , shiftIntersect[ id0 ] + DOF[ 0 ] )  = -1./( 3.0 * s );
-		(*Aup3) ( 0 , shiftIntersect[ id1 ] + DOF[ 1 ] )  = -1./( 3.0 * s );
-		(*Aup3) ( 0 , shiftIntersect[ id2 ] + DOF[ 2 ] )  = -1./( 3.0 * s );
+		(*Aup3) ( 0 , shiftIntersect[ id0 ] + DOF_v[ 0 ] )  = -1./( 3.0 * s );
+		(*Aup3) ( 0 , shiftIntersect[ id1 ] + DOF_v[ 1 ] )  = -1./( 3.0 * s );
+		(*Aup3) ( 0 , shiftIntersect[ id2 ] + DOF_v[ 2 ] )  = -1./( 3.0 * s );
 		
 		// pressione 
 		(*Aup3) ( 0 , shiftIntersect[ id0 ] + DOF[ 0 ] + fractureNumberGlobalDOFVelocity [ id0 ] ) = -1./3.;

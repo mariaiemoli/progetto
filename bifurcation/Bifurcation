@@ -7,7 +7,7 @@ folderVTK = ./vtk/
 transientSolver = 0
 stabilize = 1
 
-numberFractures = 1
+numberFractures = 3
 
 [dataTime]
 
@@ -68,7 +68,7 @@ numberFractures = 1
 [../]
 
 
-[fractureData1]
+[fractureData0]
 
 spaceDimension = 1.
 
@@ -129,7 +129,7 @@ spaceDimension = 1.
 [../]
 
 
-[fractureData0]
+[fractureData1]
 
 spaceDimension = 1.
 
@@ -142,7 +142,7 @@ spaceDimension = 1.
 				yMap = 0.31*t
 				xMap = 0.11+0.1*t
 	            jacMap = [0.307]
-	        	normalMap = [-2.,1.]
+	        	normalMap = [2.,-1.]
 	
 	            integrationTypeSimplex = IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(3),1)
 
