@@ -157,9 +157,9 @@ la classe contiente informazioni circa le dimensione del dominio, il tipo di mes
 
 
 \begin{DoxyParams}{Parametri}
-{\em data\-File} & variabile di tipo Get\-Pot che contiene il nome del file data \\
+{\em data\-File,\-:} & variabile di tipo Get\-Pot che contiene il nome del file data \\
 \hline
-{\em section} & stringa con il nome della sezione in cui leggere\\
+{\em section,\-:} & stringa con il nome della sezione in cui leggere \\
 \hline
 \end{DoxyParams}
 
@@ -207,105 +207,116 @@ funzione che controlla se un convesso è effettivamente tagliato da una frattura
 
 
 \begin{DoxyParams}{Parametri}
-{\em nodes} & insieme dei nodi geometrici che definiscono il convesso \\
+{\em nodes,\-:} & insieme dei nodi geometrici che definiscono il convesso \\
 \hline
-{\em fracture} & puntatore a una frattura \\
+{\em fracture,\-:} & puntatore a una frattura \\
 \hline
 \end{DoxyParams}
 
 \begin{DoxyCode}
-247 \{
-248     \textcolor{comment}{// x e y dei nodi geometrici che definiscono il convesso}
-249     scalar\_type x1 = nodes [ 0 ] [ 0 ];
-250     scalar\_type x2 = nodes [ 1 ] [ 0 ];
-251     scalar\_type x3 = nodes [ 2 ] [ 0 ];
-252 
-253     scalar\_type y1 = nodes [ 0 ] [ 1 ];
-254     scalar\_type y2 = nodes [ 1 ] [ 1 ];
-255     scalar\_type y3 = nodes [ 2 ] [ 1 ];
-256 
-257     scalar\_type minx= fmin(x1, fmin( x2, x3 ) );
-258     scalar\_type maxx= fmax(x1, fmax( x2, x3 ) );
-259 
-260     scalar\_type miny= fmin(y1, fmin( y2, y3 ) );
-261     scalar\_type maxy= fmax(y1, fmax( y2, y3 ) );
-262 
-263     \textcolor{comment}{// x\_massima e x\_minima dei punti appartenenti alla frattura}
-264     scalar\_type translateAbscissa = fracture->getData().getTranslateAbscissa ();
-265     scalar\_type lengthAbscissa = fracture->getData().getLengthAbscissa ();
-266 
-267     base\_node nodo ( 1 );
-268     nodo [ 0 ] = 0;
-269     base\_node nodo1 ( 1 );
-270     nodo1 [ 0 ] = 1;
-271     
-272     \textcolor{comment}{// y\_massima e y\_minima dei punti appartenenti alla frattura}
-273     scalar\_type translateOrdinata = fmin( fracture->getLevelSet()->getData()->y\_map(nodo), fracture->
+252 \{
+253     \textcolor{comment}{// x e y dei nodi geometrici che definiscono il convesso}
+254     scalar\_type x1 = nodes [ 0 ] [ 0 ];
+255     scalar\_type x2 = nodes [ 1 ] [ 0 ];
+256     scalar\_type x3 = nodes [ 2 ] [ 0 ];
+257 
+258     scalar\_type y1 = nodes [ 0 ] [ 1 ];
+259     scalar\_type y2 = nodes [ 1 ] [ 1 ];
+260     scalar\_type y3 = nodes [ 2 ] [ 1 ];
+261 
+262     scalar\_type minx= fmin(x1, fmin( x2, x3 ) );
+263     scalar\_type maxx= fmax(x1, fmax( x2, x3 ) );
+264 
+265     scalar\_type miny= fmin(y1, fmin( y2, y3 ) );
+266     scalar\_type maxy= fmax(y1, fmax( y2, y3 ) );
+267 
+268     \textcolor{comment}{// x\_massima e x\_minima dei punti appartenenti alla frattura}
+269     scalar\_type translateAbscissa = fracture->getData().getTranslateAbscissa ();
+270     scalar\_type lengthAbscissa = fracture->getData().getLengthAbscissa ();
+271 
+272     base\_node nodo ( 1 );
+273     nodo [ 0 ] = 0;
+274     base\_node nodo1 ( 1 );
+275     nodo1 [ 0 ] = 1;
+276     
+277     \textcolor{comment}{// y\_massima e y\_minima dei punti appartenenti alla frattura}
+278     scalar\_type translateOrdinata = fmin( fracture->getLevelSet()->getData()->y\_map(nodo), fracture->
       getLevelSet()->getData()->y\_map(nodo1) );
-274     scalar\_type lengthOrdinata = fmax( fracture->getLevelSet()->getData()->y\_map(nodo), fracture->
+279     scalar\_type lengthOrdinata = fmax( fracture->getLevelSet()->getData()->y\_map(nodo), fracture->
       getLevelSet()->getData()->y\_map(nodo1) );
-275     
-276     \textcolor{comment}{// controllo che, nel caso in cui la frattura non tagli tutta la mesh di supporto, il convesso sia
+280     
+281     \textcolor{comment}{// controllo che, nel caso in cui la frattura non tagli tutta la mesh di supporto, il convesso sia
        effettivamente tagliato dalla frattura}
-277     \textcolor{keywordflow}{if} ( minx >= translateAbscissa && maxx <= translateAbscissa + lengthAbscissa)
-278     \{   
-279         \textcolor{keywordflow}{if} ( miny >= translateOrdinata && maxy <= lengthOrdinata )
-280         \{   
-281             \textcolor{keywordflow}{return} 1;
-282         \}
-283         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ( miny <= lengthOrdinata && maxy >= lengthOrdinata )
-284         \{   
-285             \textcolor{keywordflow}{return} 1;
-286         \}
-287         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ( miny <= translateOrdinata && maxy >= translateOrdinata )
-288         \{   
-289             \textcolor{keywordflow}{return} 1;
-290         \}
-291         \textcolor{keywordflow}{else}
-292         \{   
-293             \textcolor{keywordflow}{return} 0;
-294         \}
-295 
-296     \}
-297 
-298     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ( minx <= translateAbscissa && maxx >= translateAbscissa )
-299     \{
-300         \textcolor{keywordflow}{if} ( miny < translateOrdinata && maxy < translateOrdinata )
-301         \{
-302             \textcolor{keywordflow}{return} 0;
-303         \}
-304         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ( miny > lengthOrdinata && maxy > lengthOrdinata )
-305         \{
-306             \textcolor{keywordflow}{return} 0;
-307         \}
-308 
-309         \textcolor{keywordflow}{else}
+282     \textcolor{keywordflow}{if} ( minx >= translateAbscissa && maxx <= translateAbscissa + lengthAbscissa)
+283     \{   
+284         \textcolor{keywordflow}{if} ( miny >= translateOrdinata && maxy <= lengthOrdinata )
+285         \{   
+286             \textcolor{keywordflow}{return} 1;
+287         \}
+288         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ( miny <= lengthOrdinata && maxy >= lengthOrdinata )
+289         \{   
+290             \textcolor{keywordflow}{return} 1;
+291         \}
+292         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ( miny <= translateOrdinata && maxy >= translateOrdinata )
+293         \{   
+294             \textcolor{keywordflow}{return} 1;
+295         \}
+296         \textcolor{keywordflow}{else}
+297         \{   
+298             \textcolor{keywordflow}{return} 0;
+299         \}
+300 
+301     \}
+302 
+303     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ( minx <= translateAbscissa && maxx >= translateAbscissa )
+304     \{
+305         \textcolor{keywordflow}{if} ( miny < translateOrdinata && maxy < translateOrdinata )
+306         \{
+307             \textcolor{keywordflow}{return} 0;
+308         \}
+309         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ( miny > lengthOrdinata && maxy > lengthOrdinata )
 310         \{
-311             \textcolor{keywordflow}{return} 1;
+311             \textcolor{keywordflow}{return} 0;
 312         \}
-313     \}
-314 
-315     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ( minx <= translateAbscissa  + lengthAbscissa && maxx >= translateAbscissa + lengthAbscissa )
-316     \{
-317         \textcolor{keywordflow}{if} ( miny >= lengthOrdinata && maxy >= lengthOrdinata )
-318         \{   
-319             \textcolor{keywordflow}{return} 0;
-320         \}
-321         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ( miny <= translateOrdinata && maxy <= translateOrdinata )
-322         \{   
-323             \textcolor{keywordflow}{return} 0;
-324         \}
-325         \textcolor{keywordflow}{else}
-326         \{   
-327             \textcolor{keywordflow}{return} 1;
-328         \}
-329 
-330     \}
-331 
-332     \textcolor{keywordflow}{return} 0;
-333 
-334 \}\textcolor{comment}{// compreso}
+313 
+314         \textcolor{keywordflow}{else}
+315         \{
+316             \textcolor{keywordflow}{return} 1;
+317         \}
+318     \}
+319 
+320     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ( minx <= translateAbscissa  + lengthAbscissa && maxx >= translateAbscissa + lengthAbscissa )
+321     \{
+322         \textcolor{keywordflow}{if} ( miny >= lengthOrdinata && maxy >= lengthOrdinata )
+323         \{   
+324             \textcolor{keywordflow}{return} 0;
+325         \}
+326         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ( miny <= translateOrdinata && maxy <= translateOrdinata )
+327         \{   
+328             \textcolor{keywordflow}{return} 0;
+329         \}
+330         \textcolor{keywordflow}{else}
+331         \{   
+332             \textcolor{keywordflow}{return} 1;
+333         \}
+334 
+335     \}
+336 
+337     \textcolor{keywordflow}{return} 0;
+338 
+339 \}\textcolor{comment}{// compreso}
 \end{DoxyCode}
+
+
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMeshHandler_a3c8a354d214222155cb4eecf8214c938_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{classMeshHandler_a9d273c3ff67bed747b4a35bf24d96b41}{\index{Mesh\-Handler@{Mesh\-Handler}!compute\-Mesh\-Measures@{compute\-Mesh\-Measures}}
 \index{compute\-Mesh\-Measures@{compute\-Mesh\-Measures}!MeshHandler@{Mesh\-Handler}}
 \subsubsection[{compute\-Mesh\-Measures}]{\setlength{\rightskip}{0pt plus 5cm}void Mesh\-Handler\-::compute\-Mesh\-Measures (
@@ -319,139 +330,153 @@ funzione che calcola l'inverso del passo della mesh, h$^\wedge$-\/1
 
 
 \begin{DoxyCode}
-338 \{
-339     \textcolor{comment}{// Allocate the vector for the circumcenters}
-340     gmm::resize(M\_circumcentersAbscissa, M\_meshFEMCoefficients.nb\_dof());
-341     gmm::clear(M\_circumcentersAbscissa);
-342 
-343     gmm::resize(M\_circumcentersOrdinate, M\_meshFEMCoefficients.nb\_dof());
-344     gmm::clear(M\_circumcentersOrdinate);
-345 
-346     \textcolor{comment}{// Allocate the vector for the edge midpoint}
-347     gmm::resize(M\_edgeMidpointAbscissa, M\_meshFEMVector.nb\_dof());
-348     gmm::clear(M\_edgeMidpointAbscissa);
-349 
-350     gmm::resize(M\_edgeMidpointOrdinate, M\_meshFEMVector.nb\_dof());
-351     gmm::clear(M\_edgeMidpointOrdinate);
-352 
-353     \textcolor{comment}{// Allocate the vector for the edge length}
-354     gmm::resize(M\_edgeLength, M\_meshFEMVector.nb\_dof());
-355     gmm::clear(M\_edgeLength);
-356     
-357     
-358     \textcolor{comment}{// Computes all the circumcenters}
-359     \textcolor{keywordflow}{for} ( size\_type j=0; j< (M\_mesh.convex\_index()).size(); j++)
-360     \{   
-361         \textcolor{comment}{// Get the coordinates of the vertices of the current triangle}
-362         bgeot::basic\_mesh::ref\_mesh\_pt\_ct coordinates = M\_mesh.points\_of\_convex(j);
-363 
-364         \textcolor{keywordflow}{for} ( size\_type i = 0; i < M\_mesh.nb\_faces\_of\_convex(j); ++i )
-365         \{
-366             
-367             size\_type dof = M\_meshFEMVector.ind\_basic\_dof\_of\_element(j) [ i ];
+343 \{
+344     \textcolor{comment}{// Allocate the vector for the circumcenters}
+345     gmm::resize(M\_circumcentersAbscissa, M\_meshFEMCoefficients.nb\_dof());
+346     gmm::clear(M\_circumcentersAbscissa);
+347 
+348     gmm::resize(M\_circumcentersOrdinate, M\_meshFEMCoefficients.nb\_dof());
+349     gmm::clear(M\_circumcentersOrdinate);
+350 
+351     \textcolor{comment}{// Allocate the vector for the edge midpoint}
+352     gmm::resize(M\_edgeMidpointAbscissa, M\_meshFEMVector.nb\_dof());
+353     gmm::clear(M\_edgeMidpointAbscissa);
+354 
+355     gmm::resize(M\_edgeMidpointOrdinate, M\_meshFEMVector.nb\_dof());
+356     gmm::clear(M\_edgeMidpointOrdinate);
+357 
+358     \textcolor{comment}{// Allocate the vector for the edge length}
+359     gmm::resize(M\_edgeLength, M\_meshFEMVector.nb\_dof());
+360     gmm::clear(M\_edgeLength);
+361     
+362     
+363     \textcolor{comment}{// Computes all the circumcenters}
+364     \textcolor{keywordflow}{for} ( size\_type j=0; j< (M\_mesh.convex\_index()).size(); j++)
+365     \{   
+366         \textcolor{comment}{// Get the coordinates of the vertices of the current triangle}
+367         bgeot::basic\_mesh::ref\_mesh\_pt\_ct coordinates = M\_mesh.points\_of\_convex(j);
 368 
-369             M\_edgeMidpointAbscissa [ dof ] = 0.5 * (coordinates [ i ] [ 0 ] + coordinates [ (i + 1) % 3 ] [
-       0 ]);
-370 
-371             M\_edgeMidpointOrdinate [ dof ] = 0.5 * (coordinates [ i ] [ 1 ] + coordinates [ (i + 1) % 3 ] [
-       1 ]);
-372             
-373             \textcolor{comment}{// Computes the edge length}
-374             M\_edgeLength [ dof ] = \hyperlink{UsefulFunctions_8h_ad9cf8f3fe42287349e8e1b2f1f824958}{pointDistance}(coordinates [ i ] [ 0 ],
-375                                     coordinates [ (i + 1) % 3 ] [ 0 ], coordinates [ i ] [ 1 ],
-376                                     coordinates [ (i + 1) % 3 ] [ 1 ]);
-377         \}
-378 
-379         \textcolor{comment}{// Computes the circumcenter}
-380         \textcolor{keywordflow}{for} ( size\_type i = 0; i < M\_mesh.nb\_faces\_of\_convex(j); ++i )
-381         \{
-382             size\_type dof = M\_meshFEMVector.ind\_basic\_dof\_of\_element(j) [ i ];
-383             
-384             M\_circumcentersAbscissa [ j ] += 0.3 * M\_edgeMidpointAbscissa [ dof ];
-385             
-386             M\_circumcentersOrdinate [ j ] += 0.3 * M\_edgeMidpointOrdinate [ dof ];
-387         \}
-388     
-389     \}
-390     
-391     gmm::resize(M\_circumcentersDistance, M\_meshFEMVector.nb\_dof());
-392     gmm::clear(M\_circumcentersDistance);
-393 
-394     \textcolor{comment}{// Computes all the distances between the circumcenters of adjacent triangels}
-395     \textcolor{keywordflow}{for} ( size\_type j=0; j< (M\_mesh.convex\_index()).size(); j++)
-396     \{
-397         \textcolor{keywordflow}{for} ( size\_type i = 0; i < M\_mesh.nb\_faces\_of\_convex(j); ++i )
-398         \{
-399             \textcolor{comment}{// For each face get the corresponding neighbour}
-400             size\_type neighbour = M\_mesh.neighbour\_of\_convex(j, i);
-401 
-402             size\_type dof = M\_meshFEMVector.ind\_basic\_dof\_of\_element(j) [ i ];
-403  
-404             \textcolor{comment}{// Check if the neighbour exist, i.e. not a boundary element}
-405             \textcolor{keywordflow}{if} ( neighbour != size\_type(-1) )
-406             \{
-407 
-408                 \textcolor{comment}{// Check if the position in M\_circumcentersDistance is jet filled}
-409                 \textcolor{keywordflow}{if} ( M\_circumcentersDistance [ dof ] == 0 )
-410                 \{
-411                     \textcolor{comment}{// Computes the distance of the circumcenters}
-412                     M\_circumcentersDistance [ dof ] = \hyperlink{UsefulFunctions_8h_ad9cf8f3fe42287349e8e1b2f1f824958}{pointDistance}( M\_circumcentersAbscissa [
+369         \textcolor{keywordflow}{for} ( size\_type \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < M\_mesh.nb\_faces\_of\_convex(j); ++\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} )
+370         \{
+371             
+372             size\_type dof = M\_meshFEMVector.ind\_basic\_dof\_of\_element(j) [ \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} ];
+373 
+374             M\_edgeMidpointAbscissa [ dof ] = 0.5 * (coordinates [ \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} ] [ 0 ] + coordinates [ (
+      \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} + 1) % 3 ] [ 0 ]);
+375 
+376             M\_edgeMidpointOrdinate [ dof ] = 0.5 * (coordinates [ \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} ] [ 1 ] + coordinates [ (
+      \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} + 1) % 3 ] [ 1 ]);
+377             
+378             \textcolor{comment}{// Computes the edge length}
+379             M\_edgeLength [ dof ] = \hyperlink{UsefulFunctions_8h_ad9cf8f3fe42287349e8e1b2f1f824958}{pointDistance}(coordinates [ \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} ] [ 0 ],
+380                                     coordinates [ (i + 1) % 3 ] [ 0 ], coordinates [ i ] [ 1 ],
+381                                     coordinates [ (i + 1) % 3 ] [ 1 ]);
+382         \}
+383 
+384         \textcolor{comment}{// Computes the circumcenter}
+385         \textcolor{keywordflow}{for} ( size\_type i = 0; i < M\_mesh.nb\_faces\_of\_convex(j); ++\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} )
+386         \{
+387             size\_type dof = M\_meshFEMVector.ind\_basic\_dof\_of\_element(j) [ \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} ];
+388             
+389             M\_circumcentersAbscissa [ j ] += 0.3 * M\_edgeMidpointAbscissa [ dof ];
+390             
+391             M\_circumcentersOrdinate [ j ] += 0.3 * M\_edgeMidpointOrdinate [ dof ];
+392         \}
+393     
+394     \}
+395     
+396     gmm::resize(M\_circumcentersDistance, M\_meshFEMVector.nb\_dof());
+397     gmm::clear(M\_circumcentersDistance);
+398 
+399     \textcolor{comment}{// Computes all the distances between the circumcenters of adjacent triangels}
+400     \textcolor{keywordflow}{for} ( size\_type j=0; j< (M\_mesh.convex\_index()).size(); j++)
+401     \{
+402         \textcolor{keywordflow}{for} ( size\_type i = 0; i < M\_mesh.nb\_faces\_of\_convex(j); ++\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} )
+403         \{
+404             \textcolor{comment}{// For each face get the corresponding neighbour}
+405             size\_type neighbour = M\_mesh.neighbour\_of\_convex(j, i);
+406 
+407             size\_type dof = M\_meshFEMVector.ind\_basic\_dof\_of\_element(j) [ \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} ];
+408  
+409             \textcolor{comment}{// Check if the neighbour exist, i.e. not a boundary element}
+410             \textcolor{keywordflow}{if} ( neighbour != size\_type(-1) )
+411             \{
+412 
+413                 \textcolor{comment}{// Check if the position in M\_circumcentersDistance is jet filled}
+414                 \textcolor{keywordflow}{if} ( M\_circumcentersDistance [ dof ] == 0 )
+415                 \{
+416                     \textcolor{comment}{// Computes the distance of the circumcenters}
+417                     M\_circumcentersDistance [ dof ] = \hyperlink{UsefulFunctions_8h_ad9cf8f3fe42287349e8e1b2f1f824958}{pointDistance}( M\_circumcentersAbscissa [
        neighbour ],
-413                                                                      M\_circumcentersAbscissa [ j ],
-414                                                                      M\_circumcentersOrdinate [ neighbour ],
-415                                                                      M\_circumcentersOrdinate [ j ]);
-416 
-417                 \}
-418             \}
-419             \textcolor{keywordflow}{else}
-420             \{
-421                 \textcolor{comment}{// Boundary face, the position is not jet filled}
-422                 M\_circumcentersDistance [ dof ] = \hyperlink{UsefulFunctions_8h_ad9cf8f3fe42287349e8e1b2f1f824958}{pointDistance}( M\_edgeMidpointAbscissa [ dof 
+418                                                                      M\_circumcentersAbscissa [ j ],
+419                                                                      M\_circumcentersOrdinate [ neighbour ],
+420                                                                      M\_circumcentersOrdinate [ j ]);
+421 
+422                 \}
+423             \}
+424             \textcolor{keywordflow}{else}
+425             \{
+426                 \textcolor{comment}{// Boundary face, the position is not jet filled}
+427                 M\_circumcentersDistance [ dof ] = \hyperlink{UsefulFunctions_8h_ad9cf8f3fe42287349e8e1b2f1f824958}{pointDistance}( M\_edgeMidpointAbscissa [ dof 
       ],
-423                                                                  M\_circumcentersAbscissa [ j ],
-424                                                                  M\_edgeMidpointOrdinate [ dof ],
-425                                                                  M\_circumcentersOrdinate [ j ]);
-426             \}
-427         \}
-428     \}
-429 
-430     \textcolor{comment}{// Computing h^(-1) on external boudaries.}
-431     \textcolor{comment}{// Useful for impose the boundary condition with Nitsche penalisation}
-432 
-433     \textcolor{comment}{// Allocate the vector for the M\_mediumMesh size}
-434     gmm::resize(M\_meshSize, M\_meshFEMScalar.nb\_dof());
-435     gmm::clear(M\_meshSize);
-436 
-437     \textcolor{comment}{// Allocate the vector for the inverse of the M\_mediumMesh size}
-438     gmm::resize(M\_inverseMeshSize, M\_meshFEMScalar.nb\_dof());
-439     gmm::clear(M\_inverseMeshSize);
-440 
-441     \textcolor{keywordflow}{for} ( size\_type j=0; j< (M\_mesh.convex\_index()).size(); j++)
-442     \{
-443         \textcolor{comment}{// Select the current dof}
-444         size\_type dofScalar = M\_meshFEMScalar.ind\_basic\_dof\_of\_element(j) [ 0 ];
+428                                                                  M\_circumcentersAbscissa [ j ],
+429                                                                  M\_edgeMidpointOrdinate [ dof ],
+430                                                                  M\_circumcentersOrdinate [ j ]);
+431             \}
+432         \}
+433     \}
+434 
+435     \textcolor{comment}{// Computing h^(-1) on external boudaries.}
+436     \textcolor{comment}{// Useful for impose the boundary condition with Nitsche penalisation}
+437 
+438     \textcolor{comment}{// Allocate the vector for the M\_mediumMesh size}
+439     gmm::resize(M\_meshSize, M\_meshFEMScalar.nb\_dof());
+440     gmm::clear(M\_meshSize);
+441 
+442     \textcolor{comment}{// Allocate the vector for the inverse of the M\_mediumMesh size}
+443     gmm::resize(M\_inverseMeshSize, M\_meshFEMScalar.nb\_dof());
+444     gmm::clear(M\_inverseMeshSize);
 445 
-446         \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} edges(3, 0.);
-447 
-448         \textcolor{keywordflow}{for} ( size\_type i = 0; i < M\_mesh.nb\_faces\_of\_convex(j); ++i )
-449         \{
+446     \textcolor{keywordflow}{for} ( size\_type j=0; j< (M\_mesh.convex\_index()).size(); j++)
+447     \{
+448         \textcolor{comment}{// Select the current dof}
+449         size\_type dofScalar = M\_meshFEMScalar.ind\_basic\_dof\_of\_element(j) [ 0 ];
 450 
-451             size\_type dofVector = M\_meshFEMVector.ind\_basic\_dof\_of\_element( j ) [ i ];
+451         \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} edges(3, 0.);
 452 
-453             \textcolor{comment}{// Computes the edge length}
-454             edges [ i ] = M\_edgeLength [ dofVector ];
+453         \textcolor{keywordflow}{for} ( size\_type i = 0; i < M\_mesh.nb\_faces\_of\_convex(j); ++\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} )
+454         \{
 455 
-456         \}
+456             size\_type dofVector = M\_meshFEMVector.ind\_basic\_dof\_of\_element( j ) [ 
+      \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} ];
 457 
-458         \textcolor{comment}{// Estimate the element size}
-459         M\_meshSize [ dofScalar ] = *(std::max\_element ( edges.begin(), edges.end() ));
+458             \textcolor{comment}{// Computes the edge length}
+459             edges [ \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} ] = M\_edgeLength [ dofVector ];
 460 
-461         \textcolor{comment}{// Compute h^(-1)}
-462         M\_inverseMeshSize [ dofScalar ] = 1.0 / M\_meshSize [ dofScalar ];
-463     \}
-464 
-465 \}\textcolor{comment}{// computeMeshMeasures}
+461         \}
+462 
+463         \textcolor{comment}{// Estimate the element size}
+464         M\_meshSize [ dofScalar ] = *(std::max\_element ( edges.begin(), edges.end() ));
+465 
+466         \textcolor{comment}{// Compute h^(-1)}
+467         M\_inverseMeshSize [ dofScalar ] = 1.0 / M\_meshSize [ dofScalar ];
+468     \}
+469 
+470     \textcolor{keywordflow}{return};
+471     
+472 \}\textcolor{comment}{// computeMeshMeasures}
 \end{DoxyCode}
+
+
+Questo è il grafo delle chiamate per questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=327pt]{classMeshHandler_a9d273c3ff67bed747b4a35bf24d96b41_cgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{classMeshHandler_a616fa00edafb858d897fb64d80c69c15}{\index{Mesh\-Handler@{Mesh\-Handler}!get\-Circumcenters\-Distance@{get\-Circumcenters\-Distance}}
 \index{get\-Circumcenters\-Distance@{get\-Circumcenters\-Distance}!MeshHandler@{Mesh\-Handler}}
 \subsubsection[{get\-Circumcenters\-Distance}]{\setlength{\rightskip}{0pt plus 5cm}const scalar\-\_\-type\& Mesh\-Handler\-::get\-Circumcenters\-Distance (
@@ -478,7 +503,7 @@ funzione che conta il numero di gradi di libertà estesi per la pressione per tu
 
 
 \begin{DoxyParams}{Parametri}
-{\em id} & indice che identifica una frattura \\
+{\em id,\-:} & indice che identifica una frattura \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Restituisce}
@@ -486,21 +511,21 @@ numero dei gradi di libertà
 \end{DoxyReturn}
 
 \begin{DoxyCode}
-528 \{
-529     size\_type total = 0;
-530 
-531     \textcolor{keywordflow}{if} ( \textcolor{keywordtype}{id} < 0 )
-532     \{
-533         \textcolor{keywordflow}{return} total;
-534     \}
-535 
-536     \textcolor{keywordflow}{for} ( size\_type f = 0; f <= id; ++f )
-537     \{
-538         total += M\_extendedDOFScalar [ f ].size();
-539     \}
-540 
-541     \textcolor{keywordflow}{return} total;
-542 \}\textcolor{comment}{// getCountExtendedDOFScalar}
+539 \{
+540     size\_type total = 0;
+541 
+542     \textcolor{keywordflow}{if} ( \textcolor{keywordtype}{id} < 0 )
+543     \{
+544         \textcolor{keywordflow}{return} total;
+545     \}
+546 
+547     \textcolor{keywordflow}{for} ( size\_type f = 0; f <= id; ++f )
+548     \{
+549         total += M\_extendedDOFScalar [ f ].size();
+550     \}
+551 
+552     \textcolor{keywordflow}{return} total;
+553 \}\textcolor{comment}{// getCountExtendedDOFScalar}
 \end{DoxyCode}
 \hypertarget{classMeshHandler_a31feb5b56638ea15982435239f196d7d}{\index{Mesh\-Handler@{Mesh\-Handler}!get\-Count\-Extended\-D\-O\-F\-Vector@{get\-Count\-Extended\-D\-O\-F\-Vector}}
 \index{get\-Count\-Extended\-D\-O\-F\-Vector@{get\-Count\-Extended\-D\-O\-F\-Vector}!MeshHandler@{Mesh\-Handler}}
@@ -515,21 +540,21 @@ funzione che conta il numero di gradi di libertà estesi per la velocità per tu
 
 
 \begin{DoxyCode}
-546 \{
-547     size\_type total = 0;
-548 
-549     \textcolor{keywordflow}{if} ( \textcolor{keywordtype}{id} < 0 )
-550     \{
-551         \textcolor{keywordflow}{return} total;
-552     \}
-553 
-554     \textcolor{keywordflow}{for} ( size\_type f = 0; f <= id; ++f )
-555     \{
-556         total += M\_extendedDOFVector [ f ].size();
-557     \}
-558 
-559     \textcolor{keywordflow}{return} total;
-560 \}\textcolor{comment}{// getCountExtendedDOFVector}
+557 \{
+558     size\_type total = 0;
+559 
+560     \textcolor{keywordflow}{if} ( \textcolor{keywordtype}{id} < 0 )
+561     \{
+562         \textcolor{keywordflow}{return} total;
+563     \}
+564 
+565     \textcolor{keywordflow}{for} ( size\_type f = 0; f <= id; ++f )
+566     \{
+567         total += M\_extendedDOFVector [ f ].size();
+568     \}
+569 
+570     \textcolor{keywordflow}{return} total;
+571 \}\textcolor{comment}{// getCountExtendedDOFVector}
 \end{DoxyCode}
 \hypertarget{classMeshHandler_acdc0169a2f27d56c390c83c913cc2004}{\index{Mesh\-Handler@{Mesh\-Handler}!get\-Count\-Extended\-Intersect\-D\-O\-F\-Scalar@{get\-Count\-Extended\-Intersect\-D\-O\-F\-Scalar}}
 \index{get\-Count\-Extended\-Intersect\-D\-O\-F\-Scalar@{get\-Count\-Extended\-Intersect\-D\-O\-F\-Scalar}!MeshHandler@{Mesh\-Handler}}
@@ -1020,34 +1045,48 @@ funzione che esporta in formato .vtk per paraview gli elementi che sono tagliati
 
 
 \begin{DoxyParams}{Parametri}
-{\em vtk\-Folder} & nome della cartella in cui esportare \\
+{\em vtk\-Folder,\-:} & nome della cartella in cui esportare \\
 \hline
-{\em file\-Name} & nome da dare al file da esportare con la soluzione \\
+{\em file\-Name,\-:} & nome da dare al file da esportare con la soluzione \\
 \hline
 \end{DoxyParams}
 
 \begin{DoxyCode}
-507 \{
-508     \textcolor{keyword}{const} size\_type numberFractures = M\_extendedDOFScalar.size();
-509 
-510     \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} cuttedElements(M\_meshFEMScalar.nb\_dof(), 0);     \textcolor{comment}{// numero totale
+516 \{
+517     \textcolor{keyword}{const} size\_type numberFractures = M\_extendedDOFScalar.size();
+518 
+519     \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} cuttedElements(M\_meshFEMScalar.nb\_dof(), 0);     \textcolor{comment}{// numero totale
        dei gradi di libertà}
-511     
-512     \textcolor{keywordflow}{for} ( size\_type f = 0; f < numberFractures; ++f )
-513     \{
-514         \textcolor{keyword}{const} \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{sizeVector\_Type}& extendedDOFScalar = M\_extendedDOFScalar [ f ];
-515         \textcolor{keyword}{const} size\_type shiftExtended = extendedDOFScalar.size();
-516 
-517         \textcolor{keywordflow}{for} ( size\_type i = 0; i < shiftExtended; ++i )
-518         \{
-519             cuttedElements [ M\_meshFEMScalar.first\_convex\_of\_basic\_dof( extendedDOFScalar [ i ] ) ] += 1.0;
-520         \}
-521     \}
-522 
-523     \hyperlink{UsefulFunctions_8h_a08d7eb25d2acdceda04b336d0c75f0ca}{exportSolutionInCell}(vtkFolder + fileName, \textcolor{stringliteral}{"CuttedElements"}, M\_meshFEMScalar, 
+520     
+521     \textcolor{keywordflow}{for} ( size\_type f = 0; f < numberFractures; ++f )
+522     \{
+523         \textcolor{keyword}{const} \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{sizeVector\_Type}& extendedDOFScalar = M\_extendedDOFScalar [ f ];
+524         \textcolor{keyword}{const} size\_type shiftExtended = extendedDOFScalar.size();
+525 
+526         \textcolor{keywordflow}{for} ( size\_type \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < shiftExtended; ++\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} )
+527         \{
+528             cuttedElements [ M\_meshFEMScalar.first\_convex\_of\_basic\_dof( extendedDOFScalar [ 
+      \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} ] ) ] += 1.0;
+529         \}
+530     \}
+531 
+532     \hyperlink{UsefulFunctions_8h_a08d7eb25d2acdceda04b336d0c75f0ca}{exportSolutionInCell}(vtkFolder + fileName, \textcolor{stringliteral}{"CuttedElements"}, M\_meshFEMScalar, 
       cuttedElements);
-524 \}\textcolor{comment}{// printCuttedElements}
+533     
+534     \textcolor{keywordflow}{return};
+535 \}\textcolor{comment}{// printCuttedElements}
 \end{DoxyCode}
+
+
+Questo è il grafo delle chiamate per questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=337pt]{classMeshHandler_adf082b93f71c001f6f1252dd269ae8fa_cgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{classMeshHandler_af195ebf949ecf994fbaf06b83636cf0e}{\index{Mesh\-Handler@{Mesh\-Handler}!set\-Up\-F\-E\-M@{set\-Up\-F\-E\-M}}
 \index{set\-Up\-F\-E\-M@{set\-Up\-F\-E\-M}!MeshHandler@{Mesh\-Handler}}
 \subsubsection[{set\-Up\-F\-E\-M}]{\setlength{\rightskip}{0pt plus 5cm}void Mesh\-Handler\-::set\-Up\-F\-E\-M (
@@ -1061,40 +1100,42 @@ funzione che definisce gli elementi finiti su cui si lavora
 
 
 \begin{DoxyCode}
-470 \{
-471     \textcolor{comment}{// Dual variable spaces}
-472     getfem::pfem FETypeVelocity = getfem::fem\_descriptor(M\_fEMTypeVector);
-473 
-474     \textcolor{comment}{// Integration type for the dual variable}
-475     getfem::pintegration\_method integrationTypeVector = getfem::int\_method\_descriptor(
+477 \{
+478     \textcolor{comment}{// Dual variable spaces}
+479     getfem::pfem FETypeVelocity = getfem::fem\_descriptor(M\_fEMTypeVector);
+480 
+481     \textcolor{comment}{// Integration type for the dual variable}
+482     getfem::pintegration\_method integrationTypeVector = getfem::int\_method\_descriptor(
       M\_integrationTypeVector);
-476 
-477     \textcolor{comment}{// Integration method for the dual variable}
-478     M\_integrationMethodVector.set\_integration\_method(M\_mesh.convex\_index(), integrationTypeVector);
-479 
-480     \textcolor{comment}{// Finite element space for the dual variable}
-481     M\_meshFEMVector.set\_qdim(M\_spaceDimension);
-482     M\_meshFEMVector.set\_finite\_element(M\_mesh.convex\_index(), FETypeVelocity);
 483 
-484     \textcolor{comment}{// Finite element type for the primal variable}
-485     getfem::pfem FETypePressure = getfem::fem\_descriptor(M\_fEMTypeScalar);
+484     \textcolor{comment}{// Integration method for the dual variable}
+485     M\_integrationMethodVector.set\_integration\_method(M\_mesh.convex\_index(), integrationTypeVector);
 486 
-487     \textcolor{comment}{// Integration type for the primal variable}
-488     getfem::pintegration\_method integrationTypePressure = getfem::int\_method\_descriptor(
+487     \textcolor{comment}{// Finite element space for the dual variable}
+488     M\_meshFEMVector.set\_qdim(M\_spaceDimension);
+489     M\_meshFEMVector.set\_finite\_element(M\_mesh.convex\_index(), FETypeVelocity);
+490 
+491     \textcolor{comment}{// Finite element type for the primal variable}
+492     getfem::pfem FETypePressure = getfem::fem\_descriptor(M\_fEMTypeScalar);
+493 
+494     \textcolor{comment}{// Integration type for the primal variable}
+495     getfem::pintegration\_method integrationTypePressure = getfem::int\_method\_descriptor(
       M\_integrationTypeScalar);
-489 
-490     \textcolor{comment}{// Integration method for the primal variable}
-491     M\_integrationMethodScalar.set\_integration\_method(M\_mesh.convex\_index(), integrationTypePressure);
-492 
-493     \textcolor{comment}{//  Finite element space for the primal variable}
-494     M\_meshFEMScalar.set\_finite\_element(M\_mesh.convex\_index(), FETypePressure);
-495 
-496     \textcolor{comment}{// Coefficient: P0 FEM}
-497 
-498     \textcolor{comment}{// Finite element space the coefficients, the same as the primal finite element space}
-499     M\_meshFEMCoefficients.set\_finite\_element(M\_mesh.convex\_index(), FETypePressure);
-500 
-501 \}\textcolor{comment}{// setUpFEM}
+496 
+497     \textcolor{comment}{// Integration method for the primal variable}
+498     M\_integrationMethodScalar.set\_integration\_method(M\_mesh.convex\_index(), integrationTypePressure);
+499 
+500     \textcolor{comment}{//  Finite element space for the primal variable}
+501     M\_meshFEMScalar.set\_finite\_element(M\_mesh.convex\_index(), FETypePressure);
+502 
+503     \textcolor{comment}{// Coefficient: P0 FEM}
+504 
+505     \textcolor{comment}{// Finite element space the coefficients, the same as the primal finite element space}
+506     M\_meshFEMCoefficients.set\_finite\_element(M\_mesh.convex\_index(), FETypePressure);
+507     
+508     \textcolor{keywordflow}{return};
+509 
+510 \}\textcolor{comment}{// setUpFEM}
 \end{DoxyCode}
 \hypertarget{classMeshHandler_a995d8cdc483a06966210193d796a3fc9}{\index{Mesh\-Handler@{Mesh\-Handler}!set\-Up\-Mesh@{set\-Up\-Mesh}}
 \index{set\-Up\-Mesh@{set\-Up\-Mesh}!MeshHandler@{Mesh\-Handler}}
@@ -1129,9 +1170,9 @@ funzione che costruisce la mesh a seconda che il campo \char`\"{}mesh\-External\
 50         length [ 2 ] = M\_lengthQuota;
 51 
 52 
-53         \textcolor{keywordflow}{for} ( size\_type i = 0; i < M\_spaceDimension; ++i )
+53         \textcolor{keywordflow}{for} ( size\_type \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < M\_spaceDimension; ++\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} )
 54         \{
-55             transformMatrix(i, i) = (i < M\_spaceDimension) ? length [ i ] : 1.0;
+55             transformMatrix(\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}, \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) = (\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < M\_spaceDimension) ? length [ \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} ] : 1.0;
 56         \}
 57         \textcolor{keywordflow}{if} ( M\_spaceDimension > 1 )
 58         \{
@@ -1146,8 +1187,10 @@ funzione che costruisce la mesh a seconda che il campo \char`\"{}mesh\-External\
 67     \textcolor{keywordflow}{else}
 68         \textcolor{comment}{// se M\_meshExternal != "none" importo la mesh già costruita}
 69         getfem::import\_mesh((M\_meshFolder + M\_meshExternal).data(), M\_mesh);
-70 
-71 \}\textcolor{comment}{// setUpMesh}
+70     
+71     \textcolor{keywordflow}{return};
+72 
+73 \}\textcolor{comment}{// setUpMesh}
 \end{DoxyCode}
 \hypertarget{classMeshHandler_ad25f2a8ce85bcf1d5044e7de829a722a}{\index{Mesh\-Handler@{Mesh\-Handler}!set\-Up\-Regions@{set\-Up\-Regions}}
 \index{set\-Up\-Regions@{set\-Up\-Regions}!MeshHandler@{Mesh\-Handler}}
@@ -1162,194 +1205,210 @@ funzione che definisce le regioni della mesh
 
 
 \begin{DoxyParams}{Parametri}
-{\em fracture} & puntatore all'insieme delle fratture \\
+{\em fracture,\-:} & puntatore all'insieme delle fratture \\
 \hline
 \end{DoxyParams}
 
 \begin{DoxyCode}
-75 \{
-76     \textcolor{comment}{// Selezioniamo gli elementi della mesh di supporto tagliati e non tagliati dalle fratture}
-77     size\_type i\_cv = 0;
-78     dal::bit\_vector bv\_cv = M\_mesh.convex\_index();
-79 
-80     \textcolor{comment}{// Aggiungo tutti gli elementi alla regione non tagliata}
-81     \textcolor{keywordflow}{for} ( i\_cv << bv\_cv; i\_cv != size\_type(-1); i\_cv << bv\_cv )
-82     \{
-83         M\_mesh.region(\hyperlink{classMeshHandler_a239707613811024a58eece39a4c9bab3afc8bd5152d6d9b425b5e8bf4da8bd617}{UNCUT\_REGION}).add(i\_cv);
-84     \}
-85 
-86     \textcolor{keyword}{const} size\_type numberFractures = fractures->getNumberFractures ();
+77 \{
+78     \textcolor{comment}{// Selezioniamo gli elementi della mesh di supporto tagliati e non tagliati dalle fratture}
+79     size\_type i\_cv = 0;
+80     dal::bit\_vector bv\_cv = M\_mesh.convex\_index();
+81 
+82     \textcolor{comment}{// Aggiungo tutti gli elementi alla regione non tagliata}
+83     \textcolor{keywordflow}{for} ( i\_cv << bv\_cv; i\_cv != size\_type(-1); i\_cv << bv\_cv )
+84     \{
+85         M\_mesh.region(\hyperlink{classMeshHandler_a239707613811024a58eece39a4c9bab3afc8bd5152d6d9b425b5e8bf4da8bd617}{UNCUT\_REGION}).add(i\_cv);
+86     \}
 87 
-88     \textcolor{keywordflow}{if} ( numberFractures > 0 )
-89     \{
-90 
-91         M\_extendedDOFScalar.resize ( numberFractures );
-92         M\_extendedDOFVector.resize ( numberFractures );
-93 
-94         \textcolor{keywordflow}{for} ( size\_type f = 0; f < numberFractures; ++f )
-95         \{
-96             i\_cv = 0;
-97             bv\_cv = M\_mesh.convex\_index();
-98 
-99             \textcolor{keywordflow}{for} ( i\_cv << bv\_cv; i\_cv != size\_type(-1); i\_cv << bv\_cv )
-100             \{
-101                 \textcolor{keywordflow}{if} ( fractures->getFracture ( f )->getLevelSet()->getMesh().is\_convex\_cut( i\_cv ) )
-102                 \{
-103                     bgeot::basic\_mesh::ref\_mesh\_pt\_ct nodes = M\_mesh.points\_of\_convex ( i\_cv );
-104 
-105                     \textcolor{keywordflow}{if} ( \hyperlink{classMeshHandler_a3c8a354d214222155cb4eecf8214c938}{compreso}( nodes, fractures->getFracture ( f ) ) )
-106                     \{
-107                                 M\_mesh.region(f + \hyperlink{classFractureData_aaeea1f30482432d159eda9d98beb5e89a351538e4c78b34b5c0416e21903e1812}{FractureData::FRACTURE}).add(i\_cv);
-108                     \}
-109                 \}
-110             \}
-111 
-112             \textcolor{comment}{// Controllo se i triangoli sono correttamente tagliati, i.e. se alcuni triangoli hanno area In
+88     \textcolor{keyword}{const} size\_type numberFractures = fractures->getNumberFractures ();
+89 
+90     \textcolor{keywordflow}{if} ( numberFractures > 0 )
+91     \{
+92 
+93         M\_extendedDOFScalar.resize ( numberFractures );
+94         M\_extendedDOFVector.resize ( numberFractures );
+95 
+96         \textcolor{keywordflow}{for} ( size\_type f = 0; f < numberFractures; ++f )
+97         \{
+98             i\_cv = 0;
+99             bv\_cv = M\_mesh.convex\_index();
+100 
+101             \textcolor{keywordflow}{for} ( i\_cv << bv\_cv; i\_cv != size\_type(-1); i\_cv << bv\_cv )
+102             \{
+103                 \textcolor{keywordflow}{if} ( fractures->getFracture ( f )->getLevelSet()->getMesh().is\_convex\_cut( i\_cv ) )
+104                 \{
+105                     bgeot::basic\_mesh::ref\_mesh\_pt\_ct nodes = M\_mesh.points\_of\_convex ( i\_cv );
+106 
+107                     \textcolor{keywordflow}{if} ( \hyperlink{classMeshHandler_a3c8a354d214222155cb4eecf8214c938}{compreso}( nodes, fractures->getFracture ( f ) ) )
+108                     \{
+109                                 M\_mesh.region(f + \hyperlink{classFractureData_aaeea1f30482432d159eda9d98beb5e89a351538e4c78b34b5c0416e21903e1812}{FractureData::FRACTURE}).add(i\_cv);
+110                     \}
+111                 \}
+112             \}
+113 
+114             \textcolor{comment}{// Controllo se i triangoli sono correttamente tagliati, i.e. se alcuni triangoli hanno area In
        o Out pari a zero}
-113             fixCutRegion ( fractures->getFracture ( f ) );
-114         \}
-115 
-116         \textcolor{keywordflow}{for} ( size\_type f = 0; f < numberFractures; ++f )
-117         \{
-118             i\_cv = 0;
-119             bv\_cv = M\_mesh.convex\_index();
-120             
-121             \textcolor{keywordflow}{for} ( i\_cv << bv\_cv; i\_cv != size\_type(-1); i\_cv << bv\_cv )
-122             \{
-123                 \textcolor{keywordflow}{if} ( fractures->getFracture ( f )->getLevelSet()->getMesh().is\_convex\_cut( i\_cv ) )
-124                 \{
-125                     bgeot::basic\_mesh::ref\_mesh\_pt\_ct nodes = M\_mesh.points\_of\_convex ( i\_cv );
-126 
-127                     \textcolor{keywordflow}{if} ( \hyperlink{classMeshHandler_a3c8a354d214222155cb4eecf8214c938}{compreso}( nodes, fractures->getFracture ( f ) ) )
-128                     \{
-129                                 M\_mesh.region(\hyperlink{classMeshHandler_a239707613811024a58eece39a4c9bab3afc8bd5152d6d9b425b5e8bf4da8bd617}{UNCUT\_REGION}).sup(i\_cv);
-130                     \}
-131                 \}
-132             \}
-133         \}
-134 
-135         \textcolor{comment}{// Creo l'insieme dei gradi di libertà estesi per ogni frattura}
-136         \textcolor{keywordflow}{for} ( size\_type f = 0; f < numberFractures; ++f )
-137         \{
-138             \textcolor{comment}{// Numero dei gradi di libertà per la variabile primaria nella regione tagliata}
-139             dal::bit\_vector cuttedRegionNumberDOFPressure = M\_meshFEMScalar.basic\_dof\_on\_region( f + 
+115             fixCutRegion ( fractures->getFracture ( f ) );
+116         \}
+117 
+118         \textcolor{keywordflow}{for} ( size\_type f = 0; f < numberFractures; ++f )
+119         \{
+120             i\_cv = 0;
+121             bv\_cv = M\_mesh.convex\_index();
+122             
+123             \textcolor{keywordflow}{for} ( i\_cv << bv\_cv; i\_cv != size\_type(-1); i\_cv << bv\_cv )
+124             \{
+125                 \textcolor{keywordflow}{if} ( fractures->getFracture ( f )->getLevelSet()->getMesh().is\_convex\_cut( i\_cv ) )
+126                 \{
+127                     bgeot::basic\_mesh::ref\_mesh\_pt\_ct nodes = M\_mesh.points\_of\_convex ( i\_cv );
+128 
+129                     \textcolor{keywordflow}{if} ( \hyperlink{classMeshHandler_a3c8a354d214222155cb4eecf8214c938}{compreso}( nodes, fractures->getFracture ( f ) ) )
+130                     \{
+131                                 M\_mesh.region(\hyperlink{classMeshHandler_a239707613811024a58eece39a4c9bab3afc8bd5152d6d9b425b5e8bf4da8bd617}{UNCUT\_REGION}).sup(i\_cv);
+132                     \}
+133                 \}
+134             \}
+135         \}
+136 
+137         \textcolor{comment}{// Creo l'insieme dei gradi di libertà estesi per ogni frattura}
+138         \textcolor{keywordflow}{for} ( size\_type f = 0; f < numberFractures; ++f )
+139         \{
+140             \textcolor{comment}{// Numero dei gradi di libertà per la variabile primaria nella regione tagliata}
+141             dal::bit\_vector cuttedRegionNumberDOFPressure = M\_meshFEMScalar.basic\_dof\_on\_region( f + 
       \hyperlink{classFractureData_aaeea1f30482432d159eda9d98beb5e89a351538e4c78b34b5c0416e21903e1812}{FractureData::FRACTURE} );
-140 
-141             \textcolor{comment}{// Riempio i gradi di liberta estesi per la variabile primaria}
-142             \textcolor{keywordflow}{for} ( dal::bv\_visitor i( cuttedRegionNumberDOFPressure ); !i.finished(); ++i )
-143             \{
-144                 M\_extendedDOFScalar [ f ].push\_back(i);
-145             \}
-146 
-147             \textcolor{comment}{// Numero dei gradi di libertà per la variabile secondaria nella regione tagliata}
-148             dal::bit\_vector cuttedRegionNumberDOFVelocity = M\_meshFEMVector.dof\_on\_region( f + 
-      \hyperlink{classFractureData_aaeea1f30482432d159eda9d98beb5e89a351538e4c78b34b5c0416e21903e1812}{FractureData::FRACTURE} );
+142 
+143             \textcolor{comment}{// Riempio i gradi di liberta estesi per la variabile primaria}
+144             
+145             \textcolor{keywordflow}{for} ( dal::bv\_visitor \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}( cuttedRegionNumberDOFPressure ); !\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}.finished(); ++
+      \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} )
+146             \{
+147                 M\_extendedDOFScalar [ f ].push\_back(\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i});
+148             \}
 149 
-150             \textcolor{comment}{// Riempio i gradi di libertà estesi per la variabile secondaria}
-151             \textcolor{keywordflow}{for} ( dal::bv\_visitor i(cuttedRegionNumberDOFVelocity); !i.finished(); ++i )
-152             \{
-153                 M\_extendedDOFVector [ f ].push\_back(i);
-154             \}
-155         \}
-156 
-157         \textcolor{comment}{// Creo la regione della mesh per l'intersezione. La numerazione ora è fatta rispetto al numero
+150             \textcolor{comment}{// Numero dei gradi di libertà per la variabile secondaria nella regione tagliata}
+151             dal::bit\_vector cuttedRegionNumberDOFVelocity = M\_meshFEMVector.dof\_on\_region( f + 
+      \hyperlink{classFractureData_aaeea1f30482432d159eda9d98beb5e89a351538e4c78b34b5c0416e21903e1812}{FractureData::FRACTURE} );
+152 
+153             \textcolor{comment}{// Riempio i gradi di libertà estesi per la variabile secondaria}
+154             \textcolor{keywordflow}{for} ( dal::bv\_visitor \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}(cuttedRegionNumberDOFVelocity); !\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}.finished(); ++
+      \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} )
+155             \{
+156                 M\_extendedDOFVector [ f ].push\_back(\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i});
+157             \}
+158         \}
+159 
+160         \textcolor{comment}{// Creo la regione della mesh per l'intersezione. La numerazione ora è fatta rispetto al numero
        dell'elemento}
-158         FractureIntersect::mapIntersection\_Type::const\_iterator itIntersect, itIntersectEnd;
-159         itIntersect = fractures->getIntersections()->getIntersections().begin();
-160         itIntersectEnd = fractures->getIntersections()->getIntersections().end();
-161         
-162         \textcolor{keywordflow}{for} ( ; itIntersect != itIntersectEnd; ++itIntersect )
-163         \{
-164                 \textcolor{keyword}{const} \hyperlink{classFractureIntersect_a9a4e4a784fa4c8e359767ed543f89dc5}{FractureIntersect::IntersectionType} 
+161         FractureIntersect::mapIntersection\_Type::const\_iterator itIntersect, itIntersectEnd;
+162         itIntersect = fractures->getIntersections()->getIntersections().begin();
+163         itIntersectEnd = fractures->getIntersections()->getIntersections().end();
+164         
+165         \textcolor{keywordflow}{for} ( ; itIntersect != itIntersectEnd; ++itIntersect )
+166         \{
+167                 \textcolor{keyword}{const} \hyperlink{classFractureIntersect_a9a4e4a784fa4c8e359767ed543f89dc5}{FractureIntersect::IntersectionType} 
       intersectionType = itIntersect->first;
-165                 \textcolor{keyword}{const} \hyperlink{IntersectData_8h_a822ec3b760dfb603e1cf0bfe3ad5636a}{IntersectDataContainer\_Type}& fractureIntersect = 
+168                 \textcolor{keyword}{const} \hyperlink{IntersectData_8h_a822ec3b760dfb603e1cf0bfe3ad5636a}{IntersectDataContainer\_Type}& fractureIntersect = 
       itIntersect->second;
-166                 \textcolor{keyword}{const} size\_type numIntersection = fractureIntersect.size();
-167 
-168                 \textcolor{comment}{// Ciclo su tutte le intersezioni}
-169                 \textcolor{keywordflow}{for} ( size\_type k = 0; k < numIntersection; ++k )
-170                 \{
-171                         \textcolor{keyword}{const} \hyperlink{classIntersectData}{IntersectData\_Type}& currentIntersection = fractureIntersect
+169                 \textcolor{keyword}{const} size\_type numIntersection = fractureIntersect.size();
+170 
+171                 \textcolor{comment}{// Ciclo su tutte le intersezioni}
+172                 \textcolor{keywordflow}{for} ( size\_type k = 0; k < numIntersection; ++k )
+173                 \{
+174                         \textcolor{keyword}{const} \hyperlink{classIntersectData}{IntersectData\_Type}& currentIntersection = fractureIntersect
        [ k ];
-172                         \textcolor{comment}{// Elimino il convesso dalla sua regione di appartenenza}
-173                         \textcolor{keyword}{const} size\_type convexId = currentIntersection.
+175                         \textcolor{comment}{// Elimino il convesso dalla sua regione di appartenenza}
+176                         \textcolor{keyword}{const} size\_type convexId = currentIntersection.
       \hyperlink{classIntersectData_a1872122295e3fec0fb3e81d4098e9949}{getElementID}();
-174                         \textcolor{keywordflow}{for} ( size\_type f = 0; f < currentIntersection.
+177                         \textcolor{keywordflow}{for} ( size\_type f = 0; f < currentIntersection.
       \hyperlink{classIntersectData_a25def82d58f9508d33ab1a43b2b03ceb}{getNumFractures}(); ++f )
-175                         \{
-176                                 \textcolor{keyword}{const} size\_type fractureID = currentIntersection.
+178                         \{
+179                                 \textcolor{keyword}{const} size\_type fractureID = currentIntersection.
       \hyperlink{classIntersectData_afef7730d6a494464350ebce088e488ee}{getFracture} ( f )->getId();
-177                                 M\_mesh.region ( \hyperlink{classFractureData_aaeea1f30482432d159eda9d98beb5e89a351538e4c78b34b5c0416e21903e1812}{FractureData::FRACTURE} + fractureID )
+180                                 M\_mesh.region ( \hyperlink{classFractureData_aaeea1f30482432d159eda9d98beb5e89a351538e4c78b34b5c0416e21903e1812}{FractureData::FRACTURE} + fractureID )
       .sup ( convexId );
-178                         \}
-179 
-180                         \textcolor{comment}{// Aggiungo il convesso alla regione relativa all'intersezione}
-181                         M\_mesh.region ( intersectionType + convexId ).add ( convexId );
+181                         \}
 182 
-183                 \}
-184         \}
+183                         \textcolor{comment}{// Aggiungo il convesso alla regione relativa all'intersezione}
+184                         M\_mesh.region ( intersectionType + convexId ).add ( convexId );
 185 
-186         \textcolor{comment}{// Riempio i gradi di libertà estesi per le fratture che si intersecano}
-187         \hyperlink{classFractureIntersect_a4eea7d0aca48cdd36ea1756e75280332}{FractureIntersect::mapIntersection\_Type}& mapIntersect = 
-      fractures->getIntersections()-> getIntersections();
+186                 \}
+187         \}
 188 
-189         FractureIntersect::mapIntersection\_Type::const\_iterator begin = mapIntersect.begin();
-190         FractureIntersect::mapIntersection\_Type::const\_iterator end = mapIntersect.end();
-191         FractureIntersect::mapIntersection\_Type::const\_iterator it;
-192 
-193         size\_type mapIDIntersectType = 0;
-194         
-195         \textcolor{keywordflow}{for} ( it = begin; it != end; ++it, ++mapIDIntersectType )
-196         \{
-197 
-198                 \textcolor{comment}{// Ridimensiono per tenere conto degli elementi senza gradi di libertà extra}
-199                 \textcolor{keyword}{const} \hyperlink{IntersectData_8h_a822ec3b760dfb603e1cf0bfe3ad5636a}{IntersectDataContainer\_Type}& intersection = it->second;
-200                 \textcolor{keyword}{const} \hyperlink{classFractureIntersect_a9a4e4a784fa4c8e359767ed543f89dc5}{FractureIntersect::IntersectionType} 
+189         \textcolor{comment}{// Riempio i gradi di libertà estesi per le fratture che si intersecano}
+190         \hyperlink{classFractureIntersect_a4eea7d0aca48cdd36ea1756e75280332}{FractureIntersect::mapIntersection\_Type}& mapIntersect = 
+      fractures->getIntersections()-> getIntersections();
+191 
+192         FractureIntersect::mapIntersection\_Type::const\_iterator begin = mapIntersect.begin();
+193         FractureIntersect::mapIntersection\_Type::const\_iterator end = mapIntersect.end();
+194         FractureIntersect::mapIntersection\_Type::const\_iterator it;
+195 
+196         size\_type mapIDIntersectType = 0;
+197         
+198         \textcolor{keywordflow}{for} ( it = begin; it != end; ++it, ++mapIDIntersectType )
+199         \{
+200 
+201                 \textcolor{comment}{// Ridimensiono per tenere conto degli elementi senza gradi di libertà extra}
+202                 \textcolor{keyword}{const} \hyperlink{IntersectData_8h_a822ec3b760dfb603e1cf0bfe3ad5636a}{IntersectDataContainer\_Type}& intersection = it->second;
+203                 \textcolor{keyword}{const} \hyperlink{classFractureIntersect_a9a4e4a784fa4c8e359767ed543f89dc5}{FractureIntersect::IntersectionType} 
       intersectionType = it->first;
-201 
-202                 \textcolor{keyword}{const} size\_type basisFunction = fractures->getIntersections()
-203                                                 ->getBasisFunctionOfType ( intersectionType );
 204 
-205                 \textcolor{keywordflow}{for} ( size\_type j = 0; j < intersection.size(); ++j )
-206                 \{
-207                         \textcolor{comment}{// Regione corrente}
-208                         \textcolor{keyword}{const} size\_type region = intersectionType + intersection[j].getElementID();
-209 
-210                         \textcolor{comment}{// Aggiungo i grado di libertà estesi per la pressione}
-211                         dal::bit\_vector numberDOFScalar = M\_meshFEMScalar.basic\_dof\_on\_region ( region );
+205                 \textcolor{keyword}{const} size\_type basisFunction = fractures->getIntersections()
+206                                                 ->getBasisFunctionOfType ( intersectionType );
+207 
+208                 \textcolor{keywordflow}{for} ( size\_type j = 0; j < intersection.size(); ++j )
+209                 \{
+210                         \textcolor{comment}{// Regione corrente}
+211                         \textcolor{keyword}{const} size\_type region = intersectionType + intersection[j].getElementID();
 212 
-213                         \textcolor{keywordflow}{for} ( dal::bv\_visitor k ( numberDOFScalar ); !k.finished(); ++k )
-214                         \{
-215                                 \textcolor{keywordflow}{for} ( size\_type o = 0; o < basisFunction; ++o )
-216                                 \{
-217                                         M\_extendedIntersectDOFScalar.push\_back( k );
-218                                 \}
-219                         \}
-220 
-221                         \textcolor{comment}{// Aggiungo i grado di libertà estesi per la velocità}
-222                         dal::bit\_vector numberDOFVector = M\_meshFEMVector.dof\_on\_region( region );
+213                         \textcolor{comment}{// Aggiungo i grado di libertà estesi per la pressione}
+214                         dal::bit\_vector numberDOFScalar = M\_meshFEMScalar.basic\_dof\_on\_region ( region );
+215 
+216                         \textcolor{keywordflow}{for} ( dal::bv\_visitor k ( numberDOFScalar ); !k.finished(); ++k )
+217                         \{
+218                                 \textcolor{keywordflow}{for} ( size\_type o = 0; o < basisFunction; ++o )
+219                                 \{
+220                                         M\_extendedIntersectDOFScalar.push\_back( k );
+221                                 \}
+222                         \}
 223 
-224                         \textcolor{keywordflow}{for} ( dal::bv\_visitor k ( numberDOFVector ); !k.finished(); ++k )
-225                         \{
-226                                 \textcolor{keywordflow}{for} ( size\_type o = 0; o < basisFunction; ++o )
-227                                 \{
-228                                         M\_extendedIntersectDOFVector.push\_back( k );
-229                                 \}
-230                         \}
-231 
-232                 \}
-233 
-234         \}
-235 
-236         std::sort ( M\_extendedIntersectDOFVector.begin(), M\_extendedIntersectDOFVector.end() );
-237         sizeVector\_Type::iterator itVect;
-238         itVect = unique ( M\_extendedIntersectDOFVector.begin(), M\_extendedIntersectDOFVector.end() );
-239         M\_extendedIntersectDOFVector.resize ( itVect - M\_extendedIntersectDOFVector.begin() );
-240 
-241     \}
-242 
-243 \}\textcolor{comment}{// setUpRegions}
+224                         \textcolor{comment}{// Aggiungo i grado di libertà estesi per la velocità}
+225                         dal::bit\_vector numberDOFVector = M\_meshFEMVector.dof\_on\_region( region );
+226 
+227                         \textcolor{keywordflow}{for} ( dal::bv\_visitor k ( numberDOFVector ); !k.finished(); ++k )
+228                         \{
+229                                 \textcolor{keywordflow}{for} ( size\_type o = 0; o < basisFunction; ++o )
+230                                 \{
+231                                         M\_extendedIntersectDOFVector.push\_back( k );
+232                                 \}
+233                         \}
+234 
+235                 \}
+236 
+237         \}
+238 
+239         std::sort ( M\_extendedIntersectDOFVector.begin(), M\_extendedIntersectDOFVector.end() );
+240         sizeVector\_Type::iterator itVect;
+241         itVect = unique ( M\_extendedIntersectDOFVector.begin(), M\_extendedIntersectDOFVector.end() );
+242         M\_extendedIntersectDOFVector.resize ( itVect - M\_extendedIntersectDOFVector.begin() );
+243 
+244     \}
+245     
+246     \textcolor{keywordflow}{return};
+247 
+248 \}\textcolor{comment}{// setUpRegions}
 \end{DoxyCode}
+
+
+Questo è il grafo delle chiamate per questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMeshHandler_ad25f2a8ce85bcf1d5044e7de829a722a_cgraph}
+\end{center}
+\end{figure}
+
+
 
 
 La documentazione per questa classe è stata generata a partire dai seguenti file\-:\begin{DoxyCompactItemize}

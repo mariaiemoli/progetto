@@ -52,17 +52,17 @@ Costruttore che fissa la cartella dove esportare i risultati.
 
 
 \begin{DoxyParams}{Parametri}
-{\em data\-File} & variabile di tipo Get\-Pot che contiene il nome del file data \\
+{\em data\-File,\-:} & variabile di tipo Get\-Pot che contiene il nome del file data \\
 \hline
-{\em section} & stringa con il nome della sezione in cui leggere\\
+{\em section,\-:} & stringa con il nome della sezione in cui leggere\\
 \hline
 \end{DoxyParams}
 
 \begin{DoxyCode}
-8                                                               :
-9     M\_vtkFolder(dataFile((section + \textcolor{stringliteral}{"folderVTK"}).data(), \textcolor{stringliteral}{"./vtk/"}))
-10 \{
-11 \}\textcolor{comment}{// costruttore}
+7                                                                       :
+8                     M\_vtkFolder(dataFile((section + \textcolor{stringliteral}{"folderVTK"}).data(), \textcolor{stringliteral}{"./vtk/"}))
+9 \{
+10 \}\textcolor{comment}{// costruttore}
 \end{DoxyCode}
 
 
@@ -104,45 +104,58 @@ Funzione che esporta le regioni della mesh.
 \end{DoxyParams}
 
 \begin{DoxyCode}
-36 \{
-37         \textcolor{comment}{// imposto lo spazio degli elementi finiti P0, ogni elemento contiene il valore della region mesh }
-38         \hyperlink{Core_8h_ae7bbd1c30a789b1da88f5459e0b70ab5}{GFMeshFEM\_Type} meshFEM ( mesh );
-39         getfem::pfem FEType = getfem::fem\_descriptor ( \textcolor{stringliteral}{"FEM\_PK(2,0)"} );
-40         meshFEM.set\_finite\_element ( FEType );
-41 
-42         \textcolor{comment}{// vettore che contiene i valori della region mesh, un valore per ogni grado di libertà}
-43         \textcolor{keyword}{const} size\_type nbElements = meshFEM.nb\_basic\_dof();
-44         \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} regionMesh ( nbElements, 0 );
-45 
-46         \textcolor{comment}{// estraggo i flags delle rispettive regioni dalla mesh}
-47         dal::bit\_vector regionsIndexBitVector ( mesh.regions\_index() );
-48         \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{sizeVector\_Type} regionsIndex;
-49         \hyperlink{UsefulFunctions_8h_a0ea0b08a12a1e6a94718cf3bcd60edeb}{fromBitVectorToStdVector} ( regionsIndexBitVector, regionsIndex );
-50 
-51         \textcolor{keywordflow}{for} ( size\_type i = 0; i < regionsIndex.size(); ++i )
-52         \{
-53                 getfem::mesh\_region meshCurrentRegion ( mesh.region ( regionsIndex [i] ) );
-54                 
-55                 \textcolor{comment}{// per ogni regione della mesh controllo se è costituita solo da convessi, cioè se non
-       contiene bordi di nessun convesso}
-56                 \textcolor{keywordflow}{if} ( meshCurrentRegion.is\_only\_convexes() == true )
-57                 \{
-58                         dal::bit\_vector currentRegionBitVector ( meshCurrentRegion.index() );
-59                         size\_type i\_cv = 0;
-60                         \textcolor{keywordflow}{for} ( i\_cv << currentRegionBitVector; i\_cv != bgeot::size\_type(-1); i\_cv << 
+38 \{
+39     \textcolor{comment}{// imposto lo spazio degli elementi finiti P0, ogni elemento contiene il valore della region mesh }
+40     \hyperlink{Core_8h_ae7bbd1c30a789b1da88f5459e0b70ab5}{GFMeshFEM\_Type} meshFEM ( mesh );
+41     getfem::pfem FEType = getfem::fem\_descriptor ( \textcolor{stringliteral}{"FEM\_PK(2,0)"} );
+42     meshFEM.set\_finite\_element ( FEType );
+43 
+44     \textcolor{comment}{// vettore che contiene i valori della region mesh, un valore per ogni grado di libertà}
+45     \textcolor{keyword}{const} size\_type nbElements = meshFEM.nb\_basic\_dof();
+46     \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} regionMesh ( nbElements, 0 );
+47 
+48     \textcolor{comment}{// estraggo i flags delle rispettive regioni dalla mesh}
+49     dal::bit\_vector regionsIndexBitVector ( mesh.regions\_index() );
+50     \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{sizeVector\_Type} regionsIndex;
+51     \hyperlink{UsefulFunctions_8h_a0ea0b08a12a1e6a94718cf3bcd60edeb}{fromBitVectorToStdVector} ( regionsIndexBitVector, regionsIndex );
+52 
+53     \textcolor{keywordflow}{for} ( size\_type \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < regionsIndex.size(); ++\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} )
+54     \{
+55         getfem::mesh\_region meshCurrentRegion ( mesh.region ( regionsIndex [\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] ) );
+56         
+57         \textcolor{comment}{// per ogni regione della mesh controllo se è costituita solo da convessi, cioè se non contiene
+       bordi di nessun convesso}
+58         \textcolor{keywordflow}{if} ( meshCurrentRegion.is\_only\_convexes() == true )
+59         \{
+60             dal::bit\_vector currentRegionBitVector ( meshCurrentRegion.index() );
+61             size\_type i\_cv = 0;
+62             \textcolor{keywordflow}{for} ( i\_cv << currentRegionBitVector; i\_cv != bgeot::size\_type(-1); i\_cv << 
       currentRegionBitVector )
-61                         \{
-62                                 \textcolor{keyword}{const} size\_type position = (meshFEM.ind\_basic\_dof\_of\_element( i\_cv ))[0];
-63                                 regionMesh [ position ] += regionsIndex [i];
-64                         \}
-65                 \}
-66         \}
-67 
-68         \textcolor{comment}{// esporto la soluzione}
-69         \hyperlink{UsefulFunctions_8h_add7b8b88dc68d93addd88b9a4dc6e8bf}{exportSolution} ( M\_vtkFolder + nameFile, \textcolor{stringliteral}{"RegionMesh"}, meshFEM, regionMesh );
-70 
-71 \} \textcolor{comment}{// meshRegion}
+63             \{
+64                 \textcolor{keyword}{const} size\_type position = (meshFEM.ind\_basic\_dof\_of\_element( i\_cv ))[0];
+65                 regionMesh [ position ] += regionsIndex [\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}];
+66             \}
+67         \}
+68     \}
+69 
+70     \textcolor{comment}{// esporto la soluzione}
+71     \hyperlink{UsefulFunctions_8h_add7b8b88dc68d93addd88b9a4dc6e8bf}{exportSolution} ( M\_vtkFolder + nameFile, \textcolor{stringliteral}{"RegionMesh"}, meshFEM, regionMesh );
+72     
+73     \textcolor{keywordflow}{return};
+74 
+75 \} \textcolor{comment}{// meshRegion}
 \end{DoxyCode}
+
+
+Questo è il grafo delle chiamate per questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{classExporter_af02a2344019769ab23d9ac673a7b3709_cgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{classExporter_a8ca0bdf8550569260ef4f3e39ab274dc}{\index{Exporter@{Exporter}!spy@{spy}}
 \index{spy@{spy}!Exporter@{Exporter}}
 \subsubsection[{spy}]{\setlength{\rightskip}{0pt plus 5cm}void Exporter\-::spy (
@@ -164,9 +177,12 @@ Funzione che esporta una matrice di tipo sparso.
 \end{DoxyParams}
 
 \begin{DoxyCode}
-16 \{
-17     gmm::MatrixMarket\_IO::write(nameFile.c\_str(), *matrix);
-18 \} \textcolor{comment}{// spy}
+14 \{
+15     gmm::MatrixMarket\_IO::write(nameFile.c\_str(), *matrix);
+16 
+17     \textcolor{keywordflow}{return};
+18     
+19 \} \textcolor{comment}{// spy}
 \end{DoxyCode}
 \hypertarget{classExporter_ab5452c31e85ecfbbda8623aa20723e68}{\index{Exporter@{Exporter}!spy@{spy}}
 \index{spy@{spy}!Exporter@{Exporter}}
@@ -192,12 +208,15 @@ Funzione che esporta un vettore di scalari.
 23 \{
 24     std::ofstream file;
 25     file.open(nameFile.c\_str());
-26     \textcolor{keywordflow}{for} ( size\_type i = 0; i < vector->size(); ++i )
+26     \textcolor{keywordflow}{for} ( size\_type \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < vector->size(); ++\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} )
 27     \{
-28         file << std::setprecision(15) << vector->at(i) << std::endl;
+28         file << std::setprecision(15) << vector->at(\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) << std::endl;
 29     \}
 30     file.close();
-31 \} \textcolor{comment}{// spy}
+31     
+32     \textcolor{keywordflow}{return};
+33     
+34 \} \textcolor{comment}{// spy}
 \end{DoxyCode}
 
 

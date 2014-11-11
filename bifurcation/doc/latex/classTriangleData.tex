@@ -19,29 +19,29 @@
 \item 
 \hyperlink{classTriangleData_ae628dd736844f1544b5e245588319d92}{Triangle\-Data} (const \hyperlink{classTriangleData}{Triangle\-Data} \&)
 \item 
-\hyperlink{classPointData}{Point\-Data} \& \hyperlink{classTriangleData_a88917dafcb5155d2359e5aeb4f8f36e2}{get\-Point} (size\-\_\-type i)
-\item 
-void \hyperlink{classTriangleData_a24c79732610361d5e11ee7ac2d577467}{set\-Point} (size\-\_\-type i, \hyperlink{classPointData}{Point\-Data} const \&p)
-\item 
+\hyperlink{classPointData}{Point\-Data} \& \hyperlink{classTriangleData_a88917dafcb5155d2359e5aeb4f8f36e2}{get\-Point} (size\-\_\-type \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
+\begin{DoxyCompactList}\small\item\em Funzione cbe mi permette di accedere al punto i-\/esimo del triangolo. \end{DoxyCompactList}\item 
+void \hyperlink{classTriangleData_a24c79732610361d5e11ee7ac2d577467}{set\-Point} (size\-\_\-type \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}, \hyperlink{classPointData}{Point\-Data} const \&p)
+\begin{DoxyCompactList}\small\item\em Funzione che setta un punto del triangolo. \end{DoxyCompactList}\item 
 scalar\-\_\-type \hyperlink{classTriangleData_acbfbc62d5221ecd37437012fe8b68c8d}{measure} () const 
-\item 
+\begin{DoxyCompactList}\small\item\em Funzione che calcola l'area del triangolo. \end{DoxyCompactList}\item 
 \hyperlink{classPointData}{Point\-Data} \& \hyperlink{classTriangleData_a6b8d98b054e9b094ba6b6ccf4217246b}{edge\-Point} (size\-\_\-type edgenum, size\-\_\-type endnum)
-\item 
+\begin{DoxyCompactList}\small\item\em Funzione che restituisce uno dei due punti che costituiscono un lato del triangolo. \end{DoxyCompactList}\item 
 \hyperlink{classPointData}{Point\-Data} const \& \hyperlink{classTriangleData_a30665b2010f85d6b9223581e31e79308}{edge\-Point} (size\-\_\-type edgenum, size\-\_\-type endnum) const 
-\item 
+\begin{DoxyCompactList}\small\item\em Funzione che restituisce uno dei due punti che costituiscono un lato del triangolo. \end{DoxyCompactList}\item 
 \hyperlink{classPointData}{Point\-Data} \hyperlink{classTriangleData_af52f48a6b75c258927b0b4ea29d4c383}{baricenter} () const 
-\begin{DoxyCompactList}\small\item\em Get baricenter. \end{DoxyCompactList}\item 
-\hyperlink{classPointData}{Point\-Data} \hyperlink{classTriangleData_a66a0b23811864409754be95f5c4d4793}{edge\-Baricenter} (size\-\_\-type edge\-Num) const 
-\begin{DoxyCompactList}\small\item\em Get edge baricenter. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Funzione che restituisce le coordinate del baricentro del triangolo. \end{DoxyCompactList}\item 
+\hyperlink{classPointData}{Point\-Data} \hyperlink{classTriangleData_a0642b843819fc842bad0be2f35f15be3}{edge\-Mean} (size\-\_\-type edge\-Num) const 
+\begin{DoxyCompactList}\small\item\em Funzione che calcola il punto medio di un lato. \end{DoxyCompactList}\item 
 \hyperlink{Core_8h_a09205951ae66bf900cc5cc57e2192667}{Vector2d} \hyperlink{classTriangleData_a4278f62058529df47e095421d02599ad}{c} (size\-\_\-type edge\-Num) const 
-\begin{DoxyCompactList}\small\item\em Get vector connecting edge baricenter with baricenter. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Funzione che restituisce il vettore che collega il punto medio di un lato con il baricentro. \end{DoxyCompactList}\item 
 \hyperlink{Core_8h_a09205951ae66bf900cc5cc57e2192667}{Vector2d} \hyperlink{classTriangleData_a3b110e4ceb09cc5368fcecad9938a1c8}{unscaled\-Normal} (size\-\_\-type edge\-Num) const 
-\item 
+\begin{DoxyCompactList}\small\item\em Funzione che restituisce il vettore che rappresenta la normale uscente da un lato. \end{DoxyCompactList}\item 
 \hyperlink{classTriangleData}{Triangle\-Data} \& \hyperlink{classTriangleData_a60f17e960b9a70790aae6bb4e607740b}{operator=} (const \hyperlink{classTriangleData}{Triangle\-Data} \&)
 \item 
-\hyperlink{classPointData}{Point\-Data} const \& \hyperlink{classTriangleData_ada8cc2e9bcbf4a2fc80d2a753e32d74d}{operator\mbox{[}$\,$\mbox{]}} (size\-\_\-type i) const 
+\hyperlink{classPointData}{Point\-Data} const \& \hyperlink{classTriangleData_ada8cc2e9bcbf4a2fc80d2a753e32d74d}{operator\mbox{[}$\,$\mbox{]}} (size\-\_\-type \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) const 
 \item 
-\hyperlink{classPointData}{Point\-Data} \& \hyperlink{classTriangleData_ab7d75e8ec4a88a32acc3aef2da96eb80}{operator\mbox{[}$\,$\mbox{]}} (size\-\_\-type i)
+\hyperlink{classPointData}{Point\-Data} \& \hyperlink{classTriangleData_ab7d75e8ec4a88a32acc3aef2da96eb80}{operator\mbox{[}$\,$\mbox{]}} (size\-\_\-type \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
 \end{DoxyCompactItemize}
 \subsection*{Membri pubblici statici}
 \begin{DoxyCompactItemize}
@@ -79,7 +79,11 @@ Classe che contiene i dati principali per costrire il triangolo
 )}}\label{classTriangleData_a51eec85cf2641bcdb7fbe596debf75e7}
 
 \begin{DoxyCode}
-11 \{\}\textcolor{comment}{// costruttore vuoto}
+15 \{
+16     M\_point.clear();
+17     M\_point.resize(3);
+18     
+19 \}\textcolor{comment}{// costruttore vuoto}
 \end{DoxyCode}
 \hypertarget{classTriangleData_a1a730b42b2fa2052689cad3cae0ee9f4}{\index{Triangle\-Data@{Triangle\-Data}!Triangle\-Data@{Triangle\-Data}}
 \index{Triangle\-Data@{Triangle\-Data}!TriangleData@{Triangle\-Data}}
@@ -92,12 +96,13 @@ Classe che contiene i dati principali per costrire il triangolo
 )}}\label{classTriangleData_a1a730b42b2fa2052689cad3cae0ee9f4}
 
 \begin{DoxyCode}
-15 \{
-16     M\_point.clear();
-17     M\_point.push\_back(a); 
-18     M\_point.push\_back(b);
-19     M\_point.push\_back(c);
-20 \}\textcolor{comment}{//costruttore dati i punti}
+23 \{
+24     M\_point.clear();
+25     M\_point.push\_back(a); 
+26     M\_point.push\_back(b);
+27     M\_point.push\_back(c);
+28     
+29 \}\textcolor{comment}{//costruttore dati i punti}
 \end{DoxyCode}
 \hypertarget{classTriangleData_ae628dd736844f1544b5e245588319d92}{\index{Triangle\-Data@{Triangle\-Data}!Triangle\-Data@{Triangle\-Data}}
 \index{Triangle\-Data@{Triangle\-Data}!TriangleData@{Triangle\-Data}}
@@ -108,16 +113,12 @@ Classe che contiene i dati principali per costrire il triangolo
 )}}\label{classTriangleData_ae628dd736844f1544b5e245588319d92}
 
 \begin{DoxyCode}
-23 \{
-24     M\_point[0]=t.M\_point[ 0 ];
-25     M\_point[1]=t.M\_point[ 1 ];
-26     M\_point[2]=t.M\_point[ 2 ];
-27 \textcolor{comment}{/*}
-28 \textcolor{comment}{    M\_point[0]=t.getPoint( 0 );}
-29 \textcolor{comment}{    M\_point[1]=t.getPoint( 1 );}
-30 \textcolor{comment}{    M\_point[2]=t.getPoint( 2 );}
-31 \textcolor{comment}{*/}
-32 \}\textcolor{comment}{//Da triangolo}
+32 \{
+33     M\_point[0]=t.M\_point[ 0 ];
+34     M\_point[1]=t.M\_point[ 1 ];
+35     M\_point[2]=t.M\_point[ 2 ];
+36 
+37 \}\textcolor{comment}{//Da triangolo}
 \end{DoxyCode}
 
 
@@ -131,19 +132,31 @@ Classe che contiene i dati principali per costrire il triangolo
 ) const}}\label{classTriangleData_af52f48a6b75c258927b0b4ea29d4c383}
 
 
-Get baricenter. 
+Funzione che restituisce le coordinate del baricentro del triangolo. 
 
 
 \begin{DoxyCode}
-59 \{
-60     \hyperlink{classPointData}{PointData} tmp(M\_point[0]);
-61     
-62     tmp += M\_point[1];
-63     tmp += M\_point[2];
-64     
-65     \textcolor{keywordflow}{return} tmp * (1./3.0);
-66 \}\textcolor{comment}{//baricenter}
+68 \{
+69     \hyperlink{classPointData}{PointData} tmp(M\_point[0]);
+70     
+71     tmp += M\_point[1];
+72     tmp += M\_point[2];
+73     
+74     \textcolor{keywordflow}{return} tmp * (1./3.0);
+75     
+76 \}\textcolor{comment}{//baricenter}
 \end{DoxyCode}
+
+
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTriangleData_af52f48a6b75c258927b0b4ea29d4c383_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{classTriangleData_a4278f62058529df47e095421d02599ad}{\index{Triangle\-Data@{Triangle\-Data}!c@{c}}
 \index{c@{c}!TriangleData@{Triangle\-Data}}
 \subsubsection[{c}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector2d} Triangle\-Data\-::c (
@@ -153,17 +166,39 @@ Get baricenter.
 ) const}}\label{classTriangleData_a4278f62058529df47e095421d02599ad}
 
 
-Get vector connecting edge baricenter with baricenter. 
+Funzione che restituisce il vettore che collega il punto medio di un lato con il baricentro. 
 
 
 \begin{DoxyCode}
-81 \{
-82     \hyperlink{classPointData}{PointData} baric = this->\hyperlink{classTriangleData_af52f48a6b75c258927b0b4ea29d4c383}{baricenter}();
-83     \hyperlink{classPointData}{PointData} eBaric= this->\hyperlink{classTriangleData_a66a0b23811864409754be95f5c4d4793}{edgeBaricenter}(edgeNum);
-84     
-85     \textcolor{keywordflow}{return} eBaric.\hyperlink{classPointData_a262fed95726ae252592717fe3cf2f9dd}{asVector}()-baric.\hyperlink{classPointData_a262fed95726ae252592717fe3cf2f9dd}{asVector}();
-86 \}\textcolor{comment}{//c}
+93 \{
+94     \hyperlink{classPointData}{PointData} baric = this->\hyperlink{classTriangleData_af52f48a6b75c258927b0b4ea29d4c383}{baricenter}();
+95     \hyperlink{classPointData}{PointData} eMean= this->\hyperlink{classTriangleData_a0642b843819fc842bad0be2f35f15be3}{edgeMean}(edgeNum);
+96     
+97     \textcolor{keywordflow}{return} eMean.\hyperlink{classPointData_a262fed95726ae252592717fe3cf2f9dd}{asVector}()-baric.\hyperlink{classPointData_a262fed95726ae252592717fe3cf2f9dd}{asVector}();
+98 \}\textcolor{comment}{//c}
 \end{DoxyCode}
+
+
+Questo è il grafo delle chiamate per questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTriangleData_a4278f62058529df47e095421d02599ad_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTriangleData_a4278f62058529df47e095421d02599ad_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{classTriangleData_a32634f5f869bda807ccde85f226fd4ff}{\index{Triangle\-Data@{Triangle\-Data}!edge@{edge}}
 \index{edge@{edge}!TriangleData@{Triangle\-Data}}
 \subsubsection[{edge}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-type Triangle\-Data\-::edge (
@@ -174,29 +209,64 @@ Get vector connecting edge baricenter with baricenter.
 )\hspace{0.3cm}{\ttfamily [static]}}}\label{classTriangleData_a32634f5f869bda807ccde85f226fd4ff}
 
 \begin{DoxyCode}
-69 \{
-70     \textcolor{keywordflow}{return} M\_edge[i][j];
-71 \}\textcolor{comment}{//edge}
+79 \{
+80     \textcolor{keywordflow}{return} M\_edge[\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}][j];
+81     
+82 \}\textcolor{comment}{//edge}
 \end{DoxyCode}
-\hypertarget{classTriangleData_a66a0b23811864409754be95f5c4d4793}{\index{Triangle\-Data@{Triangle\-Data}!edge\-Baricenter@{edge\-Baricenter}}
-\index{edge\-Baricenter@{edge\-Baricenter}!TriangleData@{Triangle\-Data}}
-\subsubsection[{edge\-Baricenter}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Point\-Data} Triangle\-Data\-::edge\-Baricenter (
+
+
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTriangleData_a32634f5f869bda807ccde85f226fd4ff_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classTriangleData_a0642b843819fc842bad0be2f35f15be3}{\index{Triangle\-Data@{Triangle\-Data}!edge\-Mean@{edge\-Mean}}
+\index{edge\-Mean@{edge\-Mean}!TriangleData@{Triangle\-Data}}
+\subsubsection[{edge\-Mean}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Point\-Data} Triangle\-Data\-::edge\-Mean (
 \begin{DoxyParamCaption}
 \item[{size\-\_\-type}]{edge\-Num}
 \end{DoxyParamCaption}
-) const}}\label{classTriangleData_a66a0b23811864409754be95f5c4d4793}
+) const}}\label{classTriangleData_a0642b843819fc842bad0be2f35f15be3}
 
 
-Get edge baricenter. 
+Funzione che calcola il punto medio di un lato. 
 
 
 \begin{DoxyCode}
-74 \{
-75     \hyperlink{classPointData}{PointData} tmp(M\_point[\hyperlink{classTriangleData_a32634f5f869bda807ccde85f226fd4ff}{edge}(edgeNum,0)]+M\_point[\hyperlink{classTriangleData_a32634f5f869bda807ccde85f226fd4ff}{edge}(edgeNum,1)]);
-76     
-77     \textcolor{keywordflow}{return} tmp *0.5;
-78 \}\textcolor{comment}{//edgeBaricenter}
+85 \{
+86     \hyperlink{classPointData}{PointData} tmp(M\_point[\hyperlink{classTriangleData_a32634f5f869bda807ccde85f226fd4ff}{edge}(edgeNum,0)]+M\_point[\hyperlink{classTriangleData_a32634f5f869bda807ccde85f226fd4ff}{edge}(edgeNum,1)]);
+87     
+88     \textcolor{keywordflow}{return} tmp *0.5;
+89     
+90 \}\textcolor{comment}{//edgeMedium}
 \end{DoxyCode}
+
+
+Questo è il grafo delle chiamate per questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=333pt]{classTriangleData_a0642b843819fc842bad0be2f35f15be3_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTriangleData_a0642b843819fc842bad0be2f35f15be3_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{classTriangleData_a6b8d98b054e9b094ba6b6ccf4217246b}{\index{Triangle\-Data@{Triangle\-Data}!edge\-Point@{edge\-Point}}
 \index{edge\-Point@{edge\-Point}!TriangleData@{Triangle\-Data}}
 \subsubsection[{edge\-Point}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Point\-Data} \& Triangle\-Data\-::edge\-Point (
@@ -206,11 +276,34 @@ Get edge baricenter.
 \end{DoxyParamCaption}
 )}}\label{classTriangleData_a6b8d98b054e9b094ba6b6ccf4217246b}
 
+
+Funzione che restituisce uno dei due punti che costituiscono un lato del triangolo. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em size\-\_\-type} & edgenum\-: lato di unteresse \\
+\hline
+{\em size\-\_\-type} & endnum\-: indice del punto che costituisce un vertice \\
+\hline
+\end{DoxyParams}
+
 \begin{DoxyCode}
-49 \{
-50     \textcolor{keywordflow}{return} M\_point[M\_edge[edgenum][endnum]];
-51 \}\textcolor{comment}{//edgePoint}
+56 \{
+57     \textcolor{keywordflow}{return} M\_point[M\_edge[edgenum][endnum]];
+58     
+59 \}\textcolor{comment}{//edgePoint}
 \end{DoxyCode}
+
+
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTriangleData_a6b8d98b054e9b094ba6b6ccf4217246b_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{classTriangleData_a30665b2010f85d6b9223581e31e79308}{\index{Triangle\-Data@{Triangle\-Data}!edge\-Point@{edge\-Point}}
 \index{edge\-Point@{edge\-Point}!TriangleData@{Triangle\-Data}}
 \subsubsection[{edge\-Point}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Point\-Data} \& Triangle\-Data\-::edge\-Point (
@@ -220,10 +313,22 @@ Get edge baricenter.
 \end{DoxyParamCaption}
 ) const}}\label{classTriangleData_a30665b2010f85d6b9223581e31e79308}
 
+
+Funzione che restituisce uno dei due punti che costituiscono un lato del triangolo. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em size\-\_\-type} & edgenum\-: lato di unteresse \\
+\hline
+{\em size\-\_\-type} & endnum\-: indice del punto che costituisce un vertice \\
+\hline
+\end{DoxyParams}
+
 \begin{DoxyCode}
-54 \{
-55     \textcolor{keywordflow}{return} M\_point[M\_edge[edgenum][endnum]];
-56 \}\textcolor{comment}{//edgePoint}
+62 \{
+63     \textcolor{keywordflow}{return} M\_point[M\_edge[edgenum][endnum]];
+64     
+65 \}\textcolor{comment}{//edgePoint}
 \end{DoxyCode}
 \hypertarget{classTriangleData_a88917dafcb5155d2359e5aeb4f8f36e2}{\index{Triangle\-Data@{Triangle\-Data}!get\-Point@{get\-Point}}
 \index{get\-Point@{get\-Point}!TriangleData@{Triangle\-Data}}
@@ -233,12 +338,16 @@ Get edge baricenter.
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [inline]}}}\label{classTriangleData_a88917dafcb5155d2359e5aeb4f8f36e2}
 
+
+Funzione cbe mi permette di accedere al punto i-\/esimo del triangolo. 
+
+
 \begin{DoxyCode}
-33         \{
-34             assert ( i < M\_point.size() );
-35             
-36             \textcolor{keywordflow}{return} M\_point[i];
-37         \}
+39     \{
+40         assert ( \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < M\_point.size() );
+41         
+42         \textcolor{keywordflow}{return} M\_point[\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}];
+43     \}
 \end{DoxyCode}
 \hypertarget{classTriangleData_acbfbc62d5221ecd37437012fe8b68c8d}{\index{Triangle\-Data@{Triangle\-Data}!measure@{measure}}
 \index{measure@{measure}!TriangleData@{Triangle\-Data}}
@@ -248,15 +357,30 @@ Get edge baricenter.
 \end{DoxyParamCaption}
 ) const}}\label{classTriangleData_acbfbc62d5221ecd37437012fe8b68c8d}
 
+
+Funzione che calcola l'area del triangolo. 
+
+
 \begin{DoxyCode}
-40 \{
-41     \textcolor{keyword}{const} \hyperlink{classTriangleData}{TriangleData} & t = *\textcolor{keyword}{this};
-42     
-43     \textcolor{keywordflow}{return} -0.5 * ( t[1][0] * (t[2][1] - t[0][1]) +
-44                     t[2][0] * (t[0][1] - t[1][1]) +
-45                     t[0][0] * (t[1][1] - t[2][1])   );
-46 \}\textcolor{comment}{//measure}
+47 \{
+48     \textcolor{keyword}{const} \hyperlink{classTriangleData}{TriangleData} & t = *\textcolor{keyword}{this};
+49     
+50     \textcolor{keywordflow}{return} -0.5 * ( t[1][0] * (t[2][1] - t[0][1]) +
+51                     t[2][0] * (t[0][1] - t[1][1]) +
+52                     t[0][0] * (t[1][1] - t[2][1])   );
+53 \}\textcolor{comment}{//measure}
 \end{DoxyCode}
+
+
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTriangleData_acbfbc62d5221ecd37437012fe8b68c8d_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{classTriangleData_a60f17e960b9a70790aae6bb4e607740b}{\index{Triangle\-Data@{Triangle\-Data}!operator=@{operator=}}
 \index{operator=@{operator=}!TriangleData@{Triangle\-Data}}
 \subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Triangle\-Data} \& Triangle\-Data\-::operator= (
@@ -266,16 +390,16 @@ Get edge baricenter.
 )}}\label{classTriangleData_a60f17e960b9a70790aae6bb4e607740b}
 
 \begin{DoxyCode}
-98 \{
-99     \textcolor{keywordflow}{if} (\textcolor{keyword}{this} !=&t)
-100     \{
-101         M\_point[0] = t.M\_point[0];
-102         M\_point[1] = t.M\_point[1];
-103         M\_point[2] = t.M\_point[2];
-104     \}
-105     
-106     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};
-107 \}
+110 \{
+111     \textcolor{keywordflow}{if} (\textcolor{keyword}{this} !=&t)
+112     \{
+113         M\_point[0] = t.M\_point[0];
+114         M\_point[1] = t.M\_point[1];
+115         M\_point[2] = t.M\_point[2];
+116     \}
+117     
+118     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};
+119 \}\textcolor{comment}{// operator =}
 \end{DoxyCode}
 \hypertarget{classTriangleData_ada8cc2e9bcbf4a2fc80d2a753e32d74d}{\index{Triangle\-Data@{Triangle\-Data}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
 \index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!TriangleData@{Triangle\-Data}}
@@ -286,9 +410,9 @@ Get edge baricenter.
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classTriangleData_ada8cc2e9bcbf4a2fc80d2a753e32d74d}
 
 \begin{DoxyCode}
-70         \{
-71             \textcolor{keywordflow}{return} M\_point[i];
-72         \}
+109     \{
+110         \textcolor{keywordflow}{return} M\_point[\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}];
+111     \}
 \end{DoxyCode}
 \hypertarget{classTriangleData_ab7d75e8ec4a88a32acc3aef2da96eb80}{\index{Triangle\-Data@{Triangle\-Data}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
 \index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!TriangleData@{Triangle\-Data}}
@@ -299,9 +423,9 @@ Get edge baricenter.
 )\hspace{0.3cm}{\ttfamily [inline]}}}\label{classTriangleData_ab7d75e8ec4a88a32acc3aef2da96eb80}
 
 \begin{DoxyCode}
-76         \{
-77             \textcolor{keywordflow}{return} M\_point[i];
-78         \}
+115     \{
+116         \textcolor{keywordflow}{return} M\_point[\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}];
+117     \}
 \end{DoxyCode}
 \hypertarget{classTriangleData_a24c79732610361d5e11ee7ac2d577467}{\index{Triangle\-Data@{Triangle\-Data}!set\-Point@{set\-Point}}
 \index{set\-Point@{set\-Point}!TriangleData@{Triangle\-Data}}
@@ -312,11 +436,35 @@ Get edge baricenter.
 \end{DoxyParamCaption}
 )}}\label{classTriangleData_a24c79732610361d5e11ee7ac2d577467}
 
+
+Funzione che setta un punto del triangolo. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em size\-\_\-type} & i\-: indice del punto da modificare \\
+\hline
+{\em \hyperlink{classPointData}{Point\-Data}} & const \& p\-: punto da inserire \\
+\hline
+\end{DoxyParams}
+
 \begin{DoxyCode}
-35 \{
-36     M\_point[i] = p;
-37 \}\textcolor{comment}{//setPoint}
+40 \{
+41     M\_point[\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] = p;
+42     
+43     \textcolor{keywordflow}{return};
+44 \}\textcolor{comment}{//setPoint}
 \end{DoxyCode}
+
+
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTriangleData_a24c79732610361d5e11ee7ac2d577467_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{classTriangleData_a3b110e4ceb09cc5368fcecad9938a1c8}{\index{Triangle\-Data@{Triangle\-Data}!unscaled\-Normal@{unscaled\-Normal}}
 \index{unscaled\-Normal@{unscaled\-Normal}!TriangleData@{Triangle\-Data}}
 \subsubsection[{unscaled\-Normal}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector2d} Triangle\-Data\-::unscaled\-Normal (
@@ -325,14 +473,40 @@ Get edge baricenter.
 \end{DoxyParamCaption}
 ) const}}\label{classTriangleData_a3b110e4ceb09cc5368fcecad9938a1c8}
 
+
+Funzione che restituisce il vettore che rappresenta la normale uscente da un lato. 
+
+
 \begin{DoxyCode}
-89 \{
-90     \hyperlink{classPointData}{PointData} \textcolor{keyword}{const} & a=this->\hyperlink{classTriangleData_a6b8d98b054e9b094ba6b6ccf4217246b}{edgePoint}(edgeNum,0);
-91     \hyperlink{classPointData}{PointData} \textcolor{keyword}{const} & b=this->\hyperlink{classTriangleData_a6b8d98b054e9b094ba6b6ccf4217246b}{edgePoint}(edgeNum,1);
-92 
-93     \textcolor{keywordflow}{return} \hyperlink{Core_8h_a09205951ae66bf900cc5cc57e2192667}{Vector2d}(a.\hyperlink{classPointData_a90dbf32a9579cb1cde67458d4ad38209}{y}()-b.\hyperlink{classPointData_a90dbf32a9579cb1cde67458d4ad38209}{y}(),b.\hyperlink{classPointData_a5accef5ea9e813dd4517eb050f276ccf}{x}()-a.\hyperlink{classPointData_a5accef5ea9e813dd4517eb050f276ccf}{x}());
-94 \}\textcolor{comment}{//unscaledNormal}
+101 \{
+102     \hyperlink{classPointData}{PointData} \textcolor{keyword}{const} & a=this->\hyperlink{classTriangleData_a6b8d98b054e9b094ba6b6ccf4217246b}{edgePoint}(edgeNum,0);
+103     \hyperlink{classPointData}{PointData} \textcolor{keyword}{const} & b=this->\hyperlink{classTriangleData_a6b8d98b054e9b094ba6b6ccf4217246b}{edgePoint}(edgeNum,1);
+104 
+105     \textcolor{keywordflow}{return} \hyperlink{Core_8h_a09205951ae66bf900cc5cc57e2192667}{Vector2d}(a.\hyperlink{classPointData_a90dbf32a9579cb1cde67458d4ad38209}{y}()-b.\hyperlink{classPointData_a90dbf32a9579cb1cde67458d4ad38209}{y}(),b.\hyperlink{classPointData_a5accef5ea9e813dd4517eb050f276ccf}{x}()-a.\hyperlink{classPointData_a5accef5ea9e813dd4517eb050f276ccf}{x}());
+106 \}\textcolor{comment}{//unscaledNormal}
 \end{DoxyCode}
+
+
+Questo è il grafo delle chiamate per questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTriangleData_a3b110e4ceb09cc5368fcecad9938a1c8_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTriangleData_a3b110e4ceb09cc5368fcecad9938a1c8_icgraph}
+\end{center}
+\end{figure}
+
+
 
 
 \subsection{Documentazione dei friend e delle funzioni collegate}
@@ -346,16 +520,16 @@ Get edge baricenter.
 )\hspace{0.3cm}{\ttfamily [friend]}}}\label{classTriangleData_ac2713c410c9d8f1bf2e0d85392aeb257}
 
 \begin{DoxyCode}
-110 \{
-111     stream<<\textcolor{stringliteral}{" ************* TRIANGLE  POINTS ********"}<<std::endl;
-112     \textcolor{keywordflow}{for} (size\_type i=0;i<3;++i)
-113     \{
-114         stream<< t.M\_point[i]<<std::endl;
-115     \}
-116     stream<<\textcolor{stringliteral}{"****************************************"}<<std::endl;
-117     
-118     \textcolor{keywordflow}{return} stream;
-119 \}
+122 \{
+123     stream<<\textcolor{stringliteral}{" ************* TRIANGLE  POINTS ********"}<<std::endl;
+124     \textcolor{keywordflow}{for} (size\_type \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=0;\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}<3;++\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
+125     \{
+126         stream<< t.M\_point[\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}]<<std::endl;
+127     \}
+128     stream<<\textcolor{stringliteral}{"****************************************"}<<std::endl;
+129     
+130     \textcolor{keywordflow}{return} stream;
+131 \}\textcolor{comment}{// operator <<}
 \end{DoxyCode}
 
 

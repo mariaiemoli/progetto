@@ -49,14 +49,14 @@ int main ( int argc, char* argv [ ] )
 	mesh->setUpFEM();
 	std::cout<< " completed!" << std::endl;
 
-
+	
 	// Medium data for the Darcy problem
 	std::cout << "Create the mediumData for the Darcy problem.." << std::flush;
 	const std::string sectionSolverDarcy = "darcy/";
 	MediumDataPtr_Type mediumDataDarcy(new MediumData_Type(dataFile,
 										sectionSolverDarcy));
 	std::cout << " completed!" << std::endl;
-
+	
 
 	// Fracture Set
 	std::cout << "Create the set of fractures for " << std::flush;

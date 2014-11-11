@@ -19,27 +19,13 @@ enum \{ \hyperlink{classFractureData_aaeea1f30482432d159eda9d98beb5e89a351538e4c
 \subsection*{Membri pubblici}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classFractureData_a8ba0cab6a95b57a37f1c965b22ed37c0}{Fracture\-Data} (const Get\-Pot \&data\-File, const std\-::string \&section=\char`\"{}fracture\-Data/\char`\"{}, const std\-::string \&section\-Domain=\char`\"{}domain/\char`\"{}, const std\-::string \&section\-Darcy=\char`\"{}darcy/\char`\"{}, const std\-::string \&section\-Transport=\char`\"{}transport/\char`\"{})
+\hyperlink{classFractureData_a116e08af0f48b18afc26ebcbb2818e8c}{Fracture\-Data} (const Get\-Pot \&data\-File, const std\-::string \&section=\char`\"{}fracture\-Data/\char`\"{}, const std\-::string \&section\-Domain=\char`\"{}domain/\char`\"{}, const std\-::string \&section\-Darcy=\char`\"{}darcy/\char`\"{})
 \begin{DoxyCompactList}\small\item\em \hyperlink{FractureData_8cc}{Fracture\-Data.\-cc}. \end{DoxyCompactList}\item 
-scalar\-\_\-type \hyperlink{classFractureData_a31383de9b3236dd9a2af7b113cab88eb}{transport\-Source} (const base\-\_\-node \&x, const scalar\-\_\-type \&time)
-\item 
-scalar\-\_\-type \hyperlink{classFractureData_acf5e3a5d756aaf5b1ec7f446f388cf15}{concentration\-Initial\-Condition} (const base\-\_\-node \&x)
-\item 
 scalar\-\_\-type \hyperlink{classFractureData_a0aaeeb3d9eedd46175759cd6b9536484}{eta\-Normal\-Distribution} (const base\-\_\-node \&x)
 \begin{DoxyCompactList}\small\item\em Funzione che restituisce un'eventuale modulazione del coefficiente di permeabilità in direzione normale. \end{DoxyCompactList}\item 
 scalar\-\_\-type \hyperlink{classFractureData_a0f989b64832a1f0fc77632c6803f102c}{eta\-Tangential\-Distribution} (const base\-\_\-node \&x)
 \begin{DoxyCompactList}\small\item\em Funzione che restituisce un'eventuale modulazione del coefficiente di permeabilità in direzione tangenziale. \end{DoxyCompactList}\item 
-scalar\-\_\-type \hyperlink{classFractureData_a4ae566f9148893e47279097cab215e7b}{mu\-Normal\-Distribution} (const base\-\_\-node \&x)
-\item 
-scalar\-\_\-type \hyperlink{classFractureData_a9a3e1a75231b55be01ad198b824c0d56}{mu\-Tangential\-Distribution} (const base\-\_\-node \&x)
-\item 
-scalar\-\_\-type \hyperlink{classFractureData_a362710c6c9008fde0d358069eb2808d8}{concentration\-Exact} (const base\-\_\-node \&x, const scalar\-\_\-type \&time)
-\item 
-scalar\-\_\-type \hyperlink{classFractureData_ab4d202a7f72611e4bc41a5e081b32f2c}{Concentration\-\_\-inout} (const base\-\_\-node \&x, const scalar\-\_\-type \&time, const size\-\_\-type flag)
-\item 
 scalar\-\_\-type \hyperlink{classFractureData_a8342142df05ded99f3a6c8d39dbfdc0e}{velocity\-Exact} (const base\-\_\-node \&x, const base\-\_\-node \&n)
-\item 
-scalar\-\_\-type \hyperlink{classFractureData_a92b86995549b500674b955113fc6725d}{flux\-Exact} (const base\-\_\-node \&x, const base\-\_\-node \&n, const scalar\-\_\-type \&time)
 \item 
 scalar\-\_\-type \hyperlink{classFractureData_a8f935d962ae1bd93ca3e3b0955517db5}{darcy\-Source} (const base\-\_\-node \&x)
 \item 
@@ -47,17 +33,11 @@ scalar\-\_\-type \hyperlink{classFractureData_aa90769a75aff6485824ecd2090c8b4ee}
 \item 
 scalar\-\_\-type \hyperlink{classFractureData_ab79d66dd830b6e1c55ade0d940c5c8cf}{mesh\-Spacing} (const scalar\-\_\-type \&x)
 \item 
-scalar\-\_\-type \hyperlink{classFractureData_af86187ca0c7cc0ea6f4c3cd6e1a4cf41}{get\-Position} () const 
-\item 
 scalar\-\_\-type \hyperlink{classFractureData_a3ecc0d132f9cc105af6b24d676a7b9c5}{get\-Thickness} () const 
 \item 
 scalar\-\_\-type \hyperlink{classFractureData_a9acc76c77282d4b5d0cdca18c2b1b9ea}{get\-Eta\-Normal} () const 
 \item 
 scalar\-\_\-type \hyperlink{classFractureData_a7378053b4009825b4a2957484cb2a5e8}{get\-Eta\-Tangential} () const 
-\item 
-scalar\-\_\-type \hyperlink{classFractureData_ab059ac23b93115e05029e1b6cadd1cd9}{get\-Mu\-Normal} () const 
-\item 
-scalar\-\_\-type \hyperlink{classFractureData_a1ac3cca1ae035eedb2ec89c0517f8b1f}{get\-Mu\-Tangential} () const 
 \item 
 scalar\-\_\-type \hyperlink{classFractureData_a7b75512224a34953960a9bd09f1af661}{get\-Csi0} () const 
 \item 
@@ -110,131 +90,68 @@ Sostanzialmente questa classe ci serve per partire dal file data e portare tutte
 
 
 \subsection{Documentazione dei costruttori e dei distruttori}
-\hypertarget{classFractureData_a8ba0cab6a95b57a37f1c965b22ed37c0}{\index{Fracture\-Data@{Fracture\-Data}!Fracture\-Data@{Fracture\-Data}}
+\hypertarget{classFractureData_a116e08af0f48b18afc26ebcbb2818e8c}{\index{Fracture\-Data@{Fracture\-Data}!Fracture\-Data@{Fracture\-Data}}
 \index{Fracture\-Data@{Fracture\-Data}!FractureData@{Fracture\-Data}}
 \subsubsection[{Fracture\-Data}]{\setlength{\rightskip}{0pt plus 5cm}Fracture\-Data\-::\-Fracture\-Data (
 \begin{DoxyParamCaption}
 \item[{const Get\-Pot \&}]{data\-File, }
 \item[{const std\-::string \&}]{section = {\ttfamily \char`\"{}fractureData/\char`\"{}}, }
 \item[{const std\-::string \&}]{section\-Domain = {\ttfamily \char`\"{}domain/\char`\"{}}, }
-\item[{const std\-::string \&}]{section\-Darcy = {\ttfamily \char`\"{}darcy/\char`\"{}}, }
-\item[{const std\-::string \&}]{section\-Transport = {\ttfamily \char`\"{}transport/\char`\"{}}}
+\item[{const std\-::string \&}]{section\-Darcy = {\ttfamily \char`\"{}darcy/\char`\"{}}}
 \end{DoxyParamCaption}
-)}}\label{classFractureData_a8ba0cab6a95b57a37f1c965b22ed37c0}
+)}}\label{classFractureData_a116e08af0f48b18afc26ebcbb2818e8c}
 
 
 \hyperlink{FractureData_8cc}{Fracture\-Data.\-cc}. 
 
 
 \begin{DoxyCode}
-11                                                                  :
-12             M\_section ( section ),
-13             M\_sectionDomain ( M\_section + sectionDomain ),
-14             M\_sectionDarcy ( M\_section + sectionDarcy ),
-15             M\_sectionTransport ( M\_section + sectionTransport ),
-16             \textcolor{comment}{// domain}
-17             M\_position ( dataFile ( ( M\_sectionDomain + \textcolor{stringliteral}{"position"} ).data (), 0.5 ) ),
-18             M\_thickness ( dataFile ( ( M\_sectionDomain + \textcolor{stringliteral}{"thickness"} ).data (), 0.01 ) ),
-19 
-20             M\_csi0 ( dataFile ( ( M\_sectionDomain + \textcolor{stringliteral}{"csi0"} ).data (), 0.25 ) ),
-21             M\_lengthAbscissa ( dataFile ( ( M\_sectionDomain + \textcolor{stringliteral}{"lengthAbscissa"} ).data (), 1. ) ),
-22             M\_lengthOrdinate ( dataFile ( ( M\_sectionDomain + \textcolor{stringliteral}{"lengthOrdinate"} ).data (), 0. ) ),
-23             M\_lengthQuota ( dataFile ( ( M\_sectionDomain + \textcolor{stringliteral}{"lengthQuota"} ).data (), 0. ) ),
-24             M\_spatialDiscretization ( dataFile ( ( M\_sectionDomain + \textcolor{stringliteral}{"spatialDiscretization"} ).data (), 200
+10                                                              :
+11             M\_section ( section ),
+12             M\_sectionDomain ( M\_section + sectionDomain ),
+13             M\_sectionDarcy ( M\_section + sectionDarcy ),
+14 
+15             \textcolor{comment}{// domain}
+16             M\_thickness ( dataFile ( ( M\_sectionDomain + \textcolor{stringliteral}{"thickness"} ).data (), 0.01 ) ),
+17 
+18             M\_csi0 ( dataFile ( ( M\_sectionDomain + \textcolor{stringliteral}{"csi0"} ).data (), 0.25 ) ),
+19             M\_lengthAbscissa ( dataFile ( ( M\_sectionDomain + \textcolor{stringliteral}{"lengthAbscissa"} ).data (), 1. ) ),
+20             M\_lengthOrdinate ( dataFile ( ( M\_sectionDomain + \textcolor{stringliteral}{"lengthOrdinate"} ).data (), 0. ) ),
+21             M\_lengthQuota ( dataFile ( ( M\_sectionDomain + \textcolor{stringliteral}{"lengthQuota"} ).data (), 0. ) ),
+22             M\_spatialDiscretization ( dataFile ( ( M\_sectionDomain + \textcolor{stringliteral}{"spatialDiscretization"} ).data (), 200
        ) ),
-25             M\_translateAbscissa ( dataFile ( ( M\_sectionDomain + \textcolor{stringliteral}{"translateAbscissa"} ).data (), 0. ) ),
-26             M\_spaceDimension ( dataFile ( ( M\_section + \textcolor{stringliteral}{"spaceDimension"} ).data (), 1. ) ),
-27             M\_integrationTypeVelocity ( dataFile ( ( M\_sectionDomain + \textcolor{stringliteral}{"integrationTypeVelocity"} ).data (),
-28                                                    \textcolor{stringliteral}{"IM\_GAUSS1D(3)"} ) ),
-29             M\_integrationTypePressure ( dataFile ( ( M\_sectionDomain + \textcolor{stringliteral}{"integrationTypePressure"} ).data (),
-30                                                    \textcolor{stringliteral}{"IM\_GAUSS1D(2)"} ) ),
-31             M\_meshType ( dataFile ( ( M\_sectionDomain + \textcolor{stringliteral}{"meshType"} ).data (), \textcolor{stringliteral}{"GT\_PK(1,1)"} ) ),
-32             M\_fEMTypePressure ( dataFile ( ( M\_sectionDomain + \textcolor{stringliteral}{"FEMTypePressure"} ).data (), \textcolor{stringliteral}{"FEM\_PK(1,0)"} )
+23             M\_translateAbscissa ( dataFile ( ( M\_sectionDomain + \textcolor{stringliteral}{"translateAbscissa"} ).data (), 0. ) ),
+24             M\_spaceDimension ( dataFile ( ( M\_section + \textcolor{stringliteral}{"spaceDimension"} ).data (), 1. ) ),
+25             M\_integrationTypeVelocity ( dataFile ( ( M\_sectionDomain + \textcolor{stringliteral}{"integrationTypeVelocity"} ).data (),
+26                                                    \textcolor{stringliteral}{"IM\_GAUSS1D(3)"} ) ),
+27             M\_integrationTypePressure ( dataFile ( ( M\_sectionDomain + \textcolor{stringliteral}{"integrationTypePressure"} ).data (),
+28                                                    \textcolor{stringliteral}{"IM\_GAUSS1D(2)"} ) ),
+29             M\_meshType ( dataFile ( ( M\_sectionDomain + \textcolor{stringliteral}{"meshType"} ).data (), \textcolor{stringliteral}{"GT\_PK(1,1)"} ) ),
+30             M\_fEMTypePressure ( dataFile ( ( M\_sectionDomain + \textcolor{stringliteral}{"FEMTypePressure"} ).data (), \textcolor{stringliteral}{"FEM\_PK(1,0)"} )
        ),
-33             M\_fEMTypeVelocity ( dataFile ( ( M\_sectionDomain + \textcolor{stringliteral}{"FEMTypeVelocity"} ).data (), \textcolor{stringliteral}{"FEM\_PK(1,1)"} )
+31             M\_fEMTypeVelocity ( dataFile ( ( M\_sectionDomain + \textcolor{stringliteral}{"FEMTypeVelocity"} ).data (), \textcolor{stringliteral}{"FEM\_PK(1,1)"} )
        ),
-34             M\_fEMTypeLinear ( dataFile ( ( M\_sectionDomain + \textcolor{stringliteral}{"FEMTypeLinear"} ).data (), \textcolor{stringliteral}{"FEM\_PK(1,1)"} ) ),
-35             \textcolor{comment}{// darcy}
-36             M\_etaNormal ( dataFile ( ( M\_sectionDarcy + \textcolor{stringliteral}{"etaNormal"} ).data (), M\_thickness ) ),
-37             M\_etaTangential ( dataFile ( ( M\_sectionDarcy + \textcolor{stringliteral}{"etaTangential"} ).data (), 1. / M\_thickness ) )
+32             M\_fEMTypeLinear ( dataFile ( ( M\_sectionDomain + \textcolor{stringliteral}{"FEMTypeLinear"} ).data (), \textcolor{stringliteral}{"FEM\_PK(1,1)"} ) ),
+33             
+34             \textcolor{comment}{// darcy}
+35             M\_etaNormal ( dataFile ( ( M\_sectionDarcy + \textcolor{stringliteral}{"etaNormal"} ).data (), M\_thickness ) ),
+36             M\_etaTangential ( dataFile ( ( M\_sectionDarcy + \textcolor{stringliteral}{"etaTangential"} ).data (), 1. / M\_thickness ) )
       ,
-38             M\_etaNormalDistribution ( dataFile ( ( M\_sectionDarcy + \textcolor{stringliteral}{"etaNormalDistribution"} ).data (), \textcolor{stringliteral}{"1."}
+37             M\_etaNormalDistribution ( dataFile ( ( M\_sectionDarcy + \textcolor{stringliteral}{"etaNormalDistribution"} ).data (), \textcolor{stringliteral}{"1."}
        ) ),
-39             M\_etaTangentialDistribution ( dataFile ( ( M\_sectionDarcy + \textcolor{stringliteral}{"etaTangentialDistribution"} ).data 
+38             M\_etaTangentialDistribution ( dataFile ( ( M\_sectionDarcy + \textcolor{stringliteral}{"etaTangentialDistribution"} ).data 
       (), \textcolor{stringliteral}{"1."} ) ),
-40             M\_darcySource ( dataFile ( ( M\_sectionDarcy + \textcolor{stringliteral}{"source"} ).data (), \textcolor{stringliteral}{"1."} ) ),
-41             M\_pressureExact ( dataFile ( ( M\_sectionDarcy + \textcolor{stringliteral}{"solution"} ).data (), \textcolor{stringliteral}{"1."} ) ),
-42             M\_velocityExact ( dataFile ( ( M\_sectionDarcy + \textcolor{stringliteral}{"velocity"} ).data (), \textcolor{stringliteral}{"1."} ) ),
-43             \textcolor{comment}{// transport}
-44             M\_muNormal ( dataFile ( ( M\_sectionTransport + \textcolor{stringliteral}{"muNormal"} ).data (), 1. ) ),
-45             M\_muTangential ( dataFile ( ( M\_sectionTransport + \textcolor{stringliteral}{"muTangential"} ).data (), 1. ) ),
-46             M\_muNormalDistribution ( dataFile ( ( M\_sectionTransport + \textcolor{stringliteral}{"muNormalDistribution"} ).data (), \textcolor{stringliteral}{"
-      1."} ) ),
-47             M\_muTangentialDistribution ( dataFile ( ( M\_sectionTransport + \textcolor{stringliteral}{"muTangentialDistribution"} ).
-      data (), \textcolor{stringliteral}{"1."} ) ),
-48             M\_transportSource ( dataFile ( ( M\_sectionTransport + \textcolor{stringliteral}{"source"} ).data (), \textcolor{stringliteral}{"0."} ) ),
-49             M\_concentrationInitialCondition ( dataFile ( ( M\_sectionTransport + \textcolor{stringliteral}{"initialCondition"} ).data (
-      ), \textcolor{stringliteral}{"0."} ) ),
-50             M\_concentrationExact ( dataFile ( ( M\_sectionTransport + \textcolor{stringliteral}{"solution"} ).data (), \textcolor{stringliteral}{"x"} ) ),
-51             M\_Concentration\_inout ( dataFile ( ( M\_sectionTransport + \textcolor{stringliteral}{"solutionInOut"} ).data (), \textcolor{stringliteral}{"x"} ) ),
-52             M\_fluxExact ( dataFile ( ( M\_sectionTransport + \textcolor{stringliteral}{"flux"} ).data (), \textcolor{stringliteral}{"0."} ) ),
-53             M\_meshSpacing( dataFile ( ( M\_sectionDomain + \textcolor{stringliteral}{"spacing"} ).data (), \textcolor{stringliteral}{"x"} ) )
-54 \{
-55 \}
+39             M\_darcySource ( dataFile ( ( M\_sectionDarcy + \textcolor{stringliteral}{"source"} ).data (), \textcolor{stringliteral}{"1."} ) ),
+40             M\_pressureExact ( dataFile ( ( M\_sectionDarcy + \textcolor{stringliteral}{"solution"} ).data (), \textcolor{stringliteral}{"1."} ) ),
+41             M\_velocityExact ( dataFile ( ( M\_sectionDarcy + \textcolor{stringliteral}{"velocity"} ).data (), \textcolor{stringliteral}{"1."} ) ),
+42 
+43             M\_meshSpacing( dataFile ( ( M\_sectionDomain + \textcolor{stringliteral}{"spacing"} ).data (), \textcolor{stringliteral}{"x"} ) )
+44 \{
+45 \}\textcolor{comment}{// costruttore}
 \end{DoxyCode}
 
 
 \subsection{Documentazione delle funzioni membro}
-\hypertarget{classFractureData_ab4d202a7f72611e4bc41a5e081b32f2c}{\index{Fracture\-Data@{Fracture\-Data}!Concentration\-\_\-inout@{Concentration\-\_\-inout}}
-\index{Concentration\-\_\-inout@{Concentration\-\_\-inout}!FractureData@{Fracture\-Data}}
-\subsubsection[{Concentration\-\_\-inout}]{\setlength{\rightskip}{0pt plus 5cm}scalar\-\_\-type Fracture\-Data\-::\-Concentration\-\_\-inout (
-\begin{DoxyParamCaption}
-\item[{const base\-\_\-node \&}]{x, }
-\item[{const scalar\-\_\-type \&}]{time, }
-\item[{const size\-\_\-type}]{flag}
-\end{DoxyParamCaption}
-)}}\label{classFractureData_ab4d202a7f72611e4bc41a5e081b32f2c}
-
-\begin{DoxyCode}
-119 \{
-120     M\_parser.\hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString} ( M\_Concentration\_inout );
-121     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"x"}, x [ 0 ] );
-122     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"t"}, time );
-123     \textcolor{keywordflow}{return} M\_parser.\hyperlink{classLifeV_1_1Parser_a51d84fd4ae6d420620e7beee58fad673}{evaluate} ();
-124 \}
-\end{DoxyCode}
-\hypertarget{classFractureData_a362710c6c9008fde0d358069eb2808d8}{\index{Fracture\-Data@{Fracture\-Data}!concentration\-Exact@{concentration\-Exact}}
-\index{concentration\-Exact@{concentration\-Exact}!FractureData@{Fracture\-Data}}
-\subsubsection[{concentration\-Exact}]{\setlength{\rightskip}{0pt plus 5cm}scalar\-\_\-type Fracture\-Data\-::concentration\-Exact (
-\begin{DoxyParamCaption}
-\item[{const base\-\_\-node \&}]{x, }
-\item[{const scalar\-\_\-type \&}]{time}
-\end{DoxyParamCaption}
-)}}\label{classFractureData_a362710c6c9008fde0d358069eb2808d8}
-
-\begin{DoxyCode}
-108 \{
-109     M\_parser.\hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString} ( M\_concentrationExact );
-110     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"x"}, x [ 0 ] );
-111     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"t"}, time );
-112     \textcolor{keywordflow}{return} M\_parser.\hyperlink{classLifeV_1_1Parser_a51d84fd4ae6d420620e7beee58fad673}{evaluate} ();
-113 \}
-\end{DoxyCode}
-\hypertarget{classFractureData_acf5e3a5d756aaf5b1ec7f446f388cf15}{\index{Fracture\-Data@{Fracture\-Data}!concentration\-Initial\-Condition@{concentration\-Initial\-Condition}}
-\index{concentration\-Initial\-Condition@{concentration\-Initial\-Condition}!FractureData@{Fracture\-Data}}
-\subsubsection[{concentration\-Initial\-Condition}]{\setlength{\rightskip}{0pt plus 5cm}scalar\-\_\-type Fracture\-Data\-::concentration\-Initial\-Condition (
-\begin{DoxyParamCaption}
-\item[{const base\-\_\-node \&}]{x}
-\end{DoxyParamCaption}
-)}}\label{classFractureData_acf5e3a5d756aaf5b1ec7f446f388cf15}
-
-\begin{DoxyCode}
-69 \{
-70     M\_parser.\hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString} ( M\_concentrationInitialCondition );
-71     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"x"}, x [ 0 ] );
-72     \textcolor{keywordflow}{return} M\_parser.\hyperlink{classLifeV_1_1Parser_a51d84fd4ae6d420620e7beee58fad673}{evaluate} ();
-73 \}
-\end{DoxyCode}
 \hypertarget{classFractureData_a8f935d962ae1bd93ca3e3b0955517db5}{\index{Fracture\-Data@{Fracture\-Data}!darcy\-Source@{darcy\-Source}}
 \index{darcy\-Source@{darcy\-Source}!FractureData@{Fracture\-Data}}
 \subsubsection[{darcy\-Source}]{\setlength{\rightskip}{0pt plus 5cm}scalar\-\_\-type Fracture\-Data\-::darcy\-Source (
@@ -244,12 +161,24 @@ Sostanzialmente questa classe ci serve per partire dal file data e portare tutte
 )}}\label{classFractureData_a8f935d962ae1bd93ca3e3b0955517db5}
 
 \begin{DoxyCode}
-154 \{
-155     M\_parser.\hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString} ( M\_darcySource );
-156     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"x"}, x [ 0 ] );
-157     \textcolor{keywordflow}{return} M\_parser.\hyperlink{classLifeV_1_1Parser_a51d84fd4ae6d420620e7beee58fad673}{evaluate} ();
-158 \}
+81 \{
+82     M\_parser.\hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString} ( M\_darcySource );
+83     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"x"}, x [ 0 ] );
+84     
+85     \textcolor{keywordflow}{return} M\_parser.\hyperlink{classLifeV_1_1Parser_a51d84fd4ae6d420620e7beee58fad673}{evaluate} ();
+86 \}\textcolor{comment}{// darcySource}
 \end{DoxyCode}
+
+
+Questo è il grafo delle chiamate per questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classFractureData_a8f935d962ae1bd93ca3e3b0955517db5_cgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{classFractureData_a0aaeeb3d9eedd46175759cd6b9536484}{\index{Fracture\-Data@{Fracture\-Data}!eta\-Normal\-Distribution@{eta\-Normal\-Distribution}}
 \index{eta\-Normal\-Distribution@{eta\-Normal\-Distribution}!FractureData@{Fracture\-Data}}
 \subsubsection[{eta\-Normal\-Distribution}]{\setlength{\rightskip}{0pt plus 5cm}scalar\-\_\-type Fracture\-Data\-::eta\-Normal\-Distribution (
@@ -263,12 +192,35 @@ Funzione che restituisce un'eventuale modulazione del coefficiente di permeabili
 
 
 \begin{DoxyCode}
-77 \{
-78     M\_parser.\hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString} ( M\_etaNormalDistribution );
-79     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"x"}, x [ 0 ] );
-80     \textcolor{keywordflow}{return} M\_parser.\hyperlink{classLifeV_1_1Parser_a51d84fd4ae6d420620e7beee58fad673}{evaluate} ();
-81 \}
+50 \{
+51     M\_parser.\hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString} ( M\_etaNormalDistribution );
+52     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"x"}, x [ 0 ] );
+53     
+54     \textcolor{keywordflow}{return} M\_parser.\hyperlink{classLifeV_1_1Parser_a51d84fd4ae6d420620e7beee58fad673}{evaluate} ();
+55 \}\textcolor{comment}{// etaNormalDistribution}
 \end{DoxyCode}
+
+
+Questo è il grafo delle chiamate per questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classFractureData_a0aaeeb3d9eedd46175759cd6b9536484_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classFractureData_a0aaeeb3d9eedd46175759cd6b9536484_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{classFractureData_a0f989b64832a1f0fc77632c6803f102c}{\index{Fracture\-Data@{Fracture\-Data}!eta\-Tangential\-Distribution@{eta\-Tangential\-Distribution}}
 \index{eta\-Tangential\-Distribution@{eta\-Tangential\-Distribution}!FractureData@{Fracture\-Data}}
 \subsubsection[{eta\-Tangential\-Distribution}]{\setlength{\rightskip}{0pt plus 5cm}scalar\-\_\-type Fracture\-Data\-::eta\-Tangential\-Distribution (
@@ -282,33 +234,35 @@ Funzione che restituisce un'eventuale modulazione del coefficiente di permeabili
 
 
 \begin{DoxyCode}
-85 \{
-86     M\_parser.\hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString} ( M\_etaTangentialDistribution );
-87     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"x"}, x [ 0 ] );
-88     \textcolor{keywordflow}{return} M\_parser.\hyperlink{classLifeV_1_1Parser_a51d84fd4ae6d420620e7beee58fad673}{evaluate} ();
-89 \}
+59 \{
+60     M\_parser.\hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString} ( M\_etaTangentialDistribution );
+61     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"x"}, x [ 0 ] );
+62     
+63     \textcolor{keywordflow}{return} M\_parser.\hyperlink{classLifeV_1_1Parser_a51d84fd4ae6d420620e7beee58fad673}{evaluate} ();
+64 \}\textcolor{comment}{// etaTangentialDistribution}
 \end{DoxyCode}
-\hypertarget{classFractureData_a92b86995549b500674b955113fc6725d}{\index{Fracture\-Data@{Fracture\-Data}!flux\-Exact@{flux\-Exact}}
-\index{flux\-Exact@{flux\-Exact}!FractureData@{Fracture\-Data}}
-\subsubsection[{flux\-Exact}]{\setlength{\rightskip}{0pt plus 5cm}scalar\-\_\-type Fracture\-Data\-::flux\-Exact (
-\begin{DoxyParamCaption}
-\item[{const base\-\_\-node \&}]{x, }
-\item[{const base\-\_\-node \&}]{n, }
-\item[{const scalar\-\_\-type \&}]{time}
-\end{DoxyParamCaption}
-)}}\label{classFractureData_a92b86995549b500674b955113fc6725d}
 
-\begin{DoxyCode}
-142 \{
-143     M\_parser.\hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString} ( M\_fluxExact );
-144     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"x"}, x [ 0 ] );
-145     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"y"}, x [ 1 ] );
-146     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"t"}, time );
-147     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"n1"}, n [ 0 ] );
-148     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"n2"}, n [ 1 ] );
-149     \textcolor{keywordflow}{return} M\_parser.\hyperlink{classLifeV_1_1Parser_a51d84fd4ae6d420620e7beee58fad673}{evaluate} ();
-150 \}
-\end{DoxyCode}
+
+Questo è il grafo delle chiamate per questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classFractureData_a0f989b64832a1f0fc77632c6803f102c_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=346pt]{classFractureData_a0f989b64832a1f0fc77632c6803f102c_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{classFractureData_a7b75512224a34953960a9bd09f1af661}{\index{Fracture\-Data@{Fracture\-Data}!get\-Csi0@{get\-Csi0}}
 \index{get\-Csi0@{get\-Csi0}!FractureData@{Fracture\-Data}}
 \subsubsection[{get\-Csi0}]{\setlength{\rightskip}{0pt plus 5cm}scalar\-\_\-type Fracture\-Data\-::get\-Csi0 (
@@ -318,9 +272,9 @@ Funzione che restituisce un'eventuale modulazione del coefficiente di permeabili
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureData_a7b75512224a34953960a9bd09f1af661}
 
 \begin{DoxyCode}
-116     \{
-117         \textcolor{keywordflow}{return} M\_csi0;
-118     \}
+69     \{
+70         \textcolor{keywordflow}{return} M\_csi0;
+71     \}
 \end{DoxyCode}
 \hypertarget{classFractureData_a9acc76c77282d4b5d0cdca18c2b1b9ea}{\index{Fracture\-Data@{Fracture\-Data}!get\-Eta\-Normal@{get\-Eta\-Normal}}
 \index{get\-Eta\-Normal@{get\-Eta\-Normal}!FractureData@{Fracture\-Data}}
@@ -331,10 +285,21 @@ Funzione che restituisce un'eventuale modulazione del coefficiente di permeabili
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureData_a9acc76c77282d4b5d0cdca18c2b1b9ea}
 
 \begin{DoxyCode}
-92     \{
-93         \textcolor{keywordflow}{return} M\_etaNormal;
-94     \}
+57     \{
+58         \textcolor{keywordflow}{return} M\_etaNormal;
+59     \}
 \end{DoxyCode}
+
+
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=346pt]{classFractureData_a9acc76c77282d4b5d0cdca18c2b1b9ea_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{classFractureData_a7378053b4009825b4a2957484cb2a5e8}{\index{Fracture\-Data@{Fracture\-Data}!get\-Eta\-Tangential@{get\-Eta\-Tangential}}
 \index{get\-Eta\-Tangential@{get\-Eta\-Tangential}!FractureData@{Fracture\-Data}}
 \subsubsection[{get\-Eta\-Tangential}]{\setlength{\rightskip}{0pt plus 5cm}scalar\-\_\-type Fracture\-Data\-::get\-Eta\-Tangential (
@@ -344,10 +309,21 @@ Funzione che restituisce un'eventuale modulazione del coefficiente di permeabili
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureData_a7378053b4009825b4a2957484cb2a5e8}
 
 \begin{DoxyCode}
-98     \{
-99         \textcolor{keywordflow}{return} M\_etaTangential;
-100     \}
+63     \{
+64         \textcolor{keywordflow}{return} M\_etaTangential;
+65     \}
 \end{DoxyCode}
+
+
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classFractureData_a7378053b4009825b4a2957484cb2a5e8_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{classFractureData_a606c22e054fdb5f8602ce39fa6ae15cc}{\index{Fracture\-Data@{Fracture\-Data}!get\-F\-E\-M\-Type\-Linear@{get\-F\-E\-M\-Type\-Linear}}
 \index{get\-F\-E\-M\-Type\-Linear@{get\-F\-E\-M\-Type\-Linear}!FractureData@{Fracture\-Data}}
 \subsubsection[{get\-F\-E\-M\-Type\-Linear}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string Fracture\-Data\-::get\-F\-E\-M\-Type\-Linear (
@@ -357,10 +333,21 @@ Funzione che restituisce un'eventuale modulazione del coefficiente di permeabili
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureData_a606c22e054fdb5f8602ce39fa6ae15cc}
 
 \begin{DoxyCode}
-188     \{
-189         \textcolor{keywordflow}{return} M\_fEMTypeLinear;
-190     \}
+141     \{
+142         \textcolor{keywordflow}{return} M\_fEMTypeLinear;
+143     \}
 \end{DoxyCode}
+
+
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{classFractureData_a606c22e054fdb5f8602ce39fa6ae15cc_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{classFractureData_a643b9a8a33405ec7aaa6b5612cb81d57}{\index{Fracture\-Data@{Fracture\-Data}!get\-F\-E\-M\-Type\-Pressure@{get\-F\-E\-M\-Type\-Pressure}}
 \index{get\-F\-E\-M\-Type\-Pressure@{get\-F\-E\-M\-Type\-Pressure}!FractureData@{Fracture\-Data}}
 \subsubsection[{get\-F\-E\-M\-Type\-Pressure}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string Fracture\-Data\-::get\-F\-E\-M\-Type\-Pressure (
@@ -370,10 +357,21 @@ Funzione che restituisce un'eventuale modulazione del coefficiente di permeabili
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureData_a643b9a8a33405ec7aaa6b5612cb81d57}
 
 \begin{DoxyCode}
-176     \{
-177         \textcolor{keywordflow}{return} M\_fEMTypePressure;
-178     \}
+129     \{
+130         \textcolor{keywordflow}{return} M\_fEMTypePressure;
+131     \}
 \end{DoxyCode}
+
+
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{classFractureData_a643b9a8a33405ec7aaa6b5612cb81d57_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{classFractureData_a7396b67399a1ae8e5550841907c0dcb5}{\index{Fracture\-Data@{Fracture\-Data}!get\-F\-E\-M\-Type\-Velocity@{get\-F\-E\-M\-Type\-Velocity}}
 \index{get\-F\-E\-M\-Type\-Velocity@{get\-F\-E\-M\-Type\-Velocity}!FractureData@{Fracture\-Data}}
 \subsubsection[{get\-F\-E\-M\-Type\-Velocity}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string Fracture\-Data\-::get\-F\-E\-M\-Type\-Velocity (
@@ -383,10 +381,21 @@ Funzione che restituisce un'eventuale modulazione del coefficiente di permeabili
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureData_a7396b67399a1ae8e5550841907c0dcb5}
 
 \begin{DoxyCode}
-182     \{
-183         \textcolor{keywordflow}{return} M\_fEMTypeVelocity;
-184     \}
+135     \{
+136         \textcolor{keywordflow}{return} M\_fEMTypeVelocity;
+137     \}
 \end{DoxyCode}
+
+
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{classFractureData_a7396b67399a1ae8e5550841907c0dcb5_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{classFractureData_a9333d8e89dc92023d97a48c1905ada76}{\index{Fracture\-Data@{Fracture\-Data}!get\-Integration\-Type\-Pressure@{get\-Integration\-Type\-Pressure}}
 \index{get\-Integration\-Type\-Pressure@{get\-Integration\-Type\-Pressure}!FractureData@{Fracture\-Data}}
 \subsubsection[{get\-Integration\-Type\-Pressure}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string Fracture\-Data\-::get\-Integration\-Type\-Pressure (
@@ -396,10 +405,21 @@ Funzione che restituisce un'eventuale modulazione del coefficiente di permeabili
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureData_a9333d8e89dc92023d97a48c1905ada76}
 
 \begin{DoxyCode}
-164     \{
-165         \textcolor{keywordflow}{return} M\_integrationTypePressure;
-166     \}
+117     \{
+118         \textcolor{keywordflow}{return} M\_integrationTypePressure;
+119     \}
 \end{DoxyCode}
+
+
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{classFractureData_a9333d8e89dc92023d97a48c1905ada76_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{classFractureData_a8a8a198482de6bf4104746bc1d0510c6}{\index{Fracture\-Data@{Fracture\-Data}!get\-Integration\-Type\-Velocity@{get\-Integration\-Type\-Velocity}}
 \index{get\-Integration\-Type\-Velocity@{get\-Integration\-Type\-Velocity}!FractureData@{Fracture\-Data}}
 \subsubsection[{get\-Integration\-Type\-Velocity}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string Fracture\-Data\-::get\-Integration\-Type\-Velocity (
@@ -409,10 +429,21 @@ Funzione che restituisce un'eventuale modulazione del coefficiente di permeabili
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureData_a8a8a198482de6bf4104746bc1d0510c6}
 
 \begin{DoxyCode}
-158     \{
-159         \textcolor{keywordflow}{return} M\_integrationTypeVelocity;
-160     \}
+111     \{
+112         \textcolor{keywordflow}{return} M\_integrationTypeVelocity;
+113     \}
 \end{DoxyCode}
+
+
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{classFractureData_a8a8a198482de6bf4104746bc1d0510c6_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{classFractureData_abaebcf16d83713858e25837939ad3161}{\index{Fracture\-Data@{Fracture\-Data}!get\-Length\-Abscissa@{get\-Length\-Abscissa}}
 \index{get\-Length\-Abscissa@{get\-Length\-Abscissa}!FractureData@{Fracture\-Data}}
 \subsubsection[{get\-Length\-Abscissa}]{\setlength{\rightskip}{0pt plus 5cm}scalar\-\_\-type Fracture\-Data\-::get\-Length\-Abscissa (
@@ -422,10 +453,21 @@ Funzione che restituisce un'eventuale modulazione del coefficiente di permeabili
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureData_abaebcf16d83713858e25837939ad3161}
 
 \begin{DoxyCode}
-122     \{
-123         \textcolor{keywordflow}{return} M\_lengthAbscissa;
-124     \}
+75     \{
+76         \textcolor{keywordflow}{return} M\_lengthAbscissa;
+77     \}
 \end{DoxyCode}
+
+
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classFractureData_abaebcf16d83713858e25837939ad3161_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{classFractureData_a905e953f685b1329ddcc7ee56f8302b1}{\index{Fracture\-Data@{Fracture\-Data}!get\-Length\-Ordinate@{get\-Length\-Ordinate}}
 \index{get\-Length\-Ordinate@{get\-Length\-Ordinate}!FractureData@{Fracture\-Data}}
 \subsubsection[{get\-Length\-Ordinate}]{\setlength{\rightskip}{0pt plus 5cm}scalar\-\_\-type Fracture\-Data\-::get\-Length\-Ordinate (
@@ -435,10 +477,21 @@ Funzione che restituisce un'eventuale modulazione del coefficiente di permeabili
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureData_a905e953f685b1329ddcc7ee56f8302b1}
 
 \begin{DoxyCode}
-128     \{
-129         \textcolor{keywordflow}{return} M\_lengthOrdinate;
-130     \}
+81     \{
+82         \textcolor{keywordflow}{return} M\_lengthOrdinate;
+83     \}
 \end{DoxyCode}
+
+
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classFractureData_a905e953f685b1329ddcc7ee56f8302b1_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{classFractureData_a79747fff53da9d858950d83ad0114288}{\index{Fracture\-Data@{Fracture\-Data}!get\-Length\-Quota@{get\-Length\-Quota}}
 \index{get\-Length\-Quota@{get\-Length\-Quota}!FractureData@{Fracture\-Data}}
 \subsubsection[{get\-Length\-Quota}]{\setlength{\rightskip}{0pt plus 5cm}scalar\-\_\-type Fracture\-Data\-::get\-Length\-Quota (
@@ -448,10 +501,21 @@ Funzione che restituisce un'eventuale modulazione del coefficiente di permeabili
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureData_a79747fff53da9d858950d83ad0114288}
 
 \begin{DoxyCode}
-134     \{
-135         \textcolor{keywordflow}{return} M\_lengthQuota;
-136     \}
+87     \{
+88         \textcolor{keywordflow}{return} M\_lengthQuota;
+89     \}
 \end{DoxyCode}
+
+
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classFractureData_a79747fff53da9d858950d83ad0114288_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{classFractureData_aaded6c0452470489beb4ab95b5f4158f}{\index{Fracture\-Data@{Fracture\-Data}!get\-Mesh\-Type@{get\-Mesh\-Type}}
 \index{get\-Mesh\-Type@{get\-Mesh\-Type}!FractureData@{Fracture\-Data}}
 \subsubsection[{get\-Mesh\-Type}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string Fracture\-Data\-::get\-Mesh\-Type (
@@ -461,49 +525,21 @@ Funzione che restituisce un'eventuale modulazione del coefficiente di permeabili
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureData_aaded6c0452470489beb4ab95b5f4158f}
 
 \begin{DoxyCode}
-170     \{
-171         \textcolor{keywordflow}{return} M\_meshType;
-172     \}
+123     \{
+124         \textcolor{keywordflow}{return} M\_meshType;
+125     \}
 \end{DoxyCode}
-\hypertarget{classFractureData_ab059ac23b93115e05029e1b6cadd1cd9}{\index{Fracture\-Data@{Fracture\-Data}!get\-Mu\-Normal@{get\-Mu\-Normal}}
-\index{get\-Mu\-Normal@{get\-Mu\-Normal}!FractureData@{Fracture\-Data}}
-\subsubsection[{get\-Mu\-Normal}]{\setlength{\rightskip}{0pt plus 5cm}scalar\-\_\-type Fracture\-Data\-::get\-Mu\-Normal (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureData_ab059ac23b93115e05029e1b6cadd1cd9}
 
-\begin{DoxyCode}
-104     \{
-105         \textcolor{keywordflow}{return} M\_muNormal;
-106     \}
-\end{DoxyCode}
-\hypertarget{classFractureData_a1ac3cca1ae035eedb2ec89c0517f8b1f}{\index{Fracture\-Data@{Fracture\-Data}!get\-Mu\-Tangential@{get\-Mu\-Tangential}}
-\index{get\-Mu\-Tangential@{get\-Mu\-Tangential}!FractureData@{Fracture\-Data}}
-\subsubsection[{get\-Mu\-Tangential}]{\setlength{\rightskip}{0pt plus 5cm}scalar\-\_\-type Fracture\-Data\-::get\-Mu\-Tangential (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureData_a1ac3cca1ae035eedb2ec89c0517f8b1f}
 
-\begin{DoxyCode}
-110     \{
-111         \textcolor{keywordflow}{return} M\_muTangential;
-112     \}
-\end{DoxyCode}
-\hypertarget{classFractureData_af86187ca0c7cc0ea6f4c3cd6e1a4cf41}{\index{Fracture\-Data@{Fracture\-Data}!get\-Position@{get\-Position}}
-\index{get\-Position@{get\-Position}!FractureData@{Fracture\-Data}}
-\subsubsection[{get\-Position}]{\setlength{\rightskip}{0pt plus 5cm}scalar\-\_\-type Fracture\-Data\-::get\-Position (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureData_af86187ca0c7cc0ea6f4c3cd6e1a4cf41}
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=347pt]{classFractureData_aaded6c0452470489beb4ab95b5f4158f_icgraph}
+\end{center}
+\end{figure}
 
-\begin{DoxyCode}
-80     \{
-81         \textcolor{keywordflow}{return} M\_position;
-82     \}
-\end{DoxyCode}
+
 \hypertarget{classFractureData_a4ead03266295fe14fa3285692f945d89}{\index{Fracture\-Data@{Fracture\-Data}!get\-Space\-Dimension@{get\-Space\-Dimension}}
 \index{get\-Space\-Dimension@{get\-Space\-Dimension}!FractureData@{Fracture\-Data}}
 \subsubsection[{get\-Space\-Dimension}]{\setlength{\rightskip}{0pt plus 5cm}bgeot\-::dim\-\_\-type Fracture\-Data\-::get\-Space\-Dimension (
@@ -513,10 +549,21 @@ Funzione che restituisce un'eventuale modulazione del coefficiente di permeabili
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureData_a4ead03266295fe14fa3285692f945d89}
 
 \begin{DoxyCode}
-152     \{
-153         \textcolor{keywordflow}{return} M\_spaceDimension;
-154     \}
+105     \{
+106         \textcolor{keywordflow}{return} M\_spaceDimension;
+107     \}
 \end{DoxyCode}
+
+
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classFractureData_a4ead03266295fe14fa3285692f945d89_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{classFractureData_a5c10d579be7849be1a126c24982f8a23}{\index{Fracture\-Data@{Fracture\-Data}!get\-Spatial\-Discretization@{get\-Spatial\-Discretization}}
 \index{get\-Spatial\-Discretization@{get\-Spatial\-Discretization}!FractureData@{Fracture\-Data}}
 \subsubsection[{get\-Spatial\-Discretization}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-type Fracture\-Data\-::get\-Spatial\-Discretization (
@@ -526,10 +573,21 @@ Funzione che restituisce un'eventuale modulazione del coefficiente di permeabili
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureData_a5c10d579be7849be1a126c24982f8a23}
 
 \begin{DoxyCode}
-140     \{
-141         \textcolor{keywordflow}{return} M\_spatialDiscretization;
-142     \}
+93     \{
+94         \textcolor{keywordflow}{return} M\_spatialDiscretization;
+95     \}
 \end{DoxyCode}
+
+
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classFractureData_a5c10d579be7849be1a126c24982f8a23_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{classFractureData_a3ecc0d132f9cc105af6b24d676a7b9c5}{\index{Fracture\-Data@{Fracture\-Data}!get\-Thickness@{get\-Thickness}}
 \index{get\-Thickness@{get\-Thickness}!FractureData@{Fracture\-Data}}
 \subsubsection[{get\-Thickness}]{\setlength{\rightskip}{0pt plus 5cm}scalar\-\_\-type Fracture\-Data\-::get\-Thickness (
@@ -539,9 +597,9 @@ Funzione che restituisce un'eventuale modulazione del coefficiente di permeabili
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureData_a3ecc0d132f9cc105af6b24d676a7b9c5}
 
 \begin{DoxyCode}
-86     \{
-87         \textcolor{keywordflow}{return} M\_thickness;
-88     \}
+51     \{
+52         \textcolor{keywordflow}{return} M\_thickness;
+53     \}
 \end{DoxyCode}
 \hypertarget{classFractureData_a485e084e083d9181750f19db6842a5e0}{\index{Fracture\-Data@{Fracture\-Data}!get\-Translate\-Abscissa@{get\-Translate\-Abscissa}}
 \index{get\-Translate\-Abscissa@{get\-Translate\-Abscissa}!FractureData@{Fracture\-Data}}
@@ -552,9 +610,9 @@ Funzione che restituisce un'eventuale modulazione del coefficiente di permeabili
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureData_a485e084e083d9181750f19db6842a5e0}
 
 \begin{DoxyCode}
-146     \{
-147         \textcolor{keywordflow}{return} M\_translateAbscissa;
-148     \}
+99     \{
+100         \textcolor{keywordflow}{return} M\_translateAbscissa;
+101     \}
 \end{DoxyCode}
 \hypertarget{classFractureData_ab79d66dd830b6e1c55ade0d940c5c8cf}{\index{Fracture\-Data@{Fracture\-Data}!mesh\-Spacing@{mesh\-Spacing}}
 \index{mesh\-Spacing@{mesh\-Spacing}!FractureData@{Fracture\-Data}}
@@ -565,42 +623,35 @@ Funzione che restituisce un'eventuale modulazione del coefficiente di permeabili
 )}}\label{classFractureData_ab79d66dd830b6e1c55ade0d940c5c8cf}
 
 \begin{DoxyCode}
-170 \{
-171     M\_parser.\hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString} ( M\_meshSpacing );
-172     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"x"}, x );
-173     \textcolor{keywordflow}{return} M\_parser.\hyperlink{classLifeV_1_1Parser_a51d84fd4ae6d420620e7beee58fad673}{evaluate} ();
-174 \}
-\end{DoxyCode}
-\hypertarget{classFractureData_a4ae566f9148893e47279097cab215e7b}{\index{Fracture\-Data@{Fracture\-Data}!mu\-Normal\-Distribution@{mu\-Normal\-Distribution}}
-\index{mu\-Normal\-Distribution@{mu\-Normal\-Distribution}!FractureData@{Fracture\-Data}}
-\subsubsection[{mu\-Normal\-Distribution}]{\setlength{\rightskip}{0pt plus 5cm}scalar\-\_\-type Fracture\-Data\-::mu\-Normal\-Distribution (
-\begin{DoxyParamCaption}
-\item[{const base\-\_\-node \&}]{x}
-\end{DoxyParamCaption}
-)}}\label{classFractureData_a4ae566f9148893e47279097cab215e7b}
-
-\begin{DoxyCode}
-92 \{
-93     M\_parser.\hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString} ( M\_muNormalDistribution );
-94     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"x"}, x [ 0 ] );
-95     \textcolor{keywordflow}{return} M\_parser.\hyperlink{classLifeV_1_1Parser_a51d84fd4ae6d420620e7beee58fad673}{evaluate} ();
-96 \}
-\end{DoxyCode}
-\hypertarget{classFractureData_a9a3e1a75231b55be01ad198b824c0d56}{\index{Fracture\-Data@{Fracture\-Data}!mu\-Tangential\-Distribution@{mu\-Tangential\-Distribution}}
-\index{mu\-Tangential\-Distribution@{mu\-Tangential\-Distribution}!FractureData@{Fracture\-Data}}
-\subsubsection[{mu\-Tangential\-Distribution}]{\setlength{\rightskip}{0pt plus 5cm}scalar\-\_\-type Fracture\-Data\-::mu\-Tangential\-Distribution (
-\begin{DoxyParamCaption}
-\item[{const base\-\_\-node \&}]{x}
-\end{DoxyParamCaption}
-)}}\label{classFractureData_a9a3e1a75231b55be01ad198b824c0d56}
-
-\begin{DoxyCode}
 99 \{
-100     M\_parser.\hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString} ( M\_muTangentialDistribution );
-101     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"x"}, x [ 0 ] );
-102     \textcolor{keywordflow}{return} M\_parser.\hyperlink{classLifeV_1_1Parser_a51d84fd4ae6d420620e7beee58fad673}{evaluate} ();
-103 \}
+100     M\_parser.\hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString} ( M\_meshSpacing );
+101     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"x"}, x );
+102     
+103     \textcolor{keywordflow}{return} M\_parser.\hyperlink{classLifeV_1_1Parser_a51d84fd4ae6d420620e7beee58fad673}{evaluate} ();
+104 \}\textcolor{comment}{// meshSpacing}
 \end{DoxyCode}
+
+
+Questo è il grafo delle chiamate per questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classFractureData_ab79d66dd830b6e1c55ade0d940c5c8cf_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=347pt]{classFractureData_ab79d66dd830b6e1c55ade0d940c5c8cf_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{classFractureData_aa90769a75aff6485824ecd2090c8b4ee}{\index{Fracture\-Data@{Fracture\-Data}!pressure\-Exact@{pressure\-Exact}}
 \index{pressure\-Exact@{pressure\-Exact}!FractureData@{Fracture\-Data}}
 \subsubsection[{pressure\-Exact}]{\setlength{\rightskip}{0pt plus 5cm}scalar\-\_\-type Fracture\-Data\-::pressure\-Exact (
@@ -610,29 +661,24 @@ Funzione che restituisce un'eventuale modulazione del coefficiente di permeabili
 )}}\label{classFractureData_aa90769a75aff6485824ecd2090c8b4ee}
 
 \begin{DoxyCode}
-162 \{
-163     M\_parser.\hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString} ( M\_pressureExact );
-164     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"x"}, x [ 0 ] );
-165     \textcolor{keywordflow}{return} M\_parser.\hyperlink{classLifeV_1_1Parser_a51d84fd4ae6d420620e7beee58fad673}{evaluate} ();
-166 \}
+90 \{
+91     M\_parser.\hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString} ( M\_pressureExact );
+92     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"x"}, x [ 0 ] );
+93     
+94     \textcolor{keywordflow}{return} M\_parser.\hyperlink{classLifeV_1_1Parser_a51d84fd4ae6d420620e7beee58fad673}{evaluate} ();
+95 \}\textcolor{comment}{// pressureExact}
 \end{DoxyCode}
-\hypertarget{classFractureData_a31383de9b3236dd9a2af7b113cab88eb}{\index{Fracture\-Data@{Fracture\-Data}!transport\-Source@{transport\-Source}}
-\index{transport\-Source@{transport\-Source}!FractureData@{Fracture\-Data}}
-\subsubsection[{transport\-Source}]{\setlength{\rightskip}{0pt plus 5cm}scalar\-\_\-type Fracture\-Data\-::transport\-Source (
-\begin{DoxyParamCaption}
-\item[{const base\-\_\-node \&}]{x, }
-\item[{const scalar\-\_\-type \&}]{time}
-\end{DoxyParamCaption}
-)}}\label{classFractureData_a31383de9b3236dd9a2af7b113cab88eb}
 
-\begin{DoxyCode}
-60 \{
-61     M\_parser.\hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString} ( M\_transportSource );
-62     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"x"}, x [ 0 ] );
-63     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"t"}, time );
-64     \textcolor{keywordflow}{return} M\_parser.\hyperlink{classLifeV_1_1Parser_a51d84fd4ae6d420620e7beee58fad673}{evaluate} ();
-65 \}
-\end{DoxyCode}
+
+Questo è il grafo delle chiamate per questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classFractureData_aa90769a75aff6485824ecd2090c8b4ee_cgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{classFractureData_a8342142df05ded99f3a6c8d39dbfdc0e}{\index{Fracture\-Data@{Fracture\-Data}!velocity\-Exact@{velocity\-Exact}}
 \index{velocity\-Exact@{velocity\-Exact}!FractureData@{Fracture\-Data}}
 \subsubsection[{velocity\-Exact}]{\setlength{\rightskip}{0pt plus 5cm}scalar\-\_\-type Fracture\-Data\-::velocity\-Exact (
@@ -643,15 +689,27 @@ Funzione che restituisce un'eventuale modulazione del coefficiente di permeabili
 )}}\label{classFractureData_a8342142df05ded99f3a6c8d39dbfdc0e}
 
 \begin{DoxyCode}
-129 \{
-130     M\_parser.\hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString} ( M\_velocityExact );
-131     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"x"}, x [ 0 ] );
-132     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"y"}, x [ 1 ] );
-133     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"n1"}, n [ 0 ] );
-134     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"n2"}, n [ 1 ] );
-135     \textcolor{keywordflow}{return} M\_parser.\hyperlink{classLifeV_1_1Parser_a51d84fd4ae6d420620e7beee58fad673}{evaluate} ();
-136 \}
+69 \{
+70     M\_parser.\hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString} ( M\_velocityExact );
+71     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"x"}, x [ 0 ] );
+72     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"y"}, x [ 1 ] );
+73     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"n1"}, n [ 0 ] );
+74     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"n2"}, n [ 1 ] );
+75     
+76     \textcolor{keywordflow}{return} M\_parser.\hyperlink{classLifeV_1_1Parser_a51d84fd4ae6d420620e7beee58fad673}{evaluate} ();
+77 \}\textcolor{comment}{// velocityExact}
 \end{DoxyCode}
+
+
+Questo è il grafo delle chiamate per questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classFractureData_a8342142df05ded99f3a6c8d39dbfdc0e_cgraph}
+\end{center}
+\end{figure}
+
+
 
 
 La documentazione per questa classe è stata generata a partire dai seguenti file\-:\begin{DoxyCompactItemize}

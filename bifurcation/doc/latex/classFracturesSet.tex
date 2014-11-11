@@ -48,10 +48,10 @@ Fracture\-Set.\-cc.
 
 
 \begin{DoxyCode}
-9                            :
-10 M\_intersections ( \textcolor{keyword}{new} \hyperlink{classFractureIntersect}{FractureIntersect\_Type} )
-11 \{
-12 \}\textcolor{comment}{// costruttore nullo}
+7                            :
+8 M\_intersections ( \textcolor{keyword}{new} \hyperlink{classFractureIntersect}{FractureIntersect\_Type} )
+9 \{
+10 \}\textcolor{comment}{// costruttore nullo}
 \end{DoxyCode}
 
 
@@ -183,45 +183,49 @@ Funzione che inizializza l'insieme delle fratture definendo un vettore con le fr
 
 
 \begin{DoxyCode}
-20 \{
-21         M\_fractures.resize ( numFractures );
-22 
-23         std::ostringstream sectionFracture;
-24 
-25         \textcolor{comment}{// Riempio il vettore delle fratture}
-26         \textcolor{keywordflow}{for} ( size\_type f = 0; f < numFractures; ++f )
-27         \{
-28                 sectionFracture << section << \textcolor{stringliteral}{"fractureData"} << f << \textcolor{stringliteral}{"/"};
-29 
-30                 M\_fractures [ f ].reset ( \textcolor{keyword}{new} \hyperlink{classFractureHandler}{FractureHandler\_Type} ( dataFile, f, 
+17 \{
+18     M\_fractures.resize ( numFractures );
+19 
+20     std::ostringstream sectionFracture;
+21 
+22     \textcolor{comment}{// Riempio il vettore delle fratture}
+23     \textcolor{keywordflow}{for} ( size\_type f = 0; f < numFractures; ++f )
+24     \{
+25             sectionFracture << section << \textcolor{stringliteral}{"fractureData"} << f << \textcolor{stringliteral}{"/"};
+26 
+27             M\_fractures [ f ].reset ( \textcolor{keyword}{new} \hyperlink{classFractureHandler}{FractureHandler\_Type} ( dataFile, f, 
       sectionFracture.str() ) );
+28 
+29             \textcolor{comment}{// Inizializzo la frattura  }
+30             M\_fractures [ f ]->init();
 31 
-32                 \textcolor{comment}{// Inizializzo la frattura  }
-33                 M\_fractures [ f ]->init();
-34 
-35                 M\_fractures [ f ]->numFractures ( numFractures );
-36 
-37                 \textcolor{comment}{// Per ogni frattura inizializzo il level set}
-38                 M\_fractures [ f ]->getLevelSet()->init ( mesh, integrationTypeVelocity, meshFEMScalar, 
+32             M\_fractures [ f ]->numFractures ( numFractures );
+33 
+34             \textcolor{comment}{// Per ogni frattura inizializzo il level set}
+35             M\_fractures [ f ]->getLevelSet()->init ( mesh, integrationTypeVelocity, meshFEMScalar, 
       meshFEMVector );
-39 
-40                 \textcolor{comment}{// Calcolo la normale alla frattura e il fattore di conversione della lunghezza della mesh
+36 
+37             \textcolor{comment}{// Calcolo la normale alla frattura e il fattore di conversione della lunghezza della mesh
        reale}
-41                 M\_fractures [ f ]->normalVectorAndMap ( meshFEMScalar );
-42 
-43                 \textcolor{comment}{// Per ogni frattura aggiungo le informazioni relative al corrispondente level set a
+38             M\_fractures [ f ]->normalVectorAndMap ( meshFEMScalar );
+39 
+40             \textcolor{comment}{// Per ogni frattura aggiungo le informazioni relative al corrispondente level set a
        meshLevelSet}
-44                 meshLevelSet.add\_level\_set ( M\_fractures[f]->getLevelSet()->getLevelSet() );
+41             meshLevelSet.add\_level\_set ( M\_fractures[f]->getLevelSet()->getLevelSet() );
+42 
+43             sectionFracture.str(\textcolor{stringliteral}{""});
+44     \}
 45 
-46                 sectionFracture.str(\textcolor{stringliteral}{""});
-47         \}
+46     \textcolor{comment}{// Devo aggiornare la mesh, sono stati aggiunti i levelset}
+47     meshLevelSet.adapt ();
 48 
-49         meshLevelSet.adapt ();
+49     \textcolor{comment}{// una volta costruito il vettore delle fratture inizializzo la classe per le intersezioni}
 50 
-51         \textcolor{comment}{// una volta costruito il vettore delle fratture inizializzo la classe per le intersezioni}
-52         M\_intersections->constructIntesection ( dataFile, meshLevelSet, M\_fractures );
-53 
-54 \}\textcolor{comment}{// init}
+51     M\_intersections->constructIntesection ( mesh, meshLevelSet, M\_fractures );
+52     
+53     \textcolor{keywordflow}{return};
+54 
+55 \}\textcolor{comment}{// init}
 \end{DoxyCode}
 
 

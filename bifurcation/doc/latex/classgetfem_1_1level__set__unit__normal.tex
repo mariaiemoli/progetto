@@ -3,12 +3,29 @@
 }
 
 
+Classe che rappresenta la normale ad un levelset.  
+
+
+
+
 {\ttfamily \#include $<$X\-F\-E\-M\-Operators.\-h$>$}
 
-Diagramma delle classi per getfem\-:\-:level\-\_\-set\-\_\-unit\-\_\-normal\begin{figure}[H]
+
+
+Diagramma delle classi per getfem\-:\-:level\-\_\-set\-\_\-unit\-\_\-normal\nopagebreak
+\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=2.000000cm]{classgetfem_1_1level__set__unit__normal}
+\includegraphics[width=214pt]{classgetfem_1_1level__set__unit__normal__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Diagramma di collaborazione per getfem\-:\-:level\-\_\-set\-\_\-unit\-\_\-normal\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=214pt]{classgetfem_1_1level__set__unit__normal__coll__graph}
 \end{center}
 \end{figure}
 \subsection*{Membri pubblici}
@@ -21,6 +38,9 @@ const bgeot\-::multi\-\_\-index \& \hyperlink{classgetfem_1_1level__set__unit__n
 virtual void \hyperlink{classgetfem_1_1level__set__unit__normal_ad1c18b6cbd9bad011fc00198d06b62f8}{compute} (getfem\-::fem\-\_\-interpolation\-\_\-context \&ctx, bgeot\-::base\-\_\-tensor \&t)
 \end{DoxyCompactItemize}
 
+
+\subsection{Descrizione dettagliata}
+Classe che rappresenta la normale ad un levelset. 
 
 \subsection{Documentazione dei costruttori e dei distruttori}
 \hypertarget{classgetfem_1_1level__set__unit__normal_ab3614c6046c7f4875bf7f295dc858463}{\index{getfem\-::level\-\_\-set\-\_\-unit\-\_\-normal@{getfem\-::level\-\_\-set\-\_\-unit\-\_\-normal}!level\-\_\-set\-\_\-unit\-\_\-normal@{level\-\_\-set\-\_\-unit\-\_\-normal}}
@@ -57,15 +77,20 @@ virtual void \hyperlink{classgetfem_1_1level__set__unit__normal_ad1c18b6cbd9bad0
 21 \{
 22     size\_type cv = ctx.convex\_num();
 23     coeff.resize(mf.nb\_basic\_dof\_of\_element(cv));
-24     gmm::copy(gmm::sub\_vector(U,
-25             gmm::sub\_index(mf.ind\_basic\_dof\_of\_element(cv))), coeff);
-26     ctx.pf()->interpolation\_grad(ctx, coeff, gradU, 1);
-27     scalar\_type norm = gmm::vect\_norm2(gmm::mat\_row(gradU, 0));
-28     \textcolor{keywordflow}{for} ( size\_type i = 0; i < N; ++i )
-29     \{
-30         t [ i ] = gradU(0, i) / norm;
-31     \}
-32 \}
+24     
+25     gmm::copy( gmm::sub\_vector( U, gmm::sub\_index( mf.ind\_basic\_dof\_of\_element( cv ) ) ), coeff );
+26 
+27     ctx.pf()->interpolation\_grad( ctx, coeff, gradU, 1);
+28     
+29     scalar\_type norm = gmm::vect\_norm2( gmm::mat\_row( gradU, 0 ));
+30     
+31     \textcolor{keywordflow}{for} ( size\_type \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < N; ++\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} )
+32     \{
+33         t [ \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} ] = gradU(0, \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) / norm;
+34     \}
+35     
+36     \textcolor{keywordflow}{return};
+37 \}
 \end{DoxyCode}
 \hypertarget{classgetfem_1_1level__set__unit__normal_a752cfcceeb76e736146a75ee676366a1}{\index{getfem\-::level\-\_\-set\-\_\-unit\-\_\-normal@{getfem\-::level\-\_\-set\-\_\-unit\-\_\-normal}!sizes@{sizes}}
 \index{sizes@{sizes}!getfem::level_set_unit_normal@{getfem\-::level\-\_\-set\-\_\-unit\-\_\-normal}}
@@ -76,9 +101,9 @@ virtual void \hyperlink{classgetfem_1_1level__set__unit__normal_ad1c18b6cbd9bad0
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classgetfem_1_1level__set__unit__normal_a752cfcceeb76e736146a75ee676366a1}
 
 \begin{DoxyCode}
-38     \{
-39         \textcolor{keywordflow}{return} sizes\_;
-40     \}
+32     \{
+33         \textcolor{keywordflow}{return} sizes\_;
+34     \}
 \end{DoxyCode}
 
 

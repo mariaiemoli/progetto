@@ -1,0 +1,59 @@
+\documentclass[a4paper,11pt,openright,twoside]{report}
+\frenchspacing
+
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage[dvips]{graphicx}
+\usepackage{url}
+\usepackage{rotating}
+\usepackage{verbatim}
+\usepackage{longtable}
+\usepackage[boxed]{algorithm2e}
+\usepackage{hyperref}
+%\usepackage[toc]{glossaries}
+%\makeglossaries
+%\usepackage{lscape}
+
+\author{Daniele Bonomi}
+\title{Gestione delle identità in uno dei principali gruppi bancari europei}
+
+\begin{document}
+
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+
+%\maketitle
+
+%\hyphenation{net-list}\pagestyle{empty}
+%\include{Copertina}
+%\newpage
+%\include{ringraziamenti}
+
+\pagestyle{plain}
+\pagenumbering{Roman}
+\include{prefazione}
+
+\pagenumbering{arabic}
+\tableofcontents
+
+\include{cap1}
+\include{cap2}
+\include{subcap3_1}
+\include{subcap3_2}
+\include{subcap3_3}
+\include{cap4}
+
+\include{bibliografia}
+
+\bibliographystyle{plain}
+\bibliography{bibliografia}
+
+\include{appendice}
+
+\end{document}

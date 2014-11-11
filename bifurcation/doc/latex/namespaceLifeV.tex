@@ -28,15 +28,15 @@ std\-::istream \& \hyperlink{namespaceLifeV_aecf5099a32c6f096d09d0506ee79255b}{e
 \begin{DoxyCompactList}\small\item\em skip lines starting with '!\%\#;\$' \end{DoxyCompactList}\item 
 std\-::istream \& \hyperlink{namespaceLifeV_a2c4dd8a300964aa48909fce6ad5c72f5}{next\-Good\-Line} (std\-::istream \&s, std\-::string \&line)
 \begin{DoxyCompactList}\small\item\em gets next uncommented line \end{DoxyCompactList}\item 
-std\-::string \& \hyperlink{namespaceLifeV_a5fb0107fd71b5be2c32f536619a73175}{set\-String\-Length} (std\-::string \&s, unsigned int len, char c)
+std\-::string \& \hyperlink{namespaceLifeV_a5fb0107fd71b5be2c32f536619a73175}{set\-String\-Length} (std\-::string \&s, unsigned int len, char \hyperlink{matrici_8m_ae0323a9039add2978bf5b49550572c7c}{c})
 \item 
 int \hyperlink{namespaceLifeV_a1a787279805886c5b208055992c29c9a}{atoi} (const std\-::string \&s)
 \begin{DoxyCompactList}\small\item\em extends atoi to S\-T\-L std\-::strings (from Stroustrup) \end{DoxyCompactList}\item 
-std\-::string \hyperlink{namespaceLifeV_af57500c586141320ace55cf0b2a5c9fe}{operator+} (const std\-::string \&str, const int i)
+std\-::string \hyperlink{namespaceLifeV_af57500c586141320ace55cf0b2a5c9fe}{operator+} (const std\-::string \&str, const int \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
 \item 
-std\-::string \hyperlink{namespaceLifeV_ae00b5ce86e0f837f3f3392074652b7ed}{operator+} (const std\-::string \&str, const long int i)
+std\-::string \hyperlink{namespaceLifeV_ae00b5ce86e0f837f3f3392074652b7ed}{operator+} (const std\-::string \&str, const long int \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
 \item 
-std\-::string \hyperlink{namespaceLifeV_a54f5fa0ff0002920c744bcbaff350bc0}{operator+} (const std\-::string \&str, const unsigned int i)
+std\-::string \hyperlink{namespaceLifeV_a54f5fa0ff0002920c744bcbaff350bc0}{operator+} (const std\-::string \&str, const unsigned int \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
 \item 
 {\footnotesize template$<$typename Entry\-Type $>$ }\\void \hyperlink{namespaceLifeV_a200b22ebae8c113c2624f7195797d4a4}{parse\-List} (const std\-::string \&slist, std\-::list$<$ Entry\-Type $>$ \&list)
 \item 
@@ -48,7 +48,7 @@ double \hyperlink{namespaceLifeV_a95341022bde9111ea53dfe204cbe70ae}{string2numbe
 \item 
 {\footnotesize template$<$typename Number\-Type $>$ }\\void \hyperlink{namespaceLifeV_a5f2c3319750ceebbeb2a3bb374a2596b}{string2numbers\-Vector} (const std\-::string \&string, std\-::vector$<$ Number\-Type $>$ \&number\-Vector)
 \item 
-std\-::string \hyperlink{namespaceLifeV_aed80af702e5521c5fc90b0c33bbd5af3}{operator+} (const std\-::string \&str, const long i)
+std\-::string \hyperlink{namespaceLifeV_aed80af702e5521c5fc90b0c33bbd5af3}{operator+} (const std\-::string \&str, const long \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
 \end{DoxyCompactItemize}
 
 
@@ -85,6 +85,17 @@ extends atoi to S\-T\-L std\-::strings (from Stroustrup)
 94     \hyperlink{namespaceLifeV_a1a787279805886c5b208055992c29c9a}{return ::atoi}( s.c\_str() );
 95 \}\textcolor{comment}{// atoi}
 \end{DoxyCode}
+
+
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=305pt]{namespaceLifeV_a1a787279805886c5b208055992c29c9a_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{namespaceLifeV_aecf5099a32c6f096d09d0506ee79255b}{\index{Life\-V@{Life\-V}!eat\-Comments@{eat\-Comments}}
 \index{eat\-Comments@{eat\-Comments}!LifeV@{Life\-V}}
 \subsubsection[{eat\-Comments}]{\setlength{\rightskip}{0pt plus 5cm}std\-::istream \& Life\-V\-::eat\-Comments (
@@ -99,7 +110,7 @@ skip lines starting with '!\%\#;\$'
 
 \begin{DoxyCode}
 50 \{
-51     \textcolor{keywordtype}{char} c = \textcolor{charliteral}{'a'};
+51     \textcolor{keywordtype}{char} \hyperlink{matrici_8m_ae0323a9039add2978bf5b49550572c7c}{c} = \textcolor{charliteral}{'a'};
 52     s.get( c ) ;
 53     \textcolor{keywordflow}{while} ( c == \textcolor{charliteral}{'!'} ||
 54             c == \textcolor{charliteral}{'%'} ||
@@ -113,6 +124,28 @@ skip lines starting with '!\%\#;\$'
 62     \textcolor{keywordflow}{return} s.putback( c ) ;
 63 \}\textcolor{comment}{// eatComments}
 \end{DoxyCode}
+
+
+Questo è il grafo delle chiamate per questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=290pt]{namespaceLifeV_aecf5099a32c6f096d09d0506ee79255b_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=318pt]{namespaceLifeV_aecf5099a32c6f096d09d0506ee79255b_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{namespaceLifeV_aa91d4c3fafd93fcbfb7d0aca2b771a02}{\index{Life\-V@{Life\-V}!eat\-Line@{eat\-Line}}
 \index{eat\-Line@{eat\-Line}!LifeV@{Life\-V}}
 \subsubsection[{eat\-Line}]{\setlength{\rightskip}{0pt plus 5cm}std\-::istream \& Life\-V\-::eat\-Line (
@@ -128,6 +161,17 @@ It gets a the next line from std\-::istream
 45     \textcolor{keywordflow}{return} s ;
 46 \}\textcolor{comment}{// eatLine}
 \end{DoxyCode}
+
+
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceLifeV_aa91d4c3fafd93fcbfb7d0aca2b771a02_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{namespaceLifeV_a2e64a35012f78d9ab021477590e3bfaf}{\index{Life\-V@{Life\-V}!enum2\-String@{enum2\-String}}
 \index{enum2\-String@{enum2\-String}!LifeV@{Life\-V}}
 \subsubsection[{enum2\-String}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Enumerator\-Type $>$ std\-::string Life\-V\-::enum2\-String (
@@ -167,6 +211,17 @@ gets next uncommented line
 70     \textcolor{keywordflow}{return} s;
 71 \}\textcolor{comment}{// nextGoodLine}
 \end{DoxyCode}
+
+
+Questo è il grafo delle chiamate per questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceLifeV_a2c4dd8a300964aa48909fce6ad5c72f5_cgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{namespaceLifeV_a3c2a31cefb08654a69273a1a3bf11fac}{\index{Life\-V@{Life\-V}!number2string@{number2string}}
 \index{number2string@{number2string}!LifeV@{Life\-V}}
 \subsubsection[{number2string}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Number\-Type $>$ std\-::string Life\-V\-::number2string (
@@ -194,9 +249,9 @@ gets next uncommented line
 
 \begin{DoxyCode}
 99 \{
-100     \textcolor{keywordtype}{int} digits = abs( i ) / 10;
+100     \textcolor{keywordtype}{int} digits = abs( \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} ) / 10;
 101     \textcolor{keywordtype}{char}* str\_i = \textcolor{keyword}{new} \textcolor{keywordtype}{char}[ digits ];
-102     sprintf( str\_i, \textcolor{stringliteral}{"%i"}, i );
+102     sprintf( str\_i, \textcolor{stringliteral}{"%i"}, \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} );
 103     std::string str2 = str + str\_i;
 104     \textcolor{keyword}{delete}[] str\_i;
 105     \textcolor{keywordflow}{return} str2;
@@ -221,9 +276,9 @@ gets next uncommented line
 
 \begin{DoxyCode}
 120 \{
-121     \textcolor{keywordtype}{int} digits = i / 10;
+121     \textcolor{keywordtype}{int} digits = \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} / 10;
 122     \textcolor{keywordtype}{char}* str\_i = \textcolor{keyword}{new} \textcolor{keywordtype}{char}[ digits ];
-123     sprintf( str\_i, \textcolor{stringliteral}{"%u"}, i );
+123     sprintf( str\_i, \textcolor{stringliteral}{"%u"}, \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} );
 124     std::string str2 = str + str\_i;
 125     \textcolor{keyword}{delete}[] str\_i;
 126     \textcolor{keywordflow}{return} str2;
@@ -240,9 +295,9 @@ gets next uncommented line
 
 \begin{DoxyCode}
 110 \{
-111     \textcolor{keywordtype}{int} digits = abs( i ) / 10;
+111     \textcolor{keywordtype}{int} digits = abs( \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} ) / 10;
 112     \textcolor{keywordtype}{char}* str\_i = \textcolor{keyword}{new} \textcolor{keywordtype}{char}[ digits ];
-113     sprintf( str\_i, \textcolor{stringliteral}{"%ld"}, i );
+113     sprintf( str\_i, \textcolor{stringliteral}{"%ld"}, \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} );
 114     std::string str2 = str + str\_i;
 115     \textcolor{keyword}{delete}[] str\_i;
 116     \textcolor{keywordflow}{return} str2;
@@ -303,7 +358,7 @@ always return a std\-::string with len characters
 78 \textcolor{comment}{        - if the s has more than len characters : keep only the first len}
 79 \textcolor{comment}{        - if the s has less than len characters : complete with c until len}
 80 \textcolor{comment}{    */}
-81     std::string stmp( len, c );
+81     std::string stmp( len, \hyperlink{matrici_8m_ae0323a9039add2978bf5b49550572c7c}{c} );
 82     \textcolor{keywordflow}{if} ( s.length() > len )
 83     \{
 84         s.erase( len, s.length() );
@@ -348,7 +403,19 @@ always return a std\-::string with len characters
 164     boost::split( stringVector, \textcolor{keywordtype}{string}, boost::is\_any\_of( \textcolor{stringliteral}{","} ) );
 165 
 166     \textcolor{comment}{//Convert to the right type}
-167     \textcolor{keywordflow}{for} ( \hyperlink{namespaceLifeV_a4bd093cf6b0d5b57b2d89e0e90d610b7}{UInt} i( 0 ); i < static\_cast<UInt> ( stringVector.size() ); ++i )
-168         numberVector.push\_back( static\_cast<NumberType>( \hyperlink{namespaceLifeV_a1a787279805886c5b208055992c29c9a}{std::atoi}( stringVector[i].c\_str())));
+167     \textcolor{keywordflow}{for} ( \hyperlink{namespaceLifeV_a4bd093cf6b0d5b57b2d89e0e90d610b7}{UInt} \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}( 0 ); i < static\_cast<UInt> ( stringVector.size() ); ++\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} )
+168         numberVector.push\_back( static\_cast<NumberType>( \hyperlink{namespaceLifeV_a1a787279805886c5b208055992c29c9a}{std::atoi}( stringVector[
+      \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].c\_str())));
 169 \}
 \end{DoxyCode}
+
+
+Questo è il grafo delle chiamate per questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=305pt]{namespaceLifeV_a5f2c3319750ceebbeb2a3bb374a2596b_cgraph}
+\end{center}
+\end{figure}
+
+

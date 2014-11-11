@@ -121,6 +121,17 @@ Empty constructor (it needs a manual call to set\-String)
 57     M\_calculator.\hyperlink{classLifeV_1_1ParserSpiritGrammar_aa48cdca46ab32d3c1e55e656aa82e902}{setDefaultVariables}();
 58 \}
 \end{DoxyCode}
+
+
+Questo è il grafo delle chiamate per questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{classLifeV_1_1Parser_a439ecd746d503e75b6e07f2933a665dc_cgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{classLifeV_1_1Parser_a6acf25b7222f0c65d1414611236d1820}{\index{Life\-V\-::\-Parser@{Life\-V\-::\-Parser}!Parser@{Parser}}
 \index{Parser@{Parser}!LifeV::Parser@{Life\-V\-::\-Parser}}
 \subsubsection[{Parser}]{\setlength{\rightskip}{0pt plus 5cm}Life\-V\-::\-Parser\-::\-Parser (
@@ -154,6 +165,17 @@ Constructor.
 72     \hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString}( \textcolor{keywordtype}{string} );
 73 \}
 \end{DoxyCode}
+
+
+Questo è il grafo delle chiamate per questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLifeV_1_1Parser_a6acf25b7222f0c65d1414611236d1820_cgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{classLifeV_1_1Parser_a0f7c4d10928fd2139e76baf44996b610}{\index{Life\-V\-::\-Parser@{Life\-V\-::\-Parser}!Parser@{Parser}}
 \index{Parser@{Parser}!LifeV::Parser@{Life\-V\-::\-Parser}}
 \subsubsection[{Parser}]{\setlength{\rightskip}{0pt plus 5cm}Life\-V\-::\-Parser\-::\-Parser (
@@ -216,6 +238,17 @@ Clear all the variables.
 163     M\_evaluate = \textcolor{keyword}{true};
 164 \}
 \end{DoxyCode}
+
+
+Questo è il grafo delle chiamate per questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLifeV_1_1Parser_acbc44ff1f0b0074f071ea264a95cb9e7_cgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{classLifeV_1_1Parser_a37ae3af9abcf72ca8e1537ec771b523a}{\index{Life\-V\-::\-Parser@{Life\-V\-::\-Parser}!count\-Substring@{count\-Substring}}
 \index{count\-Substring@{count\-Substring}!LifeV::Parser@{Life\-V\-::\-Parser}}
 \subsubsection[{count\-Substring}]{\setlength{\rightskip}{0pt plus 5cm}{\bf U\-Int} Life\-V\-::\-Parser\-::count\-Substring (
@@ -236,7 +269,7 @@ number of substring
 
 \begin{DoxyCode}
 141 \{
-142     \hyperlink{namespaceLifeV_a4bd093cf6b0d5b57b2d89e0e90d610b7}{UInt} count( 0 );
+142     \hyperlink{namespaceLifeV_a4bd093cf6b0d5b57b2d89e0e90d610b7}{UInt} \hyperlink{matrici_8m_ae11b3deb3de3df7dc48e439074023e35}{count}( 0 );
 143     std::string::size\_type position( 0 );
 144 
 145     \textcolor{keywordflow}{for} ( ;; )
@@ -246,13 +279,24 @@ number of substring
 149         \textcolor{keywordflow}{if} ( position == std::string::npos )
 150             \textcolor{keywordflow}{break};
 151 
-152         ++count;
+152         ++\hyperlink{matrici_8m_ae11b3deb3de3df7dc48e439074023e35}{count};
 153         position += substring.length(); \textcolor{comment}{// start next search after this substring}
 154     \}
 155 
-156     \textcolor{keywordflow}{return} count;
+156     \textcolor{keywordflow}{return} \hyperlink{matrici_8m_ae11b3deb3de3df7dc48e439074023e35}{count};
 157 \}
 \end{DoxyCode}
+
+
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLifeV_1_1Parser_a37ae3af9abcf72ca8e1537ec771b523a_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{classLifeV_1_1Parser_a51d84fd4ae6d420620e7beee58fad673}{\index{Life\-V\-::\-Parser@{Life\-V\-::\-Parser}!evaluate@{evaluate}}
 \index{evaluate@{evaluate}!LifeV::Parser@{Life\-V\-::\-Parser}}
 \subsubsection[{evaluate}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Real} \& Life\-V\-::\-Parser\-::evaluate (
@@ -276,10 +320,10 @@ computed value
 108         M\_results.clear();
 109         \hyperlink{classLifeV_1_1Parser_a9491c77a9093b41468ca54b865c893ff}{stringIterator\_Type} start, end;
 110 
-111         \textcolor{keywordflow}{for} ( \hyperlink{namespaceLifeV_a4bd093cf6b0d5b57b2d89e0e90d610b7}{UInt} i(0); i < M\_strings.size(); ++i )
+111         \textcolor{keywordflow}{for} ( \hyperlink{namespaceLifeV_a4bd093cf6b0d5b57b2d89e0e90d610b7}{UInt} \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}(0); \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < M\_strings.size(); ++\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} )
 112         \{
-113             start = M\_strings[i].begin();
-114             end   = M\_strings[i].end();
+113             start = M\_strings[\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].begin();
+114             end   = M\_strings[\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].end();
 115 \textcolor{comment}{//#ifdef HAVE\_BOOST\_SPIRIT\_QI}
 116             qi::phrase\_parse( start, end, M\_calculator, ascii::space, M\_results );
 117 \textcolor{comment}{/*#else}
@@ -304,6 +348,17 @@ computed value
 136     \textcolor{keywordflow}{return} M\_results[id];
 137 \}
 \end{DoxyCode}
+
+
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classLifeV_1_1Parser_a51d84fd4ae6d420620e7beee58fad673_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{classLifeV_1_1Parser_a257904e57f46427a5bd7c9f80e658c2d}{\index{Life\-V\-::\-Parser@{Life\-V\-::\-Parser}!operator=@{operator=}}
 \index{operator=@{operator=}!LifeV::Parser@{Life\-V\-::\-Parser}}
 \subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Parser} \& Life\-V\-::\-Parser\-::operator= (
@@ -366,8 +421,8 @@ Set string function
 178     boost::split( M\_strings, \textcolor{keywordtype}{string}, boost::is\_any\_of( stringSeparator ) );
 179 
 180     \textcolor{comment}{//Remove white space to speed up the parser}
-181     \textcolor{keywordflow}{for} ( \hyperlink{namespaceLifeV_a4bd093cf6b0d5b57b2d89e0e90d610b7}{UInt} i = 0; i < M\_strings.size(); ++i )
-182         boost::replace\_all( M\_strings[i], \textcolor{stringliteral}{" "}, \textcolor{stringliteral}{""} );
+181     \textcolor{keywordflow}{for} ( \hyperlink{namespaceLifeV_a4bd093cf6b0d5b57b2d89e0e90d610b7}{UInt} \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < M\_strings.size(); ++\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} )
+182         boost::replace\_all( M\_strings[\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}], \textcolor{stringliteral}{" "}, \textcolor{stringliteral}{""} );
 183 
 184     \textcolor{comment}{//Reserve the space for results}
 185     M\_results.clear();
@@ -376,6 +431,28 @@ Set string function
 188     M\_evaluate = \textcolor{keyword}{true};
 189 \}
 \end{DoxyCode}
+
+
+Questo è il grafo delle chiamate per questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{\index{Life\-V\-::\-Parser@{Life\-V\-::\-Parser}!set\-Variable@{set\-Variable}}
 \index{set\-Variable@{set\-Variable}!LifeV::Parser@{Life\-V\-::\-Parser}}
 \subsubsection[{set\-Variable}]{\setlength{\rightskip}{0pt plus 5cm}void Life\-V\-::\-Parser\-::set\-Variable (
@@ -406,6 +483,28 @@ Set/replace a variable
 201     M\_evaluate = \textcolor{keyword}{true};
 202 \}
 \end{DoxyCode}
+
+
+Questo è il grafo delle chiamate per questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{classLifeV_1_1Parser_a9fa902c13c73a3b1bc6db2b5e5c5c93d}{\index{Life\-V\-::\-Parser@{Life\-V\-::\-Parser}!variable@{variable}}
 \index{variable@{variable}!LifeV::Parser@{Life\-V\-::\-Parser}}
 \subsubsection[{variable}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Real} \& Life\-V\-::\-Parser\-::variable (
@@ -435,6 +534,17 @@ value of the variable
 215     \textcolor{keywordflow}{return} M\_calculator.\hyperlink{classLifeV_1_1ParserSpiritGrammar_a768e48421db190a4eba5144932ddc4f6}{variable}( name );
 216 \}
 \end{DoxyCode}
+
+
+Questo è il grafo delle chiamate per questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLifeV_1_1Parser_a9fa902c13c73a3b1bc6db2b5e5c5c93d_cgraph}
+\end{center}
+\end{figure}
+
+
 
 
 La documentazione per questa classe è stata generata a partire dai seguenti file\-:\begin{DoxyCompactItemize}

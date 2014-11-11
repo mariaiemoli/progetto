@@ -2,6 +2,13 @@
 \label{PointData_8cc}\index{src/\-Point\-Data.\-cc@{src/\-Point\-Data.\-cc}}
 }
 {\ttfamily \#include \char`\"{}../include/\-Point\-Data.\-h\char`\"{}}\\*
+Grafo delle dipendenze di inclusione per Point\-Data.\-cc\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{PointData_8cc__incl}
+\end{center}
+\end{figure}
 \subsection*{Funzioni}
 \begin{DoxyCompactItemize}
 \item 
@@ -26,9 +33,10 @@ std\-::ostream \& \hyperlink{PointData_8cc_a66faab14b19458cf79ac85d61365a123}{op
 )}}\label{PointData_8cc_a366cfe417d483e7cb1b689b52f294e03}
 
 \begin{DoxyCode}
-75 \{
-76   \textcolor{keywordflow}{return} p*d;
-77 \}
+96 \{
+97   \textcolor{keywordflow}{return} p*d;
+98   
+99 \}\textcolor{comment}{// operator *}
 \end{DoxyCode}
 \hypertarget{PointData_8cc_acdd6a398d9bbf1552c309bf854df4a10}{\index{Point\-Data.\-cc@{Point\-Data.\-cc}!operator+@{operator+}}
 \index{operator+@{operator+}!PointData.cc@{Point\-Data.\-cc}}
@@ -40,11 +48,23 @@ std\-::ostream \& \hyperlink{PointData_8cc_a66faab14b19458cf79ac85d61365a123}{op
 )}}\label{PointData_8cc_acdd6a398d9bbf1552c309bf854df4a10}
 
 \begin{DoxyCode}
-51 \{
-52   \textcolor{keywordflow}{return} \hyperlink{classPointData}{PointData}( a.\hyperlink{classPointData_a5accef5ea9e813dd4517eb050f276ccf}{x}()+b.\hyperlink{classPointData_a5accef5ea9e813dd4517eb050f276ccf}{x}(),
-53                     a.\hyperlink{classPointData_a90dbf32a9579cb1cde67458d4ad38209}{y}()+b.\hyperlink{classPointData_a90dbf32a9579cb1cde67458d4ad38209}{y}() );
-54 \}
+68 \{
+69   \textcolor{keywordflow}{return} \hyperlink{classPointData}{PointData}( a.\hyperlink{classPointData_a5accef5ea9e813dd4517eb050f276ccf}{x}()+b.\hyperlink{classPointData_a5accef5ea9e813dd4517eb050f276ccf}{x}(),
+70                     a.\hyperlink{classPointData_a90dbf32a9579cb1cde67458d4ad38209}{y}()+b.\hyperlink{classPointData_a90dbf32a9579cb1cde67458d4ad38209}{y}() );
+71   
+72 \}\textcolor{comment}{// operator +}
 \end{DoxyCode}
+
+
+Questo è il grafo delle chiamate per questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=242pt]{PointData_8cc_acdd6a398d9bbf1552c309bf854df4a10_cgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{PointData_8cc_a2468a63a40cab54a468719f2a3f28643}{\index{Point\-Data.\-cc@{Point\-Data.\-cc}!operator-\/@{operator-\/}}
 \index{operator-\/@{operator-\/}!PointData.cc@{Point\-Data.\-cc}}
 \subsubsection[{operator-\/}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Point\-Data} operator-\/ (
@@ -55,11 +75,23 @@ std\-::ostream \& \hyperlink{PointData_8cc_a66faab14b19458cf79ac85d61365a123}{op
 )}}\label{PointData_8cc_a2468a63a40cab54a468719f2a3f28643}
 
 \begin{DoxyCode}
-45 \{
-46   \textcolor{keywordflow}{return} \hyperlink{classPointData}{PointData}( a.\hyperlink{classPointData_a5accef5ea9e813dd4517eb050f276ccf}{x}()-b.\hyperlink{classPointData_a5accef5ea9e813dd4517eb050f276ccf}{x}(),
-47                     a.\hyperlink{classPointData_a90dbf32a9579cb1cde67458d4ad38209}{y}()-b.\hyperlink{classPointData_a90dbf32a9579cb1cde67458d4ad38209}{y}() );
-48 \}
+61 \{
+62   \textcolor{keywordflow}{return} \hyperlink{classPointData}{PointData}( a.\hyperlink{classPointData_a5accef5ea9e813dd4517eb050f276ccf}{x}()-b.\hyperlink{classPointData_a5accef5ea9e813dd4517eb050f276ccf}{x}(),
+63                     a.\hyperlink{classPointData_a90dbf32a9579cb1cde67458d4ad38209}{y}()-b.\hyperlink{classPointData_a90dbf32a9579cb1cde67458d4ad38209}{y}() );
+64   
+65 \}\textcolor{comment}{// operator -}
 \end{DoxyCode}
+
+
+Questo è il grafo delle chiamate per questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=239pt]{PointData_8cc_a2468a63a40cab54a468719f2a3f28643_cgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{PointData_8cc_a66faab14b19458cf79ac85d61365a123}{\index{Point\-Data.\-cc@{Point\-Data.\-cc}!operator$<$$<$@{operator$<$$<$}}
 \index{operator$<$$<$@{operator$<$$<$}!PointData.cc@{Point\-Data.\-cc}}
 \subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}std\-::ostream\& operator$<$$<$ (
@@ -70,7 +102,20 @@ std\-::ostream \& \hyperlink{PointData_8cc_a66faab14b19458cf79ac85d61365a123}{op
 )}}\label{PointData_8cc_a66faab14b19458cf79ac85d61365a123}
 
 \begin{DoxyCode}
-85 \{
-86     stream << \textcolor{stringliteral}{" ( "} << p.x() << \textcolor{stringliteral}{", "} << p.y() << \textcolor{stringliteral}{" ) "} << std::endl;
-87     \textcolor{keywordflow}{return} stream;
-88 \}\end{DoxyCode}
+108 \{
+109     stream << \textcolor{stringliteral}{" ( "} << p.x() << \textcolor{stringliteral}{", "} << p.y() << \textcolor{stringliteral}{" ) "} << std::endl;
+110     
+111     \textcolor{keywordflow}{return} stream;
+112     
+113 \}\end{DoxyCode}
+
+
+Questo è il grafo delle chiamate per questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{PointData_8cc_a66faab14b19458cf79ac85d61365a123_cgraph}
+\end{center}
+\end{figure}
+
+

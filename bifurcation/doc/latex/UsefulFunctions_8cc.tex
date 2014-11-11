@@ -2,69 +2,37 @@
 \label{UsefulFunctions_8cc}\index{src/\-Useful\-Functions.\-cc@{src/\-Useful\-Functions.\-cc}}
 }
 {\ttfamily \#include \char`\"{}../include/\-Useful\-Functions.\-h\char`\"{}}\\*
+Grafo delle dipendenze di inclusione per Useful\-Functions.\-cc\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{UsefulFunctions_8cc__incl}
+\end{center}
+\end{figure}
 \subsection*{Funzioni}
 \begin{DoxyCompactItemize}
 \item 
 void \hyperlink{UsefulFunctions_8cc_ac9c4dffc2df78de82445b5a1a7bf3116}{mass\-Lumping} (\hyperlink{Core_8h_afba9f623673e2ae32054015bdb5500f9}{sparse\-Matrix\-\_\-\-Type} \&matrix)
 \begin{DoxyCompactList}\small\item\em \hyperlink{UsefulFunctions_8cc}{Useful\-Functions.\-cc}. \end{DoxyCompactList}\item 
 void \hyperlink{UsefulFunctions_8cc_add7b8b88dc68d93addd88b9a4dc6e8bf}{export\-Solution} (const std\-::string \&file\-Name, const std\-::string \&solution\-Name, const getfem\-::mesh\-\_\-fem \&mesh\-F\-E\-M, const \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalar\-Vector\-\_\-\-Type} \&solution)
-\begin{DoxyCompactList}\small\item\em \hyperlink{UsefulFunctions_8h}{Useful\-Functions.\-h}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Funzioni per esportare soluzioni e mesh. \end{DoxyCompactList}\item 
 void \hyperlink{UsefulFunctions_8cc_a08d7eb25d2acdceda04b336d0c75f0ca}{export\-Solution\-In\-Cell} (const std\-::string \&file\-Name, const std\-::string \&solution\-Name, const getfem\-::mesh\-\_\-fem \&mesh\-F\-E\-M, const \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalar\-Vector\-\_\-\-Type} \&solution)
 \item 
 void \hyperlink{UsefulFunctions_8cc_ae4bd400c144e72bee180107bb41ae72a}{export\-Mesh} (const std\-::string \&file\-Name, const getfem\-::mesh \&mesh)
 \item 
 scalar\-\_\-type \hyperlink{UsefulFunctions_8cc_ad9cf8f3fe42287349e8e1b2f1f824958}{point\-Distance} (const scalar\-\_\-type \&x0, const scalar\-\_\-type \&x1, const scalar\-\_\-type \&y0, const scalar\-\_\-type \&y1)
-\item 
+\begin{DoxyCompactList}\small\item\em Funzione che calcola la distanza tra due punti. \end{DoxyCompactList}\item 
 void \hyperlink{UsefulFunctions_8cc_a0ea0b08a12a1e6a94718cf3bcd60edeb}{from\-Bit\-Vector\-To\-Std\-Vector} (dal\-::bit\-\_\-vector \&bit\-Vector, std\-::vector$<$ size\-\_\-type $>$ \&std\-Vector)
 \item 
 char \hyperlink{UsefulFunctions_8cc_abe0e6d66cd0f0b6f6893b3c1c6a7029b}{int\-To\-Char} (const size\-\_\-type \&integer)
 \item 
 std\-::string \hyperlink{UsefulFunctions_8cc_abecc60f3f34576882b4cf1d8f4431e88}{region\-Signs} (const \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalar\-Vector\-\_\-\-Type} \&level\-Set\-Value)
-\item 
-bool \hyperlink{UsefulFunctions_8cc_a521d2591ae0fa0558fc6ff4c3a4996c4}{is\-In\-Triangle} (const getfem\-::mesh \&mesh, const size\-\_\-type \&element\-I\-D, const base\-\_\-node \&node, const scalar\-\_\-type \&toll)
-\item 
+\begin{DoxyCompactList}\small\item\em Funzione che restituisce ' + ' se il levelset ha valore positivo, ' -\/ ' in caso contrario. \end{DoxyCompactList}\item 
 std\-::string \hyperlink{UsefulFunctions_8cc_ad72b66ecae17bd314d54beee9489bb1b}{get\-Operation} (const std\-::string \&sub\-Region, const \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{size\-Vector\-\_\-\-Type} \&level\-Sets)
-\item 
-std\-::pair$<$ std\-::string, size\-\_\-type $>$ \hyperlink{UsefulFunctions_8cc_a87ad1850ebc381cc2a65e498376f47c2}{compara\-Segni} (const std\-::string \&region, const \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalar\-Vector\-\_\-\-Type} \&signs)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Funzione che restituisce un'operazione tra due levelset. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Documentazione delle funzioni}
-\hypertarget{UsefulFunctions_8cc_a87ad1850ebc381cc2a65e498376f47c2}{\index{Useful\-Functions.\-cc@{Useful\-Functions.\-cc}!compara\-Segni@{compara\-Segni}}
-\index{compara\-Segni@{compara\-Segni}!UsefulFunctions.cc@{Useful\-Functions.\-cc}}
-\subsubsection[{compara\-Segni}]{\setlength{\rightskip}{0pt plus 5cm}std\-::pair$<$ std\-::string, size\-\_\-type $>$ compara\-Segni (
-\begin{DoxyParamCaption}
-\item[{const std\-::string \&}]{region, }
-\item[{const {\bf scalar\-Vector\-\_\-\-Type} \&}]{signs}
-\end{DoxyParamCaption}
-)}}\label{UsefulFunctions_8cc_a87ad1850ebc381cc2a65e498376f47c2}
-
-\begin{DoxyCode}
-168 \{
-169     std::pair < std::string, size\_type > compara;
-170     compara.first = \textcolor{stringliteral}{"Base"};
-171 
-172     scalar\_type flag = 0;
-173 
-174     \textcolor{keywordflow}{for} ( size\_type i = 0; i < signs.size(); ++i )
-175     \{
-176         \textcolor{keywordflow}{if} ( !( ( region[i] == \textcolor{charliteral}{'+'} && signs[i] > 0 ) || ( region[i] == \textcolor{charliteral}{'-'} && signs[i] < 0 ) ) )
-177         \{
-178             ++flag;
-179             compara.first = \textcolor{stringliteral}{"Extended"};
-180             compara.second = i;
-181         \}
-182     \}
-183 
-184     \textcolor{keywordflow}{if} ( flag == signs.size() )
-185     \{
-186         compara.first = \textcolor{stringliteral}{"Extra"};
-187     \}
-188 
-189     \textcolor{keywordflow}{return} compara;
-190 
-191 \}\textcolor{comment}{// comparaSegni}
-\end{DoxyCode}
 \hypertarget{UsefulFunctions_8cc_ae4bd400c144e72bee180107bb41ae72a}{\index{Useful\-Functions.\-cc@{Useful\-Functions.\-cc}!export\-Mesh@{export\-Mesh}}
 \index{export\-Mesh@{export\-Mesh}!UsefulFunctions.cc@{Useful\-Functions.\-cc}}
 \subsubsection[{export\-Mesh}]{\setlength{\rightskip}{0pt plus 5cm}void export\-Mesh (
@@ -75,16 +43,29 @@ std\-::pair$<$ std\-::string, size\-\_\-type $>$ \hyperlink{UsefulFunctions_8cc_
 )}}\label{UsefulFunctions_8cc_ae4bd400c144e72bee180107bb41ae72a}
 
 \begin{DoxyCode}
-59 \{
-60     getfem::vtk\_export exporter(fileName.data(), \textcolor{keyword}{true});
-61     \textcolor{comment}{/*}
-62 \textcolor{comment}{     * con true mi permette di esportare la mesh in formato txt}
-63 \textcolor{comment}{     */}
-64     exporter.exporting(mesh);
-65 
-66     exporter.write\_mesh();
-67 \}\textcolor{comment}{// exportMesh}
+65 \{
+66     getfem::vtk\_export exporter(fileName.data(), \textcolor{keyword}{true});
+67     
+68     \textcolor{comment}{// con true mi permette di esportare la mesh in formato txt}
+69      
+70     exporter.exporting(mesh);
+71 
+72     exporter.write\_mesh();
+73     
+74     \textcolor{keywordflow}{return};
+75 \}\textcolor{comment}{// exportMesh}
 \end{DoxyCode}
+
+
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=290pt]{UsefulFunctions_8cc_ae4bd400c144e72bee180107bb41ae72a_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{UsefulFunctions_8cc_add7b8b88dc68d93addd88b9a4dc6e8bf}{\index{Useful\-Functions.\-cc@{Useful\-Functions.\-cc}!export\-Solution@{export\-Solution}}
 \index{export\-Solution@{export\-Solution}!UsefulFunctions.cc@{Useful\-Functions.\-cc}}
 \subsubsection[{export\-Solution}]{\setlength{\rightskip}{0pt plus 5cm}void export\-Solution (
@@ -97,21 +78,34 @@ std\-::pair$<$ std\-::string, size\-\_\-type $>$ \hyperlink{UsefulFunctions_8cc_
 )}}\label{UsefulFunctions_8cc_add7b8b88dc68d93addd88b9a4dc6e8bf}
 
 
-\hyperlink{UsefulFunctions_8h}{Useful\-Functions.\-h}. 
+Funzioni per esportare soluzioni e mesh. 
 
 
 \begin{DoxyCode}
-30 \{
-31     getfem::vtk\_export exporter(fileName.data());
-32 
-33     exporter.exporting(meshFEM);
+32 \{
+33     getfem::vtk\_export exporter(fileName.data());
 34 
-35     exporter.write\_mesh();
+35     exporter.exporting(meshFEM);
 36 
-37     exporter.write\_point\_data(meshFEM, solution, solutionName.data());
+37     exporter.write\_mesh();
 38 
-39 \}\textcolor{comment}{// exportSolution}
+39     exporter.write\_point\_data(meshFEM, solution, solutionName.data());
+40     
+41     \textcolor{keywordflow}{return};
+42 
+43 \}\textcolor{comment}{// exportSolution}
 \end{DoxyCode}
+
+
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=302pt]{UsefulFunctions_8cc_add7b8b88dc68d93addd88b9a4dc6e8bf_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{UsefulFunctions_8cc_a08d7eb25d2acdceda04b336d0c75f0ca}{\index{Useful\-Functions.\-cc@{Useful\-Functions.\-cc}!export\-Solution\-In\-Cell@{export\-Solution\-In\-Cell}}
 \index{export\-Solution\-In\-Cell@{export\-Solution\-In\-Cell}!UsefulFunctions.cc@{Useful\-Functions.\-cc}}
 \subsubsection[{export\-Solution\-In\-Cell}]{\setlength{\rightskip}{0pt plus 5cm}void export\-Solution\-In\-Cell (
@@ -124,17 +118,30 @@ std\-::pair$<$ std\-::string, size\-\_\-type $>$ \hyperlink{UsefulFunctions_8cc_
 )}}\label{UsefulFunctions_8cc_a08d7eb25d2acdceda04b336d0c75f0ca}
 
 \begin{DoxyCode}
-46 \{
-47     getfem::vtk\_export exporter(fileName.data());
-48  
-49     exporter.exporting(meshFEM);
-50  
-51     exporter.write\_mesh();
+50 \{
+51     getfem::vtk\_export exporter(fileName.data());
 52  
-53     exporter.write\_cell\_data(solution, solutionName.data());
+53     exporter.exporting(meshFEM);
 54  
-55 \}\textcolor{comment}{// exportSolutionInCell}
+55     exporter.write\_mesh();
+56  
+57     exporter.write\_cell\_data(solution, solutionName.data());
+58     
+59     \textcolor{keywordflow}{return};
+60  
+61 \}\textcolor{comment}{// exportSolutionInCell}
 \end{DoxyCode}
+
+
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=337pt]{UsefulFunctions_8cc_a08d7eb25d2acdceda04b336d0c75f0ca_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{UsefulFunctions_8cc_a0ea0b08a12a1e6a94718cf3bcd60edeb}{\index{Useful\-Functions.\-cc@{Useful\-Functions.\-cc}!from\-Bit\-Vector\-To\-Std\-Vector@{from\-Bit\-Vector\-To\-Std\-Vector}}
 \index{from\-Bit\-Vector\-To\-Std\-Vector@{from\-Bit\-Vector\-To\-Std\-Vector}!UsefulFunctions.cc@{Useful\-Functions.\-cc}}
 \subsubsection[{from\-Bit\-Vector\-To\-Std\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}void from\-Bit\-Vector\-To\-Std\-Vector (
@@ -145,16 +152,29 @@ std\-::pair$<$ std\-::string, size\-\_\-type $>$ \hyperlink{UsefulFunctions_8cc_
 )}}\label{UsefulFunctions_8cc_a0ea0b08a12a1e6a94718cf3bcd60edeb}
 
 \begin{DoxyCode}
-80 \{
-81         size\_type i\_cv = 0;
-82 
-83         \textcolor{keywordflow}{for} ( i\_cv << bitVector; i\_cv != size\_type(-1); i\_cv << bitVector )
-84         \{
-85                 stdVector.push\_back ( i\_cv );
-86         \}
-87 
-88 \} \textcolor{comment}{// fromBitVectorToStdVector}
+88 \{
+89         size\_type i\_cv = 0;
+90 
+91         \textcolor{keywordflow}{for} ( i\_cv << bitVector; i\_cv != size\_type(-1); i\_cv << bitVector )
+92         \{
+93                 stdVector.push\_back ( i\_cv );
+94         \}
+95         
+96         \textcolor{keywordflow}{return};
+97 
+98 \} \textcolor{comment}{// fromBitVectorToStdVector}
 \end{DoxyCode}
+
+
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{UsefulFunctions_8cc_a0ea0b08a12a1e6a94718cf3bcd60edeb_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{UsefulFunctions_8cc_ad72b66ecae17bd314d54beee9489bb1b}{\index{Useful\-Functions.\-cc@{Useful\-Functions.\-cc}!get\-Operation@{get\-Operation}}
 \index{get\-Operation@{get\-Operation}!UsefulFunctions.cc@{Useful\-Functions.\-cc}}
 \subsubsection[{get\-Operation}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string get\-Operation (
@@ -164,31 +184,46 @@ std\-::pair$<$ std\-::string, size\-\_\-type $>$ \hyperlink{UsefulFunctions_8cc_
 \end{DoxyParamCaption}
 )}}\label{UsefulFunctions_8cc_ad72b66ecae17bd314d54beee9489bb1b}
 
+
+Funzione che restituisce un'operazione tra due levelset. 
+
+
 \begin{DoxyCode}
-140 \{
-141     std::ostringstream operation;
+129 \{
+130     std::ostringstream operation;
+131 
+132     \textcolor{keywordflow}{for} ( size\_type \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < levelSets.size(); ++\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} )
+133     \{
+134         \textcolor{keywordflow}{if} ( subRegion [\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] == \textcolor{charliteral}{'-'} )
+135         \{
+136             operation << \textcolor{stringliteral}{"(!"} << \hyperlink{UsefulFunctions_8h_abe0e6d66cd0f0b6f6893b3c1c6a7029b}{intToChar} ( levelSets[\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] ) << \textcolor{stringliteral}{")"};
+137         \}
+138         \textcolor{keywordflow}{else}
+139         \{
+140             operation << \hyperlink{UsefulFunctions_8h_abe0e6d66cd0f0b6f6893b3c1c6a7029b}{intToChar} ( levelSets[\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] );
+141         \}
 142 
-143     \textcolor{keywordflow}{for} ( size\_type i = 0; i < levelSets.size(); ++i )
-144     \{
-145         \textcolor{keywordflow}{if} ( subRegion [i] == \textcolor{charliteral}{'-'} )
-146         \{
-147             operation << \textcolor{stringliteral}{"(!"} << \hyperlink{UsefulFunctions_8cc_abe0e6d66cd0f0b6f6893b3c1c6a7029b}{intToChar} ( levelSets[i] ) << \textcolor{stringliteral}{")"};
-148         \}
-149         \textcolor{keywordflow}{else}
-150         \{
-151             operation << \hyperlink{UsefulFunctions_8cc_abe0e6d66cd0f0b6f6893b3c1c6a7029b}{intToChar} ( levelSets[i] );
-152         \}
-153 
-154         \textcolor{comment}{// Not the last one}
-155         \textcolor{keywordflow}{if} ( i != levelSets.size() - 1 )
-156         \{
-157             operation << \textcolor{stringliteral}{"*"};
-158         \}
-159     \}
-160 
-161     \textcolor{keywordflow}{return} operation.str().c\_str();
-162 \} \textcolor{comment}{// getOperation}
+143         \textcolor{comment}{// Not the last one}
+144         \textcolor{keywordflow}{if} ( \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} != levelSets.size() - 1 )
+145         \{
+146             operation << \textcolor{stringliteral}{"*"};
+147         \}
+148     \}
+149 
+150     \textcolor{keywordflow}{return} operation.str().c\_str();
+151 \} \textcolor{comment}{// getOperation}
 \end{DoxyCode}
+
+
+Questo è il grafo delle chiamate per questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=244pt]{UsefulFunctions_8cc_ad72b66ecae17bd314d54beee9489bb1b_cgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{UsefulFunctions_8cc_abe0e6d66cd0f0b6f6893b3c1c6a7029b}{\index{Useful\-Functions.\-cc@{Useful\-Functions.\-cc}!int\-To\-Char@{int\-To\-Char}}
 \index{int\-To\-Char@{int\-To\-Char}!UsefulFunctions.cc@{Useful\-Functions.\-cc}}
 \subsubsection[{int\-To\-Char}]{\setlength{\rightskip}{0pt plus 5cm}char int\-To\-Char (
@@ -198,42 +233,21 @@ std\-::pair$<$ std\-::string, size\-\_\-type $>$ \hyperlink{UsefulFunctions_8cc_
 )}}\label{UsefulFunctions_8cc_abe0e6d66cd0f0b6f6893b3c1c6a7029b}
 
 \begin{DoxyCode}
-92 \{
-93         \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{char}\textcolor{keyword}{>}( integer + 97 );
-94 \} \textcolor{comment}{// intToChar}
+102 \{
+103         \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{char}\textcolor{keyword}{>}( integer + 97 );
+104 \} \textcolor{comment}{// intToChar}
 \end{DoxyCode}
-\hypertarget{UsefulFunctions_8cc_a521d2591ae0fa0558fc6ff4c3a4996c4}{\index{Useful\-Functions.\-cc@{Useful\-Functions.\-cc}!is\-In\-Triangle@{is\-In\-Triangle}}
-\index{is\-In\-Triangle@{is\-In\-Triangle}!UsefulFunctions.cc@{Useful\-Functions.\-cc}}
-\subsubsection[{is\-In\-Triangle}]{\setlength{\rightskip}{0pt plus 5cm}bool is\-In\-Triangle (
-\begin{DoxyParamCaption}
-\item[{const getfem\-::mesh \&}]{mesh, }
-\item[{const size\-\_\-type \&}]{element\-I\-D, }
-\item[{const base\-\_\-node \&}]{node, }
-\item[{const scalar\-\_\-type \&}]{toll}
-\end{DoxyParamCaption}
-)}}\label{UsefulFunctions_8cc_a521d2591ae0fa0558fc6ff4c3a4996c4}
 
-\begin{DoxyCode}
-118 \{
-119     \textcolor{keyword}{const} base\_node x0 = node - mesh.points\_of\_convex(elementID) [ 0 ];
-120     \textcolor{keyword}{const} base\_node x1 = node - mesh.points\_of\_convex(elementID) [ 1 ];
-121     \textcolor{keyword}{const} base\_node x2 = node - mesh.points\_of\_convex(elementID) [ 2 ];
-122 
-123     \textcolor{keyword}{const} scalar\_type A = 0.5 * ( gmm::abs(x0 [ 0 ] * x1 [ 1 ] - x0 [ 1 ] * x1 [ 0 ]) +
-124                                   gmm::abs(x0 [ 0 ] * x2 [ 1 ] - x0 [ 1 ] * x2 [ 0 ]) +
-125                                   gmm::abs(x2 [ 0 ] * x1 [ 1 ] - x2 [ 1 ] * x1 [ 0 ]) );
-126 
-127     \textcolor{keywordflow}{if} ( gmm::abs( A - mesh.convex\_area\_estimate(elementID) ) <= toll )
-128     \{
-129         \textcolor{keywordflow}{return} \textcolor{keyword}{true};
-130     \}
-131     \textcolor{keywordflow}{else}
-132     \{
-133         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
-134     \}
-135 
-136 \} \textcolor{comment}{// isInTriangle}
-\end{DoxyCode}
+
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=244pt]{UsefulFunctions_8cc_abe0e6d66cd0f0b6f6893b3c1c6a7029b_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{UsefulFunctions_8cc_ac9c4dffc2df78de82445b5a1a7bf3116}{\index{Useful\-Functions.\-cc@{Useful\-Functions.\-cc}!mass\-Lumping@{mass\-Lumping}}
 \index{mass\-Lumping@{mass\-Lumping}!UsefulFunctions.cc@{Useful\-Functions.\-cc}}
 \subsubsection[{mass\-Lumping}]{\setlength{\rightskip}{0pt plus 5cm}void mass\-Lumping (
@@ -245,24 +259,26 @@ std\-::pair$<$ std\-::string, size\-\_\-type $>$ \hyperlink{UsefulFunctions_8cc_
 
 \hyperlink{UsefulFunctions_8cc}{Useful\-Functions.\-cc}. 
 
-
+\hyperlink{UsefulFunctions_8h}{Useful\-Functions.\-h}.
 \begin{DoxyCode}
 8 \{
 9 
 10     \textcolor{keyword}{const} scalar\_type matrixSize = gmm::mat\_nrows(matrix);
 11 
-12     \textcolor{keywordflow}{for} ( size\_type i = 0; i < matrixSize; ++i )
+12     \textcolor{keywordflow}{for} ( size\_type \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < matrixSize; ++\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} )
 13     \{
 14         scalar\_type lumped = 0;
 15 
 16         \textcolor{keywordflow}{for} ( size\_type j = 0; j < matrixSize; ++j )
 17         \{
-18             lumped += matrix(i, j);
-19             matrix(i, j) = 0;
+18             lumped += matrix(\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}, j);
+19             matrix(\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}, j) = 0;
 20         \}
-21         matrix(i, i) = lumped;
+21         matrix(\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}, \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}) = lumped;
 22     \}
-23 \}\textcolor{comment}{// massLumping}
+23     
+24     \textcolor{keywordflow}{return};
+25 \}\textcolor{comment}{// massLumping}
 \end{DoxyCode}
 \hypertarget{UsefulFunctions_8cc_ad9cf8f3fe42287349e8e1b2f1f824958}{\index{Useful\-Functions.\-cc@{Useful\-Functions.\-cc}!point\-Distance@{point\-Distance}}
 \index{point\-Distance@{point\-Distance}!UsefulFunctions.cc@{Useful\-Functions.\-cc}}
@@ -275,11 +291,26 @@ std\-::pair$<$ std\-::string, size\-\_\-type $>$ \hyperlink{UsefulFunctions_8cc_
 \end{DoxyParamCaption}
 )}}\label{UsefulFunctions_8cc_ad9cf8f3fe42287349e8e1b2f1f824958}
 
+
+Funzione che calcola la distanza tra due punti. 
+
+
 \begin{DoxyCode}
-74 \{
-75     \textcolor{keywordflow}{return} std::sqrt(std::pow(x0 - x1, 2) + std::pow(y0 - y1, 2));
-76 \}\textcolor{comment}{// pointDistance}
+82 \{
+83     \textcolor{keywordflow}{return} std::sqrt(std::pow(x0 - x1, 2) + std::pow(y0 - y1, 2));
+84 \}\textcolor{comment}{// pointDistance}
 \end{DoxyCode}
+
+
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=327pt]{UsefulFunctions_8cc_ad9cf8f3fe42287349e8e1b2f1f824958_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{UsefulFunctions_8cc_abecc60f3f34576882b4cf1d8f4431e88}{\index{Useful\-Functions.\-cc@{Useful\-Functions.\-cc}!region\-Signs@{region\-Signs}}
 \index{region\-Signs@{region\-Signs}!UsefulFunctions.cc@{Useful\-Functions.\-cc}}
 \subsubsection[{region\-Signs}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string region\-Signs (
@@ -288,22 +319,49 @@ std\-::pair$<$ std\-::string, size\-\_\-type $>$ \hyperlink{UsefulFunctions_8cc_
 \end{DoxyParamCaption}
 )}}\label{UsefulFunctions_8cc_abecc60f3f34576882b4cf1d8f4431e88}
 
+
+Funzione che restituisce ' + ' se il levelset ha valore positivo, ' -\/ ' in caso contrario. 
+
+
 \begin{DoxyCode}
-98 \{
-99     std::ostringstream \hyperlink{UsefulFunctions_8cc_abecc60f3f34576882b4cf1d8f4431e88}{regionSigns};
-100     \textcolor{keyword}{const} size\_type numLevelSet = levelSetValue.size();
-101     \textcolor{keywordflow}{for} ( size\_type i = 0; i < numLevelSet; ++i )
-102     \{
-103         \textcolor{keywordflow}{if} ( levelSetValue[i] > 0 )
-104         \{
-105             regionSigns << \textcolor{stringliteral}{"+"};
-106         \}
-107         \textcolor{keywordflow}{else}
-108         \{
-109             regionSigns << \textcolor{stringliteral}{"-"};
-110         \}
-111     \}
-112 
-113     \textcolor{keywordflow}{return} regionSigns.str();
-114 \} \textcolor{comment}{// regionSigns}
+108 \{
+109     std::ostringstream \hyperlink{UsefulFunctions_8h_abecc60f3f34576882b4cf1d8f4431e88}{regionSigns};
+110     \textcolor{keyword}{const} size\_type numLevelSet = levelSetValue.size();
+111     
+112     \textcolor{keywordflow}{for} ( size\_type \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < numLevelSet; ++\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} )
+113     \{
+114         \textcolor{keywordflow}{if} ( levelSetValue[\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] > 0 )
+115         \{
+116             regionSigns << \textcolor{stringliteral}{"+"};
+117         \}
+118         \textcolor{keywordflow}{else}
+119         \{
+120             regionSigns << \textcolor{stringliteral}{"-"};
+121         \}
+122     \}
+123 
+124     \textcolor{keywordflow}{return} regionSigns.str();
+125 \} \textcolor{comment}{// regionSigns}
 \end{DoxyCode}
+
+
+Questo è il grafo delle chiamate per questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{UsefulFunctions_8cc_abecc60f3f34576882b4cf1d8f4431e88_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=145pt]{UsefulFunctions_8cc_abecc60f3f34576882b4cf1d8f4431e88_icgraph}
+\end{center}
+\end{figure}
+
+

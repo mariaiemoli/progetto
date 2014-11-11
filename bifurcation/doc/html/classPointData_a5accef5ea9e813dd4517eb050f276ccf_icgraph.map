@@ -1,0 +1,20 @@
+<map id="PointData::x" name="PointData::x">
+<area shape="rect" id="node2" href="$classMatrixBifurcationHandler.html#a4f0a8f707112cfd7576d2331f659e068" title="MatrixBifurcationHandler\l::SetDOFIntersecton" alt="" coords="384,15,540,56"/>
+<area shape="rect" id="node4" href="$classPointData.html#a110696aaa98e78579880de5b83a93c9e" title="PointData::PointData" alt="" coords="169,58,312,85"/>
+<area shape="rect" id="node5" href="$classPointData.html#a9cbe93016a271a90a23c44fe4830cc68" title="PointData::getCoordinates" alt="" coords="155,109,326,136"/>
+<area shape="rect" id="node6" href="$classPointData.html#a2a1e7d5a276c675e92c4cb4daad1c6c3" title="PointData::operator+=" alt="" coords="167,160,314,186"/>
+<area shape="rect" id="node7" href="$classPointData.html#ac96b0706201f8fa9d47a11b8ca41f50f" title="PointData::operator&#45;=" alt="" coords="169,210,312,237"/>
+<area shape="rect" id="node8" href="$PointData_8cc.html#a2468a63a40cab54a468719f2a3f28643" title="operator&#45;" alt="" coords="205,261,277,288"/>
+<area shape="rect" id="node9" href="$PointData_8cc.html#acdd6a398d9bbf1552c309bf854df4a10" title="operator+" alt="" coords="203,312,279,338"/>
+<area shape="rect" id="node10" href="$classPointData.html#ad19da242c16ae018a91b058dd1f71c5c" title="PointData::operator*" alt="" coords="172,362,309,389"/>
+<area shape="rect" id="node11" href="$classPointData.html#aee654398556253e58e2eac86dacd6bc8" title="PointData::operator=" alt="" coords="171,413,310,440"/>
+<area shape="rect" id="node12" href="$classPointData.html#aaa93107dbb5690747c82fccf45a13d6b" title="Dot product. " alt="" coords="189,464,292,490"/>
+<area shape="rect" id="node13" href="$PointData_8cc.html#a66faab14b19458cf79ac85d61365a123" title="operator\&lt;\&lt;" alt="" coords="199,514,282,541"/>
+<area shape="rect" id="node14" href="$classTriangleData.html#a3b110e4ceb09cc5368fcecad9938a1c8" title="Funzione che restituisce il vettore che rappresenta la normale uscente da un lato. " alt="" coords="145,565,336,592"/>
+<area shape="rect" id="node19" href="$classIntersection.html#ad0bef2cc1bd1f80e72e4b265e19225ca" title="Le fratture devono essere date in senso orario. " alt="" coords="165,616,317,642"/>
+<area shape="rect" id="node3" href="$classDarcyFractured.html#a7af785ff47dda6db2bcc0846c47877c1" title="Funzione che assembla tutte le matrici e il termine noto di destra. " alt="" coords="996,173,1165,200"/>
+<area shape="rect" id="node15" href="$classMatrixBifurcationHandler.html#ac134a5731e6614e543241a018ccf8c34" title="Funzione che calcola la matrice M_N, matrice che ha per righe le normali ai lati. ..." alt="" coords="384,342,540,383"/>
+<area shape="rect" id="node16" href="$classMatrixBifurcationHandler.html#a46ee3c60eedda32abe36700ab2ce2d16" title="Funzione che calcola la matrice M_T, matrice di trasmissibilità. " alt="" coords="588,222,744,263"/>
+<area shape="rect" id="node18" href="$classMatrixBifurcationHandler.html#a2153adb36bdbba82ca18ae74eb9e2ea7" title="Funzione che calcola la matrice M_T, matrice di trasmissibilità. " alt="" coords="588,342,744,383"/>
+<area shape="rect" id="node17" href="$classMatrixBifurcationHandler.html#a94433cf28ec2af6ba06b7f63a081d787" title="Funzione che inizializza M_intersection, la classe che rappresenta il triangolo di intersezione..." alt="" coords="792,208,948,250"/>
+</map>

@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.6"/>
+<meta name="generator" content="Doxygen 1.8.5"/>
 <title>Progetto PACS: Riferimenti per la classe LevelSetHandler</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -30,7 +30,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Generato da Doxygen 1.8.6 -->
+<!-- Generato da Doxygen 1.8.5 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
 </script>
@@ -62,7 +62,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Elenco&#160;dei&#160;tipi&#160;composti</span></a></li>
       <li><a href="classes.html"><span>Indice&#160;dei&#160;tipi&#160;composti</span></a></li>
-      <li><a href="hierarchy.html"><span>Gerarchia&#160;delle&#160;classi</span></a></li>
+      <li><a href="inherits.html"><span>Gerarchia&#160;delle&#160;classi</span></a></li>
       <li><a href="functions.html"><span>Membri&#160;dei&#160;composti</span></a></li>
     </ul>
   </div>
@@ -71,7 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tutto</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classi</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespace</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>File</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funzioni</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variabili</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Ridefinizioni di tipo (typedef)</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Tipi enumerati (enum)</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Valori del tipo enumerato</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friend</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Definizioni</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tutto</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classi</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespace</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>File</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funzioni</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variabili</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Ridefinizioni di tipo (typedef)</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Tipi enumerati (enum)</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Valori del tipo enumerato</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friend</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -596,10 +596,10 @@ Membri pubblici</h2></td></tr>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="comment">// of columns of the reduction matrix. Otherwise it will return the number of basic degrees of freedom</span></div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    gmm::resize(M_baricenterValue, shiftPressure);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">for</span> ( size_type i = 0; i &lt; shiftPressure; ++i )</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">for</span> ( size_type <a class="code" href="matrici_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> = 0; <a class="code" href="matrici_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> &lt; shiftPressure; ++<a class="code" href="matrici_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> )</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    {</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keyword">const</span> base_node node = mediumMeshFEMPressure.point_of_basic_dof ( i );</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        M_baricenterValue [ i ] = M_data-&gt;ylevelSetFunction ( node, 0.0 );</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keyword">const</span> base_node node = mediumMeshFEMPressure.point_of_basic_dof ( <a class="code" href="matrici_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> );</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        M_baricenterValue [ <a class="code" href="matrici_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> ] = M_data-&gt;ylevelSetFunction ( node );</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    }</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="comment">// Valuto la funzione level set nei gradi di libertà secondari</span></div>
@@ -608,15 +608,17 @@ Membri pubblici</h2></td></tr>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordflow">for</span> ( size_type i = 0; i &lt; shiftVelocity; ++i )</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordflow">for</span> ( size_type <a class="code" href="matrici_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> = 0; <a class="code" href="matrici_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> &lt; shiftVelocity; ++<a class="code" href="matrici_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> )</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    {</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keyword">const</span> base_node node = mediumMeshFEMVelocity.point_of_basic_dof ( i );</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        M_DOFValue [ i ] = M_data-&gt;ylevelSetFunction ( node, 0.0 );</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keyword">const</span> base_node node = mediumMeshFEMVelocity.point_of_basic_dof ( <a class="code" href="matrici_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> );</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        M_DOFValue [ <a class="code" href="matrici_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> ] = M_data-&gt;ylevelSetFunction ( node );</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    }</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;}</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}</div>
 <div class="ttc" id="Core_8h_html_ade18ba6e17965b6fdd50b3382b2a7020"><div class="ttname"><a href="Core_8h.html#ade18ba6e17965b6fdd50b3382b2a7020">GFIntegrationMethodLevelSet_Type</a></div><div class="ttdeci">getfem::mesh_im_level_set GFIntegrationMethodLevelSet_Type</div><div class="ttdef"><b>Definition:</b> Core.h:93</div></div>
 <div class="ttc" id="Core_8h_html_a71358a15bd3925629e26ccbb214a0133"><div class="ttname"><a href="Core_8h.html#a71358a15bd3925629e26ccbb214a0133">GFLevelSet_Type</a></div><div class="ttdeci">getfem::level_set GFLevelSet_Type</div><div class="ttdef"><b>Definition:</b> Core.h:88</div></div>
+<div class="ttc" id="matrici_8m_html_a6f6ccfcf58b31cb6412107d9d5281426"><div class="ttname"><a href="matrici_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a></div><div class="ttdeci">for i</div><div class="ttdef"><b>Definition:</b> matrici.m:10</div></div>
 <div class="ttc" id="Core_8h_html_a126f7165f04db4ed0b72454469145a08"><div class="ttname"><a href="Core_8h.html#a126f7165f04db4ed0b72454469145a08">GFMeshLevelSet_Type</a></div><div class="ttdeci">getfem::mesh_level_set GFMeshLevelSet_Type</div><div class="ttdef"><b>Definition:</b> Core.h:84</div></div>
 </div><!-- fragment -->
 </div>
@@ -628,9 +630,9 @@ Membri pubblici</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generato Mar 28 Ott 2014 10:32:54 per Progetto PACS da &#160;<a href="http://www.doxygen.org/index.html">
+Generato Mar 11 Nov 2014 15:47:10 per Progetto PACS da &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.6
+</a> 1.8.5
 </small></address>
 </body>
 </html>

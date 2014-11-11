@@ -18,6 +18,20 @@ String utilities.
 {\ttfamily \#include $<$vector$>$}\\*
 {\ttfamily \#include $<$boost/algorithm/string.\-hpp$>$}\\*
 {\ttfamily \#include \char`\"{}Core.\-h\char`\"{}}\\*
+Grafo delle dipendenze di inclusione per String\-Utility.\-h\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{StringUtility_8h__incl}
+\end{center}
+\end{figure}
+Questo grafo mostra quali altri file includono direttamente o indirettamente questo file\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{StringUtility_8h__dep__incl}
+\end{center}
+\end{figure}
 \subsection*{Namespace}
 \begin{DoxyCompactItemize}
 \item 
@@ -32,15 +46,15 @@ std\-::istream \& \hyperlink{namespaceLifeV_aecf5099a32c6f096d09d0506ee79255b}{L
 \begin{DoxyCompactList}\small\item\em skip lines starting with '!\%\#;\$' \end{DoxyCompactList}\item 
 std\-::istream \& \hyperlink{namespaceLifeV_a2c4dd8a300964aa48909fce6ad5c72f5}{Life\-V\-::next\-Good\-Line} (std\-::istream \&s, std\-::string \&line)
 \begin{DoxyCompactList}\small\item\em gets next uncommented line \end{DoxyCompactList}\item 
-std\-::string \& \hyperlink{namespaceLifeV_a5fb0107fd71b5be2c32f536619a73175}{Life\-V\-::set\-String\-Length} (std\-::string \&s, unsigned int len, char c)
+std\-::string \& \hyperlink{namespaceLifeV_a5fb0107fd71b5be2c32f536619a73175}{Life\-V\-::set\-String\-Length} (std\-::string \&s, unsigned int len, char \hyperlink{matrici_8m_ae0323a9039add2978bf5b49550572c7c}{c})
 \item 
 int \hyperlink{namespaceLifeV_a1a787279805886c5b208055992c29c9a}{Life\-V\-::atoi} (const std\-::string \&s)
 \begin{DoxyCompactList}\small\item\em extends atoi to S\-T\-L std\-::strings (from Stroustrup) \end{DoxyCompactList}\item 
-std\-::string \hyperlink{namespaceLifeV_af57500c586141320ace55cf0b2a5c9fe}{Life\-V\-::operator+} (const std\-::string \&str, const int i)
+std\-::string \hyperlink{namespaceLifeV_af57500c586141320ace55cf0b2a5c9fe}{Life\-V\-::operator+} (const std\-::string \&str, const int \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
 \item 
-std\-::string \hyperlink{namespaceLifeV_ae00b5ce86e0f837f3f3392074652b7ed}{Life\-V\-::operator+} (const std\-::string \&str, const long int i)
+std\-::string \hyperlink{namespaceLifeV_ae00b5ce86e0f837f3f3392074652b7ed}{Life\-V\-::operator+} (const std\-::string \&str, const long int \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
 \item 
-std\-::string \hyperlink{namespaceLifeV_a54f5fa0ff0002920c744bcbaff350bc0}{Life\-V\-::operator+} (const std\-::string \&str, const unsigned int i)
+std\-::string \hyperlink{namespaceLifeV_a54f5fa0ff0002920c744bcbaff350bc0}{Life\-V\-::operator+} (const std\-::string \&str, const unsigned int \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
 \item 
 {\footnotesize template$<$typename Entry\-Type $>$ }\\void \hyperlink{namespaceLifeV_a200b22ebae8c113c2624f7195797d4a4}{Life\-V\-::parse\-List} (const std\-::string \&slist, std\-::list$<$ Entry\-Type $>$ \&list)
 \item 

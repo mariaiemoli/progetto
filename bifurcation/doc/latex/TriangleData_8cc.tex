@@ -3,6 +3,13 @@
 }
 {\ttfamily \#include $<$iostream$>$}\\*
 {\ttfamily \#include \char`\"{}../include/\-Triangle\-Data.\-h\char`\"{}}\\*
+Grafo delle dipendenze di inclusione per Triangle\-Data.\-cc\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{TriangleData_8cc__incl}
+\end{center}
+\end{figure}
 \subsection*{Funzioni}
 \begin{DoxyCompactItemize}
 \item 
@@ -21,14 +28,14 @@ std\-::ostream \& \hyperlink{TriangleData_8cc_a1969193778fec204e689f25ff14c0488}
 )}}\label{TriangleData_8cc_a1969193778fec204e689f25ff14c0488}
 
 \begin{DoxyCode}
-110 \{
-111     stream<<\textcolor{stringliteral}{" ************* TRIANGLE  POINTS ********"}<<std::endl;
-112     \textcolor{keywordflow}{for} (size\_type i=0;i<3;++i)
-113     \{
-114         stream<< t.M\_point[i]<<std::endl;
-115     \}
-116     stream<<\textcolor{stringliteral}{"****************************************"}<<std::endl;
-117     
-118     \textcolor{keywordflow}{return} stream;
-119 \}
+122 \{
+123     stream<<\textcolor{stringliteral}{" ************* TRIANGLE  POINTS ********"}<<std::endl;
+124     \textcolor{keywordflow}{for} (size\_type \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}=0;\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}<3;++\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
+125     \{
+126         stream<< t.M\_point[\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}]<<std::endl;
+127     \}
+128     stream<<\textcolor{stringliteral}{"****************************************"}<<std::endl;
+129     
+130     \textcolor{keywordflow}{return} stream;
+131 \}\textcolor{comment}{// operator <<}
 \end{DoxyCode}

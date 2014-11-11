@@ -327,10 +327,10 @@ Partendo dalle informazioni contenute nel file data costrusce le mesh e i metodi
 77     \textcolor{comment}{// of columns of the reduction matrix. Otherwise it will return the number of basic degrees of freedom}
 78 
 79     gmm::resize(M\_baricenterValue, shiftPressure);
-80     \textcolor{keywordflow}{for} ( size\_type i = 0; i < shiftPressure; ++i )
+80     \textcolor{keywordflow}{for} ( size\_type \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < shiftPressure; ++\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} )
 81     \{
-82         \textcolor{keyword}{const} base\_node node = mediumMeshFEMPressure.point\_of\_basic\_dof ( i );
-83         M\_baricenterValue [ i ] = M\_data->ylevelSetFunction ( node, 0.0 );
+82         \textcolor{keyword}{const} base\_node node = mediumMeshFEMPressure.point\_of\_basic\_dof ( \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} );
+83         M\_baricenterValue [ \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} ] = M\_data->ylevelSetFunction ( node );
 84     \}
 85 
 86     \textcolor{comment}{// Valuto la funzione level set nei gradi di libertà secondari}
@@ -339,13 +339,14 @@ Partendo dalle informazioni contenute nel file data costrusce le mesh e i metodi
 89 
 90 
 91 
-92     \textcolor{keywordflow}{for} ( size\_type i = 0; i < shiftVelocity; ++i )
+92     \textcolor{keywordflow}{for} ( size\_type \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < shiftVelocity; ++\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} )
 93     \{
-94         \textcolor{keyword}{const} base\_node node = mediumMeshFEMVelocity.point\_of\_basic\_dof ( i );
-95         M\_DOFValue [ i ] = M\_data->ylevelSetFunction ( node, 0.0 );
+94         \textcolor{keyword}{const} base\_node node = mediumMeshFEMVelocity.point\_of\_basic\_dof ( \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} );
+95         M\_DOFValue [ \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} ] = M\_data->ylevelSetFunction ( node );
 96     \}
 97 
-98 \}
+98     \textcolor{keywordflow}{return};
+99 \}
 \end{DoxyCode}
 
 

@@ -22,14 +22,12 @@ enum \{ \hyperlink{classBCHandler_a2bc86209db0836dbc6ca56e1ca4e4ac1a57ea96455b2b
 \subsection*{Membri pubblici}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classBCHandler_a35bb263a58e1bc9e0cfd34bf9cffac0d}{B\-C\-Handler} (const \hyperlink{BC_8h_a088c36f945ad8f6e7e0c7c423994c6ec}{B\-C\-Ptr\-\_\-\-Type} \&medium\-B\-C, const \hyperlink{BC_8h_ae127263052e0676d0fe233f834ca7227}{B\-C\-Ptr\-Container\-\_\-\-Type} \&fracture\-B\-C)
+\hyperlink{classBCHandler_af15c3846a782d6b7db1985c69929c388}{B\-C\-Handler} (const \hyperlink{BC_8h_ae127263052e0676d0fe233f834ca7227}{B\-C\-Ptr\-Container\-\_\-\-Type} \&fracture\-B\-C)
 \begin{DoxyCompactList}\small\item\em \hyperlink{BCHandler_8cc}{B\-C\-Handler.\-cc}. \end{DoxyCompactList}\item 
 void \hyperlink{classBCHandler_a1dcccdbb5e0eb0d044455414b52b2f05}{create\-B\-D\-Regions} (getfem\-::mesh \&mesh)
-\item 
+\begin{DoxyCompactList}\small\item\em Funzione che crea le regioni per le condizioni al contorno per il dominio, Neumann e Dirichlet. \end{DoxyCompactList}\item 
 void \hyperlink{classBCHandler_a559e4ba01fc7c6326dbb949d06dbd525}{create\-B\-D\-Regions\-Fractures} (getfem\-::mesh \&mesh)
-\item 
-const \hyperlink{BC_8h_a088c36f945ad8f6e7e0c7c423994c6ec}{B\-C\-Ptr\-\_\-\-Type} \& \hyperlink{classBCHandler_ab7e56a166f8f51be96b2bf8946bf7b62}{get\-Medium\-B\-C} () const 
-\item 
+\begin{DoxyCompactList}\small\item\em Funzione che crea le regioni per le condizioni al contorno per le fratture, Neumann e Dirichlet. \end{DoxyCompactList}\item 
 const \hyperlink{BC_8h_a088c36f945ad8f6e7e0c7c423994c6ec}{B\-C\-Ptr\-\_\-\-Type} \& \hyperlink{classBCHandler_a2ab65711f8ee3643ecf19de52ceab470}{get\-Fracture\-B\-C} (const size\-\_\-type \&id) const 
 \item 
 const \hyperlink{Core_8h_a83c51913d041a5001e8683434c09857f}{size\-Vector\-\_\-\-Type} \& \hyperlink{classBCHandler_a68a01c71517202ed89ebc82a56e4cb5d}{get\-Dirichlet\-Uncut} () const 
@@ -86,26 +84,31 @@ Author\-: fumagalli
 
 
 \subsection{Documentazione dei costruttori e dei distruttori}
-\hypertarget{classBCHandler_a35bb263a58e1bc9e0cfd34bf9cffac0d}{\index{B\-C\-Handler@{B\-C\-Handler}!B\-C\-Handler@{B\-C\-Handler}}
+\hypertarget{classBCHandler_af15c3846a782d6b7db1985c69929c388}{\index{B\-C\-Handler@{B\-C\-Handler}!B\-C\-Handler@{B\-C\-Handler}}
 \index{B\-C\-Handler@{B\-C\-Handler}!BCHandler@{B\-C\-Handler}}
 \subsubsection[{B\-C\-Handler}]{\setlength{\rightskip}{0pt plus 5cm}B\-C\-Handler\-::\-B\-C\-Handler (
 \begin{DoxyParamCaption}
-\item[{const {\bf B\-C\-Ptr\-\_\-\-Type} \&}]{medium\-B\-C, }
 \item[{const {\bf B\-C\-Ptr\-Container\-\_\-\-Type} \&}]{fracture\-B\-C}
 \end{DoxyParamCaption}
-)}}\label{classBCHandler_a35bb263a58e1bc9e0cfd34bf9cffac0d}
+)}}\label{classBCHandler_af15c3846a782d6b7db1985c69929c388}
 
 
 \hyperlink{BCHandler_8cc}{B\-C\-Handler.\-cc}. 
 
-Created on\-: Apr 5, 2011 Author\-: fumagalli 
+Created on\-: Apr 5, 2011
+
+\begin{DoxyAuthor}{Autore}
+Aessio Fumagalli 
+\end{DoxyAuthor}
+
 \begin{DoxyCode}
-10                                                                :
-11     M\_mediumBC(mediumBC), M\_fractureBC(fractureBC), M\_extBoundaryCut(
-12             M\_fractureBC.size()), M\_dirichletCut(M\_fractureBC.size()),
-13             M\_neumannCut(M\_fractureBC.size())
-14 \{
-15 \}
+11                                                              :
+12                        M\_fractureBC(fractureBC), 
+13                        M\_extBoundaryCut( M\_fractureBC.size()), 
+14                        M\_dirichletCut(M\_fractureBC.size()),
+15                        M\_neumannCut(M\_fractureBC.size())
+16 \{
+17 \}
 \end{DoxyCode}
 
 
@@ -118,47 +121,50 @@ Created on\-: Apr 5, 2011 Author\-: fumagalli
 \end{DoxyParamCaption}
 )}}\label{classBCHandler_a1dcccdbb5e0eb0d044455414b52b2f05}
 
+
+Funzione che crea le regioni per le condizioni al contorno per il dominio, Neumann e Dirichlet. 
+
+
 \begin{DoxyCode}
-19 \{
-20     M\_neumannCut.clear();
-21     M\_dirichletCut.clear();
-22 
-23     \textcolor{comment}{// Flags for the uncutted region}
-24     M\_neumannUncut.clear();
-25     M\_neumannUncut.push\_back(\hyperlink{classBCHandler_a2bc86209db0836dbc6ca56e1ca4e4ac1aa538eee48606669ac37073ca65144007}{NEUMANN\_BOUNDARY\_UNCUT});
-26     M\_dirichletUncut.clear();
-27     M\_dirichletUncut.push\_back(\hyperlink{classBCHandler_a2bc86209db0836dbc6ca56e1ca4e4ac1a487ba8af2086045d8b0df840b2525866}{DIRICHLET\_BOUNDARY\_UNCUT});
-28 
-29     getfem::mesh\_region& meshRegionNeumann = mesh.region(
-      \hyperlink{classBC_ad1b507696802f73b95c0ca59f4c41390a432aa77a00d8eb4929463ef8d57b5c04}{BC::NEUMANN\_BOUNDARY\_NUM});
-30 \textcolor{comment}{/*}
-31 \textcolor{comment}{a mesh\_region can be built from a integer parameter (a region number in a mesh), but it won't be usable
+21 \{
+22     M\_neumannCut.clear();
+23     M\_dirichletCut.clear();
+24 
+25     \textcolor{comment}{// Flags for the uncutted region}
+26     M\_neumannUncut.clear();
+27     M\_neumannUncut.push\_back(\hyperlink{classBCHandler_a2bc86209db0836dbc6ca56e1ca4e4ac1aa538eee48606669ac37073ca65144007}{NEUMANN\_BOUNDARY\_UNCUT});
+28     M\_dirichletUncut.clear();
+29     M\_dirichletUncut.push\_back(\hyperlink{classBCHandler_a2bc86209db0836dbc6ca56e1ca4e4ac1a487ba8af2086045d8b0df840b2525866}{DIRICHLET\_BOUNDARY\_UNCUT});
+30 
+31     getfem::mesh\_region& meshRegionNeumann = mesh.region( 
+      \hyperlink{classBC_ad1b507696802f73b95c0ca59f4c41390a432aa77a00d8eb4929463ef8d57b5c04}{BC::NEUMANN\_BOUNDARY\_NUM} );
+32 \textcolor{comment}{/*}
+33 \textcolor{comment}{a mesh\_region can be built from a integer parameter (a region number in a mesh), but it won't be usable
        until 'from\_mesh(m)' has been called Note that these regions are read-only, this constructor is mostly used for
        backward-compatibility.}
-32 \textcolor{comment}{*/}
-33 
-34     dal::bit\_vector mediumMeshRegionIndex = meshRegionNeumann.index();
+34 \textcolor{comment}{*/}
 35 
-36     size\_type i\_cv = 0;
-37     \textcolor{keywordflow}{for} ( i\_cv << mediumMeshRegionIndex; i\_cv != size\_type(-1); i\_cv
-38             << mediumMeshRegionIndex )
-39     \{
-40         \textcolor{keywordflow}{for} ( size\_type jj = 0; jj < 3; ++jj )
-41         \{
-42             \textcolor{keywordflow}{if} ( meshRegionNeumann.is\_in(i\_cv, jj) ) \textcolor{comment}{// controllo se un nodo è nella regione}
-43             \{
-44                 mesh.region(M\_neumannUncut [ 0 ]).add(i\_cv, jj);
-45             \}
-46         \}
-47     \}
-48 
-49     getfem::mesh\_region& meshRegionDirichlet = mesh.region(
-50             \hyperlink{classBC_ad1b507696802f73b95c0ca59f4c41390a99103ccd54ba29b1bd2670cc6cd0c462}{BC::DIRICHLET\_BOUNDARY\_NUM});
-51     mediumMeshRegionIndex = meshRegionDirichlet.index();
-52 
-53     i\_cv = 0;
-54     \textcolor{keywordflow}{for} ( i\_cv << mediumMeshRegionIndex; i\_cv != size\_type(-1); i\_cv
-55             << mediumMeshRegionIndex )
+36     dal::bit\_vector mediumMeshRegionIndex = meshRegionNeumann.index();
+37 
+38     size\_type i\_cv = 0;
+39     \textcolor{keywordflow}{for} ( i\_cv << mediumMeshRegionIndex; i\_cv != size\_type(-1); i\_cv
+40             << mediumMeshRegionIndex )
+41     \{
+42         \textcolor{keywordflow}{for} ( size\_type jj = 0; jj < 3; ++jj )
+43         \{
+44             \textcolor{keywordflow}{if} ( meshRegionNeumann.is\_in(i\_cv, jj) ) \textcolor{comment}{// controllo se un nodo è nella regione}
+45             \{
+46                 mesh.region(M\_neumannUncut [ 0 ]).add(i\_cv, jj);
+47             \}
+48         \}
+49     \}
+50 
+51     getfem::mesh\_region& meshRegionDirichlet = mesh.region( 
+      \hyperlink{classBC_ad1b507696802f73b95c0ca59f4c41390a99103ccd54ba29b1bd2670cc6cd0c462}{BC::DIRICHLET\_BOUNDARY\_NUM} );
+52     mediumMeshRegionIndex = meshRegionDirichlet.index();
+53 
+54     i\_cv = 0;
+55     \textcolor{keywordflow}{for} ( i\_cv << mediumMeshRegionIndex; i\_cv != size\_type(-1); i\_cv << mediumMeshRegionIndex )
 56     \{
 57         \textcolor{keywordflow}{for} ( size\_type jj = 0; jj < 3; ++jj )
 58         \{
@@ -168,7 +174,10 @@ Created on\-: Apr 5, 2011 Author\-: fumagalli
 62             \}
 63         \}
 64     \}
-65 \}
+65     
+66     \textcolor{keywordflow}{return};
+67     
+68 \}\textcolor{comment}{// createBDRegions}
 \end{DoxyCode}
 \hypertarget{classBCHandler_a559e4ba01fc7c6326dbb949d06dbd525}{\index{B\-C\-Handler@{B\-C\-Handler}!create\-B\-D\-Regions\-Fractures@{create\-B\-D\-Regions\-Fractures}}
 \index{create\-B\-D\-Regions\-Fractures@{create\-B\-D\-Regions\-Fractures}!BCHandler@{B\-C\-Handler}}
@@ -178,71 +187,76 @@ Created on\-: Apr 5, 2011 Author\-: fumagalli
 \end{DoxyParamCaption}
 )}}\label{classBCHandler_a559e4ba01fc7c6326dbb949d06dbd525}
 
+
+Funzione che crea le regioni per le condizioni al contorno per le fratture, Neumann e Dirichlet. 
+
+
 \begin{DoxyCode}
-68 \{
-69     \textcolor{keyword}{const} size\_type numberFractures = M\_fractureBC.size();
-70 
-71     getfem::mesh\_region& meshRegionNeumann = mesh.region(
-      \hyperlink{classBC_ad1b507696802f73b95c0ca59f4c41390a432aa77a00d8eb4929463ef8d57b5c04}{BC::NEUMANN\_BOUNDARY\_NUM});
-72     size\_type i\_cv;
-73     dal::bit\_vector mediumMeshRegionIndex;
-74 
-75     \textcolor{keywordflow}{for} ( size\_type f = 0; f < numberFractures; ++f )
-76     \{
-77         mediumMeshRegionIndex = meshRegionNeumann.index();
-78         i\_cv = 0;
-79         \textcolor{keywordflow}{for} ( i\_cv << mediumMeshRegionIndex; i\_cv != size\_type(-1); i\_cv
-80                 << mediumMeshRegionIndex )
-81         \{
-82             \textcolor{comment}{// If the current element is in the cut region update its boundary conditions}
-83             \textcolor{keywordflow}{if} ( mesh.region(f + \hyperlink{classFractureData_aaeea1f30482432d159eda9d98beb5e89a351538e4c78b34b5c0416e21903e1812}{FractureData::FRACTURE}).is\_in(i\_cv) )
-84             \{
-85 
-86                 \textcolor{keywordflow}{if} ( M\_neumannCut [ f ].size() <= 0 )
-87                 \{
-88                     M\_neumannCut [ f ].push\_back(\hyperlink{classBCHandler_a2bc86209db0836dbc6ca56e1ca4e4ac1add7397a06718591b0c27c067225b1d5f}{NEUMANN\_BOUNDARY\_CUT} + f);
-89                 \}
-90                 \textcolor{keywordflow}{for} ( size\_type jj = 0; jj < 3; ++jj )
-91                 \{
-92                     \textcolor{keywordflow}{if} ( meshRegionNeumann.is\_in(i\_cv, jj) )
-93                     \{
-94                         mesh.region(M\_neumannCut [ f ] [ 0 ]).add(i\_cv, jj);
-95                         mesh.region(M\_neumannUncut [ 0 ]).sup(i\_cv, jj);
-96                     \}
-97                 \}
-98             \}
-99         \}
-100     \}
-101 
-102     getfem::mesh\_region& meshRegionDirichlet = mesh.region(
-      \hyperlink{classBC_ad1b507696802f73b95c0ca59f4c41390a99103ccd54ba29b1bd2670cc6cd0c462}{BC::DIRICHLET\_BOUNDARY\_NUM});
+71 \{
+72     \textcolor{keyword}{const} size\_type numberFractures = M\_fractureBC.size();
+73 
+74     getfem::mesh\_region& meshRegionNeumann = mesh.region( 
+      \hyperlink{classBC_ad1b507696802f73b95c0ca59f4c41390a432aa77a00d8eb4929463ef8d57b5c04}{BC::NEUMANN\_BOUNDARY\_NUM} );
+75     size\_type i\_cv;
+76     dal::bit\_vector mediumMeshRegionIndex;
+77 
+78     \textcolor{keywordflow}{for} ( size\_type f = 0; f < numberFractures; ++f )
+79     \{
+80         mediumMeshRegionIndex = meshRegionNeumann.index();
+81         i\_cv = 0;
+82         \textcolor{keywordflow}{for} ( i\_cv << mediumMeshRegionIndex; i\_cv != size\_type(-1); i\_cv << mediumMeshRegionIndex )
+83         \{
+84             \textcolor{comment}{// If the current element is in the cut region update its boundary conditions}
+85             \textcolor{keywordflow}{if} ( mesh.region( f + \hyperlink{classFractureData_aaeea1f30482432d159eda9d98beb5e89a351538e4c78b34b5c0416e21903e1812}{FractureData::FRACTURE} ).is\_in( i\_cv ) )
+86             \{
+87 
+88                 \textcolor{keywordflow}{if} ( M\_neumannCut [ f ].size() <= 0 )
+89                 \{
+90                     M\_neumannCut [ f ].push\_back(\hyperlink{classBCHandler_a2bc86209db0836dbc6ca56e1ca4e4ac1add7397a06718591b0c27c067225b1d5f}{NEUMANN\_BOUNDARY\_CUT} + f);
+91                 \}
+92                 \textcolor{keywordflow}{for} ( size\_type jj = 0; jj < 3; ++jj )
+93                 \{
+94                     \textcolor{keywordflow}{if} ( meshRegionNeumann.is\_in(i\_cv, jj) )
+95                     \{
+96                         mesh.region(M\_neumannCut [ f ] [ 0 ]).add(i\_cv, jj);
+97                         mesh.region(M\_neumannUncut [ 0 ]).sup(i\_cv, jj);
+98                     \}
+99                 \}
+100             \}
+101         \}
+102     \}
 103 
-104     \textcolor{keywordflow}{for} ( size\_type f = 0; f < numberFractures; ++f )
-105     \{
-106         mediumMeshRegionIndex = meshRegionDirichlet.index();
-107         i\_cv = 0;
-108         \textcolor{keywordflow}{for} ( i\_cv << mediumMeshRegionIndex; i\_cv != size\_type(-1); i\_cv
-109                 << mediumMeshRegionIndex )
-110         \{
-111             \textcolor{keywordflow}{if} ( mesh.region(f + \hyperlink{classFractureData_aaeea1f30482432d159eda9d98beb5e89a351538e4c78b34b5c0416e21903e1812}{FractureData::FRACTURE}).is\_in(i\_cv) )
-112             \{
-113                 \textcolor{keywordflow}{if} ( M\_dirichletCut [ f ].size() <= 0 )
-114                 \{
-115                     M\_dirichletCut [ f ].push\_back(\hyperlink{classBCHandler_a2bc86209db0836dbc6ca56e1ca4e4ac1a57ea96455b2ba998cc42a21aa7e1d842}{DIRICHLET\_BOUNDARY\_CUT} + f);
-116                 \}
-117                 \textcolor{keywordflow}{for} ( size\_type jj = 0; jj < 3; ++jj )
-118                 \{
-119                     \textcolor{keywordflow}{if} ( meshRegionDirichlet.is\_in(i\_cv, jj) )
-120                     \{
-121                         mesh.region(M\_dirichletCut [ f ] [ 0 ]).add(i\_cv, jj);
-122                         mesh.region(M\_dirichletUncut [ 0 ]).sup(i\_cv, jj);
-123                     \}
-124                 \}
-125             \}
-126         \}
-127 
-128     \}
-129 \}
+104     getfem::mesh\_region& meshRegionDirichlet = mesh.region( 
+      \hyperlink{classBC_ad1b507696802f73b95c0ca59f4c41390a99103ccd54ba29b1bd2670cc6cd0c462}{BC::DIRICHLET\_BOUNDARY\_NUM} );
+105 
+106     \textcolor{keywordflow}{for} ( size\_type f = 0; f < numberFractures; ++f )
+107     \{
+108         mediumMeshRegionIndex = meshRegionDirichlet.index();
+109         i\_cv = 0;
+110         \textcolor{keywordflow}{for} ( i\_cv << mediumMeshRegionIndex; i\_cv != size\_type(-1); i\_cv
+111                 << mediumMeshRegionIndex )
+112         \{
+113             \textcolor{keywordflow}{if} ( mesh.region(f + \hyperlink{classFractureData_aaeea1f30482432d159eda9d98beb5e89a351538e4c78b34b5c0416e21903e1812}{FractureData::FRACTURE}).is\_in(i\_cv) )
+114             \{
+115                 \textcolor{keywordflow}{if} ( M\_dirichletCut [ f ].size() <= 0 )
+116                 \{
+117                     M\_dirichletCut [ f ].push\_back(\hyperlink{classBCHandler_a2bc86209db0836dbc6ca56e1ca4e4ac1a57ea96455b2ba998cc42a21aa7e1d842}{DIRICHLET\_BOUNDARY\_CUT} + f);
+118                 \}
+119                 \textcolor{keywordflow}{for} ( size\_type jj = 0; jj < 3; ++jj )
+120                 \{
+121                     \textcolor{keywordflow}{if} ( meshRegionDirichlet.is\_in(i\_cv, jj) )
+122                     \{
+123                         mesh.region(M\_dirichletCut [ f ] [ 0 ]).add(i\_cv, jj);
+124                         mesh.region(M\_dirichletUncut [ 0 ]).sup(i\_cv, jj);
+125                     \}
+126                 \}
+127             \}
+128         \}
+129 
+130     \}
+131     
+132     \textcolor{keywordflow}{return};
+133 \}\textcolor{comment}{// createBDRegionsFractures}
 \end{DoxyCode}
 \hypertarget{classBCHandler_a1efb6389dbecbcd38e53422ffc6f29c7}{\index{B\-C\-Handler@{B\-C\-Handler}!get\-Dirichlet\-Cut@{get\-Dirichlet\-Cut}}
 \index{get\-Dirichlet\-Cut@{get\-Dirichlet\-Cut}!BCHandler@{B\-C\-Handler}}
@@ -253,9 +267,9 @@ Created on\-: Apr 5, 2011 Author\-: fumagalli
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBCHandler_a1efb6389dbecbcd38e53422ffc6f29c7}
 
 \begin{DoxyCode}
-68     \{
-69         \textcolor{keywordflow}{return} M\_dirichletCut [ id ];
-70     \}
+72     \{
+73         \textcolor{keywordflow}{return} M\_dirichletCut [ id ];
+74     \}
 \end{DoxyCode}
 \hypertarget{classBCHandler_a390cb50c5fcbbf2e676fe7d5f5241180}{\index{B\-C\-Handler@{B\-C\-Handler}!get\-Dirichlet\-Cut@{get\-Dirichlet\-Cut}}
 \index{get\-Dirichlet\-Cut@{get\-Dirichlet\-Cut}!BCHandler@{B\-C\-Handler}}
@@ -267,9 +281,9 @@ Created on\-: Apr 5, 2011 Author\-: fumagalli
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBCHandler_a390cb50c5fcbbf2e676fe7d5f5241180}
 
 \begin{DoxyCode}
-74     \{
-75         \textcolor{keywordflow}{return} M\_dirichletCut [ id ] [ dof ];
-76     \}
+78     \{
+79         \textcolor{keywordflow}{return} M\_dirichletCut [ id ] [ dof ];
+80     \}
 \end{DoxyCode}
 \hypertarget{classBCHandler_a68a01c71517202ed89ebc82a56e4cb5d}{\index{B\-C\-Handler@{B\-C\-Handler}!get\-Dirichlet\-Uncut@{get\-Dirichlet\-Uncut}}
 \index{get\-Dirichlet\-Uncut@{get\-Dirichlet\-Uncut}!BCHandler@{B\-C\-Handler}}
@@ -280,9 +294,9 @@ Created on\-: Apr 5, 2011 Author\-: fumagalli
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBCHandler_a68a01c71517202ed89ebc82a56e4cb5d}
 
 \begin{DoxyCode}
-48     \{
-49         \textcolor{keywordflow}{return} M\_dirichletUncut;
-50     \}
+52     \{
+53         \textcolor{keywordflow}{return} M\_dirichletUncut;
+54     \}
 \end{DoxyCode}
 \hypertarget{classBCHandler_a3f92a68c9b0dbebc6ee72a42b419645d}{\index{B\-C\-Handler@{B\-C\-Handler}!get\-Dirichlet\-Uncut@{get\-Dirichlet\-Uncut}}
 \index{get\-Dirichlet\-Uncut@{get\-Dirichlet\-Uncut}!BCHandler@{B\-C\-Handler}}
@@ -293,9 +307,9 @@ Created on\-: Apr 5, 2011 Author\-: fumagalli
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBCHandler_a3f92a68c9b0dbebc6ee72a42b419645d}
 
 \begin{DoxyCode}
-53     \{
-54         \textcolor{keywordflow}{return} M\_dirichletUncut [ dof ];
-55     \}
+57     \{
+58         \textcolor{keywordflow}{return} M\_dirichletUncut [ dof ];
+59     \}
 \end{DoxyCode}
 \hypertarget{classBCHandler_a2ab65711f8ee3643ecf19de52ceab470}{\index{B\-C\-Handler@{B\-C\-Handler}!get\-Fracture\-B\-C@{get\-Fracture\-B\-C}}
 \index{get\-Fracture\-B\-C@{get\-Fracture\-B\-C}!BCHandler@{B\-C\-Handler}}
@@ -306,22 +320,9 @@ Created on\-: Apr 5, 2011 Author\-: fumagalli
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBCHandler_a2ab65711f8ee3643ecf19de52ceab470}
 
 \begin{DoxyCode}
-43     \{
-44         \textcolor{keywordflow}{return} M\_fractureBC [ id ];
-45     \}
-\end{DoxyCode}
-\hypertarget{classBCHandler_ab7e56a166f8f51be96b2bf8946bf7b62}{\index{B\-C\-Handler@{B\-C\-Handler}!get\-Medium\-B\-C@{get\-Medium\-B\-C}}
-\index{get\-Medium\-B\-C@{get\-Medium\-B\-C}!BCHandler@{B\-C\-Handler}}
-\subsubsection[{get\-Medium\-B\-C}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf B\-C\-Ptr\-\_\-\-Type}\& B\-C\-Handler\-::get\-Medium\-B\-C (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBCHandler_ab7e56a166f8f51be96b2bf8946bf7b62}
-
-\begin{DoxyCode}
-38     \{
-39         \textcolor{keywordflow}{return} M\_mediumBC;
-40     \}
+47     \{
+48         \textcolor{keywordflow}{return} M\_fractureBC [ id ];
+49     \}
 \end{DoxyCode}
 \hypertarget{classBCHandler_a5e71b2adeaa281e88275bff504dc67d8}{\index{B\-C\-Handler@{B\-C\-Handler}!get\-Neumann\-Cut@{get\-Neumann\-Cut}}
 \index{get\-Neumann\-Cut@{get\-Neumann\-Cut}!BCHandler@{B\-C\-Handler}}
@@ -332,9 +333,9 @@ Created on\-: Apr 5, 2011 Author\-: fumagalli
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBCHandler_a5e71b2adeaa281e88275bff504dc67d8}
 
 \begin{DoxyCode}
-79     \{
-80         \textcolor{keywordflow}{return} M\_neumannCut [ id ];
-81     \}
+83     \{
+84         \textcolor{keywordflow}{return} M\_neumannCut [ id ];
+85     \}
 \end{DoxyCode}
 \hypertarget{classBCHandler_a726f1bfbc76113bbb3b5057b25a53871}{\index{B\-C\-Handler@{B\-C\-Handler}!get\-Neumann\-Cut@{get\-Neumann\-Cut}}
 \index{get\-Neumann\-Cut@{get\-Neumann\-Cut}!BCHandler@{B\-C\-Handler}}
@@ -346,9 +347,9 @@ Created on\-: Apr 5, 2011 Author\-: fumagalli
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBCHandler_a726f1bfbc76113bbb3b5057b25a53871}
 
 \begin{DoxyCode}
-85     \{
-86         \textcolor{keywordflow}{return} M\_neumannCut [ id ] [ dof ];
-87     \}
+89     \{
+90         \textcolor{keywordflow}{return} M\_neumannCut [ id ] [ dof ];
+91     \}
 \end{DoxyCode}
 \hypertarget{classBCHandler_a5b1c86a6c303abf33850132d1bc12693}{\index{B\-C\-Handler@{B\-C\-Handler}!get\-Neumann\-Uncut@{get\-Neumann\-Uncut}}
 \index{get\-Neumann\-Uncut@{get\-Neumann\-Uncut}!BCHandler@{B\-C\-Handler}}
@@ -359,9 +360,9 @@ Created on\-: Apr 5, 2011 Author\-: fumagalli
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBCHandler_a5b1c86a6c303abf33850132d1bc12693}
 
 \begin{DoxyCode}
-58     \{
-59         \textcolor{keywordflow}{return} M\_neumannUncut;
-60     \}
+62     \{
+63         \textcolor{keywordflow}{return} M\_neumannUncut;
+64     \}
 \end{DoxyCode}
 \hypertarget{classBCHandler_a2bf41619c541b124b421d8664786a055}{\index{B\-C\-Handler@{B\-C\-Handler}!get\-Neumann\-Uncut@{get\-Neumann\-Uncut}}
 \index{get\-Neumann\-Uncut@{get\-Neumann\-Uncut}!BCHandler@{B\-C\-Handler}}
@@ -372,9 +373,9 @@ Created on\-: Apr 5, 2011 Author\-: fumagalli
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBCHandler_a2bf41619c541b124b421d8664786a055}
 
 \begin{DoxyCode}
-63     \{
-64         \textcolor{keywordflow}{return} M\_neumannUncut [ dof ];
-65     \}
+67     \{
+68         \textcolor{keywordflow}{return} M\_neumannUncut [ dof ];
+69     \}
 \end{DoxyCode}
 
 
