@@ -1,13 +1,20 @@
+\lstnewenvironment{Code}[1][]{\lstset{basicstyle=\small\ttfamily, columns=fullflexible, keywordstyle=\color{red}\bfseries, commentstyle=\color{blue},
+language=C++, basicstyle=\small, numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=5pt, frame=shadowbox, #1}}{}
+
 \chapter{Classi per la gestione del problema numerico}
 \section{Class BC}
 
-\lstnewenvironment{Code}[1][]{\lstset{basicstyle=\small\ttfamily, columns=fullflexible,
-keywordstyle=\color{red}\bfseries, commentstyle=\color{blue},
-language=C++, basicstyle=\small,
-numbers=left, numberstyle=\tiny,
-stepnumber=2, numbersep=5pt, frame=shadowbox, #1}}{}
+La classe \texttt{BC} ci permette di introdurre le condizioni al bordo sia per il mezzo che per le fratture.
+\'{E} costituita da 
+	\begin{itemize}
+	\item \textit{Mesh:} relativa al mezzo o a una delle fratture
+	\item \textit{Stringa:} contenente il tipo di mesh di GetFem del elemento precedente
+	\item \textit{Vettore:} nullo, se la mesh fa riferimento al mezzo, o nel quale devono essere contenuti gli indici dei gradi di libertà degli estremi, se si sta lavorando su una frattura
+	\item \textit{Vettore:} nullo
+	\end{itemize}
 
-\begin{Code}[caption={Classe BC}]
+
+\begin{Code}[caption={Classe \texttt{BC}}]
 public:
 
     enum
@@ -19,7 +26,7 @@ public:
     // Costruttore
     BC ( getfem::mesh& mesh,
          const std::string& MeshType,
-		 const sizeVector_Type DOFs,
+         const sizeVector_Type DOFs,
          const ElementDimension& dimension = MEDIUM );
 
 private:
@@ -33,14 +40,13 @@ private:
 };
 \end{Code}
 
-\begin{Code}[caption={Typedef per la Classe BC}]
+\begin{Code}[caption={Typedef per la Classe \texttt{BC}}]
 /*! Elemento BC */
 typedef BC BC_Type;
 /*! Puntatore alla classe BC */												
 typedef boost::shared_ptr<BC> BCPtr_Type;
 /*! Vettore di puntatori a BC */			
 typedef std::vector<BCPtr_Type> BCPtrContainer_Type;	
-
 \end{Code}
 
 

@@ -4,7 +4,7 @@
  *
  *  Created on: Apr 5, 2011
  *
- *  Author: fumagalli
+ *  Author: Fumagalli
  *
  */
 

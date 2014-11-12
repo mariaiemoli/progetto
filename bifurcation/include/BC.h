@@ -1,10 +1,10 @@
 /** BC.h
  *
- * Libreria che introduce le condizioni al bordo sul problema
+ *  Libreria che introduce le condizioni al bordo sul problema
  *
  *  Created on: Apr 11, 2011
  *
- *  Author: fumagalli
+ *  Author: Fumagalli
  *
  */
 
@@ -71,10 +71,7 @@ private:
 
     // flags for BC
     sizeVector_Type M_dirichlet;
-    // flags for BC
     sizeVector_Type M_neumann;
-
-    // flags for BC
     sizeVector_Type M_extBoundary;
 };
 

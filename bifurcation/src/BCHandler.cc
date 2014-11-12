@@ -30,8 +30,10 @@ void BCHandler::createBDRegions ( getfem::mesh& mesh )
 
     getfem::mesh_region& meshRegionNeumann = mesh.region( BC::NEUMANN_BOUNDARY_NUM );
 /*
-a mesh_region can be built from a integer parameter (a region number in a mesh), but it won't be usable until 'from_mesh(m)' has been called Note that these regions are read-only, this constructor is mostly used for backward-compatibility.
-*/
+ *	a mesh_region can be built from a integer parameter (a region number in a mesh),
+ *  but it won't be usable until 'from_mesh(m)' has been called Note that these regions are read-only, 
+ *	this constructor is mostly used for backward-compatibility.
+ */
 
     dal::bit_vector mediumMeshRegionIndex = meshRegionNeumann.index();
 
