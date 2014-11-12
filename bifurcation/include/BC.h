@@ -13,7 +13,6 @@
 #define BC_H_ 1
 
 #include "Core.h"
-#include "UsefulFunctions.h"
 
 class BC
 {

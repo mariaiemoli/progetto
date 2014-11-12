@@ -15,6 +15,7 @@
 #include "Core.h"
 #include "IntersectData.h"
 #include "FractureHandler.h"
+#include "UsefulFunctions.h"
 #include <map>
 
 

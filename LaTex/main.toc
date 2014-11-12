@@ -1,32 +1,15 @@
 \select@language {italian}
 \contentsline {chapter}{\numberline {1}Legge di Darcy e mezzi porosi}{2}{chapter.1}
 \contentsline {section}{\numberline {1.1}Descrizione dello scenario}{2}{section.1.1}
-\contentsline {chapter}{\numberline {2}Implementazione}{3}{chapter.2}
-\contentsline {section}{\numberline {2.1}Tipologie di IAM}{5}{section.2.1}
-\contentsline {section}{\numberline {2.2}Componenti logiche}{5}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Provisioning}{5}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}Workflow}{7}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}User Self Service e password management}{7}{subsection.2.2.3}
-\contentsline {subsection}{\numberline {2.2.4}Amministrazione delle deleghe}{7}{subsection.2.2.4}
-\contentsline {subsection}{\numberline {2.2.5}Change reconciliation}{7}{subsection.2.2.5}
-\contentsline {subsection}{\numberline {2.2.6}Audit and reporting}{8}{subsection.2.2.6}
-\contentsline {subsection}{\numberline {2.2.7}Single Sign On}{8}{subsection.2.2.7}
-\contentsline {subsubsection}{Architettura}{8}{section*.2}
-\contentsline {subsubsection}{Approccio centralizzato}{8}{section*.3}
-\contentsline {subsubsection}{Approccio federativo}{8}{section*.4}
-\contentsline {subsubsection}{Approccio cooperativo}{9}{section*.5}
-\contentsline {section}{\numberline {2.3}Soluzioni presenti sul mercato}{9}{section.2.3}
-\contentsline {chapter}{\numberline {3}Classi Base}{11}{chapter.3}
-\contentsline {section}{\numberline {3.1}Descrizione dello scenario}{11}{section.3.1}
-\contentsline {chapter}{\numberline {4}Classi Fratture}{12}{chapter.4}
-\contentsline {section}{\numberline {4.1}Descrizione dello scenario}{12}{section.4.1}
-\contentsline {chapter}{\numberline {5}Classi per la gestione del problema numerico}{13}{chapter.5}
-\contentsline {section}{\numberline {5.1}Class BC}{13}{section.5.1}
-\contentsline {section}{\numberline {5.2}Class BCHandler}{14}{section.5.2}
-\contentsline {section}{\numberline {5.3}Class DarcyFracture}{14}{section.5.3}
-\contentsline {chapter}{\numberline {6}Il caso Unicredit - titolo provvisorio}{15}{chapter.6}
-\contentsline {section}{\numberline {6.1}Ambiente AS-IS}{15}{section.6.1}
-\contentsline {subsection}{\numberline {6.1.1}Soluzione precedente}{19}{subsection.6.1.1}
-\contentsline {section}{\numberline {6.2}Nuova implementazione del modulo ETL}{20}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}Concorrenza nell'accesso ai dati}{21}{subsection.6.2.1}
-\contentsline {subsection}{\numberline {6.2.2}Scalabilit\IeC {\`a}}{21}{subsection.6.2.2}
+\contentsline {chapter}{\numberline {2}Classi Base}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}Descrizione dello scenario}{3}{section.2.1}
+\contentsline {chapter}{\numberline {3}Classi Fratture}{4}{chapter.3}
+\contentsline {section}{\numberline {3.1}Descrizione dello scenario}{4}{section.3.1}
+\contentsline {chapter}{\numberline {4}Classi per la gestione del problema numerico}{5}{chapter.4}
+\contentsline {section}{\numberline {4.1}Class BC}{5}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Definizione della classe e costruttore}{5}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Novit\`{a} introdotte per la biforcazione}{6}{subsection.4.1.2}
+\contentsline {section}{\numberline {4.2}Class BCHandler}{8}{section.4.2}
+\contentsline {section}{\numberline {4.3}Class DarcyFracture}{8}{section.4.3}
+\contentsline {chapter}{\numberline {5}Costruzione del file Data}{9}{chapter.5}
+\contentsline {chapter}{\numberline {6}Confronto FreeFem, Validazione dei risultati}{10}{chapter.6}

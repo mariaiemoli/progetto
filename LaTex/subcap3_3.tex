@@ -1,19 +1,25 @@
-\lstnewenvironment{Code}[1][]{\lstset{basicstyle=\small\ttfamily, columns=fullflexible, keywordstyle=\color{red}\bfseries, commentstyle=\color{blue},
-language=C++, basicstyle=\small, numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=5pt, frame=shadowbox, #1}}{}
+\lstnewenvironment{Code}[1][]{\lstset{basicstyle=\small\ttfamily, columns=fullflexible,framexrightmargin=+.1\textwidth, keywordstyle=\color{red}\bfseries, commentstyle=\color{blue},language=C++, basicstyle=\small, numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=5pt, frame=shadowbox, #1}}{}
 
 \chapter{Classi per la gestione del problema numerico}
 \section{Class BC}
-
-La classe \texttt{BC} ci permette di introdurre le condizioni al bordo sia per il mezzo che per le fratture.
-\'{E} costituita da 
+\subsection{Definizione della classe e costruttore}
+La classe \texttt{BC} ci permette di introdurre le condizioni al bordo. Viene gestito sia il bordo del 		mezzo, che quello di ogni singola frattura. \\ 
+Il suo costruttore richiede i seguenti parametri:
 	\begin{itemize}
 	\item \textit{Mesh:} relativa al mezzo o a una delle fratture
 	\item \textit{Stringa:} contenente il tipo di mesh di GetFem del elemento precedente
-	\item \textit{Vettore:} nullo, se la mesh fa riferimento al mezzo, o nel quale devono essere contenuti gli indici dei gradi di libertà degli estremi, se si sta lavorando su una frattura
-	\item \textit{Vettore:} nullo
+	\item \textit{Vettore:} nullo, se la mesh fa riferimento al mezzo, contenete gli indici dei gradi di libert\`{a} degli estremi, se si sta lavorando su una frattura
+	\item \textit{ElementDimesion:} dimensione in cui stiamo lavorando ( di defaul 2 per il mezzo e 1 per le fratture)
 	\end{itemize}
+e crea un elemento \texttt{BC} formato da:
+	\begin{itemize}
+	\item \textit{Mesh:} relativa al mezzo o a una delle fratture
+	\item \textit{Vettore:} contenente l'indice dei gradi di libert\'{a} in cui è imposto Dirichlet
+	\item \textit{Vettore:} contenente l'indice dei gradi di libert\'{a} in cui è imposto Newmann
+	\item \textit{Vettore:} contenente l'indice dei gradi di libert\'{a} in cui sono imposte le condizioni al bordo
+	\end{itemize} 
 
-
+\newpage	
 \begin{Code}[caption={Classe \texttt{BC}}]
 public:
 
@@ -32,12 +38,11 @@ public:
 private:
 
     getfem::mesh_fem M_meshFEM;
-
+    
     // flags for BC
     sizeVector_Type M_dirichlet;
     sizeVector_Type M_neumann;
     sizeVector_Type M_extBoundary;
-};
 \end{Code}
 
 \begin{Code}[caption={Typedef per la Classe \texttt{BC}}]
@@ -49,12 +54,64 @@ typedef boost::shared_ptr<BC> BCPtr_Type;
 typedef std::vector<BCPtr_Type> BCPtrContainer_Type;	
 \end{Code}
 
+Sia quando lavoriamo sul dominio del mezzo, che quando stiamo considerando una frattura che ha solo intersezioni di tipo cross con le altre, il costruttore andrà a inserire gli indici dei gradi di libert\`{a} nei rispettivi vettori valutando solamente se essi si trovano su una faccia della mesh.
+Nel caso della biforcazione bisogna accertarsi di imporre le condizioni al bordo solamente nel'estremo libero, ovvero quello in cui non v\`{e} l'intersezione delle tre fratture.
+
+\subsection{Novit\`{a} introdotte per la biforcazione}
+Quando andiamo ad analizzare una frattura è dunque necessario fornire al costruttore il vettore dei DOF liberi e imporre le condizioni solamente nel DOF dove v\`{e} intersezione. Per far questo creiamo un variabile booleana che varr\`{a} 1 se il grado di libert\`{a} che sto considerando è contenuto nel vettore dei DOF liberi, 0 altrimenti. Questo mi permette di inserire un controllo prima di aggiungere quel indice ai campi \texttt{M\_dirichlet} , \texttt{M\_neumann} , \texttt{M\_extBoundary} della classe.
+%PER MERY -> uso " vettore dei DOF liberi " senza spiegarlo perchè mi aspetto l'abbia spiegato tu quando spieghi il campo di Fracture Handler
+\begin{Code}[caption={Classe \texttt{BC}}]
+[...]
+
+getfem::mesh_region borderFaces;
+getfem::outer_faces_of_mesh(mesh, borderFaces);
+
+[...]
+/* Boundary e' un size_type che contine la cardinalita' dei DOF 
+ * appartenti alle faccie della mesh */
+ 
+boundary_cv.resize(Boundary);
+boundary_flags.resize(Boundary);
+
+for ( getfem::mr_visitor i(borderFaces); !i.finished(); ++i )
+{
+	bool ImAnIntersectionDOF = 0;
+				
+	for( size_type j=0; j<DOFs.size(); j++ )
+	{
+		if( DOFs[ j ] == i.cv() )
+		{
+			ImAnIntersectionDOF = 1;
+		}
+	}
+	if ( !ImAnIntersectionDOF )
+	{
+	  if (false)//( gmm::abs(gmm::abs(un [ dimension - 1 ]) - 1.0) > 1.0E-7 )  
+	  {				
+		// Dirichlet, flag 0
+		boundary_cv [ i.cv() ].push_back(i.f());
+		boundary_flags [ i.cv() ].push_back(boundaryFlags [ 1 ]);
+		
+	  }
+	  else
+	  {
+		// Neumann, flag 1
+		boundary_cv [ i.cv() ].push_back(i.f());
+		boundary_flags [ i.cv() ].push_back(boundaryFlags [1 ]);
+	  }
+	}
+}
+
+[...]
+\end{Code}
+
+
 
 \section{Class BCHandler}
 
-in progress
+Work in progress
 
 \section{Class DarcyFracture}
 
-in progress
+Work in progress
 

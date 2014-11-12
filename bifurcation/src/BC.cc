@@ -121,7 +121,7 @@ BC::BC ( getfem::mesh& mesh,
 		}
 		else
 		{
-	        for ( getfem::mr_visitor i(borderFaces); !i.finished(); ++i )
+			for ( getfem::mr_visitor i(borderFaces); !i.finished(); ++i )
 	        {
 				bool ImAnIntersectionDOF = 0;
 				

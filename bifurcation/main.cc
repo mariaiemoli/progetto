@@ -93,9 +93,9 @@ int main ( int argc, char* argv [ ] )
 	for ( size_type f = 0; f < numberFractures; ++f )
 	{
 		bcFracture [ f ].reset(new BC_Type( fractures->getFracture( f )->getMeshFlat(),
-										   fractures->getFracture ( f )->getData().getMeshType(),
-										   fractures->getFracture ( f ) -> getDofFree(),
-										   FRACTURE ));
+										   	fractures->getFracture ( f )->getData().getMeshType(),
+										   	fractures->getFracture ( f ) -> getDofFree(),
+										   	FRACTURE ));
 	}
 	std::cout << " completed!" << std::endl;
 
