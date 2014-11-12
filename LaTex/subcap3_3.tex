@@ -1,7 +1,48 @@
 \chapter{Classi per la gestione del problema numerico}
 \section{Class BC}
 
-in progress
+\lstnewenvironment{Code}[1][]{\lstset{basicstyle=\small\ttfamily, columns=fullflexible,
+keywordstyle=\color{red}\bfseries, commentstyle=\color{blue},
+language=C++, basicstyle=\small,
+numbers=left, numberstyle=\tiny,
+stepnumber=2, numbersep=5pt, frame=shadowbox, #1}}{}
+
+\begin{Code}[caption={Classe BC}]
+public:
+
+    enum
+    {
+        DIRICHLET_BOUNDARY_NUM = 40,
+        NEUMANN_BOUNDARY_NUM = 50
+    };
+
+    // Costruttore
+    BC ( getfem::mesh& mesh,
+         const std::string& MeshType,
+		 const sizeVector_Type DOFs,
+         const ElementDimension& dimension = MEDIUM );
+
+private:
+
+    getfem::mesh_fem M_meshFEM;
+
+    // flags for BC
+    sizeVector_Type M_dirichlet;
+    sizeVector_Type M_neumann;
+    sizeVector_Type M_extBoundary;
+};
+\end{Code}
+
+\begin{Code}[caption={Typedef per la Classe BC}]
+/*! Elemento BC */
+typedef BC BC_Type;
+/*! Puntatore alla classe BC */												
+typedef boost::shared_ptr<BC> BCPtr_Type;
+/*! Vettore di puntatori a BC */			
+typedef std::vector<BCPtr_Type> BCPtrContainer_Type;	
+
+\end{Code}
+
 
 \section{Class BCHandler}
 

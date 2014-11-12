@@ -9,6 +9,8 @@ main.pdf: main.tex bibliografia.bib
 
 pdf: main.pdf
 
-clean: rm -f *.aux *.log *.out
+clean: 
+	rm -f *.aux *.log *.out
         
-distclean: rm -f *.aux *.log *.out *.pdf
+distclean: 
+	rm -f *.aux *.log *.out *.pdf
