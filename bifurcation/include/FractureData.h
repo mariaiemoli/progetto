@@ -1,7 +1,7 @@
-/** FractureData.h
+/** 
+ * FractureData.h
  *
- * Sostanzialmente questa classe ci serve per partire dal file data e  portare tutte le informazioni che abbiamo
- * salvate in stringhe in formati più fruibili dal computer
+ * Classe che contiene tutte le informazioni circa la natura geometrica e fisica della singola frattura
  *
  */
 

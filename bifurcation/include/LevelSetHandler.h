@@ -2,7 +2,7 @@
  *
  * LevelSetHandler.h
  * 
- * classe che mi permette di costruire la frattura a partire dai dati del file data
+ * Classe che inizializza e gestisce il levelset che rappresenta una frattura
  *
  */
 
