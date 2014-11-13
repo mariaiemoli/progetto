@@ -44,7 +44,7 @@ constructIntesection ( const getfem::mesh& mesh, getfem::mesh_level_set& meshLev
     std::vector<dal::bit_vector> listOfLevelSet_bitVector;
 
     /*
-	 * Andiamo a pulire il vettore dei DOF_Free in modo che poi solo nel caso ci siano biforcazioni venga toccato
+	 * Andiamo a pulire il vettore dei DOF_Free in modo che solo nel caso ci siano biforcazioni venga toccato
 	 */	
 	for ( size_type f=0; f < fractures.size(); f++ )
 	{
@@ -374,13 +374,6 @@ integrateWithBooleanOperation ( getfem::mesh_level_set& meshLevelSet, const size
 
 IntersectDataContainer_Type FractureIntersect::getCrossIntersections () const
 {
-/*	IntersectDataContainer_Type tmp;
-	
-	for ( size_type i = 0; i< M_intersections.find( Cross )->second.size(); i++ )
-		tmp.push_back( M_intersections.find( Cross )->second [ i ] );
-
-    return tmp;
-    */
 	IntersectDataContainer_Type tmp;
 	size_type Num_Cross = getNumberCross();
 
@@ -397,13 +390,6 @@ IntersectDataContainer_Type FractureIntersect::getCrossIntersections () const
 
 IntersectDataContainer_Type FractureIntersect::getBifurcationIntersections () const
 {
-/*	IntersectDataContainer_Type tmp;
-	
-	for ( size_type i = 0; i< M_intersections.find( Bifurcation )->second.size(); i++ )
-		tmp.push_back( M_intersections.find( Bifurcation )->second [ i ] );
-	
-    return tmp;
-    */
 	IntersectDataContainer_Type tmp;
 	
 	size_type Num_Bifu = getNumberBifurcation();
@@ -441,19 +427,15 @@ size_type FractureIntersect::getNumberCross () const
 
 size_type FractureIntersect::getNumberBifurcation () const
 {
-	/* 	size_type NC = M_intersections.find( Bifurcation )->second.size();
-		std::cout << " ciao, NC: " << NC << std::endl;
-		return NC;
-	*/
-	    mapIntersection_Type::const_iterator it;
-	    size_type numIntersect = 0;
-	    for ( it = M_intersections.begin(); it != M_intersections.end(); ++it )
-	    {
-		if( it->first == Bifurcation )
-	        	numIntersect += getNumberIntersectionOfType ( it->first );
-	    }
+	mapIntersection_Type::const_iterator it;
+	size_type numIntersect = 0;
+	for ( it = M_intersections.begin(); it != M_intersections.end(); ++it )
+	{
+	if( it->first == Bifurcation )
+			numIntersect += getNumberIntersectionOfType ( it->first );
+	}
 
-	    return numIntersect;
+	return numIntersect;
 } // getNumberBifurcation
 
 

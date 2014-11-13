@@ -1,5 +1,7 @@
-/** 
+/*
  * LevelSetData.cc
+ * 
+ * Classe che contiene tutte le informazioni legate al level set e le funzioni per valutarne il valore nei punti
  */
 
 #include "../include/LevelSetData.h"

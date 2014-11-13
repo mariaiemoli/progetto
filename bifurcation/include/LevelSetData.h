@@ -1,5 +1,7 @@
-/** LevelSetData.h
- *
+/** 
+ * LevelSetData.h
+ * 
+ * Classe che contiene tutte le informazioni legate al level set e le funzioni per valutarne il valore nei punti
  */
 
 #ifndef LEVELSETDATA_H_

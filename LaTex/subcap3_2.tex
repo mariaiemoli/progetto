@@ -43,9 +43,9 @@ La classe contiente l'insieme di tutte le fratture \texttt{M\_fractures}, una va
 
 La classe  \texttt{FractureHandler} è la classe che inizializza e gestisce ogni frattura. I principali campi di questa classe sono:
 \begin{itemize}
-\item \texttt{M\_data}: classe \texttt{FractureData} che contiene tutte le informazioni circa la natura geometrica e fisica della singola frattura
-\item \texttt{M\_levelSet}: puntatore alla classe \texttt{LevelSetHandler} di cui parleremo più avanti
-\item i metodi di integrazione e le mesh per pressione e velocità
+\item \texttt{M\_data}: classe \texttt{FractureData} che contiene tutte le informazioni circa la natura geometrica e fisica della singola frattura;
+\item \texttt{M\_levelSet}: puntatore alla classe \texttt{LevelSetHandler} di cui parleremo più avanti;
+\item i metodi di integrazione e le mesh per pressione e velocità;
 \item il vettore dei gradi di libertà estesi per velocità e pressione.
 \end{itemize}
 
@@ -60,8 +60,7 @@ size_type FractureHandler::setMeshLevelSetFracture (
 					size_type& globalIndex,
 				         const std::string& type )
 {	
-	[ ... ]
-	
+[ ... ]
 if ( !M_meshLevelSetIntersect[ otherFractureId ].get() )
 {
    M_meshLevelSetIntersect[ otherFractureId ].reset
@@ -126,17 +125,17 @@ return numIntersect;
 \end{Code}
 
 
-\section{La Classe \texttt{LevelSetHandler}}
-Le fratture sono rappresentate come delle rette, funzioni $y=f(x)=ax+c$. Ad ogni frattura è associata una funzione level set  del tipo $f(x,y)=y-ax-b$ che divide il piano in due semipiani: i punti un cui $f(x,y)>0$ e i punti in cui $f(x,y)<0$. I punti in cui $f(x,y)=0$ sono i punti in cui è definita la frattura. 
+\section{La Classe \texttt{LevelSetHandler} e \texttt{LevelSetData}}
+Le fratture sono rappresentate come delle rette, funzioni $y=f(x)=ax+c$. Ad ogni frattura è associata una funzione level set  del tipo $f(x,y)=y-ax-b$ che divide il piano in due semipiani: i punti un cui $f(x,y)>0$ e i punti in cui $f(x,y)<0$. I punti in cui $f(x,y)=0$ sono quelli in cui è definita la frattura. 
 \par La classe \texttt{LevelSetHandler} inizializza il levelset associato alla frattura. 
 La funzione fondamentale della classe è la funzione \texttt{init}, funzione che inizializza il level set, definisce i metodi di integrazione e aggiunge alla mesh di supporto l'informazione legata al level set. I campi fondamentali della classe sono:
 \begin{itemize}
-\item \texttt{M\_data}: puntatore alla classe \texttt{LevelSetData}, classe che contiene tutte le informazioni sul level set
-\item \texttt{M\_mesh}: puntatore ad una variabile di tipo \textit{getfem::mesh\_level\_set}, classe che contiene informazioni sulla mesh tagliata da level set
+\item \texttt{M\_data}: puntatore alla classe \texttt{LevelSetData}, classe che contiene tutte le informazioni sul level set e le funzioni per valutarne il valore nei punti;
+\item \texttt{M\_mesh}: puntatore ad una variabile di tipo \textit{getfem::mesh\_level\_set}, classe che contiene informazioni sulla mesh tagliata da level set;
 \item \texttt{M\_levelSet}: oggetto di tipo \textit{getfem::level\_set}, variabile che definisce il level set. In GetFEM un level set è rappresentato come una o due funzioni scalari, definito su una mesh di tipo \textit{getfem::mesh\_fem}, ossia una mesh su cui è definito un metodo ad elementi finiti.
 \end{itemize}
 
-\begin{Code}[caption={Funzione \texttt{init}}]
+\begin{Code}[caption={Classe \texttt{LevelSetHandler}}]
 class LevelSetHandler
 {
 public:
@@ -163,11 +162,56 @@ private:
 \end{Code}
 
 
- 
-\section{La Classe \texttt{LevelSetData}}
+ \section{Le Classi \texttt{FractureIntersect} e \texttt{IntersectData}}
 
+La classe \texttt{FractureIntersect} rappresenta tutte le intersezioni tra le fratture. Ad ogni tipo di intersezione viene associato il vettore delle classi \texttt{IntersectData}, classe che rappresenta la vera e propria intersezione, tenendo traccia delle informazioni sulle fratture e dell'id dell'elemento della mesh di supporto in cui avviene l'incontro.
+\par Le intersezioni vengono classificate come \textit{Parallel}, \textit{Cross} e \textit{Bifurcation}.  L'idea alla base della classificazione è quella di considerare gli elementi della mesh 2d di supporto, la mesh del mezzo, in cui passano due o più fratture, e di associargli un flag:
+\begin{itemize}
+\item \textit{Parallel}: quando due o più fratture passano in uno stesso elemento della mesh ma non si intersecano;
+\item \textit{Cross}: quando due fratture passano nello stesso elemento della mesh e si intersecano formando una \textit{X};
+\item \textit{Bifurcation}: quando tre fratture si intersecano in un punto comune formando una \textit{Y}.
+\end{itemize}
 
-\section{La Classe \texttt{FractureIntersect}}
+\begin{Code}[caption={Funzione \texttt{constructIntesection}}]
+void FractureIntersect::constructIntesection ( 
+	const getfem::mesh& mesh, getfem::mesh_level_set& meshLevelSet, 
+	const FracturePtrContainer_Type& fractures )
+{
+[ ... ]
+meshLevelSet.find_level_set_potential_intersections ( 
+			listOfConvex, listOfLevelSet_bitVector );
 
-\section{La Classe \texttt{IntersectData}}
+sizeVectorContainer_Type listOfLevelSet ( listOfConvex.size() );
 
+if( listOfConvex.size() > 0 )
+{
+   for ( size_type i = 0 ; i < listOfConvex.size(); ++i )
+   {
+      // Conversione da un vettore di bit a un vettore di interi
+      fromBitVectorToStdVector ( 
+      listOfLevelSet_bitVector [ i ], listOfLevelSet [ i ] );
+
+       // Per ogni elemento della mesh di supporto in cui passano 
+      // almeno due fratture verifico il tipo di intersezione
+       IntersectionType type = intersectionType ( 
+		meshLevelSet, listOfConvex [ i ], listOfLevelSet [ i ] );
+	        
+       // Prendo i puntatori alle fratture coinvolte
+      FracturePtrContainer_Type fracturesInvolved ( listOfLevelSet[i].size() );
+
+      for ( size_type f = 0; f < fracturesInvolved.size(); ++f )
+      {
+	 fracturesInvolved [ f ] = fractures [ listOfLevelSet [ i ] [ f ] ];
+       }
+       // Costruisco la classe IntersectData per la nuova intersezione 
+       // e la aggiungo in base al tipo
+      IntersectData intersection;
+      intersection.setIntersection ( listOfConvex[i], fracturesInvolved );		
+      M_intersections [ type ].push_back ( intersection );
+    }
+[ ... ]
+}
+
+\end{Code}
+
+\par La funzione  \texttt{constructIntesection} contiene la classificazione delle intersezioni. In questa funzione viene data una numerazione globale alle intersezioni, prima quelle di tipo \textit{Cross} e poi quelle di tipo  \textit{Bifurcation}.  Nel caso delle prime vengono aggiunte due nuove incognite, una per ogni frattura, necessarie per imporre le condizioni d'interfaccia nella formulazione debole del problema. Queste nuove variabili rappresentano la pressione nel punto di intersezione e  vengono poi accoppiate in modo da risultare uguali. Nel secondo caso invece si introduce una sola incognita per ogni intersezione, variabile che rappresenta la pressione nel punto d'incontro. Per ogni frattura coinvolta inoltre si tiene traccia del grado di libertà in cui avviene l'intersezione. Questo perchè, come vedremo, la condizione al contorno deve essere imposta solo del grado di libertà dell'estremo libero della frattura.
