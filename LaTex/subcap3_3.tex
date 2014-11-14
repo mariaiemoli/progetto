@@ -1,4 +1,4 @@
-\lstnewenvironment{Code}[1][]{\lstset{basicstyle=\small\ttfamily, columns=fullflexible,framexrightmargin=+.1\textwidth, keywordstyle=\color{red}\bfseries, commentstyle=\color{blue},language=C++, basicstyle=\small, numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=5pt, frame=shadowbox, #1}}{}
+\lstnewenvironment{Code03_03}[1][]{\lstset{basicstyle=\small\ttfamily, columns=fullflexible,framexrightmargin=+.1\textwidth, keywordstyle=\color{red}\bfseries, commentstyle=\color{blue},language=C++, basicstyle=\small, numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=5pt, frame=shadowbox, #1}}{}
 
 \chapter{Classi per la gestione del problema numerico}
 \section{Class BC}
@@ -20,7 +20,7 @@ e crea un elemento \texttt{BC} formato da:
 	\end{itemize} 
 
 \newpage	
-\begin{Code}[caption={Classe \texttt{BC}}]
+\begin{Code03_03}[caption={Classe \texttt{BC}}]
 public:
 
     enum
@@ -43,16 +43,16 @@ private:
     sizeVector_Type M_dirichlet;
     sizeVector_Type M_neumann;
     sizeVector_Type M_extBoundary;
-\end{Code}
+\end{Code03_03}
 
-\begin{Code}[caption={Typedef per la Classe \texttt{BC}}]
+\begin{Code03_03}[caption={Typedef per la Classe \texttt{BC}}]
 /*! Elemento BC */
 typedef BC BC_Type;
 /*! Puntatore alla classe BC */												
 typedef boost::shared_ptr<BC> BCPtr_Type;
 /*! Vettore di puntatori a BC */			
 typedef std::vector<BCPtr_Type> BCPtrContainer_Type;	
-\end{Code}
+\end{Code03_03}
 
 Sia quando lavoriamo sul dominio del mezzo, che quando stiamo considerando una frattura che ha solo intersezioni di tipo cross con le altre, il costruttore andrà a inserire gli indici dei gradi di libert\`{a} nei rispettivi vettori valutando solamente se essi si trovano su una faccia della mesh.
 Nel caso della biforcazione bisogna accertarsi di imporre le condizioni al bordo solamente nel'estremo libero, ovvero quello in cui non v\`{e} l'intersezione delle tre fratture.
@@ -60,7 +60,7 @@ Nel caso della biforcazione bisogna accertarsi di imporre le condizioni al bordo
 \subsection{Novit\`{a} introdotte per la biforcazione}
 Quando andiamo ad analizzare una frattura è dunque necessario fornire al costruttore il vettore dei DOF liberi e imporre le condizioni solamente nel DOF dove v\`{e} intersezione. Per far questo creiamo un variabile booleana che varr\`{a} 1 se il grado di libert\`{a} che sto considerando è contenuto nel vettore dei DOF liberi, 0 altrimenti. Questo mi permette di inserire un controllo prima di aggiungere quel indice ai campi \texttt{M\_dirichlet} , \texttt{M\_neumann} , \texttt{M\_extBoundary} della classe.
 %PER MERY -> uso " vettore dei DOF liberi " senza spiegarlo perchè mi aspetto l'abbia spiegato tu quando spieghi il campo di Fracture Handler
-\begin{Code}[caption={Classe \texttt{BC}}]
+\begin{Code03_03}[caption={Classe \texttt{BC}}]
 [...]
 
 getfem::mesh_region borderFaces;
@@ -103,7 +103,7 @@ for ( getfem::mr_visitor i(borderFaces); !i.finished(); ++i )
 }
 
 [...]
-\end{Code}
+\end{Code03_03}
 
 
 

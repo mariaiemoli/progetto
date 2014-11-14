@@ -3,13 +3,18 @@
 \contentsline {section}{\numberline {1.1}Descrizione dello scenario}{2}{section.1.1}
 \contentsline {chapter}{\numberline {2}Classi Base}{3}{chapter.2}
 \contentsline {section}{\numberline {2.1}Descrizione dello scenario}{3}{section.2.1}
-\contentsline {chapter}{\numberline {3}Classi Fratture}{4}{chapter.3}
-\contentsline {section}{\numberline {3.1}Descrizione dello scenario}{4}{section.3.1}
-\contentsline {chapter}{\numberline {4}Classi per la gestione del problema numerico}{5}{chapter.4}
-\contentsline {section}{\numberline {4.1}Class BC}{5}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Definizione della classe e costruttore}{5}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}Novit\`{a} introdotte per la biforcazione}{6}{subsection.4.1.2}
-\contentsline {section}{\numberline {4.2}Class BCHandler}{8}{section.4.2}
-\contentsline {section}{\numberline {4.3}Class DarcyFracture}{8}{section.4.3}
-\contentsline {chapter}{\numberline {5}Costruzione del file Data}{9}{chapter.5}
-\contentsline {chapter}{\numberline {6}Confronto FreeFem, Validazione dei risultati}{10}{chapter.6}
+\contentsline {chapter}{\numberline {3}Implementazione delle fratture}{4}{chapter.3}
+\contentsline {section}{\numberline {3.1}La Classe \texttt {FracturesSet}}{4}{section.3.1}
+\contentsline {section}{\numberline {3.2}La Classe \texttt {FractureHandler}}{5}{section.3.2}
+\contentsline {section}{\numberline {3.3}La Classe \texttt {LevelSetHandler}}{7}{section.3.3}
+\contentsline {section}{\numberline {3.4}La Classe \texttt {LevelSetData}}{8}{section.3.4}
+\contentsline {section}{\numberline {3.5}La Classe \texttt {FractureIntersect}}{8}{section.3.5}
+\contentsline {section}{\numberline {3.6}La Classe \texttt {IntersectData}}{8}{section.3.6}
+\contentsline {chapter}{\numberline {4}Classi per la gestione del problema numerico}{9}{chapter.4}
+\contentsline {section}{\numberline {4.1}Class BC}{9}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Definizione della classe e costruttore}{9}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Novit\`{a} introdotte per la biforcazione}{10}{subsection.4.1.2}
+\contentsline {section}{\numberline {4.2}Class BCHandler}{12}{section.4.2}
+\contentsline {section}{\numberline {4.3}Class DarcyFracture}{12}{section.4.3}
+\contentsline {chapter}{\numberline {5}Costruzione del file Data}{13}{chapter.5}
+\contentsline {chapter}{\numberline {6}Confronto FreeFem, Validazione dei risultati}{14}{chapter.6}
