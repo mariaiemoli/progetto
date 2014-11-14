@@ -1,0 +1,20 @@
+SET(SRC_DIR ${PACS_SOURCE_DIR}/src)
+SET(HEADERS_DIR ${PACS_SOURCE_DIR}/include)
+
+
+#SET(TARGET_SRC ${SRC_DIR}/Displacement.cpp ${SRC_DIR}/BSplineBasis.cpp ${SRC_DIR}/ControlPoint.cpp ${SRC_DIR}/exact_solution.cpp ${SRC_DIR}/DesignVariable.cpp ${SRC_DIR}/Domain1D.cpp ${SRC_DIR}/FFDMeshData.cpp ${SRC_DIR}/FFDReferenceMesh.cpp ${SRC_DIR}/FindDisplacement.cpp ${SRC_DIR}/NURBS_FFD.cpp ${SRC_DIR}/NURBSSurface.cpp)
+INCLUDE_DIRECTORIES( ${PACS_SOURCE_DIR}/include)
+LINK_DIRECTORIES(${PACS_SOURCE_DIR}/src)
+#INCLUDE_DIRECTORIES(${PACS_SOURCE_DIR}/include)
+#LINK_DIRECTORIES(${PACS_SOURCE_DIR}/include)
+
+ADD_EXECUTABLE( darcy main.cc ${SRC_DIR}/BC.cc ${SRC_DIR}/BCHandler.cc ${SRC_DIR}/DarcyFractured.cc ${SRC_DIR}/Exporter.cc ${SRC_DIR}/FractureData.cc ${SRC_DIR}/FractureHandler.cc ${SRC_DIR}/FractureIntersect.cc ${SRC_DIR}/FracturesSet.cc ${SRC_DIR}/IntersectData.cc ${SRC_DIR}/LevelSetData.cc ${SRC_DIR}/LevelSetHandler.cc ${SRC_DIR}/MatrixBifurcationHandler.cc ${SRC_DIR}/MediumData.cc ${SRC_DIR}/MeshHandler.cc ${SRC_DIR}/Parser.cc ${SRC_DIR}/PointData.cc ${SRC_DIR}/StringUtility.cc ${SRC_DIR}/TriangleData.cc ${SRC_DIR}/TriangleHandler.cc ${SRC_DIR}/UsefulFunctions.cc ${SRC_DIR}/XFEMOperators.cc  ${HEADERS_DIR}/BC.h ${HEADERS_DIR}/BCHandler.h ${HEADERS_DIR}/DarcyFractured.h ${HEADERS_DIR}/Exporter.h ${HEADERS_DIR}/FractureData.h ${HEADERS_DIR}/FractureHandler.h ${HEADERS_DIR}/FractureIntersect.h ${HEADERS_DIR}/FracturesSet.h ${HEADERS_DIR}/IntersectData.h ${HEADERS_DIR}/LevelSetData.h ${HEADERS_DIR}/LevelSetHandler.h ${HEADERS_DIR}/MatrixBifurcationHandler.h ${HEADERS_DIR}/MediumData.h ${HEADERS_DIR}/MeshHandler.h ${HEADERS_DIR}/Parser.h ${HEADERS_DIR}/PointData.h ${HEADERS_DIR}/StringUtility.h ${HEADERS_DIR}/TriangleData.h ${HEADERS_DIR}/TriangleHandler.h ${HEADERS_DIR}/UsefulFunctions.h ${HEADERS_DIR}/XFEMOperators.h ${HEADERS_DIR}/Core.h ${HEADERS_DIR}/GetPot ${HEADERS_DIR}/ParserDefinitions.h ${HEADERS_DIR}/ParserSpiritGrammar.h )
+
+TARGET_LINK_LIBRARIES(darcy ${GETFEM_LIBRARIES} ${QHULL_LIBRARIES} ${LAPACK_LIBRARIES} ${BLAS_LIBRARIES} pacs )
+
+#INSTALL(TARGETS main.out RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX})
+
+
+#ADD_TEST( main  main.out pacs )
+
+#INCLUDE_DIRECTORIES( ${CMAKE_CURRENT_SOURCE_DIR} )
