@@ -12,8 +12,11 @@ bool plotYesNo = true;
 int Nelem = 1200;
 int NelemI = 10;
 
+cout << "cazzo" << endl;
+
 include "mesh_bifurcation.edp"
 
+cout << "cazzo" << endl;
 // dual-mixed mathod
 
 func invK11 = part(x,y)*1 + fracture0(x,y)*1 + fracture1(x,y)*1 + fracture2(x,y)*1;
@@ -44,6 +47,8 @@ real dimVh=Vh.ndof;
 real dimQh=Qh.ndof;  
 real dimtot=dimVh+dimQh;
 
+cout << "forma bilineare" << endl;
+
 // Forme bilineari (senza il contributo delle condizioni al contorno di Dirichlet)
 // Definition of variational forms
 
@@ -62,35 +67,12 @@ varf menob([u1,u2],[q]) = int2d(Th)((dx(u1)+dy(u2))*q);
 
 varf masspres(p,q) = int2d(Th)(p*q);
 
+
 // Construction of matrices
 matrix A=a(Vh,Vh);  
 matrix B=b(Vh,Qh);
 matrix menoB=menob(Vh,Qh);
 
-
-
-matrix MP=masspres(Qh,Qh);
-matrix MV=masspres(Vh,Vh);
-//matrix J0=1;
-
-//matrix Sigma=[[A,B'],[menoB,0]];
-matrix Sigma=[[A,B'],[menoB,0]];
-//matrix P=[[MP,0,0],[0,MV,0],[0,0,1]];
-matrix P=[[MV,0],[0,MP]];//,0],[0,0,1]];
- 
-
-ofstream fout("matriceGrande");
-fout << Sigma;
-
-
-ofstream fout2("b");
-fout2 << B;
-
-
-ofstream fout1("p");
-fout1 << P;
-
-set(P,solver=UMFPACK);
 
 real[int]f(dimQh);
 f=ff;		// 	condizioni di Dirichlet
@@ -100,27 +82,32 @@ FF=0;
 FF(dimVh:dimtot-1)=ff;
 //cout << "f: " << f<< endl;
 
-real[int] UU(dimtot),RR(dimtot); ; 
+real[int] UU(dimtot),RR(dimtot); 
 
-// funzione che calcola il residuo precondizionato
-func real[int] BlockDiag(real[int] &xx)
+real[int] yy(dimVh), ww(dimVh);
+real[int] pp(dimQh);
+int k=0;
+
+
+cout << "risolvo" << endl;
+// function that compute the residual r = B*A^-1*(f-B'*xx)
+func real[int] residuo(real[int] &xx)
 {
-	RR=P^-1*xx;
-	return RR;
+  yy=B'*xx; yy=-yy; yy+=f;
+  ww=A^-1*yy;
+  pp=B*ww;
+  cout << "GMRES Iteration " << k  << endl;
+  k++;
+  return pp;
 }
 
+// Solution of the linear sistem for the pressure
+real s0=clock();
+LinearGMRES(residuo, UU, FF, nbiter=1000, eps=1.e-6)
+//LinearGMRES(residuo, ph[] /*, eps=1.e-6 */, nbiter=100);
+cout << "CPU time  " << clock()-s0 << endl;
 
 
-
-// funzione che calcola il prodotto tra la matrice di Stokes e un vettore in ingresso
-func real[int] MatVecDarcy(real[int] &xx)
-{
-	RR=Sigma*xx;
-	return RR;
-}
-
-// risolvo il sistema monolitico con GMRES precondizionato
-LinearGMRES(MatVecDarcy, UU, FF, nbiter=10000, eps=1.e-6, precon=BlockDiag);
 
 
 uh1[]=UU(0:dimVh-1);

@@ -29,9 +29,9 @@ real b2 = 0.1;
 /*real d0 = 0.024;*/
 /*real d1 = 0.02;*/
 /*real d2 = 0.022;*/
-real d0 = 0.013;
-real d1 = 0.011;
-real d2 = 0.012;
+real d0 = 0.0013;
+real d1 = 0.0011;
+real d2 = 0.0012;
 
 
 // punti di inizio frattura
@@ -96,14 +96,6 @@ real a5 = ( inty2 - inty0 )/( intx2 - intx0 );
 real b5 = ( inty0 - a5*intx0 );
 
 // punti che definiscono il dominio 2d delle fratture
-//real ext0 = ( b0 + d0/2 )*1./a0;
-//real ext1 = ( b0 - d0/2 )*1./a0;
-//real ext2 = ( b1 + d1/2 )*1./a1;
-//real ext3 = ( b1 - d1/2 )*1./a1;
-//real ext4 = ( 1. - b2 - d2/2 )*1./a2;
-//real ext5 = ( 1. - b2 + d2/2 )*1./a2;
-
-
 real ext0 = ( (b0 + d0/2. ) + ( interFrac + length0x )*( a0 + 1./a0 ) - b0 )/( a0 + 1./a0 );
 real ext1 = ( (b0 - d0/2. ) + ( interFrac + length0x )*( a0 + 1./a0 ) - b0 )/( a0 + 1./a0 );
 
@@ -113,23 +105,6 @@ real ext3 = ( ( interFrac - length1x )*( a1 + 1./a1 ) - b1 + ( b1 - d1/2. ) )/( 
 real ext4 = ( ( interFrac + length2x )*( a2 + 1./a2 ) + b2 - ( b2 + d2/2. ) )/( a2 + 1./a2 );
 real ext5 = ( ( interFrac + length2x )*( a2 + 1./a2 ) + b2 - ( b2 - d2/2. ) )/( a2 + 1./a2 );
 
-/*
- * cout << " Ext0 -> int2 " << endl;
- * cout << "Ext0  = " << ext0 << endl;
- * cout << "int2  = " << intx2 << endl;
- * cout << " int2 -> ext5 " << endl;
- * cout << "ext5  = " << ext5 << endl;
- * cout << " ext4 -> int1  " << endl;
- * cout << "Ext4  = " << ext4 << endl;
- * cout << "int1  = " << intx1 << endl;
- * cout << " int1 -> ext3  " << endl;
- * cout << "ext3  = " << ext3 << endl;
- * cout << " ext2 -> int0  " << endl;
- * cout << "Ext2  = " << ext2 << endl;
- * cout << "int0  = " << intx0 << endl;
- * cout << " int0 -> ext1  " << endl;
- * cout << "Ext0  = " << ext0 << endl;
- */
 
 // definiamo i bordi della mesh
 border long0 ( t = ext0, intx2 ) { x = t; y = -a0*t+b0+d0/2.; label = 3; }
@@ -156,11 +131,11 @@ border inside2 ( t = intx1, intx0 ) { x = t; y = a3*t+b3; label = 40; }
 // costruiamo la mesh
 
 
-mesh Th = buildmesh ( long0( Nelem ) + long1( Nelem ) + short0(Nelem*d1) + 
-					  long2( Nelem ) + long3( Nelem ) +
-                      short1(Nelem*d2) +
-                      long4( Nelem ) + long5( Nelem ) +
-                      short2(Nelem*d0) + inside0(NelemI*Nelem*d0) +
+mesh Th = buildmesh ( long0( Nelem*2 ) + long1( Nelem*2 ) + short0(Nelem*d1*3) + 
+					  long2( Nelem*2 ) + long3( Nelem*3 ) +
+                      short1(Nelem*d2*3) +
+                      long4( Nelem*3 ) + long5( Nelem*2 ) +
+                      short2(Nelem*d0*3) + inside0(NelemI*Nelem*d0) +
 					  inside1(NelemI*Nelem*d2) + inside2(NelemI*Nelem*d1) );
 
 

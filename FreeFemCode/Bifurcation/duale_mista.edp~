@@ -40,15 +40,15 @@ Qh ph, qh, one;
 one = part(x,y);
 
 // problem definition
-problem Darcy ( [uh1, uh2, ph], [tauh1, tauh2, qh] , solver = Crout) = -
+problem Darcy ( [uh1, uh2, ph], [tauh1, tauh2, qh], solver = GMRES) = -
                 int2d(Th)( ( invK11 * uh1 + invK12 * uh2 ) * tauh1 +
                            ( invK21 * uh1 + invK22 * uh2 ) * tauh2 ) +
                 int2d(Th)( ph * ( dx(tauh1) + dy(tauh2) ) ) +
                 int2d(Th)( qh * ( dx(uh1)   + dy(uh2)   ) ) -
-                int2d(Th)( qh * f ) -
-                int1d(Th,54)(p2*(tauh1*N.x + tauh2*N.y) ) -
-                int1d(Th,32)(p1*(tauh1*N.x + tauh2*N.y) ) -
-                int1d(Th,10)(p0*(tauh1*N.x + tauh2*N.y) ) +
+                int2d(Th)( qh * f ) +
+//                int1d(Th,54)(p2*(tauh1*N.x + tauh2*N.y) ) -
+//                int1d(Th,32)(p1*(tauh1*N.x + tauh2*N.y) ) -
+//                int1d(Th,10)(p0*(tauh1*N.x + tauh2*N.y) ) +
                 on(3, uh1 = 0, uh2 = 0);
 
 
