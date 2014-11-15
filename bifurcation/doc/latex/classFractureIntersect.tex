@@ -94,11 +94,11 @@ Classe che contiene tutte le intersezioni divise in base al loro tipo ( Cross, B
 \end{Desc}
 
 \begin{DoxyCode}
-25         \{
-26                 \hyperlink{classFractureIntersect_a9a4e4a784fa4c8e359767ed543f89dc5ad91760e1506b52a828bc401490f7c92b}{Parallel} = 400000,
-27                 \hyperlink{classFractureIntersect_a9a4e4a784fa4c8e359767ed543f89dc5a743fef1af81c0e61412fafb9438b380e}{Cross} = 500000,
-28                 \hyperlink{classFractureIntersect_a9a4e4a784fa4c8e359767ed543f89dc5a4d466b3d3de0af7e18732b6f765bb1af}{Bifurcation} = 600000
-29         \};
+26         \{
+27                 \hyperlink{classFractureIntersect_a9a4e4a784fa4c8e359767ed543f89dc5ad91760e1506b52a828bc401490f7c92b}{Parallel} = 400000,
+28                 \hyperlink{classFractureIntersect_a9a4e4a784fa4c8e359767ed543f89dc5a743fef1af81c0e61412fafb9438b380e}{Cross} = 500000,
+29                 \hyperlink{classFractureIntersect_a9a4e4a784fa4c8e359767ed543f89dc5a4d466b3d3de0af7e18732b6f765bb1af}{Bifurcation} = 600000
+30         \};
 \end{DoxyCode}
 
 
@@ -184,7 +184,7 @@ Per ogni elemento della mesh di supporto verifica quanti level set lo attraversa
 44     std::vector<dal::bit\_vector> listOfLevelSet\_bitVector;
 45 
 46     \textcolor{comment}{/*}
-47 \textcolor{comment}{     * Andiamo a pulire il vettore dei DOF\_Free in modo che poi solo nel caso ci siano biforcazioni venga
+47 \textcolor{comment}{     * Andiamo a pulire il vettore dei DOF\_Free in modo che solo nel caso ci siano biforcazioni venga
        toccato}
 48 \textcolor{comment}{     */} 
 49     \textcolor{keywordflow}{for} ( size\_type f=0; f < fractures.size(); f++ )
@@ -476,96 +476,96 @@ Questo è il grafo delle chiamate per questa funzione\-:\nopagebreak
 )}}\label{classFractureIntersect_a0d63690aff97bc6a98f7e01d9d319f1c}
 
 \begin{DoxyCode}
-514 \{
-515     \textcolor{comment}{// x e y dei nodi geometrici che definiscono il convesso}
-516     scalar\_type x1 = nodes [ 0 ] [ 0 ];
-517     scalar\_type x2 = nodes [ 1 ] [ 0 ];
-518     scalar\_type x3 = nodes [ 2 ] [ 0 ];
-519 
-520     scalar\_type y1 = nodes [ 0 ] [ 1 ];
-521     scalar\_type y2 = nodes [ 1 ] [ 1 ];
-522     scalar\_type y3 = nodes [ 2 ] [ 1 ];
-523 
-524     scalar\_type minx= fmin(x1, fmin( x2, x3 ) );
-525     scalar\_type maxx= fmax(x1, fmax( x2, x3 ) );
-526 
-527     scalar\_type miny= fmin(y1, fmin( y2, y3 ) );
-528     scalar\_type maxy= fmax(y1, fmax( y2, y3 ) );
-529 
-530     \textcolor{comment}{// x\_massima e x\_minima dei punti appartenenti alla frattura}
-531     scalar\_type translateAbscissa = fracture->getData().getTranslateAbscissa ();
-532     scalar\_type lengthAbscissa = fracture->getData().getLengthAbscissa ();
-533 
-534     base\_node nodo ( 1 );
-535     nodo [ 0 ] = 0;
-536     base\_node nodo1 ( 1 );
-537     nodo1 [ 0 ] = 1;
-538 
-539     \textcolor{comment}{// y\_massima e y\_minima dei punti appartenenti alla frattura}
-540     scalar\_type translateOrdinata = fmin( fracture->getLevelSet()->getData()->y\_map(nodo), fracture->
+496 \{
+497     \textcolor{comment}{// x e y dei nodi geometrici che definiscono il convesso}
+498     scalar\_type x1 = nodes [ 0 ] [ 0 ];
+499     scalar\_type x2 = nodes [ 1 ] [ 0 ];
+500     scalar\_type x3 = nodes [ 2 ] [ 0 ];
+501 
+502     scalar\_type y1 = nodes [ 0 ] [ 1 ];
+503     scalar\_type y2 = nodes [ 1 ] [ 1 ];
+504     scalar\_type y3 = nodes [ 2 ] [ 1 ];
+505 
+506     scalar\_type minx= fmin(x1, fmin( x2, x3 ) );
+507     scalar\_type maxx= fmax(x1, fmax( x2, x3 ) );
+508 
+509     scalar\_type miny= fmin(y1, fmin( y2, y3 ) );
+510     scalar\_type maxy= fmax(y1, fmax( y2, y3 ) );
+511 
+512     \textcolor{comment}{// x\_massima e x\_minima dei punti appartenenti alla frattura}
+513     scalar\_type translateAbscissa = fracture->getData().getTranslateAbscissa ();
+514     scalar\_type lengthAbscissa = fracture->getData().getLengthAbscissa ();
+515 
+516     base\_node nodo ( 1 );
+517     nodo [ 0 ] = 0;
+518     base\_node nodo1 ( 1 );
+519     nodo1 [ 0 ] = 1;
+520 
+521     \textcolor{comment}{// y\_massima e y\_minima dei punti appartenenti alla frattura}
+522     scalar\_type translateOrdinata = fmin( fracture->getLevelSet()->getData()->y\_map(nodo), fracture->
       getLevelSet()->getData()->y\_map(nodo1) );
-541     scalar\_type lengthOrdinata = fmax( fracture->getLevelSet()->getData()->y\_map(nodo), fracture->
+523     scalar\_type lengthOrdinata = fmax( fracture->getLevelSet()->getData()->y\_map(nodo), fracture->
       getLevelSet()->getData()->y\_map(nodo1) );
-542 
-543     \textcolor{comment}{// controllo che, nel caso in cui la frattura non tagli tutta la mesh di supporto, il convesso sia
+524 
+525     \textcolor{comment}{// controllo che, nel caso in cui la frattura non tagli tutta la mesh di supporto, il convesso sia
        effettivamente tagliato dalla frattura}
-544     \textcolor{keywordflow}{if} ( minx >= translateAbscissa && maxx <= translateAbscissa + lengthAbscissa)
-545     \{   
-546         \textcolor{keywordflow}{if} ( miny >= translateOrdinata && maxy <= lengthOrdinata )
-547         \{   
-548             \textcolor{keywordflow}{return} 0;
-549         \}
-550         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ( miny <= lengthOrdinata && maxy >= lengthOrdinata )
-551         \{   
-552             \textcolor{keywordflow}{return} 0;
-553         \}
-554         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ( miny <= translateOrdinata && maxy >= translateOrdinata )
-555         \{   
-556             \textcolor{keywordflow}{return} 0;
-557         \}
+526     \textcolor{keywordflow}{if} ( minx >= translateAbscissa && maxx <= translateAbscissa + lengthAbscissa)
+527     \{   
+528         \textcolor{keywordflow}{if} ( miny >= translateOrdinata && maxy <= lengthOrdinata )
+529         \{   
+530             \textcolor{keywordflow}{return} 0;
+531         \}
+532         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ( miny <= lengthOrdinata && maxy >= lengthOrdinata )
+533         \{   
+534             \textcolor{keywordflow}{return} 0;
+535         \}
+536         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ( miny <= translateOrdinata && maxy >= translateOrdinata )
+537         \{   
+538             \textcolor{keywordflow}{return} 0;
+539         \}
+540         \textcolor{keywordflow}{else}
+541         \{   
+542             \textcolor{keywordflow}{return} 3;
+543         \}
+544 
+545     \}
+546 
+547     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ( minx <= translateAbscissa && maxx >= translateAbscissa )
+548     \{
+549         \textcolor{keywordflow}{if} ( miny < translateOrdinata && maxy < translateOrdinata )
+550         \{
+551             \textcolor{keywordflow}{return} 3;
+552         \}
+553         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ( miny > lengthOrdinata && maxy > lengthOrdinata )
+554         \{
+555             \textcolor{keywordflow}{return} 3;
+556         \}
+557 
 558         \textcolor{keywordflow}{else}
-559         \{   
-560             \textcolor{keywordflow}{return} 3;
+559         \{
+560             \textcolor{keywordflow}{return} -1;
 561         \}
-562 
-563     \}
-564 
-565     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ( minx <= translateAbscissa && maxx >= translateAbscissa )
-566     \{
-567         \textcolor{keywordflow}{if} ( miny < translateOrdinata && maxy < translateOrdinata )
-568         \{
-569             \textcolor{keywordflow}{return} 3;
-570         \}
-571         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ( miny > lengthOrdinata && maxy > lengthOrdinata )
-572         \{
-573             \textcolor{keywordflow}{return} 3;
-574         \}
-575 
-576         \textcolor{keywordflow}{else}
-577         \{
-578             \textcolor{keywordflow}{return} -1;
-579         \}
-580     \}
+562     \}
+563 
+564     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ( minx <= translateAbscissa  + lengthAbscissa && maxx >= translateAbscissa + lengthAbscissa )
+565     \{
+566         \textcolor{keywordflow}{if} ( miny >= lengthOrdinata && maxy >= lengthOrdinata )
+567         \{   
+568             \textcolor{keywordflow}{return} 3;
+569         \}
+570         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ( miny <= translateOrdinata && maxy <= translateOrdinata )
+571         \{   
+572             \textcolor{keywordflow}{return} 3;
+573         \}
+574         \textcolor{keywordflow}{else}
+575         \{   
+576             \textcolor{keywordflow}{return} 1;
+577         \}
+578     \}
+579     
+580     \textcolor{keywordflow}{return} 3;
 581 
-582     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ( minx <= translateAbscissa  + lengthAbscissa && maxx >= translateAbscissa + lengthAbscissa )
-583     \{
-584         \textcolor{keywordflow}{if} ( miny >= lengthOrdinata && maxy >= lengthOrdinata )
-585         \{   
-586             \textcolor{keywordflow}{return} 3;
-587         \}
-588         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ( miny <= translateOrdinata && maxy <= translateOrdinata )
-589         \{   
-590             \textcolor{keywordflow}{return} 3;
-591         \}
-592         \textcolor{keywordflow}{else}
-593         \{   
-594             \textcolor{keywordflow}{return} 1;
-595         \}
-596     \}
-597     
-598     \textcolor{keywordflow}{return} 3;
-599 
-600 \}\end{DoxyCode}
+582 \}\end{DoxyCode}
 
 
 Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
@@ -586,9 +586,9 @@ Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
 ) const}}\label{classFractureIntersect_a8293ef859c572a375c7c5f6e79399b1e}
 
 \begin{DoxyCode}
-489 \{
-490     \textcolor{keywordflow}{return} M\_basisFunctionOfType.find ( type )->second;
-491 \} \textcolor{comment}{// getBasisFunctionOfType}
+471 \{
+472     \textcolor{keywordflow}{return} M\_basisFunctionOfType.find ( type )->second;
+473 \} \textcolor{comment}{// getBasisFunctionOfType}
 \end{DoxyCode}
 \hypertarget{classFractureIntersect_a18ff664767b7e8ffa876b80a6100e74d}{\index{Fracture\-Intersect@{Fracture\-Intersect}!get\-Bifurcation\-Intersections@{get\-Bifurcation\-Intersections}}
 \index{get\-Bifurcation\-Intersections@{get\-Bifurcation\-Intersections}!FractureIntersect@{Fracture\-Intersect}}
@@ -606,29 +606,22 @@ Intersect\-Data\-Container\-\_\-\-Type\-: restituisce il vettore di tutte le int
 \end{DoxyReturn}
 
 \begin{DoxyCode}
-399 \{
-400 \textcolor{comment}{/*  IntersectDataContainer\_Type tmp;}
-401 \textcolor{comment}{    }
-402 \textcolor{comment}{    for ( size\_type i = 0; i< M\_intersections.find( Bifurcation )->second.size(); i++ )}
-403 \textcolor{comment}{        tmp.push\_back( M\_intersections.find( Bifurcation )->second [ i ] );}
-404 \textcolor{comment}{    }
-405 \textcolor{comment}{    return tmp;}
-406 \textcolor{comment}{    */}
-407     \hyperlink{IntersectData_8h_a822ec3b760dfb603e1cf0bfe3ad5636a}{IntersectDataContainer\_Type} tmp;
-408     
-409     size\_type Num\_Bifu = \hyperlink{classFractureIntersect_afba7c92096a4b92a27fcb4f1158c7279}{getNumberBifurcation}();
-410 
-411     \textcolor{keywordflow}{if}( Num\_Bifu !=0 )
-412     \{
-413         \textcolor{keywordflow}{for} ( size\_type \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}< M\_intersections.find( \hyperlink{classFractureIntersect_a9a4e4a784fa4c8e359767ed543f89dc5a4d466b3d3de0af7e18732b6f765bb1af}{Bifurcation} )->second.size(); 
+392 \{
+393     \hyperlink{IntersectData_8h_a822ec3b760dfb603e1cf0bfe3ad5636a}{IntersectDataContainer\_Type} tmp;
+394     
+395     size\_type Num\_Bifu = \hyperlink{classFractureIntersect_afba7c92096a4b92a27fcb4f1158c7279}{getNumberBifurcation}();
+396 
+397     \textcolor{keywordflow}{if}( Num\_Bifu !=0 )
+398     \{
+399         \textcolor{keywordflow}{for} ( size\_type \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}< M\_intersections.find( \hyperlink{classFractureIntersect_a9a4e4a784fa4c8e359767ed543f89dc5a4d466b3d3de0af7e18732b6f765bb1af}{Bifurcation} )->second.size(); 
       \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++ )
-414             tmp.push\_back( M\_intersections.find( \hyperlink{classFractureIntersect_a9a4e4a784fa4c8e359767ed543f89dc5a4d466b3d3de0af7e18732b6f765bb1af}{Bifurcation} )->second [ 
+400             tmp.push\_back( M\_intersections.find( \hyperlink{classFractureIntersect_a9a4e4a784fa4c8e359767ed543f89dc5a4d466b3d3de0af7e18732b6f765bb1af}{Bifurcation} )->second [ 
       \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} ] );
-415     \}
-416     
-417     \textcolor{keywordflow}{return} tmp;
-418 
-419 \}
+401     \}
+402     
+403     \textcolor{keywordflow}{return} tmp;
+404 
+405 \}
 \end{DoxyCode}
 
 
@@ -658,26 +651,19 @@ Intersect\-Data\-Container\-\_\-\-Type\-: restituisce il vettore di tutte le int
 
 \begin{DoxyCode}
 376 \{
-377 \textcolor{comment}{/*  IntersectDataContainer\_Type tmp;}
-378 \textcolor{comment}{    }
-379 \textcolor{comment}{    for ( size\_type i = 0; i< M\_intersections.find( Cross )->second.size(); i++ )}
-380 \textcolor{comment}{        tmp.push\_back( M\_intersections.find( Cross )->second [ i ] );}
-381 \textcolor{comment}{}
-382 \textcolor{comment}{    return tmp;}
-383 \textcolor{comment}{    */}
-384     \hyperlink{IntersectData_8h_a822ec3b760dfb603e1cf0bfe3ad5636a}{IntersectDataContainer\_Type} tmp;
-385     size\_type Num\_Cross = \hyperlink{classFractureIntersect_a8d9f707319b9b83744b6e03f19003734}{getNumberCross}();
-386 
-387     \textcolor{keywordflow}{if}( Num\_Cross !=0 )
-388     \{
-389         \textcolor{keywordflow}{for} ( size\_type \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}< M\_intersections.find( \hyperlink{classFractureIntersect_a9a4e4a784fa4c8e359767ed543f89dc5a743fef1af81c0e61412fafb9438b380e}{Cross} )->second.size(); 
+377     \hyperlink{IntersectData_8h_a822ec3b760dfb603e1cf0bfe3ad5636a}{IntersectDataContainer\_Type} tmp;
+378     size\_type Num\_Cross = \hyperlink{classFractureIntersect_a8d9f707319b9b83744b6e03f19003734}{getNumberCross}();
+379 
+380     \textcolor{keywordflow}{if}( Num\_Cross !=0 )
+381     \{
+382         \textcolor{keywordflow}{for} ( size\_type \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}< M\_intersections.find( \hyperlink{classFractureIntersect_a9a4e4a784fa4c8e359767ed543f89dc5a743fef1af81c0e61412fafb9438b380e}{Cross} )->second.size(); 
       \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}++ )
-390             tmp.push\_back( M\_intersections.find( \hyperlink{classFractureIntersect_a9a4e4a784fa4c8e359767ed543f89dc5a743fef1af81c0e61412fafb9438b380e}{Cross} )->second [ \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} ] );
-391     \}
-392 
-393     \textcolor{keywordflow}{return} tmp;
-394 
-395 \}
+383             tmp.push\_back( M\_intersections.find( \hyperlink{classFractureIntersect_a9a4e4a784fa4c8e359767ed543f89dc5a743fef1af81c0e61412fafb9438b380e}{Cross} )->second [ \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} ] );
+384     \}
+385 
+386     \textcolor{keywordflow}{return} tmp;
+387 
+388 \}
 \end{DoxyCode}
 
 
@@ -706,9 +692,9 @@ map\-Intersection\-\_\-\-Type\-: std\-::map $<$ Intersection\-Type, Intersect\-D
 \end{DoxyReturn}
 
 \begin{DoxyCode}
-92         \{
-93                 \textcolor{keywordflow}{return} M\_intersections;
-94         \}
+93         \{
+94                 \textcolor{keywordflow}{return} M\_intersections;
+95         \}
 \end{DoxyCode}
 \hypertarget{classFractureIntersect_a891c902329fde6f8de70bb1bf371ccbc}{\index{Fracture\-Intersect@{Fracture\-Intersect}!get\-Intersections\-Of\-Type@{get\-Intersections\-Of\-Type}}
 \index{get\-Intersections\-Of\-Type@{get\-Intersections\-Of\-Type}!FractureIntersect@{Fracture\-Intersect}}
@@ -731,9 +717,9 @@ Intersect\-Data\-Container\-\_\-\-Type M\-\_\-intersections \mbox{[} type \mbox{
 \end{DoxyReturn}
 
 \begin{DoxyCode}
-68         \{
-69                 \textcolor{keywordflow}{return} M\_intersections [ type ];
-70         \}
+69         \{
+70                 \textcolor{keywordflow}{return} M\_intersections [ type ];
+71         \}
 \end{DoxyCode}
 \hypertarget{classFractureIntersect_afba7c92096a4b92a27fcb4f1158c7279}{\index{Fracture\-Intersect@{Fracture\-Intersect}!get\-Number\-Bifurcation@{get\-Number\-Bifurcation}}
 \index{get\-Number\-Bifurcation@{get\-Number\-Bifurcation}!FractureIntersect@{Fracture\-Intersect}}
@@ -748,21 +734,17 @@ Funzione che restituisce il numero di intersezioni trovate di tipo \char`\"{} Bi
 
 
 \begin{DoxyCode}
-443 \{
-444     \textcolor{comment}{/*  size\_type NC = M\_intersections.find( Bifurcation )->second.size();}
-445 \textcolor{comment}{        std::cout << " ciao, NC: " << NC << std::endl;}
-446 \textcolor{comment}{        return NC;}
-447 \textcolor{comment}{    */}
-448         mapIntersection\_Type::const\_iterator it;
-449         size\_type numIntersect = 0;
-450         \textcolor{keywordflow}{for} ( it = M\_intersections.begin(); it != M\_intersections.end(); ++it )
-451         \{
-452         \textcolor{keywordflow}{if}( it->first == \hyperlink{classFractureIntersect_a9a4e4a784fa4c8e359767ed543f89dc5a4d466b3d3de0af7e18732b6f765bb1af}{Bifurcation} )
-453                 numIntersect += \hyperlink{classFractureIntersect_a1cd070dda9460d884c1b1d92edfecc12}{getNumberIntersectionOfType} ( it->first );
-454         \}
-455 
-456         \textcolor{keywordflow}{return} numIntersect;
-457 \} \textcolor{comment}{// getNumberBifurcation}
+429 \{
+430     mapIntersection\_Type::const\_iterator it;
+431     size\_type numIntersect = 0;
+432     \textcolor{keywordflow}{for} ( it = M\_intersections.begin(); it != M\_intersections.end(); ++it )
+433     \{
+434     \textcolor{keywordflow}{if}( it->first == \hyperlink{classFractureIntersect_a9a4e4a784fa4c8e359767ed543f89dc5a4d466b3d3de0af7e18732b6f765bb1af}{Bifurcation} )
+435             numIntersect += \hyperlink{classFractureIntersect_a1cd070dda9460d884c1b1d92edfecc12}{getNumberIntersectionOfType} ( it->first );
+436     \}
+437 
+438     \textcolor{keywordflow}{return} numIntersect;
+439 \} \textcolor{comment}{// getNumberBifurcation}
 \end{DoxyCode}
 
 
@@ -799,17 +781,17 @@ Funzione che restituisce il numero di intersezioni trovate di tipo \char`\"{} Cr
 
 
 \begin{DoxyCode}
-429 \{
-430     mapIntersection\_Type::const\_iterator it;
-431     size\_type numIntersect = 0;
-432     \textcolor{keywordflow}{for} ( it = M\_intersections.begin(); it != M\_intersections.end(); ++it )
-433     \{
-434     \textcolor{keywordflow}{if}( it->first == \hyperlink{classFractureIntersect_a9a4e4a784fa4c8e359767ed543f89dc5a743fef1af81c0e61412fafb9438b380e}{Cross} )
-435             numIntersect += \hyperlink{classFractureIntersect_a1cd070dda9460d884c1b1d92edfecc12}{getNumberIntersectionOfType} ( it->first );
-436     \}
-437 
-438     \textcolor{keywordflow}{return} numIntersect;
-439 \} \textcolor{comment}{// getNumberCross}
+415 \{
+416     mapIntersection\_Type::const\_iterator it;
+417     size\_type numIntersect = 0;
+418     \textcolor{keywordflow}{for} ( it = M\_intersections.begin(); it != M\_intersections.end(); ++it )
+419     \{
+420     \textcolor{keywordflow}{if}( it->first == \hyperlink{classFractureIntersect_a9a4e4a784fa4c8e359767ed543f89dc5a743fef1af81c0e61412fafb9438b380e}{Cross} )
+421             numIntersect += \hyperlink{classFractureIntersect_a1cd070dda9460d884c1b1d92edfecc12}{getNumberIntersectionOfType} ( it->first );
+422     \}
+423 
+424     \textcolor{keywordflow}{return} numIntersect;
+425 \} \textcolor{comment}{// getNumberCross}
 \end{DoxyCode}
 
 
@@ -846,14 +828,14 @@ Funzione restituisce il numero di intersezioni trovate del tipo type.
 
 
 \begin{DoxyParams}{Parametri}
-{\em Intersection\-Type,\-:} & enum Intersection\-Type \{ Parallel = 400000, Cross = 500000, Bifurcation = 600000 \}, contiene il tipo delle intersezioni che mi interessano \\
+{\em Intersection\-Type} & enum Intersection\-Type \{ Parallel = 400000, Cross = 500000, Bifurcation = 600000 \}, contiene il tipo delle intersezioni che mi interessano \\
 \hline
 \end{DoxyParams}
 
 \begin{DoxyCode}
-423 \{
-424     \textcolor{keywordflow}{return} M\_intersections.find( type )->second.size();
-425 \} \textcolor{comment}{// getNumberIntersectionOfType}
+409 \{
+410     \textcolor{keywordflow}{return} M\_intersections.find( type )->second.size();
+411 \} \textcolor{comment}{// getNumberIntersectionOfType}
 \end{DoxyCode}
 
 
@@ -879,16 +861,16 @@ Funzione che restituisce il numero totale di intersezioni.
 
 
 \begin{DoxyCode}
-461 \{
-462     mapIntersection\_Type::const\_iterator it;
-463     size\_type numIntersect = 0;
-464     \textcolor{keywordflow}{for} ( it = M\_intersections.begin(); it != M\_intersections.end(); ++it )
-465     \{
-466         numIntersect += \hyperlink{classFractureIntersect_a1cd070dda9460d884c1b1d92edfecc12}{getNumberIntersectionOfType} ( it->first );
-467     \}
-468 
-469     \textcolor{keywordflow}{return} numIntersect;
-470 \} \textcolor{comment}{// getNumberIntersections}
+443 \{
+444     mapIntersection\_Type::const\_iterator it;
+445     size\_type numIntersect = 0;
+446     \textcolor{keywordflow}{for} ( it = M\_intersections.begin(); it != M\_intersections.end(); ++it )
+447     \{
+448         numIntersect += \hyperlink{classFractureIntersect_a1cd070dda9460d884c1b1d92edfecc12}{getNumberIntersectionOfType} ( it->first );
+449     \}
+450 
+451     \textcolor{keywordflow}{return} numIntersect;
+452 \} \textcolor{comment}{// getNumberIntersections}
 \end{DoxyCode}
 
 
@@ -910,16 +892,16 @@ Questo è il grafo delle chiamate per questa funzione\-:\nopagebreak
 ) const}}\label{classFractureIntersect_a86195f7e54a79412d2d54fa5efad9af2}
 
 \begin{DoxyCode}
-475 \{
-476     mapIntersection\_Type::const\_iterator it;
-477     size\_type numType = 0;
-478     \textcolor{keywordflow}{for} ( it = M\_intersections.begin(); it != M\_intersections.end(); ++it )
-479     \{
-480         ++numType;
-481     \}
-482 
-483     \textcolor{keywordflow}{return} numType;
-484 \} \textcolor{comment}{// getNumberType}
+457 \{
+458     mapIntersection\_Type::const\_iterator it;
+459     size\_type numType = 0;
+460     \textcolor{keywordflow}{for} ( it = M\_intersections.begin(); it != M\_intersections.end(); ++it )
+461     \{
+462         ++numType;
+463     \}
+464 
+465     \textcolor{keywordflow}{return} numType;
+466 \} \textcolor{comment}{// getNumberType}
 \end{DoxyCode}
 \hypertarget{classFractureIntersect_a5290dda06af2f6ba24a37f93d3bb4e95}{\index{Fracture\-Intersect@{Fracture\-Intersect}!set\-Dof\-Free@{set\-Dof\-Free}}
 \index{set\-Dof\-Free@{set\-Dof\-Free}!FractureIntersect@{Fracture\-Intersect}}
@@ -932,23 +914,23 @@ Questo è il grafo delle chiamate per questa funzione\-:\nopagebreak
 )}}\label{classFractureIntersect_a5290dda06af2f6ba24a37f93d3bb4e95}
 
 \begin{DoxyCode}
-495 \{
-496     bgeot::basic\_mesh::ref\_mesh\_pt\_ct nodes = M\_mesh.points\_of\_convex ( \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} );
-497     
-498     \textcolor{keywordflow}{if}( \hyperlink{classFractureIntersect_a0d63690aff97bc6a98f7e01d9d319f1c}{FindDOF\_Intersection}( nodes, fracture ) == -1 )
-499     \{
-500         fracture->pushDofFree( 0 );
-501     \}
-502     
-503     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}( \hyperlink{classFractureIntersect_a0d63690aff97bc6a98f7e01d9d319f1c}{FindDOF\_Intersection}( nodes, fracture ) == 1 )
-504     \{
-505         size\_type NDof = fracture -> getMeshFEMPressure().nb\_basic\_dof(); 
-506         fracture->pushDofFree( NDof-1 );
-507     \}   
-508     
-509     \textcolor{keywordflow}{return};
-510     
-511 \}
+477 \{
+478     bgeot::basic\_mesh::ref\_mesh\_pt\_ct nodes = M\_mesh.points\_of\_convex ( \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} );
+479     
+480     \textcolor{keywordflow}{if}( \hyperlink{classFractureIntersect_a0d63690aff97bc6a98f7e01d9d319f1c}{FindDOF\_Intersection}( nodes, fracture ) == -1 )
+481     \{
+482         fracture->pushDofFree( 0 );
+483     \}
+484     
+485     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}( \hyperlink{classFractureIntersect_a0d63690aff97bc6a98f7e01d9d319f1c}{FindDOF\_Intersection}( nodes, fracture ) == 1 )
+486     \{
+487         size\_type NDof = fracture -> getMeshFEMPressure().nb\_basic\_dof(); 
+488         fracture->pushDofFree( NDof-1 );
+489     \}   
+490     
+491     \textcolor{keywordflow}{return};
+492     
+493 \}
 \end{DoxyCode}
 
 

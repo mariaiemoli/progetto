@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['x',['x',['../classPointData.html#a5accef5ea9e813dd4517eb050f276ccf',1,'PointData']]],
-  ['x_5fmap',['x_map',['../classLevelSetData.html#ae7f10d3f10b72fbb6f703ba7aa8fe17b',1,'LevelSetData']]],
-  ['xfemoperators_2ecc',['XFEMOperators.cc',['../XFEMOperators_8cc.html',1,'']]],
-  ['xfemoperators_2eh',['XFEMOperators.h',['../XFEMOperators_8h.html',1,'']]]
+  ['y',['y',['../classPointData.html#a90dbf32a9579cb1cde67458d4ad38209',1,'PointData']]],
+  ['y_5fmap',['y_map',['../classLevelSetData.html#aa4cda1cced4bc385d85383b40bbc2631',1,'LevelSetData']]],
+  ['ylevelsetfunction',['ylevelSetFunction',['../classLevelSetData.html#a732ae59581206d4f94237e54bc0071e3',1,'LevelSetData']]]
 ];

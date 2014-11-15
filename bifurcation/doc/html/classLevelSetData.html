@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.5"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
 <title>Progetto PACS: Riferimenti per la classe LevelSetData</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -30,7 +30,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Generato da Doxygen 1.8.5 -->
+<!-- Generato da Doxygen 1.8.6 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
 </script>
@@ -98,7 +98,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Membri pubblici</h2></td></tr>
 <tr class="memitem:a8b2ab7808f47d9a951327891d65e84be"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLevelSetData.html#a8b2ab7808f47d9a951327891d65e84be">LevelSetData</a> (const GetPot &amp;dataFile, const std::string &amp;section=&quot;fractureData/&quot;, const std::string &amp;sectionLevelSet=&quot;levelSet/&quot;)</td></tr>
-<tr class="memdesc:a8b2ab7808f47d9a951327891d65e84be"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="LevelSetData_8cc.html">LevelSetData.cc</a>.  <a href="#a8b2ab7808f47d9a951327891d65e84be">Continua...</a><br/></td></tr>
 <tr class="separator:a8b2ab7808f47d9a951327891d65e84be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a732ae59581206d4f94237e54bc0071e3"><td class="memItemLeft" align="right" valign="top">scalar_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLevelSetData.html#a732ae59581206d4f94237e54bc0071e3">ylevelSetFunction</a> (const base_node &amp;x)</td></tr>
 <tr class="memdesc:a732ae59581206d4f94237e54bc0071e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Questa funzione definisce il level set che rappresenta la frattura, level set valutato in (x,y).  <a href="#a732ae59581206d4f94237e54bc0071e3">Continua...</a><br/></td></tr>
@@ -130,6 +129,7 @@ Membri pubblici</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descrizione dettagliata</h2>
 <div class="textblock"><p><a class="el" href="LevelSetData_8h.html">LevelSetData.h</a>. </p>
+<p>Classe che contiene tutte le informazioni legate al level set e le funzioni per valutarne il valore nei punti </p>
 </div><h2 class="groupheader">Documentazione dei costruttori e dei distruttori</h2>
 <a class="anchor" id="a8b2ab7808f47d9a951327891d65e84be"></a>
 <div class="memitem">
@@ -160,24 +160,22 @@ Membri pubblici</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p><a class="el" href="LevelSetData_8cc.html">LevelSetData.cc</a>. </p>
-<div class="fragment"><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;                                                                :</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;            M_section ( section ),</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;            M_sectionLevelSet ( M_section + sectionLevelSet ),</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;            M_spaceDimension ( dataFile ( ( M_section + <span class="stringliteral">&quot;spaceDimension&quot;</span> ).data (), 1. ) ),</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;            <span class="comment">// level set</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;            M_function ( dataFile ( ( M_sectionLevelSet + <span class="stringliteral">&quot;levelSet&quot;</span> ).data (), <span class="stringliteral">&quot;x&quot;</span> ) ),</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;            M_xfunction ( dataFile ( ( M_sectionLevelSet + <span class="stringliteral">&quot;xlevelSet&quot;</span> ).data (), <span class="stringliteral">&quot;t&quot;</span> ) ),</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;            M_yfunction ( dataFile ( ( M_sectionLevelSet + <span class="stringliteral">&quot;ylevelSet&quot;</span> ).data (), <span class="stringliteral">&quot;t&quot;</span> ) ),</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            M_cutFunction ( dataFile ( ( M_sectionLevelSet + <span class="stringliteral">&quot;levelSetCut&quot;</span> ).data (), <span class="stringliteral">&quot;-1&quot;</span> ) ),</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            M_x_map ( dataFile ( ( M_sectionLevelSet + <span class="stringliteral">&quot;xMap&quot;</span> ).data (), <span class="stringliteral">&quot;1&quot;</span> ) ),</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            M_y_map ( dataFile ( ( M_sectionLevelSet + <span class="stringliteral">&quot;yMap&quot;</span> ).data (), <span class="stringliteral">&quot;1&quot;</span> ) ),</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            M_map_jac ( dataFile ( ( M_sectionLevelSet + <span class="stringliteral">&quot;jacMap&quot;</span> ).data (), <span class="stringliteral">&quot;1&quot;</span> ) ),</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            M_normal_map ( dataFile ( ( M_sectionLevelSet + <span class="stringliteral">&quot;normalMap&quot;</span> ).data (), <span class="stringliteral">&quot;1&quot;</span> ) ),</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            M_integrationTypeSimplex ( dataFile ( ( M_sectionLevelSet + <span class="stringliteral">&quot;integrationTypeSimplex&quot;</span> ).data (),</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                                                  <span class="stringliteral">&quot;IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(3),1)&quot;</span> ) )</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;{}</div>
+<div class="fragment"><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;                                                                :</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;            M_section ( section ),</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;            M_sectionLevelSet ( M_section + sectionLevelSet ),</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;            M_spaceDimension ( dataFile ( ( M_section + <span class="stringliteral">&quot;spaceDimension&quot;</span> ).data (), 1. ) ),</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;            <span class="comment">// level set</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;            M_function ( dataFile ( ( M_sectionLevelSet + <span class="stringliteral">&quot;levelSet&quot;</span> ).data (), <span class="stringliteral">&quot;x&quot;</span> ) ),</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            M_xfunction ( dataFile ( ( M_sectionLevelSet + <span class="stringliteral">&quot;xlevelSet&quot;</span> ).data (), <span class="stringliteral">&quot;t&quot;</span> ) ),</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            M_yfunction ( dataFile ( ( M_sectionLevelSet + <span class="stringliteral">&quot;ylevelSet&quot;</span> ).data (), <span class="stringliteral">&quot;t&quot;</span> ) ),</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            M_cutFunction ( dataFile ( ( M_sectionLevelSet + <span class="stringliteral">&quot;levelSetCut&quot;</span> ).data (), <span class="stringliteral">&quot;-1&quot;</span> ) ),</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            M_x_map ( dataFile ( ( M_sectionLevelSet + <span class="stringliteral">&quot;xMap&quot;</span> ).data (), <span class="stringliteral">&quot;1&quot;</span> ) ),</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            M_y_map ( dataFile ( ( M_sectionLevelSet + <span class="stringliteral">&quot;yMap&quot;</span> ).data (), <span class="stringliteral">&quot;1&quot;</span> ) ),</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            M_map_jac ( dataFile ( ( M_sectionLevelSet + <span class="stringliteral">&quot;jacMap&quot;</span> ).data (), <span class="stringliteral">&quot;1&quot;</span> ) ),</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            M_normal_map ( dataFile ( ( M_sectionLevelSet + <span class="stringliteral">&quot;normalMap&quot;</span> ).data (), <span class="stringliteral">&quot;1&quot;</span> ) ),</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            M_integrationTypeSimplex ( dataFile ( ( M_sectionLevelSet + <span class="stringliteral">&quot;integrationTypeSimplex&quot;</span> ).data (),</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                                                  <span class="stringliteral">&quot;IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(3),1)&quot;</span> ) )</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -202,9 +200,9 @@ Membri pubblici</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    {</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordflow">return</span> M_integrationTypeSimplex;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordflow">return</span> M_integrationTypeSimplex;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -228,9 +226,9 @@ Membri pubblici</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    {</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordflow">return</span> M_yfunction;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordflow">return</span> M_yfunction;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -254,9 +252,9 @@ Membri pubblici</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    {</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordflow">return</span> M_spaceDimension;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    }</div>
+<div class="fragment"><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordflow">return</span> M_spaceDimension;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -283,13 +281,13 @@ Membri pubblici</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Restituisce</dt><dd>scalar_type: valore del levelset nel nodo x </dd></dl>
-<div class="fragment"><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;{</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    M_parser.<a class="code" href="classLifeV_1_1Parser.html#ac05769e836a0dc95d9c020df361a5194">setString</a> ( M_cutFunction );</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    M_parser.<a class="code" href="classLifeV_1_1Parser.html#aa2b362e12b8feb60231705d499c9fbae">setVariable</a> ( <span class="stringliteral">&quot;t&quot;</span>, t [ 0 ] );</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    M_parser.<a class="code" href="classLifeV_1_1Parser.html#aa2b362e12b8feb60231705d499c9fbae">setVariable</a> ( <span class="stringliteral">&quot;y&quot;</span>, t [ 1 ] );</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">return</span> M_parser.<a class="code" href="classLifeV_1_1Parser.html#a51d84fd4ae6d420620e7beee58fad673">evaluate</a> ();</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;{</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    M_parser.<a class="code" href="classLifeV_1_1Parser.html#ac05769e836a0dc95d9c020df361a5194">setString</a> ( M_cutFunction );</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    M_parser.<a class="code" href="classLifeV_1_1Parser.html#aa2b362e12b8feb60231705d499c9fbae">setVariable</a> ( <span class="stringliteral">&quot;t&quot;</span>, t [ 0 ] );</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    M_parser.<a class="code" href="classLifeV_1_1Parser.html#aa2b362e12b8feb60231705d499c9fbae">setVariable</a> ( <span class="stringliteral">&quot;y&quot;</span>, t [ 1 ] );</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">return</span> M_parser.<a class="code" href="classLifeV_1_1Parser.html#a51d84fd4ae6d420620e7beee58fad673">evaluate</a> ();</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
 <div class="ttc" id="classLifeV_1_1Parser_html_a51d84fd4ae6d420620e7beee58fad673"><div class="ttname"><a href="classLifeV_1_1Parser.html#a51d84fd4ae6d420620e7beee58fad673">LifeV::Parser::evaluate</a></div><div class="ttdeci">const Real &amp; evaluate(const ID &amp;id=0)</div><div class="ttdef"><b>Definition:</b> Parser.cc:104</div></div>
 <div class="ttc" id="classLifeV_1_1Parser_html_aa2b362e12b8feb60231705d499c9fbae"><div class="ttname"><a href="classLifeV_1_1Parser.html#aa2b362e12b8feb60231705d499c9fbae">LifeV::Parser::setVariable</a></div><div class="ttdeci">void setVariable(const std::string &amp;name, const Real &amp;value)</div><div class="ttdef"><b>Definition:</b> Parser.cc:192</div></div>
 <div class="ttc" id="classLifeV_1_1Parser_html_ac05769e836a0dc95d9c020df361a5194"><div class="ttname"><a href="classLifeV_1_1Parser.html#ac05769e836a0dc95d9c020df361a5194">LifeV::Parser::setString</a></div><div class="ttdeci">void setString(const std::string &amp;string, const std::string &amp;stringSeparator=&quot;;&quot;)</div><div class="ttdef"><b>Definition:</b> Parser.cc:170</div></div>
@@ -327,13 +325,13 @@ Questo è il grafo delle chiamate per questa funzione:</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Restituisce</dt><dd>scalar_type: valore del levelset nel nodo x </dd></dl>
-<div class="fragment"><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;{</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    M_parser.<a class="code" href="classLifeV_1_1Parser.html#ac05769e836a0dc95d9c020df361a5194">setString</a> ( M_yfunction );</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    M_parser.<a class="code" href="classLifeV_1_1Parser.html#aa2b362e12b8feb60231705d499c9fbae">setVariable</a> ( <span class="stringliteral">&quot;t&quot;</span>, t [ 0 ] );</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    M_parser.<a class="code" href="classLifeV_1_1Parser.html#aa2b362e12b8feb60231705d499c9fbae">setVariable</a> ( <span class="stringliteral">&quot;y&quot;</span>, t [ 1 ] );</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">return</span> M_parser.<a class="code" href="classLifeV_1_1Parser.html#a51d84fd4ae6d420620e7beee58fad673">evaluate</a> ();</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    M_parser.<a class="code" href="classLifeV_1_1Parser.html#ac05769e836a0dc95d9c020df361a5194">setString</a> ( M_yfunction );</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    M_parser.<a class="code" href="classLifeV_1_1Parser.html#aa2b362e12b8feb60231705d499c9fbae">setVariable</a> ( <span class="stringliteral">&quot;t&quot;</span>, t [ 0 ] );</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    M_parser.<a class="code" href="classLifeV_1_1Parser.html#aa2b362e12b8feb60231705d499c9fbae">setVariable</a> ( <span class="stringliteral">&quot;y&quot;</span>, t [ 1 ] );</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">return</span> M_parser.<a class="code" href="classLifeV_1_1Parser.html#a51d84fd4ae6d420620e7beee58fad673">evaluate</a> ();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}</div>
 <div class="ttc" id="classLifeV_1_1Parser_html_a51d84fd4ae6d420620e7beee58fad673"><div class="ttname"><a href="classLifeV_1_1Parser.html#a51d84fd4ae6d420620e7beee58fad673">LifeV::Parser::evaluate</a></div><div class="ttdeci">const Real &amp; evaluate(const ID &amp;id=0)</div><div class="ttdef"><b>Definition:</b> Parser.cc:104</div></div>
 <div class="ttc" id="classLifeV_1_1Parser_html_aa2b362e12b8feb60231705d499c9fbae"><div class="ttname"><a href="classLifeV_1_1Parser.html#aa2b362e12b8feb60231705d499c9fbae">LifeV::Parser::setVariable</a></div><div class="ttdeci">void setVariable(const std::string &amp;name, const Real &amp;value)</div><div class="ttdef"><b>Definition:</b> Parser.cc:192</div></div>
 <div class="ttc" id="classLifeV_1_1Parser_html_ac05769e836a0dc95d9c020df361a5194"><div class="ttname"><a href="classLifeV_1_1Parser.html#ac05769e836a0dc95d9c020df361a5194">LifeV::Parser::setString</a></div><div class="ttdeci">void setString(const std::string &amp;string, const std::string &amp;stringSeparator=&quot;;&quot;)</div><div class="ttdef"><b>Definition:</b> Parser.cc:170</div></div>
@@ -374,24 +372,24 @@ Questo è il grafo delle chiamate per questa funzione:</div>
 </div><div class="memdoc">
 
 <p>Questa funzione serve per convertire la lunghezza/area degli elementi dalla frattura piatta a quella mappata. </p>
-<div class="fragment"><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;{</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <a class="code" href="Core_8h.html#a4e75b5863535ba1dd79942de2846eff0">scalarVector_Type</a> <a class="code" href="classLevelSetData.html#a40fcfa36de7ac76613284d03690eb54b">map_jac</a> ( num, 0. );</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    M_parser.<a class="code" href="classLifeV_1_1Parser.html#ac05769e836a0dc95d9c020df361a5194">setString</a> ( M_map_jac );</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    M_parser.<a class="code" href="classLifeV_1_1Parser.html#aa2b362e12b8feb60231705d499c9fbae">setVariable</a> ( <span class="stringliteral">&quot;x&quot;</span>, x [ 0 ] );</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    M_parser.<a class="code" href="classLifeV_1_1Parser.html#aa2b362e12b8feb60231705d499c9fbae">setVariable</a> ( <span class="stringliteral">&quot;y&quot;</span>, x [ 1 ] );</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordflow">for</span> ( size_type <a class="code" href="matrici_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> = 0; <a class="code" href="matrici_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> &lt; num; ++<a class="code" href="matrici_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> )</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    {</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <a class="code" href="classLevelSetData.html#a40fcfa36de7ac76613284d03690eb54b">map_jac</a> [ <a class="code" href="matrici_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> ] = M_parser.<a class="code" href="classLifeV_1_1Parser.html#a51d84fd4ae6d420620e7beee58fad673">evaluate</a> ( <a class="code" href="matrici_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> );</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    }</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classLevelSetData.html#a40fcfa36de7ac76613284d03690eb54b">map_jac</a>;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;{</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <a class="code" href="Core_8h.html#a4e75b5863535ba1dd79942de2846eff0">scalarVector_Type</a> <a class="code" href="classLevelSetData.html#a40fcfa36de7ac76613284d03690eb54b">map_jac</a> ( num, 0. );</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    M_parser.<a class="code" href="classLifeV_1_1Parser.html#ac05769e836a0dc95d9c020df361a5194">setString</a> ( M_map_jac );</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    M_parser.<a class="code" href="classLifeV_1_1Parser.html#aa2b362e12b8feb60231705d499c9fbae">setVariable</a> ( <span class="stringliteral">&quot;x&quot;</span>, x [ 0 ] );</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    M_parser.<a class="code" href="classLifeV_1_1Parser.html#aa2b362e12b8feb60231705d499c9fbae">setVariable</a> ( <span class="stringliteral">&quot;y&quot;</span>, x [ 1 ] );</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordflow">for</span> ( size_type <a class="code" href="matrici_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> = 0; <a class="code" href="matrici_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> &lt; num; ++<a class="code" href="matrici_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> )</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <a class="code" href="classLevelSetData.html#a40fcfa36de7ac76613284d03690eb54b">map_jac</a> [ <a class="code" href="matrici_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> ] = M_parser.<a class="code" href="classLifeV_1_1Parser.html#a51d84fd4ae6d420620e7beee58fad673">evaluate</a> ( <a class="code" href="matrici_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> );</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    }</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classLevelSetData.html#a40fcfa36de7ac76613284d03690eb54b">map_jac</a>;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;}</div>
 <div class="ttc" id="Core_8h_html_a4e75b5863535ba1dd79942de2846eff0"><div class="ttname"><a href="Core_8h.html#a4e75b5863535ba1dd79942de2846eff0">scalarVector_Type</a></div><div class="ttdeci">std::vector&lt; scalar_type &gt; scalarVector_Type</div><div class="ttdef"><b>Definition:</b> Core.h:63</div></div>
 <div class="ttc" id="classLifeV_1_1Parser_html_a51d84fd4ae6d420620e7beee58fad673"><div class="ttname"><a href="classLifeV_1_1Parser.html#a51d84fd4ae6d420620e7beee58fad673">LifeV::Parser::evaluate</a></div><div class="ttdeci">const Real &amp; evaluate(const ID &amp;id=0)</div><div class="ttdef"><b>Definition:</b> Parser.cc:104</div></div>
 <div class="ttc" id="classLifeV_1_1Parser_html_aa2b362e12b8feb60231705d499c9fbae"><div class="ttname"><a href="classLifeV_1_1Parser.html#aa2b362e12b8feb60231705d499c9fbae">LifeV::Parser::setVariable</a></div><div class="ttdeci">void setVariable(const std::string &amp;name, const Real &amp;value)</div><div class="ttdef"><b>Definition:</b> Parser.cc:192</div></div>
-<div class="ttc" id="classLevelSetData_html_a40fcfa36de7ac76613284d03690eb54b"><div class="ttname"><a href="classLevelSetData.html#a40fcfa36de7ac76613284d03690eb54b">LevelSetData::map_jac</a></div><div class="ttdeci">scalarVector_Type map_jac(const base_node &amp;x, const size_type &amp;num)</div><div class="ttdoc">Questa funzione serve per convertire la lunghezza/area degli elementi dalla frattura piatta a quella ...</div><div class="ttdef"><b>Definition:</b> LevelSetData.cc:75</div></div>
+<div class="ttc" id="classLevelSetData_html_a40fcfa36de7ac76613284d03690eb54b"><div class="ttname"><a href="classLevelSetData.html#a40fcfa36de7ac76613284d03690eb54b">LevelSetData::map_jac</a></div><div class="ttdeci">scalarVector_Type map_jac(const base_node &amp;x, const size_type &amp;num)</div><div class="ttdoc">Questa funzione serve per convertire la lunghezza/area degli elementi dalla frattura piatta a quella ...</div><div class="ttdef"><b>Definition:</b> LevelSetData.cc:77</div></div>
 <div class="ttc" id="classLifeV_1_1Parser_html_ac05769e836a0dc95d9c020df361a5194"><div class="ttname"><a href="classLifeV_1_1Parser.html#ac05769e836a0dc95d9c020df361a5194">LifeV::Parser::setString</a></div><div class="ttdeci">void setString(const std::string &amp;string, const std::string &amp;stringSeparator=&quot;;&quot;)</div><div class="ttdef"><b>Definition:</b> Parser.cc:170</div></div>
 <div class="ttc" id="matrici_8m_html_a6f6ccfcf58b31cb6412107d9d5281426"><div class="ttname"><a href="matrici_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a></div><div class="ttdeci">for i</div><div class="ttdef"><b>Definition:</b> matrici.m:10</div></div>
 </div><!-- fragment -->
@@ -431,23 +429,23 @@ Questo è il grafo delle chiamate per questa funzione:</div>
 </div><div class="memdoc">
 
 <p>Funzione che calcola la normale alla frattura - può anche dipendere da x. </p>
-<div class="fragment"><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;{</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <a class="code" href="Core_8h.html#a4e75b5863535ba1dd79942de2846eff0">scalarVector_Type</a> <a class="code" href="classLevelSetData.html#a674d56690f4e22cbca38bf4b5f176a5e">normal_map</a> ( num + 1, 0. );</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    M_parser.<a class="code" href="classLifeV_1_1Parser.html#ac05769e836a0dc95d9c020df361a5194">setString</a> ( M_map_jac );</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    M_parser.<a class="code" href="classLifeV_1_1Parser.html#aa2b362e12b8feb60231705d499c9fbae">setVariable</a> ( <span class="stringliteral">&quot;x&quot;</span>, x [ 0 ] );</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    M_parser.<a class="code" href="classLifeV_1_1Parser.html#aa2b362e12b8feb60231705d499c9fbae">setVariable</a> ( <span class="stringliteral">&quot;y&quot;</span>, x [ 1 ] );</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordflow">for</span> ( size_type <a class="code" href="matrici_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> = 0; <a class="code" href="matrici_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> &lt; num + 1; ++<a class="code" href="matrici_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> )</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    {</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <a class="code" href="classLevelSetData.html#a674d56690f4e22cbca38bf4b5f176a5e">normal_map</a> [ <a class="code" href="matrici_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> ] = M_parser.<a class="code" href="classLifeV_1_1Parser.html#a51d84fd4ae6d420620e7beee58fad673">evaluate</a> ( <a class="code" href="matrici_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> );</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    }</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classLevelSetData.html#a674d56690f4e22cbca38bf4b5f176a5e">normal_map</a>;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;{</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <a class="code" href="Core_8h.html#a4e75b5863535ba1dd79942de2846eff0">scalarVector_Type</a> <a class="code" href="classLevelSetData.html#a674d56690f4e22cbca38bf4b5f176a5e">normal_map</a> ( num + 1, 0. );</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    M_parser.<a class="code" href="classLifeV_1_1Parser.html#ac05769e836a0dc95d9c020df361a5194">setString</a> ( M_map_jac );</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    M_parser.<a class="code" href="classLifeV_1_1Parser.html#aa2b362e12b8feb60231705d499c9fbae">setVariable</a> ( <span class="stringliteral">&quot;x&quot;</span>, x [ 0 ] );</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    M_parser.<a class="code" href="classLifeV_1_1Parser.html#aa2b362e12b8feb60231705d499c9fbae">setVariable</a> ( <span class="stringliteral">&quot;y&quot;</span>, x [ 1 ] );</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordflow">for</span> ( size_type <a class="code" href="matrici_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> = 0; <a class="code" href="matrici_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> &lt; num + 1; ++<a class="code" href="matrici_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> )</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <a class="code" href="classLevelSetData.html#a674d56690f4e22cbca38bf4b5f176a5e">normal_map</a> [ <a class="code" href="matrici_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> ] = M_parser.<a class="code" href="classLifeV_1_1Parser.html#a51d84fd4ae6d420620e7beee58fad673">evaluate</a> ( <a class="code" href="matrici_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> );</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    }</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classLevelSetData.html#a674d56690f4e22cbca38bf4b5f176a5e">normal_map</a>;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;}</div>
 <div class="ttc" id="Core_8h_html_a4e75b5863535ba1dd79942de2846eff0"><div class="ttname"><a href="Core_8h.html#a4e75b5863535ba1dd79942de2846eff0">scalarVector_Type</a></div><div class="ttdeci">std::vector&lt; scalar_type &gt; scalarVector_Type</div><div class="ttdef"><b>Definition:</b> Core.h:63</div></div>
 <div class="ttc" id="classLifeV_1_1Parser_html_a51d84fd4ae6d420620e7beee58fad673"><div class="ttname"><a href="classLifeV_1_1Parser.html#a51d84fd4ae6d420620e7beee58fad673">LifeV::Parser::evaluate</a></div><div class="ttdeci">const Real &amp; evaluate(const ID &amp;id=0)</div><div class="ttdef"><b>Definition:</b> Parser.cc:104</div></div>
-<div class="ttc" id="classLevelSetData_html_a674d56690f4e22cbca38bf4b5f176a5e"><div class="ttname"><a href="classLevelSetData.html#a674d56690f4e22cbca38bf4b5f176a5e">LevelSetData::normal_map</a></div><div class="ttdeci">scalarVector_Type normal_map(const base_node &amp;P, const size_type &amp;num)</div><div class="ttdoc">Funzione che calcola la normale alla frattura - può anche dipendere da x. </div><div class="ttdef"><b>Definition:</b> LevelSetData.cc:93</div></div>
+<div class="ttc" id="classLevelSetData_html_a674d56690f4e22cbca38bf4b5f176a5e"><div class="ttname"><a href="classLevelSetData.html#a674d56690f4e22cbca38bf4b5f176a5e">LevelSetData::normal_map</a></div><div class="ttdeci">scalarVector_Type normal_map(const base_node &amp;P, const size_type &amp;num)</div><div class="ttdoc">Funzione che calcola la normale alla frattura - può anche dipendere da x. </div><div class="ttdef"><b>Definition:</b> LevelSetData.cc:95</div></div>
 <div class="ttc" id="classLifeV_1_1Parser_html_aa2b362e12b8feb60231705d499c9fbae"><div class="ttname"><a href="classLifeV_1_1Parser.html#aa2b362e12b8feb60231705d499c9fbae">LifeV::Parser::setVariable</a></div><div class="ttdeci">void setVariable(const std::string &amp;name, const Real &amp;value)</div><div class="ttdef"><b>Definition:</b> Parser.cc:192</div></div>
 <div class="ttc" id="classLifeV_1_1Parser_html_ac05769e836a0dc95d9c020df361a5194"><div class="ttname"><a href="classLifeV_1_1Parser.html#ac05769e836a0dc95d9c020df361a5194">LifeV::Parser::setString</a></div><div class="ttdeci">void setString(const std::string &amp;string, const std::string &amp;stringSeparator=&quot;;&quot;)</div><div class="ttdef"><b>Definition:</b> Parser.cc:170</div></div>
 <div class="ttc" id="matrici_8m_html_a6f6ccfcf58b31cb6412107d9d5281426"><div class="ttname"><a href="matrici_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a></div><div class="ttdeci">for i</div><div class="ttdef"><b>Definition:</b> matrici.m:10</div></div>
@@ -478,12 +476,12 @@ Questo è il grafo delle chiamate per questa funzione:</div>
 </div><div class="memdoc">
 
 <p>Questa funzione rappresenta la mappa dalla frattura piatta, x(t). </p>
-<div class="fragment"><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;{</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    M_parser.<a class="code" href="classLifeV_1_1Parser.html#ac05769e836a0dc95d9c020df361a5194">setString</a> ( M_x_map );</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    M_parser.<a class="code" href="classLifeV_1_1Parser.html#aa2b362e12b8feb60231705d499c9fbae">setVariable</a> ( <span class="stringliteral">&quot;t&quot;</span>, t [ 0 ] );</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">return</span> M_parser.<a class="code" href="classLifeV_1_1Parser.html#a51d84fd4ae6d420620e7beee58fad673">evaluate</a> ();</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;{</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    M_parser.<a class="code" href="classLifeV_1_1Parser.html#ac05769e836a0dc95d9c020df361a5194">setString</a> ( M_x_map );</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    M_parser.<a class="code" href="classLifeV_1_1Parser.html#aa2b362e12b8feb60231705d499c9fbae">setVariable</a> ( <span class="stringliteral">&quot;t&quot;</span>, t [ 0 ] );</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">return</span> M_parser.<a class="code" href="classLifeV_1_1Parser.html#a51d84fd4ae6d420620e7beee58fad673">evaluate</a> ();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;}</div>
 <div class="ttc" id="classLifeV_1_1Parser_html_a51d84fd4ae6d420620e7beee58fad673"><div class="ttname"><a href="classLifeV_1_1Parser.html#a51d84fd4ae6d420620e7beee58fad673">LifeV::Parser::evaluate</a></div><div class="ttdeci">const Real &amp; evaluate(const ID &amp;id=0)</div><div class="ttdef"><b>Definition:</b> Parser.cc:104</div></div>
 <div class="ttc" id="classLifeV_1_1Parser_html_aa2b362e12b8feb60231705d499c9fbae"><div class="ttname"><a href="classLifeV_1_1Parser.html#aa2b362e12b8feb60231705d499c9fbae">LifeV::Parser::setVariable</a></div><div class="ttdeci">void setVariable(const std::string &amp;name, const Real &amp;value)</div><div class="ttdef"><b>Definition:</b> Parser.cc:192</div></div>
 <div class="ttc" id="classLifeV_1_1Parser_html_ac05769e836a0dc95d9c020df361a5194"><div class="ttname"><a href="classLifeV_1_1Parser.html#ac05769e836a0dc95d9c020df361a5194">LifeV::Parser::setString</a></div><div class="ttdeci">void setString(const std::string &amp;string, const std::string &amp;stringSeparator=&quot;;&quot;)</div><div class="ttdef"><b>Definition:</b> Parser.cc:170</div></div>
@@ -514,12 +512,12 @@ Questo è il grafo delle chiamate per questa funzione:</div>
 </div><div class="memdoc">
 
 <p>Questa funzione rappresenta la mappa dalla frattura piatta, y(t). </p>
-<div class="fragment"><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;{</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    M_parser.<a class="code" href="classLifeV_1_1Parser.html#ac05769e836a0dc95d9c020df361a5194">setString</a> ( M_y_map );</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    M_parser.<a class="code" href="classLifeV_1_1Parser.html#aa2b362e12b8feb60231705d499c9fbae">setVariable</a> ( <span class="stringliteral">&quot;t&quot;</span>, t [ 0 ] );</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">return</span> M_parser.<a class="code" href="classLifeV_1_1Parser.html#a51d84fd4ae6d420620e7beee58fad673">evaluate</a> ();</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;{</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    M_parser.<a class="code" href="classLifeV_1_1Parser.html#ac05769e836a0dc95d9c020df361a5194">setString</a> ( M_y_map );</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    M_parser.<a class="code" href="classLifeV_1_1Parser.html#aa2b362e12b8feb60231705d499c9fbae">setVariable</a> ( <span class="stringliteral">&quot;t&quot;</span>, t [ 0 ] );</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">return</span> M_parser.<a class="code" href="classLifeV_1_1Parser.html#a51d84fd4ae6d420620e7beee58fad673">evaluate</a> ();</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
 <div class="ttc" id="classLifeV_1_1Parser_html_a51d84fd4ae6d420620e7beee58fad673"><div class="ttname"><a href="classLifeV_1_1Parser.html#a51d84fd4ae6d420620e7beee58fad673">LifeV::Parser::evaluate</a></div><div class="ttdeci">const Real &amp; evaluate(const ID &amp;id=0)</div><div class="ttdef"><b>Definition:</b> Parser.cc:104</div></div>
 <div class="ttc" id="classLifeV_1_1Parser_html_aa2b362e12b8feb60231705d499c9fbae"><div class="ttname"><a href="classLifeV_1_1Parser.html#aa2b362e12b8feb60231705d499c9fbae">LifeV::Parser::setVariable</a></div><div class="ttdeci">void setVariable(const std::string &amp;name, const Real &amp;value)</div><div class="ttdef"><b>Definition:</b> Parser.cc:192</div></div>
 <div class="ttc" id="classLifeV_1_1Parser_html_ac05769e836a0dc95d9c020df361a5194"><div class="ttname"><a href="classLifeV_1_1Parser.html#ac05769e836a0dc95d9c020df361a5194">LifeV::Parser::setString</a></div><div class="ttdeci">void setString(const std::string &amp;string, const std::string &amp;stringSeparator=&quot;;&quot;)</div><div class="ttdef"><b>Definition:</b> Parser.cc:170</div></div>
@@ -557,13 +555,13 @@ Questo è il grafo delle chiamate per questa funzione:</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Restituisce</dt><dd>scalar_type: valore del levelset nel nodo x </dd></dl>
-<div class="fragment"><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;{</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    M_parser.<a class="code" href="classLifeV_1_1Parser.html#ac05769e836a0dc95d9c020df361a5194">setString</a> ( M_function );</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    M_parser.<a class="code" href="classLifeV_1_1Parser.html#aa2b362e12b8feb60231705d499c9fbae">setVariable</a> ( <span class="stringliteral">&quot;x&quot;</span>, t [ 0 ] );</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    M_parser.<a class="code" href="classLifeV_1_1Parser.html#aa2b362e12b8feb60231705d499c9fbae">setVariable</a> ( <span class="stringliteral">&quot;y&quot;</span>, t [ 1 ] );</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">return</span> M_parser.<a class="code" href="classLifeV_1_1Parser.html#a51d84fd4ae6d420620e7beee58fad673">evaluate</a> ();</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;{</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    M_parser.<a class="code" href="classLifeV_1_1Parser.html#ac05769e836a0dc95d9c020df361a5194">setString</a> ( M_function );</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    M_parser.<a class="code" href="classLifeV_1_1Parser.html#aa2b362e12b8feb60231705d499c9fbae">setVariable</a> ( <span class="stringliteral">&quot;x&quot;</span>, t [ 0 ] );</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    M_parser.<a class="code" href="classLifeV_1_1Parser.html#aa2b362e12b8feb60231705d499c9fbae">setVariable</a> ( <span class="stringliteral">&quot;y&quot;</span>, t [ 1 ] );</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordflow">return</span> M_parser.<a class="code" href="classLifeV_1_1Parser.html#a51d84fd4ae6d420620e7beee58fad673">evaluate</a> ();</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div>
 <div class="ttc" id="classLifeV_1_1Parser_html_a51d84fd4ae6d420620e7beee58fad673"><div class="ttname"><a href="classLifeV_1_1Parser.html#a51d84fd4ae6d420620e7beee58fad673">LifeV::Parser::evaluate</a></div><div class="ttdeci">const Real &amp; evaluate(const ID &amp;id=0)</div><div class="ttdef"><b>Definition:</b> Parser.cc:104</div></div>
 <div class="ttc" id="classLifeV_1_1Parser_html_aa2b362e12b8feb60231705d499c9fbae"><div class="ttname"><a href="classLifeV_1_1Parser.html#aa2b362e12b8feb60231705d499c9fbae">LifeV::Parser::setVariable</a></div><div class="ttdeci">void setVariable(const std::string &amp;name, const Real &amp;value)</div><div class="ttdef"><b>Definition:</b> Parser.cc:192</div></div>
 <div class="ttc" id="classLifeV_1_1Parser_html_ac05769e836a0dc95d9c020df361a5194"><div class="ttname"><a href="classLifeV_1_1Parser.html#ac05769e836a0dc95d9c020df361a5194">LifeV::Parser::setString</a></div><div class="ttdeci">void setString(const std::string &amp;string, const std::string &amp;stringSeparator=&quot;;&quot;)</div><div class="ttdef"><b>Definition:</b> Parser.cc:170</div></div>
@@ -586,9 +584,9 @@ Questo è il grafo delle chiamate per questa funzione:</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generato Mar 11 Nov 2014 15:47:10 per Progetto PACS da &#160;<a href="http://www.doxygen.org/index.html">
+Generato Sab 15 Nov 2014 22:26:39 per Progetto PACS da &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.5
+</a> 1.8.6
 </small></address>
 </body>
 </html>

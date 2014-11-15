@@ -7,5 +7,6 @@ var searchData=
   ['pointdata',['PointData',['../classPointData.html#a533a569f3a96d571b47cb7417c3b8b09',1,'PointData::PointData(scalar_type x=0, scalar_type y=0)'],['../classPointData.html#a110696aaa98e78579880de5b83a93c9e',1,'PointData::PointData(const PointData &amp;)']]],
   ['pointdistance',['pointDistance',['../UsefulFunctions_8h.html#ad9cf8f3fe42287349e8e1b2f1f824958',1,'pointDistance(const scalar_type &amp;x0, const scalar_type &amp;x1, const scalar_type &amp;y0, const scalar_type &amp;y1):&#160;UsefulFunctions.cc'],['../UsefulFunctions_8cc.html#ad9cf8f3fe42287349e8e1b2f1f824958',1,'pointDistance(const scalar_type &amp;x0, const scalar_type &amp;x1, const scalar_type &amp;y0, const scalar_type &amp;y1):&#160;UsefulFunctions.cc']]],
   ['pressureexact',['pressureExact',['../classFractureData.html#aa90769a75aff6485824ecd2090c8b4ee',1,'FractureData']]],
-  ['printcuttedelements',['printCuttedElements',['../classMeshHandler.html#adf082b93f71c001f6f1252dd269ae8fa',1,'MeshHandler']]]
+  ['printcuttedelements',['printCuttedElements',['../classMeshHandler.html#adf082b93f71c001f6f1252dd269ae8fa',1,'MeshHandler']]],
+  ['pushdoffree',['pushDofFree',['../classFractureHandler.html#a98931107f39ccff8789014256dcfa9a5',1,'FractureHandler']]]
 ];

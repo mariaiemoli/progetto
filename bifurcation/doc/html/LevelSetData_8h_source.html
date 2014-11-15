@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.5"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
 <title>Progetto PACS:  File sorgente include/LevelSetData.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -30,7 +30,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Generato da Doxygen 1.8.5 -->
+<!-- Generato da Doxygen 1.8.6 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
 </script>
@@ -89,111 +89,111 @@ var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
 </div><!--header-->
 <div class="contents">
 <a href="LevelSetData_8h.html">Vai alla documentazione di questo file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#ifndef LEVELSETDATA_H_</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define LEVELSETDATA_H_ 1</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Core_8h.html">Core.h</a>&quot;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Parser_8h.html">Parser.h</a>&quot;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="classLevelSetData.html">   11</a></span>&#160;<span class="keyword">class </span><a class="code" href="classLevelSetData.html">LevelSetData</a></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="comment">// Costruttore</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="classLevelSetData.html#a8b2ab7808f47d9a951327891d65e84be">LevelSetData</a> ( <span class="keyword">const</span> GetPot&amp; dataFile,</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                   <span class="keyword">const</span> std::string&amp; section = <span class="stringliteral">&quot;fractureData/&quot;</span>,</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;                   <span class="keyword">const</span> std::string&amp; sectionLevelSet = <span class="stringliteral">&quot;levelSet/&quot;</span> );</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    scalar_type <a class="code" href="classLevelSetData.html#a732ae59581206d4f94237e54bc0071e3">ylevelSetFunction</a> ( <span class="keyword">const</span> base_node&amp; x );</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    scalar_type <a class="code" href="classLevelSetData.html#a665241939c12bad26face4d997e655ce">levelSetFunction</a> ( <span class="keyword">const</span> base_node&amp; x );</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    scalar_type <a class="code" href="classLevelSetData.html#a60ea6aa9991dfdae4e4a3950ed8db66c">levelSetCutFunction</a> ( <span class="keyword">const</span> base_node&amp; x );</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    scalar_type <a class="code" href="classLevelSetData.html#aa4cda1cced4bc385d85383b40bbc2631">y_map</a> ( <span class="keyword">const</span> base_node&amp; t );</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    scalar_type <a class="code" href="classLevelSetData.html#ae7f10d3f10b72fbb6f703ba7aa8fe17b">x_map</a> ( <span class="keyword">const</span> base_node&amp; t );</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <a class="code" href="Core_8h.html#a4e75b5863535ba1dd79942de2846eff0">scalarVector_Type</a> <a class="code" href="classLevelSetData.html#a40fcfa36de7ac76613284d03690eb54b">map_jac</a> ( <span class="keyword">const</span> base_node&amp; x, <span class="keyword">const</span> size_type&amp; num );</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <a class="code" href="Core_8h.html#a4e75b5863535ba1dd79942de2846eff0">scalarVector_Type</a> <a class="code" href="classLevelSetData.html#a674d56690f4e22cbca38bf4b5f176a5e">normal_map</a> ( <span class="keyword">const</span> base_node&amp; P, <span class="keyword">const</span> size_type&amp; num );</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="classLevelSetData.html#aa4c3e1f7876cd318e80f5052689fe9e3">   72</a></span>&#160;    <span class="keyword">inline</span> bgeot::dim_type <a class="code" href="classLevelSetData.html#aa4c3e1f7876cd318e80f5052689fe9e3">getSpaceDimension</a> ()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keyword">    </span>{</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordflow">return</span> M_spaceDimension;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    }</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="classLevelSetData.html#a3f8cb21a929065136dcf3a449edb373a">   78</a></span>&#160;    <span class="keyword">inline</span> std::string <a class="code" href="classLevelSetData.html#a3f8cb21a929065136dcf3a449edb373a">getIntegrationTypeSimplex</a> ()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keyword">    </span>{</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordflow">return</span> M_integrationTypeSimplex;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
-<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="classLevelSetData.html#a672418971ce9b1bf71d3c6bccd278bd7">   84</a></span>&#160;    std::string <a class="code" href="classLevelSetData.html#a672418971ce9b1bf71d3c6bccd278bd7">getLevelSetFunctionString</a> ()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keyword">    </span>{</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordflow">return</span> M_yfunction;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    }</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#ifndef LEVELSETDATA_H_</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define LEVELSETDATA_H_ 1</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Core_8h.html">Core.h</a>&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Parser_8h.html">Parser.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classLevelSetData.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="classLevelSetData.html">LevelSetData</a></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="comment">// Costruttore</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="classLevelSetData.html#a8b2ab7808f47d9a951327891d65e84be">LevelSetData</a> ( <span class="keyword">const</span> GetPot&amp; dataFile,</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                   <span class="keyword">const</span> std::string&amp; section = <span class="stringliteral">&quot;fractureData/&quot;</span>,</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                   <span class="keyword">const</span> std::string&amp; sectionLevelSet = <span class="stringliteral">&quot;levelSet/&quot;</span> );</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    scalar_type <a class="code" href="classLevelSetData.html#a732ae59581206d4f94237e54bc0071e3">ylevelSetFunction</a> ( <span class="keyword">const</span> base_node&amp; x );</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    scalar_type <a class="code" href="classLevelSetData.html#a665241939c12bad26face4d997e655ce">levelSetFunction</a> ( <span class="keyword">const</span> base_node&amp; x );</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    scalar_type <a class="code" href="classLevelSetData.html#a60ea6aa9991dfdae4e4a3950ed8db66c">levelSetCutFunction</a> ( <span class="keyword">const</span> base_node&amp; x );</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    scalar_type <a class="code" href="classLevelSetData.html#aa4cda1cced4bc385d85383b40bbc2631">y_map</a> ( <span class="keyword">const</span> base_node&amp; t );</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    scalar_type <a class="code" href="classLevelSetData.html#ae7f10d3f10b72fbb6f703ba7aa8fe17b">x_map</a> ( <span class="keyword">const</span> base_node&amp; t );</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <a class="code" href="Core_8h.html#a4e75b5863535ba1dd79942de2846eff0">scalarVector_Type</a> <a class="code" href="classLevelSetData.html#a40fcfa36de7ac76613284d03690eb54b">map_jac</a> ( <span class="keyword">const</span> base_node&amp; x, <span class="keyword">const</span> size_type&amp; num );</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <a class="code" href="Core_8h.html#a4e75b5863535ba1dd79942de2846eff0">scalarVector_Type</a> <a class="code" href="classLevelSetData.html#a674d56690f4e22cbca38bf4b5f176a5e">normal_map</a> ( <span class="keyword">const</span> base_node&amp; P, <span class="keyword">const</span> size_type&amp; num );</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="classLevelSetData.html#aa4c3e1f7876cd318e80f5052689fe9e3">   74</a></span>&#160;    <span class="keyword">inline</span> bgeot::dim_type <a class="code" href="classLevelSetData.html#aa4c3e1f7876cd318e80f5052689fe9e3">getSpaceDimension</a> ()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordflow">return</span> M_spaceDimension;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="classLevelSetData.html#a3f8cb21a929065136dcf3a449edb373a">   80</a></span>&#160;    <span class="keyword">inline</span> std::string <a class="code" href="classLevelSetData.html#a3f8cb21a929065136dcf3a449edb373a">getIntegrationTypeSimplex</a> ()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordflow">return</span> M_integrationTypeSimplex;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="classLevelSetData.html#a672418971ce9b1bf71d3c6bccd278bd7">   86</a></span>&#160;    std::string <a class="code" href="classLevelSetData.html#a672418971ce9b1bf71d3c6bccd278bd7">getLevelSetFunctionString</a> ()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordflow">return</span> M_yfunction;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    }</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="comment">// Attributes</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    std::string M_section;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    std::string M_sectionLevelSet;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    bgeot::dim_type M_spaceDimension;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="comment">// Attributes</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    std::string M_section;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    std::string M_sectionLevelSet;</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    std::string M_function;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    std::string M_xfunction;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    std::string M_yfunction;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    std::string M_cutFunction;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    std::string M_x_map;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    std::string M_y_map;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    std::string M_map_jac;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    std::string M_normal_map;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="comment">//SIMPLEX_INTEGRATION</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    std::string M_integrationTypeSimplex;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keyword">mutable</span> <a class="code" href="classLifeV_1_1Parser.html">LifeV::Parser</a> M_parser;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    bgeot::dim_type M_spaceDimension;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    std::string M_function;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    std::string M_xfunction;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    std::string M_yfunction;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    std::string M_cutFunction;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    std::string M_x_map;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    std::string M_y_map;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    std::string M_map_jac;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    std::string M_normal_map;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="comment">//SIMPLEX_INTEGRATION</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    std::string M_integrationTypeSimplex;</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;};</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keyword">mutable</span> <a class="code" href="classLifeV_1_1Parser.html">LifeV::Parser</a> M_parser;</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
-<div class="line"><a name="l00114"></a><span class="lineno"><a class="line" href="LevelSetData_8h.html#ad9acd4c7e96919475361341469698bb4">  114</a></span>&#160;<span class="keyword">typedef</span> <a class="code" href="classLevelSetData.html">LevelSetData</a> <a class="code" href="LevelSetData_8h.html#ad9acd4c7e96919475361341469698bb4">LevelSetData_Type</a>;                             </div>
-<div class="line"><a name="l00115"></a><span class="lineno"><a class="line" href="LevelSetData_8h.html#a7750f14ec1c622b3c69aa0c5c2894972">  115</a></span>&#160;<span class="keyword">typedef</span> boost::shared_ptr&lt;LevelSetData_Type&gt; <a class="code" href="LevelSetData_8h.html#a7750f14ec1c622b3c69aa0c5c2894972">LevelSetDataPtr_Type</a>;  </div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* LEVELSETDATA_H_ */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="classLevelSetData_html_a3f8cb21a929065136dcf3a449edb373a"><div class="ttname"><a href="classLevelSetData.html#a3f8cb21a929065136dcf3a449edb373a">LevelSetData::getIntegrationTypeSimplex</a></div><div class="ttdeci">std::string getIntegrationTypeSimplex() const </div><div class="ttdef"><b>Definition:</b> LevelSetData.h:78</div></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;};</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
+<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="LevelSetData_8h.html#ad9acd4c7e96919475361341469698bb4">  116</a></span>&#160;<span class="keyword">typedef</span> <a class="code" href="classLevelSetData.html">LevelSetData</a> <a class="code" href="LevelSetData_8h.html#ad9acd4c7e96919475361341469698bb4">LevelSetData_Type</a>;                             </div>
+<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="LevelSetData_8h.html#a7750f14ec1c622b3c69aa0c5c2894972">  117</a></span>&#160;<span class="keyword">typedef</span> boost::shared_ptr&lt;LevelSetData_Type&gt; <a class="code" href="LevelSetData_8h.html#a7750f14ec1c622b3c69aa0c5c2894972">LevelSetDataPtr_Type</a>;  </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* LEVELSETDATA_H_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="classLevelSetData_html_a3f8cb21a929065136dcf3a449edb373a"><div class="ttname"><a href="classLevelSetData.html#a3f8cb21a929065136dcf3a449edb373a">LevelSetData::getIntegrationTypeSimplex</a></div><div class="ttdeci">std::string getIntegrationTypeSimplex() const </div><div class="ttdef"><b>Definition:</b> LevelSetData.h:80</div></div>
 <div class="ttc" id="Core_8h_html_a4e75b5863535ba1dd79942de2846eff0"><div class="ttname"><a href="Core_8h.html#a4e75b5863535ba1dd79942de2846eff0">scalarVector_Type</a></div><div class="ttdeci">std::vector&lt; scalar_type &gt; scalarVector_Type</div><div class="ttdef"><b>Definition:</b> Core.h:63</div></div>
-<div class="ttc" id="classLevelSetData_html_a60ea6aa9991dfdae4e4a3950ed8db66c"><div class="ttname"><a href="classLevelSetData.html#a60ea6aa9991dfdae4e4a3950ed8db66c">LevelSetData::levelSetCutFunction</a></div><div class="ttdeci">scalar_type levelSetCutFunction(const base_node &amp;x)</div><div class="ttdoc">scalar_type levelSetCutFunction ( const base_node&amp;amp; x, int num = 0 ) </div><div class="ttdef"><b>Definition:</b> LevelSetData.cc:47</div></div>
-<div class="ttc" id="classLevelSetData_html_a8b2ab7808f47d9a951327891d65e84be"><div class="ttname"><a href="classLevelSetData.html#a8b2ab7808f47d9a951327891d65e84be">LevelSetData::LevelSetData</a></div><div class="ttdeci">LevelSetData(const GetPot &amp;dataFile, const std::string &amp;section=&quot;fractureData/&quot;, const std::string &amp;sectionLevelSet=&quot;levelSet/&quot;)</div><div class="ttdoc">LevelSetData.cc. </div><div class="ttdef"><b>Definition:</b> LevelSetData.cc:7</div></div>
+<div class="ttc" id="classLevelSetData_html_a60ea6aa9991dfdae4e4a3950ed8db66c"><div class="ttname"><a href="classLevelSetData.html#a60ea6aa9991dfdae4e4a3950ed8db66c">LevelSetData::levelSetCutFunction</a></div><div class="ttdeci">scalar_type levelSetCutFunction(const base_node &amp;x)</div><div class="ttdoc">scalar_type levelSetCutFunction ( const base_node&amp; x, int num = 0 ) </div><div class="ttdef"><b>Definition:</b> LevelSetData.cc:49</div></div>
+<div class="ttc" id="classLevelSetData_html_a8b2ab7808f47d9a951327891d65e84be"><div class="ttname"><a href="classLevelSetData.html#a8b2ab7808f47d9a951327891d65e84be">LevelSetData::LevelSetData</a></div><div class="ttdeci">LevelSetData(const GetPot &amp;dataFile, const std::string &amp;section=&quot;fractureData/&quot;, const std::string &amp;sectionLevelSet=&quot;levelSet/&quot;)</div><div class="ttdef"><b>Definition:</b> LevelSetData.cc:9</div></div>
 <div class="ttc" id="Parser_8h_html"><div class="ttname"><a href="Parser_8h.html">Parser.h</a></div><div class="ttdoc">File containing the Parser interface. </div></div>
 <div class="ttc" id="Core_8h_html"><div class="ttname"><a href="Core_8h.html">Core.h</a></div></div>
-<div class="ttc" id="classLevelSetData_html_a732ae59581206d4f94237e54bc0071e3"><div class="ttname"><a href="classLevelSetData.html#a732ae59581206d4f94237e54bc0071e3">LevelSetData::ylevelSetFunction</a></div><div class="ttdeci">scalar_type ylevelSetFunction(const base_node &amp;x)</div><div class="ttdoc">Questa funzione definisce il level set che rappresenta la frattura, level set valutato in (x...</div><div class="ttdef"><b>Definition:</b> LevelSetData.cc:27</div></div>
-<div class="ttc" id="classLevelSetData_html_aa4c3e1f7876cd318e80f5052689fe9e3"><div class="ttname"><a href="classLevelSetData.html#aa4c3e1f7876cd318e80f5052689fe9e3">LevelSetData::getSpaceDimension</a></div><div class="ttdeci">bgeot::dim_type getSpaceDimension() const </div><div class="ttdef"><b>Definition:</b> LevelSetData.h:72</div></div>
+<div class="ttc" id="classLevelSetData_html_a732ae59581206d4f94237e54bc0071e3"><div class="ttname"><a href="classLevelSetData.html#a732ae59581206d4f94237e54bc0071e3">LevelSetData::ylevelSetFunction</a></div><div class="ttdeci">scalar_type ylevelSetFunction(const base_node &amp;x)</div><div class="ttdoc">Questa funzione definisce il level set che rappresenta la frattura, level set valutato in (x...</div><div class="ttdef"><b>Definition:</b> LevelSetData.cc:29</div></div>
+<div class="ttc" id="classLevelSetData_html_aa4c3e1f7876cd318e80f5052689fe9e3"><div class="ttname"><a href="classLevelSetData.html#aa4c3e1f7876cd318e80f5052689fe9e3">LevelSetData::getSpaceDimension</a></div><div class="ttdeci">bgeot::dim_type getSpaceDimension() const </div><div class="ttdef"><b>Definition:</b> LevelSetData.h:74</div></div>
 <div class="ttc" id="classLifeV_1_1Parser_html"><div class="ttname"><a href="classLifeV_1_1Parser.html">LifeV::Parser</a></div><div class="ttdoc">Parser - A string parser for algebraic expressions. </div><div class="ttdef"><b>Definition:</b> Parser.h:55</div></div>
-<div class="ttc" id="classLevelSetData_html_a665241939c12bad26face4d997e655ce"><div class="ttname"><a href="classLevelSetData.html#a665241939c12bad26face4d997e655ce">LevelSetData::levelSetFunction</a></div><div class="ttdeci">scalar_type levelSetFunction(const base_node &amp;x)</div><div class="ttdoc">Questa funzione definisce il level set che rappresenta la frattura, level set valutato in (t...</div><div class="ttdef"><b>Definition:</b> LevelSetData.cc:37</div></div>
-<div class="ttc" id="classLevelSetData_html_a674d56690f4e22cbca38bf4b5f176a5e"><div class="ttname"><a href="classLevelSetData.html#a674d56690f4e22cbca38bf4b5f176a5e">LevelSetData::normal_map</a></div><div class="ttdeci">scalarVector_Type normal_map(const base_node &amp;P, const size_type &amp;num)</div><div class="ttdoc">Funzione che calcola la normale alla frattura - può anche dipendere da x. </div><div class="ttdef"><b>Definition:</b> LevelSetData.cc:93</div></div>
-<div class="ttc" id="classLevelSetData_html_a672418971ce9b1bf71d3c6bccd278bd7"><div class="ttname"><a href="classLevelSetData.html#a672418971ce9b1bf71d3c6bccd278bd7">LevelSetData::getLevelSetFunctionString</a></div><div class="ttdeci">std::string getLevelSetFunctionString() const </div><div class="ttdef"><b>Definition:</b> LevelSetData.h:84</div></div>
-<div class="ttc" id="classLevelSetData_html_a40fcfa36de7ac76613284d03690eb54b"><div class="ttname"><a href="classLevelSetData.html#a40fcfa36de7ac76613284d03690eb54b">LevelSetData::map_jac</a></div><div class="ttdeci">scalarVector_Type map_jac(const base_node &amp;x, const size_type &amp;num)</div><div class="ttdoc">Questa funzione serve per convertire la lunghezza/area degli elementi dalla frattura piatta a quella ...</div><div class="ttdef"><b>Definition:</b> LevelSetData.cc:75</div></div>
-<div class="ttc" id="LevelSetData_8h_html_a7750f14ec1c622b3c69aa0c5c2894972"><div class="ttname"><a href="LevelSetData_8h.html#a7750f14ec1c622b3c69aa0c5c2894972">LevelSetDataPtr_Type</a></div><div class="ttdeci">boost::shared_ptr&lt; LevelSetData_Type &gt; LevelSetDataPtr_Type</div><div class="ttdef"><b>Definition:</b> LevelSetData.h:115</div></div>
-<div class="ttc" id="classLevelSetData_html"><div class="ttname"><a href="classLevelSetData.html">LevelSetData</a></div><div class="ttdoc">LevelSetData.h. </div><div class="ttdef"><b>Definition:</b> LevelSetData.h:11</div></div>
-<div class="ttc" id="classLevelSetData_html_ae7f10d3f10b72fbb6f703ba7aa8fe17b"><div class="ttname"><a href="classLevelSetData.html#ae7f10d3f10b72fbb6f703ba7aa8fe17b">LevelSetData::x_map</a></div><div class="ttdeci">scalar_type x_map(const base_node &amp;t)</div><div class="ttdoc">Questa funzione rappresenta la mappa dalla frattura piatta, x(t). </div><div class="ttdef"><b>Definition:</b> LevelSetData.cc:66</div></div>
-<div class="ttc" id="classLevelSetData_html_aa4cda1cced4bc385d85383b40bbc2631"><div class="ttname"><a href="classLevelSetData.html#aa4cda1cced4bc385d85383b40bbc2631">LevelSetData::y_map</a></div><div class="ttdeci">scalar_type y_map(const base_node &amp;t)</div><div class="ttdoc">Questa funzione rappresenta la mappa dalla frattura piatta, y(t). </div><div class="ttdef"><b>Definition:</b> LevelSetData.cc:57</div></div>
-<div class="ttc" id="LevelSetData_8h_html_ad9acd4c7e96919475361341469698bb4"><div class="ttname"><a href="LevelSetData_8h.html#ad9acd4c7e96919475361341469698bb4">LevelSetData_Type</a></div><div class="ttdeci">LevelSetData LevelSetData_Type</div><div class="ttdef"><b>Definition:</b> LevelSetData.h:114</div></div>
+<div class="ttc" id="classLevelSetData_html_a665241939c12bad26face4d997e655ce"><div class="ttname"><a href="classLevelSetData.html#a665241939c12bad26face4d997e655ce">LevelSetData::levelSetFunction</a></div><div class="ttdeci">scalar_type levelSetFunction(const base_node &amp;x)</div><div class="ttdoc">Questa funzione definisce il level set che rappresenta la frattura, level set valutato in (t...</div><div class="ttdef"><b>Definition:</b> LevelSetData.cc:39</div></div>
+<div class="ttc" id="classLevelSetData_html_a674d56690f4e22cbca38bf4b5f176a5e"><div class="ttname"><a href="classLevelSetData.html#a674d56690f4e22cbca38bf4b5f176a5e">LevelSetData::normal_map</a></div><div class="ttdeci">scalarVector_Type normal_map(const base_node &amp;P, const size_type &amp;num)</div><div class="ttdoc">Funzione che calcola la normale alla frattura - può anche dipendere da x. </div><div class="ttdef"><b>Definition:</b> LevelSetData.cc:95</div></div>
+<div class="ttc" id="classLevelSetData_html_a672418971ce9b1bf71d3c6bccd278bd7"><div class="ttname"><a href="classLevelSetData.html#a672418971ce9b1bf71d3c6bccd278bd7">LevelSetData::getLevelSetFunctionString</a></div><div class="ttdeci">std::string getLevelSetFunctionString() const </div><div class="ttdef"><b>Definition:</b> LevelSetData.h:86</div></div>
+<div class="ttc" id="classLevelSetData_html_a40fcfa36de7ac76613284d03690eb54b"><div class="ttname"><a href="classLevelSetData.html#a40fcfa36de7ac76613284d03690eb54b">LevelSetData::map_jac</a></div><div class="ttdeci">scalarVector_Type map_jac(const base_node &amp;x, const size_type &amp;num)</div><div class="ttdoc">Questa funzione serve per convertire la lunghezza/area degli elementi dalla frattura piatta a quella ...</div><div class="ttdef"><b>Definition:</b> LevelSetData.cc:77</div></div>
+<div class="ttc" id="LevelSetData_8h_html_a7750f14ec1c622b3c69aa0c5c2894972"><div class="ttname"><a href="LevelSetData_8h.html#a7750f14ec1c622b3c69aa0c5c2894972">LevelSetDataPtr_Type</a></div><div class="ttdeci">boost::shared_ptr&lt; LevelSetData_Type &gt; LevelSetDataPtr_Type</div><div class="ttdef"><b>Definition:</b> LevelSetData.h:117</div></div>
+<div class="ttc" id="classLevelSetData_html"><div class="ttname"><a href="classLevelSetData.html">LevelSetData</a></div><div class="ttdoc">LevelSetData.h. </div><div class="ttdef"><b>Definition:</b> LevelSetData.h:13</div></div>
+<div class="ttc" id="classLevelSetData_html_ae7f10d3f10b72fbb6f703ba7aa8fe17b"><div class="ttname"><a href="classLevelSetData.html#ae7f10d3f10b72fbb6f703ba7aa8fe17b">LevelSetData::x_map</a></div><div class="ttdeci">scalar_type x_map(const base_node &amp;t)</div><div class="ttdoc">Questa funzione rappresenta la mappa dalla frattura piatta, x(t). </div><div class="ttdef"><b>Definition:</b> LevelSetData.cc:68</div></div>
+<div class="ttc" id="classLevelSetData_html_aa4cda1cced4bc385d85383b40bbc2631"><div class="ttname"><a href="classLevelSetData.html#aa4cda1cced4bc385d85383b40bbc2631">LevelSetData::y_map</a></div><div class="ttdeci">scalar_type y_map(const base_node &amp;t)</div><div class="ttdoc">Questa funzione rappresenta la mappa dalla frattura piatta, y(t). </div><div class="ttdef"><b>Definition:</b> LevelSetData.cc:59</div></div>
+<div class="ttc" id="LevelSetData_8h_html_ad9acd4c7e96919475361341469698bb4"><div class="ttname"><a href="LevelSetData_8h.html#ad9acd4c7e96919475361341469698bb4">LevelSetData_Type</a></div><div class="ttdeci">LevelSetData LevelSetData_Type</div><div class="ttdef"><b>Definition:</b> LevelSetData.h:116</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generato Mar 11 Nov 2014 15:47:09 per Progetto PACS da &#160;<a href="http://www.doxygen.org/index.html">
+Generato Sab 15 Nov 2014 22:26:38 per Progetto PACS da &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.5
+</a> 1.8.6
 </small></address>
 </body>
 </html>

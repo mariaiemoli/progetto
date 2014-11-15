@@ -14,7 +14,7 @@
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{classLevelSetData_a8b2ab7808f47d9a951327891d65e84be}{Level\-Set\-Data} (const Get\-Pot \&data\-File, const std\-::string \&section=\char`\"{}fracture\-Data/\char`\"{}, const std\-::string \&section\-Level\-Set=\char`\"{}level\-Set/\char`\"{})
-\begin{DoxyCompactList}\small\item\em \hyperlink{LevelSetData_8cc}{Level\-Set\-Data.\-cc}. \end{DoxyCompactList}\item 
+\item 
 scalar\-\_\-type \hyperlink{classLevelSetData_a732ae59581206d4f94237e54bc0071e3}{ylevel\-Set\-Function} (const base\-\_\-node \&x)
 \begin{DoxyCompactList}\small\item\em Questa funzione definisce il level set che rappresenta la frattura, level set valutato in (x,y). \end{DoxyCompactList}\item 
 scalar\-\_\-type \hyperlink{classLevelSetData_a665241939c12bad26face4d997e655ce}{level\-Set\-Function} (const base\-\_\-node \&x)
@@ -40,7 +40,7 @@ std\-::string \hyperlink{classLevelSetData_a672418971ce9b1bf71d3c6bccd278bd7}{ge
 \subsection{Descrizione dettagliata}
 \hyperlink{LevelSetData_8h}{Level\-Set\-Data.\-h}. 
 
-
+Classe che contiene tutte le informazioni legate al level set e le funzioni per valutarne il valore nei punti 
 
 \subsection{Documentazione dei costruttori e dei distruttori}
 \hypertarget{classLevelSetData_a8b2ab7808f47d9a951327891d65e84be}{\index{Level\-Set\-Data@{Level\-Set\-Data}!Level\-Set\-Data@{Level\-Set\-Data}}
@@ -53,27 +53,23 @@ std\-::string \hyperlink{classLevelSetData_a672418971ce9b1bf71d3c6bccd278bd7}{ge
 \end{DoxyParamCaption}
 )}}\label{classLevelSetData_a8b2ab7808f47d9a951327891d65e84be}
 
-
-\hyperlink{LevelSetData_8cc}{Level\-Set\-Data.\-cc}. 
-
-
 \begin{DoxyCode}
-9                                                                 :
-10             M\_section ( section ),
-11             M\_sectionLevelSet ( M\_section + sectionLevelSet ),
-12             M\_spaceDimension ( dataFile ( ( M\_section + \textcolor{stringliteral}{"spaceDimension"} ).data (), 1. ) ),
-13             \textcolor{comment}{// level set}
-14             M\_function ( dataFile ( ( M\_sectionLevelSet + \textcolor{stringliteral}{"levelSet"} ).data (), \textcolor{stringliteral}{"x"} ) ),
-15             M\_xfunction ( dataFile ( ( M\_sectionLevelSet + \textcolor{stringliteral}{"xlevelSet"} ).data (), \textcolor{stringliteral}{"t"} ) ),
-16             M\_yfunction ( dataFile ( ( M\_sectionLevelSet + \textcolor{stringliteral}{"ylevelSet"} ).data (), \textcolor{stringliteral}{"t"} ) ),
-17             M\_cutFunction ( dataFile ( ( M\_sectionLevelSet + \textcolor{stringliteral}{"levelSetCut"} ).data (), \textcolor{stringliteral}{"-1"} ) ),
-18             M\_x\_map ( dataFile ( ( M\_sectionLevelSet + \textcolor{stringliteral}{"xMap"} ).data (), \textcolor{stringliteral}{"1"} ) ),
-19             M\_y\_map ( dataFile ( ( M\_sectionLevelSet + \textcolor{stringliteral}{"yMap"} ).data (), \textcolor{stringliteral}{"1"} ) ),
-20             M\_map\_jac ( dataFile ( ( M\_sectionLevelSet + \textcolor{stringliteral}{"jacMap"} ).data (), \textcolor{stringliteral}{"1"} ) ),
-21             M\_normal\_map ( dataFile ( ( M\_sectionLevelSet + \textcolor{stringliteral}{"normalMap"} ).data (), \textcolor{stringliteral}{"1"} ) ),
-22             M\_integrationTypeSimplex ( dataFile ( ( M\_sectionLevelSet + \textcolor{stringliteral}{"integrationTypeSimplex"} ).data (),
-23                                                   \textcolor{stringliteral}{"IM\_STRUCTURED\_COMPOSITE(IM\_TRIANGLE(3),1)"} ) )
-24 \{\}
+11                                                                 :
+12             M\_section ( section ),
+13             M\_sectionLevelSet ( M\_section + sectionLevelSet ),
+14             M\_spaceDimension ( dataFile ( ( M\_section + \textcolor{stringliteral}{"spaceDimension"} ).data (), 1. ) ),
+15             \textcolor{comment}{// level set}
+16             M\_function ( dataFile ( ( M\_sectionLevelSet + \textcolor{stringliteral}{"levelSet"} ).data (), \textcolor{stringliteral}{"x"} ) ),
+17             M\_xfunction ( dataFile ( ( M\_sectionLevelSet + \textcolor{stringliteral}{"xlevelSet"} ).data (), \textcolor{stringliteral}{"t"} ) ),
+18             M\_yfunction ( dataFile ( ( M\_sectionLevelSet + \textcolor{stringliteral}{"ylevelSet"} ).data (), \textcolor{stringliteral}{"t"} ) ),
+19             M\_cutFunction ( dataFile ( ( M\_sectionLevelSet + \textcolor{stringliteral}{"levelSetCut"} ).data (), \textcolor{stringliteral}{"-1"} ) ),
+20             M\_x\_map ( dataFile ( ( M\_sectionLevelSet + \textcolor{stringliteral}{"xMap"} ).data (), \textcolor{stringliteral}{"1"} ) ),
+21             M\_y\_map ( dataFile ( ( M\_sectionLevelSet + \textcolor{stringliteral}{"yMap"} ).data (), \textcolor{stringliteral}{"1"} ) ),
+22             M\_map\_jac ( dataFile ( ( M\_sectionLevelSet + \textcolor{stringliteral}{"jacMap"} ).data (), \textcolor{stringliteral}{"1"} ) ),
+23             M\_normal\_map ( dataFile ( ( M\_sectionLevelSet + \textcolor{stringliteral}{"normalMap"} ).data (), \textcolor{stringliteral}{"1"} ) ),
+24             M\_integrationTypeSimplex ( dataFile ( ( M\_sectionLevelSet + \textcolor{stringliteral}{"integrationTypeSimplex"} ).data (),
+25                                                   \textcolor{stringliteral}{"IM\_STRUCTURED\_COMPOSITE(IM\_TRIANGLE(3),1)"} ) )
+26 \{\}
 \end{DoxyCode}
 
 
@@ -87,9 +83,9 @@ std\-::string \hyperlink{classLevelSetData_a672418971ce9b1bf71d3c6bccd278bd7}{ge
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLevelSetData_a3f8cb21a929065136dcf3a449edb373a}
 
 \begin{DoxyCode}
-79     \{
-80         \textcolor{keywordflow}{return} M\_integrationTypeSimplex;
-81     \}
+81     \{
+82         \textcolor{keywordflow}{return} M\_integrationTypeSimplex;
+83     \}
 \end{DoxyCode}
 \hypertarget{classLevelSetData_a672418971ce9b1bf71d3c6bccd278bd7}{\index{Level\-Set\-Data@{Level\-Set\-Data}!get\-Level\-Set\-Function\-String@{get\-Level\-Set\-Function\-String}}
 \index{get\-Level\-Set\-Function\-String@{get\-Level\-Set\-Function\-String}!LevelSetData@{Level\-Set\-Data}}
@@ -100,9 +96,9 @@ std\-::string \hyperlink{classLevelSetData_a672418971ce9b1bf71d3c6bccd278bd7}{ge
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLevelSetData_a672418971ce9b1bf71d3c6bccd278bd7}
 
 \begin{DoxyCode}
-85     \{
-86         \textcolor{keywordflow}{return} M\_yfunction;
-87     \}
+87     \{
+88         \textcolor{keywordflow}{return} M\_yfunction;
+89     \}
 \end{DoxyCode}
 \hypertarget{classLevelSetData_aa4c3e1f7876cd318e80f5052689fe9e3}{\index{Level\-Set\-Data@{Level\-Set\-Data}!get\-Space\-Dimension@{get\-Space\-Dimension}}
 \index{get\-Space\-Dimension@{get\-Space\-Dimension}!LevelSetData@{Level\-Set\-Data}}
@@ -113,9 +109,9 @@ std\-::string \hyperlink{classLevelSetData_a672418971ce9b1bf71d3c6bccd278bd7}{ge
 ) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classLevelSetData_aa4c3e1f7876cd318e80f5052689fe9e3}
 
 \begin{DoxyCode}
-73     \{
-74         \textcolor{keywordflow}{return} M\_spaceDimension;
-75     \}
+75     \{
+76         \textcolor{keywordflow}{return} M\_spaceDimension;
+77     \}
 \end{DoxyCode}
 \hypertarget{classLevelSetData_a60ea6aa9991dfdae4e4a3950ed8db66c}{\index{Level\-Set\-Data@{Level\-Set\-Data}!level\-Set\-Cut\-Function@{level\-Set\-Cut\-Function}}
 \index{level\-Set\-Cut\-Function@{level\-Set\-Cut\-Function}!LevelSetData@{Level\-Set\-Data}}
@@ -138,13 +134,13 @@ scalar\-\_\-type\-: valore del levelset nel nodo x
 \end{DoxyReturn}
 
 \begin{DoxyCode}
-48 \{
-49     M\_parser.\hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString} ( M\_cutFunction );
-50     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"t"}, t [ 0 ] );
-51     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"y"}, t [ 1 ] );
-52     
-53     \textcolor{keywordflow}{return} M\_parser.\hyperlink{classLifeV_1_1Parser_a51d84fd4ae6d420620e7beee58fad673}{evaluate} ();
-54 \}
+50 \{
+51     M\_parser.\hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString} ( M\_cutFunction );
+52     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"t"}, t [ 0 ] );
+53     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"y"}, t [ 1 ] );
+54     
+55     \textcolor{keywordflow}{return} M\_parser.\hyperlink{classLifeV_1_1Parser_a51d84fd4ae6d420620e7beee58fad673}{evaluate} ();
+56 \}
 \end{DoxyCode}
 
 
@@ -178,13 +174,13 @@ scalar\-\_\-type\-: valore del levelset nel nodo x
 \end{DoxyReturn}
 
 \begin{DoxyCode}
-38 \{
-39     M\_parser.\hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString} ( M\_yfunction );
-40     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"t"}, t [ 0 ] );
-41     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"y"}, t [ 1 ] );
-42     
-43     \textcolor{keywordflow}{return} M\_parser.\hyperlink{classLifeV_1_1Parser_a51d84fd4ae6d420620e7beee58fad673}{evaluate} ();
-44 \}
+40 \{
+41     M\_parser.\hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString} ( M\_yfunction );
+42     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"t"}, t [ 0 ] );
+43     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"y"}, t [ 1 ] );
+44     
+45     \textcolor{keywordflow}{return} M\_parser.\hyperlink{classLifeV_1_1Parser_a51d84fd4ae6d420620e7beee58fad673}{evaluate} ();
+46 \}
 \end{DoxyCode}
 
 
@@ -211,20 +207,20 @@ Questa funzione serve per convertire la lunghezza/area degli elementi dalla frat
 
 
 \begin{DoxyCode}
-77 \{
-78     \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} \hyperlink{classLevelSetData_a40fcfa36de7ac76613284d03690eb54b}{map\_jac} ( num, 0. );
-79 
-80     M\_parser.\hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString} ( M\_map\_jac );
-81     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"x"}, x [ 0 ] );
-82     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"y"}, x [ 1 ] );
-83 
-84     \textcolor{keywordflow}{for} ( size\_type \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < num; ++\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} )
-85     \{
-86         \hyperlink{classLevelSetData_a40fcfa36de7ac76613284d03690eb54b}{map\_jac} [ \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} ] = M\_parser.\hyperlink{classLifeV_1_1Parser_a51d84fd4ae6d420620e7beee58fad673}{evaluate} ( \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} );
-87     \}
-88 
-89     \textcolor{keywordflow}{return} \hyperlink{classLevelSetData_a40fcfa36de7ac76613284d03690eb54b}{map\_jac};
-90 \}
+79 \{
+80     \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} \hyperlink{classLevelSetData_a40fcfa36de7ac76613284d03690eb54b}{map\_jac} ( num, 0. );
+81 
+82     M\_parser.\hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString} ( M\_map\_jac );
+83     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"x"}, x [ 0 ] );
+84     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"y"}, x [ 1 ] );
+85 
+86     \textcolor{keywordflow}{for} ( size\_type \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < num; ++\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} )
+87     \{
+88         \hyperlink{classLevelSetData_a40fcfa36de7ac76613284d03690eb54b}{map\_jac} [ \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} ] = M\_parser.\hyperlink{classLifeV_1_1Parser_a51d84fd4ae6d420620e7beee58fad673}{evaluate} ( \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} );
+89     \}
+90 
+91     \textcolor{keywordflow}{return} \hyperlink{classLevelSetData_a40fcfa36de7ac76613284d03690eb54b}{map\_jac};
+92 \}
 \end{DoxyCode}
 
 
@@ -251,20 +247,20 @@ Funzione che calcola la normale alla frattura -\/ può anche dipendere da x.
 
 
 \begin{DoxyCode}
-95 \{
-96     \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} \hyperlink{classLevelSetData_a674d56690f4e22cbca38bf4b5f176a5e}{normal\_map} ( num + 1, 0. );
-97 
-98     M\_parser.\hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString} ( M\_map\_jac );
-99     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"x"}, x [ 0 ] );
-100     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"y"}, x [ 1 ] );
-101 
-102     \textcolor{keywordflow}{for} ( size\_type \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < num + 1; ++\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} )
-103     \{
-104         \hyperlink{classLevelSetData_a674d56690f4e22cbca38bf4b5f176a5e}{normal\_map} [ \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} ] = M\_parser.\hyperlink{classLifeV_1_1Parser_a51d84fd4ae6d420620e7beee58fad673}{evaluate} ( \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} );
-105     \}
-106 
-107     \textcolor{keywordflow}{return} \hyperlink{classLevelSetData_a674d56690f4e22cbca38bf4b5f176a5e}{normal\_map};
-108 \}
+97 \{
+98     \hyperlink{Core_8h_a4e75b5863535ba1dd79942de2846eff0}{scalarVector\_Type} \hyperlink{classLevelSetData_a674d56690f4e22cbca38bf4b5f176a5e}{normal\_map} ( num + 1, 0. );
+99 
+100     M\_parser.\hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString} ( M\_map\_jac );
+101     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"x"}, x [ 0 ] );
+102     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"y"}, x [ 1 ] );
+103 
+104     \textcolor{keywordflow}{for} ( size\_type \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < num + 1; ++\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} )
+105     \{
+106         \hyperlink{classLevelSetData_a674d56690f4e22cbca38bf4b5f176a5e}{normal\_map} [ \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} ] = M\_parser.\hyperlink{classLifeV_1_1Parser_a51d84fd4ae6d420620e7beee58fad673}{evaluate} ( \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} );
+107     \}
+108 
+109     \textcolor{keywordflow}{return} \hyperlink{classLevelSetData_a674d56690f4e22cbca38bf4b5f176a5e}{normal\_map};
+110 \}
 \end{DoxyCode}
 
 
@@ -290,12 +286,12 @@ Questa funzione rappresenta la mappa dalla frattura piatta, x(t).
 
 
 \begin{DoxyCode}
-67 \{
-68     M\_parser.\hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString} ( M\_x\_map );
-69     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"t"}, t [ 0 ] );
-70     
-71     \textcolor{keywordflow}{return} M\_parser.\hyperlink{classLifeV_1_1Parser_a51d84fd4ae6d420620e7beee58fad673}{evaluate} ();
-72 \}
+69 \{
+70     M\_parser.\hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString} ( M\_x\_map );
+71     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"t"}, t [ 0 ] );
+72     
+73     \textcolor{keywordflow}{return} M\_parser.\hyperlink{classLifeV_1_1Parser_a51d84fd4ae6d420620e7beee58fad673}{evaluate} ();
+74 \}
 \end{DoxyCode}
 
 
@@ -321,12 +317,12 @@ Questa funzione rappresenta la mappa dalla frattura piatta, y(t).
 
 
 \begin{DoxyCode}
-58 \{
-59     M\_parser.\hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString} ( M\_y\_map );
-60     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"t"}, t [ 0 ] );
-61     
-62     \textcolor{keywordflow}{return} M\_parser.\hyperlink{classLifeV_1_1Parser_a51d84fd4ae6d420620e7beee58fad673}{evaluate} ();
-63 \}
+60 \{
+61     M\_parser.\hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString} ( M\_y\_map );
+62     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"t"}, t [ 0 ] );
+63     
+64     \textcolor{keywordflow}{return} M\_parser.\hyperlink{classLifeV_1_1Parser_a51d84fd4ae6d420620e7beee58fad673}{evaluate} ();
+65 \}
 \end{DoxyCode}
 
 
@@ -360,13 +356,13 @@ scalar\-\_\-type\-: valore del levelset nel nodo x
 \end{DoxyReturn}
 
 \begin{DoxyCode}
-28 \{
-29     M\_parser.\hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString} ( M\_function );
-30     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"x"}, t [ 0 ] );
-31     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"y"}, t [ 1 ] );
-32     
-33     \textcolor{keywordflow}{return} M\_parser.\hyperlink{classLifeV_1_1Parser_a51d84fd4ae6d420620e7beee58fad673}{evaluate} ();
-34 \}
+30 \{
+31     M\_parser.\hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString} ( M\_function );
+32     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"x"}, t [ 0 ] );
+33     M\_parser.\hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{setVariable} ( \textcolor{stringliteral}{"y"}, t [ 1 ] );
+34     
+35     \textcolor{keywordflow}{return} M\_parser.\hyperlink{classLifeV_1_1Parser_a51d84fd4ae6d420620e7beee58fad673}{evaluate} ();
+36 \}
 \end{DoxyCode}
 
 

@@ -1,13 +1,12 @@
 <map id="include/FractureHandler.h" name="include/FractureHandler.h">
-<area shape="rect" id="node2" href="$StringUtility_8h.html" title="String utilities. " alt="" coords="3423,304,3514,331"/>
-<area shape="rect" id="node34" href="$FractureData_8h.html" title="FractureData.h" alt="" coords="2791,155,2896,181"/>
-<area shape="rect" id="node39" href="$BCHandler_8h.html" title="BCHandler.h" alt="" coords="2555,80,2649,107"/>
-<area shape="rect" id="node49" href="$LevelSetHandler_8h.html" title="LevelSetHandler.h" alt="" coords="2680,80,2804,107"/>
-<area shape="rect" id="node14" href="$Core_8h.html" title="Core.h" alt="" coords="1977,379,2035,405"/>
-<area shape="rect" id="node35" href="$Parser_8h.html" title="File containing the Parser interface. " alt="" coords="3062,229,3131,256"/>
-<area shape="rect" id="node36" href="$ParserDefinitions_8h.html" title="File containing the Parser definitions. " alt="" coords="3164,379,3291,405"/>
-<area shape="rect" id="node38" href="$ParserSpiritGrammar_8h.html" title="File containing the Parser grammar. " alt="" coords="3134,304,3283,331"/>
-<area shape="rect" id="node40" href="$BC_8h.html" title="BC.h" alt="" coords="2571,229,2622,256"/>
-<area shape="rect" id="node48" href="$UsefulFunctions_8h.html" title="UsefulFunctions.h" alt="" coords="2334,304,2454,331"/>
-<area shape="rect" id="node50" href="$LevelSetData_8h.html" title="LevelSetData.h" alt="" coords="2656,155,2767,181"/>
+<area shape="rect" id="node2" href="$StringUtility_8h.html" title="String utilities. " alt="" coords="387,304,488,331"/>
+<area shape="rect" id="node34" href="$FractureData_8h.html" title="FractureData.h" alt="" coords="1561,155,1671,181"/>
+<area shape="rect" id="node40" href="$BCHandler_8h.html" title="BCHandler.h" alt="" coords="1475,80,1572,107"/>
+<area shape="rect" id="node49" href="$LevelSetHandler_8h.html" title="LevelSetHandler.h" alt="" coords="1673,80,1801,107"/>
+<area shape="rect" id="node14" href="$Core_8h.html" title="Core.h" alt="" coords="2108,379,2169,405"/>
+<area shape="rect" id="node35" href="$Parser_8h.html" title="File containing the Parser interface. " alt="" coords="1715,229,1785,256"/>
+<area shape="rect" id="node36" href="$ParserDefinitions_8h.html" title="File containing the Parser definitions. " alt="" coords="1563,379,1696,405"/>
+<area shape="rect" id="node39" href="$ParserSpiritGrammar_8h.html" title="File containing the Parser grammar. " alt="" coords="1560,304,1713,331"/>
+<area shape="rect" id="node41" href="$BC_8h.html" title="BC.h" alt="" coords="1202,304,1253,331"/>
+<area shape="rect" id="node50" href="$LevelSetData_8h.html" title="LevelSetData.h" alt="" coords="1695,155,1805,181"/>
 </map>

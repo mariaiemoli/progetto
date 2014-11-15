@@ -1,11 +1,24 @@
-\lstnewenvironment{Code}[1][]{\lstset{basicstyle=\small\ttfamily, columns=fullflexible, keywordstyle=\color{red}\bfseries, commentstyle=\color{blue},
+\lstnewenvironment{Code}[1][]{\lstset{basicstyle=\small\ttfamily, columns=fullflexible, framexrightmargin=+.1\textwidth, keywordstyle=\color{red}\bfseries, commentstyle=\color{blue},
 language=C++, basicstyle=\small, numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=5pt, frame=shadowbox, #1}}{}
 
 \chapter{Implementazione delle fratture}
 
 Il nostro progetto parte da un codice già esistente per la soluzione del problema di Darcy in un network di fratture con intersezione di tipo \textit{Cross }, ossia due fratture che si intersecano formando una \textit{X}. Noi abbiamo esteso il codice anche al caso di fratture con intersezione di tipo \textit{Bifurcation}, cioè tre fratture che si intersecano nello stesso punto formando una \textit{Y}.
 
+\begin{figure}[htbp]
+\includegraphics[width=0.95\textwidth]{img/fratture.eps}
+\caption{Inclusione tra le varie classi che costituiscono l'insieme delle fratture}\label{Inclusione classi}
+\end{figure}
+
 Passiamo ora a descrivere le principali classi del codice che definiscono la struttura e le proprietà delle fratture, porgendo particolare attenzione alle classi modificate e a quelle da noi implementate.
+
+\par Le classi usate per rappresentare le fratture e le intersezioni si dividono in due categorie:
+\begin{enumerate}
+\item[-] le classi in cui sono implementati tutti i metodi necessari per la costruzione e la manipolazione della grandezza ( insieme delle fratture, singola frattura, intersezioni, level set). Queste classi sono principalmente denominate col il suffisso \textit{Handler} e costituiscono l'ossatura dell'insieme delle fratture;
+\item[-] le classi in cui sono contenuti tutti i parametri geometrici, fisici e le grandezze numeriche per l'implementazione e la risoluzione con elementi finiti, che riguardano la grandezza in esame. Vengono indicate con il suffisso \textit{Data} e rappresentano sempre un campo della corrispondente classe di tipo \textit{Handler}.
+\end{enumerate}
+
+
 
 \section{La Classe \texttt{FracturesSet}}
 La class \texttt{FracturesSet} è la classe che contiente tutte le fratture e le rispettive intersezioni. La funzione che costruisce l'insieme delle fratture e le eventuali intersezioni è la funzione  \texttt{init}, che prende in input tutti i parametri necessari quali il numero di fratture, le mesh per l'integrazione e una variabile di tipo GetPot per la lettura dal file data. 
@@ -36,18 +49,22 @@ private:
 	[ .... ]
 };
 \end{Code}
-La classe contiente l'insieme di tutte le fratture \texttt{M\_fractures}, una variabile di tipo vettore di puntatori al classe \texttt{FractureHandler} che verrà descritta dopo, e l'insieme di tutte le intersezioni \texttt{M\_intersections}, un puntatore alla classe \texttt{FractureIntersect}. 
+I campi principali della classe sono:
+\begin{enumerate}
+\item[-] \texttt{M\_fractures}, variabile di tipo vettore di puntatori alla classe \texttt{FractureHandler}  di cui parleremo più avanti, che rappresenta l'insieme di tutte le fratture;
+\item[-] \texttt{M\_intersections}, un puntatore alla classe \texttt{FractureIntersect}, che rappresenta l'insieme di tutte le intersezioni. 
+\end{enumerate}
 
 
 \section{La Classe \texttt{FractureHandler}}
 
 La classe  \texttt{FractureHandler} è la classe che inizializza e gestisce ogni frattura. I principali campi di questa classe sono:
-\begin{itemize}
-\item \texttt{M\_data}: classe \texttt{FractureData} che contiene tutte le informazioni circa la natura geometrica e fisica della singola frattura;
-\item \texttt{M\_levelSet}: puntatore alla classe \texttt{LevelSetHandler} di cui parleremo più avanti;
-\item i metodi di integrazione e le mesh per pressione e velocità;
-\item il vettore dei gradi di libertà estesi per velocità e pressione.
-\end{itemize}
+\begin{enumerate}
+\item[-] \texttt{M\_data}: classe \texttt{FractureData} che contiene tutte le informazioni circa la natura geometrica e fisica della singola frattura;
+\item[-] \texttt{M\_levelSet}: puntatore alla classe \texttt{LevelSetHandler} di cui parleremo più avanti;
+\item[-] i metodi di integrazione e le mesh per pressione e velocità;
+\item[-] il vettore dei gradi di libertà estesi per velocità e pressione.
+\end{enumerate}
 
 La particolarità di questa classe è che possiede due mesh: una mesh 2d \texttt{M\_meshMapped} e una mesh 1d \texttt{M\_meshFlat}. Questo deriva dal fatto che le fratture sono su un piano e hanno una rappresentazione del tipo $y=f(x)$, cioè i loro punti hanno coordinate $(x,y)$. La libreria che noi usiamo, \textit{GetFEM++}, non è in grado di integrare su una mesh i cui punti hanno coordinate $(x,y)$ un'equazione 1d come quella del nostro modello ridotto. La tecnica è quindi quella di risolvere il problema integrando sulle mesh " piatte " 1d ottenute proiettando le mesh reali, e successivamente interpolare i risultati ottenuti per ritornare sulle mesh 2d. La creazione delle mesh è nella funzione \texttt{ init}.
 \par La funzione principale di questa classe è  \texttt{setMeshLevelSetFracture }.
@@ -125,15 +142,15 @@ return numIntersect;
 \end{Code}
 
 
-\section{La Classe \texttt{LevelSetHandler} e \texttt{LevelSetData}}
+\section{Le Classi \texttt{LevelSetHandler} e \texttt{LevelSetData}}
 Le fratture sono rappresentate come delle rette, funzioni $y=f(x)=ax+c$. Ad ogni frattura è associata una funzione level set  del tipo $f(x,y)=y-ax-b$ che divide il piano in due semipiani: i punti un cui $f(x,y)>0$ e i punti in cui $f(x,y)<0$. I punti in cui $f(x,y)=0$ sono quelli in cui è definita la frattura. 
 \par La classe \texttt{LevelSetHandler} inizializza il levelset associato alla frattura. 
 La funzione fondamentale della classe è la funzione \texttt{init}, funzione che inizializza il level set, definisce i metodi di integrazione e aggiunge alla mesh di supporto l'informazione legata al level set. I campi fondamentali della classe sono:
-\begin{itemize}
-\item \texttt{M\_data}: puntatore alla classe \texttt{LevelSetData}, classe che contiene tutte le informazioni sul level set e le funzioni per valutarne il valore nei punti;
-\item \texttt{M\_mesh}: puntatore ad una variabile di tipo \textit{getfem::mesh\_level\_set}, classe che contiene informazioni sulla mesh tagliata da level set;
-\item \texttt{M\_levelSet}: oggetto di tipo \textit{getfem::level\_set}, variabile che definisce il level set. In GetFEM un level set è rappresentato come una o due funzioni scalari, definito su una mesh di tipo \textit{getfem::mesh\_fem}, ossia una mesh su cui è definito un metodo ad elementi finiti.
-\end{itemize}
+\begin{enumerate}
+\item[-] \texttt{M\_data}: puntatore alla classe \texttt{LevelSetData}, classe che contiene tutte le informazioni sul level set e le funzioni per valutarne il valore nei punti;
+\item[-] \texttt{M\_mesh}: puntatore ad una variabile di tipo \textit{getfem::mesh\_level\_set}, classe che contiene informazioni sulla mesh tagliata da level set;
+\item[-] \texttt{M\_levelSet}: oggetto di tipo \textit{getfem::level\_set}, variabile che definisce il level set. In GetFEM un level set è rappresentato come una o due funzioni scalari, definito su una mesh di tipo \textit{getfem::mesh\_fem}, ossia una mesh su cui è definito un metodo ad elementi finiti.
+\end{enumerate}
 
 \begin{Code}[caption={Classe \texttt{LevelSetHandler}}]
 class LevelSetHandler
@@ -166,11 +183,11 @@ private:
 
 La classe \texttt{FractureIntersect} rappresenta tutte le intersezioni tra le fratture. Ad ogni tipo di intersezione viene associato il vettore delle classi \texttt{IntersectData}, classe che rappresenta la vera e propria intersezione, tenendo traccia delle informazioni sulle fratture e dell'id dell'elemento della mesh di supporto in cui avviene l'incontro.
 \par Le intersezioni vengono classificate come \textit{Parallel}, \textit{Cross} e \textit{Bifurcation}.  L'idea alla base della classificazione è quella di considerare gli elementi della mesh 2d di supporto, la mesh del mezzo, in cui passano due o più fratture, e di associargli un flag:
-\begin{itemize}
-\item \textit{Parallel}: quando due o più fratture passano in uno stesso elemento della mesh ma non si intersecano;
-\item \textit{Cross}: quando due fratture passano nello stesso elemento della mesh e si intersecano formando una \textit{X};
-\item \textit{Bifurcation}: quando tre fratture si intersecano in un punto comune formando una \textit{Y}.
-\end{itemize}
+\begin{enumerate}
+\item[-] \textit{Parallel}: quando due o più fratture passano in uno stesso elemento della mesh ma non si intersecano;
+\item[-] \textit{Cross}: quando due fratture passano nello stesso elemento della mesh e si intersecano formando una \textit{X};
+\item[-] \textit{Bifurcation}: quando tre fratture si intersecano in un punto comune formando una \textit{Y}.
+\end{enumerate}
 
 \begin{Code}[caption={Funzione \texttt{constructIntesection}}]
 void FractureIntersect::constructIntesection ( 

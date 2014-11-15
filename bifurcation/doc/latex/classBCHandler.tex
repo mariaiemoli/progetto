@@ -55,7 +55,7 @@ Libreria che gestisce le condizioni al bordo nella mesh
 
 Created on\-: Apr 5, 2011
 
-Author\-: fumagalli 
+Author\-: Fumagalli 
 
 \subsection{Documentazione dei tipi enumerati (enum)}
 \hypertarget{classBCHandler_a2bc86209db0836dbc6ca56e1ca4e4ac1}{\subsubsection[{anonymous enum}]{\setlength{\rightskip}{0pt plus 5cm}anonymous enum}}\label{classBCHandler_a2bc86209db0836dbc6ca56e1ca4e4ac1}
@@ -139,45 +139,45 @@ Funzione che crea le regioni per le condizioni al contorno per il dominio, Neuma
 31     getfem::mesh\_region& meshRegionNeumann = mesh.region( 
       \hyperlink{classBC_ad1b507696802f73b95c0ca59f4c41390a432aa77a00d8eb4929463ef8d57b5c04}{BC::NEUMANN\_BOUNDARY\_NUM} );
 32 \textcolor{comment}{/*}
-33 \textcolor{comment}{a mesh\_region can be built from a integer parameter (a region number in a mesh), but it won't be usable
-       until 'from\_mesh(m)' has been called Note that these regions are read-only, this constructor is mostly used for
-       backward-compatibility.}
-34 \textcolor{comment}{*/}
-35 
-36     dal::bit\_vector mediumMeshRegionIndex = meshRegionNeumann.index();
+33 \textcolor{comment}{ *  a mesh\_region can be built from a integer parameter (a region number in a mesh),}
+34 \textcolor{comment}{ *  but it won't be usable until 'from\_mesh(m)' has been called Note that these regions are read-only, }
+35 \textcolor{comment}{ *  this constructor is mostly used for backward-compatibility.}
+36 \textcolor{comment}{ */}
 37 
-38     size\_type i\_cv = 0;
-39     \textcolor{keywordflow}{for} ( i\_cv << mediumMeshRegionIndex; i\_cv != size\_type(-1); i\_cv
-40             << mediumMeshRegionIndex )
-41     \{
-42         \textcolor{keywordflow}{for} ( size\_type jj = 0; jj < 3; ++jj )
-43         \{
-44             \textcolor{keywordflow}{if} ( meshRegionNeumann.is\_in(i\_cv, jj) ) \textcolor{comment}{// controllo se un nodo è nella regione}
-45             \{
-46                 mesh.region(M\_neumannUncut [ 0 ]).add(i\_cv, jj);
-47             \}
-48         \}
-49     \}
-50 
-51     getfem::mesh\_region& meshRegionDirichlet = mesh.region( 
+38     dal::bit\_vector mediumMeshRegionIndex = meshRegionNeumann.index();
+39 
+40     size\_type i\_cv = 0;
+41     \textcolor{keywordflow}{for} ( i\_cv << mediumMeshRegionIndex; i\_cv != size\_type(-1); i\_cv
+42             << mediumMeshRegionIndex )
+43     \{
+44         \textcolor{keywordflow}{for} ( size\_type jj = 0; jj < 3; ++jj )
+45         \{
+46             \textcolor{keywordflow}{if} ( meshRegionNeumann.is\_in(i\_cv, jj) ) \textcolor{comment}{// controllo se un nodo è nella regione}
+47             \{
+48                 mesh.region(M\_neumannUncut [ 0 ]).add(i\_cv, jj);
+49             \}
+50         \}
+51     \}
+52 
+53     getfem::mesh\_region& meshRegionDirichlet = mesh.region( 
       \hyperlink{classBC_ad1b507696802f73b95c0ca59f4c41390a99103ccd54ba29b1bd2670cc6cd0c462}{BC::DIRICHLET\_BOUNDARY\_NUM} );
-52     mediumMeshRegionIndex = meshRegionDirichlet.index();
-53 
-54     i\_cv = 0;
-55     \textcolor{keywordflow}{for} ( i\_cv << mediumMeshRegionIndex; i\_cv != size\_type(-1); i\_cv << mediumMeshRegionIndex )
-56     \{
-57         \textcolor{keywordflow}{for} ( size\_type jj = 0; jj < 3; ++jj )
-58         \{
-59             \textcolor{keywordflow}{if} ( meshRegionDirichlet.is\_in(i\_cv, jj) )
-60             \{
-61                 mesh.region(M\_dirichletUncut [ 0 ]).add(i\_cv, jj);
-62             \}
-63         \}
-64     \}
-65     
-66     \textcolor{keywordflow}{return};
+54     mediumMeshRegionIndex = meshRegionDirichlet.index();
+55 
+56     i\_cv = 0;
+57     \textcolor{keywordflow}{for} ( i\_cv << mediumMeshRegionIndex; i\_cv != size\_type(-1); i\_cv << mediumMeshRegionIndex )
+58     \{
+59         \textcolor{keywordflow}{for} ( size\_type jj = 0; jj < 3; ++jj )
+60         \{
+61             \textcolor{keywordflow}{if} ( meshRegionDirichlet.is\_in(i\_cv, jj) )
+62             \{
+63                 mesh.region(M\_dirichletUncut [ 0 ]).add(i\_cv, jj);
+64             \}
+65         \}
+66     \}
 67     
-68 \}\textcolor{comment}{// createBDRegions}
+68     \textcolor{keywordflow}{return};
+69     
+70 \}\textcolor{comment}{// createBDRegions}
 \end{DoxyCode}
 \hypertarget{classBCHandler_a559e4ba01fc7c6326dbb949d06dbd525}{\index{B\-C\-Handler@{B\-C\-Handler}!create\-B\-D\-Regions\-Fractures@{create\-B\-D\-Regions\-Fractures}}
 \index{create\-B\-D\-Regions\-Fractures@{create\-B\-D\-Regions\-Fractures}!BCHandler@{B\-C\-Handler}}
@@ -192,71 +192,71 @@ Funzione che crea le regioni per le condizioni al contorno per le fratture, Neum
 
 
 \begin{DoxyCode}
-71 \{
-72     \textcolor{keyword}{const} size\_type numberFractures = M\_fractureBC.size();
-73 
-74     getfem::mesh\_region& meshRegionNeumann = mesh.region( 
+73 \{
+74     \textcolor{keyword}{const} size\_type numberFractures = M\_fractureBC.size();
+75 
+76     getfem::mesh\_region& meshRegionNeumann = mesh.region( 
       \hyperlink{classBC_ad1b507696802f73b95c0ca59f4c41390a432aa77a00d8eb4929463ef8d57b5c04}{BC::NEUMANN\_BOUNDARY\_NUM} );
-75     size\_type i\_cv;
-76     dal::bit\_vector mediumMeshRegionIndex;
-77 
-78     \textcolor{keywordflow}{for} ( size\_type f = 0; f < numberFractures; ++f )
-79     \{
-80         mediumMeshRegionIndex = meshRegionNeumann.index();
-81         i\_cv = 0;
-82         \textcolor{keywordflow}{for} ( i\_cv << mediumMeshRegionIndex; i\_cv != size\_type(-1); i\_cv << mediumMeshRegionIndex )
-83         \{
-84             \textcolor{comment}{// If the current element is in the cut region update its boundary conditions}
-85             \textcolor{keywordflow}{if} ( mesh.region( f + \hyperlink{classFractureData_aaeea1f30482432d159eda9d98beb5e89a351538e4c78b34b5c0416e21903e1812}{FractureData::FRACTURE} ).is\_in( i\_cv ) )
-86             \{
-87 
-88                 \textcolor{keywordflow}{if} ( M\_neumannCut [ f ].size() <= 0 )
-89                 \{
-90                     M\_neumannCut [ f ].push\_back(\hyperlink{classBCHandler_a2bc86209db0836dbc6ca56e1ca4e4ac1add7397a06718591b0c27c067225b1d5f}{NEUMANN\_BOUNDARY\_CUT} + f);
-91                 \}
-92                 \textcolor{keywordflow}{for} ( size\_type jj = 0; jj < 3; ++jj )
-93                 \{
-94                     \textcolor{keywordflow}{if} ( meshRegionNeumann.is\_in(i\_cv, jj) )
-95                     \{
-96                         mesh.region(M\_neumannCut [ f ] [ 0 ]).add(i\_cv, jj);
-97                         mesh.region(M\_neumannUncut [ 0 ]).sup(i\_cv, jj);
-98                     \}
-99                 \}
-100             \}
-101         \}
-102     \}
-103 
-104     getfem::mesh\_region& meshRegionDirichlet = mesh.region( 
-      \hyperlink{classBC_ad1b507696802f73b95c0ca59f4c41390a99103ccd54ba29b1bd2670cc6cd0c462}{BC::DIRICHLET\_BOUNDARY\_NUM} );
+77     size\_type i\_cv;
+78     dal::bit\_vector mediumMeshRegionIndex;
+79 
+80     \textcolor{keywordflow}{for} ( size\_type f = 0; f < numberFractures; ++f )
+81     \{
+82         mediumMeshRegionIndex = meshRegionNeumann.index();
+83         i\_cv = 0;
+84         \textcolor{keywordflow}{for} ( i\_cv << mediumMeshRegionIndex; i\_cv != size\_type(-1); i\_cv << mediumMeshRegionIndex )
+85         \{
+86             \textcolor{comment}{// If the current element is in the cut region update its boundary conditions}
+87             \textcolor{keywordflow}{if} ( mesh.region( f + \hyperlink{classFractureData_aaeea1f30482432d159eda9d98beb5e89a351538e4c78b34b5c0416e21903e1812}{FractureData::FRACTURE} ).is\_in( i\_cv ) )
+88             \{
+89 
+90                 \textcolor{keywordflow}{if} ( M\_neumannCut [ f ].size() <= 0 )
+91                 \{
+92                     M\_neumannCut [ f ].push\_back(\hyperlink{classBCHandler_a2bc86209db0836dbc6ca56e1ca4e4ac1add7397a06718591b0c27c067225b1d5f}{NEUMANN\_BOUNDARY\_CUT} + f);
+93                 \}
+94                 \textcolor{keywordflow}{for} ( size\_type jj = 0; jj < 3; ++jj )
+95                 \{
+96                     \textcolor{keywordflow}{if} ( meshRegionNeumann.is\_in(i\_cv, jj) )
+97                     \{
+98                         mesh.region(M\_neumannCut [ f ] [ 0 ]).add(i\_cv, jj);
+99                         mesh.region(M\_neumannUncut [ 0 ]).sup(i\_cv, jj);
+100                     \}
+101                 \}
+102             \}
+103         \}
+104     \}
 105 
-106     \textcolor{keywordflow}{for} ( size\_type f = 0; f < numberFractures; ++f )
-107     \{
-108         mediumMeshRegionIndex = meshRegionDirichlet.index();
-109         i\_cv = 0;
-110         \textcolor{keywordflow}{for} ( i\_cv << mediumMeshRegionIndex; i\_cv != size\_type(-1); i\_cv
-111                 << mediumMeshRegionIndex )
-112         \{
-113             \textcolor{keywordflow}{if} ( mesh.region(f + \hyperlink{classFractureData_aaeea1f30482432d159eda9d98beb5e89a351538e4c78b34b5c0416e21903e1812}{FractureData::FRACTURE}).is\_in(i\_cv) )
-114             \{
-115                 \textcolor{keywordflow}{if} ( M\_dirichletCut [ f ].size() <= 0 )
-116                 \{
-117                     M\_dirichletCut [ f ].push\_back(\hyperlink{classBCHandler_a2bc86209db0836dbc6ca56e1ca4e4ac1a57ea96455b2ba998cc42a21aa7e1d842}{DIRICHLET\_BOUNDARY\_CUT} + f);
-118                 \}
-119                 \textcolor{keywordflow}{for} ( size\_type jj = 0; jj < 3; ++jj )
-120                 \{
-121                     \textcolor{keywordflow}{if} ( meshRegionDirichlet.is\_in(i\_cv, jj) )
-122                     \{
-123                         mesh.region(M\_dirichletCut [ f ] [ 0 ]).add(i\_cv, jj);
-124                         mesh.region(M\_dirichletUncut [ 0 ]).sup(i\_cv, jj);
-125                     \}
-126                 \}
-127             \}
-128         \}
-129 
-130     \}
-131     
-132     \textcolor{keywordflow}{return};
-133 \}\textcolor{comment}{// createBDRegionsFractures}
+106     getfem::mesh\_region& meshRegionDirichlet = mesh.region( 
+      \hyperlink{classBC_ad1b507696802f73b95c0ca59f4c41390a99103ccd54ba29b1bd2670cc6cd0c462}{BC::DIRICHLET\_BOUNDARY\_NUM} );
+107 
+108     \textcolor{keywordflow}{for} ( size\_type f = 0; f < numberFractures; ++f )
+109     \{
+110         mediumMeshRegionIndex = meshRegionDirichlet.index();
+111         i\_cv = 0;
+112         \textcolor{keywordflow}{for} ( i\_cv << mediumMeshRegionIndex; i\_cv != size\_type(-1); i\_cv
+113                 << mediumMeshRegionIndex )
+114         \{
+115             \textcolor{keywordflow}{if} ( mesh.region(f + \hyperlink{classFractureData_aaeea1f30482432d159eda9d98beb5e89a351538e4c78b34b5c0416e21903e1812}{FractureData::FRACTURE}).is\_in(i\_cv) )
+116             \{
+117                 \textcolor{keywordflow}{if} ( M\_dirichletCut [ f ].size() <= 0 )
+118                 \{
+119                     M\_dirichletCut [ f ].push\_back(\hyperlink{classBCHandler_a2bc86209db0836dbc6ca56e1ca4e4ac1a57ea96455b2ba998cc42a21aa7e1d842}{DIRICHLET\_BOUNDARY\_CUT} + f);
+120                 \}
+121                 \textcolor{keywordflow}{for} ( size\_type jj = 0; jj < 3; ++jj )
+122                 \{
+123                     \textcolor{keywordflow}{if} ( meshRegionDirichlet.is\_in(i\_cv, jj) )
+124                     \{
+125                         mesh.region(M\_dirichletCut [ f ] [ 0 ]).add(i\_cv, jj);
+126                         mesh.region(M\_dirichletUncut [ 0 ]).sup(i\_cv, jj);
+127                     \}
+128                 \}
+129             \}
+130         \}
+131 
+132     \}
+133     
+134     \textcolor{keywordflow}{return};
+135 \}\textcolor{comment}{// createBDRegionsFractures}
 \end{DoxyCode}
 \hypertarget{classBCHandler_a1efb6389dbecbcd38e53422ffc6f29c7}{\index{B\-C\-Handler@{B\-C\-Handler}!get\-Dirichlet\-Cut@{get\-Dirichlet\-Cut}}
 \index{get\-Dirichlet\-Cut@{get\-Dirichlet\-Cut}!BCHandler@{B\-C\-Handler}}

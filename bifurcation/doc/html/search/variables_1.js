@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['numsides',['numSides',['../classTriangleData.html#a9c499ade75343930cf6722c8e39d9485',1,'TriangleData']]],
-  ['numvertices',['numVertices',['../classTriangleData.html#a30d9f452a2cab5b864084d13b7076908',1,'TriangleData']]]
+  ['i',['i',['../matrici_8m.html#a6f6ccfcf58b31cb6412107d9d5281426',1,'matrici.m']]]
 ];

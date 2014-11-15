@@ -5,7 +5,8 @@
 {\ttfamily \#include \char`\"{}include/\-Fractures\-Set.\-h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}include/\-Medium\-Data.\-h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}include/\-Darcy\-Fractured.\-h\char`\"{}}\\*
-Grafo delle dipendenze di inclusione per main.\-cc\-:\nopagebreak
+Grafo delle dipendenze di inclusione per main.\-cc\-:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -68,14 +69,14 @@ Interior Penality for Darcy's equation
 49     mesh->setUpFEM();
 50     std::cout<< \textcolor{stringliteral}{" completed!"} << std::endl;
 51 
-52 
+52     
 53     \textcolor{comment}{// Medium data for the Darcy problem}
 54     std::cout << \textcolor{stringliteral}{"Create the mediumData for the Darcy problem.."} << std::flush;
 55     \textcolor{keyword}{const} std::string sectionSolverDarcy = \textcolor{stringliteral}{"darcy/"};
 56     \hyperlink{MediumData_8h_ab4e5446269b79f019405fbe1b6e4b1fe}{MediumDataPtr\_Type} mediumDataDarcy(\textcolor{keyword}{new} \hyperlink{MediumData_8h_a7beafa8fa08252555a744d155afee88a}{MediumData\_Type}(dataFile,
 57                                         sectionSolverDarcy));
 58     std::cout << \textcolor{stringliteral}{" completed!"} << std::endl;
-59 
+59     
 60 
 61     \textcolor{comment}{// Fracture Set}
 62     std::cout << \textcolor{stringliteral}{"Create the set of fractures for "} << std::flush;
@@ -113,9 +114,9 @@ Interior Penality for Darcy's equation
 93     \textcolor{keywordflow}{for} ( size\_type f = 0; f < numberFractures; ++f )
 94     \{
 95         bcFracture [ f ].reset(\textcolor{keyword}{new} \hyperlink{BC_8h_a0fe235bbd14db4aea3ae80332cff646e}{BC\_Type}( fractures->getFracture( f )->getMeshFlat(),
-96                                            fractures->getFracture ( f )->getData().getMeshType(),
-97                                            fractures->getFracture ( f ) -> getDofFree(),
-98                                            \hyperlink{Core_8h_a419d7707e418f02d8daeb1fc7c0b9ae5aa06469ae01e54e762465572dd016a84e}{FRACTURE} ));
+96                                             fractures->getFracture ( f )->getData().getMeshType(),
+97                                             fractures->getFracture ( f ) -> getDofFree(),
+98                                             \hyperlink{Core_8h_a419d7707e418f02d8daeb1fc7c0b9ae5aa06469ae01e54e762465572dd016a84e}{FRACTURE} ));
 99     \}
 100     std::cout << \textcolor{stringliteral}{" completed!"} << std::endl;
 101 

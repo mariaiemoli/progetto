@@ -1,9 +1,7 @@
 var searchData=
 [
-  ['variable',['variable',['../classLifeV_1_1Parser.html#a9fa902c13c73a3b1bc6db2b5e5c5c93d',1,'LifeV::Parser::variable()'],['../classLifeV_1_1ParserSpiritGrammar.html#a768e48421db190a4eba5144932ddc4f6',1,'LifeV::ParserSpiritGrammar::variable()']]],
-  ['vector2d',['Vector2d',['../Core_8h.html#a09205951ae66bf900cc5cc57e2192667',1,'Core.h']]],
-  ['vector3d',['Vector3d',['../Core_8h.html#aab1614cfe385b1f15b9ce723bacfaec9',1,'Core.h']]],
-  ['velocityexact',['velocityExact',['../classFractureData.html#a8342142df05ded99f3a6c8d39dbfdc0e',1,'FractureData']]],
-  ['velocityjump_5fbifurcation',['velocityJump_Bifurcation',['../namespacegetfem.html#a41dedc9759949101293821b324cf5ac6',1,'getfem']]],
-  ['velocityjump_5fcross',['velocityJump_Cross',['../namespacegetfem.html#acc74b86734c3814042e614d015f23876',1,'getfem']]]
+  ['x',['x',['../classPointData.html#a5accef5ea9e813dd4517eb050f276ccf',1,'PointData']]],
+  ['x_5fmap',['x_map',['../classLevelSetData.html#ae7f10d3f10b72fbb6f703ba7aa8fe17b',1,'LevelSetData']]],
+  ['xfemoperators_2ecc',['XFEMOperators.cc',['../XFEMOperators_8cc.html',1,'']]],
+  ['xfemoperators_2eh',['XFEMOperators.h',['../XFEMOperators_8h.html',1,'']]]
 ];

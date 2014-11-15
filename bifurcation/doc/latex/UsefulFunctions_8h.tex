@@ -9,7 +9,8 @@ Grafo delle dipendenze di inclusione per Useful\-Functions.\-h\-:\nopagebreak
 \includegraphics[width=350pt]{UsefulFunctions_8h__incl}
 \end{center}
 \end{figure}
-Questo grafo mostra quali altri file includono direttamente o indirettamente questo file\-:\nopagebreak
+Questo grafo mostra quali altri file includono direttamente o indirettamente questo file\-:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -203,11 +204,11 @@ Funzione che restituisce un'operazione tra due levelset.
 133     \{
 134         \textcolor{keywordflow}{if} ( subRegion [\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] == \textcolor{charliteral}{'-'} )
 135         \{
-136             operation << \textcolor{stringliteral}{"(!"} << \hyperlink{UsefulFunctions_8h_abe0e6d66cd0f0b6f6893b3c1c6a7029b}{intToChar} ( levelSets[\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] ) << \textcolor{stringliteral}{")"};
+136             operation << \textcolor{stringliteral}{"(!"} << \hyperlink{UsefulFunctions_8cc_abe0e6d66cd0f0b6f6893b3c1c6a7029b}{intToChar} ( levelSets[\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] ) << \textcolor{stringliteral}{")"};
 137         \}
 138         \textcolor{keywordflow}{else}
 139         \{
-140             operation << \hyperlink{UsefulFunctions_8h_abe0e6d66cd0f0b6f6893b3c1c6a7029b}{intToChar} ( levelSets[\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] );
+140             operation << \hyperlink{UsefulFunctions_8cc_abe0e6d66cd0f0b6f6893b3c1c6a7029b}{intToChar} ( levelSets[\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}] );
 141         \}
 142 
 143         \textcolor{comment}{// Not the last one}
@@ -222,11 +223,12 @@ Funzione che restituisce un'operazione tra due levelset.
 \end{DoxyCode}
 
 
-Questo è il grafo delle chiamate per questa funzione\-:\nopagebreak
+Questo è il grafo delle chiamate per questa funzione\-:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=244pt]{UsefulFunctions_8h_ad72b66ecae17bd314d54beee9489bb1b_cgraph}
+\includegraphics[width=248pt]{UsefulFunctions_8h_ad72b66ecae17bd314d54beee9489bb1b_cgraph}
 \end{center}
 \end{figure}
 
@@ -334,7 +336,7 @@ Funzione che restituisce ' + ' se il levelset ha valore positivo, ' -\/ ' in cas
 
 \begin{DoxyCode}
 108 \{
-109     std::ostringstream \hyperlink{UsefulFunctions_8h_abecc60f3f34576882b4cf1d8f4431e88}{regionSigns};
+109     std::ostringstream \hyperlink{UsefulFunctions_8cc_abecc60f3f34576882b4cf1d8f4431e88}{regionSigns};
 110     \textcolor{keyword}{const} size\_type numLevelSet = levelSetValue.size();
 111     
 112     \textcolor{keywordflow}{for} ( size\_type \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < numLevelSet; ++\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} )
@@ -352,25 +354,3 @@ Funzione che restituisce ' + ' se il levelset ha valore positivo, ' -\/ ' in cas
 124     \textcolor{keywordflow}{return} regionSigns.str();
 125 \} \textcolor{comment}{// regionSigns}
 \end{DoxyCode}
-
-
-Questo è il grafo delle chiamate per questa funzione\-:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=145pt]{UsefulFunctions_8h_abecc60f3f34576882b4cf1d8f4431e88_cgraph}
-\end{center}
-\end{figure}
-
-
-
-
-Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=246pt]{UsefulFunctions_8h_abecc60f3f34576882b4cf1d8f4431e88_icgraph}
-\end{center}
-\end{figure}
-
-

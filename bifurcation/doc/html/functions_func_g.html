@@ -62,7 +62,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Elenco&#160;dei&#160;tipi&#160;composti</span></a></li>
       <li><a href="classes.html"><span>Indice&#160;dei&#160;tipi&#160;composti</span></a></li>
-      <li><a href="hierarchy.html"><span>Gerarchia&#160;delle&#160;classi</span></a></li>
+      <li><a href="inherits.html"><span>Gerarchia&#160;delle&#160;classi</span></a></li>
       <li class="current"><a href="functions.html"><span>Membri&#160;dei&#160;composti</span></a></li>
     </ul>
   </div>
@@ -109,7 +109,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tutto</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classi</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespace</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>File</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funzioni</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variabili</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Ridefinizioni di tipo (typedef)</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Tipi enumerati (enum)</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Valori del tipo enumerato</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friend</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Definizioni</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tutto</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classi</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespace</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>File</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funzioni</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variabili</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Ridefinizioni di tipo (typedef)</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Tipi enumerati (enum)</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Valori del tipo enumerato</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friend</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -159,17 +159,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
 : <a class="el" href="classFractureHandler.html#a68ed77a8d9816a472700ee4bcf2f505d">FractureHandler</a>
 , <a class="el" href="classLevelSetHandler.html#ab24897cb969210d278f54d94fd8f8977">LevelSetHandler</a>
 </li>
-<li>getDeltaTime()
-: <a class="el" href="classTimeData.html#a857df66fb2f19d5bd314daf854910465">TimeData</a>
-</li>
 <li>getDirichlet()
-: <a class="el" href="classBC.html#af2d22ae9848e3bed61f2106610bde5b7">BC</a>
+: <a class="el" href="classBC.html#ae61f04dfbb377e38e4c43e0516e51c36">BC</a>
 </li>
 <li>getDirichletCut()
 : <a class="el" href="classBCHandler.html#a1efb6389dbecbcd38e53422ffc6f29c7">BCHandler</a>
 </li>
 <li>getDirichletUncut()
 : <a class="el" href="classBCHandler.html#a68a01c71517202ed89ebc82a56e4cb5d">BCHandler</a>
+</li>
+<li>getDofFree()
+: <a class="el" href="classFractureHandler.html#a509c3ffa6d2dd0fa7458ecbe5fb81360">FractureHandler</a>
 </li>
 <li>getDOFPressure()
 : <a class="el" href="classIntersectData.html#a50b33fda9608ffc678057b08e7aed405">IntersectData</a>
@@ -185,9 +185,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
 </li>
 <li>getElementID()
 : <a class="el" href="classIntersectData.html#a1872122295e3fec0fb3e81d4098e9949">IntersectData</a>
-</li>
-<li>getEndTime()
-: <a class="el" href="classTimeData.html#ae22c6615f024d67d9c82ebe0c2329111">TimeData</a>
 </li>
 <li>getEtaNormal()
 : <a class="el" href="classFractureData.html#a9acc76c77282d4b5d0cdca18c2b1b9ea">FractureData</a>
@@ -342,9 +339,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
 <li>getMagnificationMapFactor2()
 : <a class="el" href="classFractureHandler.html#a68b09b4012669140979a0026736b3dfe">FractureHandler</a>
 </li>
-<li>getMediumBC()
-: <a class="el" href="classBCHandler.html#ab7e56a166f8f51be96b2bf8946bf7b62">BCHandler</a>
-</li>
 <li>getMesh()
 : <a class="el" href="classLevelSetHandler.html#a6e08147a60f9e8d7ec65357223f72311">LevelSetHandler</a>
 , <a class="el" href="classMeshHandler.html#ac2dba1bdf2c6c3f574de03f2cdd6f78d">MeshHandler</a>
@@ -392,23 +386,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
 : <a class="el" href="classFractureData.html#aaded6c0452470489beb4ab95b5f4158f">FractureData</a>
 , <a class="el" href="classMeshHandler.html#aec42b571d6dec518833c5264e2e43830">MeshHandler</a>
 </li>
-<li>getMuNormal()
-: <a class="el" href="classFractureData.html#ab059ac23b93115e05029e1b6cadd1cd9">FractureData</a>
-</li>
-<li>getMuNormalInterpolated()
-: <a class="el" href="classFractureHandler.html#a6af2b5af4046d6a0eafbacaec96f8153">FractureHandler</a>
-</li>
-<li>getMuTangential()
-: <a class="el" href="classFractureData.html#a1ac3cca1ae035eedb2ec89c0517f8b1f">FractureData</a>
-</li>
-<li>getMuTangentialInterpolated()
-: <a class="el" href="classFractureHandler.html#a868f8aeaeec90df8211d091612e03593">FractureHandler</a>
-</li>
 <li>getNeumann()
 : <a class="el" href="classBC.html#a9541adfa180ca9783052349c373b0228">BC</a>
 </li>
 <li>getNeumannCut()
-: <a class="el" href="classBCHandler.html#a726f1bfbc76113bbb3b5057b25a53871">BCHandler</a>
+: <a class="el" href="classBCHandler.html#a5e71b2adeaa281e88275bff504dc67d8">BCHandler</a>
 </li>
 <li>getNeumannUncut()
 : <a class="el" href="classBCHandler.html#a5b1c86a6c303abf33850132d1bc12693">BCHandler</a>
@@ -458,18 +440,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
 <li>getPenaltyVector()
 : <a class="el" href="classMediumData.html#ac1646aa22f5ed8ea92a14560dfc0905f">MediumData</a>
 </li>
-<li>getPlotAtEachTimeStep()
-: <a class="el" href="classTimeData.html#a9a893d010866a48770c1592bff2582fc">TimeData</a>
-</li>
 <li>getPoint()
 : <a class="el" href="classFractureEnd.html#a48187852ce2e959d00577fe4d66c2e0f">FractureEnd</a>
 , <a class="el" href="classTriangleData.html#a88917dafcb5155d2359e5aeb4f8f36e2">TriangleData</a>
 </li>
-<li>getPosition()
-: <a class="el" href="classFractureData.html#af86187ca0c7cc0ea6f4c3cd6e1a4cf41">FractureData</a>
+<li>getPointIntersection()
+: <a class="el" href="classIntersection.html#abfa3de3a738c4fd36c54eaeecc3557de">Intersection</a>
 </li>
 <li>getRegion()
-: <a class="el" href="classMeshHandler.html#a36ba76b0940684abab86ef6e56fe1086">MeshHandler</a>
+: <a class="el" href="classMeshHandler.html#adfb74826f08fd62a92200ebfe8ce3fbe">MeshHandler</a>
 </li>
 <li>getSpaceDimension()
 : <a class="el" href="classFractureData.html#a4ead03266295fe14fa3285692f945d89">FractureData</a>
@@ -484,9 +463,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
 : <a class="el" href="classFractureData.html#a3ecc0d132f9cc105af6b24d676a7b9c5">FractureData</a>
 , <a class="el" href="classFractureEnd.html#a2b70172b4593324288f5779b7998d4a3">FractureEnd</a>
 </li>
-<li>getTimeSteps()
-: <a class="el" href="classTimeData.html#aa7e7bd74db16d77d82ea5f0f48b9617b">TimeData</a>
-</li>
 <li>getTranslateAbscissa()
 : <a class="el" href="classFractureData.html#a485e084e083d9181750f19db6842a5e0">FractureData</a>
 </li>
@@ -494,7 +470,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generato Mar 28 Ott 2014 10:32:55 per Progetto PACS da &#160;<a href="http://www.doxygen.org/index.html">
+Generato Sab 15 Nov 2014 22:26:40 per Progetto PACS da &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -62,7 +62,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Elenco&#160;dei&#160;tipi&#160;composti</span></a></li>
       <li><a href="classes.html"><span>Indice&#160;dei&#160;tipi&#160;composti</span></a></li>
-      <li><a href="hierarchy.html"><span>Gerarchia&#160;delle&#160;classi</span></a></li>
+      <li><a href="inherits.html"><span>Gerarchia&#160;delle&#160;classi</span></a></li>
       <li class="current"><a href="functions.html"><span>Membri&#160;dei&#160;composti</span></a></li>
     </ul>
   </div>
@@ -109,7 +109,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tutto</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classi</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespace</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>File</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funzioni</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variabili</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Ridefinizioni di tipo (typedef)</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Tipi enumerati (enum)</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Valori del tipo enumerato</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friend</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Definizioni</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tutto</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classi</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespace</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>File</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funzioni</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variabili</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Ridefinizioni di tipo (typedef)</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Tipi enumerati (enum)</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Valori del tipo enumerato</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friend</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -128,12 +128,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
 <li>setDefaultVariables()
 : <a class="el" href="classLifeV_1_1ParserSpiritGrammar.html#aa48cdca46ab32d3c1e55e656aa82e902">LifeV::ParserSpiritGrammar&lt; IteratorType, ResultsType &gt;</a>
 </li>
+<li>setDofFree()
+: <a class="el" href="classFractureIntersect.html#a5290dda06af2f6ba24a37f93d3bb4e95">FractureIntersect</a>
+</li>
+<li>SetDOFIntersecton()
+: <a class="el" href="classMatrixBifurcationHandler.html#a4f0a8f707112cfd7576d2331f659e068">MatrixBifurcationHandler</a>
+</li>
 <li>setDOFPosition()
 : <a class="el" href="classIntersectData.html#ac4e5826b88471e0f1514cae82c49bcae">IntersectData</a>
 </li>
 <li>setIntersection()
-: <a class="el" href="classIntersectData.html#a51a3df0f499c8150c32fe1f12f44ff8d">IntersectData</a>
-, <a class="el" href="classIntersection.html#a6694ead6072e98dffe4a7c70379ca83b">Intersection</a>
+: <a class="el" href="classIntersectData.html#a306be572e6e9a2359310ba908e693b2e">IntersectData</a>
+, <a class="el" href="classIntersection.html#ab7a139ac5712a9aa8bb925caf4ecc8af">Intersection</a>
 </li>
 <li>setK()
 : <a class="el" href="classMatrixBifurcationHandler.html#acbc7b99389ad5eacd86f73b0ed08829b">MatrixBifurcationHandler</a>
@@ -142,7 +148,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
 : <a class="el" href="classMatrixBifurcationHandler.html#a94433cf28ec2af6ba06b7f63a081d787">MatrixBifurcationHandler</a>
 </li>
 <li>setMeshLevelSetFracture()
-: <a class="el" href="classFractureHandler.html#ae4204c592df2afe9c3dc6171f8bbb042">FractureHandler</a>
+: <a class="el" href="classFractureHandler.html#ac8cefb4c4416edc814345eb2475c8e37">FractureHandler</a>
 </li>
 <li>setPoint()
 : <a class="el" href="classTriangleData.html#a24c79732610361d5e11ee7ac2d577467">TriangleData</a>
@@ -173,17 +179,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
 <li>solve()
 : <a class="el" href="classDarcyFractured.html#a074b6ec717f783c731b2be89f6528cc0">DarcyFractured</a>
 </li>
+<li>sortFractures()
+: <a class="el" href="classIntersection.html#ab3bd72c81dc261d3035213e5cefbb1c5">Intersection</a>
+</li>
 <li>source()
 : <a class="el" href="classMediumData.html#a1f5a2647becdcd8db8ad4c1a9b79b29e">MediumData</a>
 </li>
 <li>spy()
-: <a class="el" href="classExporter.html#ab5452c31e85ecfbbda8623aa20723e68">Exporter</a>
+: <a class="el" href="classExporter.html#a8ca0bdf8550569260ef4f3e39ab274dc">Exporter</a>
 </li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generato Mar 28 Ott 2014 10:32:55 per Progetto PACS da &#160;<a href="http://www.doxygen.org/index.html">
+Generato Sab 15 Nov 2014 22:26:40 per Progetto PACS da &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

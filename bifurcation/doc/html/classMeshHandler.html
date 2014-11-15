@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.5"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
 <title>Progetto PACS: Riferimenti per la classe MeshHandler</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -30,7 +30,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Generato da Doxygen 1.8.5 -->
+<!-- Generato da Doxygen 1.8.6 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
 </script>
@@ -220,7 +220,7 @@ Membri pubblici</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Valori del tipo enumerato</th></tr><tr><td class="fieldname"><em><a class="anchor" id="a239707613811024a58eece39a4c9bab3afc8bd5152d6d9b425b5e8bf4da8bd617"></a>UNCUT_REGION</em>&nbsp;</td><td class="fielddoc">
+<tr><th colspan="2">Valori del tipo enumerato</th></tr><tr><td class="fieldname"><em><a class="anchor" id="a239707613811024a58eece39a4c9bab3afc8bd5152d6d9b425b5e8bf4da8bd617"></a>UNCUT_REGION</em>&#160;</td><td class="fielddoc">
 </td></tr>
 </table>
 <div class="fragment"><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    {</div>
@@ -260,8 +260,8 @@ Membri pubblici</h2></td></tr>
 <p>la classe contiente informazioni circa le dimensione del dominio, il tipo di mesh, la discretizzazione e i metodi di integrazione</p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">dataFile,:</td><td>variabile di tipo GetPot che contiene il nome del file data </td></tr>
-    <tr><td class="paramname">section,:</td><td>stringa con il nome della sezione in cui leggere </td></tr>
+    <tr><td class="paramname">dataFile</td><td>variabile di tipo GetPot che contiene il nome del file data </td></tr>
+    <tr><td class="paramname">section</td><td>stringa con il nome della sezione in cui leggere </td></tr>
   </table>
   </dd>
 </dl>
@@ -319,8 +319,8 @@ Membri pubblici</h2></td></tr>
 <p>funzione che controlla se un convesso è effettivamente tagliato da una frattura </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">nodes,:</td><td>insieme dei nodi geometrici che definiscono il convesso </td></tr>
-    <tr><td class="paramname">fracture,:</td><td>puntatore a una frattura </td></tr>
+    <tr><td class="paramname">nodes</td><td>insieme dei nodi geometrici che definiscono il convesso </td></tr>
+    <tr><td class="paramname">fracture</td><td>puntatore a una frattura </td></tr>
   </table>
   </dd>
 </dl>
@@ -627,7 +627,7 @@ Questo è il grafo delle chiamate per questa funzione:</div>
 <p>funzione che conta il numero di gradi di libertà estesi per la pressione per tutte le fratture che hanno indice &lt; id </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">id,:</td><td>indice che identifica una frattura </td></tr>
+    <tr><td class="paramname">id</td><td>indice che identifica una frattura </td></tr>
   </table>
   </dd>
 </dl>
@@ -1654,8 +1654,8 @@ Questo è il grafo delle chiamate per questa funzione:</div>
 <p>funzione che esporta in formato .vtk per paraview gli elementi che sono tagliati dal level set M_levelSet pone pari a 1 se sono tagliati e 0 se non lo sono </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">vtkFolder,:</td><td>nome della cartella in cui esportare </td></tr>
-    <tr><td class="paramname">fileName,:</td><td>nome da dare al file da esportare con la soluzione </td></tr>
+    <tr><td class="paramname">vtkFolder</td><td>nome della cartella in cui esportare </td></tr>
+    <tr><td class="paramname">fileName</td><td>nome da dare al file da esportare con la soluzione </td></tr>
   </table>
   </dd>
 </dl>
@@ -1824,7 +1824,7 @@ Questo è il grafo delle chiamate per questa funzione:</div>
 <p>funzione che definisce le regioni della mesh </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">fracture,:</td><td>puntatore all'insieme delle fratture </td></tr>
+    <tr><td class="paramname">fracture</td><td>puntatore all'insieme delle fratture </td></tr>
   </table>
   </dd>
 </dl>
@@ -2002,8 +2002,8 @@ Questo è il grafo delle chiamate per questa funzione:</div>
 <div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;}<span class="comment">// setUpRegions</span></div>
 <div class="ttc" id="classMeshHandler_html_a3c8a354d214222155cb4eecf8214c938"><div class="ttname"><a href="classMeshHandler.html#a3c8a354d214222155cb4eecf8214c938">MeshHandler::compreso</a></div><div class="ttdeci">bool compreso(const bgeot::basic_mesh::ref_mesh_pt_ct nodes, FractureHandlerPtr_Type &amp;fracture)</div><div class="ttdoc">funzione che controlla se un convesso è effettivamente tagliato da una frattura </div><div class="ttdef"><b>Definition:</b> MeshHandler.cc:251</div></div>
 <div class="ttc" id="classIntersectData_html_a25def82d58f9508d33ab1a43b2b03ceb"><div class="ttname"><a href="classIntersectData.html#a25def82d58f9508d33ab1a43b2b03ceb">IntersectData::getNumFractures</a></div><div class="ttdeci">size_type getNumFractures() const </div><div class="ttdef"><b>Definition:</b> IntersectData.h:83</div></div>
-<div class="ttc" id="classFractureIntersect_html_a9a4e4a784fa4c8e359767ed543f89dc5"><div class="ttname"><a href="classFractureIntersect.html#a9a4e4a784fa4c8e359767ed543f89dc5">FractureIntersect::IntersectionType</a></div><div class="ttdeci">IntersectionType</div><div class="ttdef"><b>Definition:</b> FractureIntersect.h:24</div></div>
-<div class="ttc" id="classFractureIntersect_html_a4eea7d0aca48cdd36ea1756e75280332"><div class="ttname"><a href="classFractureIntersect.html#a4eea7d0aca48cdd36ea1756e75280332">FractureIntersect::mapIntersection_Type</a></div><div class="ttdeci">std::map&lt; IntersectionType, IntersectDataContainer_Type &gt; mapIntersection_Type</div><div class="ttdef"><b>Definition:</b> FractureIntersect.h:32</div></div>
+<div class="ttc" id="classFractureIntersect_html_a9a4e4a784fa4c8e359767ed543f89dc5"><div class="ttname"><a href="classFractureIntersect.html#a9a4e4a784fa4c8e359767ed543f89dc5">FractureIntersect::IntersectionType</a></div><div class="ttdeci">IntersectionType</div><div class="ttdef"><b>Definition:</b> FractureIntersect.h:25</div></div>
+<div class="ttc" id="classFractureIntersect_html_a4eea7d0aca48cdd36ea1756e75280332"><div class="ttname"><a href="classFractureIntersect.html#a4eea7d0aca48cdd36ea1756e75280332">FractureIntersect::mapIntersection_Type</a></div><div class="ttdeci">std::map&lt; IntersectionType, IntersectDataContainer_Type &gt; mapIntersection_Type</div><div class="ttdef"><b>Definition:</b> FractureIntersect.h:33</div></div>
 <div class="ttc" id="IntersectData_8h_html_a822ec3b760dfb603e1cf0bfe3ad5636a"><div class="ttname"><a href="IntersectData_8h.html#a822ec3b760dfb603e1cf0bfe3ad5636a">IntersectDataContainer_Type</a></div><div class="ttdeci">std::vector&lt; IntersectData_Type &gt; IntersectDataContainer_Type</div><div class="ttdef"><b>Definition:</b> IntersectData.h:120</div></div>
 <div class="ttc" id="classIntersectData_html"><div class="ttname"><a href="classIntersectData.html">IntersectData</a></div><div class="ttdoc">IntersectData.h. </div><div class="ttdef"><b>Definition:</b> IntersectData.h:12</div></div>
 <div class="ttc" id="classIntersectData_html_afef7730d6a494464350ebce088e488ee"><div class="ttname"><a href="classIntersectData.html#afef7730d6a494464350ebce088e488ee">IntersectData::getFracture</a></div><div class="ttdeci">const FractureHandlerPtr_Type &amp; getFracture(const size_type &amp;f) const </div><div class="ttdef"><b>Definition:</b> IntersectData.h:77</div></div>
@@ -2030,9 +2030,9 @@ Questo è il grafo delle chiamate per questa funzione:</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generato Mar 11 Nov 2014 15:47:11 per Progetto PACS da &#160;<a href="http://www.doxygen.org/index.html">
+Generato Sab 15 Nov 2014 22:26:39 per Progetto PACS da &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.5
+</a> 1.8.6
 </small></address>
 </body>
 </html>
