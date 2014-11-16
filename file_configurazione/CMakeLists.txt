@@ -2,11 +2,6 @@ CMAKE_MINIMUM_REQUIRED( VERSION 2.8 )
 
 PROJECT(PACS)
 
-SET(PROJECT_MAJOR_VERSION 1)
-SET(PROJECT_MINOR_VERSION 0)
-
-SET(PROJECT_VERSION ${PROJECT_MAJOR_VERSION}.${PROJECT_MINOR_VERSION})
-
 SET(CMAKE_CXX_FLAGS "-std=c++0x -Wall ${CMAKE_CXX_FLAGS}")
 
 #SET(CMAKE_CXX_COMPILER )
@@ -95,7 +90,7 @@ endif (GETFEM_LIBRARIES AND GETFEM_INCLUDE_DIRS)
 
 
 
-#check for BLAS library
+# Include for BLAS library
 find_package ( BLAS )
 if (BLAS_FOUND)
   if (BLA_VENDOR MATCHES "^ACML")
@@ -117,7 +112,7 @@ if (BLAS_FOUND)
   endif()
 endif(BLAS_FOUND)
 
-#check for LAPACK library
+# Include for LAPACK library
 find_package ( LAPACK )
 if (LAPACK_FOUND)
   if ((BLA_VENDOR MATCHES "^ACML") OR (BLA_VENDOR MATCHES "^Intel") OR (BLA_VENDOR MATCHES "^ATLAS") OR ( BLA_VENDOR STREQUAL "Generic" ) OR (BLA_VENDOR STREQUAL "All"))
@@ -129,7 +124,7 @@ if (LAPACK_FOUND)
 endif(LAPACK_FOUND)
 
 
-#check for QHULL library
+# Include for QHULL library
 set(QHULL_MAJOR_VERSION 6)
 
 if(QHULL_USE_STATIC)
@@ -206,12 +201,4 @@ SET(CMAKE_INSTALL_PREFIX ${CMAKE_SOURCE_DIR}/install-dir CACHE PATH "" FORCE)
 ADD_SUBDIRECTORY(src)
 
 ADD_SUBDIRECTORY(test)
-
-# Percorsi degli header file (equivalenti a -I su GCC)
-include_directories( "${CMAKE_CURRENT_SOURCE_DIR}/include" )
- 
-# Percorsi dei file sorgenti: CMake cerca da solo i file sorgenti
-# e ne inserisce i percorsi in variabili. Ad esempio SRC_LIST
-# conterrà tutti i file sorgenti trovati nella directory src.
-aux_source_directory(src SRC_LIST)
 

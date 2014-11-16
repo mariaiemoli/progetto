@@ -7,11 +7,18 @@ SET(PROJECT_MINOR_VERSION 0)
 
 SET(PROJECT_VERSION ${PROJECT_MAJOR_VERSION}.${PROJECT_MINOR_VERSION})
 
-INCLUDE_DIRECTORIES ( $ {CMAKE_CURRENT_SOURCE_DIR} )
-SET ( CMAKE_BUILD_TYPE $ {CMAKE_CXX_FLAGS_DEBUG} )
+SET(CMAKE_CXX_FLAGS "-std=c++0x -Wall ${CMAKE_CXX_FLAGS}")
 
-SET ( CMAKE_CXX_COMPILE_FLAGS $ {CMAKE_CXX_COMPILE_FLAGS})
-SET ( CMAKE_CXX_LINK_FLAGS $ {CMAKE_CXX_LINK_FLAGS})
+#SET(CMAKE_CXX_COMPILER )
+
+SET(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
+
+# Include directories
+
+INCLUDE_DIRECTORIES(/usr/include)
+INCLUDE_DIRECTORIES(/usr/local/lib)
+INCLUDE_DIRECTORIES(/opt/local/include)
+INCLUDE_DIRECTORIES(/sw/include)
 
 
 # Include Eigen3
@@ -20,21 +27,17 @@ PKG_CHECK_MODULES(EIGEN3 REQUIRED eigen3)
 INCLUDE_DIRECTORIES(${EIGEN3_INCLUDE_DIRS})
 
 
-#Require Doxygen for documentation
-FIND_PACKAGE( Doxygen )
-IF (DOXYGEN_FOUND)
-SET (DOXYGEN_INPUT ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile)
-SET (DOXYGEN_OUTPUT ${CMAKE_BINARY_DIR}/doc )
-ADD_CUSTOM_COMMAND(OUTPUT ${DOXYGEN_OUTPUT}
-COMMAND ${CMAKE_COMMAND} −E echo ${CMAKE_BINARY_DIR}
-COMMAND ${CMAKE_COMMAND} −E echo_append "Building API Documentation..."
-COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_INPUT}
-COMMAND ${CMAKE_COMMAND} −E echo "Done."
-WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-DEPENDS ${DOXYGEN_INPUT}
+# Include Doxygen
+find_package(Doxygen)
+if(DOXYGEN_FOUND)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile @ONLY)
+add_custom_target(doc
+${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
+WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+COMMENT "Generating API documentation with Doxygen" VERBATIM
 )
-ADD_CUSTOM_TARGET( doc DEPENDS ${DOXYGEN_OUTPUT} )
-ENDIF (DOXYGEN_FOUND)
+endif(DOXYGEN_FOUND)
+
 
 # Include Getfem
 if (GETFEM_LIBRARIES AND GETFEM_INCLUDE_DIRS)
@@ -204,6 +207,11 @@ ADD_SUBDIRECTORY(src)
 
 ADD_SUBDIRECTORY(test)
 
-# Adding t e s t s u b d i r e c t o r y
-ADD_SUBDIRECTORY( source )
-ADD_SUBDIRECTORY( test )
+# Percorsi degli header file (equivalenti a -I su GCC)
+include_directories( "${CMAKE_CURRENT_SOURCE_DIR}/include" )
+ 
+# Percorsi dei file sorgenti: CMake cerca da solo i file sorgenti
+# e ne inserisce i percorsi in variabili. Ad esempio SRC_LIST
+# conterrà tutti i file sorgenti trovati nella directory src.
+aux_source_directory(src SRC_LIST)
+
