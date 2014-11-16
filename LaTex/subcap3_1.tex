@@ -1,4 +1,5 @@
-\lstnewenvironment{Code03_01}[1][]{\lstset{basicstyle=\small\ttfamily, columns=fullflexible,framexrightmargin=+.1\textwidth, keywordstyle=\color{red}\bfseries, commentstyle=\color{blue},language=C++, basicstyle=\small, numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=5pt, frame=shadowbox, #1}}{}
+\lstnewenvironment{Code03_01}[1][]{\lstset{basicstyle=\small\ttfamily, columns=fullflexible,framexrightmargin=+.1\textwidth, keywordstyle=\color{red}\bfseries, commentstyle=\color{blue},language=C++, basicstyle=\small,  numberstyle=\tiny, stepnumber=1, numbersep=5pt, frame=shadowbox, #1}}{}
+
 
 \chapter{Strumenti di sviluppo}
 Lo sviluppo della nostra libreria ha richiesto l'uso di strumenti specifici atti a facilitare e sistematizzare la gestione del codice quali \texttt{git}, \texttt{CMake} e \texttt{Dxygen}.\\
@@ -14,6 +15,95 @@ Il codice del progetto è reperibile su \texttt{git} ed è possibile scaricarlo 
 Nella cartella principale è contenuto anche un file \texttt{.gitignore}, in cui sono specificate le estensioni dei files e le sottocartelle che non devono essere visionati in una repository \texttt{git}. In particolare non si è interessati ai files temporanei che vengono eventualmente generati dagli editor, e alle cartelle generate da uno scorretta configurazione di \texttt{Doxygen}.
 
 \section{\texttt{CMake}}
+\texttt{CMake} si basa sulla creazione di files \texttt{CMakeLists.txt} nella directory del progetto, che contengono le direttive necessarie per creare il \texttt{Makefile} per compilare ed eseguire il codice. \\
+Nella directory principale si trova un primo file \texttt{CMakeLists.txt} in cui si impostano i parametri fondamentali quali la dipendenza dalla versione di \texttt{CMake}, il nome del progetto, si includono le directory dei sorgenti nel path di compilazione e si caricano le librerie esterne utilizzate dai sorgenti. \\
+le librerie che vengono caricate sono:
+\begin{itemize}
+\item \texttt{Eigen}, libreria template per l'algebra lineare usata principalmente nella fase di imposizione delle condizioni di interfaccia sul triangolo di intersezione nel caso della biforcazione, per il modello ridotto;
+\item \texttt{Getfem++}, libreria matematica per gli elementi finiti usata per scrivere e risolvere il problema numerico;
+\item \texttt{Blas} (Basic Linear Algebra Subprograms) e \texttt{Qhull}, librerie necessarie per \texttt{Getfem++};
+\item \texttt{Doxygen}, usato per generare la documentazione
+\end{itemize}
 
+\begin{Code03_01}
+CMAKE_MINIMUM_REQUIRED( VERSION 2.8 )
+
+PROJECT(PACS)
+
+SET(CMAKE_CXX_FLAGS "-std=c++0x -Wall ${CMAKE_CXX_FLAGS}")
+
+SET(CMAKE_MODULE_PATH 
+	${CMAKE_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
+
+# Include Eigen3
+FIND_PACKAGE(PkgConfig)
+PKG_CHECK_MODULES(EIGEN3 REQUIRED eigen3)
+INCLUDE_DIRECTORIES(${EIGEN3_INCLUDE_DIRS})
+
+# Include Doxygen
+find_package(Doxygen)
+[ ... ]
+
+# Include Getfem
+if (GETFEM_LIBRARIES AND GETFEM_INCLUDE_DIRS)
+[ ... ]
+
+#Include for BLAS library
+find_package ( BLAS )
+[ ... ]
+
+
+#Include for LAPACK library
+find_package ( LAPACK )
+[ ... ]
+
+#Include for QHULL library
+set(QHULL_MAJOR_VERSION 6)
+[ ... ]
+
+SET(CMAKE_INSTALL_PREFIX 
+	${CMAKE_SOURCE_DIR}/install-dir CACHE PATH "" FORCE)
+
+ADD_SUBDIRECTORY(src)
+ADD_SUBDIRECTORY(test)
+\end{Code03_01}
+
+Per poter usare \texttt{CMake} è necessario posizionarsi nella directory in cui è contenuto il progetto e creare una cartella in cui compilare il codice. Per lanciare \texttt{CMake} è necessario digitare i seguenti comandi: \\ 
+%\begin{center}
+ \texttt{cd $<$build\_dir$>$ } \\
+\texttt{cmake $<$source\_dir$>$}
+%\end{center}
+
+\texttt{CMake} imposta le variabili di path come definito nel file  \texttt{CMakeLists.txt}, esamina le dipendenze da librerie esterne e procede esaminando le sottocartelle aggiunte nel file di configurazione. In particolare esamina le sottocartelle \texttt{src} e \texttt{test}, in cui sono presenti altri files  \texttt{CMakeLists.txt}, che impostano i rispettivi obiettivi e definiscono le rispettive sottocartelle. Questo permette a \texttt{CMake} di esaminare tutta la directory in cui è contenuto il progetto in maniera ricorsiva. \\
+Nella cartella \texttt{src} il file  \texttt{CMakeLists.txt} aggiunge la creazione di una libreria a partire dal codice del progetto. 
+\begin{Code03_01}
+ADD_LIBRARY(pacs ${TARGET_SRC} ${TARGET_HANDLER})
+\end{Code03_01}
+
+Nella cartella test si trovano dei files data di esempio per poter eseguire il codice, contenuti della sottocartella \texttt{data}. Il file  \texttt{CMakeLists.txt} nella cartella dei test definisce gli obiettivi e i collegamenti necessari per l'esecuzione. 
+
+\par Una volta che il \texttt{Makefile} è stato generato è possibile compilare il codice con il comando: \\ 
+\texttt{make}.
+Questo crea nella sottocartella \texttt{test} un eseguibile chiamato \texttt{darcy}. Per poterlo eseguire è sufficiente lanciarlo da terminale dandogli in pasto uno dei files presenti nella sottocartella \texttt{data}:\\
+\texttt{ .\textbackslash darcy data\textbackslash$<$file\_data$>$ }
 
 \section{\texttt{Doxygen}}
+Per poter creare la documentazione al codice con \texttt{Doxygen} è necessario che nella cartella principale sia presente il file \texttt{Doxygen}, in caso contrario è necessario crearlo con il comando:\\
+\texttt{Doxygen -g}\\
+In questo file sono definite le variabili che permettono di creare la documentazione come il nome del progetto, la directory dove creare la documentazione, le cartelle dove si trovano i sorgenti e l'estensione dei files da considerare.
+
+\begin{Code03_01}
+PROJECT_NAME 				=	 Problema di Darcy in un network di fratture
+OUTPUT_DIRECTORY			=	./build/doc
+INPUT						= 	./src ./test
+FILE_PATTERNS				= 	*.cc *.h
+HAVE_DOT					=	YES
+COLLABORATION_GRAPH		=	YES
+HIDE_UNDOC_RELATIONS		=	NO
+\end{Code03_01}
+
+Dopo aver lanciato \texttt{CMake} è possibile generare la documentazione semplicemente eseguendo: \\
+\texttt{cd $<$build\_dir$>$} \\
+\texttt{make doc}
+
+Questo crea una sottocartella \texttt{build/doc} che contiene la documentazione \texttt{html} e \LaTeX{}.
