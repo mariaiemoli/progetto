@@ -2,24 +2,22 @@
 
 \chapter{Classi per la gestione del problema numerico}
 \section{Class BC}
-\subsection{Definizione della classe e costruttore}
-La classe \texttt{BC} ci permette di introdurre le condizioni al bordo. Viene gestito sia il bordo del 		mezzo, che quello di ogni singola frattura. \\ 
-Il suo costruttore richiede i seguenti parametri:
-	\begin{itemize}
-	\item \textit{Mesh:} relativa al mezzo o a una delle fratture
-	\item \textit{Stringa:} contenente il tipo di mesh di GetFem del elemento precedente
-	\item \textit{Vettore:} nullo, se la mesh fa riferimento al mezzo, contenete gli indici dei gradi di libert\`{a} degli estremi, se si sta lavorando su una frattura
-	\item \textit{ElementDimesion:} dimensione in cui stiamo lavorando ( di defaul 2 per il mezzo e 1 per le fratture)
-	\end{itemize}
-e crea un elemento \texttt{BC} formato da:
-	\begin{itemize}
-	\item \textit{Mesh:} relativa al mezzo o a una delle fratture
-	\item \textit{Vettore:} contenente l'indice dei gradi di libert\'{a} in cui è imposto Dirichlet
-	\item \textit{Vettore:} contenente l'indice dei gradi di libert\'{a} in cui è imposto Newmann
-	\item \textit{Vettore:} contenente l'indice dei gradi di libert\'{a} in cui sono imposte le condizioni al bordo
-	\end{itemize} 
+%\subsection{Definizione della classe e costruttore}
+La classe \texttt{BC} ci permette di introdurre le condizioni al bordo sia nel mezzo che per ogni singola frattura. \\ 
+%Il suo costruttore richiede i seguenti parametri:
+%	\begin{itemize}
+%	\item \textit{Mesh:} relativa al mezzo o a una delle fratture
+%	\item \textit{Stringa:} contenente il tipo di mesh di GetFem del elemento precedente
+%	\item \textit{Vettore:} nullo, se la mesh fa riferimento al mezzo, contenete gli indici dei gradi di libert\`{a} degli estremi, se si sta lavorando su una frattura
+%	\item \textit{ElementDimesion:} dimensione in cui stiamo lavorando ( di defaul 2 per il mezzo e 1 per le fratture)
+%	\end{itemize}
+Il campo fondamentale della classe \`{e}:
+%e crea un elemento \texttt{BC} formato da:
+	\begin{enumerate}
+	\item[-] \texttt{M\_extBoundary}: vettore contenente l'indice dei gradi di libert\'{a} in cui sono imposte le condizioni al bordo
+	\end{enumerate} 
 
-\newpage	
+%\newpage	
 \begin{Code03_03}[caption={Classe \texttt{BC}}]
 public:
 
@@ -45,73 +43,138 @@ private:
     sizeVector_Type M_extBoundary;
 \end{Code03_03}
 
-\begin{Code03_03}[caption={Typedef per la Classe \texttt{BC}}]
-/*! Elemento BC */
-typedef BC BC_Type;
-/*! Puntatore alla classe BC */												
-typedef boost::shared_ptr<BC> BCPtr_Type;
-/*! Vettore di puntatori a BC */			
-typedef std::vector<BCPtr_Type> BCPtrContainer_Type;	
-\end{Code03_03}
+%\begin{Code03_03}[caption={Typedef per la Classe \texttt{BC}}]
+%/*! Elemento BC */
+%typedef BC BC_Type;
+%/*! Puntatore alla classe BC */												
+%typedef boost::shared_ptr<BC> BCPtr_Type;
+%/*! Vettore di puntatori a BC */			
+%typedef std::vector<BCPtr_Type> BCPtrContainer_Type;	
+%\end{Code03_03}
 
-Sia quando lavoriamo sul dominio del mezzo, che quando stiamo considerando una frattura che ha solo intersezioni di tipo cross con le altre, il costruttore andrà a inserire gli indici dei gradi di libert\`{a} nei rispettivi vettori valutando solamente se essi si trovano su una faccia della mesh.
+Sia quando lavoriamo sul dominio del mezzo, che quando stiamo considerando una frattura con solo intersezioni di tipo cross, il costruttore andrà a inserire gli indici dei gradi di libert\`{a} nei rispettivi vettori valutando solamente se essi si trovano su una faccia della mesh.\\
 Nel caso della biforcazione bisogna accertarsi di imporre le condizioni al bordo solamente nel'estremo libero, ovvero quello in cui non v\`{e} l'intersezione delle tre fratture.
-
-\subsection{Novit\`{a} introdotte per la biforcazione}
-Quando andiamo ad analizzare una frattura è dunque necessario fornire al costruttore il vettore dei DOF liberi e imporre le condizioni solamente nel DOF dove v\`{e} intersezione. Per far questo creiamo un variabile booleana che varr\`{a} 1 se il grado di libert\`{a} che sto considerando è contenuto nel vettore dei DOF liberi, 0 altrimenti. Questo mi permette di inserire un controllo prima di aggiungere quel indice ai campi \texttt{M\_dirichlet} , \texttt{M\_neumann} , \texttt{M\_extBoundary} della classe.
+%
+%\subsection{Novit\`{a} introdotte per la biforcazione}
+Per far questo quando andiamo ad analizzare una frattura \`{e} necessario fornire al costruttore il vettore dei DOF liberi.
+%Per far questo creiamo un variabile booleana che varr\`{a} 1 se il grado di libert\`{a} che sto considerando è contenuto nel vettore dei DOF liberi, 0 altrimenti. Questo mi permette di inserire un controllo prima di aggiungere quel indice ai campi \texttt{M\_dirichlet} , \texttt{M\_neumann} , \texttt{M\_extBoundary} della classe.
 %PER MERY -> uso " vettore dei DOF liberi " senza spiegarlo perchè mi aspetto l'abbia spiegato tu quando spieghi il campo di Fracture Handler
-\begin{Code03_03}[caption={Classe \texttt{BC}}]
-[...]
+%\begin{Code03_03}[caption={Classe \texttt{BC}}]
+%[...]
 
-getfem::mesh_region borderFaces;
-getfem::outer_faces_of_mesh(mesh, borderFaces);
+%getfem::mesh_region borderFaces;
+%getfem::outer_faces_of_mesh(mesh, borderFaces);
 
-[...]
-/* Boundary e' un size_type che contine la cardinalita' dei DOF 
- * appartenti alle faccie della mesh */
+%[...]
+%/* Boundary e' un size_type che contine la cardinalita' dei DOF 
+% * appartenti alle faccie della mesh */
  
-boundary_cv.resize(Boundary);
-boundary_flags.resize(Boundary);
+%boundary_cv.resize(Boundary);
+%boundary_flags.resize(Boundary);
 
-for ( getfem::mr_visitor i(borderFaces); !i.finished(); ++i )
-{
-	bool ImAnIntersectionDOF = 0;
+%for ( getfem::mr_visitor i(borderFaces); !i.finished(); ++i )
+%{
+%	bool ImAnIntersectionDOF = 0;
 				
-	for( size_type j=0; j<DOFs.size(); j++ )
-	{
-		if( DOFs[ j ] == i.cv() )
-		{
-			ImAnIntersectionDOF = 1;
-		}
-	}
-	if ( !ImAnIntersectionDOF )
-	{
-	  if (false)//( gmm::abs(gmm::abs(un [ dimension - 1 ]) - 1.0) > 1.0E-7 )  
-	  {				
-		// Dirichlet, flag 0
-		boundary_cv [ i.cv() ].push_back(i.f());
-		boundary_flags [ i.cv() ].push_back(boundaryFlags [ 1 ]);
-		
-	  }
-	  else
-	  {
-		// Neumann, flag 1
-		boundary_cv [ i.cv() ].push_back(i.f());
-		boundary_flags [ i.cv() ].push_back(boundaryFlags [1 ]);
-	  }
-	}
-}
+%	for( size_type j=0; j<DOFs.size(); j++ )
+%	{
+%		if( DOFs[ j ] == i.cv() )
+%		{
+%			ImAnIntersectionDOF = 1;
+%		}
+%	}
+%	if ( !ImAnIntersectionDOF )
+%	{
+%	  if (false)//( gmm::abs(gmm::abs(un [ dimension - 1 ]) - 1.0) > 1.0E-7 )  
+%	  {				
+%		// Dirichlet, flag 0
+%		boundary_cv [ i.cv() ].push_back(i.f());
+%		boundary_flags [ i.cv() ].push_back(boundaryFlags [ 1 ]);
+%		
+%	  }
+%	  else
+%	  {
+%		// Neumann, flag 1
+%		boundary_cv [ i.cv() ].push_back(i.f());
+%		boundary_flags [ i.cv() ].push_back(boundaryFlags [1 ]);
+%	  }
+%	}
+%}
+%
+%[...]
+%\end{Code03_03}
 
-[...]
+\section{Class \texttt{BCHandler}}
+
+???????
+
+\section{Class \texttt{PointData} e \texttt{TriangleData}}
+
+Vengono utilizzate le classe \texttt{Matrix} e \texttt{Vector} della libreria \texttt{Eigen}.
+Ci poniamo ora in uno spazio 2D.\\
+La classe \texttt{PointData} ci permette di definire un punto e di poterlo manipolare con le operazioni di somma, differenza e prodotto.\\
+La classe \texttt{TriangleData} ci permette di definire un triangolo e di calcolarne l'area. Inoltre sono stati implementati i metodi necessari per la costruzione del triangolo di intersezione.
+
+\section{Class \texttt{TriangleHandler}  }
+
+
+WIP
+
+\section{Class \texttt{MatrixBifurcationHandler}}
+
+
+WIP
+
+
+\section{Class \texttt{DarcyFracture}}
+La classe \texttt{DarcyFracture} ci permette di passare alla formulazione algebrica, $ Ax=b $, del problema e di risolverlo. \\ 
+%Il suo costruttore richiede i seguenti parametri:
+%	\begin{itemize}
+%	\item \textit{Mesh:} relativa al mezzo o a una delle fratture
+%	\item \textit{Stringa:} contenente il tipo di mesh di GetFem del elemento precedente
+%	\item \textit{Vettore:} nullo, se la mesh fa riferimento al mezzo, contenete gli indici dei gradi di libert\`{a} degli estremi, se si sta lavorando su una frattura
+%	\item \textit{ElementDimesion:} dimensione in cui stiamo lavorando ( di defaul 2 per il mezzo e 1 per le fratture)
+%	\end{itemize}
+I campi fondamentali della classe sono:
+	\begin{enumerate}
+	\item[-] \texttt{M\_globalMatrix}: \`{e} una matrice sparsa rappresentata i GETfem da un \textit{boost::shared\_ptr $\langle$ gmm::row\_matrix $\langle$ sparseVector\_Type $\rangle \rangle$};
+	\item[-] \texttt{M\_globalRightHandSide}: vettore del termine noto;
+	\item[-] \texttt{M\_velocityAndPressure}: vettore soluzione delle velocit\'{a} e della pressione.
+	\end{enumerate} 
+
+\begin{Code03_03}[caption={Classe \texttt{DarcyFracture}}]
+public:
+
+    DarcyFractured ( const MediumDataPtr_Type& medium,
+                     const MeshHandlerPtr_Type& mesh,
+                     const BCHandlerPtr_Type& bcHandler,
+                     const FracturesSetPtr_Type& fractures,
+                     const ExporterPtr_Type& exporter );
+    
+    void init ( );
+    
+    void assembly ( const GetPot& dataFile );
+
+    void solve ( );
+
+	[ ... ]
+
+private:
+
+	[ ... ]
+
+    // Global matrix, darcy
+    sparseMatrixPtr_Type M_globalMatrix;
+    // Termine noto di destra del sistema
+    scalarVectorPtr_Type M_globalRightHandSide;
+    // Soluzione del sistema ( velocita' + pressione )
+    scalarVectorPtr_Type M_velocityAndPressure;
+
+    [ ... ]
+
+};
 \end{Code03_03}
 
-
-
-\section{Class BCHandler}
-
-Work in progress
-
-\section{Class DarcyFracture}
-
-Work in progress
-
+Il metodo init() va a settare tutte le costanti note del problema.
+Il metodo assembly() va a creare la matrice globale A e il termine noto di destra. 
+Infine il metodo solve() risolve il problema e esporta i risultati ottenuti in formato \emph{vtk}, sia per la pressione che per la velocit\`{a}.

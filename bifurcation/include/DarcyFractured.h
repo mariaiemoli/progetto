@@ -31,7 +31,7 @@ public:
     
     /** 
      * 
-     * Funzione che costruisce M_mediumMesh, definisce gli elementi finiti e i metodi di integrazione e seleziona i contorni
+	 * Funzione che va a settare tutte le costanti note del problema
      * 
      */
     void init ( );
