@@ -69,12 +69,11 @@ ADD_SUBDIRECTORY(test)
 \end{Code03_01}
 
 Per poter usare \texttt{CMake} è necessario posizionarsi nella directory in cui è contenuto il progetto e creare una cartella in cui compilare il codice. Per lanciare \texttt{CMake} è necessario digitare i seguenti comandi: \\ 
-%\begin{center}
- \texttt{cd $<$build\_dir$>$ } \\
-\texttt{cmake $<$source\_dir$>$}
-%\end{center}
 
-\texttt{CMake} imposta le variabili di path come definito nel file  \texttt{CMakeLists.txt}, esamina le dipendenze da librerie esterne e procede esaminando le sottocartelle aggiunte nel file di configurazione. In particolare esamina le sottocartelle \texttt{src} e \texttt{test}, in cui sono presenti altri files  \texttt{CMakeLists.txt}, che impostano i rispettivi obiettivi e definiscono le rispettive sottocartelle. Questo permette a \texttt{CMake} di esaminare tutta la directory in cui è contenuto il progetto in maniera ricorsiva. \\
+\par  \texttt{cd $<$build\_dir$>$ } 
+\par \texttt{cmake $<$source\_dir$>$}\\
+
+\noindent \texttt{CMake} imposta le variabili di path come definito nel file  \texttt{CMakeLists.txt}, esamina le dipendenze da librerie esterne e procede esaminando le sottocartelle aggiunte nel file di configurazione. In particolare esamina le sottocartelle \texttt{src} e \texttt{test}, in cui sono presenti altri files  \texttt{CMakeLists.txt}, che impostano i rispettivi obiettivi e definiscono le rispettive sottocartelle. Questo permette a \texttt{CMake} di esaminare tutta la directory in cui è contenuto il progetto in maniera ricorsiva. \\
 Nella cartella \texttt{src} il file  \texttt{CMakeLists.txt} aggiunge la creazione di una libreria a partire dal codice del progetto. 
 \begin{Code03_01}
 ADD_LIBRARY(pacs ${TARGET_SRC} ${TARGET_HANDLER})
@@ -83,14 +82,16 @@ ADD_LIBRARY(pacs ${TARGET_SRC} ${TARGET_HANDLER})
 Nella cartella test si trovano dei files data di esempio per poter eseguire il codice, contenuti della sottocartella \texttt{data}. Il file  \texttt{CMakeLists.txt} nella cartella dei test definisce gli obiettivi e i collegamenti necessari per l'esecuzione. 
 
 \par Una volta che il \texttt{Makefile} è stato generato è possibile compilare il codice con il comando: \\ 
-\texttt{make}.
-Questo crea nella sottocartella \texttt{test} un eseguibile chiamato \texttt{darcy}. Per poterlo eseguire è sufficiente lanciarlo da terminale dandogli in pasto uno dei files presenti nella sottocartella \texttt{data}:\\
-\texttt{ .\textbackslash darcy data\textbackslash$<$file\_data$>$ }
+\par \texttt{make}\\
+
+\noindent Questo crea nella sottocartella \texttt{test} un eseguibile chiamato \texttt{darcy}. Per poterlo eseguire è sufficiente lanciarlo da terminale dandogli in pasto uno dei files presenti nella sottocartella \texttt{data}:\\
+\par \texttt{ .\textbackslash darcy data\textbackslash$<$file\_data$>$ }
 
 \section{\texttt{Doxygen}}
 Per poter creare la documentazione al codice con \texttt{Doxygen} è necessario che nella cartella principale sia presente il file \texttt{Doxygen}, in caso contrario è necessario crearlo con il comando:\\
-\texttt{Doxygen -g}\\
-In questo file sono definite le variabili che permettono di creare la documentazione come il nome del progetto, la directory dove creare la documentazione, le cartelle dove si trovano i sorgenti e l'estensione dei files da considerare.
+\par \texttt{Doxygen -g}\\
+
+\noindent In questo file sono definite le variabili che permettono di creare la documentazione come il nome del progetto, la directory dove creare la documentazione, le cartelle dove si trovano i sorgenti e l'estensione dei files da considerare.
 
 \begin{Code03_01}
 PROJECT_NAME 				=	 Problema di Darcy in un network di fratture
@@ -102,8 +103,8 @@ COLLABORATION_GRAPH		=	YES
 HIDE_UNDOC_RELATIONS		=	NO
 \end{Code03_01}
 
-Dopo aver lanciato \texttt{CMake} è possibile generare la documentazione semplicemente eseguendo: \\
-\texttt{cd $<$build\_dir$>$} \\
-\texttt{make doc}
+\noindent Dopo aver lanciato \texttt{CMake} è possibile generare la documentazione semplicemente eseguendo: \\
+\par \texttt{cd $<$build\_dir$>$} 
+\par \texttt{make doc} \\
 
-Questo crea una sottocartella \texttt{build/doc} che contiene la documentazione \texttt{html} e \LaTeX{}.
+\noindent Questo crea una sottocartella \texttt{build/doc} che contiene la documentazione \texttt{html} e \LaTeX{}.
