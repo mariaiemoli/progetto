@@ -6,6 +6,12 @@ SET(CMAKE_CXX_FLAGS "-std=c++0x -Wall ${CMAKE_CXX_FLAGS}")
 
 SET(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
 
+#include directories
+INCLUDE_DIRECTORIES(/usr/include)
+INCLUDE_DIRECTORIES(/usr/local/lib)
+INCLUDE_DIRECTORIES(/opt/local/include)
+INCLUDE_DIRECTORIES(/sw/include)
+
 # Include Eigen3
 FIND_PACKAGE(PkgConfig)
 PKG_CHECK_MODULES(EIGEN3 REQUIRED eigen3)
@@ -185,6 +191,8 @@ if(QHULL_FOUND)
 
 	message(STATUS "QHULL found (include: ${QHULL_INCLUDE_DIRS}, lib: ${QHULL_LIBRARIES})")
 endif(QHULL_FOUND)
+
+#link_directories ( /usr/local/include/getfem/)
 
 SET(CMAKE_INSTALL_PREFIX ${CMAKE_SOURCE_DIR}/install-dir CACHE PATH "" FORCE)
 
