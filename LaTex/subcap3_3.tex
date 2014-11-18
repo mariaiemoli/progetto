@@ -1,7 +1,7 @@
 \lstnewenvironment{Code03_03}[1][]{\lstset{basicstyle=\small\ttfamily, columns=fullflexible,framexrightmargin=+.1\textwidth, keywordstyle=\color{red}\bfseries, commentstyle=\color{blue},language=C++, basicstyle=\small, numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=5pt, frame=shadowbox, #1}}{}
 
 \chapter{Classi per la gestione del problema numerico}
-\section{Class BC}
+\section{Class \texttt{BC} e Class \texttt{BCHandler}}
 %\subsection{Definizione della classe e costruttore}
 La classe \texttt{BC} ci permette di introdurre le condizioni al bordo sia nel mezzo che per ogni singola frattura. \\ 
 %Il suo costruttore richiede i seguenti parametri:
@@ -104,27 +104,6 @@ Per far questo quando andiamo ad analizzare una frattura \`{e} necessario fornir
 %[...]
 %\end{Code03_03}
 
-\section{Class \texttt{BCHandler}}
-
-???????
-
-\section{Class \texttt{PointData} e \texttt{TriangleData}}
-
-Vengono utilizzate le classe \texttt{Matrix} e \texttt{Vector} della libreria \texttt{Eigen}.
-Ci poniamo ora in uno spazio 2D.\\
-La classe \texttt{PointData} ci permette di definire un punto e di poterlo manipolare con le operazioni di somma, differenza e prodotto.\\
-La classe \texttt{TriangleData} ci permette di definire un triangolo e di calcolarne l'area. Inoltre sono stati implementati i metodi necessari per la costruzione del triangolo di intersezione.
-
-\section{Class \texttt{TriangleHandler}  }
-
-
-WIP
-
-\section{Class \texttt{MatrixBifurcationHandler}}
-
-
-WIP
-
 
 \section{Class \texttt{DarcyFracture}}
 La classe \texttt{DarcyFracture} ci permette di passare alla formulazione algebrica, $ Ax=b $, del problema e di risolverlo. \\ 
@@ -178,3 +157,21 @@ private:
 Il metodo init() va a settare tutte le costanti note del problema.
 Il metodo assembly() va a creare la matrice globale A e il termine noto di destra. 
 Infine il metodo solve() risolve il problema e esporta i risultati ottenuti in formato \emph{vtk}, sia per la pressione che per la velocit\`{a}.
+
+%\section{Class \texttt{BCHandler}}
+%???????
+
+\section{Class \texttt{PointData} e \texttt{TriangleData}}
+
+Vengono utilizzate le classe \texttt{Matrix} e \texttt{Vector} della libreria \texttt{Eigen}.
+Ci poniamo ora in uno spazio 2D.\\
+La classe \texttt{PointData} ci permette di definire un punto e di poterlo manipolare con le operazioni di somma, differenza e prodotto.\\
+La classe \texttt{TriangleData} ci permette di definire un triangolo e di calcolarne l'area. Inoltre sono stati implementati i metodi necessari per la costruzione del triangolo di intersezione.
+
+\section{Class \texttt{TriangleHandler}  }
+
+WIP
+
+\section{Class \texttt{MatrixBifurcationHandler}}
+
+WIP
