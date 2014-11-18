@@ -1,0 +1,3 @@
+/Users/Claudia/Documents/Universita/Corsi/02.PACS/progetto/file_configurazione/build/test/CMakeFiles/darcy.dir
+/Users/Claudia/Documents/Universita/Corsi/02.PACS/progetto/file_configurazione/build/CMakeFiles/doc.dir
+/Users/Claudia/Documents/Universita/Corsi/02.PACS/progetto/file_configurazione/build/src/CMakeFiles/pacs.dir
