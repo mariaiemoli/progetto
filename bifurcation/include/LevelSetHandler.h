@@ -1,8 +1,11 @@
-/** 
+/*
+ * PROGETTO DI PACS 2014
  *
- * LevelSetHandler.h
+ * \author Bonomi Claudia
  * 
- * Classe che inizializza e gestisce il levelset che rappresenta una frattura
+ * \author Iemoli Maria
+ *
+ * Problema di Darcy per un network di fratture
  *
  */
 
@@ -11,6 +14,13 @@
 #define LEVELSETHANDLER_H_ 1
 
 #include "LevelSetData.h"
+
+
+/**************************************************************************/
+/*  LevelSetHandler.h													  */
+/*  Classe che inizializza e gestisce il levelset che rappresenta una  	  */
+/*  frattura                 			  								  */
+/**************************************************************************/
 
 class LevelSetHandler
 {

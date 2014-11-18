@@ -1,8 +1,10 @@
-/**
- * PointData.cc
- */
 
 #include "../include/PointData.h" 
+
+/**************************************************************************/
+/*  PointData.cc														  */
+/*  Classe che rappresenta un punto geometrico			                  */
+/**************************************************************************/
 
 PointData::PointData(scalar_type x, scalar_type y)
 {

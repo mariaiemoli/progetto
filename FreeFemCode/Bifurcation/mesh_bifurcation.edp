@@ -5,7 +5,7 @@
 /// CODICE PER CONFRONTARE I RISULTATI OTTENUTI CON IL MODELLO RIDOTTO PER LA PRESSIONE SULLA BIFORCAZIONE
 
 // Spacing
-//int Nelem = 10;
+//int Nelem = 1200;
 //int NelemI = 10;
 
 //bool plotYesNo = true;

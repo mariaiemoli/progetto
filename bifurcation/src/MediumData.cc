@@ -1,10 +1,11 @@
-/**
- *
- * MediumData.cc
- *
- */
 
 #include "../include/MediumData.h"
+
+/**************************************************************************/
+/*  MediumData.cc											              */
+/*  Classe che contiene le informazioni sulle proprietà del mezzo e       */
+/*  sui metodi di integrazione                 							  */
+/**************************************************************************/
 
 MediumData::MediumData ( const GetPot& dataFile,
                          const std::string& sectionSolver,
@@ -19,84 +20,9 @@ MediumData::MediumData ( const GetPot& dataFile,
             M_invK( dataFile ( ( M_sectionSolver + "invK" ).data(), 1. ) ),
             M_invKDistribution11( dataFile ( ( M_sectionSolver + "invKDist11" ).data(), "1." ) ),
             M_invKDistribution12( dataFile ( ( M_sectionSolver + "invKDist12" ).data(), "1." ) ),
-            M_invKDistribution22( dataFile ( ( M_sectionSolver + "invKDist22" ).data(), "1." ) ),
-            M_exact(dataFile( ( M_sectionSolver + "solution" ).data(), "x" ) ),
-            M_exactInlet( dataFile ( ( M_sectionSolver + "solutionIn" ).data(), M_exact.data() ) ), 
-            M_exactOutlet( dataFile ( ( M_sectionSolver + "solutionOut" ).data(), M_exact.data() ) ), 
-            M_exactFlux( dataFile ( ( M_sectionSolver + "velocity" ).data(), "1." ) ),
-            M_source(dataFile( ( M_sectionSolver + "source" ).data(), "1." ) ),
-            M_exactInitial( dataFile ( ( M_sectionSolver + "initialCondition" ).data(), "0." ) )
+            M_invKDistribution22( dataFile ( ( M_sectionSolver + "invKDist22" ).data(), "1." ) )
 {
 }// costruttore
-
-
-// Exact solution, pressure
-scalar_type MediumData::exact ( const base_node& x, const scalar_type& t ) const
-{
-    M_parser.setString(M_exact);
-
-    M_parser.setVariable("x", x [ 0 ]);
-    M_parser.setVariable("y", x [ 1 ]);
-    M_parser.setVariable("t", t);
-
-    return M_parser.evaluate();
-}// exact
-
-
-// Exact solution, pressure IN (i.e. level set <0)
-scalar_type MediumData::exactInlet ( const base_node& x, const scalar_type& t ) const
-{
-    M_parser.setString(M_exactInlet);
-
-    M_parser.setVariable("x", x [ 0 ]);
-    M_parser.setVariable("y", x [ 1 ]);
-    M_parser.setVariable("t", t);
-
-    return M_parser.evaluate();
-}// exactInlet
-
-
-// Exact solution, pressure OUT, i.e. level set >0
-scalar_type MediumData::exactOutlet ( const base_node& x, const scalar_type& t ) const
-{
-    M_parser.setString(M_exactOutlet);
-
-    M_parser.setVariable("x", x [ 0 ]);
-    M_parser.setVariable("y", x [ 1 ]);
-    M_parser.setVariable("t", t);
-
-    return M_parser.evaluate();
-}// exactOutlet
-
-
-// Exact solution, velocity (non ho ancora impostato quella corretta)
-scalar_type MediumData::exactFlux ( const base_node& x,
-                                    const base_node& n,
-                                    const scalar_type& t ) const
-{
-    M_parser.setString(M_exactFlux);
-
-    M_parser.setVariable("x", x [ 0 ]);
-    M_parser.setVariable("y", x [ 1 ]);
-    M_parser.setVariable("n1", n [ 0 ]);
-    M_parser.setVariable("n2", n [ 1 ]);
-    M_parser.setVariable("t", t);
-
-    return M_parser.evaluate();
-}// exactFlux
-
-
-// Exact solution, div(Velocity) -- SET = 0 WITH NO MASS SOURCES/SINKS !
-scalar_type MediumData::source ( const base_node& x, const scalar_type& t ) const
-{
-    M_parser.setString(M_source);
-
-    M_parser.setVariable("x", x [ 0 ]);
-    M_parser.setVariable("y", x [ 1 ]);
-    M_parser.setVariable("t", t);
-
-    return M_parser.evaluate();
-}// source
 
 
 scalar_type MediumData::invKDistribution11 ( const base_node& x ) const
@@ -133,14 +59,3 @@ scalar_type MediumData::invKDistribution22 ( const base_node& x ) const
     return M_parser.evaluate();
 }// invKDistribution22
 
-
-// Exact solution, pressure
-scalar_type MediumData::exactInitial ( const base_node& x ) const
-{
-    M_parser.setString(M_exactInitial);
-
-    M_parser.setVariable("x", x [ 0 ]);
-    M_parser.setVariable("y", x [ 1 ]);
-
-    return M_parser.evaluate();
-}// exactInitial

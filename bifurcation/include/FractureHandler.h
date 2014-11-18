@@ -1,8 +1,14 @@
-/** 
- * FractureHandler.h
+/*
+ * PROGETTO DI PACS 2014
+ *
+ * \author Bonomi Claudia
  * 
- * classe che inizializza e gestisce una frattura
+ * \author Iemoli Maria
+ *
+ * Problema di Darcy per un network di fratture
+ *
  */
+
 
 #ifndef FRACTUREHANDLER_H_
 #define FRACTUREHANDLER_H_ 1
@@ -11,6 +17,11 @@
 #include "FractureData.h"
 #include "BCHandler.h"
 #include "LevelSetHandler.h"
+
+/**************************************************************************/
+/*  FractureHandler.h													  */
+/*  Classe che inizializza e gestisce una frattura             			  */
+/**************************************************************************/
 
 
 class FractureHandler

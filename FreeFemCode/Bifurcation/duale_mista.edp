@@ -40,7 +40,7 @@ Qh ph, qh, one;
 one = part(x,y);
 
 // problem definition
-problem Darcy ( [uh1, uh2, ph], [tauh1, tauh2, qh], solver = GMRES) = -
+problem Darcy ( [uh1, uh2, ph], [tauh1, tauh2, qh], solver = GMRES, nbiter=5000 ) = -
                 int2d(Th)( ( invK11 * uh1 + invK12 * uh2 ) * tauh1 +
                            ( invK21 * uh1 + invK22 * uh2 ) * tauh2 ) +
                 int2d(Th)( ph * ( dx(tauh1) + dy(tauh2) ) ) +

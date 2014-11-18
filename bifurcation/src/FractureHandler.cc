@@ -1,9 +1,10 @@
-/**
- *  FractureHandler.cc
- */
-
 
 #include "../include/FractureHandler.h"
+
+/**************************************************************************/
+/*  FractureHandler.h													  */
+/*  Classe che inizializza e gestisce una frattura             			  */
+/**************************************************************************/
 
 FractureHandler::FractureHandler ( const GetPot& dataFile,
                                    const size_type& ID,

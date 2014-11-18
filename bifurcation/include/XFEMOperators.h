@@ -1,8 +1,11 @@
-/** 
+/*
+ * PROGETTO DI PACS 2014
+ *
+ * \author Bonomi Claudia
  * 
- * XFEMOperators.h
- * 
- * Darcy bilinear and linear forms.
+ * \author Iemoli Maria
+ *
+ * Problema di Darcy per un network di fratture
  *
  */
 
@@ -15,12 +18,18 @@
 #include "FractureHandler.h"
 #include "BCHandler.h"
 
+/**************************************************************************/
+/*  XFEMOperators.h													  	  */
+/*  Libreria che definisce le forme lineari e bilineari per il problema	  */
+/*  di Darcy             												  */
+/**************************************************************************/
+
+
 namespace getfem
 {
 
-/**
- * Classe che rappresenta la normale ad un levelset
- */
+
+// Classe che rappresenta la normale ad un levelset
 class level_set_unit_normal : public getfem::nonlinear_elem_term
 {
 public:

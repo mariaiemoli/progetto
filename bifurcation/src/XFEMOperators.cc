@@ -1,8 +1,11 @@
-/** 
- * XFEMOperators.cc
- */
 
 #include "../include/XFEMOperators.h"
+
+/**************************************************************************/
+/*  XFEMOperators.cc												  	  */
+/*  Libreria che definisce le forme lineari e bilineari per il problema	  */
+/*  di Darcy             												  */
+/**************************************************************************/
 
 namespace getfem
 {
@@ -622,7 +625,7 @@ void darcy_dataF ( scalarVectorPtr_Type &Bstress,
     const scalar_type fractureID = fracture->getId();
     const size_type shiftVelocity = fracture->getMeshFEMVelocity().nb_dof();
     const size_type shiftCoefficinents = fracture->getMeshFEMPressure().nb_dof();
-
+    
     scalarVector_Type etaGammaUinvh(shiftCoefficinents, 0.), Bvel_tot( shiftVelocity, 0.);
 
     for ( size_type i = 0; i < shiftCoefficinents; ++i )

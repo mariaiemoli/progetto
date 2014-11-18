@@ -1,13 +1,14 @@
-/** 
- * FractureIntersect.h
- * 
+/*
+ * PROGETTO DI PACS 2014
+ *
  * \author Bonomi Claudia
  * 
  * \author Iemoli Maria
- * 
- * Classe che contiene tutte le intersezioni divise in base al loro tipo ( Cross, Bifurcation, Parallel )
- * 
+ *
+ * Problema di Darcy per un network di fratture
+ *
  */
+
 
 #ifndef _FRACTUREINTERSECT_
 #define _FRACTUREINTERSECT_ 1
@@ -17,6 +18,12 @@
 #include "FractureHandler.h"
 #include "UsefulFunctions.h"
 #include <map>
+
+/**************************************************************************/
+/*  FractureIntersect.h													  */
+/*  Classe che contiene tutte le intersezioni divise in base al loro tipo */
+/*  ( Cross, Bifurcation, Parallel )                					  */
+/**************************************************************************/
 
 
 class FractureIntersect

@@ -1,11 +1,11 @@
-/**
+/*
  * PROGETTO DI PACS 2014
  *
  * \author Bonomi Claudia
  * 
  * \author Iemoli Maria
  *
- * Interior Penality for Darcy's equation
+ * Problema di Darcy per un network di fratture
  *
  */
 
@@ -79,14 +79,14 @@ int main ( int argc, char* argv [ ] )
 	mesh->setUpRegions ( fractures );
 	std::cout << " completed!" << std::endl;
 
-
+/*
 	// Medium boundary conditions
 	std::cout << "Create medium boundary conditions..." << std::flush;
 	sizeVector_Type vuoto;
 	BCPtr_Type bcMedium(new BC_Type(mesh->getMesh(), mesh->getMeshType(), vuoto, MEDIUM));
 	std::cout << " completed!" << std::endl;
 
-
+*/
 	// Fracture boundary conditions
 	std::cout << "Create fracture boundary conditions..." << std::flush;
 	BCPtrContainer_Type bcFracture(numberFractures);
@@ -94,8 +94,7 @@ int main ( int argc, char* argv [ ] )
 	{
 		bcFracture [ f ].reset(new BC_Type( fractures->getFracture( f )->getMeshFlat(),
 										   	fractures->getFracture ( f )->getData().getMeshType(),
-										   	fractures->getFracture ( f ) -> getDofFree(),
-										   	FRACTURE ));
+										   	fractures->getFracture ( f ) -> getDofFree() ));
 	}
 	std::cout << " completed!" << std::endl;
 
@@ -105,8 +104,8 @@ int main ( int argc, char* argv [ ] )
 	std::cout << " completed!" << std::endl;
 
 	std::cout << "Setup boundary conditions handler..." << std::flush;
-	bcHandler->createBDRegions(mesh->getMesh());
-	bcHandler->createBDRegionsFractures(mesh->getMesh());
+	//bcHandler->createBDRegions(mesh->getMesh());
+	//bcHandler->createBDRegionsFractures(mesh->getMesh());
 	std::cout << " completed!" << std::endl;
 
 	// Save the cutted elements

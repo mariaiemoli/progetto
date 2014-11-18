@@ -1,8 +1,11 @@
-/**
- * MatrixBifurcationHandler.cc
- */
 
 #include "../include/MatrixBifurcationHandler.h" 
+
+/**************************************************************************/
+/*  MatrixBifurcationHandler.h											  */
+/*  Classe che gestisce la costruzione delle matrici per il triangolo di  */
+/*  intersezione                 										  */
+/**************************************************************************/
 
 MatrixBifurcationHandler::MatrixBifurcationHandler( const GetPot& dataFile,
  												    const std::string& section,

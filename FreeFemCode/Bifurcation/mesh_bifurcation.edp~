@@ -5,10 +5,10 @@
 /// CODICE PER CONFRONTARE I RISULTATI OTTENUTI CON IL MODELLO RIDOTTO PER LA PRESSIONE SULLA BIFORCAZIONE
 
 // Spacing
-//int Nelem = 10;
-//int NelemI = 10;
+int Nelem = 1200;
+int NelemI = 10;
 
-//bool plotYesNo = true;
+bool plotYesNo = true;
 
 // prima frattura y = -a0*x+b0
 real a0 = 1.;
@@ -131,10 +131,10 @@ border inside2 ( t = intx1, intx0 ) { x = t; y = a3*t+b3; label = 40; }
 // costruiamo la mesh
 
 
-mesh Th = buildmesh ( long0( Nelem ) + long1( Nelem*2 ) + short0(Nelem*d1*3) + 
+mesh Th = buildmesh ( long0( Nelem*2 ) + long1( Nelem*2 ) + short0(Nelem*d1*3) + 
 					  long2( Nelem*2 ) + long3( Nelem*3 ) +
                       short1(Nelem*d2*3) +
-                      long4( Nelem*3 ) + long5( Nelem ) +
+                      long4( Nelem*3 ) + long5( Nelem*2 ) +
                       short2(Nelem*d0*3) + inside0(NelemI*Nelem*d0) +
 					  inside1(NelemI*Nelem*d2) + inside2(NelemI*Nelem*d1) );
 

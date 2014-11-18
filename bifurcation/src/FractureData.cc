@@ -1,8 +1,13 @@
-/** 
- * FractureData.cc
- */
+
 
 #include "../include/FractureData.h"
+
+
+/**************************************************************************/
+/*  FractureData.h														  */
+/*  Classe che contiene tutte le informazioni circa la natura geometrica  */
+/*  e fisica della singola frattura										  */
+/**************************************************************************/
 
 FractureData::FractureData ( const GetPot& dataFile,
                              const std::string& section,

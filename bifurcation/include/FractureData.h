@@ -1,15 +1,27 @@
-/** 
- * FractureData.h
+/*
+ * PROGETTO DI PACS 2014
  *
- * Classe che contiene tutte le informazioni circa la natura geometrica e fisica della singola frattura
+ * \author Bonomi Claudia
+ * 
+ * \author Iemoli Maria
+ *
+ * Problema di Darcy per un network di fratture
  *
  */
+
 
 #ifndef _FRACTUREDATA_
 #define _FRACTUREDATA_ 1
 
 #include "Core.h"
 #include "Parser.h"
+
+/**************************************************************************/
+/*  FractureData.h														  */
+/*  Classe che contiene tutte le informazioni circa la natura geometrica  */
+/*  e fisica della singola frattura										  */
+/**************************************************************************/
+
 
 class FractureData
 {

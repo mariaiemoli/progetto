@@ -57,12 +57,6 @@ numberFractures = 3
                 invKDist12 = 0.
                 invKDist22 = 1.
 
-                source = 4   %source term for darcy
-                solution = 0 %function for BC on pressure
-                solutionIn = 0
-                solutionOut = 0
-                velocity = 0. %function for BC on velocity
-
         [../]
 
 [../]

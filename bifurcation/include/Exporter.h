@@ -1,12 +1,14 @@
-/** Exporter.h
+/*
+ * PROGETTO DI PACS 2014
  *
- * Created on: Apr 13, 2011
- *
- * \author Alessio Fumagalli
+ * \author Bonomi Claudia
  * 
- * Libreria in cui definisco le funzioni per esportare i dati
+ * \author Iemoli Maria
+ *
+ * Problema di Darcy per un network di fratture
  *
  */
+
 
 #ifndef EXPORTER_H_
 #define EXPORTER_H_ 1
@@ -14,6 +16,13 @@
 #include "Core.h"
 #include "MeshHandler.h"
 #include <fstream>
+
+
+/**************************************************************************/
+/*  Exporter.h															  */
+/*  Classe in cui definisco le funzioni per esportare i dati              */
+/**************************************************************************/
+
 
 class Exporter
 {

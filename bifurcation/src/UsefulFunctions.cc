@@ -1,8 +1,11 @@
-/** UsefulFunctions.cc
- *
- */
 
 #include "../include/UsefulFunctions.h"
+
+/**************************************************************************/
+/*  UsefulFunctions.cc													  */
+/*  													                  */
+/**************************************************************************/
+
 
 void massLumping ( sparseMatrix_Type& matrix )
 {
