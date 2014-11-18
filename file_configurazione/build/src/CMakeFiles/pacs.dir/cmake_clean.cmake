@@ -1,4 +1,4 @@
-FILE(REMOVE_RECURSE
+file(REMOVE_RECURSE
   "CMakeFiles/pacs.dir/BC.cc.o"
   "CMakeFiles/pacs.dir/BCHandler.cc.o"
   "CMakeFiles/pacs.dir/DarcyFractured.cc.o"
@@ -25,6 +25,6 @@ FILE(REMOVE_RECURSE
 )
 
 # Per-language clean rules from dependency scanning.
-FOREACH(lang CXX)
-  INCLUDE(CMakeFiles/pacs.dir/cmake_clean_${lang}.cmake OPTIONAL)
-ENDFOREACH(lang)
+foreach(lang CXX)
+  include(CMakeFiles/pacs.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

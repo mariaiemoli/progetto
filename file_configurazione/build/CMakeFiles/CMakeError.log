@@ -1,28 +1,53 @@
-Determining if the function dgemm_ exists failed with the following output:
-Change Dir: /Users/Claudia/Documents/Universita/Corsi/02.PACS/progetto/file_configurazione/build/CMakeFiles/CMakeTmp
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/maria/Scrivania/Code/sesta_prova/build/CMakeFiles/CMakeTmp
 
-Run Build Command:/usr/bin/make "cmTryCompileExec5997231/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTryCompileExec5997231.dir/build.make CMakeFiles/cmTryCompileExec5997231.dir/build
-/opt/local/bin/cmake -E cmake_progress_report /Users/Claudia/Documents/Universita/Corsi/02.PACS/progetto/file_configurazione/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec5997231.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=dgemm_   -o CMakeFiles/cmTryCompileExec5997231.dir/CheckFunctionExists.c.o   -c /opt/local/share/cmake-2.8/Modules/CheckFunctionExists.c
-Linking C executable cmTryCompileExec5997231
-/opt/local/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec5997231.dir/link.txt --verbose=1
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=dgemm_ -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec5997231.dir/CheckFunctionExists.c.o  -o cmTryCompileExec5997231  /opt/local/lib/libf77blas.a /opt/local/lib/libatlas.a 
-Undefined symbols for architecture x86_64:
-  "__gfortran_st_write", referenced from:
-      _xerbla_ in libf77blas.a(xerbla.o)
-  "__gfortran_st_write_done", referenced from:
-      _xerbla_ in libf77blas.a(xerbla.o)
-  "__gfortran_stop_string", referenced from:
-      _xerbla_ in libf77blas.a(xerbla.o)
-  "__gfortran_transfer_character_write", referenced from:
-      _xerbla_ in libf77blas.a(xerbla.o)
-  "__gfortran_transfer_integer_write", referenced from:
-      _xerbla_ in libf77blas.a(xerbla.o)
-ld: symbol(s) not found for architecture x86_64
-clang: error: linker command failed with exit code 1 (use -v to see invocation)
-make[1]: *** [cmTryCompileExec5997231] Error 1
-make: *** [cmTryCompileExec5997231/fast] Error 2
+Run Build Command:"/usr/bin/make" "cmTryCompileExec1949284173/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec1949284173.dir/build.make CMakeFiles/cmTryCompileExec1949284173.dir/build
+make[1]: ingresso nella directory "/home/maria/Scrivania/Code/sesta_prova/build/CMakeFiles/CMakeTmp"
+/usr/local/bin/cmake -E cmake_progress_report /home/maria/Scrivania/Code/sesta_prova/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1949284173.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTryCompileExec1949284173.dir/CheckSymbolExists.c.o   -c /home/maria/Scrivania/Code/sesta_prova/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTryCompileExec1949284173
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1949284173.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTryCompileExec1949284173.dir/CheckSymbolExists.c.o  -o cmTryCompileExec1949284173 -rdynamic 
+CMakeFiles/cmTryCompileExec1949284173.dir/CheckSymbolExists.c.o: nella funzione "main":
+CheckSymbolExists.c:(.text+0x16): riferimento non definito a "pthread_create"
+collect2: error: ld returned 1 exit status
+make[1]: uscita dalla directory "/home/maria/Scrivania/Code/sesta_prova/build/CMakeFiles/CMakeTmp"
+make[1]: *** [cmTryCompileExec1949284173] Errore 1
+make: *** [cmTryCompileExec1949284173/fast] Errore 2
+
+File /home/maria/Scrivania/Code/sesta_prova/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/maria/Scrivania/Code/sesta_prova/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec3594464965/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec3594464965.dir/build.make CMakeFiles/cmTryCompileExec3594464965.dir/build
+make[1]: ingresso nella directory "/home/maria/Scrivania/Code/sesta_prova/build/CMakeFiles/CMakeTmp"
+/usr/local/bin/cmake -E cmake_progress_report /home/maria/Scrivania/Code/sesta_prova/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec3594464965.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTryCompileExec3594464965.dir/CheckFunctionExists.c.o   -c /usr/local/share/cmake-3.0/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec3594464965
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3594464965.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTryCompileExec3594464965.dir/CheckFunctionExists.c.o  -o cmTryCompileExec3594464965 -rdynamic -lpthreads 
+/usr/bin/ld: impossibile trovare -lpthreads
+collect2: error: ld returned 1 exit status
+make[1]: *** [cmTryCompileExec3594464965] Errore 1
+make[1]: uscita dalla directory "/home/maria/Scrivania/Code/sesta_prova/build/CMakeFiles/CMakeTmp"
+make: *** [cmTryCompileExec3594464965/fast] Errore 2
 
 

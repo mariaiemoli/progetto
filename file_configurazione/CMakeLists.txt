@@ -4,17 +4,7 @@ PROJECT(PACS)
 
 SET(CMAKE_CXX_FLAGS "-std=c++0x -Wall ${CMAKE_CXX_FLAGS}")
 
-#SET(CMAKE_CXX_COMPILER )
-
 SET(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
-
-# Include directories
-
-INCLUDE_DIRECTORIES(/usr/include)
-INCLUDE_DIRECTORIES(/usr/local/lib)
-INCLUDE_DIRECTORIES(/opt/local/include)
-INCLUDE_DIRECTORIES(/sw/include)
-
 
 # Include Eigen3
 FIND_PACKAGE(PkgConfig)
@@ -90,7 +80,7 @@ endif (GETFEM_LIBRARIES AND GETFEM_INCLUDE_DIRS)
 
 
 
-# Include for BLAS library
+#Include for BLAS library
 find_package ( BLAS )
 if (BLAS_FOUND)
   if (BLA_VENDOR MATCHES "^ACML")
@@ -112,7 +102,7 @@ if (BLAS_FOUND)
   endif()
 endif(BLAS_FOUND)
 
-# Include for LAPACK library
+#check for LAPACK library
 find_package ( LAPACK )
 if (LAPACK_FOUND)
   if ((BLA_VENDOR MATCHES "^ACML") OR (BLA_VENDOR MATCHES "^Intel") OR (BLA_VENDOR MATCHES "^ATLAS") OR ( BLA_VENDOR STREQUAL "Generic" ) OR (BLA_VENDOR STREQUAL "All"))
@@ -124,7 +114,7 @@ if (LAPACK_FOUND)
 endif(LAPACK_FOUND)
 
 
-# Include for QHULL library
+#Include for QHULL library
 set(QHULL_MAJOR_VERSION 6)
 
 if(QHULL_USE_STATIC)
