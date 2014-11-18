@@ -4,18 +4,17 @@
 \contentsline {chapter}{\numberline {2}Strumenti di sviluppo}{3}{chapter.2}
 \contentsline {section}{\numberline {2.1}\texttt {Git}}{3}{section.2.1}
 \contentsline {section}{\numberline {2.2}\texttt {CMake}}{4}{section.2.2}
-\contentsline {section}{\numberline {2.3}\texttt {Doxygen}}{4}{section.2.3}
-\contentsline {chapter}{\numberline {3}Implementazione delle fratture}{5}{chapter.3}
-\contentsline {section}{\numberline {3.1}La Classe \texttt {FracturesSet}}{6}{section.3.1}
-\contentsline {section}{\numberline {3.2}La Classe \texttt {FractureHandler}}{7}{section.3.2}
-\contentsline {section}{\numberline {3.3}Le Classi \texttt {LevelSetHandler} e \texttt {LevelSetData}}{9}{section.3.3}
-\contentsline {section}{\numberline {3.4}Le Classi \texttt {FractureIntersect} e \texttt {IntersectData}}{10}{section.3.4}
-\contentsline {chapter}{\numberline {4}Classi per la gestione del problema numerico}{13}{chapter.4}
-\contentsline {section}{\numberline {4.1}Class BC}{13}{section.4.1}
-\contentsline {section}{\numberline {4.2}Class \texttt {BCHandler}}{14}{section.4.2}
-\contentsline {section}{\numberline {4.3}Class \texttt {PointData} e \texttt {TriangleData}}{14}{section.4.3}
-\contentsline {section}{\numberline {4.4}Class \texttt {TriangleHandler} }{14}{section.4.4}
-\contentsline {section}{\numberline {4.5}Class \texttt {MatrixBifurcationHandler}}{14}{section.4.5}
-\contentsline {section}{\numberline {4.6}Class \texttt {DarcyFracture}}{14}{section.4.6}
-\contentsline {chapter}{\numberline {5}Costruzione del file Data}{16}{chapter.5}
-\contentsline {chapter}{\numberline {6}Confronto FreeFem, Validazione dei risultati}{17}{chapter.6}
+\contentsline {section}{\numberline {2.3}\texttt {Doxygen}}{6}{section.2.3}
+\contentsline {chapter}{\numberline {3}Implementazione delle fratture}{7}{chapter.3}
+\contentsline {section}{\numberline {3.1}La Classe \texttt {FracturesSet}}{8}{section.3.1}
+\contentsline {section}{\numberline {3.2}La Classe \texttt {FractureHandler}}{9}{section.3.2}
+\contentsline {section}{\numberline {3.3}Le Classi \texttt {LevelSetHandler} e \texttt {LevelSetData}}{11}{section.3.3}
+\contentsline {section}{\numberline {3.4}Le Classi \texttt {FractureIntersect} e \texttt {IntersectData}}{12}{section.3.4}
+\contentsline {chapter}{\numberline {4}Classi per la gestione del problema numerico}{15}{chapter.4}
+\contentsline {section}{\numberline {4.1}Class \texttt {BC} e Class \texttt {BCHandler}}{15}{section.4.1}
+\contentsline {section}{\numberline {4.2}Class \texttt {DarcyFracture}}{16}{section.4.2}
+\contentsline {section}{\numberline {4.3}Class \texttt {PointData} e \texttt {TriangleData}}{17}{section.4.3}
+\contentsline {section}{\numberline {4.4}Class \texttt {TriangleHandler} }{17}{section.4.4}
+\contentsline {section}{\numberline {4.5}Class \texttt {MatrixBifurcationHandler}}{17}{section.4.5}
+\contentsline {chapter}{\numberline {5}Costruzione del file Data}{18}{chapter.5}
+\contentsline {chapter}{\numberline {6}Confronto FreeFem, Validazione dei risultati}{19}{chapter.6}
