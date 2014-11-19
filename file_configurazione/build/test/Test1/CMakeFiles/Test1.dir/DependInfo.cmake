@@ -40,6 +40,9 @@ SET(CMAKE_TARGET_LINKED_INFO_FILES
 
 # The include file search paths:
 SET(CMAKE_C_TARGET_INCLUDE_PATH
+  "/usr/local/lib"
+  "/opt/local/include"
+  "/sw/include"
   ".."
   "/opt/local/include/eigen3"
   "../include"
