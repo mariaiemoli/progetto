@@ -13,6 +13,12 @@
 
 \usepackage{hyperref}
 
+\usepackage{frontespizio}
+\usepackage{listings} %Per inserire codice
+\usepackage[usenames]{color}%Per permettere la colorazione dei caratteri 
+\usepackage{fancyhdr} 
+
+
 \usepackage{listings} %Per inserire codice
 \usepackage[usenames]{color}%Per permettere la colorazione dei caratteri 
 
@@ -23,12 +29,29 @@
 %\makeglossaries
 %\usepackage{lscape}
 
+\ChNameVar{\fontsize{14}{16}\usefont{T1}{phv}{m}{n}\selectfont}
+\ChNumVar{\fontsize{60}{62}\usefont{T1}{ptm}{m}{n}\selectfont}
+
  
-
-\author{Claudia }
-\title{Gestione delle identità in uno dei principali gruppi bancari europei}
-
 \begin{document}
+
+\begin{frontespizio}
+\Istituzione{POLITECNICO DI MILANO}
+\Logo{logo_polimi}
+\Facolta{Ingegneria Industriale e dell'informazione}
+\Corso[Laurea]{Ingegneria Matematica}
+\Annoaccademico{2013-2014}
+\Sottotitolo{Imposizione delle condizioni d'interfaccia per intersezioni di tipo Biforcazione}
+\Titolo{Soluzione del problema di Darcy in un network di fratture}
+\Candidato[]{Claudia Bonomi matr. 680739}
+\Candidato[]{Maria Iemoli matr. 800499}
+\Titoletto{Progetto per il corso di Programmazione Avanzata per il Calcolo Scientifico}
+\Relatore{ Luca Formaggia}
+\Relatore{ Anna Scotti}
+\Rientro{1cm}
+\Margini{1.5cm}{2cm}{1.5cm}{3cm}
+\end{frontespizio} 
+
 
 \hypersetup{
     %colorlinks,
@@ -44,7 +67,7 @@
 %\hyphenation{net-list}\pagestyle{empty}
 %\include{Copertina}
 %\newpage
-%\include{ringraziamenti}
+\include{introduzione}
 
 \pagestyle{plain}
 \pagenumbering{Roman}

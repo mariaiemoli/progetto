@@ -2,15 +2,13 @@
 language=C++, basicstyle=\small,  numberstyle=\tiny, stepnumber=1, numbersep=5pt, frame=shadowbox, #1}}{}
 
 \chapter{Implementazione delle fratture}
-
-Il nostro progetto parte da un codice già esistente per la soluzione del problema di Darcy in un network di fratture con intersezione di tipo \textit{Cross }, ossia due fratture che si intersecano formando una \textit{X}. Noi abbiamo esteso il codice anche al caso di fratture con intersezione di tipo \textit{Bifurcation}, cioè tre fratture che si intersecano nello stesso punto formando una \textit{Y}.
+Passiamo ora a descrivere le principali classi del codice che definiscono la struttura e le proprietà delle fratture, porgendo particolare attenzione alle classi modificate e a quelle da noi implementate.\\
 
 \begin{figure}[htbp]
-\includegraphics[width=0.95\textwidth]{img/fratture.eps}
+\includegraphics[width=1\textwidth]{img/fratture.eps}
 \caption{Inclusione tra le varie classi che costituiscono l'insieme delle fratture}\label{Inclusione classi}
 \end{figure}
 
-Passiamo ora a descrivere le principali classi del codice che definiscono la struttura e le proprietà delle fratture, porgendo particolare attenzione alle classi modificate e a quelle da noi implementate.
 
 \par Le classi usate per rappresentare le fratture e le intersezioni si dividono in due categorie:
 \begin{enumerate}

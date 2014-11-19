@@ -1,0 +1,6 @@
+\chapter*{Introduzione}
+
+Il presente progetto si inserisce nell'ambito dello studio del moto di un fluido in un mezzo poroso. Lo scopo è quello di studiare e risolvere il problema nel caso di un network di fratture che si intersecano. \\
+Il nostro progetto parte da un codice già esistente per la soluzione del problema di Darcy in un network di fratture con intersezione di tipo \textit{Cross }, ossia due fratture che si intersecano formando una \textit{X}. Noi abbiamo esteso il codice anche al caso di fratture con intersezione di tipo \textit{Bifurcation}, cioè tre fratture che si intersecano nello stesso punto formando una \textit{Y}.\\
+Per l'implementazione e la risoluzione del problema tramite elementi finiti, abbiamo utilizzato principalmente la libreria \texttt{GetFEM++}, una serie di liberie scritte in C++ che mettono a disposizione dell'utente una serie di funzioni utilizzabili per la soluzione dei problemi FEM. \\
+Il modello su cui si basa la nostra implementazione è un modello ridotto, considera cioè le fratture come delle grandezze 1d, trascurandone lo spessore. Per poter ricavare le condizioni d'interfaccia nel caso della nuova intersezione si è reso necessario ritornare al modello 2d, e quindi considerare l'intersezione come un triangolo e non come un punto. 
