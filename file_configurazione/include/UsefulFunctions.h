@@ -1,11 +1,25 @@
-/** UsefulFunctions.h
+/*
+ * PROGETTO DI PACS 2014
+ *
+ * \author Bonomi Claudia
+ * 
+ * \author Iemoli Maria
+ *
+ * Problema di Darcy per un network di fratture
  *
  */
+
 
 #ifndef USEFULFUNCTIONS_H_
 #define USEFULFUNCTIONS_H_ 1
 
 #include "Core.h"
+
+/**************************************************************************/
+/*  UsefulFunctions.cc													  */
+/*  													                  */
+/**************************************************************************/
+
 
 /** 
  * Funzione che approssima una matrice sparsa in una matrice diagonale non singolare con la tecnica mass lumping che permette di 

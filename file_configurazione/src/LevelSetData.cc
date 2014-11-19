@@ -1,10 +1,11 @@
-/*
- * LevelSetData.cc
- * 
- * Classe che contiene tutte le informazioni legate al level set e le funzioni per valutarne il valore nei punti
- */
 
 #include "../include/LevelSetData.h"
+
+/**************************************************************************/
+/*  LevelSetData.cc														  */
+/*  Classe che contiene tutte le informazioni legate al level set e le 	  */
+/*  funzioni per valutarne il valore nei punti                 			  */
+/**************************************************************************/
 
 LevelSetData::LevelSetData ( const GetPot& dataFile,
                              const std::string& section,

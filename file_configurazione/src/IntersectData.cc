@@ -1,8 +1,10 @@
-/** IntersectData.cc
- *
- */
 
 #include "../include/IntersectData.h"
+
+/**************************************************************************/
+/*  IntersectData.cc													  */
+/*  Classe che contiene tutte le informazioni su un'intersezione		  */
+/**************************************************************************/
 
 void IntersectData::copy ( const IntersectData& in )
 {

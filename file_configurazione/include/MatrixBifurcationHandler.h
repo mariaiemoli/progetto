@@ -1,9 +1,14 @@
-/**
- * MatrixBifurcationHandler.h
+/*
+ * PROGETTO DI PACS 2014
+ *
+ * \author Bonomi Claudia
  * 
- * Classe che gestisce la costruzione delle matrici per il triangolo di intersezione
- * 
+ * \author Iemoli Maria
+ *
+ * Problema di Darcy per un network di fratture
+ *
  */
+
 
 #ifndef __MATRIXBIFURCATIONHANDLER_H__
 #define __MATRIXBIFURCATIONHANDLER_H__ 
@@ -13,6 +18,12 @@
 #include "Parser.h"
 #include "FractureHandler.h"
 #include <eigen3/Eigen/Dense>
+
+/**************************************************************************/
+/*  MatrixBifurcationHandler.h											  */
+/*  Classe che gestisce la costruzione delle matrici per il triangolo di  */
+/*  intersezione                 										  */
+/**************************************************************************/
 
 
 class MatrixBifurcationHandler

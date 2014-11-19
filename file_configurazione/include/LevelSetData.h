@@ -1,14 +1,27 @@
-/** 
- * LevelSetData.h
+/*
+ * PROGETTO DI PACS 2014
+ *
+ * \author Bonomi Claudia
  * 
- * Classe che contiene tutte le informazioni legate al level set e le funzioni per valutarne il valore nei punti
+ * \author Iemoli Maria
+ *
+ * Problema di Darcy per un network di fratture
+ *
  */
+
 
 #ifndef LEVELSETDATA_H_
 #define LEVELSETDATA_H_ 1
 
 #include "Core.h"
 #include "Parser.h"
+
+/**************************************************************************/
+/*  LevelSetData.h														  */
+/*  Classe che contiene tutte le informazioni legate al level set e le 	  */
+/*  funzioni per valutarne il valore nei punti                 			  */
+/**************************************************************************/
+
 
 class LevelSetData
 {

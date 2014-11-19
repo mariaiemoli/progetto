@@ -1,8 +1,11 @@
-/** FractureIntersect.cc
- *
- */
 
 #include "../include/FractureIntersect.h"
+
+/**************************************************************************/
+/*  FractureIntersect.cc												  */
+/*  Classe che contiene tutte le intersezioni divise in base al loro tipo */
+/*  ( Cross, Bifurcation, Parallel )                					  */
+/**************************************************************************/
 
 
 FractureIntersect::FractureIntersect ()

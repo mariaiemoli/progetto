@@ -1,8 +1,12 @@
-/**
- * TriangleData.h
+/*
+ * PROGETTO DI PACS 2014
+ *
+ * \author Bonomi Claudia
  * 
- * Classe che contiene i dati principali per costrire il triangolo
- * 
+ * \author Iemoli Maria
+ *
+ * Problema di Darcy per un network di fratture
+ *
  */
 
 #ifndef __TRIANGLEDATA_H__
@@ -13,6 +17,11 @@
 #include <assert.h>
 #include "PointData.h"
 #include "StringUtility.h"
+
+/**************************************************************************/
+/*  TriangleData.h														  */
+/*  Classe che contiene i dati principali per costrire il triangolo       */
+/**************************************************************************/
 
 class TriangleData 
 {

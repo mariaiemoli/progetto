@@ -1,8 +1,14 @@
-/**   
- * DarcyFractured.h
- * structure for the Darcy fractured problem
+/*
+ * PROGETTO DI PACS 2014
+ *
+ * \author Bonomi Claudia
+ * 
+ * \author Iemoli Maria
+ *
+ * Problema di Darcy per un network di fratture
  *
  */
+
 
 #ifndef _DARCYFRACTURED_
 #define _DARCYFRACTURED_ 1
@@ -15,7 +21,12 @@
 #include "Exporter.h"
 #include "MatrixBifurcationHandler.h"
 #include "StringUtility.h"
-//#include <fstream>
+
+/**************************************************************************/
+/*  DarcyFractured.h													  */
+/*  Classe che assembla e risolve il sistema per il problema di Darcy	  */ 
+/*  sulle fratture											              */
+/**************************************************************************/
 
 
 class DarcyFractured
@@ -31,7 +42,7 @@ public:
     
     /** 
      * 
-     * Funzione che costruisce M_mediumMesh, definisce gli elementi finiti e i metodi di integrazione e seleziona i contorni
+	 * Funzione che va a settare tutte le costanti note del problema
      * 
      */
     void init ( );
@@ -87,9 +98,6 @@ private:
 
     // Exporter
     ExporterPtr_Type M_exporter;
-
-    // Vettore che rappresenta l'inverso della permeabilità del mezzo
-    scalarVectorContainer_Type M_mediumEtaInterpolated;
 
     // eta_gamma = d/K_normale - vettore - sui punti della M_mediumMesh grande
     scalarVectorContainer_Type M_fractureEtaNormalOnMedium;

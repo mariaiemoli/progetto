@@ -1,8 +1,10 @@
-/** 
- * MeshHandler.cc
- */
 
 #include "../include/MeshHandler.h"
+
+/**************************************************************************/
+/*  MeshHandler.cc														  */
+/*  Classe che costruisce e manipola la mesh di supporto                  */
+/**************************************************************************/
 
 MeshHandler::MeshHandler ( const GetPot& dataFile, const std::string& sectionDomain ):
 

@@ -1,12 +1,24 @@
-/** IntersectData.h
+/*
+ * PROGETTO DI PACS 2014
+ *
+ * \author Bonomi Claudia
+ * 
+ * \author Iemoli Maria
+ *
+ * Problema di Darcy per un network di fratture
  *
  */
+
 
 #ifndef _INTERSECTDATA_
 #define _INTERSECTDATA_ 1
 
 #include "FractureHandler.h"
-//#include "MatrixBifurcationHandler.h"
+
+/**************************************************************************/
+/*  IntersectData.h														  */
+/*  Classe che contiene tutte le informazioni su un'intersezione		  */
+/**************************************************************************/
 
 
 class IntersectData

@@ -1,18 +1,23 @@
-/** BC.h
+/*
+ * PROGETTO DI PACS 2014
  *
- *  Libreria che introduce le condizioni al bordo sul problema
+ * \author Bonomi Claudia
+ * 
+ * \author Iemoli Maria
  *
- *  Created on: Apr 11, 2011
- *
- *  Author: Fumagalli
+ * Problema di Darcy per un network di fratture
  *
  */
-
 
 #ifndef BC_H_
 #define BC_H_ 1
 
 #include "Core.h"
+
+/**************************************************************************/
+/*  BC.h															      */
+/*  Classe che introduce le condizioni al bordo sul problema              */
+/**************************************************************************/
 
 class BC
 {
@@ -30,8 +35,7 @@ public:
     // Costruttore
     BC ( getfem::mesh& mesh,
          const std::string& MeshType,
-		 const sizeVector_Type DOFs,
-         const ElementDimension& dimension = MEDIUM );
+		 const sizeVector_Type DOFs /*= DEFAULT_VECTOR*/ );
 
 
     inline const sizeVector_Type& getDirichlet ( ) const

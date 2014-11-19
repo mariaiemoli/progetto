@@ -22,7 +22,7 @@
 
 int main ( int argc, char* argv [ ] )
 {
-	std::string fileName("data");
+	std::string fileName("Bifurcation03");
 	
 	if ( argc == 2 )
 	{
@@ -35,6 +35,8 @@ int main ( int argc, char* argv [ ] )
 
 	const std::string vtkFolder = "vtk/";
 
+	std::string s = "mkdir "+vtkFolder;
+	system (s.c_str());
 
 	//Data exporter
 	std::cout << "Create the data exporter..." << std::flush;

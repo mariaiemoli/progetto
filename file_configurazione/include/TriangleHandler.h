@@ -1,15 +1,25 @@
-/**
- * TriangleHandler.h
+/*
+ * PROGETTO DI PACS 2014
+ *
+ * \author Bonomi Claudia
  * 
- * Classe che costruisce il triangolo 2d dell'intersezione
- * 
+ * \author Iemoli Maria
+ *
+ * Problema di Darcy per un network di fratture
+ *
  */
+
 
 #ifndef __TRIANGLEHANDLER_H__
 #define __TRIANGLEHANDLER_H__
 
 #include "TriangleData.h"
 #include "FractureHandler.h"
+
+/**************************************************************************/
+/*  TriangleHandler.h													  */
+/*  Libreria che costruisce il triangolo 2d dell'intersezione             */
+/**************************************************************************/
 
 
 /**

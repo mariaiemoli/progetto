@@ -1,8 +1,10 @@
-/**
- * TriangleHandler.cc
- */
 
 #include "../include/TriangleHandler.h"
+
+/**************************************************************************/
+/*  TriangleHandler.h													  */
+/*  Libreria che costruisce il triangolo 2d dell'intersezione             */
+/**************************************************************************/
 
 
 FractureEnd::FractureEnd(PointData& a , scalar_type t)

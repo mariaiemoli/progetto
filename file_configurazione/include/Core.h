@@ -1,14 +1,26 @@
-/** Core.h
+/*
+ * PROGETTO DI PACS 2014
  *
- * Questo file:
- * - include tutte le librerie getfem che ci servono
- * - definisce tutti i typedef usati nel codice
- * - definisce le enumerazioni usate più avanti nel codice
+ * \author Bonomi Claudia
+ * 
+ * \author Iemoli Maria
+ *
+ * Problema di Darcy per un network di fratture
  *
  */
 
+
 #ifndef _DARCYCORE_
 #define _DARCYCORE_ 1
+
+/**************************************************************************/
+/*  Core.h																  */
+/*  Questo file:														  */
+/*  - include tutte le librerie getfem che ci servono					  */
+/*  - definisce tutti i typedef usati nel codice						  */
+/*  - definisce le enumerazioni usate più avanti nel codice				  */
+/**************************************************************************/
+
 
 // Level Set and Xfem stuff:
 #include <getfem/getfem_regular_meshes.h>

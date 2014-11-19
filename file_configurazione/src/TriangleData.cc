@@ -1,10 +1,11 @@
-/**
- * TriangleData.cc
- */
 
 #include <iostream>
 #include "../include/TriangleData.h"
 
+/**************************************************************************/
+/*  TriangleData.cc														  */
+/*  Classe che contiene i dati principali per costrire il triangolo       */
+/**************************************************************************/
 
 // Definition of the static variable edge
 const size_type TriangleData::M_edge[3][2] = {{0, 1}, {1, 2}, {2, 0}};

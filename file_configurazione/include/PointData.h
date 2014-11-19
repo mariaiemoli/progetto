@@ -1,3 +1,14 @@
+/*
+ * PROGETTO DI PACS 2014
+ *
+ * \author Bonomi Claudia
+ * 
+ * \author Iemoli Maria
+ *
+ * Problema di Darcy per un network di fratture
+ *
+ */
+
 #ifndef _POINTHANDLER_H_	
 #define _POINTHANDLER_H_
 
@@ -6,6 +17,11 @@
 #include <eigen3/Eigen/Dense>
 #include "Core.h"
 
+
+/**************************************************************************/
+/*  PointData.h															  */
+/*  Classe che rappresenta un punto geometrico			                  */
+/**************************************************************************/
  
 class PointData {
 	public:

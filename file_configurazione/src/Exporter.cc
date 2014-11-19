@@ -1,8 +1,11 @@
-/** Exporter.cc
- * 
- */
 
 #include "../include/Exporter.h"
+
+/**************************************************************************/
+/*  Exporter.h															  */
+/*  Classe in cui definisco le funzioni per esportare i dati              */
+/**************************************************************************/
+
 
 Exporter::Exporter ( const GetPot& dataFile, const std::string& section ) :
 					M_vtkFolder(dataFile((section + "folderVTK").data(), "./vtk/"))

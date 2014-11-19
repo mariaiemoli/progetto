@@ -1,8 +1,10 @@
-/**
- * FractureSet.cc
- */
 
 #include "../include/FracturesSet.h"
+
+/**************************************************************************/
+/*  FractureSet.h														  */
+/*  Classe che contiene tutte le fratture				                  */
+/**************************************************************************/
 
 FracturesSet::FracturesSet ():
 M_intersections ( new FractureIntersect_Type )

@@ -1,8 +1,11 @@
-/** 
- * LevelSetHandler.cc
- */
 
 #include "../include/LevelSetHandler.h"
+
+/**************************************************************************/
+/*  LevelSetHandler.cc													  */
+/*  Classe che inizializza e gestisce il levelset che rappresenta una  	  */
+/*  frattura                 			  								  */
+/**************************************************************************/
 
 LevelSetHandler::LevelSetHandler ( const GetPot& dataFile,
                                    const std::string& section,

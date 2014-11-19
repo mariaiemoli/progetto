@@ -1,12 +1,14 @@
-/** MeshHandler.h
+/*
+ * PROGETTO DI PACS 2014
  *
- * Created on: Apr 1, 2011
- *
- * \author Alessio Fumagalli
- *
- * classe che costruisce e manipola la mesh di supporto
+ * \author Bonomi Claudia
  * 
+ * \author Iemoli Maria
+ *
+ * Problema di Darcy per un network di fratture
+ *
  */
+
 
 #ifndef MESHHANDLER_H_
 #define MESHHANDLER_H_ 1
@@ -17,6 +19,10 @@
 #include "BCHandler.h"
 #include <math.h>
 
+/**************************************************************************/
+/*  MeshHandler.h														  */
+/*  Classe che costruisce e manipola la mesh di supporto                  */
+/**************************************************************************/
 
 class MeshHandler
 {

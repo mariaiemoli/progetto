@@ -1,10 +1,14 @@
-/**
+/*
+ * PROGETTO DI PACS 2014
  *
- * FractureSet.h
+ * \author Bonomi Claudia
  * 
- * classe che contiene tutte le fratture
+ * \author Iemoli Maria
+ *
+ * Problema di Darcy per un network di fratture
  *
  */
+
 
 #ifndef _FRACTURESSET_
 #define _FRACTURESSET_ 1
@@ -12,6 +16,11 @@
 #include "Core.h"
 #include "FractureHandler.h"
 #include "FractureIntersect.h"
+
+/**************************************************************************/
+/*  FractureSet.h														  */
+/*  Classe che contiene tutte le fratture				                  */
+/**************************************************************************/
 
 
 class FracturesSet
