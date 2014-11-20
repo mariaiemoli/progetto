@@ -1,6 +1,6 @@
 \select@language {italian}
-\contentsline {chapter}{\numberline {1}Legge di Darcy e mezzi porosi}{2}{chapter.1}
-\contentsline {section}{\numberline {1.1}Descrizione dello scenario}{2}{section.1.1}
+\contentsline {chapter}{\numberline {1}Mezzi porosi e legge di Darcy}{2}{chapter.1}
+\contentsline {section}{\numberline {1.1}Legge di Darcy}{2}{section.1.1}
 \contentsline {chapter}{\numberline {2}Strumenti di sviluppo}{3}{chapter.2}
 \contentsline {section}{\numberline {2.1}\texttt {Git}}{3}{section.2.1}
 \contentsline {section}{\numberline {2.2}\texttt {CMake}}{4}{section.2.2}
@@ -11,10 +11,11 @@
 \contentsline {section}{\numberline {3.3}Le Classi \texttt {LevelSetHandler} e \texttt {LevelSetData}}{11}{section.3.3}
 \contentsline {section}{\numberline {3.4}Le Classi \texttt {FractureIntersect} e \texttt {IntersectData}}{12}{section.3.4}
 \contentsline {chapter}{\numberline {4}Classi per la gestione del problema numerico}{15}{chapter.4}
-\contentsline {section}{\numberline {4.1}Class \texttt {BC} e Class \texttt {BCHandler}}{15}{section.4.1}
-\contentsline {section}{\numberline {4.2}Class \texttt {DarcyFracture}}{16}{section.4.2}
-\contentsline {section}{\numberline {4.3}Class \texttt {PointData} e \texttt {TriangleData}}{17}{section.4.3}
-\contentsline {section}{\numberline {4.4}Class \texttt {TriangleHandler} }{17}{section.4.4}
-\contentsline {section}{\numberline {4.5}Class \texttt {MatrixBifurcationHandler}}{17}{section.4.5}
-\contentsline {chapter}{\numberline {5}Costruzione del file Data}{18}{chapter.5}
-\contentsline {chapter}{\numberline {6}Confronto FreeFem, Validazione dei risultati}{19}{chapter.6}
+\contentsline {section}{\numberline {4.1}Class \texttt {DarcyFracture}}{15}{section.4.1}
+\contentsline {section}{\numberline {4.2}Class \texttt {XFEMOperetors}}{17}{section.4.2}
+\contentsline {section}{\numberline {4.3}Class \texttt {PointData} e Class \texttt {TriangleData}}{18}{section.4.3}
+\contentsline {section}{\numberline {4.4}Class \texttt {Intersection}}{18}{section.4.4}
+\contentsline {section}{\numberline {4.5}Class \texttt {MatrixBifurcationHandler}}{19}{section.4.5}
+\contentsline {section}{\numberline {4.6}Class \texttt {BC} e Class \texttt {BCHandler}}{20}{section.4.6}
+\contentsline {chapter}{\numberline {5}Costruzione del file Data}{22}{chapter.5}
+\contentsline {chapter}{\numberline {6}Confronto FreeFem, Validazione dei risultati}{23}{chapter.6}

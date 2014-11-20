@@ -3,7 +3,7 @@
 main.pdf: main.tex bibliografia.bib 
 		@pdflatex main
 		@bibtex main
-		@pdflatex main
+		@pdflatex main-frn
 		@pdflatex  main
 #		texi2pdf main
 
