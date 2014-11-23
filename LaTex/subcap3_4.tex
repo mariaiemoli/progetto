@@ -1,0 +1,115 @@
+\lstnewenvironment{Code03_04}[1][]{\lstset{basicstyle=\small\ttfamily, columns=fullflexible,framexrightmargin=+.1\textwidth, keywordstyle=\color{red}\bfseries, commentstyle=\color{blue},language=C++, basicstyle=\small, numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=5pt, frame=shadowbox, #1}}{}
+
+\chapter{Classi per la gestione del problema numerico}
+
+\section{Class \texttt{DarcyFracture}}
+La classe \texttt{DarcyFracture} ci permette di passare alla formulazione algebrica, $ Ax=b $, del problema e di risolverlo. \\ 
+
+%Il suo costruttore richiede i seguenti parametri:
+%	\begin{itemize}
+%	\item \textit{Mesh:} relativa al mezzo o a una delle fratture
+%	\item \textit{Stringa:} contenente il tipo di mesh di GetFem del elemento precedente
+%	\item \textit{Vettore:} nullo, se la mesh fa riferimento al mezzo, contenete gli indici dei gradi di libert\`{a} degli estremi, se si sta lavorando su una frattura
+%	\item \textit{ElementDimesion:} dimensione in cui stiamo lavorando ( di defaul 2 per il mezzo e 1 per le fratture)
+%	\end{itemize}
+I campi fondamentali della classe sono:
+	\begin{enumerate}
+	\item[-] \texttt{M\_globalMatrix}: \`{e} una matrice a blocchi sparsa rappresentata i GETfem da un \textit{boost::shared\_ptr $\langle$ gmm::row\_matrix $\langle$ sparseVector\_Type $\rangle \rangle$};
+	\item[-] \texttt{M\_globalRightHandSide}: vettore del termine noto;
+	\item[-] \texttt{M\_velocityAndPressure}: vettore soluzione delle velocit\'{a} e della pressione.
+	\end{enumerate} 
+
+\begin{Code03_04}[caption={Classe \texttt{DarcyFracture}}]
+class DarcyFractured
+{
+ public:
+    DarcyFractured ( const MediumDataPtr_Type& medium,
+                     const MeshHandlerPtr_Type& mesh,
+                     const BCHandlerPtr_Type& bcHandler,
+                     const FracturesSetPtr_Type& fractures,
+                     const ExporterPtr_Type& exporter );
+    
+    void init ( );
+    
+    void assembly ( const GetPot& dataFile );
+
+    void solve ( );
+
+	[ ... ]
+
+ private:
+
+	[ ... ]
+
+    sparseMatrixPtr_Type M_globalMatrix;
+
+    scalarVectorPtr_Type M_globalRightHandSide;
+
+    scalarVectorPtr_Type M_velocityAndPressure;
+
+    [ ... ]
+};
+\end{Code03_04}
+
+Il metodo init() setta tutte le costanti note del problema.
+Il metodo assembly() crea la matrice globale $A$ e il termine noto di destra, utilizzando le funzioni della classe \texttt{XFEMOperators}. 
+Ipotizzando di avere un ambiente dove tre fratture hanno un intersezione di tipo \textit{Bifurcation} e una di queste si incontra con una quarta creando un intersezione di tipo \textit{Cross}, la matrice globale avrà il seguente volto:\\
+%---->DA SISTEMAREEEEE <----------------- 
+ \begin{center}
+  $ \left[ \begin{matrix}
+ 			A_{0} &  B_{0} & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+ 			B_{0}^{T} & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+ 			0 & 0 & A_{1} &  B_{1} & 0 & 0 & 0 & 0 & 0 \\ 
+		 	0 & 0 & B_{1}^{T} & 0 & 0 & 0 & 0 & 0 & 0 \\
+		 	0 & 0 & 0 & 0 & A_{2} &  B_{2} & 0 & 0 & E_{2} \\ 
+		 	E_{2}^{T} & 0 & 0 & 0 & B_{2}^{T} & 0 & 0 & 0 & 0\\
+		 	0 & 0 & 0 & 0 & 0 & 0 & A_{3} &  B_{3} & E_{3} \\ 
+ 			E_{3}^{T} & 0 & 0 & 0 & 0 & 0 & B_{3}^{T} & 0 & 0\\
+ 			0 & 0 & 0 & 0 & E_{2}^{T} & 0 & E_{3}^{T} & 0 & 0\\
+ 			\end{matrix}.\right] $ 
+  \end{center}
+Nel caso di un \textit{Cross} le matrici $E_{2}$ e $E_{3}$, generate durante l'assembly(), impongonole condizioni di interfaccia in maniera debole .\\
+Nel caso di una \textit{Bifurcation} prima di terminare la funzione assembly() impone in maniera forte le condizioni di interfaccia, ricavate con il confronto col mondo 2D, nella riga corrispondente al DOF di pressione e di velocit\`{a} relativo al punto d' intersezione della frattura.\\
+Infine il metodo solve() risolve il problema e esporta i risultati ottenuti in formato \emph{vtk} per entrambe le incognite.\\
+
+%\section{Class \texttt{XFEMOperetors}}
+%Ogni frattura ha associata la matrice:
+%\begin{center} 
+% $ \left[ \begin{matrix}
+% 	A11 &  A12 \\ 
+% 	A12^{T} & 0
+% \end{matrix}\right] $
+%\end{center} 
+%
+%La classe \texttt{XFEMOperators} implementa le funzioni che ci permettono di calcolare questi blocchi.
+%Le sue funzioni principali sono le seguenti:
+%
+%\begin{Code03_03}[caption={Funzioni per assemblare la matrice globale}]
+%//Costruisce  A11 = Aij = a(\phi_j, \phi_i)
+%void darcy_A11F ( sparseMatrixPtr_Type& M,
+%                  const FractureHandlerPtr_Type& fracture,
+%                  const scalar_type& gammaU,
+%                  const scalarVector_Type& invKTangentialInterpolated,
+%                  const sizeVector_Type &ExtBoundary,
+%                  const size_type& uncutRegionFlag );
+%
+%// Aggiorna A11 nel caso intersezione" Cross "
+%void darcy_A11F_Cross ( sparseMatrixPtr_Type& M,
+%					    const FractureHandlerPtr_Type& fracture,
+%					    const scalarVector_Type& invKTangentialInterpolated,
+%					    const FractureHandlerPtr_Type& otherFracture,
+%					    const size_type& cutRegionFlag );
+%
+%//Costruisce A12 = Bij = b(\phi_j, \omega_i)
+%void darcy_A12F ( sparseMatrixPtr_Type& M,
+%                  const FractureHandlerPtr_Type& fracture,
+%                  const size_type& uncutRegionFlag );
+%
+%//Aggiorna A12 = Bij = b(\phi_j, \omega_i) nel caso di intersezione " Cross "
+%void darcy_A12F_Cross ( sparseMatrixPtr_Type& M,
+%                  	    const FractureHandlerPtr_Type& fracture,
+%                  	    const FractureHandlerPtr_Type& otherFracture,
+%                  	    const size_type& cutRegionFlag );
+%\end{Code03_03}
+%
+%Altre importanti funzioni sono quelle che ci permetto di costruire il termine noto e son sempre contenute in questa classe.

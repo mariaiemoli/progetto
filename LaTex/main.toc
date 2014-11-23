@@ -1,21 +1,21 @@
 \select@language {italian}
 \contentsline {chapter}{\numberline {1}Mezzi porosi e legge di Darcy}{2}{chapter.1}
 \contentsline {section}{\numberline {1.1}Legge di Darcy}{2}{section.1.1}
-\contentsline {chapter}{\numberline {2}Strumenti di sviluppo}{3}{chapter.2}
-\contentsline {section}{\numberline {2.1}\texttt {Git}}{3}{section.2.1}
-\contentsline {section}{\numberline {2.2}\texttt {CMake}}{4}{section.2.2}
-\contentsline {section}{\numberline {2.3}\texttt {Doxygen}}{6}{section.2.3}
-\contentsline {chapter}{\numberline {3}Implementazione delle fratture}{7}{chapter.3}
-\contentsline {section}{\numberline {3.1}La Classe \texttt {FracturesSet}}{8}{section.3.1}
-\contentsline {section}{\numberline {3.2}La Classe \texttt {FractureHandler}}{9}{section.3.2}
-\contentsline {section}{\numberline {3.3}Le Classi \texttt {LevelSetHandler} e \texttt {LevelSetData}}{11}{section.3.3}
-\contentsline {section}{\numberline {3.4}Le Classi \texttt {FractureIntersect} e \texttt {IntersectData}}{12}{section.3.4}
-\contentsline {chapter}{\numberline {4}Classi per la gestione del problema numerico}{15}{chapter.4}
-\contentsline {section}{\numberline {4.1}Class \texttt {DarcyFracture}}{15}{section.4.1}
-\contentsline {section}{\numberline {4.2}Class \texttt {XFEMOperetors}}{17}{section.4.2}
-\contentsline {section}{\numberline {4.3}Class \texttt {PointData} e Class \texttt {TriangleData}}{18}{section.4.3}
-\contentsline {section}{\numberline {4.4}Class \texttt {Intersection}}{18}{section.4.4}
-\contentsline {section}{\numberline {4.5}Class \texttt {MatrixBifurcationHandler}}{19}{section.4.5}
-\contentsline {section}{\numberline {4.6}Class \texttt {BC} e Class \texttt {BCHandler}}{20}{section.4.6}
-\contentsline {chapter}{\numberline {5}Costruzione del file Data}{22}{chapter.5}
-\contentsline {chapter}{\numberline {6}Confronto FreeFem, Validazione dei risultati}{23}{chapter.6}
+\contentsline {chapter}{\numberline {2}Considerazioni preliminari}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}Strumenti di sviluppo}{3}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}\texttt {Git}}{3}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}\texttt {CMake}}{3}{subsection.2.1.2}
+\contentsline {subsection}{\numberline {2.1.3}\texttt {Doxygen}}{6}{subsection.2.1.3}
+\contentsline {section}{\numberline {2.2}Dati del problema}{7}{section.2.2}
+\contentsline {chapter}{\numberline {3}Implementazione delle fratture}{10}{chapter.3}
+\contentsline {section}{\numberline {3.1}La Classe \texttt {FracturesSet}}{11}{section.3.1}
+\contentsline {section}{\numberline {3.2}La Classe \texttt {FractureHandler}}{12}{section.3.2}
+\contentsline {section}{\numberline {3.3}Le Classi \texttt {LevelSetHandler} e \texttt {LevelSetData}}{14}{section.3.3}
+\contentsline {section}{\numberline {3.4}Le Classi \texttt {FractureIntersect} e \texttt {IntersectData}}{15}{section.3.4}
+\contentsline {chapter}{\numberline {4}Classi per la gestione dell'intersezione}{18}{chapter.4}
+\contentsline {section}{\numberline {4.1}Classe \texttt {MatrixBifurcationHandler}}{20}{section.4.1}
+\contentsline {section}{\numberline {4.2}Classe \texttt {Intersection}}{21}{section.4.2}
+\contentsline {section}{\numberline {4.3}Classe \texttt {PointData} e Classe \texttt {TriangleData}}{21}{section.4.3}
+\contentsline {section}{\numberline {4.4}Classe \texttt {BC} e Classe \texttt {BCHandler}}{22}{section.4.4}
+\contentsline {chapter}{\numberline {5}Costruzione del file Data}{23}{chapter.5}
+\contentsline {chapter}{\numberline {6}Confronto FreeFem, Validazione dei risultati}{24}{chapter.6}

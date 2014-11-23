@@ -1,81 +1,19 @@
 \lstnewenvironment{Code03_03}[1][]{\lstset{basicstyle=\small\ttfamily, columns=fullflexible,framexrightmargin=+.1\textwidth, keywordstyle=\color{red}\bfseries, commentstyle=\color{blue},language=C++, basicstyle=\small, numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=5pt, frame=shadowbox, #1}}{}
 
-\chapter{Classi per la gestione del problema numerico}
+\chapter{Classi per la gestione dell'intersezione}
 
-\section{Class \texttt{DarcyFracture}}
-La classe \texttt{DarcyFracture} ci permette di passare alla formulazione algebrica, $ Ax=b $, del problema e di risolverlo. \\ 
-
-%Il suo costruttore richiede i seguenti parametri:
-%	\begin{itemize}
-%	\item \textit{Mesh:} relativa al mezzo o a una delle fratture
-%	\item \textit{Stringa:} contenente il tipo di mesh di GetFem del elemento precedente
-%	\item \textit{Vettore:} nullo, se la mesh fa riferimento al mezzo, contenete gli indici dei gradi di libert\`{a} degli estremi, se si sta lavorando su una frattura
-%	\item \textit{ElementDimesion:} dimensione in cui stiamo lavorando ( di defaul 2 per il mezzo e 1 per le fratture)
-%	\end{itemize}
-I campi fondamentali della classe sono:
-	\begin{enumerate}
-	\item[-] \texttt{M\_globalMatrix}: \`{e} una matrice a blocchi sparsa rappresentata i GETfem da un \textit{boost::shared\_ptr $\langle$ gmm::row\_matrix $\langle$ sparseVector\_Type $\rangle \rangle$};
-	\item[-] \texttt{M\_globalRightHandSide}: vettore del termine noto;
-	\item[-] \texttt{M\_velocityAndPressure}: vettore soluzione delle velocit\'{a} e della pressione.
-	\end{enumerate} 
-
-\begin{Code03_03}[caption={Classe \texttt{DarcyFracture}}]
-public:
-
-    DarcyFractured ( const MediumDataPtr_Type& medium,
-                     const MeshHandlerPtr_Type& mesh,
-                     const BCHandlerPtr_Type& bcHandler,
-                     const FracturesSetPtr_Type& fractures,
-                     const ExporterPtr_Type& exporter );
-    
-    void init ( );
-    
-    void assembly ( const GetPot& dataFile );
-
-    void solve ( );
-
-	[ ... ]
-
-private:
-
-	[ ... ]
-
-    // Global matrix, darcy
-    sparseMatrixPtr_Type M_globalMatrix;
-    // Termine noto di destra del sistema
-    scalarVectorPtr_Type M_globalRightHandSide;
-    // Soluzione del sistema ( velocita' + pressione )
-    scalarVectorPtr_Type M_velocityAndPressure;
-
-    [ ... ]
-
-};
-\end{Code03_03}
-
-Il metodo init() va a settare tutte le costanti note del problema.
-Il metodo assembly() va a creare la matrice globale $A$ e il termine noto di destra, utilizzando le funzioni della classe \texttt{XFEMOperators}. 
-Ipotizzando di avere un ambiente dove tre fratture hanno un intersezione di tipo \textit{Bifurcation} e una di queste si incontra con una quarta creando un intersezione di tipo \textit{Cross}, la matrice globale avrà il seguente volto:\\
-%---->DA SISTEMAREEEEE <----------------- 
- \begin{center}
-  $ \left[ \begin{matrix}
- 			A_{0} &  B_{0} & 0 & 0 & 0 & 0 & 0 & 0 \\ 
- 			B_{0}^{T} & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
- 			0 & 0 & A_{1} &  B_{1} & 0 & 0 & 0 & 0 \\ 
-		 	0 & 0 & B_{1}^{T} & 0 & 0 & 0 & 0 & 0 \\
-		 	0 & 0 & 0 & 0 & A_{2} &  B_{2} & 0 & 0 \\ 
-		 	0 & 0 & 0 & 0 & B_{2}^{T} & 0 & 0 & 0 \\
-		 	0 & 0 & 0 & 0 & 0 & 0 & A_{3} &  B_{3} \\ 
- 			0 & 0 & 0 & 0 & 0 & 0 & B_{3}^{T} & 0 \\
- 			\end{matrix}.\right] $ 
-  \end{center}
-Nel caso di un \textit{Cross} la matrice App viene generata durante l'assembly() per garantire che le pressioni relative ai gradi di libert\`{a} estesi siano uguali nel punto di intersezione. Mentre le matrici $E_{i}$ sono inserite per imporre le condizioni di interfaccia.\\
-Nel caso di una \textit{Bifurcation} per trovare le condizioni da rispettare nel punto di intersezione dobbiamo porci in uno spazio 2D.
-Le fratture avranno dunque uno spessore e potremo delimitare un triangolo di intersezione unendo i punti di incontro dei loro bordi. \\
+Le fratture con cui lavoriamo sono poste in uno spazio 1D e hanno un unico punto in comune nel caso di una \textit{Bifurcation}. Ponendosi in uno spazio 2D la regione in comune è invece un triangolo. Il primo caso approssima in maniera troppo brutale la situazione reale, mentre il secondo \`{e} pi\`{u} ricco di informazioni e ci permette di avere valori pi\`{u} consistenti.\\
+Per avere dei risultati maggiormente significativi instauriamo dunque un legame fra questi due mondi con le condizioni da rispettare nel punto di intersezione, meglio dette condizioni d'interfaccia.\\
+Nel caso 2D le fratture hanno uno spessore e possiamo delimitare un triangolo di intersezione unendo i punti di incontro dei loro bordi. \\
+\begin{figure}[htbp]
+\includegraphics[width=1\textwidth]{img/TriangoloBiforcazione.eps}
+\caption{Struttura della biforcazione 2D}\label{Biforcazione}
+\end{figure}
 Presi \textbf{N} il vettore delle normali ai lati del triangolo, \textbf{$K_{I}$} la matrice di permeabilit\`{a} all'intersezione e una costante \textit{t} possiamo definire:
 \begin{center}
 	$ S = \textit{t}diag( \textbf{N}$ \textbf{$K_{I}$} $ \textbf{N}^{T} ) $
 \end{center}
-Definite ora \textbf{C} matrice dei vettori che uniscono il baricentro del triangolo con il punto medio  di ogni lato e \textbf{$P_{c}$} matrice di proiezione sullo spazio nullo della matrice di base per \textbf{C}, possiamo trovare la matrice di trasmissibilit\`{a}:
+Definite ora \textbf{C} matrice dei vettori che uniscono il baricentro, punto C, del triangolo con il punto medio  di ogni lato e \textbf{$P_{c}$} matrice di proiezione sullo spazio nullo della matrice di base per \textbf{C}, possiamo trovare la matrice di trasmissibilit\`{a}:
 \begin{center}
 	$ T = \frac{1}{\textbf{I}}( \textbf{N}$ \textbf{$K_{I}$} $ \textbf{N}^{T} ) + $\textbf{$P_{c}$} $\textbf{S}$\textbf{$P_{c}$}
 \end{center}
@@ -96,62 +34,48 @@ e le condizioni che dobbiamo porre all'intersezione sono:
 		\end{array}
 	\right.$
 \end{center}
-Dunque nel caso di una \textit{Bifurcation} prima di terminare la funzione assembly() va a imporre queste equazioni nella riga corrispondente al DOF di pressione di intersezione della frattura.\\
-Infine il metodo solve() risolve il problema e esporta i risultati ottenuti in formato \emph{vtk}, sia per la pressione che per la velocit\`{a}.\\
 
-\section{Class \texttt{XFEMOperetors}}
-Ogni frattura ha associata la matrice:
-\begin{center} 
- $ \left[ \begin{matrix}
- 	A11 &  A12 \\ 
- 	A12^{T} & 0
- \end{matrix}\right] $
-\end{center} 
+Queste sono le condizioni d'interfaccia che verranno imposte nel punto di intersezione delle fratture.
 
-La classe \texttt{XFEMOperators} implementa le funzioni che ci permettono di calcolare questi blocchi.
-Le sue funzioni principali sono le seguenti:
+\section{Classe \texttt{MatrixBifurcationHandler}}
+La class \texttt{MatrixBifurcationHandler} contiene le matrici associate a una biforcazione e implementa i metodi per calcolarle. 
+%Inclusa la matrice $T$, di vitale importanza per l'imposizione delle condizioni di interfaccia del nostro problema.
+I campi fondamentali della classe sono:
+	\begin{enumerate}
+	\item[-] \texttt{M\_intersection}: di tipo Intersection, contiene tutte le informazioni base per poter ricavare le matrici;
+	\item[-] \texttt{M\_T}: matrice T di vitale importanza per l'imposizione delle condizioni di interfaccia.
+	\end{enumerate} 
+\begin{Code03_03}[caption={Classe \texttt{Intersection}}]
+class MatrixBifurcationHandler
+{
+ public:
+	MatrixBifurcationHandler( const GetPot& dataFile,
+				const std::string& section = "mediumData/",
+				const std::string& subsection = "darcy/");
+	
+	void setMatrices ( FracturePtrContainer_Type& fractures );
+	
+	[ ... ]
+	
+	void computeT( scalar_type t=6.0 );
 
-\begin{Code03_03}[caption={Funzioni per assemblare la matrice globale}]
-//Costruisce  A11 = Aij = a(\phi_j, \phi_i)
-void darcy_A11F ( sparseMatrixPtr_Type& M,
-                  const FractureHandlerPtr_Type& fracture,
-                  const scalar_type& gammaU,
-                  const scalarVector_Type& invKTangentialInterpolated,
-                  const sizeVector_Type &ExtBoundary,
-                  const size_type& uncutRegionFlag );
+	[ ... ]
 
-// Aggiorna A11 nel caso intersezione" Cross "
-void darcy_A11F_Cross ( sparseMatrixPtr_Type& M,
-					    const FractureHandlerPtr_Type& fracture,
-					    const scalarVector_Type& invKTangentialInterpolated,
-					    const FractureHandlerPtr_Type& otherFracture,
-					    const size_type& cutRegionFlag );
+ private:
 
-//Costruisce A12 = Bij = b(\phi_j, \omega_i)
-void darcy_A12F ( sparseMatrixPtr_Type& M,
-                  const FractureHandlerPtr_Type& fracture,
-                  const size_type& uncutRegionFlag );
-
-//Aggiorna A12 = Bij = b(\phi_j, \omega_i) nel caso di intersezione " Cross "
-void darcy_A12F_Cross ( sparseMatrixPtr_Type& M,
-                  	    const FractureHandlerPtr_Type& fracture,
-                  	    const FractureHandlerPtr_Type& otherFracture,
-                  	    const size_type& cutRegionFlag );
+	Matrix2d M_K;
+	Intersection_Type M_intersection;
+	Matrix32 M_N;
+	Matrix32 M_C;
+	Matrix32 M_Qc;
+	Matrix3d M_Pc;
+	Matrix3d M_T;
+};
 \end{Code03_03}
 
-Altre importanti funzioni sono quelle che ci permetto di costruire il termine noto e son sempre contenute in questa classe.
+\section{Classe \texttt{Intersection}}
 
-\section{Class \texttt{PointData} e Class \texttt{TriangleData}}
-
-Vengono utilizzate le classe \texttt{Matrix} e \texttt{Vector} della libreria \texttt{Eigen}.
-Ci poniamo ora in uno spazio 2D.\\
-La classe \texttt{PointData} ci permette di definire un punto e di poterlo manipolare con le operazioni di somma, differenza e prodotto.\\
-La classe \texttt{TriangleData} ci permette di definire un triangolo e di calcolarne l'area. Inoltre sono stati implementati i metodi necessari per la costruzione del triangolo di intersezione.
-
-\section{Class \texttt{Intersection}}
-
-La class \texttt{Intersection}, definita in \texttt{TriangleHandler.h}, contiene tutte le informazioni relative ad una biforcazione in uno spazio 2D.
-Le informazioni contenute nei suoi campi sono necessarie per il calcolo delle matrici associate al triangolo di intersezione.
+La class \texttt{Intersection}, definita in \texttt{TriangleHandler.h}, contiene tutte le informazioni relative ad una biforcazione in uno spazio 2D necessarie per il calcolo delle matrici associate al triangolo di intersezione.
 I campi fondamentali della classe sono:
 	\begin{enumerate}
 	\item[-] \texttt{M\_intersection}: di tipo PointData, rappresenta il punto di intersezione;
@@ -161,79 +85,36 @@ I campi fondamentali della classe sono:
 	\end{enumerate} 
 
 \begin{Code03_03}[caption={Classe \texttt{Intersection}}]
-public:
+class Intersection
+{
+ public:
 	[ ... ]
 	
-	/* Funzione che costruisce il triangolo di intersezione 
-	 * partendo dal vettore delle fratture che si intersecano 
-	 */
 	void setIntersection( FracturePtrContainer_Type& M_FracturesSet );
 	
 	[ ... ]
-private:
+ private:
 	
 	[ ... ]	
 	
-	// Punto di intersezione
 	PointData M_intersection;
 	
 	Vector2d M_tangents [ 3 ];
 	Vector2d M_normals [ 3 ];
 	
-	// Triangolo di intersezione
 	TriangleData M_intersectionTriangle;
-	
+};	
 \end{Code03_03}
 
-\section{Class \texttt{MatrixBifurcationHandler}}
-La class \texttt{MatrixBifurcationHandler} contiene le matrici associate a una biforcazione e implementa i metodi per calcolarle. 
-%Inclusa la matrice $T$, di vitale importanza per l'imposizione delle condizioni di interfaccia del nostro problema.
-I campi fondamentali della classe sono:
-	\begin{enumerate}
-	\item[-] \texttt{M\_intersection}: di tipo Intersection, contiene tutte le informazioni base per poter ricavare le matrici;
-	\item[-] \texttt{M\_T}: matrice T di vitale importanza per l'imposizione delle condizioni di interfaccia del nostro problema.
-	\end{enumerate} 
-\begin{Code03_03}[caption={Classe \texttt{Intersection}}]
-	/* Costruttore vuoto di defult. 
-	 * Definisce la matrice 3x3 M_Pc costante pari a 1/3 
-	 * riempie la matrice 2x2 M_K, leggendo dal file "data".
-	 */ 
-	MatrixBifurcationHandler( const GetPot& dataFile,
-				const std::string& section = "mediumData/",
-				const std::string& subsection = "darcy/");
-	
-	
-	/* Funzione che inizializza M_intersection e calcola la matrice M_T 
-	 */
-	void setMatrices ( FracturePtrContainer_Type& fractures );
-	
-	[ ... ]
-	
-	/* Funzione che calcola la matrice M_T, matrice di trasmissibilita'. 
-	 * La matrice M_T deriva dall'applicazione di uno schema alle 
-	 * differenze finite mimetiche sul triangolo di intersezione per la legge di Darcy, 
-	 * ignorando l'effetto della forza gravitazionale.
-	 * Questa funzione richiama il calcolo delle matrici M_C, M_N e M_Qc.
-	 * L'approssimazione di M_T assume la seguente forma:
-	 * 					 T= N K N^T + t P_c \operatorname{trace}(NKN^T)P_c
-	 */	
-	void computeT( scalar_type t=6.0 );
+\section{Classe \texttt{PointData} e Classe \texttt{TriangleData}}
 
-	[ ... ]
+Vengono utilizzate le classe \texttt{Matrix} e \texttt{Vector} della libreria \texttt{Eigen}.
+Ci poniamo ora in uno spazio 2D.\\
+La classe \texttt{PointData} ci permette di definire un punto e di poterlo manipolare con le operazioni di somma, differenza e prodotto.\\
+La classe \texttt{TriangleData} ci permette di definire un triangolo e di calcolarne l'area. Inoltre sono stati implementati i metodi necessari per la costruzione del triangolo di intersezione.
 
-private:
 
-	Matrix2d M_K;
-	Intersection_Type M_intersection;
-	Matrix32 M_N;
-	Matrix32 M_C;
-	Matrix32 M_Qc;
-	Matrix3d M_Pc;
-	Matrix3d M_T;
-	
-\end{Code03_03}
-
-\section{Class \texttt{BC} e Class \texttt{BCHandler}}
+\section{Classe \texttt{BC} e Classe \texttt{BCHandler}}
 %\subsection{Definizione della classe e costruttore}
 La classe \texttt{BC} ci permette di introdurre le condizioni al bordo sia nel mezzo che per ogni singola frattura. \\ 
 Il campo fondamentale della classe \`{e}:
@@ -244,7 +125,9 @@ Il campo fondamentale della classe \`{e}:
 
 %\newpage	
 \begin{Code03_03}[caption={Classe \texttt{BC}}]
-public:
+class BC
+{
+ public:
 
     enum
     {
@@ -258,14 +141,14 @@ public:
          const sizeVector_Type DOFs,
          const ElementDimension& dimension = MEDIUM );
 
-private:
+ private:
 
     getfem::mesh_fem M_meshFEM;
     
-    // flags for BC
     sizeVector_Type M_dirichlet;
     sizeVector_Type M_neumann;
-    sizeVector_Type M_extBoundary;
+    sizeVector_Type M_extBoundary;   
+};
 \end{Code03_03}
 
 Quando stiamo considerando una frattura con solo intersezioni di tipo cross, il costruttore andrà a inserire gli indici dei gradi di libert\`{a} nei rispettivi vettori valutando solamente se essi si trovano su una faccia della mesh.\\
