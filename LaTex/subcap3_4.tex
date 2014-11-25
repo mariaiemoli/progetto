@@ -57,15 +57,16 @@ Ipotizzando di avere un ambiente dove tre fratture hanno un intersezione di tipo
 %---->DA SISTEMAREEEEE <----------------- 
  \begin{center}
   $ \left[ \begin{matrix}
- 			A_{0} &  B_{0} & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ 
- 			B_{0}^{T} & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
- 			0 & 0 & A_{1} &  B_{1} & 0 & 0 & 0 & 0 & 0 \\ 
-		 	0 & 0 & B_{1}^{T} & 0 & 0 & 0 & 0 & 0 & 0 \\
-		 	0 & 0 & 0 & 0 & A_{2} &  B_{2} & 0 & 0 & E_{2} \\ 
-		 	E_{2}^{T} & 0 & 0 & 0 & B_{2}^{T} & 0 & 0 & 0 & 0\\
-		 	0 & 0 & 0 & 0 & 0 & 0 & A_{3} &  B_{3} & E_{3} \\ 
- 			E_{3}^{T} & 0 & 0 & 0 & 0 & 0 & B_{3}^{T} & 0 & 0\\
- 			0 & 0 & 0 & 0 & E_{2}^{T} & 0 & E_{3}^{T} & 0 & 0\\
+ 			A_{0} &  B_{0} & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+ 			B_{0}^{T} & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+ 			0 & 0 & A_{1} &  B_{1} & 0 & 0 & 0 & 0 & 0 & 0 \\ 
+		 	0 & 0 & B_{1}^{T} & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+		 	0 & 0 & 0 & 0 & A_{2} &  B_{2} & 0 & 0 & E_{2} & 0\\ 
+		 	0 & 0 & 0 & 0 & B_{2}^{T} & 0 & 0 & 0 & 0 & 0\\
+		 	0 & 0 & 0 & 0 & 0 & 0 & A_{3} &  B_{3} & 0 & E_{3} \\ 
+ 			0 & 0 & 0 & 0 & 0 & 0 & B_{3}^{T} & 0 & 0 & 0\\
+ 			0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & App_{0} & App_{1} \\
+ 			0 & 0 & 0 & 0 & E_{2}^{T} & 0 & E_{3}^{T} & 0 & 0 & 0\\
  			\end{matrix}.\right] $ 
   \end{center}
 Nel caso di un \textit{Cross} le matrici $E_{2}$ e $E_{3}$, generate durante l'assembly(), impongonole condizioni di interfaccia in maniera debole .\\

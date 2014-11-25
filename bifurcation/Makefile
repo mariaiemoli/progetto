@@ -1,63 +1,63 @@
 # Compiler
-CXX = g++ 
-#CXX=/usr/bin/clang++
+CXX ?= g++
 
-# Optimize flags
-OPTFLAGS = -O3
+# Optimization flags
+OPTFLAGS ?= -O3
 
 # Flags
-CPPFLAGS=-I. -I/usr/local/include/eigen3
+CXXFLAGS = $(OPTFLAGS) -Wall -I$(EIGEN_PATH)
 
-WARNFLAGS=-Wall -Wno-deprecated
-
-CXXFLAGS = $(OPTFLAGS) $(CPPFLAGS) $(WARNFLAGS) -std=c++11
+# Preprocessor flags
+CPPFLAGS += $(OPTFLAGS) -Wall $(INCLUDE) $(DEFINES)
 
 # Executable source
 EXESRCS = main.cc
 
 # Executable object file
-EXEOBJS = $(EXESRCS:.cc = .o)
+EXEOBJS = $(EXESRCS:.cc=.o)
 
 # Executable name
 EXEC = darcy
 
-# Sources folder
-FOLDER = src/
-
-# External library
-GETFEM_PATH = /usr/local/
-
-LIB_PATH =  /usr/lib
-
-LDLIBS = /usr/local/lib/libgetfem.a
-
-LDLIBS += $(GETFEM_LIB) -rdynamic  /usr/lib/libblas.a /usr/lib/liblapack.so.3gf  /usr/lib/x86_64-linux-gnu/libqhull.a
-
-INCLUDE = -I$(GETFEM_PATH) -I$(GETFEM_PATH)/src -I$(GETFEM_PATH)/src/gmm -I./include -I/usr/include 
-
-DEF_TAGS = -DHAVE_CONFIG -DGMM_USES_BLAS
-
 # Sources
+FOLDER = src/
 SRCS = $(wildcard $(FOLDER)*.cc)
-
-# Objects
 OBJS = $(SRCS:.cc=.o)
 
-# Headers
-HEADERS = $(SRCS:.cc=.h)
+# External library
+GETFEM_PATH ?= /usr/local/include
+LIB_PATH ?= /opt/local/lib/
+EIGEN_PATH = /opt/local/include/eigen3
+
+# Linker flags
+LDFLAGS += -L$(GETFEM_PATH) -L$(LIB_PATH) 
+LIBS = -lblas -llapack -lqhull -lgetfem -latlas
+
+# Includes
+INCLUDE = -I$(GETFEM_PATH) -I$(GETFEM_PATH)/getfem -I$(GETFEM_PATH)/gmm -I/opt/local/include/ -I./include 
+
+# Defines
+DEFINES = -DHAVE_CONFIG_H -DGMM_USES_BLAS
 
 # Name file of dependences
 DEPEND = make.dep
 
-.PHONY: all clean
+.PHONY: all clean distclean
 
-all : $(DEPEND) $(OBJS) $(EXEOBJS)
-	$(CXX) -g $(OPTFLAGS) -o $(EXEC) $(EXEOBJS) $(OBJS) $(LDLIBS) $(DEF_TAGS) $(INCLUDE) 
+all: $(EXEC)
 
+$(EXEC):$(DEPEND) $(EXEOBJS) $(OBJS)
+	$(CXX) $(LDFLAGS) $(LIBS) -o $@ $^ 
+
+# the special macros $@ and $^, which are the left and right sides of the :, respectively, to make the overall compilation rule more general.
+	
 $(DEPEND) : $(SRCS) $(EXESRCS)
 	$(CXX) -MM $(SRCS) $(EXESRCS) -MF $(DEPEND) 
 
 -include $(DEPEND)
 
-clean :
-	-rm $(EXEC) $(OBJS)
+clean:
+	$(RM) $(EXEOBJS) $(OBJS)
+
+distclean: clean
+	$(RM) $(EXEC)

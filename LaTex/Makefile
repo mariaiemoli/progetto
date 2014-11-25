@@ -13,4 +13,4 @@ clean:
 	rm -f *.aux *.log *.out
         
 distclean: 
-	rm -f *.aux *.log *.out *.pdf
+	rm -f *.aux *.log *.out *.pdf *.gz
