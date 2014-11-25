@@ -363,7 +363,7 @@ bool FractureIntersect::checkCross( const sizeVector_Type& levelSets, const Frac
 		
 	}
 	
-	assert( count != 2 && " caso non gestito " );
+	assert( count != 2 && " caso a V non gestito " );
 	
 	return isCross;
 	

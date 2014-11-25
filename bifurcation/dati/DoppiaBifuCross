@@ -7,7 +7,7 @@ folderVTK = ./vtk/
 transientSolver = 0
 stabilize = 1
 
-numberFractures = 3
+numberFractures = 6
 
 [dataTime]
 
@@ -121,7 +121,7 @@ spaceDimension = 1.
                 etaTangential = 100.
                 etaTangentialDistribution = 1.
 
-                source = 0.0
+                source = 4.0
                 solution = 1.
                 velocity = 0.
 
@@ -183,7 +183,7 @@ spaceDimension = 1.
                 etaTangential = 100.
                 etaTangentialDistribution = 1.
 
-                source = 0.0
+                source = 4.0
                 solution = -1.
                 velocity = 0.
 
@@ -242,7 +242,7 @@ spaceDimension = 1.
                 etaTangential = 100
                 etaTangentialDistribution = 1.
 
-                source = 0.0
+                source = 4.0
                 solution = 1.
                 velocity = 0.
 
@@ -251,7 +251,7 @@ spaceDimension = 1.
 
 [../]
 
-[fractureData0]
+[fractureData3]
 
 spaceDimension = 1.
 
@@ -302,7 +302,7 @@ spaceDimension = 1.
                 etaTangential = 100.
                 etaTangentialDistribution = 1.
 
-                source = 0.0
+                source = 4.0
                 solution = -1.
                 velocity = 0.
 
@@ -312,7 +312,7 @@ spaceDimension = 1.
 [../]
 
 
-[fractureData11]
+[fractureData4]
 
 spaceDimension = 1.
 
@@ -364,7 +364,7 @@ spaceDimension = 1.
                 etaTangential = 100.
                 etaTangentialDistribution = 1.
 
-                source = 0.0
+                source = 4.0
                 solution = 1.
                 velocity = 0.
 
@@ -373,7 +373,7 @@ spaceDimension = 1.
 
 s[../]
 
-[fractureData12]
+[fractureData5]
 
 spaceDimension = 1.
 
@@ -423,7 +423,7 @@ spaceDimension = 1.
                 etaTangential = 100
                 etaTangentialDistribution = 1.
 
-                source = 0.0
+                source = 4.0
                 solution = -1.
                 velocity = 0.
 
