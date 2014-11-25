@@ -17,7 +17,7 @@
 #include "IntersectData.h"
 #include "FractureHandler.h"
 #include "UsefulFunctions.h"
-#include <assert.h>s
+#include <assert.h>
 #include <map>
 
 /**************************************************************************/
@@ -142,6 +142,8 @@ public:
 		size_type FindDOF_Intersection( const bgeot::basic_mesh::ref_mesh_pt_ct nodes, FractureHandlerPtr_Type& fracture );
 		
 		bool checkCross( const sizeVector_Type& levelSets, const FracturePtrContainer_Type& fractures );
+		
+		void isRealIntersection ( const getfem::mesh& M_mesh, const size_type i, sizeVector_Type& levelSet, FracturePtrContainer_Type& fracturesInvolved );
 
 
 

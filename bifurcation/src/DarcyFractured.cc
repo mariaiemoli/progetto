@@ -116,22 +116,24 @@ void DarcyFractured::assembly ( const GetPot& dataFile )
     
     globalFractureNumber = fractureNumberCross*2 + fractureNumberBifurcation;
     
-
     // Inizializziamo tutte le matrici a blocchi, la matrice globale e il termine di destra per il sistema e il vettore delle soluzioni 
     
     // Allochiamo la matrice globale del sistema:  M_darcyGlobalMatrix
     M_globalMatrix.reset( new sparseMatrix_Type( fractureTotalNumberDOFVelocityPressure + globalFractureNumber,
              	 	 	 	 	 	 	 	 	 fractureTotalNumberDOFVelocityPressure + globalFractureNumber ));
     gmm::clear( *M_globalMatrix );
-   
+ /*  
+    std::cout << " fractureTotalNumberDOFVelocityPressure  " << fractureTotalNumberDOFVelocityPressure << std::endl;
+    std::cout << " globalFractureNumber  " << globalFractureNumber << std::endl;
+   std::cout << " M_globalMatrix  " << fractureTotalNumberDOFVelocityPressure + globalFractureNumber << std::endl;
+   */
     // Allochiamo il vettore del termine noto di destra del sistema: M_darcyGlobalRightHandSide
     M_globalRightHandSide.reset( new scalarVector_Type( fractureTotalNumberDOFVelocityPressure + globalFractureNumber ));
     gmm::clear( *M_globalRightHandSide );
-
+    
     // Allochiamo il vettore globale del termine incognito del sistema: M_darcyVelocityAndPressure
     M_velocityAndPressure.reset(new scalarVector_Type( fractureTotalNumberDOFVelocityPressure + globalFractureNumber ));
     gmm::clear(*M_velocityAndPressure);
-
     
     // Allochiamo la matrice che usereme per accoppiare le fratture che si intersecano
     sparseMatrixPtr_Type  App;
@@ -322,11 +324,10 @@ void DarcyFractured::assembly ( const GetPot& dataFile )
 		}
 		  
 	}
-	
+
     // Aggiorno ora la matrice globale imponendo le condizioni di interfaccia per la biforcazione
     for ( size_type i = 0; i < IntBifurcation.size(); i++ )
     {
-
     	sparseMatrixPtr_Type Aup0, Aup1, Aup2, Aup3;
     	   	
     	FractureHandlerPtr_Type f0 = IntBifurcation [ i ].getFracture (0);
@@ -338,8 +339,21 @@ void DarcyFractured::assembly ( const GetPot& dataFile )
     	size_type id2 = f2->getId();
 
         const pairSizeVectorContainer_Type& intersectElementsGlobalIndex0 = M_fractures->getFracture( id0 )->getFractureIntersectElementsGlobalIndex ();
+        
+		const size_type globalIndex01 =  intersectElementsGlobalIndex0[ id1 ][ 0 ].first;
+		const size_type globalIndex02 =  intersectElementsGlobalIndex0[ id2 ][ 0 ].first;
 
-		const size_type globalIndex0 =  intersectElementsGlobalIndex0[ id1 ][ 0 ].first;
+        const pairSizeVectorContainer_Type& intersectElementsGlobalIndex1 = M_fractures->getFracture( id1 )->getFractureIntersectElementsGlobalIndex ();
+        
+		const size_type globalIndex10 =  intersectElementsGlobalIndex1[ id0 ][ 0 ].first;
+		const size_type globalIndex12 =  intersectElementsGlobalIndex1[ id2 ][ 0 ].first;
+		
+		const pairSizeVectorContainer_Type& intersectElementsGlobalIndex2 = M_fractures->getFracture( id2 )->getFractureIntersectElementsGlobalIndex ();
+		
+		const size_type globalIndex20 =  intersectElementsGlobalIndex2[ id0 ][ 0 ].first;
+		const size_type globalIndex21 =  intersectElementsGlobalIndex2[ id1 ][ 0 ].first;
+
+		const size_type globalIndex0 = fmin ( globalIndex01, fmin( globalIndex02, fmin ( globalIndex10, fmin ( globalIndex12, fmin ( globalIndex20, globalIndex21 )))));
 		
         Aup0.reset ( new sparseMatrix_Type ( 1, fractureTotalNumberDOFVelocityPressure + globalFractureNumber) );
         gmm::clear(*Aup0);
@@ -370,6 +384,8 @@ void DarcyFractured::assembly ( const GetPot& dataFile )
 		scalarVector_Type DOF( 3 );
 		scalarVector_Type DOF_v( 3 );
 		
+		
+		
 		for( size_type i=0; i< DOF.size(); i++)
 		{
 			Matrix.SetDOFIntersecton( Fracture[ i ], DOF[ i ] );
@@ -387,39 +403,39 @@ void DarcyFractured::assembly ( const GetPot& dataFile )
 			}
 		}
 		
-		
 		(*Aup0) ( 0 , shiftIntersect[ id0 ] + DOF_v[ 0 ] )  = 1.;
 		(*Aup0) ( 0 , shiftIntersect[ id0 ] + DOF[ 0 ] + fractureNumberGlobalDOFVelocity [ id0 ] ) = 1.*T( 0 , 0 );
 		(*Aup0) ( 0 , shiftIntersect[ id1 ] + DOF[ 1 ] + fractureNumberGlobalDOFVelocity [ id1 ] ) = 1.*T( 0 , 1 );
 		(*Aup0) ( 0 , shiftIntersect[ id2 ] + DOF[ 2 ] + fractureNumberGlobalDOFVelocity [ id2 ] ) = 1.*T( 0 , 2 );
 		(*Aup0) ( 0 , fractureTotalNumberDOFVelocityPressure + globalIndex0 ) = -1.*( T( 0 , 0 ) + T( 0 , 1 ) + T( 0 , 2 ) );
-	    
 		
 		gmm::copy(*Aup0, gmm::sub_matrix(*M_globalMatrix, 
 	    		gmm::sub_interval( shiftIntersect2[ id0 ] + DOF[ 0 ], 1), 
 	    		gmm::sub_interval( 0, fractureTotalNumberDOFVelocityPressure + globalFractureNumber ) ));
 		
+
 		(*Aup1) ( 0 , shiftIntersect[ id1 ] + DOF_v[ 1 ] )  = 1.;
 		(*Aup1) ( 0 , shiftIntersect[ id0 ] + DOF[ 0 ] + fractureNumberGlobalDOFVelocity [ id0 ] ) = 1.*T( 1 , 0 );
 		(*Aup1) ( 0 , shiftIntersect[ id1 ] + DOF[ 1 ] + fractureNumberGlobalDOFVelocity [ id1 ] ) = 1.*T( 1 , 1 );
 		(*Aup1) ( 0 , shiftIntersect[ id2 ] + DOF[ 2 ] + fractureNumberGlobalDOFVelocity [ id2 ] ) = 1.*T( 1 , 2 );
 		(*Aup1) ( 0 , fractureTotalNumberDOFVelocityPressure + globalIndex0 ) = -1.*( T( 1 , 0 ) + T( 1 , 1 ) + T( 1 , 2 ) );
 		
+
 		gmm::copy(*Aup1, gmm::sub_matrix(*M_globalMatrix, 
 	    		gmm::sub_interval( shiftIntersect2[ id1 ] + DOF[ 1 ], 1), 
 	    		gmm::sub_interval( 0, fractureTotalNumberDOFVelocityPressure + globalFractureNumber ) ));
-		
+
 		(*Aup2) ( 0 , shiftIntersect[ id2 ] + DOF_v[ 2 ] )  = 1.;
 		(*Aup2) ( 0 , shiftIntersect[ id0 ] + DOF[ 0 ] + fractureNumberGlobalDOFVelocity [ id0 ] ) = 1.*T( 2 , 0 );
 		(*Aup2) ( 0 , shiftIntersect[ id1 ] + DOF[ 1 ] + fractureNumberGlobalDOFVelocity [ id1 ] ) = 1.*T( 2 , 1 );
 		(*Aup2) ( 0 , shiftIntersect[ id2 ] + DOF[ 2 ] + fractureNumberGlobalDOFVelocity [ id2 ] ) = 1.*T( 2 , 2 );
 		(*Aup2) ( 0 , fractureTotalNumberDOFVelocityPressure + globalIndex0 ) = -1.*( T( 2 , 0 ) + T( 2 , 1 ) + T( 2 , 2 ) );
-		
+
 		gmm::copy(*Aup2, gmm::sub_matrix(*M_globalMatrix, 
 	    		gmm::sub_interval( shiftIntersect2[ id2 ] + DOF[ 2 ], 1), 
 	    		gmm::sub_interval( 0, fractureTotalNumberDOFVelocityPressure + globalFractureNumber ) ));
 		
-		
+
 		scalar_type s = 0.;
 		
 		Matrix.computeScap ( s );
@@ -460,18 +476,24 @@ void DarcyFractured::assembly ( const GetPot& dataFile )
 		(*Aup3) ( 0 , fractureTotalNumberDOFVelocityPressure + globalIndex0 ) = 1.;
 
 		size_type gl = fmax (0, globalIndex0-1);
-
-		gmm::copy(*Aup3, gmm::sub_matrix(*M_globalMatrix, 
-	    		gmm::sub_interval( fractureTotalNumberDOFVelocityPressure + fractureNumberCross + gl, 1), 
-	    		gmm::sub_interval( 0, fractureTotalNumberDOFVelocityPressure + globalFractureNumber ) ));	
 		
+		std::cout << "********" << std::endl;
+		std::cout << "   globalIndex0    " << globalIndex0 << std::endl;
+		
+		std::cout << " fractureTotalNumberDOFVelocityPressure + fractureNumberCross + i " 
+				<< fractureTotalNumberDOFVelocityPressure + 2*fractureNumberCross + i << std::endl; 
+		std::cout << "********" << std::endl;
+		
+		gmm::copy(*Aup3, gmm::sub_matrix(*M_globalMatrix, 
+	    		gmm::sub_interval( fractureTotalNumberDOFVelocityPressure  + 2*fractureNumberCross + i, 1), 
+	    		gmm::sub_interval( 0, fractureTotalNumberDOFVelocityPressure + globalFractureNumber ) ));	
+			
     }
 
     gmm::copy(*App, gmm::sub_matrix(*M_globalMatrix, 
     		gmm::sub_interval( fractureTotalNumberDOFVelocityPressure, fractureNumberCross ), 
     		gmm::sub_interval( fractureTotalNumberDOFVelocityPressure, 2*fractureNumberCross ) ));
   
-    
     //Costruiamo il termine noto
     
     // Vector, Neumann conditions

@@ -76,9 +76,6 @@ constructIntesection ( const getfem::mesh& mesh, getfem::mesh_level_set& meshLev
     		// Conversione da un vettore di bit a un vettore di interi
 	        fromBitVectorToStdVector ( listOfLevelSet_bitVector [ i ], listOfLevelSet [ i ] );
 
-	        // Per ogni elemento della mesh di supporto in cui passano almeno due fratture verifico il tipo di intersezione
-	        IntersectionType type = intersectionType ( meshLevelSet, listOfConvex [ i ], listOfLevelSet [ i ], fractures );
-	        
 			// Prendo i puntatori alle fratture coinvolte
 			FracturePtrContainer_Type fracturesInvolved ( listOfLevelSet[i].size() );
 
@@ -88,6 +85,11 @@ constructIntesection ( const getfem::mesh& mesh, getfem::mesh_level_set& meshLev
 
 			}
 
+			isRealIntersection ( mesh, listOfConvex [ i ], listOfLevelSet [ i ], fracturesInvolved );
+			
+	        // Per ogni elemento della mesh di supporto in cui passano almeno due fratture verifico il tipo di intersezione
+	        IntersectionType type = intersectionType ( meshLevelSet, listOfConvex [ i ], listOfLevelSet [ i ], fractures );
+	        
 			// Costruisco la classe IntersectData per la nuova intersezione e la aggiungo in base al tipo
 			IntersectData intersection;
 
@@ -131,7 +133,7 @@ constructIntesection ( const getfem::mesh& mesh, getfem::mesh_level_set& meshLev
            // Intersezione di tipo Cross
            if ( type == Cross )
            {
-			    assert ( fracturesInvolved.size() == 2 );
+			    assert ( fracturesInvolved.size() == 2 && " caso non gestito " );
 
     		    // Do una numerazione globale alle intersezioni di tipo Cross
                 std::cout << " globalIndexCross " << globalIndexCross << std::endl;
@@ -316,6 +318,8 @@ bool FractureIntersect::checkCross( const sizeVector_Type& levelSets, const Frac
 {
 	bool isCross = true;
 	
+	size_type count = 0;
+	
 	if( levelSets.size() == 2 )
    	{ 
 		// Prendo i puntatori alle fratture coinvolte
@@ -327,6 +331,7 @@ bool FractureIntersect::checkCross( const sizeVector_Type& levelSets, const Frac
              
         }
     	
+        
 		for( size_type i=0; i< fracturesInvolved.size(); i++ )
 		{
 			size_type j = ( i + 1 )%( fracturesInvolved.size() );
@@ -347,14 +352,18 @@ bool FractureIntersect::checkCross( const sizeVector_Type& levelSets, const Frac
 			if( gmm::abs(fracturesInvolved[ i ]->getLevelSet()->getData()->ylevelSetFunction( start )) < 1.0E-4 )
 			{
 				isCross = false;
+				count++;
 			}
 			else if ( gmm::abs(fracturesInvolved[ i ]->getLevelSet()->getData()->ylevelSetFunction( end )) < 1.0E-4 )
 			{
 				isCross = false;
+				count++;
 			}
 		}
 		
 	}
+	
+	assert( count != 2 && " caso non gestito " );
 	
 	return isCross;
 	
@@ -564,7 +573,7 @@ size_type FractureIntersect::FindDOF_Intersection( const bgeot::basic_mesh::ref_
     {   
 		if ( miny >= translateOrdinata && maxy <= lengthOrdinata )
 		{	
-			return 0;
+			return 0;  // dof interni
 		}
 		else if ( miny <= lengthOrdinata && maxy >= lengthOrdinata )
 		{	
@@ -576,7 +585,7 @@ size_type FractureIntersect::FindDOF_Intersection( const bgeot::basic_mesh::ref_
 		}
 		else
 		{	
-			return 3;
+			return 3;	// esterno
 		}
 
     }
@@ -594,7 +603,7 @@ size_type FractureIntersect::FindDOF_Intersection( const bgeot::basic_mesh::ref_
 
 		else
 		{
-			return -1;
+			return -1; // primo dof
 		}
     }
 
@@ -610,10 +619,37 @@ size_type FractureIntersect::FindDOF_Intersection( const bgeot::basic_mesh::ref_
 		}
 		else
 		{	
-			return 1;
+			return 1; // ultimo dof
 		}
     }
 	
 	return 3;
 
-}// compreso
+}// FindDOF_Intersection
+
+void FractureIntersect::isRealIntersection ( const getfem::mesh& M_mesh, const size_type i, sizeVector_Type& levelSet, FracturePtrContainer_Type& fractures )
+{
+	bgeot::basic_mesh::ref_mesh_pt_ct nodes = M_mesh.points_of_convex ( i );
+	
+	sizeVector_Type L_tmp;
+	
+	FracturePtrContainer_Type F_tmp;
+	
+	for ( size_type j = 0; j < fractures.size(); j++ )
+	{
+		if ( FindDOF_Intersection ( nodes, fractures [ j ]) != 3 )
+		{
+			L_tmp.push_back ( levelSet [ j ]); 
+			F_tmp.push_back ( fractures [ j ]);
+		}
+	}
+    
+	levelSet = L_tmp;
+	fractures = F_tmp;
+	
+	return;
+	
+}// isRealIntersection
+
+
+
