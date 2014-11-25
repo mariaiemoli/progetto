@@ -17,6 +17,7 @@
 #include "IntersectData.h"
 #include "FractureHandler.h"
 #include "UsefulFunctions.h"
+#include <assert.h>s
 #include <map>
 
 /**************************************************************************/
@@ -33,7 +34,8 @@ public:
         {
                 Parallel = 400000,
                 Cross = 500000,
-                Bifurcation = 600000
+                Bifurcation = 600000,
+				Bifurcation2 = 700000
         };
 
 
@@ -138,6 +140,8 @@ public:
 		
 
 		size_type FindDOF_Intersection( const bgeot::basic_mesh::ref_mesh_pt_ct nodes, FractureHandlerPtr_Type& fracture );
+		
+		bool checkCross( const sizeVector_Type& levelSets, const FracturePtrContainer_Type& fractures );
 
 
 
@@ -156,7 +160,8 @@ private:
          */
         IntersectionType intersectionType ( getfem::mesh_level_set& meshLevelSet,
                                             const size_type& elementID,
-                                            const sizeVector_Type& levelSets );
+                                            const sizeVector_Type& levelSets,
+											const FracturePtrContainer_Type& fractures );
 
 
         scalar_type integrateWithBooleanOperation ( getfem::mesh_level_set& meshLevelSet,

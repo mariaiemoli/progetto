@@ -269,6 +269,17 @@ size_type FractureHandler::setMeshLevelSetFracture ( FractureHandler& otherFract
 					M_extendedVelocity.push_back ( M_meshFEMVelocity.ind_basic_dof_of_element ( i_cv )[1] );
 					
             	}
+				
+				if( type == "Bifurcation2" && M_DOF_Free.size() == 2  )
+				{
+					M_meshFlat.region ( FractureHandler::FRACTURE_UNCUT * ( M_ID + 1 ) ).sup ( i_cv );
+					
+					M_meshFlat.region ( FractureHandler::FRACTURE_INTERSECT * ( M_ID + 1 ) + otherFractureId + 1 ).add( i_cv );					
+					
+					M_extendedPressure.push_back ( M_meshFEMPressure.ind_basic_dof_of_element ( i_cv )[0] );
+					M_extendedVelocity.push_back ( M_meshFEMVelocity.ind_basic_dof_of_element ( i_cv )[0] );
+					M_extendedVelocity.push_back ( M_meshFEMVelocity.ind_basic_dof_of_element ( i_cv )[1] );
+				}
             	
 				M_fractureIntersectElements [ otherFractureId ].push_back ( i_cv );
 

@@ -30,6 +30,9 @@ FractureIntersect::FractureIntersect ()
     M_subRegionIntersection [ coppia ] = Cross;
     coppia.first = 1;
     M_subRegionIntersection [ coppia ] = Parallel;
+    // quest' ultimo caso ha dei valori fittizi
+	coppia.first = 2;
+    M_subRegionIntersection [ coppia ] = Bifurcation2;
 
 } // costruttore
 
@@ -38,9 +41,10 @@ FractureIntersect::FractureIntersect ()
 void FractureIntersect::
 constructIntesection ( const getfem::mesh& mesh, getfem::mesh_level_set& meshLevelSet, const FracturePtrContainer_Type& fractures )
 {
-    // Assegno una numerazione globale ai Cross e alle Biforcazioni
-    size_type globalIndexBifurcation = 0;
+    // Assegno una numerazione globale ai Cross e alle Biforcazioni di tipo 1 e 2
     size_type globalIndexCross = 0;
+	size_type globalIndexBifurcation = 0;
+	size_type globalIndexBifurcation2 = 0;
 
     // Cerco le intersezioni
     sizeVector_Type listOfConvex;
@@ -73,7 +77,7 @@ constructIntesection ( const getfem::mesh& mesh, getfem::mesh_level_set& meshLev
 	        fromBitVectorToStdVector ( listOfLevelSet_bitVector [ i ], listOfLevelSet [ i ] );
 
 	        // Per ogni elemento della mesh di supporto in cui passano almeno due fratture verifico il tipo di intersezione
-	        IntersectionType type = intersectionType ( meshLevelSet, listOfConvex [ i ], listOfLevelSet [ i ] );
+	        IntersectionType type = intersectionType ( meshLevelSet, listOfConvex [ i ], listOfLevelSet [ i ], fractures );
 	        
 			// Prendo i puntatori alle fratture coinvolte
 			FracturePtrContainer_Type fracturesInvolved ( listOfLevelSet[i].size() );
@@ -100,7 +104,9 @@ constructIntesection ( const getfem::mesh& mesh, getfem::mesh_level_set& meshLev
 
         const size_type bifuNum = M_intersections [ Bifurcation ].size();
         std::cout << "Num bifurcation " << bifuNum << std::endl;
-
+		
+        const size_type bifuNum2 = M_intersections [ Bifurcation2 ].size();
+        std::cout << "Num bifurcation2 " << bifuNum2 << std::endl;
 
         const size_type parNum = M_intersections [ Parallel ].size();
         std::cout << "Num parallel " << parNum << std::endl;
@@ -111,7 +117,7 @@ constructIntesection ( const getfem::mesh& mesh, getfem::mesh_level_set& meshLev
         for ( size_type i = 0; i < listOfConvex.size(); ++i )
         {
            fromBitVectorToStdVector ( listOfLevelSet_bitVector [ i ], listOfLevelSet [ i ] );
-           IntersectionType type = intersectionType ( meshLevelSet, listOfConvex [ i ], listOfLevelSet [ i ] );
+           IntersectionType type = intersectionType ( meshLevelSet, listOfConvex [ i ], listOfLevelSet [ i ], fractures );
 
            // Prendo i puntatori alle fratture coinvolte
            FracturePtrContainer_Type fracturesInvolved ( listOfLevelSet[i].size() );
@@ -125,31 +131,26 @@ constructIntesection ( const getfem::mesh& mesh, getfem::mesh_level_set& meshLev
            // Intersezione di tipo Cross
            if ( type == Cross )
            {
-			    if ( fracturesInvolved.size() == 2 )
-                {
-        		    // Do una numerazione globale alle intersezioni di tipo Cross
-                    std::cout << " globalIndexCross " << globalIndexCross << std::endl;
+			    assert ( fracturesInvolved.size() == 2 );
 
-                    /*
-                     * indexTmp è un indice che mi serve per tenere traccia degli indici dei gradi di libertà aggiuntivi associati ad ogni frattura
-                     * l'idea è quella di considerare prima tutte le intersezioni di tipo Cross e poi quelle di tipo Bifurcation 
-                     */
-                    size_type indexTmp = globalIndexCross;
-                    
-                    std::string C ( "Cross" );
-                    fracturesInvolved [ 0 ]->setMeshLevelSetFracture ( *fracturesInvolved [ 1 ], indexTmp, C );
-                    
-                    indexTmp = globalIndexCross + crossNum;
-                    globalIndexCross += fracturesInvolved [ 1 ]->setMeshLevelSetFracture ( *fracturesInvolved [ 0 ], indexTmp, C );
-                    std::cout << " fracturesInvolved [ 0 ]: " << fracturesInvolved[0]->getId() << std::endl;
-                                        std::cout << " fracturesInvolved [ 1 ]: " << fracturesInvolved[1]->getId() << std::endl;
-                }
+    		    // Do una numerazione globale alle intersezioni di tipo Cross
+                std::cout << " globalIndexCross " << globalIndexCross << std::endl;
 
-        	   else if ( fracturesInvolved.size() == 3 )
-        	   {
-        		   std::cout << " caso cross da sistemare, tre fratture in un triangolo ma due sole si intersecano" << std::endl;
-        	   }
-        	   
+                /*
+                 * indexTmp è un indice che mi serve per tenere traccia degli indici dei gradi di libertà aggiuntivi associati ad ogni frattura
+                 * l'idea è quella di considerare prima tutte le intersezioni di tipo Cross e poi quelle di tipo Bifurcation 
+                 */
+                size_type indexTmp = globalIndexCross;
+                
+                std::string C ( "Cross" );
+                fracturesInvolved [ 0 ]->setMeshLevelSetFracture ( *fracturesInvolved [ 1 ], indexTmp, C );
+                
+                indexTmp = globalIndexCross + crossNum;
+                globalIndexCross += fracturesInvolved [ 1 ]->setMeshLevelSetFracture ( *fracturesInvolved [ 0 ], indexTmp, C );
+                std::cout << " fracturesInvolved [ 0 ]: " << fracturesInvolved[0]->getId() << std::endl;
+                std::cout << " fracturesInvolved [ 1 ]: " << fracturesInvolved[1]->getId() << std::endl;
+
+        	      
            }
            
            // Intersezione di tipo Bifurcation
@@ -189,6 +190,31 @@ constructIntesection ( const getfem::mesh& mesh, getfem::mesh_level_set& meshLev
 			   }
 
            }
+		   
+           // Intersezione di tipo Bifurcation2 ovvero due fratture che creano una biforcazione
+           if ( type == Bifurcation2 )
+           {
+			   //Andiamo a settare il vettore di DOF_FREE
+			   for( size_type f=0; f < fracturesInvolved.size(); f++ )
+			   {
+				   setDofFree( mesh, fracturesInvolved[ f ], listOfConvex[ i ] );
+			   }
+			   
+			   // Anche per le intersezioni di tipo Bifurcation assegno una numerazione globale
+               std::cout << " globalIndexBifurcation2 " << globalIndexBifurcation2 << std::endl;
+               
+               std::string B ( "Bifurcation2" );
+               
+               // Attenzione: nel caso della biforcazione ogni frattura interseca due altre fratture!
+               size_type indexTmp = 2*crossNum + 1*bifuNum + globalIndexBifurcation2;
+               fracturesInvolved [ 0 ]->setMeshLevelSetFracture ( *fracturesInvolved [ 1 ], indexTmp, B );
+
+               indexTmp = 2*crossNum + 1*bifuNum + globalIndexBifurcation2 + bifuNum2;
+               fracturesInvolved [ 1 ]->setMeshLevelSetFracture ( *fracturesInvolved [ 0 ], indexTmp, B );
+
+               globalIndexBifurcation2++;
+
+           }
 
         	
 		   // Stampe dei GlobalIndex
@@ -218,57 +244,6 @@ constructIntesection ( const getfem::mesh& mesh, getfem::mesh_level_set& meshLev
 	
 			}
 
-			/*
-			else if ( type == Bifurcation )
-			{    
-				
-				pairSizeVectorContainer_Type& fracture0 = fracturesInvolved[0]->getFractureIntersectElementsGlobalIndex();
-				pairSizeVectorContainer_Type& fracture1 = fracturesInvolved[1]->getFractureIntersectElementsGlobalIndex();
-				pairSizeVectorContainer_Type& fracture2 = fracturesInvolved[2]->getFractureIntersectElementsGlobalIndex();
-				
-				
-				fracture0 [ fracturesInvolved[2]->getId() ][ 0 ].second = fracture0 [ fracturesInvolved[1]->getId() ][ 0 ].first;
-	 		    
-				fracture1 [ fracturesInvolved[0]->getId() ][ 0 ].second = fracture0 [ fracturesInvolved[2]->getId() ][ 0 ].first;
-	 		    
-				fracture1 [ fracturesInvolved[2]->getId() ][ 0 ].second = fracture1 [ fracturesInvolved[0]->getId() ][ 0 ].first;
-	 		    
-				fracture2 [ fracturesInvolved[0]->getId() ][ 0 ].second = fracture1 [ fracturesInvolved[2]->getId() ][ 0 ].first;
-	      	   
-				fracture2 [ fracturesInvolved[1]->getId() ][ 0 ].second = fracture2 [ fracturesInvolved[0]->getId() ][ 0 ].first;
-	 		    
-				fracture0 [ fracturesInvolved[1]->getId() ][ 0 ].second = fracture2 [ fracturesInvolved[1]->getId() ][ 0 ].first;
-	 
-				std::cout << "Fratture: " << fracturesInvolved[0]->getId() << "		" << fracturesInvolved[1]->getId() << "		" << fracturesInvolved[2]->getId() << std::endl;
-
-				std::cout << fracturesInvolved[0]->getId()
-								<< " :	 first " << fracture0 [ fracturesInvolved[1]->getId() ][ 0 ].first
-								<< " second " << fracture0 [ fracturesInvolved[1]->getId() ][ 0 ].second << std::endl;
-	
-				std::cout << fracturesInvolved[0]->getId()
-								<< " :	 first " << fracture0 [ fracturesInvolved[2]->getId() ][ 0 ].first
-								<< " second " << fracture0 [ fracturesInvolved[2]->getId() ][ 0 ].second << std::endl;
-	
-				std::cout << fracturesInvolved[1]->getId()
-								<< " :	 first " << fracture1 [ fracturesInvolved[0]->getId() ][ 0 ].first
-								<< " second " << fracture1 [ fracturesInvolved[0]->getId() ][ 0 ].second << std::endl;
-	
-	
-				std::cout << fracturesInvolved[1]->getId()
-								<< " :	 first " << fracture1 [ fracturesInvolved[2]->getId() ][ 0 ].first
-								<< " second " << fracture1 [ fracturesInvolved[2]->getId() ][ 0 ].second << std::endl;
-	
-				std::cout << fracturesInvolved[2]->getId()
-								<< " :	 first " << fracture2 [ fracturesInvolved[0]->getId() ][ 0 ].first
-								<< " second " << fracture2 [ fracturesInvolved[0]->getId() ][ 0 ].second << std::endl;
-	
-				std::cout << fracturesInvolved[2]->getId()
-								<< " :	 first " << fracture2 [ fracturesInvolved[1]->getId() ][ 0 ].first
-								<< " second " << fracture2 [ fracturesInvolved[1]->getId() ][ 0 ].second << std::endl;
-	
-			}
-			*/
-
         }
 	}
     
@@ -279,7 +254,8 @@ constructIntesection ( const getfem::mesh& mesh, getfem::mesh_level_set& meshLev
 
 
 FractureIntersect::IntersectionType FractureIntersect::
-intersectionType ( getfem::mesh_level_set& meshLevelSet, const size_type& elementID, const sizeVector_Type& levelSets )
+intersectionType ( getfem::mesh_level_set& meshLevelSet, const size_type& elementID, const sizeVector_Type& levelSets, 
+					const FracturePtrContainer_Type& fractures )
 {
 	const size_type maxIntersection = 2*levelSets.size();
 	scalarVector_Type integrationValue ( maxIntersection );
@@ -320,11 +296,69 @@ intersectionType ( getfem::mesh_level_set& meshLevelSet, const size_type& elemen
     regionLevelSetPair_Type coppia;
     coppia.first = (size_type) std::count ( integrationValue.begin(), integrationValue.end(), 0 );
     coppia.second = levelSets.size();
+	
+	if( M_subRegionIntersection [ coppia ] == Cross )
+	{
+
+		if( !(checkCross( levelSets, fractures )) )
+		{
+			coppia.first = 2;
+			coppia.second = 2;
+		}
+	}
 
     return M_subRegionIntersection [ coppia ];
 
 
 } // intersectionType
+
+bool FractureIntersect::checkCross( const sizeVector_Type& levelSets, const FracturePtrContainer_Type& fractures  )
+{
+	bool isCross = true;
+	
+	if( levelSets.size() == 2 )
+   	{ 
+		// Prendo i puntatori alle fratture coinvolte
+	    FracturePtrContainer_Type fracturesInvolved ( levelSets.size() );
+        
+        for ( size_type f = 0; f < fracturesInvolved.size(); ++f )
+        {
+             fracturesInvolved [ f ] = fractures [ levelSets [ f ] ];
+             
+        }
+    	
+		for( size_type i=0; i< fracturesInvolved.size(); i++ )
+		{
+			size_type j = ( i + 1 )%( fracturesInvolved.size() );
+			
+			base_node tmp(1);
+			tmp[ 0 ] = 0;
+			
+			base_node start(2);
+			start[ 0 ] = fracturesInvolved[ j ]->getLevelSet()->getData()-> x_map( tmp );
+			start[ 1 ] = fracturesInvolved[ j ]->getLevelSet()->getData()-> y_map( tmp );
+			
+			tmp[ 0 ] = 1;
+			
+			base_node end(2); 
+			end[ 0 ] = fracturesInvolved[ j ]->getLevelSet()->getData()-> x_map( tmp );
+			end[ 1 ] = fracturesInvolved[ j ]->getLevelSet()->getData()-> y_map( tmp );
+			
+			if( gmm::abs(fracturesInvolved[ i ]->getLevelSet()->getData()->ylevelSetFunction( start )) < 1.0E-4 )
+			{
+				isCross = false;
+			}
+			else if ( gmm::abs(fracturesInvolved[ i ]->getLevelSet()->getData()->ylevelSetFunction( end )) < 1.0E-4 )
+			{
+				isCross = false;
+			}
+		}
+		
+	}
+	
+	return isCross;
+	
+}// checkCross
 
 
 
