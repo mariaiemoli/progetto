@@ -1,0 +1,265 @@
+/////////////////////////////////////////////////////////////////////////
+///////////////// 	PROGETTO PACS		        /////////////////
+/////////////////////////////////////////////////////////////////////////
+
+/// CODICE PER CONFRONTARE I RISULTATI OTTENUTI CON IL MODELLO RIDOTTO PER LA PRESSIONE SULLA BIFORCAZIONE
+
+// esempio 2: cross + biforcazione, Bifurcation04
+
+// Spacing
+/*int Nelem = 120;*/
+/*int NelemI = 10;*/
+/*int NelemS = 1;*/
+
+/*bool plotYesNo = true;*/
+
+
+// prima frattura y = a0*x+b0
+real a0 = 1.;
+real b0 = 0.08;
+
+// seconda frattura y = -a1*x+b1
+real a1 = 1.;
+real b1 = 0.94;
+
+// terza frattura  y = a2*x+b2
+real a2 = 0.5;
+real b2 = 0.295;
+
+// quarta frattura  y = a3*x+b3
+real a3 = 1.;
+real b3 = 0.6;
+
+
+// spessore delle fratture
+real d0 = 0.013;
+real d1 = 0.011;
+real d2 = 0.012;
+real d3 = 0.01;
+
+// punti di inizio frattura
+real init0 = 0.0;
+real init1 = 0.0;
+real init2 = 0.43;
+real init3 = 0.0;
+
+
+// punti di fine frattura 
+real fin0 = 0.43;
+real fin1 = 0.43;
+real fin2 = 1.;
+real fin3 = 0.4;
+
+// lunghezza delle fratture
+real length0 = sqrt( ( init0-fin0 )^2 + ( a0*init0 - a0*fin0 )^2 );
+real length1 = sqrt( ( init1-fin1 )^2 + ( -a1*init1 + a1*fin1 )^2 );
+real length2 = sqrt( ( init2-fin2 )^2 + ( a2*init2 - a2*fin2 )^2 );
+real length3 = sqrt( ( init3-fin3 )^2 + ( a3*init3 - a3*fin3 )^2 );
+
+// lunghezza delle fratture lungo x
+
+real length0x = 0.43;
+real length1x = 0.43;
+real length2x = 0.57;
+real length3x = 0.4;
+real length31 = 0.17;
+real length32 = 0.23;
+real length11 = 0.17;
+real length12 = 0.26;
+
+/*
+cout << "Lunghezza fratture: " << endl
+     << "Fracture0: " << length0 << endl
+     << "Fracture1: " << length1 << endl
+     << "Fracture2: " << length2 << endl;
+*/
+// punto di intersezione: è lo stesso per tutte e tre, sono certa che sia una biforcazione
+real interFrac1 = ( b1 - b0 ) / ( a0 + a1 );
+real interFrac2 = ( b1 - b3 ) / ( a3 + a1 );
+
+cout << "Intersection Point Bifurcation: " << interFrac1 << endl;
+cout << "Intersection Point Cross: " << interFrac2 << endl;
+
+
+// punti che costituiscono il triangolo di intersezione
+real intx0 = ( ( b1 - d1/2. ) - ( b0 + d0/2. ) ) / ( a0 + a1 );
+real inty0 = a0*intx0 + b0 + d0/2.;
+
+real intx1 = ( ( b1 + d1/2. ) - ( b2 + d2/2. ) ) / ( a1 + a2 );
+real inty1 = -a1*intx1 + b1 + d1/2.;
+
+real intx2 = ( ( b0 - d0/2. ) - ( b2 - d2/2. ) ) / ( a2 - a0 );
+real inty2 = a2*intx2 + b2 - d2/2.;
+
+
+
+// punti che costituiscono il quadrato di intersezione
+real intx3 = ( ( b1 + d1/2. ) - ( b3 - d3/2. ) ) / ( a3 + a1 );
+real inty3 = a3*intx3 + b3 - d3/2.;
+
+real intx4 = ( ( b1 + d1/2. ) - ( b3 + d3/2. ) ) / ( a3 + a1 );
+real inty4 = a3*intx4 + b3 + d3/2.;
+
+real intx5 = ( ( b1 - d1/2. ) - ( b3 + d3/2. ) ) / ( a3 + a1 );
+real inty5 = a3*intx5 + b3 + d3/2.;
+
+real intx6 = ( ( b1 - d1/2. ) - ( b3 - d3/2. ) ) / ( a3 + a1 );
+real inty6 = a3*intx6 + b3 - d3/2.;
+
+
+cout << "Triangolo: " << endl
+     << intx0 << "  " << inty0 << endl
+     << intx1 << "  " << inty1 << endl
+     << intx2 << "  " << inty2 << endl;
+
+
+// segmenti che definiscono il triangolo
+// inside0: y = e1*x + f1
+real e1 = ( inty1 - inty0 )/( intx1 - intx0 );
+real f1 = ( inty0 - e1*intx0 );
+
+// inside1: y = e2*x + f2
+real e2 = ( inty1 - inty2 )/( intx1 - intx2 );
+real f2 = ( inty2 - e2*intx2 );
+
+// inside2: y = e3*x + f3
+real e3 = ( inty2 - inty0 )/( intx2 - intx0 );
+real f3 = ( inty0 - e3*intx0 );
+
+
+// segmenti che definiscono il quadrato
+// inside3: y = e4*x + f4
+real e4 = ( inty4 - inty3 )/( intx4 - intx3 );
+real f4 = ( inty3 - e4*intx3 );
+
+// inside4: y = e5*x + f5
+real e5 = ( inty5 - inty4 )/( intx5 - intx4 );
+real f5 = ( inty5 - e5*intx5 );
+
+// inside5: y = e6*x + e6
+real e6 = ( inty6 - inty5 )/( intx6 - intx5 );
+real f6 = ( inty5 - e6*intx5 );
+
+// inside6: y = e7*x + e7
+real e7 = ( inty6 - inty3 )/( intx6 - intx3 );
+real f7 = ( inty3 - e7*intx3 );
+
+
+// punti che definiscono il dominio 2d delle fratture
+real ext0 = ( ( interFrac1 - length0x )*( a0 + 1./a0 ) + d0/2.  )/( a0 + 1./a0 );
+real ext1 = ( - d0/2. + ( interFrac1 - length0x )*( a0 + 1./a0 )  )/( a0 + 1./a0 );
+
+real ext2 = ( d3/2. + ( interFrac2 - length31 )*( a3 + 1./a3 ) )/( a3 + 1./a3 );
+real ext3 = ( ( interFrac2 - length31 )*( a3 + 1./a3 ) - d3/2. )/( a3 + 1./a3 );
+
+real ext4 = ( ( interFrac2 - length11 )*( a1 + 1./a1 ) - d1/2. )/( a1 + 1./a1 );
+real ext5 = ( ( interFrac1 - length1x )*( a1 + 1./a1 ) + d1/2. )/( a1 + 1./a1 );
+
+real ext6 = ( ( interFrac2 + length32 )*( a3 + 1./a3 ) - d3/2. )/( a3 + 1./a3 );
+real ext7 = ( ( interFrac2 + length32 )*( a3 + 1./a3 ) + d3/2. )/( a3 + 1./a3 );
+
+real ext8 = ( ( interFrac1 + length2x )*( a2 + 1./a2 ) - d2/2. )/( a2 + 1./a2 );
+real ext9 = ( ( interFrac1 + length2x )*( a2 + 1./a2 ) + d2/2. )/( a2 + 1./a2 );
+
+
+/*cout << " punti esterni: " << endl;*/
+/*cout << " ext0:  " << ext0 << "   ext1:  " << ext1 << "   ext2:  " << ext2 <<  "   ext3:  " << ext3 << endl;*/
+/*cout << " ext4:  " << ext4 << "   ext5:  " << ext1 << "   ext5:  " << ext2 <<  "   ext6:  " << ext6 << endl;*/
+/*cout << " ext7:  " << ext7 << "   ext8:  " << ext8 << "   ext9:  " << ext9 << endl; */
+
+
+/*cout << " punti interni: " << endl;*/
+/*cout << " intx0:  " << intx0 << "   intx1:  " << intx1 << "   intx2:  " << intx2 <<  "   intx3:  " << intx3 << endl;*/
+/*cout << " intx4:  " << intx4 << "   intx5:  " << intx5 << "   intx6:  " << intx6 << endl;*/
+
+
+
+// definiamo i bordi della mesh
+border long0 ( t = ext0, intx2 ) { x = t; y = a0*t+b0-d0/2.; label = 3; }
+border long1 ( t = intx2, ext9 ) { x = t; y = a2*t+b2-d2/2.; label = 3; }
+
+border short0 ( t = ext9, ext8 ) { x = t; y = -1./a2*t+( interFrac1 + length2x )*( a2 + 1./a2 ) + b2; label = 98;}
+
+
+border long2 ( t = ext8, intx1 ) { x = t; y = a2*t+b2+d2/2.; label = 3; }
+border long3 ( t = intx1, intx3 ) { x = t; y = -a1*t+b1+d1/2.; label = 3; }
+
+border long4 ( t = intx3, ext7 ) { x = t; y = a3*t+b3-d3/2.; label = 3; }
+
+border short1 ( t = ext7, ext6 ) { x = t; y = -t*1./a3 + b3 + ( interFrac2 + length32 )*( a3 + 1./a3 ); label = 76;}
+
+border long5 ( t = ext6, intx4 ) { x = t; y = a3*t+b3+d3/2.; label = 3; }
+border long6 ( t = intx4, ext5 ) { x = t; y = -a1*t+b1+d1/2.; label = 3; }
+
+border short2 ( t = ext5, ext4 ) { x = t; y = t*1./a1 + b1 - ( interFrac2 - length11 )*( a0 + 1./a0 ); label = 54; }
+
+border long7 ( t = ext4, intx5 ) { x = t; y = -a1*t+b1-d1/2.; label = 3; }
+border long8 ( t = intx5, ext3 ) { x = t; y = a3*t+b3+d3/2.; label = 3; }
+
+border short3 ( t = ext3, ext2 ) { x = t; y = -t*1./a3 + b3 + ( interFrac2 - length31 )*( a3 + 1./a3 ); label = 32; }
+
+border long9 ( t = ext2, intx6 ) { x = t; y = a3*t+b3-d3/2.; label = 3; }
+border long10 ( t = intx6, intx0 ) { x = t; y = -a1*t+b1-d1/2.; label = 3; }
+
+border long11 ( t = intx0, ext1 ) { x = t; y = a0*t+b0+d0/2.; label = 3; }
+
+border short4 ( t = ext1, ext0 ) { x = t; y = -1./a0*t+( interFrac1 - length0x )*( a0 + 1./a0 ) + b0; label = 10;}
+
+
+
+border inside0 ( t = intx0, intx2 ) { x = t; y = e3*t+f3; label = 41; }
+border inside1 ( t = intx2, intx1 ) { x = t; y = e2*t+f2; label = 42; }
+border inside2 ( t = intx1, intx0 ) { x = t; y = e1*t+f1; label = 43; }
+
+
+border inside3 ( t = intx3, intx4 ) { x = t; y = e4*t+f4; label = 44; }
+border inside4 ( t = intx4, intx5 ) { x = t; y = e5*t+f5; label = 45; }
+border inside5 ( t = intx5, intx6 ) { x = t; y = e6*t+f6; label = 46; }
+border inside6 ( t = intx6, intx3 ) { x = t; y = e7*t+f7; label = 47; }
+
+
+// costruiamo la mesh
+
+
+mesh Th = buildmesh ( long0( Nelem ) + long1( Nelem ) + short0( Nelem*d2*NelemS ) + 
+					  long2( Nelem ) + long3( Nelem*0.5 ) + long4( Nelem*0.5 ) +
+                      short1( Nelem*d3*NelemS ) +
+                      long5( Nelem*0.5 ) + long6( Nelem*0.5 ) +
+                      short2( Nelem*d1*NelemS ) + long7( Nelem*0.5 ) + long8( Nelem*0.5 ) +
+  		      short3( Nelem*d3*NelemS ) + long9( Nelem*0.5 ) + long10( Nelem*0.5 ) +
+                      long11( Nelem ) + short4( Nelem*d0*NelemS ) + inside0( NelemI*Nelem*d0 ) +
+					  inside1( NelemI*Nelem*d2 ) + inside2( NelemI*Nelem*d1 ) 
+		      + inside3( NelemI*Nelem*d0 ) + inside4( NelemI*Nelem*d2 ) 
+		      + inside5( NelemI*Nelem*d0 ) + inside6( NelemI*Nelem*d2 ) );
+
+
+
+//plot ( Th, wait = true );
+
+
+
+func part1 = (y-e3*x-f3 >=0)*(y-e2*x-f2<=0)*(y-e1*x-f1<=0);
+func part2 = (y-e4*x-f4 <=0)*(y-e5*x-f5<=0)*(y-e6*x-f6>=0)*(y-e7*x-f7>=0);
+
+
+
+func fracture0 = (y-a0*x-b0-d0/2.<=0)*(y-a0*x-b0+d0/2.>=0)*(1.*(y-e3*x-e3<=0));
+func fracture1 = (y+a1*x-b1+d1/2.>=0)*(y+a1*x-b1-d1/2.<=0)*(1.*(y-e1*x-f1>=0))*
+			( 1.*(y-a3*x-b3-d3/2.>=0)+1.*(y-a3*x-b3+d3/2.<=0));
+func fracture2 = (y-a2*x-b2-d2/2.<=0)*(y-a2*x-b2+d2/2.>=0)*(1.*(y-e2*x-f2>=0));
+func fracture3 = (y-a3*x-b3-d3/2.<=0)*(y-a3*x-b3+d3/2.>=0)*(1.*(y+a1*x-b1+d1/2.<=0)+ 1.*(y+a1*x-b1-d1/2.>=0));
+
+mesh Th1 = buildmesh ( inside0(NelemI*Nelem*d0) + inside1(NelemI*Nelem*d2) + inside2(NelemI*Nelem*d1) );
+
+mesh Th2 = buildmesh ( inside3(NelemI*Nelem*d0) + inside4(NelemI*Nelem*d2) + inside5(NelemI*Nelem*d1) 
+			+ inside6(NelemI*Nelem*d1));
+//mesh ThI = trunc ( Th, part1, label = 11, split = 1 );
+
+if ( plotYesNo )
+{
+    plot ( Th , wait = true, cmm = " mesh " );
+    plot ( Th1 , wait = true, cmm = " triangolo intersezione " );
+    plot ( Th2 , wait = true, cmm = " quadrato intersezione " );
+}
+
+
