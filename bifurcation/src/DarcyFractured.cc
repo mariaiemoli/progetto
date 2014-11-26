@@ -132,22 +132,14 @@ void DarcyFractured::assembly ( const GetPot& dataFile )
     M_globalMatrix.reset( new sparseMatrix_Type( fractureTotalNumberDOFVelocityPressure + globalFractureNumber,
              	 	 	 	 	 	 	 	 	 fractureTotalNumberDOFVelocityPressure + globalFractureNumber ));
     gmm::clear( *M_globalMatrix );
-  
-    std::cout << " fractureTotalNumberDOFVelocityPressure  " << fractureTotalNumberDOFVelocityPressure << std::endl;
-    std::cout << " globalFractureNumber  " << globalFractureNumber << std::endl;
-    std::cout << " M_globalMatrix  " << fractureTotalNumberDOFVelocityPressure + globalFractureNumber << std::endl;
  
     // Allochiamo il vettore del termine noto di destra del sistema: M_darcyGlobalRightHandSide
     M_globalRightHandSide.reset( new scalarVector_Type( fractureTotalNumberDOFVelocityPressure + globalFractureNumber ));
     gmm::clear( *M_globalRightHandSide );
-	
-    std::cout << " M_globalRightHandSide  " << fractureTotalNumberDOFVelocityPressure + globalFractureNumber << std::endl;
     
     // Allochiamo il vettore globale del termine incognito del sistema: M_darcyVelocityAndPressure
     M_velocityAndPressure.reset(new scalarVector_Type( fractureTotalNumberDOFVelocityPressure + globalFractureNumber ));
     gmm::clear(*M_velocityAndPressure);
-	
-	std::cout << " M_velocityAndPressure  " << fractureTotalNumberDOFVelocityPressure + globalFractureNumber << std::endl;
     
     // Allochiamo la matrice che usereme per accoppiare le fratture che si intersecano
     sparseMatrixPtr_Type  App;
@@ -257,41 +249,49 @@ void DarcyFractured::assembly ( const GetPot& dataFile )
         
         const sizeVectorContainer_Type& intersectElements0 = f0->getFractureIntersectElements ();
         const sizeVectorContainer_Type& intersectElements1 = f1->getFractureIntersectElements ();
-        
-        
+		
+		std::cout << " numIntersections  " << numIntersections <<std::endl;
+		std::cout << " id0  " << id0 <<std::endl;
+		std::cout << " id1  " << id1 <<std::endl;
+		
 		for ( size_type k = 0; k < numIntersections; ++k )
 		{
+			std::cout << " numIntersections  " << numIntersections <<std::endl;
 			gmm::clear (*Aup0);
 			gmm::clear (*Aup1);
 
+			std::cout << " sto per creshar  " << numIntersections <<std::endl;
 			getfem::velocityJump_Cross ( Aup0, f0, f1, intersectElements0 [id1][k] );
 			getfem::velocityJump_Cross ( Aup1, f1, f0, intersectElements1 [id0][k] );
 
 			const size_type globalIndex = intersectElementsGlobalIndex0 [id1] [k].first;
 			const size_type globalIndex2 = intersectElementsGlobalIndex0 [id1] [k].second;
 			
+			std::cout << " k  " << k <<std::endl;
+			
 			gmm::copy ( *Aup0, 
 					    gmm::sub_matrix (*M_globalMatrix,
 									    gmm::sub_interval ( shiftIntersect [ id0 ], fractureNumberGlobalDOFVelocity [ id0 ] ),
 									    gmm::sub_interval (  fractureTotalNumberDOFVelocityPressure + globalIndex, 1 ) ) );
+						   	        std::cout << " copy II " << std::endl;
 
 			gmm::copy ( gmm::transposed(*Aup0), 
 					    gmm::sub_matrix (*M_globalMatrix,
 									    gmm::sub_interval (  fractureTotalNumberDOFVelocityPressure + fractureNumberCross + std::min(globalIndex, globalIndex2), 1 ),
 									    gmm::sub_interval ( shiftIntersect [ id0 ], fractureNumberGlobalDOFVelocity [ id0 ] ) ) );
-
+			   	        std::cout << " Copyr  III" << std::endl;
 			gmm::copy ( *Aup1, 
 					    gmm::sub_matrix (*M_globalMatrix,
 									    gmm::sub_interval ( shiftIntersect [ id1 ], fractureNumberGlobalDOFVelocity [ id1 ] ),
 									    gmm::sub_interval (  fractureTotalNumberDOFVelocityPressure + globalIndex2, 1 ) ) );
-
+			   	        std::cout << " Copyr IV " << std::endl;
 			gmm::copy ( gmm::transposed(*Aup1), 
 					    gmm::sub_matrix (*M_globalMatrix,
 									    gmm::sub_interval (  fractureTotalNumberDOFVelocityPressure + fractureNumberCross + std::min(globalIndex, globalIndex2), 1 ),
 									    gmm::sub_interval ( shiftIntersect [ id1 ], fractureNumberGlobalDOFVelocity [ id1 ] ) ) );
-
+			   	     std::cout << " Out .. " << std::endl;					
          }
-    	
+ 					   	        std::cout << " Out " << std::endl;
     }
     
 	/*
@@ -340,7 +340,6 @@ void DarcyFractured::assembly ( const GetPot& dataFile )
 	}
 
     // Aggiorno ora la matrice globale imponendo le condizioni di interfaccia per la biforcazione
-	std::cout << "IntBifurcation.size() =  " << IntBifurcation.size() << std::endl;
     for ( size_type i = 0; i < IntBifurcation.size(); i++ )
     {
     	sparseMatrixPtr_Type Aup0, Aup1, Aup2, Aup3;
@@ -491,13 +490,6 @@ void DarcyFractured::assembly ( const GetPot& dataFile )
 		(*Aup3) ( 0 , fractureTotalNumberDOFVelocityPressure + globalIndex0 ) = 1.;
 
 		size_type gl = fmax (0, globalIndex0-1);
-		
-		std::cout << "********" << std::endl;
-		std::cout << "   globalIndex0    " << globalIndex0 << std::endl;
-		
-		std::cout << " fractureTotalNumberDOFVelocityPressure + fractureNumberCross + i " 
-				<< fractureTotalNumberDOFVelocityPressure + 2*fractureNumberCross + i << std::endl; 
-		std::cout << "********" << std::endl;
 		
 		gmm::copy(*Aup3, gmm::sub_matrix(*M_globalMatrix, 
 	    		gmm::sub_interval( fractureTotalNumberDOFVelocityPressure  + 2*fractureNumberCross + i, 1), 

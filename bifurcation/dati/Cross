@@ -324,7 +324,7 @@ spaceDimension = 1.
 		yMap = t
 		xMap = 0.2
 		Map_inv = y
-                jacMap = [1./0.01]
+                jacMap = [0.01]
                 normalMap = [-2.,1.]
 
                 integrationTypeSimplex = IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(3),1)

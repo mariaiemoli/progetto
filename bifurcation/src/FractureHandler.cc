@@ -256,7 +256,10 @@ size_type FractureHandler::setMeshLevelSetFracture ( FractureHandler& otherFract
         {
             if ( M_meshLevelSetIntersect[ otherFractureId ]->is_convex_cut ( i_cv ) )
             {  
-
+				if( M_ID == 2 && otherFractureId ==3)
+				{
+					std::cout << " i_cv  " << i_cv <<std::endl;
+				}
  
             	if ( type == "Cross")
             	{	
