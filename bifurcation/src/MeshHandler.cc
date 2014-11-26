@@ -77,7 +77,7 @@ void MeshHandler::setUpMesh ( )
 
 void MeshHandler::setUpRegions ( const FracturesSetPtr_Type& fractures )
 {
-    // Selezioniamo gli elementi della mesh di supporto tagliati e non tagliati dalle fratture
+	// Selezioniamo gli elementi della mesh di supporto tagliati e non tagliati dalle fratture
     size_type i_cv = 0;
     dal::bit_vector bv_cv = M_mesh.convex_index();
 
@@ -86,12 +86,11 @@ void MeshHandler::setUpRegions ( const FracturesSetPtr_Type& fractures )
     {
     	M_mesh.region(UNCUT_REGION).add(i_cv);
     }
-
+	
     const size_type numberFractures = fractures->getNumberFractures ();
 
     if ( numberFractures > 0 )
     {
-
         M_extendedDOFScalar.resize ( numberFractures );
         M_extendedDOFVector.resize ( numberFractures );
 
@@ -99,7 +98,7 @@ void MeshHandler::setUpRegions ( const FracturesSetPtr_Type& fractures )
         {
         	i_cv = 0;
             bv_cv = M_mesh.convex_index();
-
+			
             for ( i_cv << bv_cv; i_cv != size_type(-1); i_cv << bv_cv )
             {
                 if ( fractures->getFracture ( f )->getLevelSet()->getMesh().is_convex_cut( i_cv ) )
@@ -112,7 +111,7 @@ void MeshHandler::setUpRegions ( const FracturesSetPtr_Type& fractures )
 					}
                 }
             }
-
+			
             // Controllo se i triangoli sono correttamente tagliati, i.e. se alcuni triangoli hanno area In o Out pari a zero
             fixCutRegion ( fractures->getFracture ( f ) );
         }
@@ -154,7 +153,8 @@ void MeshHandler::setUpRegions ( const FracturesSetPtr_Type& fractures )
 
             // Riempio i gradi di libertà estesi per la variabile secondaria
             for ( dal::bv_visitor i(cuttedRegionNumberDOFVelocity); !i.finished(); ++i )
-            {
+            { 
+					
                 M_extendedDOFVector [ f ].push_back(i);
             }
         }
@@ -196,7 +196,7 @@ void MeshHandler::setUpRegions ( const FracturesSetPtr_Type& fractures )
         FractureIntersect::mapIntersection_Type::const_iterator it;
 
         size_type mapIDIntersectType = 0;
-        
+		
         for ( it = begin; it != end; ++it, ++mapIDIntersectType )
         {
 
@@ -206,7 +206,6 @@ void MeshHandler::setUpRegions ( const FracturesSetPtr_Type& fractures )
 
                 const size_type basisFunction = fractures->getIntersections()
                                                 ->getBasisFunctionOfType ( intersectionType );
-
                 for ( size_type j = 0; j < intersection.size(); ++j )
                 {
                         // Regione corrente
@@ -214,12 +213,12 @@ void MeshHandler::setUpRegions ( const FracturesSetPtr_Type& fractures )
 
                         // Aggiungo i grado di libertà estesi per la pressione
                         dal::bit_vector numberDOFScalar = M_meshFEMScalar.basic_dof_on_region ( region );
-
+						
                         for ( dal::bv_visitor k ( numberDOFScalar ); !k.finished(); ++k )
                         {
-                                for ( size_type o = 0; o < basisFunction; ++o )
+							for ( size_type o = 0; o < basisFunction; ++o )
                                 {
-                                        M_extendedIntersectDOFScalar.push_back( k );
+										M_extendedIntersectDOFScalar.push_back( k );
                                 }
                         }
 
@@ -229,15 +228,13 @@ void MeshHandler::setUpRegions ( const FracturesSetPtr_Type& fractures )
                         for ( dal::bv_visitor k ( numberDOFVector ); !k.finished(); ++k )
                         {
                                 for ( size_type o = 0; o < basisFunction; ++o )
-                                {
+                                {		 
                                         M_extendedIntersectDOFVector.push_back( k );
                                 }
-                        }
-
+						}
                 }
-
         }
-
+		
         std::sort ( M_extendedIntersectDOFVector.begin(), M_extendedIntersectDOFVector.end() );
         sizeVector_Type::iterator itVect;
         itVect = unique ( M_extendedIntersectDOFVector.begin(), M_extendedIntersectDOFVector.end() );

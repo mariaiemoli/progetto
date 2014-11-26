@@ -14,6 +14,7 @@ FractureIntersect::FractureIntersect ()
     M_basisFunctionOfType [ Parallel ] = 1; 
     M_basisFunctionOfType [ Cross ] = 1;
     M_basisFunctionOfType [ Bifurcation ] = 1;
+	M_basisFunctionOfType [ Bifurcation2 ] = 1;
 
     regionLevelSetPair_Type coppia;
     
@@ -84,7 +85,7 @@ constructIntesection ( const getfem::mesh& mesh, getfem::mesh_level_set& meshLev
 				 fracturesInvolved [ f ] = fractures [ listOfLevelSet [ i ] [ f ] ];
 
 			}
-
+			
 			isRealIntersection ( mesh, listOfConvex [ i ], listOfLevelSet [ i ], fracturesInvolved );
 			
 	        // Per ogni elemento della mesh di supporto in cui passano almeno due fratture verifico il tipo di intersezione
@@ -512,12 +513,24 @@ size_type FractureIntersect::getNumberType () const
 } // getNumberType
 
 
-
 size_type FractureIntersect::getBasisFunctionOfType ( IntersectionType type ) const
+{
+	std::map < IntersectionType, size_type>::const_iterator it;
+	size_type basisFunction = 0;
+	for ( it = M_basisFunctionOfType.begin(); it != M_basisFunctionOfType.end(); ++it )
+	{
+	if( it->first == type )
+			basisFunction = it->second;
+	}
+
+	return basisFunction;
+} // getNumberBifurcation
+
+/*size_type FractureIntersect::getBasisFunctionOfType ( IntersectionType type ) const
 {
     return M_basisFunctionOfType.find ( type )->second;
 } // getBasisFunctionOfType
-
+*/
 
 void FractureIntersect::setDofFree( const getfem::mesh& M_mesh, FractureHandlerPtr_Type& fracture , size_type i )
 {
@@ -644,6 +657,12 @@ void FractureIntersect::isRealIntersection ( const getfem::mesh& M_mesh, const s
 		}
 	}
     
+	if( L_tmp.size()==1 )
+	{
+		L_tmp.clear();
+		F_tmp.clear();
+	}
+	
 	levelSet = L_tmp;
 	fractures = F_tmp;
 	

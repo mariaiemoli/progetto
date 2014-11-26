@@ -121,7 +121,7 @@ spaceDimension = 1.
                 etaTangential = 100.
                 etaTangentialDistribution = 1.
 
-                source = 4.0
+                source = 0.0
                 solution = 1.
                 velocity = 0.
 
@@ -183,14 +183,14 @@ spaceDimension = 1.
                 etaTangential = 100.
                 etaTangentialDistribution = 1.
 
-                source = 4.0
+                source = 0.0
                 solution = -1.
                 velocity = 0.
 
         [../]
 
 
-s[../]
+[../]
 
 [fractureData2]
 
@@ -242,7 +242,7 @@ spaceDimension = 1.
                 etaTangential = 100
                 etaTangentialDistribution = 1.
 
-                source = 4.0
+                source = 0.0
                 solution = 1.
                 velocity = 0.
 
@@ -302,7 +302,7 @@ spaceDimension = 1.
                 etaTangential = 100.
                 etaTangentialDistribution = 1.
 
-                source = 4.0
+                source = 0.0
                 solution = -1.
                 velocity = 0.
 
@@ -364,14 +364,13 @@ spaceDimension = 1.
                 etaTangential = 100.
                 etaTangentialDistribution = 1.
 
-                source = 4.0
+                source = 0.0
                 solution = 1.
                 velocity = 0.
 
         [../]
 
-
-s[../]
+[../]
 
 [fractureData5]
 
@@ -423,7 +422,7 @@ spaceDimension = 1.
                 etaTangential = 100
                 etaTangentialDistribution = 1.
 
-                source = 4.0
+                source = 0.0
                 solution = -1.
                 velocity = 0.
 

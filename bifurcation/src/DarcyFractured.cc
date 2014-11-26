@@ -106,6 +106,16 @@ void DarcyFractured::assembly ( const GetPot& dataFile )
 
     	// numero di gradi di libertà per i bordi per la frattura f
         fractureNumberBoundaryDOF [ f ] = M_bcHandler->getFractureBC(f)->getMeshFEM().nb_dof();
+		/*
+		 * std::cout << " f = " <<  f  <<std::endl;
+		 * std::cout << " ffractureNumberDOFPressure [ f ] =  " << fractureNumberDOFPressure [ f ] <<std::endl;
+		 * std::cout << " fractureNumberGlobalDOFPressure [ f ]  " << fractureNumberGlobalDOFPressure [ f ] <<std::endl;
+		 * std::cout << " fractureNumberDOFVelocity [ f ] =  " << fractureNumberDOFVelocity [ f ] <<std::endl;
+		 * std::cout << " fractureNumberGlobalDOFVelocity [ f ] =  " << fractureNumberGlobalDOFVelocity [ f ] <<std::endl;
+		 * std::cout << " fractureNumberDOFVelocityPressure [ f ] =  " << fractureNumberDOFVelocityPressure [ f ] <<std::endl;
+		 * std::cout << " fractureNumberBoundaryDOF [ f ] =  " << fractureNumberBoundaryDOF [ f ] <<std::endl;
+		 * std::cout <<std::endl;
+		*/
 
     }
 
@@ -122,18 +132,22 @@ void DarcyFractured::assembly ( const GetPot& dataFile )
     M_globalMatrix.reset( new sparseMatrix_Type( fractureTotalNumberDOFVelocityPressure + globalFractureNumber,
              	 	 	 	 	 	 	 	 	 fractureTotalNumberDOFVelocityPressure + globalFractureNumber ));
     gmm::clear( *M_globalMatrix );
- /*  
+  
     std::cout << " fractureTotalNumberDOFVelocityPressure  " << fractureTotalNumberDOFVelocityPressure << std::endl;
     std::cout << " globalFractureNumber  " << globalFractureNumber << std::endl;
-   std::cout << " M_globalMatrix  " << fractureTotalNumberDOFVelocityPressure + globalFractureNumber << std::endl;
-   */
+    std::cout << " M_globalMatrix  " << fractureTotalNumberDOFVelocityPressure + globalFractureNumber << std::endl;
+ 
     // Allochiamo il vettore del termine noto di destra del sistema: M_darcyGlobalRightHandSide
     M_globalRightHandSide.reset( new scalarVector_Type( fractureTotalNumberDOFVelocityPressure + globalFractureNumber ));
     gmm::clear( *M_globalRightHandSide );
+	
+    std::cout << " M_globalRightHandSide  " << fractureTotalNumberDOFVelocityPressure + globalFractureNumber << std::endl;
     
     // Allochiamo il vettore globale del termine incognito del sistema: M_darcyVelocityAndPressure
     M_velocityAndPressure.reset(new scalarVector_Type( fractureTotalNumberDOFVelocityPressure + globalFractureNumber ));
     gmm::clear(*M_velocityAndPressure);
+	
+	std::cout << " M_velocityAndPressure  " << fractureTotalNumberDOFVelocityPressure + globalFractureNumber << std::endl;
     
     // Allochiamo la matrice che usereme per accoppiare le fratture che si intersecano
     sparseMatrixPtr_Type  App;
@@ -320,12 +334,13 @@ void DarcyFractured::assembly ( const GetPot& dataFile )
 	{
 		if( f != 0)
 		{
-			shiftIntersect2 [ f ] = shiftIntersect2 [ f-1 ] + fractureNumberDOFPressure [ f-1 ] + fractureNumberDOFVelocity [ f ];	
+			shiftIntersect2 [ f ] = shiftIntersect2 [ f-1 ] + fractureNumberGlobalDOFPressure [ f-1 ] + fractureNumberGlobalDOFVelocity [ f ];	
 		}
 		  
 	}
 
     // Aggiorno ora la matrice globale imponendo le condizioni di interfaccia per la biforcazione
+	std::cout << "IntBifurcation.size() =  " << IntBifurcation.size() << std::endl;
     for ( size_type i = 0; i < IntBifurcation.size(); i++ )
     {
     	sparseMatrixPtr_Type Aup0, Aup1, Aup2, Aup3;
@@ -1015,6 +1030,10 @@ void DarcyFractured::solve ( )
 		{
 			std::cout << "Frattura " << f <<" Pressione nel punto di intersezione: " << fracturePressureMeanUNCUTInterpolated[ M_fractures->getFracture( f )->getDofFree()[ 0 ] ] << std::endl;
 			std::cout << " DOF =  " << M_fractures->getFracture( f )->getDofFree()[ 0 ] <<std::endl;
+			if( M_fractures->getFracture( f )->getDofFree().size()==2 )
+			{
+				std::cout << " DOF =  " << M_fractures->getFracture( f )->getDofFree()[ 1 ] <<std::endl;
+			}
 		}
 		
 /*		
