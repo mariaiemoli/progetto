@@ -1,4 +1,4 @@
-\documentclass[a4paper,11pt,openright,oneside]{report}
+\documentclass[a4paper,11pt,openright,oneside]{book}
 \frenchspacing
 
 \usepackage[utf8]{inputenc}
@@ -10,6 +10,11 @@
 \usepackage{longtable}
 \usepackage[boxed]{algorithm2e}
 \usepackage{amsmath}
+
+\usepackage{amssymb} %simboli matematici
+\usepackage{latexsym} %?
+\usepackage{mathrsfs} %?
+\usepackage{amsfonts} 
 
 \usepackage{hyperref}
 
@@ -24,6 +29,19 @@
 
 \usepackage{titlesec,blindtext}
 \usepackage[Lenny]{fncychap}
+
+\usepackage{eso-pic}
+\newcommand\BackgroundPicture{
+   \put(0,0){
+     \parbox[b][\paperheight]{\paperwidth}{
+       \vfill
+       \centering
+       \includegraphics[width=\textwidth]{img/fratture.eps}
+       \vfill
+     }}}
+
+
+
 %\usepackage[Sonny]{fncychap}
 %\usepackage[toc]{glossaries}
 %\makeglossaries
@@ -36,6 +54,7 @@
 \begin{document}
 
 \begin{frontespizio}
+
 \Istituzione{POLITECNICO DI MILANO}
 \Logo{logo_polimi}
 \Facolta{Ingegneria Industriale e dell'informazione}
@@ -83,7 +102,7 @@
 \include{subcap3_3}
 \include{subcap3_4}
 \include{cap4}
-\include{cap5}
+%\include{cap5}
 
 \include{bibliografia}
 
@@ -93,3 +112,8 @@
 \include{appendice}
 
 \end{document}
+
+
+\begin{tikzpicture}[remember picture,overlay]
+\node [opacity=0.2,scale=0.2] at (current page.center) {\includegraphics{img/fratture.eps}};
+\end{tikzpicture}

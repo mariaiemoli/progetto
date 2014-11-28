@@ -1,16 +1,89 @@
 \chapter{Mezzi porosi e legge di Darcy}
 
-I materiali porosi sono dei mezzi in cui si possono distinguere due parti: una matrice solida, la parte solida che costituisce la struttura del corpo, e lo spazio vuoto restante, che può essere riempito con uno o più fluidi. \\
-Risulta spesso interessante studiare il moto di un fluido in un mezzo poroso in cui sia possibile distinguere delle fratture o dei canali al suo interno. Nell'analisi del moto di un fluido in una frattura tra diversi strati geologici, ad esempio,  si pu`o pensare che il fluido, oltre a insinuarsi e scorrere nella frattura, si propaghi mediante filtrazione negli strati adiacenti la frattura stessa.
+I materiali porosi sono dei mezzi in cui si possono distinguere due costituenti: una matrice solida, la parte che costituisce la struttura rigida del corpo, e lo spazio vuoto restante, che può essere riempito con uno o più fluidi. \\
+Risulta spesso interessante studiare il moto di un fluido in un mezzo poroso in cui sia possibile distinguere delle fratture o dei canali al suo interno. Nell'analisi del moto di un fluido in una frattura tra diversi strati geologici, ad esempio,  si può pensare che il fluido, oltre a insinuarsi e scorrere nella frattura, si propaghi mediante filtrazione negli strati adiacenti la frattura stessa.
 Un'altra possibile applicazione in ambito idrogeologico riguarda lo studio di come i fiumi irrighino il terreno ad essi circostante. 
-\par Il modo del fluido all'interno del mezzo poroso viene descritto tramite la legge di Darcy.  Generalmente le dimensioni delle fratture sono molto inferiori di quelle del dominio occupato dal mezzo poroso. Questo ha portato allo sviluppo di tecniche per lo studio del flusso all'interno delle fratture basate su modelli ridotti. Questa categoria di modelli si inserisce nell'ambito dei modelli multiscala, ed hanno il vantaggio di evitare la risoluzione del campo di moto su scale spaziali molto piccole nella frattura.
+\par Il modo del fluido all'interno del mezzo poroso viene descritto tramite la legge di Darcy.  Generalmente le dimensioni delle fratture sono di molto inferiori a quelle del dominio occupato dal mezzo poroso. Questo ha portato allo sviluppo di tecniche per lo studio del flusso all'interno delle fratture basate su modelli ridotti. Questi modelli si inseriscono nella categoria dei modelli multiscala, ed hanno il vantaggio di evitare la risoluzione del campo di moto su scale spaziali molto piccole nella frattura.
 
 \section{Legge di Darcy}
 La legge di Darcy descrive la filtrazione di un fluido incomprimibile all'interno di un mezzo poroso. In particolare costituisce un legame tra il campo di velocità del fluido e il gradiente di pressione nel mezzo poroso. \\
-la legge ha la forma:
+Il moto di un fluido incomprimibile in un mezzo poroso ( considerando z=0 come quota di riferimento) può essere descritto dalla seguente coppia di equazioni:
+ 
 \begin{equation}
-\vec{u} =- \frac{\vec{K}}{\mu}
+\textbf{u} =- \frac{\textbf{K}}{\mu}\nabla {p} \footnote{Più avanti indicheremo $\frac{\textbf{K}}{\mu}$ con $\textbf{K}$ per semplicità}
+\end{equation}\label{Darcy}
+
+\begin{equation}
+\nabla \cdot u =f
+\end{equation}
+
+dove:
+\begin{enumerate}
+\item[-] \textbf{u}(\textbf{x}, t) è il campo di velocità macroscopica del fluido misurata in [\textit{m/s}];
+\item[-] \textbf{K}(\textbf{x}) è il tensore simmetrico di permeabilità assoluta misurato in [\textit{m$^2$}];
+\item[-] \textit{p(x,t)} è la pressione del fluido in [\textit{Pa}]=[\textit{N/m$^2$}];
+\item[-] \textit{$\mu$ } ( \textbf{x}, t) rappresenta la viscosità dinamica del fluido in [\textit{Pa s}], che per semplicità verrà considerata costante;
+\item[-] \textit{f}(\textbf{x}, t) rappresenta il termine sorgente in di dimensione [\textit{s}$^{-1}$].
+\end{enumerate}
+
+
+La prima equazione è la legge di Darcy e deriva dalla conservazione del momento nelle equazioni di Navier-Stokes con opportuni passaggi, mentre la seconda rappresenta la conservazione della massa. \\
+L'approssimazione con il modello di Darcy è valida per fluidi Newtoniani con bassi valori del numero di \textit{Raynolds} ($Re<10$), per cui gli effetti inerziali possono essere trascurati. Per valori maggiori è necessario estendere il modello poichè l'equazione \ref{Darcy} presenta dei limiti.
+
+
+ \section{Formulazione debole del problema}
+Il problema del flusso di un fluido in un mezzo poroso assume la seguente forma:
+
+\begin{equation}
+\begin{cases}
+\textbf{K}^{-1}  \textbf{u} +\nabla {p} =0 \\
+\nabla  \cdot u =f
+\end{cases} 
+\end{equation}\label{sistema}
+
+\noindent con condizioni al contorno:
+
+\begin{equation}
+\begin{cases}
+\textbf{u} \cdot \textbf{n}_{\Omega} =0  & su \;  \Gamma ^u\\
+p =g & su \; \Gamma ^p
+\end{cases}
+\end{equation}\label{bc}
+
+Per ricavare la formulazione debole del problema, così da poter discretizzare con gli elementi finiti, moltiplichiamo la prima equazione del sistema \ref{sistema} per una funzione test \textbf{v}, la seconda per una funzione test \textit{q} e integriamo su $\Omega$. \\
+La formulazione debole diventa: trovare (\textbf{u}, $p$) tali che:
+\begin{equation}
+\begin{split}
+\int_{\Omega} (\textbf{K}^{-1} \textbf{u}) \cdot \textbf{v} \, dx  - \int_{\Omega} p \nabla \cdot \textbf{v} \, dx  + \int_{\Gamma^p} g \, \textbf{u} \cdot \textbf{n} \, d\Gamma = 0 & \quad  \forall \, \textbf{v} \in \textbf{W} \\
+\int_{\Omega} \nabla \cdot \textbf{u} q \, dx = \int_{\Omega} f q \, dx & \quad \forall \, q \in Q
+\end{split}
+\end{equation}\label{formdebole}
+
+dove: 
+
+\begin{equation*}
+\begin{split}
+\textbf{W} &=H_{div}(\Omega) = \left \{ \textbf{w}\in [L^2(\Omega)]^2, \nabla \cdot \textbf{w} \in L^2(\Omega), \textbf{v} \cdot \textbf{n} = 0 \, su \, \Gamma^n \right \} \\
+Q &= L^2(\Omega) 
+\end{split}
+\end{equation*}
+
+Per la discretizzazione in spazio scegliamo lo spazio degli elementi finiti di grado due per la velocità e uno per la pressione e ricaviamo la seguente formulazione algebrica:
+\begin{equation}
+\begin{cases}
+A11 \textbf{U} \, +A12 \textbf{P} = F_1 \\
+A12^T \textbf{U} = F_2
+\end{cases}
 \end{equation}
 
 
+dove $ A11 \in \mathbb{R}^{N_u \times N_u}$ e $A12 \in \mathbb{R}^{N_p}$  sono le matrici realative alle forme bilineari $a(\cdot, \cdot)$ e $b(\cdot, \cdot)$ definite come:
 
+$$ a(\textbf{u}_h ), \textbf{v}_h)= \int_{\Omega} (\textbf{K}^{-1} \textbf{u}_h) \cdot \textbf{v}_h \, dx \qquad b(\textbf{u}_h, q) = - \int_{\Omega} q_h \nabla \cdot \textbf{u}_h \, dx  $$
+$$ f1(\textbf{u}_h) = \int_{\Gamma^p} g_h \, \textbf{u}_h \cdot \textbf{n} \, d\Gamma \qquad f2(q_h) =  - \int_{\Omega} f q \, dx $$
+
+Nel nostro caso quindi, per risolvere il flusso di un fluido all'interno di una frattura in un mezzo poroso si ottiene il seguente sistema algebrico:
+\begin{equation}
+\left[\begin{matrix}A_{11} &A_{12} \\A_{12}^T & 0 \end{matrix}\right] \, \left[\begin{matrix}U  \\P \end{matrix}\right] = \left[\begin{matrix}F_{1} \\F_{2} \end{matrix}\right] 
+\end{equation}
+Se vi sono più fratture che si intersecano è necessario imporre delle condizioni che leghino i rispettivi flussi e le rispettive pressioni. Il codice da cui siamo partite impone le condizioni d'interfaccia nel caso di un'intersezione di tipo \textit{Cross} in modo debole. Il nostro codice, come verrà spiegato più avanti, impone le condizioni d'interfaccia nel caso della \textit{Biforcazione} in maniera forte, ossia una volta che il sistema algebrico è già stato assemblato.

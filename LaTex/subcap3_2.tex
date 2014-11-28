@@ -231,14 +231,9 @@ if( listOfConvex.size() > 0 )
 
 \par La funzione  \texttt{constructIntesection} contiene la classificazione delle intersezioni. In questa funzione viene data una numerazione globale alle intersezioni, prima quelle di tipo \textit{Cross} e poi quelle di tipo  \textit{Bifurcation}.  Nel caso delle prime vengono aggiunte due nuove incognite, una per ogni frattura, necessarie per imporre le condizioni d'interfaccia nella formulazione debole del problema. Queste nuove variabili rappresentano la pressione nel punto di intersezione e  vengono poi accoppiate in modo da risultare uguali. Nel secondo caso invece si introduce una sola incognita per ogni intersezione, variabile che rappresenta la pressione nel punto d'incontro. Per ogni frattura coinvolta inoltre si tiene traccia del grado di libertà in cui avviene l'intersezione. Questo perchè, come vedremo, la condizione al contorno deve essere imposta solo del grado di libertà dell'estremo libero della frattura.
 
-\subsection{Classe \texttt{BC} e Classe \texttt{BCHandler}}
+\section{Le Classi \texttt{BC} e \texttt{BCHandler}}
 %\subsection{Definizione della classe e costruttore}
-La classe \texttt{BC} ci permette di introdurre le condizioni al bordo sia nel mezzo che per ogni singola frattura. \\ 
-Il campo fondamentale della classe \`{e}:
-%e crea un elemento \texttt{BC} formato da:
-	\begin{enumerate}
-	\item[-] \texttt{M\_extBoundary}: vettore contenente l'indice dei gradi di libert\'{a} in cui sono imposte le condizioni al bordo
-	\end{enumerate} 
+La classe \texttt{BC} ci permette di imporre le condizioni al bordo in ogni singola frattura. Per ogni frattura è necessario imporre due condizioni al contorno\\ 
 
 %\newpage	
 \begin{Code}[caption={Classe \texttt{BC}}]
@@ -268,14 +263,8 @@ class BC
 };
 \end{Code}
 
-Quando stiamo considerando una frattura con solo intersezioni di tipo cross, il costruttore andrà a inserire gli indici dei gradi di libert\`{a} nei rispettivi vettori valutando solamente se essi si trovano su una faccia della mesh.\\
-Nel caso della biforcazione, invece, bisogna accertarsi di imporre le condizioni al bordo solamente nel' estremo libero, ovvero quello in cui non v\`{e} l'intersezione delle tre fratture.
-%
-%\subsection{Novit\`{a} introdotte per la biforcazione}
-Per far questo quando andiamo ad analizzare una frattura \`{e} necessario fornire al costruttore il vettore dei DOF liberi.
+Quando si considera una frattura priva di intersezioni o con solo intersezioni di tipo \textit{Cross} le condizioni al contorno vengono imposte rispettivamente sul primo e l'ultimo gradi di libertà della mesh.\\
+Nel caso della biforcazione, invece, bisogna accertarsi di imporre le condizioni al bordo solamente nell' estremo libero, ovvero quello in cui non sia presente alcuna intersezione. 
+Per far questo motivo quando costruiamo l'insieme delle intersezioni per ogni frattura salviamo un vettore contenente l'indice dei gradi di libertà in cui c'è un'intersezione.
 
-La class \texttt{BCHandler} va ad inserire le condizioni al bordo di ogni frattura.
-%Per far questo creiamo un variabile booleana che varr\`{a} 1 se il grado di libert\`{a} che sto considerando è contenuto nel vettore dei DOF liberi, 0 altrimenti. Questo mi permette di inserire un controllo prima di aggiungere quel indice ai campi \texttt{M\_dirichlet} , \texttt{M\_neumann} , \texttt{M\_extBoundary} della classe.
-
-%\section{Class \texttt{BCHandler}}
-%???????
+La classe \texttt{BCHandler} viene usata per gestire le condizioni al contorno sulle fratture.
