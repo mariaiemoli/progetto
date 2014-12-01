@@ -3,7 +3,7 @@
 I materiali porosi sono dei mezzi in cui si possono distinguere due costituenti: una matrice solida, la parte che costituisce la struttura rigida del corpo, e lo spazio vuoto restante, che può essere riempito con uno o più fluidi. \\
 Risulta spesso interessante studiare il moto di un fluido in un mezzo poroso in cui sia possibile distinguere delle fratture o dei canali al suo interno. Nell'analisi del moto di un fluido in una frattura tra diversi strati geologici, ad esempio,  si può pensare che il fluido, oltre a insinuarsi e scorrere nella frattura, si propaghi mediante filtrazione negli strati adiacenti la frattura stessa.
 Un'altra possibile applicazione in ambito idrogeologico riguarda lo studio di come i fiumi irrighino il terreno ad essi circostante. 
-\par Il modo del fluido all'interno del mezzo poroso viene descritto tramite la legge di Darcy.  Generalmente le dimensioni delle fratture sono di molto inferiori a quelle del dominio occupato dal mezzo poroso. Questo ha portato allo sviluppo di tecniche per lo studio del flusso all'interno delle fratture basate su modelli ridotti. Questi modelli si inseriscono nella categoria dei modelli multiscala, ed hanno il vantaggio di evitare la risoluzione del campo di moto su scale spaziali molto piccole nella frattura.
+\par Il moto del fluido all'interno del mezzo poroso viene descritto tramite la legge di Darcy.  Generalmente le dimensioni delle fratture sono di molto inferiori a quelle del dominio occupato dal mezzo poroso. Questo ha portato allo sviluppo di tecniche per lo studio del flusso all'interno delle fratture basate su modelli ridotti. Questi modelli si inseriscono nella categoria dei modelli multiscala, ed hanno il vantaggio di evitare la risoluzione del campo di moto sulle scale spaziali molto piccole nella frattura.
 
 \section{Legge di Darcy}
 La legge di Darcy descrive la filtrazione di un fluido incomprimibile all'interno di un mezzo poroso. In particolare costituisce un legame tra il campo di velocità del fluido e il gradiente di pressione nel mezzo poroso. \\
@@ -21,9 +21,9 @@ dove:
 \begin{enumerate}
 \item[-] \textbf{u}(\textbf{x}, t) è il campo di velocità macroscopica del fluido misurata in [\textit{m/s}];
 \item[-] \textbf{K}(\textbf{x}) è il tensore simmetrico di permeabilità assoluta misurato in [\textit{m$^2$}];
-\item[-] \textit{p(x,t)} è la pressione del fluido in [\textit{Pa}]=[\textit{N/m$^2$}];
-\item[-] \textit{$\mu$ } ( \textbf{x}, t) rappresenta la viscosità dinamica del fluido in [\textit{Pa s}], che per semplicità verrà considerata costante;
-\item[-] \textit{f}(\textbf{x}, t) rappresenta il termine sorgente in di dimensione [\textit{s}$^{-1}$].
+\item[-] \textit{p}(\textit{x,t}) è la pressione del fluido in [\textit{Pa}]=[\textit{N/m$^2$}];
+\item[-] \textit{$\mu$} (\textbf{x}, t) rappresenta la viscosità dinamica del fluido in [\textit{Pa s}], che per semplicità verrà considerata costante;
+\item[-] \textit{f}(\textbf{x}, t) rappresenta il termine sorgente di dimensione [\textit{s}$^{-1}$].
 \end{enumerate}
 
 
@@ -79,7 +79,7 @@ A12^T \textbf{U} = F_2
 
 dove $ A11 \in \mathbb{R}^{N_u \times N_u}$ e $A12 \in \mathbb{R}^{N_p}$  sono le matrici realative alle forme bilineari $a(\cdot, \cdot)$ e $b(\cdot, \cdot)$ definite come:
 
-$$ a(\textbf{u}_h ), \textbf{v}_h)= \int_{\Omega} (\textbf{K}^{-1} \textbf{u}_h) \cdot \textbf{v}_h \, dx \qquad b(\textbf{u}_h, q) = - \int_{\Omega} q_h \nabla \cdot \textbf{u}_h \, dx  $$
+$$ a(\textbf{u}_h , \textbf{v}_h)= \int_{\Omega} (\textbf{K}^{-1} \textbf{u}_h) \cdot \textbf{v}_h \, dx \qquad b(\textbf{u}_h, q) = - \int_{\Omega} q_h \nabla \cdot \textbf{u}_h \, dx  $$
 $$ f1(\textbf{u}_h) = \int_{\Gamma^p} g_h \, \textbf{u}_h \cdot \textbf{n} \, d\Gamma \qquad f2(q_h) =  - \int_{\Omega} f q \, dx $$
 
 Nel nostro caso quindi, per risolvere il flusso di un fluido all'interno di una frattura in un mezzo poroso si ottiene il seguente sistema algebrico:

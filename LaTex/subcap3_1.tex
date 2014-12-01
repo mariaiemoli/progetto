@@ -4,7 +4,7 @@
 \chapter{Considerazioni preliminari}
 
 \section{Strumenti di sviluppo}
-Lo sviluppo della nostra libreria ha richiesto l'uso di strumenti specifici atti a facilitare e sistematizzare la gestione del codice quali \texttt{git}, \texttt{CMake} e \texttt{Dxygen}.\\
+Lo sviluppo del nostro progetto ha richiesto l'uso di strumenti specifici atti a facilitare e sistematizzare la gestione del codice quali \texttt{git}, \texttt{CMake} e \texttt{Dxygen}.\\
 
 \subsection{\texttt{Git}}
 \href{https://github.com/}{\texttt{Git}} è un sistema di controllo versione utilizzabile direttamente da linea di comando, molto diffuso è utile per tenere traccia delle varie fasi di sviluppo del codice. Git gestisce in modo adeguato i contributi al codice provenienti da agenti esterni e permette la condivisione del codice.\\
@@ -75,18 +75,18 @@ Per poter usare \texttt{CMake} è necessario posizionarsi nella directory in cui
 \par \texttt{cmake $<$source\_dir$>$}\\
 
 \noindent \texttt{CMake} imposta le variabili di path come definito nel file  \texttt{CMakeLists.txt}, esamina le dipendenze da librerie esterne e procede esaminando le sottocartelle aggiunte nel file di configurazione. In particolare esamina le sottocartelle \texttt{src} e \texttt{test}, in cui sono presenti altri files  \texttt{CMakeLists.txt}, che impostano i rispettivi obiettivi e definiscono le rispettive sottocartelle. Questo permette a \texttt{CMake} di esaminare tutta la directory in cui è contenuto il progetto in maniera ricorsiva. \\
-Nella cartella \texttt{src} il file  \texttt{CMakeLists.txt} aggiunge la creazione di una libreria a partire dal codice del progetto. \\
-\begin{Code03_01}
-ADD_LIBRARY(pacs ${TARGET_SRC} ${TARGET_HANDLER})
-\end{Code03_01}
+%Nella cartella \texttt{src} il file  \texttt{CMakeLists.txt} aggiunge la creazione di una libreria a partire dal codice del progetto. \\
+%\begin{Code03_01}
+%ADD_LIBRARY(pacs ${TARGET_SRC} ${TARGET_HANDLER})
+%\end{Code03_01}
 
-\par \noindent Nella cartella test si trovano dei files data di esempio per poter eseguire il codice, contenuti della sottocartella \texttt{data}. Il file  \texttt{CMakeLists.txt} nella cartella dei test definisce gli obiettivi e i collegamenti necessari per l'esecuzione. 
+\par \noindent Nella cartella test si trovano delle sottocartelle ognuna delle quali contenente un file data di esempio per poter eseguire il codice e un file  \texttt{CMakeLists.txt} . Il file  \texttt{CMakeLists.txt} nella cartella dei test definisce gli obiettivi e i collegamenti necessari per l'esecuzione. 
 
 \par Una volta che il \texttt{Makefile} è stato generato è possibile compilare il codice con il comando: \\ 
 \par \texttt{make}\\
 
-\noindent Questo crea nella sottocartella \texttt{test} un eseguibile chiamato \texttt{darcy}. Per poterlo eseguire è sufficiente lanciarlo da terminale dando in input uno dei files presenti nella sottocartella \texttt{data}:\\
-\par \texttt{ .\textbackslash darcy data\textbackslash$<$file\_data$>$ }
+\noindent Questo crea in ogni sottocartella della cartella \texttt{test} un eseguibile chiamato \texttt{Test}. Per poterlo eseguire è sufficiente lanciare da terminale, dopo essersi posizionati nella directory corretta, 
+\par \texttt{ .\textbackslash Test-iesimo }
 
 \subsection{\texttt{Doxygen}}
 \href{www.doxygen.org/}{\texttt{Doxygen}} è un sistema multipiattaforma molto diffuso per la generazione automatica della documentazione di un codice. Per ottenere la documentazione è necessario introdurre nel codice dei commenti con una sintassi particolare, e il risultato contiene l’elenco delle classi implementate, i loro diagrammi di collaborazione e la descrizione di metodi ed attributi.
@@ -112,7 +112,33 @@ HIDE_UNDOC_RELATIONS		=	NO
 \noindent Questo crea una sottocartella \texttt{build/doc} che contiene la documentazione \texttt{html} e \LaTeX{}.
 
 \newpage
+
 \section{Dati del problema}
+
+\subsection{Intersezioni}
+Come è stato precedentemente detto, il codice di partenza trattava un tipo particolare di intersezione tra fratture, da noi chiamato \textit{Cross}. Questo tipo di intersezione ha la seguente forma:
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=0.4\textwidth]{img/cross.eps}
+\caption{Struttura di un'intersezione di tipo \textit{Cross} tra due fratture.}\label{Cross}
+\end{center}
+\end{figure}
+
+\noindent L'area di intersezione è constituita da un parallelogramma che suddivide ogni frattura in due zone $\Omega_{i1}$ e $\Omega_{i2}$. Il modello su cui noi ci basiamo riduce la frattura, qui rappresentata in un dominio $\mathbb{R}^{2}$, alla retta di sostegno $\gamma_i$. In questo modo l'intersezione si riduce ad un punto.\\
+Il tipo di intersezione su cui ci siamo concentrate noi, invece, ha la seguente forma:
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=0.4\textwidth]{img/bifurcation.eps}
+\caption{Struttura di un'intersezione di tipo \textit{Bifurcation} tra due fratture.}\label{Bifurcation}
+\end{center}
+\end{figure}
+
+\noindent In questo caso le fratture coinvolte sono tre e la zona interessata dall'intersezione è rappresentata da un triangolo. Anche qui consideriamo un modello ridotto e le fratture sono individuate dalle rette di sostegno $\gamma_i$ in $\mathbb{R}$. Le condizioni d'interfaccia che vengono ricavate in questo caso valgono solo nel caso in cui le tre fratture si intersechino in un unico punto comune $i_p$ e tale punto sia contenuto nel triangolo d'intersezione nella rappresentazione 2d.
+
+\subsection{File data}
+
 I dati per la definizione del problema sono definiti nei file .txt contenuti nella sottocartella \texttt{dati}. \\
 \noindent Ognuno di questi files ha la seguente struttura:
 
@@ -148,9 +174,12 @@ numberFractures = 3
 
 \par \noindent Nonostante il nostro problema si concentri solamente sulla soluzione del flusso all'interno delle fratture, noi costruiamo comunque la mesh relativa al mezzo. Questa mesh verrà usata solamente come supporto, sarà puramente accessoria nel corso dell'implementazione. \\
  \noindent Per quanto riguarda la permeabilità, poichè le fratture sono costituite dallo stesso materiale, questa resta uguale in tutto il dominio, sia nel mezzo che nelle fratture. 
+
 \begin{figure}[htbp]
+\begin{center}
 \includegraphics[width=0.65\textwidth]{img/mesh.eps}
 \caption{Principali parametri di definizione per una frattura}
+\end{center}
 \end{figure}
 
 \begin{Code03_01}[caption={Definizione della frattura}]
@@ -204,8 +233,4 @@ spaceDimension = 1.
 [../]
 
 \end{Code03_01}
-
-
-
-
 

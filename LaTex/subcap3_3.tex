@@ -2,18 +2,21 @@
 
 \chapter{Classi per la gestione dell'intersezione}
 
-Le fratture con cui lavoriamo sono poste in uno spazio 1D e hanno un unico punto in comune nel caso di una \textit{Bifurcation}. Ponendosi in uno spazio 2D la regione in comune è invece un triangolo. Il primo caso approssima in maniera troppo brutale la situazione reale, mentre il secondo \`{e} pi\`{u} ricco di informazioni e ci permette di avere valori pi\`{u} consistenti.\\
+Nel modello che abbiamo preso in considerazione noi le fratture hanno una rappresentazione in $\mathbb{R}$ e, nel caso della \textit{Biforcazione}, hanno un unico punto in comune. 
+Nella rappresentazione 2D, invece, la regione in comune è un triangolo. \\
+Il nostro modello trascura ovviamente delle informazioni, ma nel caso di fratture con uno spessore sufficientemente piccolo rispetto a quelle del dominio, può essere considerato una buora approssimazione della realtà.\\
+
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.7\textwidth]{img/TriangoloBiforcazione.eps}
+\includegraphics[width=0.65\textwidth]{img/TriangoloBiforcazione.eps}
 \caption{Struttura della biforcazione 2D}\label{Biforcazione}
 \end{figure}
 
-Per avere dei risultati maggiormente significativi instauriamo dunque un legame fra questi due mondi con le condizioni da rispettare nel punto di intersezione, meglio dette condizioni d'interfaccia.\\
+Per ricavare le condizioni d'interfaccia nel caso della biforcazione per modello ridotto passiamo per la rappresentazione in $\mathbb{R}^{2}$.
 Nel caso 2D le fratture hanno uno spessore e possiamo delimitare un triangolo di intersezione unendo i punti di incontro dei loro bordi. \\
 Presi \textbf{N} il vettore delle normali ai lati del triangolo, \textbf{$K_{I}$} la matrice di permeabilit\`{a} all'intersezione e una costante \textit{t} possiamo definire:
 \begin{center}
-	$ S = \textit{t}diag( \textbf{N}$ \textbf{$K_{I}$} $ \textbf{N}^{T} ) $
+	$ S = \textit{t} \, diag( \textbf{N}$ \textbf{$K_{I}$} $ \textbf{N}^{T} ) $
 \end{center}
 Definite ora \textbf{C} matrice dei vettori che uniscono il baricentro, punto C, del triangolo con il punto medio  di ogni lato e \textbf{$P_{c}$} matrice di proiezione sullo spazio nullo della matrice di base per \textbf{C}, possiamo trovare la matrice di trasmissibilit\`{a}:
 \begin{center}
@@ -35,14 +38,15 @@ e le condizioni che dobbiamo porre all'intersezione sono:
      	 	\sum_{k=0}^2 u_{k} = p_{I} - \pi  \\
 		\end{array}
 	\right.$
-\end{center}
+\end{center} \label{condizioniinterfaccia}
 
-Queste sono le condizioni d'interfaccia che verranno imposte nel punto di intersezione delle fratture.
+\noindent  Queste sono le condizioni d'interfaccia che verranno imposte nel punto di intersezione delle fratture. \\
+\par Per scrivere questa parte di codice in cui approssimiamo il triangolo di intersezione, abbiamo usato la libreria matematica \textit{Eigen}.
 
-\section{Classe \texttt{MatrixBifurcationHandler}}
-La class \texttt{MatrixBifurcationHandler} contiene le matrici associate a una biforcazione e implementa i metodi per calcolarle. 
-%Inclusa la matrice $T$, di vitale importanza per l'imposizione delle condizioni di interfaccia del nostro problema.
-I campi fondamentali della classe sono:
+\section{La Classe \texttt{MatrixBifurcationHandler}}
+La classe \texttt{MatrixBifurcationHandler} contiene le matrici associate a una biforcazione e implementa i metodi per calcolarle.  Il fine ultimo è il calcolo della matrice di trasmissibilità T.
+
+\noindent I campi fondamentali della classe sono:
 	\begin{enumerate}
 	\item[-] \texttt{M\_intersection}: di tipo Intersection, contiene tutte le informazioni base per poter ricavare le matrici;
 	\item[-] \texttt{M\_T}: matrice T di trasmissibilità necessaria per l'imposizione delle condizioni di interfaccia.
@@ -75,7 +79,7 @@ class MatrixBifurcationHandler
 };
 \end{Code03_03}
 
-\section{Classe \texttt{Intersection}}
+\section{La Classe \texttt{Intersection}}
 
 La class \texttt{Intersection}, definita in \texttt{TriangleHandler.h}, contiene tutte le informazioni relative ad una biforcazione in uno spazio 2D necessarie per il calcolo delle matrici associate al triangolo di intersezione.
 I campi fondamentali della classe sono:
@@ -109,8 +113,8 @@ class Intersection
 \end{Code03_03}
 
 \section{Classe \texttt{PointData} e Classe \texttt{TriangleData}}
-
-Vengono utilizzate le classe \texttt{Matrix} e \texttt{Vector} della libreria \texttt{Eigen}.
-Ci poniamo ora in uno spazio 2D.\\
-La classe \texttt{PointData} ci permette di definire un punto e di poterlo manipolare con le operazioni di somma, differenza e prodotto.\\
-La classe \texttt{TriangleData} ci permette di definire un triangolo e di calcolarne l'area. Inoltre sono stati implementati i metodi necessari per la costruzione del triangolo di intersezione.
+Queste classi rappresentano un punto e un triangolo come grandezze geometriche.
+Il punto geometricamente viene rappresentato come una grandezza zero dimensionale con due variabili, una \textit{x} e una \textit{y}.
+Un triangolo è invece  rappresentato geometricamente dai punti che lo costituiscono.\\
+\noindent La classe \texttt{PointData} ci permette di definire un punto e di poterlo manipolare con le operazioni di somma, differenza e prodotto.\\
+\noindent La classe \texttt{TriangleData} ci permette di definire un triangolo e di calcolarne l'area. Inoltre sono stati implementati i metodi necessari per la costruzione del triangolo di intersezione.

@@ -1,9 +1,9 @@
 \lstnewenvironment{Code03_04}[1][]{\lstset{basicstyle=\small\ttfamily, columns=fullflexible,framexrightmargin=+.1\textwidth, keywordstyle=\color{red}\bfseries, commentstyle=\color{blue},language=C++, basicstyle=\small, numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=5pt, frame=shadowbox, #1}}{}
 
-\chapter{Classi per la gestione del problema numerico}
+\chapter{Soluzione del problema numerico}
 
-\section{Class \texttt{DarcyFracture}}
-La classe \texttt{DarcyFracture} ci permette di passare alla formulazione algebrica, $ Ax=b $, del problema e di risolverlo. \\ 
+\section{La Classe \texttt{DarcyFracture}}
+La classe \texttt{DarcyFracture} permette di definire il problema di Darcy su ogni frattura, imporre le condizioni per le eventuali intersezioni, assemblare il sistema algebrico globale $ Ax=b $ del problema e risolverlo.\\
 
 %Il suo costruttore richiede i seguenti parametri:
 %	\begin{itemize}
@@ -12,7 +12,7 @@ La classe \texttt{DarcyFracture} ci permette di passare alla formulazione algebr
 %	\item \textit{Vettore:} nullo, se la mesh fa riferimento al mezzo, contenete gli indici dei gradi di libert\`{a} degli estremi, se si sta lavorando su una frattura
 %	\item \textit{ElementDimesion:} dimensione in cui stiamo lavorando ( di defaul 2 per il mezzo e 1 per le fratture)
 %	\end{itemize}
-I campi fondamentali della classe sono:
+\noindent I campi fondamentali della classe sono:
 	\begin{enumerate}
 	\item[-] \texttt{M\_globalMatrix}: \`{e} una matrice a blocchi sparsa rappresentata i GETfem da un \textit{boost::shared\_ptr $\langle$ gmm::row\_matrix $\langle$ sparseVector\_Type $\rangle \rangle$};
 	\item[-] \texttt{M\_globalRightHandSide}: vettore del termine noto;
@@ -51,8 +51,11 @@ class DarcyFractured
 };
 \end{Code03_04}
 
-Il metodo init() setta tutte le costanti note del problema.
-Il metodo assembly() crea la matrice globale $A$ e il termine noto di destra, utilizzando le funzioni della classe \texttt{XFEMOperators}. 
+Le funzioni fondamentali della classe sono il metodo \texttt{assembly ()} e il metodo \texttt{solve ()}. \\
+\noindent Il metodo \texttt{assembly ()} crea la matrice globale $A$ e il termine noto di destra, utilizzando le funzioni della classe \texttt{XFEMOperators}. 
+La matrice globale del sistema ha una struttura a blocchi, dove ad ogni frattura corrisponde un blocco derivante dal sistema \ref{sistemaAlgebrico}. Una volta definite le forme bilineari e i blocchi della matrice corrispondenti alle singole fratture, vanno imposte le condizioni d'interfaccia nel caso di eventuali intersezioni.\\
+\noindent Nel caso di un \textit{Cross} si impongono le condizioni di interfaccia in maniera debole tramite le matrici $E_{2}$ e $E_{3}$, che impongono il salto di velocità nell'intersezione.\\
+\noindent Nel caso di una \textit{Bifurcation} si impongono in maniera forte le condizioni di interfaccia \ref{condizioniinterfaccia}.\\
 Ipotizzando di avere un ambiente dove tre fratture hanno un intersezione di tipo \textit{Bifurcation} e una di queste si incontra con una quarta creando un intersezione di tipo \textit{Cross}, la matrice globale avrà il seguente volto:\\
 %---->DA SISTEMAREEEEE <----------------- 
  \begin{center}
@@ -69,9 +72,7 @@ Ipotizzando di avere un ambiente dove tre fratture hanno un intersezione di tipo
  			0 & 0 & 0 & 0 & E_{2}^{T} & 0 & E_{3}^{T} & 0 & 0 & 0\\
  			\end{matrix}.\right] $ 
   \end{center}
-Nel caso di un \textit{Cross} le matrici $E_{2}$ e $E_{3}$, generate durante l'assembly(), impongonole condizioni di interfaccia in maniera debole .\\
-Nel caso di una \textit{Bifurcation} prima di terminare la funzione assembly() impone in maniera forte le condizioni di interfaccia, ricavate con il confronto col mondo 2D, nella riga corrispondente al DOF di pressione e di velocit\`{a} relativo al punto d' intersezione della frattura.\\
-Infine il metodo solve() risolve il problema e esporta i risultati ottenuti in formato \emph{vtk} per entrambe le incognite.\\
+Infine il metodo \texttt{solve ()} risolve il problema e esporta i risultati ottenuti in formato \emph{vtk} per entrambe le incognite.\\
 
 %\section{Class \texttt{XFEMOperetors}}
 %Ogni frattura ha associata la matrice:
