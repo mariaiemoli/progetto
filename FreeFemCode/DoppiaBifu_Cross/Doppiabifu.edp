@@ -1,0 +1,119 @@
+/////////////////////////////////////////////////////////////////////////
+///////////////// 	PROGETTO PACS		        /////////////////////////
+/////////////////////////////////////////////////////////////////////////
+
+/// CODICE PER CONFRONTARE I RISULTATI OTTENUTI CON IL MODELLO RIDOTTO PER LA PRESSIONE SULLA BIFORCAZIONE
+
+bool plotYesNo = true;
+
+// Import mesh file
+
+// Spacing
+int Nelem = 100;
+int NelemS = 5;
+int NelemI = 5;
+int NelemT = 5;
+
+include "mesh.edp"
+
+// dual-mixed func
+
+func invK11 = part1(x,y)*1.+part2(x,y)*1. + part3(x,y)*1. + fracture0(x,y)*1. + fracture1(x,y)*1. 
+		+ fracture2(x,y)*1. + fracture3(x,y)*1.;
+func invK12 = 0.;//-part(x,y)*4999.5;
+func invK22 = part1(x,y)*1.+part2(x,y)*1. + part3(x,y)*1. + fracture0(x,y)*1. + fracture1(x,y)*1. + fracture2(x,y)*1. 		      + fracture3(x,y)*1.;
+func invK21 = invK12;
+
+func f = -0.04;
+
+// pressure at inflow
+real p0 = 1;
+real p1 = -1;
+real p2 = 1;
+real p3 = -1;
+real p4 = -1;
+real p5 = 1;
+
+// Finite element spaces:
+// Vh is the space for the vectorial base function (flux), Qh for the scalar (p)
+fespace Vh ( Th, RT0 );
+fespace Qh ( Th, P0 );
+
+
+// solution and test function
+Vh [uh1, uh2], [tauh1, tauh2];
+Qh ph, qh, one, two, three; 
+one = part1(x,y);
+two = part2(x,y);
+three = part3(x,y);
+
+/*two = fracture0(x,y);*/
+/*three = fracture1(x,y);*/
+/*four = fracture2(x,y);*/
+/*five = fracture3(x,y);*/
+
+//plot (one, oneb,two,three,four,five,  fill = true, nbiso = 20, value = true , wait = true );
+
+// problem definition
+problem Darcy ( [uh1, uh2, ph], [tauh1, tauh2, qh], solver=GMRES, init=100 ) = -
+                int2d(Th)( ( invK11 * uh1 + invK12 * uh2 ) * tauh1 +
+                           ( invK21 * uh1 + invK22 * uh2 ) * tauh2 ) +
+                int2d(Th)( ph * ( dx(tauh1) + dy(tauh2) ) ) +
+                int2d(Th)( qh * ( dx(uh1)   + dy(uh2)   ) ) -
+                int2d(Th)( qh * f ) -
+                int1d(Th,10)(p0*(tauh1*N.x + tauh2*N.y) ) -
+                int1d(Th,13)(p3*(tauh1*N.x + tauh2*N.y) ) -
+                int1d(Th,15)(p5*(tauh1*N.x + tauh2*N.y) ) -
+                int1d(Th,12)(p2*(tauh1*N.x + tauh2*N.y) ) -
+                int1d(Th,14)(p4*(tauh1*N.x + tauh2*N.y) ) -
+		int1d(Th,11)(p1*(tauh1*N.x + tauh2*N.y) ) +
+	        on(3, uh1 = 0, uh2 = 0);
+
+
+//--------------------------------------------------------
+// problem resolution
+//--------------------------------------------------------
+
+cout << " Risolvo Darcy: " << endl;
+
+Darcy;
+
+cout << " Ho risolto Darcy: " << endl;
+
+/*Th = adaptmesh ( Th, [uh1, uh2], iso=true, nbvx=10000 );*/
+
+/*plot(Th, cmm="adattata");*/
+
+/*Darcy;*/
+/*
+cout << "Pressure, min " << ph[].min << " max " << ph[].max << endl;
+cout << "Velocity min [" << uh1[].min << ", " << uh2[].min << "] max ["
+     << uh1[].max << ", " << uh2[].max << "]" << endl;
+
+
+real I = int2d(Th1)( one );
+real pI = 1./I * int2d(Th1)( ph );
+
+cout << "Intersection pressure bifurcation " << pI << endl;
+cout << "Intersect area " << I << endl;
+
+I = int2d(Th2)( two );
+pI = 1./I * int2d(Th2)( ph );
+
+cout << "Intersection pressure bifurcation2 " << pI << endl;
+cout << "Intersect area " << I << endl;
+
+
+I = int2d(Th2)( three );
+pI = 1./I * int2d(Th3)( ph );
+
+cout << "Intersection pressure cross " << pI << endl;
+cout << "Intersect area " << I << endl;
+*/
+
+if ( plotYesNo )
+{
+    plot ( ph, fill = true, nbiso = 20, value = true , wait = true, cmm = "pressione" );
+    plot ( [uh1, uh2], fill = true, value = true , wait = true, cmm="flusso" );
+}
+

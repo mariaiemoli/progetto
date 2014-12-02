@@ -92,6 +92,12 @@ public:
          * \return IntersectDataContainer_Type: restituisce il vettore di tutte le intersezioni del tipo " Bifurcation "
          */
         IntersectDataContainer_Type getBifurcationIntersections () const;
+		
+       /**
+        * Funzione che restituisce tutte le intersezioni di tipo " Bifurcation2 ".
+        * \return IntersectDataContainer_Type: restituisce il vettore di tutte le intersezioni del tipo " Bifurcation2 "
+        */
+       IntersectDataContainer_Type getBifurcation2Intersections () const;
         
 
         /**
@@ -122,6 +128,11 @@ public:
 		 * Funzione che restituisce il numero di intersezioni trovate di tipo " Bifurcation ".
 		 */
         size_type getNumberBifurcation () const;
+		
+       /**
+	    * Funzione che restituisce il numero di intersezioni trovate di tipo " Bifurcation2 ".
+	    */
+       size_type getNumberBifurcation2 () const;
 
 
         /** 
@@ -136,7 +147,7 @@ public:
         size_type getBasisFunctionOfType ( IntersectionType type ) const;
         
 		
-		void setDofFree( const getfem::mesh& M_mesh, FractureHandlerPtr_Type& fracture , size_type i );
+		void setDOFIntersection( const getfem::mesh& M_mesh, FractureHandlerPtr_Type& fracture , size_type i );
 		
 
 		size_type FindDOF_Intersection( const bgeot::basic_mesh::ref_mesh_pt_ct nodes, FractureHandlerPtr_Type& fracture );

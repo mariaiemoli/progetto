@@ -256,10 +256,6 @@ size_type FractureHandler::setMeshLevelSetFracture ( FractureHandler& otherFract
         {
             if ( M_meshLevelSetIntersect[ otherFractureId ]->is_convex_cut ( i_cv ) )
             {  
-				if( M_ID == 2 && otherFractureId ==3)
-				{
-					std::cout << " i_cv  " << i_cv <<std::endl;
-				}
  
             	if ( type == "Cross")
             	{	
@@ -273,8 +269,9 @@ size_type FractureHandler::setMeshLevelSetFracture ( FractureHandler& otherFract
 					
             	}
 				
-				if( type == "Bifurcation2" && M_DOF_Free.size() == 2  )
+				if( type == "Bifurcation2" && M_DOF_Intersection.size() == 0  )
 				{
+					
 					M_meshFlat.region ( FractureHandler::FRACTURE_UNCUT * ( M_ID + 1 ) ).sup ( i_cv );
 					
 					M_meshFlat.region ( FractureHandler::FRACTURE_INTERSECT * ( M_ID + 1 ) + otherFractureId + 1 ).add( i_cv );					
@@ -282,6 +279,9 @@ size_type FractureHandler::setMeshLevelSetFracture ( FractureHandler& otherFract
 					M_extendedPressure.push_back ( M_meshFEMPressure.ind_basic_dof_of_element ( i_cv )[0] );
 					M_extendedVelocity.push_back ( M_meshFEMVelocity.ind_basic_dof_of_element ( i_cv )[0] );
 					M_extendedVelocity.push_back ( M_meshFEMVelocity.ind_basic_dof_of_element ( i_cv )[1] );
+					
+					M_DOF_Bifurcation.push_back( i_cv );
+					
 				}
             	
 				M_fractureIntersectElements [ otherFractureId ].push_back ( i_cv );

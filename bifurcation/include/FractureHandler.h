@@ -112,21 +112,26 @@ public:
         return M_levelSet;
     }
 
-    inline sizeVector_Type& getDofFree( )
+    inline sizeVector_Type& getDofIntersection( )
     {
-        return  M_DOF_Free;
+        return  M_DOF_Intersection;
     }
 	
-    inline void clearDofFree( )
+    inline sizeVector_Type& getDOFBifurcation( )
     {
-        M_DOF_Free.clear();
+        return  M_DOF_Bifurcation;
+    }
+	
+    inline void clearDofIntersection( )
+    {
+        M_DOF_Intersection.clear();
 		
 		return;
     }
 	
-    void pushDofFree( size_type i )
+    void pushDOFIntersection( size_type i )
     {
-        M_DOF_Free.push_back( i );
+        M_DOF_Intersection.push_back( i );
 		
 		return;
     }
@@ -344,7 +349,10 @@ private:
     LevelSetHandlerPtr_Type M_levelSet;
 	
 	// va a salvarsi, in caso ci fosse una biforcazione, in quale degli estremi della frattura cade
-	sizeVector_Type M_DOF_Free;
+	sizeVector_Type M_DOF_Intersection;
+	
+	// Nel caso di una biforcazione con due fratture salva il DOF di quella tagliata inn due parti
+	sizeVector_Type M_DOF_Bifurcation;
 
     // M_mediummesh per la fratture: M_meshFlat è " piatta " (1d), M_meshMapped è mappata (x(t),y(t))
     getfem::mesh M_meshFlat;

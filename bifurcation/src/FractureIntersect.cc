@@ -52,11 +52,11 @@ constructIntesection ( const getfem::mesh& mesh, getfem::mesh_level_set& meshLev
     std::vector<dal::bit_vector> listOfLevelSet_bitVector;
 
     /*
-	 * Andiamo a pulire il vettore dei DOF_Free in modo che solo nel caso ci siano biforcazioni venga toccato
+	 * Andiamo a pulire il vettore dei DOF_Intersection in modo che solo nel caso ci siano biforcazioni venga toccato
 	 */	
 	for ( size_type f=0; f < fractures.size(); f++ )
 	{
-		fractures[ f ] -> clearDofFree( );
+		fractures[ f ] -> clearDofIntersection( );
 	}
 	
 	/*
@@ -189,7 +189,7 @@ constructIntesection ( const getfem::mesh& mesh, getfem::mesh_level_set& meshLev
 			   //Andiamo a settare il vettore di DOF_FREE
 			   for( size_type f=0; f < fracturesInvolved.size(); f++ )
 			   {
-				   setDofFree( mesh, fracturesInvolved[ f ], listOfConvex[ i ] );
+				   setDOFIntersection( mesh, fracturesInvolved[ f ], listOfConvex[ i ] );
 			   }
 
            }
@@ -200,7 +200,7 @@ constructIntesection ( const getfem::mesh& mesh, getfem::mesh_level_set& meshLev
 			   //Andiamo a settare il vettore di DOF_FREE
 			   for( size_type f=0; f < fracturesInvolved.size(); f++ )
 			   {
-				   setDofFree( mesh, fracturesInvolved[ f ], listOfConvex[ i ] );
+				   setDOFIntersection( mesh, fracturesInvolved[ f ], listOfConvex[ i ] );
 			   }
 			   
 			   // Anche per le intersezioni di tipo Bifurcation assegno una numerazione globale
@@ -432,7 +432,7 @@ IntersectDataContainer_Type FractureIntersect::getCrossIntersections () const
 
     return tmp;
 
-}
+} // getCrossIntersections
 
 
 IntersectDataContainer_Type FractureIntersect::getBifurcationIntersections () const
@@ -449,7 +449,23 @@ IntersectDataContainer_Type FractureIntersect::getBifurcationIntersections () co
 	
     return tmp;
 
-}
+} // getBifurcationIntersections
+
+IntersectDataContainer_Type FractureIntersect::getBifurcation2Intersections () const
+{
+	IntersectDataContainer_Type tmp;
+	
+	size_type Num_Bifu2 = getNumberBifurcation2();
+
+	if( Num_Bifu2 !=0 )
+	{
+		for ( size_type i = 0; i< M_intersections.find( Bifurcation2 )->second.size(); i++ )
+			tmp.push_back( M_intersections.find( Bifurcation2 )->second [ i ] );
+	}
+	
+    return tmp;
+
+} //getBifurcation2Intersections
 
 
 size_type FractureIntersect::getNumberIntersectionOfType ( IntersectionType type ) const
@@ -484,6 +500,19 @@ size_type FractureIntersect::getNumberBifurcation () const
 
 	return numIntersect;
 } // getNumberBifurcation
+
+size_type FractureIntersect::getNumberBifurcation2 () const
+{
+	mapIntersection_Type::const_iterator it;
+	size_type numIntersect = 0;
+	for ( it = M_intersections.begin(); it != M_intersections.end(); ++it )
+	{
+	if( it->first == Bifurcation2 )
+			numIntersect += getNumberIntersectionOfType ( it->first );
+	}
+
+	return numIntersect;
+} // getNumberBifurcation2
 
 
 size_type FractureIntersect::getNumberIntersections () const
@@ -532,21 +561,21 @@ size_type FractureIntersect::getBasisFunctionOfType ( IntersectionType type ) co
 } // getBasisFunctionOfType
 */
 
-void FractureIntersect::setDofFree( const getfem::mesh& M_mesh, FractureHandlerPtr_Type& fracture , size_type i )
+void FractureIntersect::setDOFIntersection( const getfem::mesh& M_mesh, FractureHandlerPtr_Type& fracture , size_type i )
 {
 	bgeot::basic_mesh::ref_mesh_pt_ct nodes = M_mesh.points_of_convex ( i );
 	
 	if( FindDOF_Intersection( nodes, fracture ) == -1 )
 	{
-		fracture->pushDofFree( 0 );
+		fracture->pushDOFIntersection( 0 );
 	}
 	
 	else if( FindDOF_Intersection( nodes, fracture ) == 1 )
 	{
 		size_type NDof = fracture -> getMeshFEMPressure().nb_basic_dof(); 
-		fracture->pushDofFree( NDof-1 );
+		fracture->pushDOFIntersection( NDof-1 );
 	}	
-	
+		
 	return;
 	
 }
