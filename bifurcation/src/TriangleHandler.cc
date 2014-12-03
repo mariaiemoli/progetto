@@ -63,16 +63,18 @@ void Intersection::setIntersection( FracturePtrContainer_Type& M_FracturesSet )
 
 void Intersection::setIntersectionWith2Fractures( FracturePtrContainer_Type& M_FracturesSet )
 {	
-	const size_type nbDof0 =  M_FracturesSet [ 0 ]-> getMeshFEMPressure().nb_basic_dof();
-	const size_type nbDof1 =  M_FracturesSet [ 1 ]-> getMeshFEMPressure().nb_basic_dof();
+	const scalar_type nbDof0 =  M_FracturesSet [ 0 ]-> getMeshFEMPressure().nb_basic_dof();
+	const scalar_type nbDof1 =  M_FracturesSet [ 1 ]-> getMeshFEMPressure().nb_basic_dof();
 					std::cout << "Node " <<  M_FracturesSet[ 0 ]->getDOFBifurcation() << std::endl;
-	size_type DOFsplit = M_FracturesSet[ 0 ]->getDOFBifurcation()[ 0 ];
-						std::cout << "FIne Node " << std::endl;
+	size_type DOFsplit = M_FracturesSet[ 0 ]->getDOFBifurcation()[ 0 ]-1;
+
 	
 	base_node node0(2);
 	base_node node1(2);
 	base_node node2(2);
 	base_node nodeI(2);
+	
+	base_node nv(2);
 	
 	//truccetto xk y_map vuole i base_node
 	base_node tmp0( 1 );
@@ -84,13 +86,19 @@ void Intersection::setIntersectionWith2Fractures( FracturePtrContainer_Type& M_F
 	tmp2[ 0 ]= 0.;
 	tmp3[ 0 ]= 1.;
 	
+	base_node tv(1);
+	tv[0] = (DOFsplit + 1 )/( nbDof0  );
+	
+	std::cout << " t: " << tmp0[ 0 ] << "   " << tmp1[ 0 ] << std::endl;
 
 	
 	node0[ 0 ] = M_FracturesSet [ 0 ]-> getMeshFEMPressure().point_of_basic_dof( DOFsplit )[ 0 ];
 	node1[ 0 ] = M_FracturesSet [ 0 ]-> getMeshFEMPressure().point_of_basic_dof( DOFsplit + 1 )[ 0 ];
 	node2[ 0 ] = M_FracturesSet [ 1 ]-> getMeshFEMPressure().point_of_basic_dof( 0 )[ 0 ];
 	
-	nodeI[ 0 ] = M_FracturesSet [ 1 ]-> getMeshFEMPressure().point_of_basic_dof( 0 )[ 0 ];
+	nodeI[ 0 ] = M_FracturesSet [ 1 ]-> getMeshFEMVelocity().point_of_basic_dof( 0 )[ 0 ];
+	
+	nv [ 0 ] = M_FracturesSet [ 0 ]-> getMeshFEMVelocity().point_of_basic_dof( DOFsplit +1 )[ 0 ];
 	
 	node0[ 1 ] = M_FracturesSet [ 0 ]-> getLevelSet()->getData()->y_map( tmp0 );
 	node1[ 1 ] = M_FracturesSet [ 0 ]-> getLevelSet()->getData()->y_map( tmp1);
@@ -98,14 +106,21 @@ void Intersection::setIntersectionWith2Fractures( FracturePtrContainer_Type& M_F
 	
 	nodeI[ 1 ] = M_FracturesSet [ 1 ]-> getLevelSet()->getData()->y_map( tmp2 );
 	
-
+	nv [ 1 ] = M_FracturesSet [ 0 ]-> getLevelSet()->getData()->y_map( tmp1);
 	
 	//Estremi liberi delle fratture +  punto di intersezione
 	PointData p0( node0[0], node0[1] );
 	PointData p1( node1[0], node1[1] );
 	PointData p2( node2[0], node2[1] );
 	
+	PointData p3( nv[0], nv[1] );
+	
+	
 	PointData pi( nodeI[0], nodeI[1] );
+	
+	std::cout << " punti:  " << p0 << "    " << p1 << "    " << p2 << "   " << pi << std::endl;
+	
+	std::cout << "nv   " << p3 << std::endl;;
 	
 	//Spessori delle mie fratture
 	scalar_type t0,t1;
@@ -160,7 +175,7 @@ void Intersection::setIntersectionWith3Fractures( FracturePtrContainer_Type& M_F
 	node0[ 0 ] = M_FracturesSet [ 0 ]-> getMeshFEMPressure().point_of_basic_dof( 0 )[ 0 ];
 	node1[ 0 ] = M_FracturesSet [ 1 ]-> getMeshFEMPressure().point_of_basic_dof( 0 )[ 0 ];
 	node2[ 0 ] = M_FracturesSet [ 2 ]-> getMeshFEMPressure().point_of_basic_dof( 0 )[ 0 ];
-	nodeI[ 0 ] = M_FracturesSet [ 0 ]-> getMeshFEMPressure().point_of_basic_dof( nbDof0-1 )[ 0 ];
+	nodeI[ 0 ] = M_FracturesSet [ 0 ]-> getMeshFEMVelocity().point_of_basic_dof( nbDof0-1 )[ 0 ];
 	
 	node0[ 1 ] = M_FracturesSet [ 0 ]-> getLevelSet()->getData()->y_map( tmp0 );
 	node1[ 1 ] = M_FracturesSet [ 1 ]-> getLevelSet()->getData()->y_map( tmp0 );
@@ -171,7 +186,7 @@ void Intersection::setIntersectionWith3Fractures( FracturePtrContainer_Type& M_F
 	{
 		node0 [ 0 ] = M_FracturesSet [ 0 ]-> getMeshFEMPressure().point_of_basic_dof( nbDof0-1 )[ 0 ];
 		node0 [ 0 ] = M_FracturesSet [ 0 ]-> getMeshFEMPressure().point_of_basic_dof( nbDof0-1 )[ 0 ];
-		nodeI [ 0 ] = M_FracturesSet [ 0 ]-> getMeshFEMPressure().point_of_basic_dof( 0 )[ 0 ];
+		nodeI [ 0 ] = M_FracturesSet [ 0 ]-> getMeshFEMVelocity().point_of_basic_dof( 0 )[ 0 ];
 		node0 [ 1 ] = M_FracturesSet [ 0 ]-> getLevelSet()->getData()->y_map( tmp1 );
 		nodeI [ 1 ] = M_FracturesSet [ 0 ]-> getLevelSet()->getData()->y_map( tmp0 );
 	}
