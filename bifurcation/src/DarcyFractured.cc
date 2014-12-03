@@ -147,13 +147,9 @@ void DarcyFractured::assembly ( const GetPot& dataFile )
     // Allochiamo la matrice che usereme per accoppiare le fratture che si intersecano
     sparseMatrixPtr_Type  App, App_B;
 
-    App.reset(new sparseMatrix_Type( fractureNumberCross , 2*fractureNumberCross ));
-    gmm::clear(*App);
-/*
     App_B.reset(new sparseMatrix_Type( fractureNumberBifurcation2 , 2*fractureNumberBifurcation2 ));
     gmm::clear(*App_B);
-*/
-    
+
     // Matrici a blocchi per le fratture
     sparseMatrixPtrContainer_Type A11F(numberFractures), A12F(numberFractures);
 
