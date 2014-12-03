@@ -91,17 +91,7 @@ public:
 	 */
 	void setIntersection( FracturePtrContainer_Type& M_FracturesSet );
 	
-	/**
-	 * Funzione che costruisce il triangolo di intersezione partendo dal vettore delle fratture che si intersecano
-	 */
-	void setIntersectionWith2Fractures( FracturePtrContainer_Type& M_FracturesSet );
 
-	/**
-	 * Funzione che costruisce il triangolo di intersezione partendo dal vettore delle fratture che si intersecano
-	 */
-	void setIntersectionWith3Fractures( FracturePtrContainer_Type& M_FracturesSet );
-	
-	
 	/**
 	 * Funzione che costruisce il triangolo di intersezione 
 	 */

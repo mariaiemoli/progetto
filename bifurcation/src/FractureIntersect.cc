@@ -186,7 +186,7 @@ constructIntesection ( const getfem::mesh& mesh, getfem::mesh_level_set& meshLev
 
                globalIndexBifurcation++;
 			   
-			   //Andiamo a settare il vettore di DOF_FREE
+			   //Andiamo a settare il vettore di DOF_INTERSECTION
 			   for( size_type f=0; f < fracturesInvolved.size(); f++ )
 			   {
 				   setDOFIntersection( mesh, fracturesInvolved[ f ], listOfConvex[ i ] );
@@ -197,7 +197,7 @@ constructIntesection ( const getfem::mesh& mesh, getfem::mesh_level_set& meshLev
            // Intersezione di tipo Bifurcation2 ovvero due fratture che creano una biforcazione
            if ( type == Bifurcation2 )
            {
-			   //Andiamo a settare il vettore di DOF_FREE
+			   //Andiamo a settare il vettore di DOF_INTERSECTION
 			   for( size_type f=0; f < fracturesInvolved.size(); f++ )
 			   {
 				   setDOFIntersection( mesh, fracturesInvolved[ f ], listOfConvex[ i ] );

@@ -131,7 +131,7 @@ void assembling_SourceF ( scalarVectorPtr_Type& D,
 /**
  * Funzione che accoppia le variabili corrispondenti alle fratture che si intersecano
  */
-void coupleFractures ( sparseMatrixPtr_Type& M, const FracturesSetPtr_Type& fractures );
+void coupleFractures ( sparseMatrixPtr_Type& M, const FracturesSetPtr_Type& fractures, const size_type i );
 
 
 /**

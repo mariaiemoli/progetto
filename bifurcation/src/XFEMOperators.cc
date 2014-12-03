@@ -916,34 +916,72 @@ void assembling_SourceF ( scalarVectorPtr_Type& D,
 
 
 // creiamo l'accoppiamento tra le fratture che hanno intersezione di tipo " Cross "
-void coupleFractures ( sparseMatrixPtr_Type& M, const FracturesSetPtr_Type& fractures )
+void coupleFractures ( sparseMatrixPtr_Type& M, const FracturesSetPtr_Type& fractures, const size_type i )
 {
     const size_type numFractures = fractures->getNumberFractures ();
     
     const size_type numCross = fractures-> getIntersections ()-> getNumberCross ();
     
-    for ( size_type i = 0; i < numFractures; ++i )
+    const size_type numBifurcation = fractures-> getIntersections ()-> getNumberBifurcation ();
+    
+    const size_type numBifurcation2 = fractures-> getIntersections ()-> getNumberBifurcation2 ();
+    
+    if( i == 1 )
     {
-        const FractureHandlerPtr_Type& fracture = fractures->getFracture(i);
-        const pairSizeVectorContainer_Type& intersectElementsGlobalIndex = fracture->getFractureIntersectElementsGlobalIndex ();
+    	for ( size_type i = 0; i < numFractures; ++i )
+    
+		{
+			const FractureHandlerPtr_Type& fracture = fractures->getFracture(i);
+			const pairSizeVectorContainer_Type& intersectElementsGlobalIndex = fracture->getFractureIntersectElementsGlobalIndex ();
+	
+			for ( size_type j = 0; j < numFractures; ++j )
+			{
+				const size_type numIntersections = intersectElementsGlobalIndex [j].size();
+				for ( size_type k = 0; k < numIntersections; ++k )
+				{
+					const size_type first = intersectElementsGlobalIndex [j] [k].first;
+					const size_type second = intersectElementsGlobalIndex [j] [k].second;
+					
+					if ( first < numCross )
+					{
+						(*M)( first, first ) = 1;
+						(*M)( first, second ) = -1;
+					}
+				   
+				}
+			}
 
-        for ( size_type j = 0; j < numFractures; ++j )
-        {
-            const size_type numIntersections = intersectElementsGlobalIndex [j].size();
-            for ( size_type k = 0; k < numIntersections; ++k )
-            {
-                const size_type first = intersectElementsGlobalIndex [j] [k].first;
-                const size_type second = intersectElementsGlobalIndex [j] [k].second;
-                
-                if ( first < numCross )
-                {
-                	(*M)( first, first ) = 1;
-                	(*M)( first, second ) = -1;
-                }
-               
-            }
-        }
+		}
     }
+    else
+    {
+    	for ( size_type i = 0; i < numFractures; ++i )
+    
+		{
+			const FractureHandlerPtr_Type& fracture = fractures->getFracture(i);
+			const pairSizeVectorContainer_Type& intersectElementsGlobalIndex = fracture->getFractureIntersectElementsGlobalIndex ();
+	
+			for ( size_type j = 0; j < numFractures; ++j )
+			{
+				const size_type numIntersections = intersectElementsGlobalIndex [j].size();
+				for ( size_type k = 0; k < numIntersections; ++k )
+				{
+					const size_type first = intersectElementsGlobalIndex [j] [k].first;
+					const size_type second = intersectElementsGlobalIndex [j] [k].second;
+					
+					if ( ( first > numCross*2 + numBifurcation ) && ( first < numCross*2 + numBifurcation + numBifurcation2 ) )
+					{
+						(*M)( first, first ) = 1;
+						(*M)( first, second ) = -1;
+					}
+				   
+				}
+			}
+
+		}
+
+    }
+    
     
     return;
 
