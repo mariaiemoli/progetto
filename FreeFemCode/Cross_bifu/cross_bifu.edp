@@ -9,7 +9,7 @@ bool plotYesNo = true;
 // Import mesh file
 
 // Spacing
-int Nelem = 120;
+int Nelem = 12;
 int NelemS = 10;
 int NelemI = 10;
 

@@ -32,10 +32,10 @@ real b3 = 0.6;
 
 
 // spessore delle fratture
-real d0 = 0.013;
-real d1 = 0.011;
-real d2 = 0.012;
-real d3 = 0.01;
+real d0 = 0.13;
+real d1 = 0.11;
+real d2 = 0.12;
+real d3 = 0.1;
 
 // punti di inizio frattura
 real init0 = 0.0;
