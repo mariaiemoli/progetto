@@ -4,13 +4,15 @@
 
 Nel modello che abbiamo preso in considerazione noi le fratture hanno una rappresentazione in $\mathbb{R}$ e, nel caso della \textit{Biforcazione}, hanno un unico punto in comune. 
 Nella rappresentazione 2D, invece, la regione in comune è un triangolo. \\
-Il nostro modello trascura ovviamente delle informazioni, ma nel caso di fratture con uno spessore sufficientemente piccolo rispetto a quelle del dominio, può essere considerato una buora approssimazione della realtà.\\
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.65\textwidth]{img/TriangoloBiforcazione.eps}
+\includegraphics[scale=.5]{img/TriangoloBiforcazione.eps}
+%\includegraphics[width=0.65\textwidth]{img/TriangoloBiforcazione.eps}
 \caption{Struttura della biforcazione 2D}\label{Biforcazione}
 \end{figure}
+
+Il nostro modello trascura ovviamente delle informazioni, ma nel caso di fratture con uno spessore sufficientemente piccolo rispetto a quelle del dominio, può essere considerato una buona approssimazione della realtà.\\
 
 Per ricavare le condizioni d'interfaccia nel caso della biforcazione per modello ridotto passiamo per la rappresentazione in $\mathbb{R}^{2}$.
 Nel caso 2D le fratture hanno uno spessore e possiamo delimitare un triangolo di intersezione unendo i punti di incontro dei loro bordi. \\
@@ -40,8 +42,16 @@ e le condizioni che dobbiamo porre all'intersezione sono:
 	\right.$
 \end{center} \label{condizioniinterfaccia}
 
-\noindent  Queste sono le condizioni d'interfaccia che verranno imposte nel punto di intersezione delle fratture. \\
-\par Per scrivere questa parte di codice in cui approssimiamo il triangolo di intersezione, abbiamo usato la libreria matematica \textit{Eigen}.
+\noindent  Queste sono le condizioni d'interfaccia che verranno imposte nel punto di intersezione delle fratture.\\ 
+\par In questa parte di codice per gestire sia il calcolo delle matrici introdotte precedentemente, che i punti e la geometria del triangolo di intersezione, abbiamo usato la libreria matematica \textit{Eigen}.\\
+\par Note le basi teoriche possiamo passare a descrivere le principali classi del codice che definiscono la struttura e le propriet\`{a} della biforcazione in uno spazio bidimensionale.
+
+\newpage
+\begin{figure}[htbp]
+\centering
+\includegraphics[height=7cm, width=1\textwidth]{img/MatrixBifurcationHandler2.eps}
+\caption{Inclusione tra le varie classi che costituiscono il triangolo di intersezione}\label{Inclusione classi MatrixBifurcationHandler}
+\end{figure}
 
 \section{La Classe \texttt{MatrixBifurcationHandler}}
 La classe \texttt{MatrixBifurcationHandler} contiene le matrici associate a una biforcazione e implementa i metodi per calcolarle.  Il fine ultimo è il calcolo della matrice di trasmissibilità T.
