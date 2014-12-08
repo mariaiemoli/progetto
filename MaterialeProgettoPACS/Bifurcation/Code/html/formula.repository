@@ -1,1 +1,0 @@
-\form#0:$ T= N K N^T + t P_c \operatorname{diag}(N K N^T) P_c */ void computeT(double t=6.0); //! Computes the Trasmissibility matrix /*! It computes also C, N e Qc It uses the formula $

@@ -13,10 +13,12 @@
 #define _DARCY_OPERATORSX_ 1
 
 #include "Core.h"
+#include "FracturesSet.h"
 #include "LevelSetHandler.h"
 #include "MeshHandler.h"
 #include "FractureHandler.h"
 #include "BCHandler.h"
+#include "MatrixBifurcationHandler.h"
 
 /**************************************************************************/
 /*  XFEMOperators.h													  	  */
@@ -143,6 +145,26 @@ void velocityJump_Cross ( sparseMatrixPtr_Type& M,
                     const size_type& convex );
 
 
+scalarVector_Type setDOF_v ( scalarVector_Type& DOF, FracturePtrContainer_Type& Fracture, 
+							 MatrixBifurcationHandler_Type& Matrix );
+							 
+void setAup_i ( sparseMatrixPtr_Type& Aup_i, 
+ 				size_type id, size_type id_i, size_type id_j, size_type id_k, 
+ 				scalarVector_Type& DOF, scalarVector_Type& DOF_v, 
+ 				sizeVector_Type& shiftIntersect, sizeVector_Type& fractureNumberGlobalDOFVelocity,  
+ 				Matrix3d T, const size_type Index,
+				scalar_type s = 0 );
+/*					
+void copyBifurcationMatrices_in_GlobalMatrix ( sparseMatrixPtr_Type Aup0, size_type id0,
+											   sparseMatrixPtr_Type Aup1, size_type id1,
+											   sparseMatrixPtr_Type Aup2, size_type id2,
+											   sparseMatrixPtr_Type Aup3, size_type id3 );
+*/
+							 
+
+
 } // namespace getfem
+
+size_type GlobalIndex_Bifurcation( FracturesSetPtr_Type& M_fractures, size_type id0, size_type id1, size_type id2 );
 
 #endif

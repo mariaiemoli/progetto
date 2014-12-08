@@ -14,12 +14,10 @@
 #define _DARCYFRACTURED_ 1
 
 #include "Core.h"
-#include "FracturesSet.h"
 #include "XFEMOperators.h"
 #include "BCHandler.h"
 #include "MediumData.h"
 #include "Exporter.h"
-#include "MatrixBifurcationHandler.h"
 #include "StringUtility.h"
 
 /**************************************************************************/

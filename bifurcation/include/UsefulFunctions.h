@@ -70,6 +70,8 @@ std::string regionSigns ( const scalarVector_Type& levelSetValue );
  */
 std::string getOperation ( const std::string& subRegion, const sizeVector_Type& levelSets );
 
+void orderId( size_type& id_i, size_type& id_j, size_type& id_k );
+
 					
 
 #endif /* USEFULFUNCTIONS_H_ */

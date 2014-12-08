@@ -1070,4 +1070,130 @@ void velocityJump_Cross ( sparseMatrixPtr_Type& M,
 } // velocityJump_Cross
 
 
+scalarVector_Type setDOF_v ( scalarVector_Type& DOF, FracturePtrContainer_Type& Fracture, 
+							 MatrixBifurcationHandler_Type& Matrix )
+{
+	scalarVector_Type DOF_v(DOF.size());
+	
+		for( size_type i=0; i< DOF.size(); i++)
+		{
+			Matrix.SetDOFIntersecton( Fracture[ i ], DOF[ i ] );
+		}
+	
+		for( size_type i=0;  i< DOF.size(); i++)
+		{
+			if( DOF[ i ] == 0 )
+			{
+				DOF_v[ i ] = DOF[ i ];
+			}
+			else
+			{
+				DOF_v[ i ] = DOF[ i ] + 1.;
+			}
+		}
+	
+	return DOF_v;
+											   	
+} //setDOF_v
+
+void setAup_i ( sparseMatrixPtr_Type& Aup_i, 
+				size_type id, size_type id_i, size_type id_j, size_type id_k, 
+				scalarVector_Type& DOF, scalarVector_Type& DOF_v, 
+				sizeVector_Type& shiftIntersect, sizeVector_Type& fractureNumberGlobalDOFVelocity,  
+				Matrix3d T, const size_type Index,
+				scalar_type s )
+{						
+	size_type id0, id1, id2;
+	
+	id0 = id_i;
+	id1 = id_j;
+	id2 = id_k;
+	
+	orderId( id0, id1, id2 );
+	
+	if( id != 3 )
+	{
+		(*Aup_i) ( 0 , shiftIntersect[ id_i ] + DOF_v[ id ] )  = 1.;
+		(*Aup_i) ( 0 , shiftIntersect[ id0 ] + DOF[ 0 ] + fractureNumberGlobalDOFVelocity [ id0 ] ) = 1.*T( id , 0 );
+		(*Aup_i) ( 0 , shiftIntersect[ id1 ] + DOF[ 1 ] + fractureNumberGlobalDOFVelocity [ id1 ] ) = 1.*T( id , 1 );
+		(*Aup_i) ( 0 , shiftIntersect[ id2 ] + DOF[ 2 ] + fractureNumberGlobalDOFVelocity [ id2 ] ) = 1.*T( id , 2 );
+		(*Aup_i) ( 0 , Index ) = -1.*( T( id , 0 ) + T( id , 1 ) + T( id , 2 ) );
+	}
+	else
+	{
+		// velocità: attenzione alla convenzione dei segni!!	
+		if ( DOF_v[ 0 ] == 0 )
+		{
+			(*Aup_i) ( 0 , shiftIntersect[ id0 ] + DOF_v[ 0 ] )  = 1./( 3.0 * s );
+		}
+		else 
+		{
+			(*Aup_i) ( 0 , shiftIntersect[ id0 ] + DOF_v[ 0 ] )  = -1./( 3.0 * s );
+		}
+		if ( DOF_v[ 1 ] == 0 )
+		{
+			(*Aup_i) ( 0 , shiftIntersect[ id1 ] + DOF_v[ 1 ] )  = 1./( 3.0 * s );
+		}
+		else 
+		{
+			(*Aup_i) ( 0 , shiftIntersect[ id1 ] + DOF_v[ 1 ] )  = -1./( 3.0 * s );
+		}
+		if ( DOF_v[ 2 ] == 0 )
+		{
+			(*Aup_i) ( 0 , shiftIntersect[ id2 ] + DOF_v[ 2 ] )  = 1./( 3.0 * s );
+		}
+		else 
+		{
+			(*Aup_i) ( 0 , shiftIntersect[ id2 ] + DOF_v[ 2 ] )  = -1./( 3.0 * s );
+		}
+
+		// pressione 
+		(*Aup_i) ( 0 , shiftIntersect[ id0 ] + DOF[ 0 ] + fractureNumberGlobalDOFVelocity [ id0 ] ) = -1./3.;
+		(*Aup_i) ( 0 , shiftIntersect[ id1 ] + DOF[ 1 ] + fractureNumberGlobalDOFVelocity [ id1 ] ) = -1./3.;
+		(*Aup_i) ( 0 , shiftIntersect[ id2 ] + DOF[ 2 ] + fractureNumberGlobalDOFVelocity [ id2 ] ) = -1./3.;
+
+		// pressione media
+		(*Aup_i) ( 0 , Index ) = 1.;
+	}
+	
+	return;
+											   	
+} //setAup_i
+
+
+/*
+void copyBifurcationMatrices_in_GlobalMatrix ( sparseMatrixPtr_Type Aup0, size_type id0,
+											   sparseMatrixPtr_Type Aup1, size_type id1,
+											   sparseMatrixPtr_Type Aup2, size_type id2,
+											   sparseMatrixPtr_Type Aup3, size_type id3 )
+{
+											   	
+} //copyBifurcationMatrices_in_GlobalMatrix
+ */
+
+
+
 }// namespace getfem
+
+size_type GlobalIndex_Bifurcation( FracturesSetPtr_Type& M_fractures, size_type id0, size_type id1, size_type id2 )
+{
+    const pairSizeVectorContainer_Type& intersectElementsGlobalIndex0 = M_fractures->getFracture( id0 )->getFractureIntersectElementsGlobalIndex ();
+    
+	const size_type globalIndex01 =  intersectElementsGlobalIndex0[ id1 ][ 0 ].first;
+	const size_type globalIndex02 =  intersectElementsGlobalIndex0[ id2 ][ 0 ].first;
+
+    const pairSizeVectorContainer_Type& intersectElementsGlobalIndex1 = M_fractures->getFracture( id1 )->getFractureIntersectElementsGlobalIndex ();
+    
+	const size_type globalIndex10 =  intersectElementsGlobalIndex1[ id0 ][ 0 ].first;
+	const size_type globalIndex12 =  intersectElementsGlobalIndex1[ id2 ][ 0 ].first;
+	
+	const pairSizeVectorContainer_Type& intersectElementsGlobalIndex2 = M_fractures->getFracture( id2 )->getFractureIntersectElementsGlobalIndex ();
+	
+	const size_type globalIndex20 =  intersectElementsGlobalIndex2[ id0 ][ 0 ].first;
+	const size_type globalIndex21 =  intersectElementsGlobalIndex2[ id1 ][ 0 ].first;
+
+	const size_type globalIndex = fmin ( globalIndex01, fmin( globalIndex02, fmin ( globalIndex10, fmin ( globalIndex12, fmin ( globalIndex20, globalIndex21 )))));
+	
+	return globalIndex;
+	
+} // GlobalIndex_Bifurcation
