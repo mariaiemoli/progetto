@@ -6,6 +6,7 @@ main.o: main.cc include/MeshHandler.h include/Core.h include/GetPot \
  include/LevelSetHandler.h include/LevelSetData.h \
  include/FractureIntersect.h include/IntersectData.h \
  include/FracturesSet.h include/MediumData.h include/DarcyFractured.h \
- include/XFEMOperators.h include/MeshHandler.h include/MediumData.h \
- include/Exporter.h include/MatrixBifurcationHandler.h \
- include/TriangleHandler.h include/TriangleData.h include/PointData.h
+ include/XFEMOperators.h include/MeshHandler.h \
+ include/MatrixBifurcationHandler.h include/TriangleHandler.h \
+ include/TriangleData.h include/PointData.h include/MediumData.h \
+ include/Exporter.h

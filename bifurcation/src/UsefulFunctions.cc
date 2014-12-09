@@ -152,3 +152,32 @@ std::string getOperation ( const std::string& subRegion, const sizeVector_Type& 
 
     return operation.str().c_str();
 } // getOperation
+
+void orderId( size_type& id_i, size_type& id_j, size_type& id_k )
+{
+	size_type id0, id1, id2;
+	
+	id0 = fmin( id_i, fmin( id_j, id_k ) );
+	id2 = fmax( id_i, fmax( id_j, id_k ) );
+	
+	if( id0 == id_i )
+	{
+		id1 = fmin( id_j, id_k );
+	}
+	else if( id0 == id_j )
+	{
+		id1= fmin( id_i, id_k );
+	}
+	else
+	{
+		id1 = fmin( id_i, id_j );
+	}
+	
+	id_i = id0;
+	id_j = id1;
+	id_k = id2;
+	
+	return;
+	
+} // orderId
+

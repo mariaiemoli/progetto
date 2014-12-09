@@ -1,3 +1,0 @@
-biforc.o: biforc.cpp biforc.hpp geo.hpp
-geo.o: geo.cpp geo.hpp
-main_test.o: main_test.cpp biforc.hpp geo.hpp
