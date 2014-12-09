@@ -1,0 +1,516 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>Progetto PACS:  File sorgente include/FractureHandler.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Progetto PACS
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generato da Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Pagina&#160;Principale</span></a></li>
+      <li><a href="namespaces.html"><span>Namespace</span></a></li>
+      <li><a href="annotated.html"><span>Classi</span></a></li>
+      <li class="current"><a href="files.html"><span>File</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Cerca" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Elenco&#160;dei&#160;file</span></a></li>
+      <li><a href="globals.html"><span>Elementi&#160;dei&#160;file</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tutto</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classi</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespace</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>File</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funzioni</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variabili</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Ridefinizioni di tipo (typedef)</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Tipi enumerati (enum)</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Valori del tipo enumerato</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friend</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">FractureHandler.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="FractureHandler_8h.html">Vai alla documentazione di questo file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#ifndef FRACTUREHANDLER_H_</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define FRACTUREHANDLER_H_ 1</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="StringUtility_8h.html">StringUtility.h</a>&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="FractureData_8h.html">FractureData.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="BCHandler_8h.html">BCHandler.h</a>&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="LevelSetHandler_8h.html">LevelSetHandler.h</a>&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="classFractureHandler.html">   16</a></span>&#160;<span class="keyword">class </span><a class="code" href="classFractureHandler.html">FractureHandler</a></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">enum</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    {</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="classFractureHandler.html#a495ad4fc72d0c47c8f0424842f1153aaaa992cc3ad024a030ecd798dc319c95ac">   26</a></span>&#160;        <a class="code" href="classFractureHandler.html#a495ad4fc72d0c47c8f0424842f1153aaaa992cc3ad024a030ecd798dc319c95ac">FRACTURE_UNCUT</a> = 10000,</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classFractureHandler.html#a495ad4fc72d0c47c8f0424842f1153aaa781cae3f3b99bf9357fed2833d315537">   27</a></span>&#160;        <a class="code" href="classFractureHandler.html#a495ad4fc72d0c47c8f0424842f1153aaa781cae3f3b99bf9357fed2833d315537">FRACTURE_INTERSECT</a> = 10000</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    };</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="classFractureHandler.html#aa3872456d95550cdd424908bbb5a15ec">FractureHandler</a> ( <span class="keyword">const</span> GetPot&amp; dataFile,</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                      <span class="keyword">const</span> size_type&amp; <a class="code" href="namespaceLifeV.html#a7c0e64679fcd30daa5471b87a57601e9">ID</a>,</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                      <span class="keyword">const</span> std::string&amp; section = <span class="stringliteral">&quot;fractureData/&quot;</span> );</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classFractureHandler.html#aa28ce054ba2a2679214956c71f8cf1e0">init</a> ( );</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classFractureHandler.html#aec1fc4e2664b3fe60877b63024af3605">normalVectorAndMap</a> ( <span class="keyword">const</span> getfem::mesh_fem&amp; mediumMeshFEMPressure );</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classFractureHandler.html#a87f0f8e2998b621b481173ec8d9aaa2a">computeInvH</a> ( <span class="keyword">const</span> <a class="code" href="BCHandler_8h.html#aa175884cb453788647f17f2230a2a762">BCHandlerPtr_Type</a>&amp; bcHandler );</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="classFractureHandler.html#a9ff9f584b850d6b750981befdbefbdbe">   57</a></span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> getfem::mesh&amp; <a class="code" href="classFractureHandler.html#a9ff9f584b850d6b750981befdbefbdbe">getMeshFlat</a> ( )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordflow">return</span> M_meshFlat;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="classFractureHandler.html#ad9b02a825d444016b3ab8ee901f887f6">   63</a></span>&#160;    <span class="keyword">inline</span> getfem::mesh&amp; <a class="code" href="classFractureHandler.html#ad9b02a825d444016b3ab8ee901f887f6">getMeshFlat</a> ( )</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordflow">return</span> M_meshFlat;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="classFractureHandler.html#ae54c07023428b44556bbec4da5be9306">   69</a></span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> getfem::mesh_fem&amp; <a class="code" href="classFractureHandler.html#ae54c07023428b44556bbec4da5be9306">getMeshFEMVelocity</a> ( )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordflow">return</span> M_meshFEMVelocity;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="classFractureHandler.html#a6dc20a9624f9dff49b1c58f0dd261002">   75</a></span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> getfem::mesh_fem&amp; <a class="code" href="classFractureHandler.html#a6dc20a9624f9dff49b1c58f0dd261002">getMeshFEMPressure</a> ( )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordflow">return</span> M_meshFEMPressure;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="classFractureHandler.html#afe4c174c17862ed30b99ebe4a80aa695">   81</a></span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> getfem::mesh_im&amp; <a class="code" href="classFractureHandler.html#afe4c174c17862ed30b99ebe4a80aa695">getIntegrationMethodVelocity</a> ( )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keywordflow">return</span> M_integrationMethodVelocity;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="classFractureHandler.html#ad7afd53439c3067f46a0fb6e1473d661">   87</a></span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> getfem::mesh_im&amp; <a class="code" href="classFractureHandler.html#ad7afd53439c3067f46a0fb6e1473d661">getIntegrationMethodPressure</a> ( )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordflow">return</span> M_integrationMethodPressure;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="classFractureHandler.html#a68ed77a8d9816a472700ee4bcf2f505d">   93</a></span>&#160;    <span class="keyword">inline</span> <a class="code" href="classFractureData.html">FractureData</a>&amp; <a class="code" href="classFractureHandler.html#a68ed77a8d9816a472700ee4bcf2f505d">getData</a> ( )</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keywordflow">return</span> M_data;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    }</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="classFractureHandler.html#af37ab12a17f812a960da2aa71699ba0f">   99</a></span>&#160;    <span class="keyword">inline</span> <a class="code" href="LevelSetHandler_8h.html#aba343569cb3213c103252f69c39cad0b">LevelSetHandlerPtr_Type</a>&amp; <a class="code" href="classFractureHandler.html#af37ab12a17f812a960da2aa71699ba0f">getLevelSet</a> ( )</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keywordflow">return</span> M_levelSet;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    }</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="classFractureHandler.html#a509c3ffa6d2dd0fa7458ecbe5fb81360">  104</a></span>&#160;    <span class="keyword">inline</span> <a class="code" href="Core_8h.html#a83c51913d041a5001e8683434c09857f">sizeVector_Type</a>&amp; <a class="code" href="classFractureHandler.html#a509c3ffa6d2dd0fa7458ecbe5fb81360">getDofFree</a>( )</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="keywordflow">return</span>  M_DOF_Free;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    }</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    </div>
+<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="classFractureHandler.html#a9d4efa6f97a7e1fc6775037037b76f8a">  109</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classFractureHandler.html#a9d4efa6f97a7e1fc6775037037b76f8a">clearDofFree</a>( )</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        M_DOF_Free.clear();</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    }</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    </div>
+<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="classFractureHandler.html#a98931107f39ccff8789014256dcfa9a5">  116</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classFractureHandler.html#a98931107f39ccff8789014256dcfa9a5">pushDofFree</a>( size_type <a class="code" href="matrici_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a> )</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        M_DOF_Free.push_back( i );</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    }</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
+<div class="line"><a name="l00123"></a><span class="lineno"><a class="line" href="classFractureHandler.html#ac5cab221c35c03c72b264d73564d5e38">  123</a></span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> <a class="code" href="Core_8h.html#a4e75b5863535ba1dd79942de2846eff0">scalarVector_Type</a>&amp; <a class="code" href="classFractureHandler.html#ac5cab221c35c03c72b264d73564d5e38">getEtaNormalInterpolated</a> ( )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="keywordflow">return</span> M_etaNormalInterpolated;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    }</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
+<div class="line"><a name="l00129"></a><span class="lineno"><a class="line" href="classFractureHandler.html#a06b6f81d62ccd91ec1253cd41ffae808">  129</a></span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> <a class="code" href="Core_8h.html#a4e75b5863535ba1dd79942de2846eff0">scalarVector_Type</a>&amp; <a class="code" href="classFractureHandler.html#a06b6f81d62ccd91ec1253cd41ffae808">getEtaTangentialInterpolated</a> ( )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <span class="keywordflow">return</span> M_etaTangentialInterpolated;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    }</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
+<div class="line"><a name="l00135"></a><span class="lineno"><a class="line" href="classFractureHandler.html#a47c7f4161817ebf6cd978cf6b2caa74f">  135</a></span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> scalar_type&amp; <a class="code" href="classFractureHandler.html#a47c7f4161817ebf6cd978cf6b2caa74f">getEtaTangentialInterpolated</a> ( <span class="keyword">const</span> size_type&amp; dof )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <span class="keywordflow">return</span> M_etaTangentialInterpolated [ dof ];</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    }</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div>
+<div class="line"><a name="l00141"></a><span class="lineno"><a class="line" href="classFractureHandler.html#a3f78aef488ef82ac8384bdd9e39a9be5">  141</a></span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> <a class="code" href="Core_8h.html#a4e75b5863535ba1dd79942de2846eff0">scalarVector_Type</a>&amp; <a class="code" href="classFractureHandler.html#a3f78aef488ef82ac8384bdd9e39a9be5">getInverseMeshSize</a> ( )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        <span class="keywordflow">return</span> M_inverseMeshSize;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    }</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div>
+<div class="line"><a name="l00147"></a><span class="lineno"><a class="line" href="classFractureHandler.html#a1e1ba24caa1e789b199252c3c34f696d">  147</a></span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> scalar_type&amp; <a class="code" href="classFractureHandler.html#a1e1ba24caa1e789b199252c3c34f696d">getInverseMeshSize</a> ( <span class="keyword">const</span> size_type&amp; dof )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <span class="keywordflow">return</span> M_inverseMeshSize [ dof ];</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    }</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;</div>
+<div class="line"><a name="l00153"></a><span class="lineno"><a class="line" href="classFractureHandler.html#abaf5f99ba68775a587d6b3f0222e8b9a">  153</a></span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> <a class="code" href="Core_8h.html#a4e75b5863535ba1dd79942de2846eff0">scalarVector_Type</a>&amp; <a class="code" href="classFractureHandler.html#abaf5f99ba68775a587d6b3f0222e8b9a">getMagnificationMapFactor1</a> ( )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <span class="keywordflow">return</span> M_magnificationMapFactor1;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    }</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
+<div class="line"><a name="l00159"></a><span class="lineno"><a class="line" href="classFractureHandler.html#a1cafea5a92ab3a9b5eae67c347867f58">  159</a></span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> scalar_type&amp; <a class="code" href="classFractureHandler.html#a1cafea5a92ab3a9b5eae67c347867f58">getMagnificationMapFactor1</a> ( <span class="keyword">const</span> size_type&amp; dof )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        <span class="keywordflow">return</span> M_magnificationMapFactor1 [ dof ];</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    }</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;</div>
+<div class="line"><a name="l00165"></a><span class="lineno"><a class="line" href="classFractureHandler.html#a68b09b4012669140979a0026736b3dfe">  165</a></span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> <a class="code" href="Core_8h.html#a4e75b5863535ba1dd79942de2846eff0">scalarVector_Type</a>&amp; <a class="code" href="classFractureHandler.html#a68b09b4012669140979a0026736b3dfe">getMagnificationMapFactor2</a> ( )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        <span class="keywordflow">return</span> M_magnificationMapFactor2;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    }</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
+<div class="line"><a name="l00171"></a><span class="lineno"><a class="line" href="classFractureHandler.html#a5bbe076a3595909f6af49e8d69e39231">  171</a></span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> scalar_type&amp; <a class="code" href="classFractureHandler.html#a5bbe076a3595909f6af49e8d69e39231">getMagnificationMapFactor2</a> ( <span class="keyword">const</span> size_type&amp; dof )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        <span class="keywordflow">return</span> M_magnificationMapFactor2 [ dof ];</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    }</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;</div>
+<div class="line"><a name="l00177"></a><span class="lineno"><a class="line" href="classFractureHandler.html#a2e1d27efecfa84246375be5f4262bab2">  177</a></span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> bgeot::pgeometric_trans&amp; <a class="code" href="classFractureHandler.html#a2e1d27efecfa84246375be5f4262bab2">getGeometricTransformation</a> ( )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        <span class="keywordflow">return</span> M_geometricTransformation;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    }</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;</div>
+<div class="line"><a name="l00183"></a><span class="lineno"><a class="line" href="classFractureHandler.html#a22e229a4016119138c48b456a185e1ff">  183</a></span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> <a class="code" href="Core_8h.html#a4e75b5863535ba1dd79942de2846eff0">scalarVector_Type</a>&amp; <a class="code" href="classFractureHandler.html#a22e229a4016119138c48b456a185e1ff">getNormal1</a> ( )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        <span class="keywordflow">return</span> M_normal1;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    }</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;</div>
+<div class="line"><a name="l00189"></a><span class="lineno"><a class="line" href="classFractureHandler.html#ae707e764eaff191e2856765131289c82">  189</a></span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> <a class="code" href="Core_8h.html#a4e75b5863535ba1dd79942de2846eff0">scalarVector_Type</a>&amp; <a class="code" href="classFractureHandler.html#ae707e764eaff191e2856765131289c82">getNormal2</a> ( )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        <span class="keywordflow">return</span> M_normal2;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    }</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;</div>
+<div class="line"><a name="l00195"></a><span class="lineno"><a class="line" href="classFractureHandler.html#a79b2fbb306b2bc045d5bef0b73d12ec8">  195</a></span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> getfem::mesh&amp; <a class="code" href="classFractureHandler.html#a79b2fbb306b2bc045d5bef0b73d12ec8">getMeshMapped</a> ( )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        <span class="keywordflow">return</span> M_meshMapped;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    }</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;</div>
+<div class="line"><a name="l00201"></a><span class="lineno"><a class="line" href="classFractureHandler.html#ad3fa0255b0e57f6562dc98bbf71588b1">  201</a></span>&#160;    <span class="keyword">inline</span> getfem::mesh&amp; <a class="code" href="classFractureHandler.html#ad3fa0255b0e57f6562dc98bbf71588b1">getMeshMapped</a> ( )</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    {</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        <span class="keywordflow">return</span> M_meshMapped;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    }</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;</div>
+<div class="line"><a name="l00206"></a><span class="lineno"><a class="line" href="classFractureHandler.html#a157f39f66131faf579b980b6b5fb91fb">  206</a></span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> getfem::mesh_im&amp; <a class="code" href="classFractureHandler.html#a157f39f66131faf579b980b6b5fb91fb">getIntegrationMethodPressureVisualization</a> ( )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        <span class="keywordflow">return</span> M_integrationMethodPressureVisualization;</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    }</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;</div>
+<div class="line"><a name="l00212"></a><span class="lineno"><a class="line" href="classFractureHandler.html#ac78f500422e542b77114e56f11173b0d">  212</a></span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> getfem::mesh_fem&amp; <a class="code" href="classFractureHandler.html#ac78f500422e542b77114e56f11173b0d">getMeshFEMPressureVisualization</a> ( )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        <span class="keywordflow">return</span> M_meshFEMPressureVisualization;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    }</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;</div>
+<div class="line"><a name="l00218"></a><span class="lineno"><a class="line" href="classFractureHandler.html#ab77ee6aaf47d7f1d80fd1ff23bd34a33">  218</a></span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> getfem::mesh_fem&amp; <a class="code" href="classFractureHandler.html#ab77ee6aaf47d7f1d80fd1ff23bd34a33">getMeshFEMLinear</a> ( )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        <span class="keywordflow">return</span> M_meshFEMLinear;</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    }</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;</div>
+<div class="line"><a name="l00224"></a><span class="lineno"><a class="line" href="classFractureHandler.html#a7f7ec5b15315791f76d8deb0874511d6">  224</a></span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> size_type&amp; <a class="code" href="classFractureHandler.html#a7f7ec5b15315791f76d8deb0874511d6">getId</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        <span class="keywordflow">return</span> M_ID;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    }</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;</div>
+<div class="line"><a name="l00230"></a><span class="lineno"><a class="line" href="classFractureHandler.html#a002e255a1976918ffbe6ea63b0fdae1b">  230</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classFractureHandler.html#a002e255a1976918ffbe6ea63b0fdae1b">numFractures</a> ( <span class="keyword">const</span> size_type&amp; <a class="code" href="classFractureHandler.html#a002e255a1976918ffbe6ea63b0fdae1b">numFractures</a> )</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    {</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        M_meshLevelSetIntersect.resize ( numFractures );</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        M_levelSetIntersect.resize ( numFractures );</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        M_fractureIntersectElements.resize ( numFractures );</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        M_fractureIntersectElementsGlobalIndex.resize ( numFractures );</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    }</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    size_type <a class="code" href="classFractureHandler.html#ac8cefb4c4416edc814345eb2475c8e37">setMeshLevelSetFracture</a> ( <a class="code" href="classFractureHandler.html">FractureHandler</a>&amp; otherFracture, size_type&amp; globalIndex, <span class="keyword">const</span> std::string&amp; type );</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;</div>
+<div class="line"><a name="l00249"></a><span class="lineno"><a class="line" href="classFractureHandler.html#a585b1c169be23022e25e07bd9666d18d">  249</a></span>&#160;    size_type <a class="code" href="classFractureHandler.html#a585b1c169be23022e25e07bd9666d18d">getNumExtendedPressure</a> ()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        <span class="keywordflow">return</span> M_extendedPressure.size();</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    }</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;</div>
+<div class="line"><a name="l00259"></a><span class="lineno"><a class="line" href="classFractureHandler.html#a5d8a3c910ba9a5d156decb747040e41f">  259</a></span>&#160;    <span class="keyword">const</span> <a class="code" href="Core_8h.html#a83c51913d041a5001e8683434c09857f">sizeVector_Type</a>&amp; <a class="code" href="classFractureHandler.html#a5d8a3c910ba9a5d156decb747040e41f">getExtendedPressure</a> ()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        <span class="keywordflow">return</span> M_extendedPressure;</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    }</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;</div>
+<div class="line"><a name="l00269"></a><span class="lineno"><a class="line" href="classFractureHandler.html#af5b7cdadefe6993813e76fd6238b1771">  269</a></span>&#160;    size_type <a class="code" href="classFractureHandler.html#af5b7cdadefe6993813e76fd6238b1771">getNumExtendedVelocity</a> ()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        <span class="keywordflow">return</span> M_extendedVelocity.size();</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    }</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;</div>
+<div class="line"><a name="l00279"></a><span class="lineno"><a class="line" href="classFractureHandler.html#acfb03361fe0e1060fdf07dd997065519">  279</a></span>&#160;    <span class="keyword">const</span> <a class="code" href="Core_8h.html#a83c51913d041a5001e8683434c09857f">sizeVector_Type</a>&amp; <a class="code" href="classFractureHandler.html#acfb03361fe0e1060fdf07dd997065519">getExtendedVelocity</a> ()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        <span class="keywordflow">return</span> M_extendedVelocity;</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    }</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;</div>
+<div class="line"><a name="l00288"></a><span class="lineno"><a class="line" href="classFractureHandler.html#a69b5921703089ac725df60b08eb821c1">  288</a></span>&#160;    <a class="code" href="Core_8h.html#a1cbde831f5a62206e084de1c5de27000">GFMeshLevelSetPtr_Type</a> <a class="code" href="classFractureHandler.html#a69b5921703089ac725df60b08eb821c1">getMeshLevelSetIntersect</a> ( <span class="keyword">const</span> size_type&amp; f )</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    {</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        <span class="keywordflow">return</span> M_meshLevelSetIntersect[f];</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    }</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;</div>
+<div class="line"><a name="l00297"></a><span class="lineno"><a class="line" href="classFractureHandler.html#a3c2efa9ded1347b095e2b3247e728894">  297</a></span>&#160;    <a class="code" href="Core_8h.html#a036173458a8a25c7c03f8c76d97e9580">GFLevelSetPtr_Type</a> <a class="code" href="classFractureHandler.html#a3c2efa9ded1347b095e2b3247e728894">getLevelSetIntersect</a> ( <span class="keyword">const</span> size_type&amp; f )</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    {</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;        <span class="keywordflow">return</span> M_levelSetIntersect[f];</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    }</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    size_type <a class="code" href="classFractureHandler.html#aa66dc3447c3bafc87e61f5b232c98acb">getNumIntersections</a> () <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;</div>
+<div class="line"><a name="l00309"></a><span class="lineno"><a class="line" href="classFractureHandler.html#ab722c7fb4c48e062a8060251c4cb80c3">  309</a></span>&#160;    <span class="keyword">const</span> <a class="code" href="Core_8h.html#a80e8381d86ecb0a7f4f87ff84d1a0be5">sizeVectorContainer_Type</a>&amp; <a class="code" href="classFractureHandler.html#ab722c7fb4c48e062a8060251c4cb80c3">getFractureIntersectElements</a> ()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        <span class="keywordflow">return</span> M_fractureIntersectElements;</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    }</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;</div>
+<div class="line"><a name="l00315"></a><span class="lineno"><a class="line" href="classFractureHandler.html#a7f439a7c14b6064d52984130f8bcb7c1">  315</a></span>&#160;    <span class="keyword">const</span> <a class="code" href="Core_8h.html#a9bc476e433f99b82a9c2b8560735c7b5">pairSizeVectorContainer_Type</a>&amp; <a class="code" href="classFractureHandler.html#a7f439a7c14b6064d52984130f8bcb7c1">getFractureIntersectElementsGlobalIndex</a> ()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        <span class="keywordflow">return</span> M_fractureIntersectElementsGlobalIndex;</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    }</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;</div>
+<div class="line"><a name="l00321"></a><span class="lineno"><a class="line" href="classFractureHandler.html#ac4156ff43fcdc7a4641aef8cdabf2357">  321</a></span>&#160;    <a class="code" href="Core_8h.html#a9bc476e433f99b82a9c2b8560735c7b5">pairSizeVectorContainer_Type</a>&amp; <a class="code" href="classFractureHandler.html#ac4156ff43fcdc7a4641aef8cdabf2357">getFractureIntersectElementsGlobalIndex</a> ()</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    {</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;        <span class="keywordflow">return</span> M_fractureIntersectElementsGlobalIndex;</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    }</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    size_type M_ID;</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    <a class="code" href="classFractureData.html">FractureData</a> M_data;</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    <a class="code" href="LevelSetHandler_8h.html#aba343569cb3213c103252f69c39cad0b">LevelSetHandlerPtr_Type</a> M_levelSet;</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    </div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    <span class="comment">// va a salvarsi, in caso ci fosse una biforcazione, in quale degli estremi della frattura cade</span></div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    <a class="code" href="Core_8h.html#a83c51913d041a5001e8683434c09857f">sizeVector_Type</a> M_DOF_Free;</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    <span class="comment">// M_mediummesh per la fratture: M_meshFlat è &quot; piatta &quot; (1d), M_meshMapped è mappata (x(t),y(t))</span></div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    getfem::mesh M_meshFlat;</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    getfem::mesh M_meshMapped;</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    <a class="code" href="Core_8h.html#a29030a1ee2a376ae4052e25cde188912">GFMeshLevelSetPtrContainer_Type</a> M_meshLevelSetIntersect;</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    <a class="code" href="Core_8h.html#a987d5dc736e8c716b3a33e3901a8c904">GFLevelSetPtrContainer_Type</a> M_levelSetIntersect;</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    <span class="comment">// eta_gamma = d/K_normale - vector</span></div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    <a class="code" href="Core_8h.html#a4e75b5863535ba1dd79942de2846eff0">scalarVector_Type</a> M_etaNormalInterpolated;</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    <span class="comment">// eta_t=1/(K_t*d) - vector</span></div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    <a class="code" href="Core_8h.html#a4e75b5863535ba1dd79942de2846eff0">scalarVector_Type</a> M_etaTangentialInterpolated;</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;    <span class="comment">// integration method (velocity)</span></div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;    getfem::mesh_im M_integrationMethodVelocity;</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    <span class="comment">// integration method (pressure)</span></div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;    getfem::mesh_im M_integrationMethodPressure;</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    <span class="comment">// integration method (pressure)</span></div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    getfem::mesh_im M_integrationMethodPressureVisualization;</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    <span class="comment">//elementi finiti</span></div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    <span class="comment">// mesh_fem for pressure</span></div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    getfem::mesh_fem M_meshFEMPressure;</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    <span class="comment">// mesh_fem for pressure</span></div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;    getfem::mesh_fem M_meshFEMPressureVisualization;</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    getfem::mesh_fem M_meshFEMVelocity;</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    <span class="comment">// Fracture extended</span></div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;    <a class="code" href="Core_8h.html#a83c51913d041a5001e8683434c09857f">sizeVector_Type</a> M_extendedPressure;</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    <a class="code" href="Core_8h.html#a83c51913d041a5001e8683434c09857f">sizeVector_Type</a> M_extendedVelocity;</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    <a class="code" href="Core_8h.html#a80e8381d86ecb0a7f4f87ff84d1a0be5">sizeVectorContainer_Type</a> M_fractureIntersectElements;</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;    <a class="code" href="Core_8h.html#a9bc476e433f99b82a9c2b8560735c7b5">pairSizeVectorContainer_Type</a> M_fractureIntersectElementsGlobalIndex;</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;    <span class="comment">//fattore di scala nella mappatura fra frattura piana e mappata</span></div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    <a class="code" href="Core_8h.html#a4e75b5863535ba1dd79942de2846eff0">scalarVector_Type</a> M_magnificationMapFactor1;</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;    <span class="comment">//fattore di scala nella mappatura fra frattura piana e mappata</span></div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    <a class="code" href="Core_8h.html#a4e75b5863535ba1dd79942de2846eff0">scalarVector_Type</a> M_magnificationMapFactor2;</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    <span class="comment">//componenti della normale</span></div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;    <a class="code" href="Core_8h.html#a4e75b5863535ba1dd79942de2846eff0">scalarVector_Type</a> M_normal1;</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    <a class="code" href="Core_8h.html#a4e75b5863535ba1dd79942de2846eff0">scalarVector_Type</a> M_normal2;</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;    <span class="comment">// M_mediumInverseMeshSize = 1.0 / M_mediumMeshSize; per la frattura</span></div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    <a class="code" href="Core_8h.html#a4e75b5863535ba1dd79942de2846eff0">scalarVector_Type</a> M_inverseMeshSize;</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    <span class="comment">// Geometric transformation usign pressure finite elements type</span></div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    bgeot::pgeometric_trans M_geometricTransformation;</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    <span class="comment">// integration method (velocity)</span></div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    getfem::mesh_im M_integrationMethodLinear;</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    <span class="comment">// mesh_fem for coefficients</span></div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;    getfem::mesh_fem M_meshFEMLinear;</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;};</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;</div>
+<div class="line"><a name="l00393"></a><span class="lineno"><a class="line" href="FractureHandler_8h.html#a3d674f38498548edd32ded9687dd937a">  393</a></span>&#160;<span class="keyword">typedef</span> <a class="code" href="classFractureHandler.html">FractureHandler</a> <a class="code" href="FractureHandler_8h.html#a3d674f38498548edd32ded9687dd937a">FractureHandler_Type</a>;                                           </div>
+<div class="line"><a name="l00394"></a><span class="lineno"><a class="line" href="FractureHandler_8h.html#af23fb7a30aaff864bd42587af4f1e78a">  394</a></span>&#160;<span class="keyword">typedef</span> boost::shared_ptr&lt;FractureHandler_Type&gt; <a class="code" href="FractureHandler_8h.html#af23fb7a30aaff864bd42587af4f1e78a">FractureHandlerPtr_Type</a>;                </div>
+<div class="line"><a name="l00395"></a><span class="lineno"><a class="line" href="FractureHandler_8h.html#a2f0b57e18ecf89912d7de0c87158009e">  395</a></span>&#160;<span class="keyword">typedef</span> std::vector&lt;FractureHandlerPtr_Type&gt; <a class="code" href="FractureHandler_8h.html#a2f0b57e18ecf89912d7de0c87158009e">FracturePtrContainer_Type</a>;                 </div>
+<div class="line"><a name="l00396"></a><span class="lineno"><a class="line" href="FractureHandler_8h.html#a6d374b4e54d5afcf10945d31d8563248">  396</a></span>&#160;<span class="keyword">typedef</span> std::vector&lt;FractureHandler_Type&gt; <a class="code" href="FractureHandler_8h.html#a6d374b4e54d5afcf10945d31d8563248">FractureContainer_Type</a>;                       </div>
+<div class="line"><a name="l00397"></a><span class="lineno"><a class="line" href="FractureHandler_8h.html#a7f3fe0e898008010eb22cefa07ea76a9">  397</a></span>&#160;<span class="keyword">typedef</span> boost::shared_ptr&lt;FracturePtrContainer_Type&gt; <a class="code" href="FractureHandler_8h.html#a7f3fe0e898008010eb22cefa07ea76a9">FracturePtrContainerPtr_Type</a>;      </div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* FRACTUREHANDLER_H_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="Core_8h_html_a83c51913d041a5001e8683434c09857f"><div class="ttname"><a href="Core_8h.html#a83c51913d041a5001e8683434c09857f">sizeVector_Type</a></div><div class="ttdeci">std::vector&lt; size_type &gt; sizeVector_Type</div><div class="ttdef"><b>Definition:</b> Core.h:69</div></div>
+<div class="ttc" id="classFractureHandler_html"><div class="ttname"><a href="classFractureHandler.html">FractureHandler</a></div><div class="ttdoc">FractureHandler.h. </div><div class="ttdef"><b>Definition:</b> FractureHandler.h:16</div></div>
+<div class="ttc" id="classFractureHandler_html_a87f0f8e2998b621b481173ec8d9aaa2a"><div class="ttname"><a href="classFractureHandler.html#a87f0f8e2998b621b481173ec8d9aaa2a">FractureHandler::computeInvH</a></div><div class="ttdeci">void computeInvH(const BCHandlerPtr_Type &amp;bcHandler)</div><div class="ttdoc">Funzione che calcola il passo di griglia, h^-1. </div><div class="ttdef"><b>Definition:</b> FractureHandler.cc:186</div></div>
+<div class="ttc" id="classFractureHandler_html_a9d4efa6f97a7e1fc6775037037b76f8a"><div class="ttname"><a href="classFractureHandler.html#a9d4efa6f97a7e1fc6775037037b76f8a">FractureHandler::clearDofFree</a></div><div class="ttdeci">void clearDofFree()</div><div class="ttdef"><b>Definition:</b> FractureHandler.h:109</div></div>
+<div class="ttc" id="BCHandler_8h_html"><div class="ttname"><a href="BCHandler_8h.html">BCHandler.h</a></div></div>
+<div class="ttc" id="Core_8h_html_a29030a1ee2a376ae4052e25cde188912"><div class="ttname"><a href="Core_8h.html#a29030a1ee2a376ae4052e25cde188912">GFMeshLevelSetPtrContainer_Type</a></div><div class="ttdeci">std::vector&lt; GFMeshLevelSetPtr_Type &gt; GFMeshLevelSetPtrContainer_Type</div><div class="ttdef"><b>Definition:</b> Core.h:86</div></div>
+<div class="ttc" id="Core_8h_html_a036173458a8a25c7c03f8c76d97e9580"><div class="ttname"><a href="Core_8h.html#a036173458a8a25c7c03f8c76d97e9580">GFLevelSetPtr_Type</a></div><div class="ttdeci">boost::shared_ptr&lt; GFLevelSet_Type &gt; GFLevelSetPtr_Type</div><div class="ttdef"><b>Definition:</b> Core.h:90</div></div>
+<div class="ttc" id="classFractureHandler_html_aa66dc3447c3bafc87e61f5b232c98acb"><div class="ttname"><a href="classFractureHandler.html#aa66dc3447c3bafc87e61f5b232c98acb">FractureHandler::getNumIntersections</a></div><div class="ttdeci">size_type getNumIntersections() const </div><div class="ttdoc">Funzione che calcola in numero totale di intersezione della frattura corrente. </div><div class="ttdef"><b>Definition:</b> FractureHandler.cc:293</div></div>
+<div class="ttc" id="classFractureData_html"><div class="ttname"><a href="classFractureData.html">FractureData</a></div><div class="ttdoc">FractureData.h. </div><div class="ttdef"><b>Definition:</b> FractureData.h:14</div></div>
+<div class="ttc" id="classFractureHandler_html_ad9b02a825d444016b3ab8ee901f887f6"><div class="ttname"><a href="classFractureHandler.html#ad9b02a825d444016b3ab8ee901f887f6">FractureHandler::getMeshFlat</a></div><div class="ttdeci">getfem::mesh &amp; getMeshFlat()</div><div class="ttdef"><b>Definition:</b> FractureHandler.h:63</div></div>
+<div class="ttc" id="classFractureHandler_html_a3c2efa9ded1347b095e2b3247e728894"><div class="ttname"><a href="classFractureHandler.html#a3c2efa9ded1347b095e2b3247e728894">FractureHandler::getLevelSetIntersect</a></div><div class="ttdeci">GFLevelSetPtr_Type getLevelSetIntersect(const size_type &amp;f)</div><div class="ttdef"><b>Definition:</b> FractureHandler.h:297</div></div>
+<div class="ttc" id="classFractureHandler_html_acfb03361fe0e1060fdf07dd997065519"><div class="ttname"><a href="classFractureHandler.html#acfb03361fe0e1060fdf07dd997065519">FractureHandler::getExtendedVelocity</a></div><div class="ttdeci">const sizeVector_Type &amp; getExtendedVelocity() const </div><div class="ttdoc">Funzione che restituisce il vettore dei gradi di libertà estesi per la velocità per la frattura...</div><div class="ttdef"><b>Definition:</b> FractureHandler.h:279</div></div>
+<div class="ttc" id="Core_8h_html_a80e8381d86ecb0a7f4f87ff84d1a0be5"><div class="ttname"><a href="Core_8h.html#a80e8381d86ecb0a7f4f87ff84d1a0be5">sizeVectorContainer_Type</a></div><div class="ttdeci">std::vector&lt; sizeVector_Type &gt; sizeVectorContainer_Type</div><div class="ttdef"><b>Definition:</b> Core.h:71</div></div>
+<div class="ttc" id="Core_8h_html_a4e75b5863535ba1dd79942de2846eff0"><div class="ttname"><a href="Core_8h.html#a4e75b5863535ba1dd79942de2846eff0">scalarVector_Type</a></div><div class="ttdeci">std::vector&lt; scalar_type &gt; scalarVector_Type</div><div class="ttdef"><b>Definition:</b> Core.h:63</div></div>
+<div class="ttc" id="classFractureHandler_html_a2e1d27efecfa84246375be5f4262bab2"><div class="ttname"><a href="classFractureHandler.html#a2e1d27efecfa84246375be5f4262bab2">FractureHandler::getGeometricTransformation</a></div><div class="ttdeci">const bgeot::pgeometric_trans &amp; getGeometricTransformation() const </div><div class="ttdef"><b>Definition:</b> FractureHandler.h:177</div></div>
+<div class="ttc" id="classFractureHandler_html_aec1fc4e2664b3fe60877b63024af3605"><div class="ttname"><a href="classFractureHandler.html#aec1fc4e2664b3fe60877b63024af3605">FractureHandler::normalVectorAndMap</a></div><div class="ttdeci">void normalVectorAndMap(const getfem::mesh_fem &amp;mediumMeshFEMPressure)</div><div class="ttdoc">Funzione che calcola il vettore normale alla frattura e la mappa di conversione dalla mesh reale alla...</div><div class="ttdef"><b>Definition:</b> FractureHandler.cc:165</div></div>
+<div class="ttc" id="classFractureHandler_html_ad3fa0255b0e57f6562dc98bbf71588b1"><div class="ttname"><a href="classFractureHandler.html#ad3fa0255b0e57f6562dc98bbf71588b1">FractureHandler::getMeshMapped</a></div><div class="ttdeci">getfem::mesh &amp; getMeshMapped()</div><div class="ttdef"><b>Definition:</b> FractureHandler.h:201</div></div>
+<div class="ttc" id="LevelSetHandler_8h_html_aba343569cb3213c103252f69c39cad0b"><div class="ttname"><a href="LevelSetHandler_8h.html#aba343569cb3213c103252f69c39cad0b">LevelSetHandlerPtr_Type</a></div><div class="ttdeci">boost::shared_ptr&lt; LevelSetHandler_Type &gt; LevelSetHandlerPtr_Type</div><div class="ttdef"><b>Definition:</b> LevelSetHandler.h:133</div></div>
+<div class="ttc" id="classFractureHandler_html_a22e229a4016119138c48b456a185e1ff"><div class="ttname"><a href="classFractureHandler.html#a22e229a4016119138c48b456a185e1ff">FractureHandler::getNormal1</a></div><div class="ttdeci">const scalarVector_Type &amp; getNormal1() const </div><div class="ttdef"><b>Definition:</b> FractureHandler.h:183</div></div>
+<div class="ttc" id="classFractureHandler_html_aa28ce054ba2a2679214956c71f8cf1e0"><div class="ttname"><a href="classFractureHandler.html#aa28ce054ba2a2679214956c71f8cf1e0">FractureHandler::init</a></div><div class="ttdeci">void init()</div><div class="ttdoc">Funzione che inizializza la frattura. </div><div class="ttdef"><b>Definition:</b> FractureHandler.cc:26</div></div>
+<div class="ttc" id="classFractureHandler_html_a5bbe076a3595909f6af49e8d69e39231"><div class="ttname"><a href="classFractureHandler.html#a5bbe076a3595909f6af49e8d69e39231">FractureHandler::getMagnificationMapFactor2</a></div><div class="ttdeci">const scalar_type &amp; getMagnificationMapFactor2(const size_type &amp;dof) const </div><div class="ttdef"><b>Definition:</b> FractureHandler.h:171</div></div>
+<div class="ttc" id="FractureHandler_8h_html_a6d374b4e54d5afcf10945d31d8563248"><div class="ttname"><a href="FractureHandler_8h.html#a6d374b4e54d5afcf10945d31d8563248">FractureContainer_Type</a></div><div class="ttdeci">std::vector&lt; FractureHandler_Type &gt; FractureContainer_Type</div><div class="ttdef"><b>Definition:</b> FractureHandler.h:396</div></div>
+<div class="ttc" id="classFractureHandler_html_a5d8a3c910ba9a5d156decb747040e41f"><div class="ttname"><a href="classFractureHandler.html#a5d8a3c910ba9a5d156decb747040e41f">FractureHandler::getExtendedPressure</a></div><div class="ttdeci">const sizeVector_Type &amp; getExtendedPressure() const </div><div class="ttdoc">Funzione che restituisce ilvettore dei gradi di libertà estesi per la pressione per la frattura...</div><div class="ttdef"><b>Definition:</b> FractureHandler.h:259</div></div>
+<div class="ttc" id="Core_8h_html_a987d5dc736e8c716b3a33e3901a8c904"><div class="ttname"><a href="Core_8h.html#a987d5dc736e8c716b3a33e3901a8c904">GFLevelSetPtrContainer_Type</a></div><div class="ttdeci">std::vector&lt; GFLevelSetPtr_Type &gt; GFLevelSetPtrContainer_Type</div><div class="ttdef"><b>Definition:</b> Core.h:91</div></div>
+<div class="ttc" id="classFractureHandler_html_a1e1ba24caa1e789b199252c3c34f696d"><div class="ttname"><a href="classFractureHandler.html#a1e1ba24caa1e789b199252c3c34f696d">FractureHandler::getInverseMeshSize</a></div><div class="ttdeci">const scalar_type &amp; getInverseMeshSize(const size_type &amp;dof) const </div><div class="ttdef"><b>Definition:</b> FractureHandler.h:147</div></div>
+<div class="ttc" id="classFractureHandler_html_afe4c174c17862ed30b99ebe4a80aa695"><div class="ttname"><a href="classFractureHandler.html#afe4c174c17862ed30b99ebe4a80aa695">FractureHandler::getIntegrationMethodVelocity</a></div><div class="ttdeci">const getfem::mesh_im &amp; getIntegrationMethodVelocity() const </div><div class="ttdef"><b>Definition:</b> FractureHandler.h:81</div></div>
+<div class="ttc" id="classFractureHandler_html_a98931107f39ccff8789014256dcfa9a5"><div class="ttname"><a href="classFractureHandler.html#a98931107f39ccff8789014256dcfa9a5">FractureHandler::pushDofFree</a></div><div class="ttdeci">void pushDofFree(size_type i)</div><div class="ttdef"><b>Definition:</b> FractureHandler.h:116</div></div>
+<div class="ttc" id="classFractureHandler_html_a69b5921703089ac725df60b08eb821c1"><div class="ttname"><a href="classFractureHandler.html#a69b5921703089ac725df60b08eb821c1">FractureHandler::getMeshLevelSetIntersect</a></div><div class="ttdeci">GFMeshLevelSetPtr_Type getMeshLevelSetIntersect(const size_type &amp;f)</div><div class="ttdef"><b>Definition:</b> FractureHandler.h:288</div></div>
+<div class="ttc" id="classFractureHandler_html_ac8cefb4c4416edc814345eb2475c8e37"><div class="ttname"><a href="classFractureHandler.html#ac8cefb4c4416edc814345eb2475c8e37">FractureHandler::setMeshLevelSetFracture</a></div><div class="ttdeci">size_type setMeshLevelSetFracture(FractureHandler &amp;otherFracture, size_type &amp;globalIndex, const std::string &amp;type)</div><div class="ttdoc">Funzione che, data un&#39;altra frattura con cui si interseca, imposta i valori legati all&#39;intersezione: ...</div><div class="ttdef"><b>Definition:</b> FractureHandler.cc:214</div></div>
+<div class="ttc" id="classFractureHandler_html_a509c3ffa6d2dd0fa7458ecbe5fb81360"><div class="ttname"><a href="classFractureHandler.html#a509c3ffa6d2dd0fa7458ecbe5fb81360">FractureHandler::getDofFree</a></div><div class="ttdeci">sizeVector_Type &amp; getDofFree()</div><div class="ttdef"><b>Definition:</b> FractureHandler.h:104</div></div>
+<div class="ttc" id="classFractureHandler_html_a3f78aef488ef82ac8384bdd9e39a9be5"><div class="ttname"><a href="classFractureHandler.html#a3f78aef488ef82ac8384bdd9e39a9be5">FractureHandler::getInverseMeshSize</a></div><div class="ttdeci">const scalarVector_Type &amp; getInverseMeshSize() const </div><div class="ttdef"><b>Definition:</b> FractureHandler.h:141</div></div>
+<div class="ttc" id="classFractureHandler_html_ac5cab221c35c03c72b264d73564d5e38"><div class="ttname"><a href="classFractureHandler.html#ac5cab221c35c03c72b264d73564d5e38">FractureHandler::getEtaNormalInterpolated</a></div><div class="ttdeci">const scalarVector_Type &amp; getEtaNormalInterpolated() const </div><div class="ttdef"><b>Definition:</b> FractureHandler.h:123</div></div>
+<div class="ttc" id="FractureHandler_8h_html_af23fb7a30aaff864bd42587af4f1e78a"><div class="ttname"><a href="FractureHandler_8h.html#af23fb7a30aaff864bd42587af4f1e78a">FractureHandlerPtr_Type</a></div><div class="ttdeci">boost::shared_ptr&lt; FractureHandler_Type &gt; FractureHandlerPtr_Type</div><div class="ttdef"><b>Definition:</b> FractureHandler.h:394</div></div>
+<div class="ttc" id="namespaceLifeV_html_a7c0e64679fcd30daa5471b87a57601e9"><div class="ttname"><a href="namespaceLifeV.html#a7c0e64679fcd30daa5471b87a57601e9">LifeV::ID</a></div><div class="ttdeci">size_type ID</div><div class="ttdef"><b>Definition:</b> Core.h:100</div></div>
+<div class="ttc" id="FractureHandler_8h_html_a7f3fe0e898008010eb22cefa07ea76a9"><div class="ttname"><a href="FractureHandler_8h.html#a7f3fe0e898008010eb22cefa07ea76a9">FracturePtrContainerPtr_Type</a></div><div class="ttdeci">boost::shared_ptr&lt; FracturePtrContainer_Type &gt; FracturePtrContainerPtr_Type</div><div class="ttdef"><b>Definition:</b> FractureHandler.h:397</div></div>
+<div class="ttc" id="classFractureHandler_html_a495ad4fc72d0c47c8f0424842f1153aaa781cae3f3b99bf9357fed2833d315537"><div class="ttname"><a href="classFractureHandler.html#a495ad4fc72d0c47c8f0424842f1153aaa781cae3f3b99bf9357fed2833d315537">FractureHandler::FRACTURE_INTERSECT</a></div><div class="ttdef"><b>Definition:</b> FractureHandler.h:27</div></div>
+<div class="ttc" id="FractureHandler_8h_html_a2f0b57e18ecf89912d7de0c87158009e"><div class="ttname"><a href="FractureHandler_8h.html#a2f0b57e18ecf89912d7de0c87158009e">FracturePtrContainer_Type</a></div><div class="ttdeci">std::vector&lt; FractureHandlerPtr_Type &gt; FracturePtrContainer_Type</div><div class="ttdef"><b>Definition:</b> FractureHandler.h:395</div></div>
+<div class="ttc" id="classFractureHandler_html_a79b2fbb306b2bc045d5bef0b73d12ec8"><div class="ttname"><a href="classFractureHandler.html#a79b2fbb306b2bc045d5bef0b73d12ec8">FractureHandler::getMeshMapped</a></div><div class="ttdeci">const getfem::mesh &amp; getMeshMapped() const </div><div class="ttdef"><b>Definition:</b> FractureHandler.h:195</div></div>
+<div class="ttc" id="classFractureHandler_html_ac78f500422e542b77114e56f11173b0d"><div class="ttname"><a href="classFractureHandler.html#ac78f500422e542b77114e56f11173b0d">FractureHandler::getMeshFEMPressureVisualization</a></div><div class="ttdeci">const getfem::mesh_fem &amp; getMeshFEMPressureVisualization() const </div><div class="ttdef"><b>Definition:</b> FractureHandler.h:212</div></div>
+<div class="ttc" id="classFractureHandler_html_ae54c07023428b44556bbec4da5be9306"><div class="ttname"><a href="classFractureHandler.html#ae54c07023428b44556bbec4da5be9306">FractureHandler::getMeshFEMVelocity</a></div><div class="ttdeci">const getfem::mesh_fem &amp; getMeshFEMVelocity() const </div><div class="ttdef"><b>Definition:</b> FractureHandler.h:69</div></div>
+<div class="ttc" id="FractureHandler_8h_html_a3d674f38498548edd32ded9687dd937a"><div class="ttname"><a href="FractureHandler_8h.html#a3d674f38498548edd32ded9687dd937a">FractureHandler_Type</a></div><div class="ttdeci">FractureHandler FractureHandler_Type</div><div class="ttdef"><b>Definition:</b> FractureHandler.h:393</div></div>
+<div class="ttc" id="classFractureHandler_html_ab77ee6aaf47d7f1d80fd1ff23bd34a33"><div class="ttname"><a href="classFractureHandler.html#ab77ee6aaf47d7f1d80fd1ff23bd34a33">FractureHandler::getMeshFEMLinear</a></div><div class="ttdeci">const getfem::mesh_fem &amp; getMeshFEMLinear() const </div><div class="ttdef"><b>Definition:</b> FractureHandler.h:218</div></div>
+<div class="ttc" id="StringUtility_8h_html"><div class="ttname"><a href="StringUtility_8h.html">StringUtility.h</a></div><div class="ttdoc">String utilities. </div></div>
+<div class="ttc" id="classFractureHandler_html_ab722c7fb4c48e062a8060251c4cb80c3"><div class="ttname"><a href="classFractureHandler.html#ab722c7fb4c48e062a8060251c4cb80c3">FractureHandler::getFractureIntersectElements</a></div><div class="ttdeci">const sizeVectorContainer_Type &amp; getFractureIntersectElements() const </div><div class="ttdef"><b>Definition:</b> FractureHandler.h:309</div></div>
+<div class="ttc" id="classFractureHandler_html_ae707e764eaff191e2856765131289c82"><div class="ttname"><a href="classFractureHandler.html#ae707e764eaff191e2856765131289c82">FractureHandler::getNormal2</a></div><div class="ttdeci">const scalarVector_Type &amp; getNormal2() const </div><div class="ttdef"><b>Definition:</b> FractureHandler.h:189</div></div>
+<div class="ttc" id="classFractureHandler_html_a002e255a1976918ffbe6ea63b0fdae1b"><div class="ttname"><a href="classFractureHandler.html#a002e255a1976918ffbe6ea63b0fdae1b">FractureHandler::numFractures</a></div><div class="ttdeci">void numFractures(const size_type &amp;numFractures)</div><div class="ttdef"><b>Definition:</b> FractureHandler.h:230</div></div>
+<div class="ttc" id="classFractureHandler_html_a68ed77a8d9816a472700ee4bcf2f505d"><div class="ttname"><a href="classFractureHandler.html#a68ed77a8d9816a472700ee4bcf2f505d">FractureHandler::getData</a></div><div class="ttdeci">FractureData &amp; getData()</div><div class="ttdef"><b>Definition:</b> FractureHandler.h:93</div></div>
+<div class="ttc" id="classFractureHandler_html_a7f7ec5b15315791f76d8deb0874511d6"><div class="ttname"><a href="classFractureHandler.html#a7f7ec5b15315791f76d8deb0874511d6">FractureHandler::getId</a></div><div class="ttdeci">const size_type &amp; getId() const </div><div class="ttdef"><b>Definition:</b> FractureHandler.h:224</div></div>
+<div class="ttc" id="classFractureHandler_html_a06b6f81d62ccd91ec1253cd41ffae808"><div class="ttname"><a href="classFractureHandler.html#a06b6f81d62ccd91ec1253cd41ffae808">FractureHandler::getEtaTangentialInterpolated</a></div><div class="ttdeci">const scalarVector_Type &amp; getEtaTangentialInterpolated() const </div><div class="ttdef"><b>Definition:</b> FractureHandler.h:129</div></div>
+<div class="ttc" id="classFractureHandler_html_af5b7cdadefe6993813e76fd6238b1771"><div class="ttname"><a href="classFractureHandler.html#af5b7cdadefe6993813e76fd6238b1771">FractureHandler::getNumExtendedVelocity</a></div><div class="ttdeci">size_type getNumExtendedVelocity() const </div><div class="ttdoc">Funzione che restituisce il numero di gradi di libertà estesi per la velocità per la frattura...</div><div class="ttdef"><b>Definition:</b> FractureHandler.h:269</div></div>
+<div class="ttc" id="BCHandler_8h_html_aa175884cb453788647f17f2230a2a762"><div class="ttname"><a href="BCHandler_8h.html#aa175884cb453788647f17f2230a2a762">BCHandlerPtr_Type</a></div><div class="ttdeci">boost::shared_ptr&lt; BCHandler_Type &gt; BCHandlerPtr_Type</div><div class="ttdef"><b>Definition:</b> BCHandler.h:116</div></div>
+<div class="ttc" id="FractureData_8h_html"><div class="ttname"><a href="FractureData_8h.html">FractureData.h</a></div></div>
+<div class="ttc" id="classFractureHandler_html_a6dc20a9624f9dff49b1c58f0dd261002"><div class="ttname"><a href="classFractureHandler.html#a6dc20a9624f9dff49b1c58f0dd261002">FractureHandler::getMeshFEMPressure</a></div><div class="ttdeci">const getfem::mesh_fem &amp; getMeshFEMPressure() const </div><div class="ttdef"><b>Definition:</b> FractureHandler.h:75</div></div>
+<div class="ttc" id="classFractureHandler_html_a7f439a7c14b6064d52984130f8bcb7c1"><div class="ttname"><a href="classFractureHandler.html#a7f439a7c14b6064d52984130f8bcb7c1">FractureHandler::getFractureIntersectElementsGlobalIndex</a></div><div class="ttdeci">const pairSizeVectorContainer_Type &amp; getFractureIntersectElementsGlobalIndex() const </div><div class="ttdef"><b>Definition:</b> FractureHandler.h:315</div></div>
+<div class="ttc" id="Core_8h_html_a9bc476e433f99b82a9c2b8560735c7b5"><div class="ttname"><a href="Core_8h.html#a9bc476e433f99b82a9c2b8560735c7b5">pairSizeVectorContainer_Type</a></div><div class="ttdeci">std::vector&lt; pairSizeVector_Type &gt; pairSizeVectorContainer_Type</div><div class="ttdef"><b>Definition:</b> Core.h:76</div></div>
+<div class="ttc" id="classFractureHandler_html_a157f39f66131faf579b980b6b5fb91fb"><div class="ttname"><a href="classFractureHandler.html#a157f39f66131faf579b980b6b5fb91fb">FractureHandler::getIntegrationMethodPressureVisualization</a></div><div class="ttdeci">const getfem::mesh_im &amp; getIntegrationMethodPressureVisualization() const </div><div class="ttdef"><b>Definition:</b> FractureHandler.h:206</div></div>
+<div class="ttc" id="Core_8h_html_a1cbde831f5a62206e084de1c5de27000"><div class="ttname"><a href="Core_8h.html#a1cbde831f5a62206e084de1c5de27000">GFMeshLevelSetPtr_Type</a></div><div class="ttdeci">boost::shared_ptr&lt; GFMeshLevelSet_Type &gt; GFMeshLevelSetPtr_Type</div><div class="ttdef"><b>Definition:</b> Core.h:85</div></div>
+<div class="ttc" id="classFractureHandler_html_a1cafea5a92ab3a9b5eae67c347867f58"><div class="ttname"><a href="classFractureHandler.html#a1cafea5a92ab3a9b5eae67c347867f58">FractureHandler::getMagnificationMapFactor1</a></div><div class="ttdeci">const scalar_type &amp; getMagnificationMapFactor1(const size_type &amp;dof) const </div><div class="ttdef"><b>Definition:</b> FractureHandler.h:159</div></div>
+<div class="ttc" id="LevelSetHandler_8h_html"><div class="ttname"><a href="LevelSetHandler_8h.html">LevelSetHandler.h</a></div></div>
+<div class="ttc" id="classFractureHandler_html_a495ad4fc72d0c47c8f0424842f1153aaaa992cc3ad024a030ecd798dc319c95ac"><div class="ttname"><a href="classFractureHandler.html#a495ad4fc72d0c47c8f0424842f1153aaaa992cc3ad024a030ecd798dc319c95ac">FractureHandler::FRACTURE_UNCUT</a></div><div class="ttdef"><b>Definition:</b> FractureHandler.h:26</div></div>
+<div class="ttc" id="classFractureHandler_html_ac4156ff43fcdc7a4641aef8cdabf2357"><div class="ttname"><a href="classFractureHandler.html#ac4156ff43fcdc7a4641aef8cdabf2357">FractureHandler::getFractureIntersectElementsGlobalIndex</a></div><div class="ttdeci">pairSizeVectorContainer_Type &amp; getFractureIntersectElementsGlobalIndex()</div><div class="ttdef"><b>Definition:</b> FractureHandler.h:321</div></div>
+<div class="ttc" id="matrici_8m_html_a6f6ccfcf58b31cb6412107d9d5281426"><div class="ttname"><a href="matrici_8m.html#a6f6ccfcf58b31cb6412107d9d5281426">i</a></div><div class="ttdeci">for i</div><div class="ttdef"><b>Definition:</b> matrici.m:10</div></div>
+<div class="ttc" id="classFractureHandler_html_ad7afd53439c3067f46a0fb6e1473d661"><div class="ttname"><a href="classFractureHandler.html#ad7afd53439c3067f46a0fb6e1473d661">FractureHandler::getIntegrationMethodPressure</a></div><div class="ttdeci">const getfem::mesh_im &amp; getIntegrationMethodPressure() const </div><div class="ttdef"><b>Definition:</b> FractureHandler.h:87</div></div>
+<div class="ttc" id="classFractureHandler_html_aa3872456d95550cdd424908bbb5a15ec"><div class="ttname"><a href="classFractureHandler.html#aa3872456d95550cdd424908bbb5a15ec">FractureHandler::FractureHandler</a></div><div class="ttdeci">FractureHandler(const GetPot &amp;dataFile, const size_type &amp;ID, const std::string &amp;section=&quot;fractureData/&quot;)</div><div class="ttdoc">FractureHandler.cc. </div><div class="ttdef"><b>Definition:</b> FractureHandler.cc:8</div></div>
+<div class="ttc" id="classFractureHandler_html_a68b09b4012669140979a0026736b3dfe"><div class="ttname"><a href="classFractureHandler.html#a68b09b4012669140979a0026736b3dfe">FractureHandler::getMagnificationMapFactor2</a></div><div class="ttdeci">const scalarVector_Type &amp; getMagnificationMapFactor2() const </div><div class="ttdef"><b>Definition:</b> FractureHandler.h:165</div></div>
+<div class="ttc" id="classFractureHandler_html_a585b1c169be23022e25e07bd9666d18d"><div class="ttname"><a href="classFractureHandler.html#a585b1c169be23022e25e07bd9666d18d">FractureHandler::getNumExtendedPressure</a></div><div class="ttdeci">size_type getNumExtendedPressure() const </div><div class="ttdoc">Funzione che restituisce il numero di gradi di libertà estesi per la pressione per la frattura...</div><div class="ttdef"><b>Definition:</b> FractureHandler.h:249</div></div>
+<div class="ttc" id="classFractureHandler_html_af37ab12a17f812a960da2aa71699ba0f"><div class="ttname"><a href="classFractureHandler.html#af37ab12a17f812a960da2aa71699ba0f">FractureHandler::getLevelSet</a></div><div class="ttdeci">LevelSetHandlerPtr_Type &amp; getLevelSet()</div><div class="ttdef"><b>Definition:</b> FractureHandler.h:99</div></div>
+<div class="ttc" id="classFractureHandler_html_a47c7f4161817ebf6cd978cf6b2caa74f"><div class="ttname"><a href="classFractureHandler.html#a47c7f4161817ebf6cd978cf6b2caa74f">FractureHandler::getEtaTangentialInterpolated</a></div><div class="ttdeci">const scalar_type &amp; getEtaTangentialInterpolated(const size_type &amp;dof) const </div><div class="ttdef"><b>Definition:</b> FractureHandler.h:135</div></div>
+<div class="ttc" id="classFractureHandler_html_abaf5f99ba68775a587d6b3f0222e8b9a"><div class="ttname"><a href="classFractureHandler.html#abaf5f99ba68775a587d6b3f0222e8b9a">FractureHandler::getMagnificationMapFactor1</a></div><div class="ttdeci">const scalarVector_Type &amp; getMagnificationMapFactor1() const </div><div class="ttdef"><b>Definition:</b> FractureHandler.h:153</div></div>
+<div class="ttc" id="classFractureHandler_html_a9ff9f584b850d6b750981befdbefbdbe"><div class="ttname"><a href="classFractureHandler.html#a9ff9f584b850d6b750981befdbefbdbe">FractureHandler::getMeshFlat</a></div><div class="ttdeci">const getfem::mesh &amp; getMeshFlat() const </div><div class="ttdef"><b>Definition:</b> FractureHandler.h:57</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generato Sab 15 Nov 2014 22:26:38 per Progetto PACS da &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.6
+</small></address>
+</body>
+</html>

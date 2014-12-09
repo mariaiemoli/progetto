@@ -1,0 +1,16 @@
+<map id="include/MatrixBifurcationHandler.h" name="include/MatrixBifurcationHandler.h">
+<area shape="rect" id="node2" href="$Core_8h.html" title="Core.h" alt="" coords="1761,468,1820,495"/>
+<area shape="rect" id="node24" href="$TriangleHandler_8h.html" title="TriangleHandler.h" alt="" coords="1241,95,1359,121"/>
+<area shape="rect" id="node38" href="$FractureHandler_8h.html" title="FractureHandler.h" alt="" coords="1455,169,1574,196"/>
+<area shape="rect" id="node40" href="$Parser_8h.html" title="File containing the Parser interface. " alt="" coords="1837,393,1907,420"/>
+<area shape="rect" id="node25" href="$TriangleData_8h.html" title="TriangleData.h" alt="" coords="615,319,719,345"/>
+<area shape="rect" id="node27" href="$PointData_8h.html" title="PointData.h" alt="" coords="179,393,269,420"/>
+<area shape="rect" id="node29" href="$StringUtility_8h.html" title="String utilities. " alt="" coords="621,393,712,420"/>
+<area shape="rect" id="node39" href="$FractureData_8h.html" title="FractureData.h" alt="" coords="1738,319,1843,345"/>
+<area shape="rect" id="node47" href="$BCHandler_8h.html" title="BCHandler.h" alt="" coords="1486,244,1581,271"/>
+<area shape="rect" id="node49" href="$LevelSetHandler_8h.html" title="LevelSetHandler.h" alt="" coords="1605,244,1729,271"/>
+<area shape="rect" id="node41" href="$ParserDefinitions_8h.html" title="File containing the Parser definitions. " alt="" coords="3865,550,3991,577"/>
+<area shape="rect" id="node46" href="$ParserSpiritGrammar_8h.html" title="File containing the Parser grammar. " alt="" coords="3440,468,3589,495"/>
+<area shape="rect" id="node48" href="$BC_8h.html" title="BC.h" alt="" coords="1085,393,1136,420"/>
+<area shape="rect" id="node50" href="$LevelSetData_8h.html" title="LevelSetData.h" alt="" coords="1603,319,1714,345"/>
+</map>

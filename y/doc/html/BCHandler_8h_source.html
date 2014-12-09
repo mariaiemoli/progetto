@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>Progetto PACS:  File sorgente include/BCHandler.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Progetto PACS
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generato da Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Cerca');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Pagina&#160;Principale</span></a></li>
+      <li><a href="namespaces.html"><span>Namespace</span></a></li>
+      <li><a href="annotated.html"><span>Classi</span></a></li>
+      <li class="current"><a href="files.html"><span>File</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Cerca" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Elenco&#160;dei&#160;file</span></a></li>
+      <li><a href="globals.html"><span>Elementi&#160;dei&#160;file</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tutto</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classi</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespace</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>File</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funzioni</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variabili</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Ridefinizioni di tipo (typedef)</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Tipi enumerati (enum)</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Valori del tipo enumerato</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friend</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">BCHandler.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="BCHandler_8h.html">Vai alla documentazione di questo file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#ifndef BCHANDLER_H_</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define BCHANDLER_H_ 1</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Core_8h.html">Core.h</a>&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="BC_8h.html">BC.h</a>&quot;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="FractureData_8h.html">FractureData.h</a>&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classBCHandler.html">   18</a></span>&#160;<span class="keyword">class </span><a class="code" href="classBCHandler.html">BCHandler</a></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">enum</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    {</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classBCHandler.html#a2bc86209db0836dbc6ca56e1ca4e4ac1a57ea96455b2ba998cc42a21aa7e1d842">   24</a></span>&#160;        <a class="code" href="classBCHandler.html#a2bc86209db0836dbc6ca56e1ca4e4ac1a57ea96455b2ba998cc42a21aa7e1d842">DIRICHLET_BOUNDARY_CUT</a> = 400,</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classBCHandler.html#a2bc86209db0836dbc6ca56e1ca4e4ac1add7397a06718591b0c27c067225b1d5f">   25</a></span>&#160;        <a class="code" href="classBCHandler.html#a2bc86209db0836dbc6ca56e1ca4e4ac1add7397a06718591b0c27c067225b1d5f">NEUMANN_BOUNDARY_CUT</a> = 500,</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="classBCHandler.html#a2bc86209db0836dbc6ca56e1ca4e4ac1a487ba8af2086045d8b0df840b2525866">   26</a></span>&#160;        <a class="code" href="classBCHandler.html#a2bc86209db0836dbc6ca56e1ca4e4ac1a487ba8af2086045d8b0df840b2525866">DIRICHLET_BOUNDARY_UNCUT</a> = 4000,</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classBCHandler.html#a2bc86209db0836dbc6ca56e1ca4e4ac1aa538eee48606669ac37073ca65144007">   27</a></span>&#160;        <a class="code" href="classBCHandler.html#a2bc86209db0836dbc6ca56e1ca4e4ac1aa538eee48606669ac37073ca65144007">NEUMANN_BOUNDARY_UNCUT</a> = 5000</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    };</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="comment">// Costruttore</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="classBCHandler.html#af15c3846a782d6b7db1985c69929c388">BCHandler</a> ( <span class="keyword">const</span> <a class="code" href="BC_8h.html#ae127263052e0676d0fe233f834ca7227">BCPtrContainer_Type</a>&amp; fractureBC );</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classBCHandler.html#a1dcccdbb5e0eb0d044455414b52b2f05">createBDRegions</a> ( getfem::mesh&amp; mesh );</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classBCHandler.html#a559e4ba01fc7c6326dbb949d06dbd525">createBDRegionsFractures</a> ( getfem::mesh&amp; mesh );</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="classBCHandler.html#a2ab65711f8ee3643ecf19de52ceab470">   46</a></span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> <a class="code" href="BC_8h.html#a088c36f945ad8f6e7e0c7c423994c6ec">BCPtr_Type</a>&amp; <a class="code" href="classBCHandler.html#a2ab65711f8ee3643ecf19de52ceab470">getFractureBC</a> ( <span class="keyword">const</span> size_type&amp; <span class="keywordtype">id</span> )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordflow">return</span> M_fractureBC [ id ];</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="classBCHandler.html#a68a01c71517202ed89ebc82a56e4cb5d">   51</a></span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> <a class="code" href="Core_8h.html#a83c51913d041a5001e8683434c09857f">sizeVector_Type</a>&amp; <a class="code" href="classBCHandler.html#a68a01c71517202ed89ebc82a56e4cb5d">getDirichletUncut</a> ( )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordflow">return</span> M_dirichletUncut;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classBCHandler.html#a3f92a68c9b0dbebc6ee72a42b419645d">   56</a></span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> size_type&amp; <a class="code" href="classBCHandler.html#a3f92a68c9b0dbebc6ee72a42b419645d">getDirichletUncut</a> ( <span class="keyword">const</span> size_type&amp; dof )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordflow">return</span> M_dirichletUncut [ dof ];</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="classBCHandler.html#a5b1c86a6c303abf33850132d1bc12693">   61</a></span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> <a class="code" href="Core_8h.html#a83c51913d041a5001e8683434c09857f">sizeVector_Type</a>&amp; <a class="code" href="classBCHandler.html#a5b1c86a6c303abf33850132d1bc12693">getNeumannUncut</a> ( )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">return</span> M_neumannUncut;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="classBCHandler.html#a2bf41619c541b124b421d8664786a055">   66</a></span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> size_type&amp; <a class="code" href="classBCHandler.html#a2bf41619c541b124b421d8664786a055">getNeumannUncut</a> ( <span class="keyword">const</span> size_type&amp; dof )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordflow">return</span> M_neumannUncut [ dof ];</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="classBCHandler.html#a1efb6389dbecbcd38e53422ffc6f29c7">   71</a></span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> <a class="code" href="Core_8h.html#a83c51913d041a5001e8683434c09857f">sizeVector_Type</a>&amp; <a class="code" href="classBCHandler.html#a1efb6389dbecbcd38e53422ffc6f29c7">getDirichletCut</a> ( <span class="keyword">const</span> size_type&amp; <span class="keywordtype">id</span> )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordflow">return</span> M_dirichletCut [ id ];</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="classBCHandler.html#a390cb50c5fcbbf2e676fe7d5f5241180">   76</a></span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> size_type&amp; <a class="code" href="classBCHandler.html#a390cb50c5fcbbf2e676fe7d5f5241180">getDirichletCut</a> ( <span class="keyword">const</span> size_type&amp; <span class="keywordtype">id</span>,</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                                              <span class="keyword">const</span> size_type&amp; dof )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordflow">return</span> M_dirichletCut [ id ] [ dof ];</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="classBCHandler.html#a5e71b2adeaa281e88275bff504dc67d8">   82</a></span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> <a class="code" href="Core_8h.html#a83c51913d041a5001e8683434c09857f">sizeVector_Type</a>&amp; <a class="code" href="classBCHandler.html#a5e71b2adeaa281e88275bff504dc67d8">getNeumannCut</a> ( <span class="keyword">const</span> size_type&amp; <span class="keywordtype">id</span> )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordflow">return</span> M_neumannCut [ id ];</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="classBCHandler.html#a726f1bfbc76113bbb3b5057b25a53871">   87</a></span>&#160;    <span class="keyword">inline</span> <span class="keyword">const</span> size_type&amp; <a class="code" href="classBCHandler.html#a726f1bfbc76113bbb3b5057b25a53871">getNeumannCut</a> ( <span class="keyword">const</span> size_type&amp; <span class="keywordtype">id</span>,</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                                            <span class="keyword">const</span> size_type&amp; dof )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordflow">return</span> M_neumannCut [ id ] [ dof ];</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <a class="code" href="BC_8h.html#ae127263052e0676d0fe233f834ca7227">BCPtrContainer_Type</a> M_fractureBC;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="comment">// flags for BC  bordo tagliato</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <a class="code" href="Core_8h.html#a83c51913d041a5001e8683434c09857f">sizeVector_Type</a> M_extBoundaryCut;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="comment">// flags for BC bordo non tagliato</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <a class="code" href="Core_8h.html#a83c51913d041a5001e8683434c09857f">sizeVector_Type</a> M_extBoundaryUncut;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="comment">// flags for BC   divido in parte tagliata e non</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <a class="code" href="Core_8h.html#a80e8381d86ecb0a7f4f87ff84d1a0be5">sizeVectorContainer_Type</a> M_dirichletCut;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="comment">// flags for BC</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <a class="code" href="Core_8h.html#a80e8381d86ecb0a7f4f87ff84d1a0be5">sizeVectorContainer_Type</a> M_neumannCut;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="comment">// flags for BC</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <a class="code" href="Core_8h.html#a83c51913d041a5001e8683434c09857f">sizeVector_Type</a> M_dirichletUncut;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="comment">// flags for BC</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <a class="code" href="Core_8h.html#a83c51913d041a5001e8683434c09857f">sizeVector_Type</a> M_neumannUncut;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;};</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
+<div class="line"><a name="l00115"></a><span class="lineno"><a class="line" href="BCHandler_8h.html#a37cc8157d35b390c633acad42ab6da0c">  115</a></span>&#160;<span class="keyword">typedef</span> <a class="code" href="classBCHandler.html">BCHandler</a> <a class="code" href="BCHandler_8h.html#a37cc8157d35b390c633acad42ab6da0c">BCHandler_Type</a>;                                           </div>
+<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="BCHandler_8h.html#aa175884cb453788647f17f2230a2a762">  116</a></span>&#160;<span class="keyword">typedef</span> boost::shared_ptr&lt;BCHandler_Type&gt; <a class="code" href="BCHandler_8h.html#aa175884cb453788647f17f2230a2a762">BCHandlerPtr_Type</a>;                </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* BCHANDLER_H_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="Core_8h_html_a83c51913d041a5001e8683434c09857f"><div class="ttname"><a href="Core_8h.html#a83c51913d041a5001e8683434c09857f">sizeVector_Type</a></div><div class="ttdeci">std::vector&lt; size_type &gt; sizeVector_Type</div><div class="ttdef"><b>Definition:</b> Core.h:69</div></div>
+<div class="ttc" id="classBCHandler_html_a726f1bfbc76113bbb3b5057b25a53871"><div class="ttname"><a href="classBCHandler.html#a726f1bfbc76113bbb3b5057b25a53871">BCHandler::getNeumannCut</a></div><div class="ttdeci">const size_type &amp; getNeumannCut(const size_type &amp;id, const size_type &amp;dof) const </div><div class="ttdef"><b>Definition:</b> BCHandler.h:87</div></div>
+<div class="ttc" id="Core_8h_html_a80e8381d86ecb0a7f4f87ff84d1a0be5"><div class="ttname"><a href="Core_8h.html#a80e8381d86ecb0a7f4f87ff84d1a0be5">sizeVectorContainer_Type</a></div><div class="ttdeci">std::vector&lt; sizeVector_Type &gt; sizeVectorContainer_Type</div><div class="ttdef"><b>Definition:</b> Core.h:71</div></div>
+<div class="ttc" id="classBCHandler_html_a1efb6389dbecbcd38e53422ffc6f29c7"><div class="ttname"><a href="classBCHandler.html#a1efb6389dbecbcd38e53422ffc6f29c7">BCHandler::getDirichletCut</a></div><div class="ttdeci">const sizeVector_Type &amp; getDirichletCut(const size_type &amp;id) const </div><div class="ttdef"><b>Definition:</b> BCHandler.h:71</div></div>
+<div class="ttc" id="classBCHandler_html_a559e4ba01fc7c6326dbb949d06dbd525"><div class="ttname"><a href="classBCHandler.html#a559e4ba01fc7c6326dbb949d06dbd525">BCHandler::createBDRegionsFractures</a></div><div class="ttdeci">void createBDRegionsFractures(getfem::mesh &amp;mesh)</div><div class="ttdoc">Funzione che crea le regioni per le condizioni al contorno per le fratture, Neumann e Dirichlet...</div><div class="ttdef"><b>Definition:</b> BCHandler.cc:72</div></div>
+<div class="ttc" id="classBCHandler_html_a68a01c71517202ed89ebc82a56e4cb5d"><div class="ttname"><a href="classBCHandler.html#a68a01c71517202ed89ebc82a56e4cb5d">BCHandler::getDirichletUncut</a></div><div class="ttdeci">const sizeVector_Type &amp; getDirichletUncut() const </div><div class="ttdef"><b>Definition:</b> BCHandler.h:51</div></div>
+<div class="ttc" id="BC_8h_html_a088c36f945ad8f6e7e0c7c423994c6ec"><div class="ttname"><a href="BC_8h.html#a088c36f945ad8f6e7e0c7c423994c6ec">BCPtr_Type</a></div><div class="ttdeci">boost::shared_ptr&lt; BC &gt; BCPtr_Type</div><div class="ttdef"><b>Definition:</b> BC.h:78</div></div>
+<div class="ttc" id="Core_8h_html"><div class="ttname"><a href="Core_8h.html">Core.h</a></div></div>
+<div class="ttc" id="classBCHandler_html_af15c3846a782d6b7db1985c69929c388"><div class="ttname"><a href="classBCHandler.html#af15c3846a782d6b7db1985c69929c388">BCHandler::BCHandler</a></div><div class="ttdeci">BCHandler(const BCPtrContainer_Type &amp;fractureBC)</div><div class="ttdoc">BCHandler.cc. </div><div class="ttdef"><b>Definition:</b> BCHandler.cc:11</div></div>
+<div class="ttc" id="classBCHandler_html"><div class="ttname"><a href="classBCHandler.html">BCHandler</a></div><div class="ttdoc">BCHandler.h. </div><div class="ttdef"><b>Definition:</b> BCHandler.h:18</div></div>
+<div class="ttc" id="BC_8h_html_ae127263052e0676d0fe233f834ca7227"><div class="ttname"><a href="BC_8h.html#ae127263052e0676d0fe233f834ca7227">BCPtrContainer_Type</a></div><div class="ttdeci">std::vector&lt; BCPtr_Type &gt; BCPtrContainer_Type</div><div class="ttdef"><b>Definition:</b> BC.h:79</div></div>
+<div class="ttc" id="classBCHandler_html_a2ab65711f8ee3643ecf19de52ceab470"><div class="ttname"><a href="classBCHandler.html#a2ab65711f8ee3643ecf19de52ceab470">BCHandler::getFractureBC</a></div><div class="ttdeci">const BCPtr_Type &amp; getFractureBC(const size_type &amp;id) const </div><div class="ttdef"><b>Definition:</b> BCHandler.h:46</div></div>
+<div class="ttc" id="classBCHandler_html_a3f92a68c9b0dbebc6ee72a42b419645d"><div class="ttname"><a href="classBCHandler.html#a3f92a68c9b0dbebc6ee72a42b419645d">BCHandler::getDirichletUncut</a></div><div class="ttdeci">const size_type &amp; getDirichletUncut(const size_type &amp;dof) const </div><div class="ttdef"><b>Definition:</b> BCHandler.h:56</div></div>
+<div class="ttc" id="BCHandler_8h_html_a37cc8157d35b390c633acad42ab6da0c"><div class="ttname"><a href="BCHandler_8h.html#a37cc8157d35b390c633acad42ab6da0c">BCHandler_Type</a></div><div class="ttdeci">BCHandler BCHandler_Type</div><div class="ttdef"><b>Definition:</b> BCHandler.h:115</div></div>
+<div class="ttc" id="classBCHandler_html_a5e71b2adeaa281e88275bff504dc67d8"><div class="ttname"><a href="classBCHandler.html#a5e71b2adeaa281e88275bff504dc67d8">BCHandler::getNeumannCut</a></div><div class="ttdeci">const sizeVector_Type &amp; getNeumannCut(const size_type &amp;id) const </div><div class="ttdef"><b>Definition:</b> BCHandler.h:82</div></div>
+<div class="ttc" id="classBCHandler_html_a2bc86209db0836dbc6ca56e1ca4e4ac1add7397a06718591b0c27c067225b1d5f"><div class="ttname"><a href="classBCHandler.html#a2bc86209db0836dbc6ca56e1ca4e4ac1add7397a06718591b0c27c067225b1d5f">BCHandler::NEUMANN_BOUNDARY_CUT</a></div><div class="ttdef"><b>Definition:</b> BCHandler.h:25</div></div>
+<div class="ttc" id="classBCHandler_html_a5b1c86a6c303abf33850132d1bc12693"><div class="ttname"><a href="classBCHandler.html#a5b1c86a6c303abf33850132d1bc12693">BCHandler::getNeumannUncut</a></div><div class="ttdeci">const sizeVector_Type &amp; getNeumannUncut() const </div><div class="ttdef"><b>Definition:</b> BCHandler.h:61</div></div>
+<div class="ttc" id="classBCHandler_html_a390cb50c5fcbbf2e676fe7d5f5241180"><div class="ttname"><a href="classBCHandler.html#a390cb50c5fcbbf2e676fe7d5f5241180">BCHandler::getDirichletCut</a></div><div class="ttdeci">const size_type &amp; getDirichletCut(const size_type &amp;id, const size_type &amp;dof) const </div><div class="ttdef"><b>Definition:</b> BCHandler.h:76</div></div>
+<div class="ttc" id="classBCHandler_html_a2bc86209db0836dbc6ca56e1ca4e4ac1a57ea96455b2ba998cc42a21aa7e1d842"><div class="ttname"><a href="classBCHandler.html#a2bc86209db0836dbc6ca56e1ca4e4ac1a57ea96455b2ba998cc42a21aa7e1d842">BCHandler::DIRICHLET_BOUNDARY_CUT</a></div><div class="ttdef"><b>Definition:</b> BCHandler.h:24</div></div>
+<div class="ttc" id="BCHandler_8h_html_aa175884cb453788647f17f2230a2a762"><div class="ttname"><a href="BCHandler_8h.html#aa175884cb453788647f17f2230a2a762">BCHandlerPtr_Type</a></div><div class="ttdeci">boost::shared_ptr&lt; BCHandler_Type &gt; BCHandlerPtr_Type</div><div class="ttdef"><b>Definition:</b> BCHandler.h:116</div></div>
+<div class="ttc" id="FractureData_8h_html"><div class="ttname"><a href="FractureData_8h.html">FractureData.h</a></div></div>
+<div class="ttc" id="classBCHandler_html_a1dcccdbb5e0eb0d044455414b52b2f05"><div class="ttname"><a href="classBCHandler.html#a1dcccdbb5e0eb0d044455414b52b2f05">BCHandler::createBDRegions</a></div><div class="ttdeci">void createBDRegions(getfem::mesh &amp;mesh)</div><div class="ttdoc">Funzione che crea le regioni per le condizioni al contorno per il dominio, Neumann e Dirichlet...</div><div class="ttdef"><b>Definition:</b> BCHandler.cc:20</div></div>
+<div class="ttc" id="classBCHandler_html_a2bc86209db0836dbc6ca56e1ca4e4ac1aa538eee48606669ac37073ca65144007"><div class="ttname"><a href="classBCHandler.html#a2bc86209db0836dbc6ca56e1ca4e4ac1aa538eee48606669ac37073ca65144007">BCHandler::NEUMANN_BOUNDARY_UNCUT</a></div><div class="ttdef"><b>Definition:</b> BCHandler.h:27</div></div>
+<div class="ttc" id="classBCHandler_html_a2bc86209db0836dbc6ca56e1ca4e4ac1a487ba8af2086045d8b0df840b2525866"><div class="ttname"><a href="classBCHandler.html#a2bc86209db0836dbc6ca56e1ca4e4ac1a487ba8af2086045d8b0df840b2525866">BCHandler::DIRICHLET_BOUNDARY_UNCUT</a></div><div class="ttdef"><b>Definition:</b> BCHandler.h:26</div></div>
+<div class="ttc" id="classBCHandler_html_a2bf41619c541b124b421d8664786a055"><div class="ttname"><a href="classBCHandler.html#a2bf41619c541b124b421d8664786a055">BCHandler::getNeumannUncut</a></div><div class="ttdeci">const size_type &amp; getNeumannUncut(const size_type &amp;dof) const </div><div class="ttdef"><b>Definition:</b> BCHandler.h:66</div></div>
+<div class="ttc" id="BC_8h_html"><div class="ttname"><a href="BC_8h.html">BC.h</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generato Sab 15 Nov 2014 22:26:38 per Progetto PACS da &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.6
+</small></address>
+</body>
+</html>

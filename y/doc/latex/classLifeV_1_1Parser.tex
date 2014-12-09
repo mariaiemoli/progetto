@@ -1,0 +1,553 @@
+\hypertarget{classLifeV_1_1Parser}{\section{Riferimenti per la classe Life\-V\-:\-:Parser}
+\label{classLifeV_1_1Parser}\index{Life\-V\-::\-Parser@{Life\-V\-::\-Parser}}
+}
+
+
+\hyperlink{classLifeV_1_1Parser}{Parser} -\/ A string parser for algebraic expressions.  
+
+
+
+
+{\ttfamily \#include $<$Parser.\-h$>$}
+
+\subsection*{Tipi pubblici}
+\begin{Indent}{\bf Public Types}\par
+\begin{DoxyCompactItemize}
+\item 
+typedef std\-::vector$<$ std\-::string $>$ \hyperlink{classLifeV_1_1Parser_af87d4a11879da16a0bba7bf81f98b957}{strings\-Vector\-\_\-\-Type}
+\item 
+typedef std\-::string\-::const\-\_\-iterator \hyperlink{classLifeV_1_1Parser_a9491c77a9093b41468ca54b865c893ff}{string\-Iterator\-\_\-\-Type}
+\item 
+typedef \hyperlink{classLifeV_1_1ParserSpiritGrammar}{Parser\-Spirit\-Grammar}\\*
+$<$ \hyperlink{classLifeV_1_1Parser_a9491c77a9093b41468ca54b865c893ff}{string\-Iterator\-\_\-\-Type} $>$ \hyperlink{classLifeV_1_1Parser_ae9a67e24d777a1f962026f5e1274b61a}{calculator\-\_\-\-Type}
+\item 
+typedef \\*
+\hyperlink{classLifeV_1_1ParserSpiritGrammar_a98dabec1a4a9a743a1d3b35e994cec7c}{calculator\-\_\-\-Type\-::results\-\_\-\-Type} \hyperlink{classLifeV_1_1Parser_a9e5861cc337d7534e8641b1709d193db}{results\-\_\-\-Type}
+\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Membri pubblici}
+\begin{Indent}{\bf Constructors \& Destructor}\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classLifeV_1_1Parser_a439ecd746d503e75b6e07f2933a665dc}{Parser} ()
+\begin{DoxyCompactList}\small\item\em Empty constructor (it needs a manual call to set\-String) \end{DoxyCompactList}\item 
+\hyperlink{classLifeV_1_1Parser_a6acf25b7222f0c65d1414611236d1820}{Parser} (const std\-::string \&string)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hyperlink{classLifeV_1_1Parser_a0f7c4d10928fd2139e76baf44996b610}{Parser} (const \hyperlink{classLifeV_1_1Parser}{Parser} \&parser)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+virtual \hyperlink{classLifeV_1_1Parser_a34d16f77f23cf33b3bc3f8293ed0e2ed}{$\sim$\-Parser} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Operators}\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classLifeV_1_1Parser}{Parser} \& \hyperlink{classLifeV_1_1Parser_a257904e57f46427a5bd7c9f80e658c2d}{operator=} (const \hyperlink{classLifeV_1_1Parser}{Parser} \&parser)
+\begin{DoxyCompactList}\small\item\em Operator =. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Methods}\par
+\begin{DoxyCompactItemize}
+\item 
+const \hyperlink{namespaceLifeV_ad58c7402b26e5087b634b25d029c9c32}{Real} \& \hyperlink{classLifeV_1_1Parser_a51d84fd4ae6d420620e7beee58fad673}{evaluate} (const \hyperlink{namespaceLifeV_a7c0e64679fcd30daa5471b87a57601e9}{I\-D} \&id=0)
+\item 
+\hyperlink{namespaceLifeV_a4bd093cf6b0d5b57b2d89e0e90d610b7}{U\-Int} \hyperlink{classLifeV_1_1Parser_a37ae3af9abcf72ca8e1537ec771b523a}{count\-Substring} (const std\-::string \&substring)
+\item 
+void \hyperlink{classLifeV_1_1Parser_acbc44ff1f0b0074f071ea264a95cb9e7}{clear\-Variables} ()
+\begin{DoxyCompactList}\small\item\em Clear all the variables. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Set Methods}\par
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{set\-String} (const std\-::string \&string, const std\-::string \&string\-Separator=\char`\"{};\char`\"{})
+\item 
+void \hyperlink{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{set\-Variable} (const std\-::string \&name, const \hyperlink{namespaceLifeV_ad58c7402b26e5087b634b25d029c9c32}{Real} \&value)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Get Methods}\par
+\begin{DoxyCompactItemize}
+\item 
+const \hyperlink{namespaceLifeV_ad58c7402b26e5087b634b25d029c9c32}{Real} \& \hyperlink{classLifeV_1_1Parser_a9fa902c13c73a3b1bc6db2b5e5c5c93d}{variable} (const std\-::string \&name)
+\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Descrizione dettagliata}
+\hyperlink{classLifeV_1_1Parser}{Parser} -\/ A string parser for algebraic expressions. 
+
+\begin{DoxyAuthor}{Autore}
+(s) Cristiano Malossi, Gilles Fourestey
+\end{DoxyAuthor}
+See {\ttfamily \hyperlink{classLifeV_1_1ParserSpiritGrammar}{Parser\-Spirit\-Grammar}} class for more details. 
+
+\subsection{Documentazione delle ridefinizioni dei tipi (typedef)}
+\hypertarget{classLifeV_1_1Parser_ae9a67e24d777a1f962026f5e1274b61a}{\index{Life\-V\-::\-Parser@{Life\-V\-::\-Parser}!calculator\-\_\-\-Type@{calculator\-\_\-\-Type}}
+\index{calculator\-\_\-\-Type@{calculator\-\_\-\-Type}!LifeV::Parser@{Life\-V\-::\-Parser}}
+\subsubsection[{calculator\-\_\-\-Type}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf Parser\-Spirit\-Grammar}$<$ {\bf string\-Iterator\-\_\-\-Type} $>$ {\bf Life\-V\-::\-Parser\-::calculator\-\_\-\-Type}}}\label{classLifeV_1_1Parser_ae9a67e24d777a1f962026f5e1274b61a}
+\hypertarget{classLifeV_1_1Parser_a9e5861cc337d7534e8641b1709d193db}{\index{Life\-V\-::\-Parser@{Life\-V\-::\-Parser}!results\-\_\-\-Type@{results\-\_\-\-Type}}
+\index{results\-\_\-\-Type@{results\-\_\-\-Type}!LifeV::Parser@{Life\-V\-::\-Parser}}
+\subsubsection[{results\-\_\-\-Type}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf calculator\-\_\-\-Type\-::results\-\_\-\-Type} {\bf Life\-V\-::\-Parser\-::results\-\_\-\-Type}}}\label{classLifeV_1_1Parser_a9e5861cc337d7534e8641b1709d193db}
+\hypertarget{classLifeV_1_1Parser_a9491c77a9093b41468ca54b865c893ff}{\index{Life\-V\-::\-Parser@{Life\-V\-::\-Parser}!string\-Iterator\-\_\-\-Type@{string\-Iterator\-\_\-\-Type}}
+\index{string\-Iterator\-\_\-\-Type@{string\-Iterator\-\_\-\-Type}!LifeV::Parser@{Life\-V\-::\-Parser}}
+\subsubsection[{string\-Iterator\-\_\-\-Type}]{\setlength{\rightskip}{0pt plus 5cm}typedef std\-::string\-::const\-\_\-iterator {\bf Life\-V\-::\-Parser\-::string\-Iterator\-\_\-\-Type}}}\label{classLifeV_1_1Parser_a9491c77a9093b41468ca54b865c893ff}
+\hypertarget{classLifeV_1_1Parser_af87d4a11879da16a0bba7bf81f98b957}{\index{Life\-V\-::\-Parser@{Life\-V\-::\-Parser}!strings\-Vector\-\_\-\-Type@{strings\-Vector\-\_\-\-Type}}
+\index{strings\-Vector\-\_\-\-Type@{strings\-Vector\-\_\-\-Type}!LifeV::Parser@{Life\-V\-::\-Parser}}
+\subsubsection[{strings\-Vector\-\_\-\-Type}]{\setlength{\rightskip}{0pt plus 5cm}typedef std\-::vector$<$ std\-::string $>$ {\bf Life\-V\-::\-Parser\-::strings\-Vector\-\_\-\-Type}}}\label{classLifeV_1_1Parser_af87d4a11879da16a0bba7bf81f98b957}
+
+
+\subsection{Documentazione dei costruttori e dei distruttori}
+\hypertarget{classLifeV_1_1Parser_a439ecd746d503e75b6e07f2933a665dc}{\index{Life\-V\-::\-Parser@{Life\-V\-::\-Parser}!Parser@{Parser}}
+\index{Parser@{Parser}!LifeV::Parser@{Life\-V\-::\-Parser}}
+\subsubsection[{Parser}]{\setlength{\rightskip}{0pt plus 5cm}Life\-V\-::\-Parser\-::\-Parser (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}}\label{classLifeV_1_1Parser_a439ecd746d503e75b6e07f2933a665dc}
+
+
+Empty constructor (it needs a manual call to set\-String) 
+
+
+\begin{DoxyCode}
+46                :
+47         M\_strings       (),
+48         M\_results       (),
+49         M\_calculator    (),
+50         M\_evaluate      ( \textcolor{keyword}{true} )
+51 \{
+52 
+53 \textcolor{preprocessor}{#ifdef HAVE\_LIFEV\_DEBUG}
+54 \textcolor{preprocessor}{}    Debug( 5030 ) << \textcolor{stringliteral}{"Parser::Parser"}<< \textcolor{stringliteral}{"\(\backslash\)n"};
+55 \textcolor{preprocessor}{#endif}
+56 \textcolor{preprocessor}{}
+57     M\_calculator.\hyperlink{classLifeV_1_1ParserSpiritGrammar_aa48cdca46ab32d3c1e55e656aa82e902}{setDefaultVariables}();
+58 \}
+\end{DoxyCode}
+
+
+Questo è il grafo delle chiamate per questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{classLifeV_1_1Parser_a439ecd746d503e75b6e07f2933a665dc_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classLifeV_1_1Parser_a6acf25b7222f0c65d1414611236d1820}{\index{Life\-V\-::\-Parser@{Life\-V\-::\-Parser}!Parser@{Parser}}
+\index{Parser@{Parser}!LifeV::Parser@{Life\-V\-::\-Parser}}
+\subsubsection[{Parser}]{\setlength{\rightskip}{0pt plus 5cm}Life\-V\-::\-Parser\-::\-Parser (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{string}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}}\label{classLifeV_1_1Parser_a6acf25b7222f0c65d1414611236d1820}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em string} & expression to parse \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+60                                         :
+61         M\_strings       (),
+62         M\_results       (),
+63         M\_calculator    (),
+64         M\_evaluate      ( \textcolor{keyword}{true} )
+65 \{
+66 
+67 \textcolor{preprocessor}{#ifdef HAVE\_LIFEV\_DEBUG}
+68 \textcolor{preprocessor}{}    Debug( 5030 ) << \textcolor{stringliteral}{"Parser::Parser( string, applyRules )"}<< \textcolor{stringliteral}{"\(\backslash\)n"};
+69 \textcolor{preprocessor}{#endif}
+70 \textcolor{preprocessor}{}
+71     M\_calculator.\hyperlink{classLifeV_1_1ParserSpiritGrammar_aa48cdca46ab32d3c1e55e656aa82e902}{setDefaultVariables}();
+72     \hyperlink{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{setString}( \textcolor{keywordtype}{string} );
+73 \}
+\end{DoxyCode}
+
+
+Questo è il grafo delle chiamate per questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLifeV_1_1Parser_a6acf25b7222f0c65d1414611236d1820_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classLifeV_1_1Parser_a0f7c4d10928fd2139e76baf44996b610}{\index{Life\-V\-::\-Parser@{Life\-V\-::\-Parser}!Parser@{Parser}}
+\index{Parser@{Parser}!LifeV::Parser@{Life\-V\-::\-Parser}}
+\subsubsection[{Parser}]{\setlength{\rightskip}{0pt plus 5cm}Life\-V\-::\-Parser\-::\-Parser (
+\begin{DoxyParamCaption}
+\item[{const {\bf Parser} \&}]{parser}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}}\label{classLifeV_1_1Parser_a0f7c4d10928fd2139e76baf44996b610}
+
+
+Copy constructor. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em parser} & \hyperlink{classLifeV_1_1Parser}{Parser} \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+75                                      :
+76         M\_strings       ( parser.M\_strings ),
+77         M\_results       ( parser.M\_results ),
+78         M\_calculator    ( parser.M\_calculator ),
+79         M\_evaluate      ( parser.M\_evaluate )
+80 \{
+81 \}
+\end{DoxyCode}
+\hypertarget{classLifeV_1_1Parser_a34d16f77f23cf33b3bc3f8293ed0e2ed}{\index{Life\-V\-::\-Parser@{Life\-V\-::\-Parser}!$\sim$\-Parser@{$\sim$\-Parser}}
+\index{$\sim$\-Parser@{$\sim$\-Parser}!LifeV::Parser@{Life\-V\-::\-Parser}}
+\subsubsection[{$\sim$\-Parser}]{\setlength{\rightskip}{0pt plus 5cm}virtual Life\-V\-::\-Parser\-::$\sim$\-Parser (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classLifeV_1_1Parser_a34d16f77f23cf33b3bc3f8293ed0e2ed}
+
+
+Destructor. 
+
+
+\begin{DoxyCode}
+89 \{\}
+\end{DoxyCode}
+
+
+\subsection{Documentazione delle funzioni membro}
+\hypertarget{classLifeV_1_1Parser_acbc44ff1f0b0074f071ea264a95cb9e7}{\index{Life\-V\-::\-Parser@{Life\-V\-::\-Parser}!clear\-Variables@{clear\-Variables}}
+\index{clear\-Variables@{clear\-Variables}!LifeV::Parser@{Life\-V\-::\-Parser}}
+\subsubsection[{clear\-Variables}]{\setlength{\rightskip}{0pt plus 5cm}void Life\-V\-::\-Parser\-::clear\-Variables (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classLifeV_1_1Parser_acbc44ff1f0b0074f071ea264a95cb9e7}
+
+
+Clear all the variables. 
+
+
+\begin{DoxyCode}
+161 \{
+162     M\_calculator.\hyperlink{classLifeV_1_1ParserSpiritGrammar_a81b8e2abdda8a35738367f2dcfb69c75}{clearVariables}();
+163     M\_evaluate = \textcolor{keyword}{true};
+164 \}
+\end{DoxyCode}
+
+
+Questo è il grafo delle chiamate per questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLifeV_1_1Parser_acbc44ff1f0b0074f071ea264a95cb9e7_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classLifeV_1_1Parser_a37ae3af9abcf72ca8e1537ec771b523a}{\index{Life\-V\-::\-Parser@{Life\-V\-::\-Parser}!count\-Substring@{count\-Substring}}
+\index{count\-Substring@{count\-Substring}!LifeV::Parser@{Life\-V\-::\-Parser}}
+\subsubsection[{count\-Substring}]{\setlength{\rightskip}{0pt plus 5cm}{\bf U\-Int} Life\-V\-::\-Parser\-::count\-Substring (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{substring}
+\end{DoxyParamCaption}
+)}}\label{classLifeV_1_1Parser_a37ae3af9abcf72ca8e1537ec771b523a}
+Count how many times a substring is present in the string (utility for B\-C\-Interface\-Function)
+
+
+\begin{DoxyParams}{Parametri}
+{\em substring} & string to find \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+number of substring 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+141 \{
+142     \hyperlink{namespaceLifeV_a4bd093cf6b0d5b57b2d89e0e90d610b7}{UInt} \hyperlink{matrici_8m_ae11b3deb3de3df7dc48e439074023e35}{count}( 0 );
+143     std::string::size\_type position( 0 );
+144 
+145     \textcolor{keywordflow}{for} ( ;; )
+146     \{
+147         position = M\_strings.back().find( substring, position );
+148 
+149         \textcolor{keywordflow}{if} ( position == std::string::npos )
+150             \textcolor{keywordflow}{break};
+151 
+152         ++\hyperlink{matrici_8m_ae11b3deb3de3df7dc48e439074023e35}{count};
+153         position += substring.length(); \textcolor{comment}{// start next search after this substring}
+154     \}
+155 
+156     \textcolor{keywordflow}{return} \hyperlink{matrici_8m_ae11b3deb3de3df7dc48e439074023e35}{count};
+157 \}
+\end{DoxyCode}
+
+
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLifeV_1_1Parser_a37ae3af9abcf72ca8e1537ec771b523a_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classLifeV_1_1Parser_a51d84fd4ae6d420620e7beee58fad673}{\index{Life\-V\-::\-Parser@{Life\-V\-::\-Parser}!evaluate@{evaluate}}
+\index{evaluate@{evaluate}!LifeV::Parser@{Life\-V\-::\-Parser}}
+\subsubsection[{evaluate}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Real} \& Life\-V\-::\-Parser\-::evaluate (
+\begin{DoxyParamCaption}
+\item[{const {\bf I\-D} \&}]{id = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}}\label{classLifeV_1_1Parser_a51d84fd4ae6d420620e7beee58fad673}
+Evaluate the expression 
+\begin{DoxyParams}{Parametri}
+{\em id} & expression index (starting from 0) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+computed value 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+105 \{
+106     \textcolor{keywordflow}{if} ( M\_evaluate )
+107     \{
+108         M\_results.clear();
+109         \hyperlink{classLifeV_1_1Parser_a9491c77a9093b41468ca54b865c893ff}{stringIterator\_Type} start, end;
+110 
+111         \textcolor{keywordflow}{for} ( \hyperlink{namespaceLifeV_a4bd093cf6b0d5b57b2d89e0e90d610b7}{UInt} \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}(0); \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < M\_strings.size(); ++\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} )
+112         \{
+113             start = M\_strings[\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].begin();
+114             end   = M\_strings[\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}].end();
+115 \textcolor{comment}{//#ifdef HAVE\_BOOST\_SPIRIT\_QI}
+116             qi::phrase\_parse( start, end, M\_calculator, ascii::space, M\_results );
+117 \textcolor{comment}{/*#else}
+118 \textcolor{comment}{            std::cout << "!!! ERROR: Boost version < 1.41 !!!" << std::endl;}
+119 \textcolor{comment}{            // This generate an error ---------}
+120 \textcolor{comment}{            Int *a = new Int(0);}
+121 \textcolor{comment}{            Int *b;}
+122 \textcolor{comment}{            b = a;}
+123 \textcolor{comment}{            delete a;}
+124 \textcolor{comment}{            delete b;}
+125 \textcolor{comment}{            // --------------------------------}
+126 \textcolor{comment}{#endif*/}
+127         \}
+128 
+129         M\_evaluate = \textcolor{keyword}{false};
+130     \}
+131 
+132 \textcolor{preprocessor}{#ifdef HAVE\_LIFEV\_DEBUG}
+133 \textcolor{preprocessor}{}    Debug( 5030 ) << \textcolor{stringliteral}{"Parser::evaluate          results[ "}<< \textcolor{keywordtype}{id} << \textcolor{stringliteral}{"]: "} << M\_results[id] << \textcolor{stringliteral}{"\(\backslash\)n"};
+134 \textcolor{preprocessor}{#endif}
+135 \textcolor{preprocessor}{}
+136     \textcolor{keywordflow}{return} M\_results[id];
+137 \}
+\end{DoxyCode}
+
+
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classLifeV_1_1Parser_a51d84fd4ae6d420620e7beee58fad673_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classLifeV_1_1Parser_a257904e57f46427a5bd7c9f80e658c2d}{\index{Life\-V\-::\-Parser@{Life\-V\-::\-Parser}!operator=@{operator=}}
+\index{operator=@{operator=}!LifeV::Parser@{Life\-V\-::\-Parser}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Parser} \& Life\-V\-::\-Parser\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Parser} \&}]{parser}
+\end{DoxyParamCaption}
+)}}\label{classLifeV_1_1Parser_a257904e57f46427a5bd7c9f80e658c2d}
+
+
+Operator =. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em parser} & \hyperlink{classLifeV_1_1Parser}{Parser} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+reference to a copy of the class 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+88 \{
+89     \textcolor{keywordflow}{if} ( \textcolor{keyword}{this} != &parser )
+90     \{
+91         M\_strings    = parser.M\_strings;
+92         M\_results    = parser.M\_results;
+93         \textcolor{comment}{//M\_calculator = parser.M\_calculator; //NOT WORKING!!!}
+94         M\_evaluate   = parser.M\_evaluate;
+95     \}
+96 
+97     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};
+98 \}
+\end{DoxyCode}
+\hypertarget{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}{\index{Life\-V\-::\-Parser@{Life\-V\-::\-Parser}!set\-String@{set\-String}}
+\index{set\-String@{set\-String}!LifeV::Parser@{Life\-V\-::\-Parser}}
+\subsubsection[{set\-String}]{\setlength{\rightskip}{0pt plus 5cm}void Life\-V\-::\-Parser\-::set\-String (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{string, }
+\item[{const std\-::string \&}]{string\-Separator = {\ttfamily \char`\"{};\char`\"{}}}
+\end{DoxyParamCaption}
+)}}\label{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194}
+Set string function
+
+
+\begin{DoxyParams}{Parametri}
+{\em string} & Expression to evaluate \\
+\hline
+{\em string\-Separator} & Separator identifier (default -\/$>$ \char`\"{};\char`\"{}) \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+171 \{
+172 
+173 \textcolor{preprocessor}{#ifdef HAVE\_LIFEV\_DEBUG}
+174 \textcolor{preprocessor}{}    Debug( 5030 ) << \textcolor{stringliteral}{"Parser::setString:          strings: "} << \textcolor{keywordtype}{string} << \textcolor{stringliteral}{"\(\backslash\)n"};
+175 \textcolor{preprocessor}{#endif}
+176 \textcolor{preprocessor}{}
+177     M\_strings.clear();
+178     boost::split( M\_strings, \textcolor{keywordtype}{string}, boost::is\_any\_of( stringSeparator ) );
+179 
+180     \textcolor{comment}{//Remove white space to speed up the parser}
+181     \textcolor{keywordflow}{for} ( \hyperlink{namespaceLifeV_a4bd093cf6b0d5b57b2d89e0e90d610b7}{UInt} \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} = 0; \hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} < M\_strings.size(); ++\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} )
+182         boost::replace\_all( M\_strings[\hyperlink{matrici_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}], \textcolor{stringliteral}{" "}, \textcolor{stringliteral}{""} );
+183 
+184     \textcolor{comment}{//Reserve the space for results}
+185     M\_results.clear();
+186     M\_results.reserve( \hyperlink{classLifeV_1_1Parser_a37ae3af9abcf72ca8e1537ec771b523a}{countSubstring}( \textcolor{stringliteral}{","} ) + 1 );
+187 
+188     M\_evaluate = \textcolor{keyword}{true};
+189 \}
+\end{DoxyCode}
+
+
+Questo è il grafo delle chiamate per questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classLifeV_1_1Parser_ac05769e836a0dc95d9c020df361a5194_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}{\index{Life\-V\-::\-Parser@{Life\-V\-::\-Parser}!set\-Variable@{set\-Variable}}
+\index{set\-Variable@{set\-Variable}!LifeV::Parser@{Life\-V\-::\-Parser}}
+\subsubsection[{set\-Variable}]{\setlength{\rightskip}{0pt plus 5cm}void Life\-V\-::\-Parser\-::set\-Variable (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{name, }
+\item[{const {\bf Real} \&}]{value}
+\end{DoxyParamCaption}
+)}}\label{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae}
+Set/replace a variable
+
+
+\begin{DoxyParams}{Parametri}
+{\em name} & name of the parameter \\
+\hline
+{\em value} & value of the parameter \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}
+193 \{
+194 
+195 \textcolor{preprocessor}{#ifdef HAVE\_LIFEV\_DEBUG}
+196 \textcolor{preprocessor}{}    Debug( 5030 ) << \textcolor{stringliteral}{"Parser\_Utility::SetVariable    variables["} << name << \textcolor{stringliteral}{"]: "} << value << \textcolor{stringliteral}{"\(\backslash\)n"};
+197 \textcolor{preprocessor}{#endif}
+198 \textcolor{preprocessor}{}
+199     M\_calculator.\hyperlink{classLifeV_1_1ParserSpiritGrammar_a357a7e8d98940858ac6e05c106082e2e}{setVariable}( name, value);
+200 
+201     M\_evaluate = \textcolor{keyword}{true};
+202 \}
+\end{DoxyCode}
+
+
+Questo è il grafo delle chiamate per questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classLifeV_1_1Parser_aa2b362e12b8feb60231705d499c9fbae_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classLifeV_1_1Parser_a9fa902c13c73a3b1bc6db2b5e5c5c93d}{\index{Life\-V\-::\-Parser@{Life\-V\-::\-Parser}!variable@{variable}}
+\index{variable@{variable}!LifeV::Parser@{Life\-V\-::\-Parser}}
+\subsubsection[{variable}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Real} \& Life\-V\-::\-Parser\-::variable (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{name}
+\end{DoxyParamCaption}
+)}}\label{classLifeV_1_1Parser_a9fa902c13c73a3b1bc6db2b5e5c5c93d}
+Get variable
+
+
+\begin{DoxyParams}{Parametri}
+{\em name} & name of the parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+value of the variable 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+209 \{
+210 
+211 \textcolor{preprocessor}{#ifdef HAVE\_LIFEV\_DEBUG}
+212 \textcolor{preprocessor}{}    Debug( 5030 ) << \textcolor{stringliteral}{"Parser\_Utility::GetVariable    variables["} << name << \textcolor{stringliteral}{"]: "} << M\_calculator.
+      \hyperlink{classLifeV_1_1ParserSpiritGrammar_a768e48421db190a4eba5144932ddc4f6}{variable}( name ) << \textcolor{stringliteral}{"\(\backslash\)n"};
+213 \textcolor{preprocessor}{#endif}
+214 \textcolor{preprocessor}{}
+215     \textcolor{keywordflow}{return} M\_calculator.\hyperlink{classLifeV_1_1ParserSpiritGrammar_a768e48421db190a4eba5144932ddc4f6}{variable}( name );
+216 \}
+\end{DoxyCode}
+
+
+Questo è il grafo delle chiamate per questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLifeV_1_1Parser_a9fa902c13c73a3b1bc6db2b5e5c5c93d_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+La documentazione per questa classe è stata generata a partire dai seguenti file\-:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{Parser_8h}{Parser.\-h}\item 
+src/\hyperlink{Parser_8cc}{Parser.\-cc}\end{DoxyCompactItemize}

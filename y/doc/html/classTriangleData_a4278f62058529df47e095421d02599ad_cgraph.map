@@ -1,0 +1,6 @@
+<map id="TriangleData::c" name="TriangleData::c">
+<area shape="rect" id="node2" href="$classTriangleData.html#af52f48a6b75c258927b0b4ea29d4c383" title="Funzione che restituisce le coordinate del baricentro del triangolo. " alt="" coords="163,5,318,32"/>
+<area shape="rect" id="node3" href="$classTriangleData.html#a0642b843819fc842bad0be2f35f15be3" title="Funzione che calcola il punto medio di un lato. " alt="" coords="160,56,321,83"/>
+<area shape="rect" id="node5" href="$classPointData.html#a262fed95726ae252592717fe3cf2f9dd" title="Conversione Point da vettore di scalari a Vector2d eigen. " alt="" coords="173,107,308,133"/>
+<area shape="rect" id="node4" href="$classTriangleData.html#a32634f5f869bda807ccde85f226fd4ff" title="TriangleData::edge" alt="" coords="369,56,497,83"/>
+</map>

@@ -1,0 +1,34 @@
+<map id="DarcyFractured::assembly" name="DarcyFractured::assembly">
+<area shape="rect" id="node2" href="$namespacegetfem.html#a9a0b9f7498668cda8b547b10ac914a34" title="Funzione che accoppia le variabili corrispondenti alle fratture che si intersecano. " alt="" coords="231,5,384,32"/>
+<area shape="rect" id="node3" href="$namespacegetfem.html#aba6f1b4f1d395aae3d96071cad4953a2" title="Funzione che costruisce la matrice corrispondente alla forma bilineare a(u,v): Aij = a(..." alt="" coords="241,56,374,83"/>
+<area shape="rect" id="node4" href="$namespacegetfem.html#ab62aa98cfcf55810e1518906202cbedc" title="Funzione che costruisce la matrice tau tau corrispondente alla forma bilineare b(u,p): Bij = b(, ) = A12. " alt="" coords="241,107,374,133"/>
+<area shape="rect" id="node5" href="$namespacegetfem.html#a9b6ded8fe1019aa04e66d2047d0f29dd" title="Funzione che aggiorna la matrice corrispondente alla forma bilineare a(u,v): Aij = a(..." alt="" coords="241,158,374,199"/>
+<area shape="rect" id="node6" href="$namespacegetfem.html#a88df6c0cb0765d5ab0fae27679cd30f4" title="Funzione che aggiorna la matrice tau tau corrispondente alla forma bilineare b(u,p): Bij = b(..." alt="" coords="241,223,374,265"/>
+<area shape="rect" id="node7" href="$namespacegetfem.html#acc74b86734c3814042e614d015f23876" title="Funzione che calcola il salto di velocità per una frattura con intersezione di tipo &quot; Cross &quot;..." alt="" coords="239,289,376,330"/>
+<area shape="rect" id="node8" href="$classMatrixBifurcationHandler.html#a94433cf28ec2af6ba06b7f63a081d787" title="Funzione che inizializza M_intersection, la classe che rappresenta il triangolo di intersezione..." alt="" coords="229,354,385,395"/>
+<area shape="rect" id="node27" href="$classMatrixBifurcationHandler.html#a3b7305f6106add811e7b4b69f5642e86" title="Funzione che restituisce la matrice M_T, matrice di trasmissibilità. " alt="" coords="223,420,392,447"/>
+<area shape="rect" id="node28" href="$classMatrixBifurcationHandler.html#a4f0a8f707112cfd7576d2331f659e068" title="MatrixBifurcationHandler\l::SetDOFIntersecton" alt="" coords="884,463,1040,505"/>
+<area shape="rect" id="node30" href="$classMatrixBifurcationHandler.html#aed78abe5cb83c5e6b0b2f9f1538f51ac" title="MatrixBifurcationHandler\l::computeScap" alt="" coords="229,522,385,563"/>
+<area shape="rect" id="node31" href="$namespacegetfem.html#ad6e90b309c01f6b4fc91c9369cba376a" title="Funzione che calcola il termine noto del sistema F(u) " alt="" coords="239,588,375,615"/>
+<area shape="rect" id="node32" href="$namespacegetfem.html#ac08fe08fb325eede94ffe4968b7980de" title="Funzione che calcola il termine noto del sistema Q(p) " alt="" coords="239,639,376,681"/>
+<area shape="rect" id="node33" href="$namespacegetfem.html#a5efeefe94dfb5427c3ecf63d0b342c57" title="Funzione che aggiorna il termine noto del sistema Q(p) nel caso di frattura con intersezione di tipo ..." alt="" coords="242,705,373,746"/>
+<area shape="rect" id="node9" href="$classIntersection.html#ab7a139ac5712a9aa8bb925caf4ecc8af" title="Funzione che costruisce il triangolo di intersezione partendo dal vettore delle fratture che si inter..." alt="" coords="440,375,609,401"/>
+<area shape="rect" id="node12" href="$classMatrixBifurcationHandler.html#a46ee3c60eedda32abe36700ab2ce2d16" title="Funzione che calcola la matrice M_T, matrice di trasmissibilità. " alt="" coords="447,253,603,294"/>
+<area shape="rect" id="node10" href="$classIntersection.html#ab3bd72c81dc261d3035213e5cefbb1c5" title="Funzione che ordina le fratture in senso orario. " alt="" coords="657,400,819,427"/>
+<area shape="rect" id="node11" href="$classIntersection.html#a9acd54dacf9de3c21fb37df24cb47d06" title="Funzione che mi restituisce vero o falso a seconda se una frattura si trovi o meno nella parte positi..." alt="" coords="901,412,1023,439"/>
+<area shape="rect" id="node13" href="$classMatrixBifurcationHandler.html#a203b6bfcdef418ffa927aebaeedc6da2" title="Funzione che costruisce la matrice M_Qc, matrice che ha per colonne una base ortonormale per la matri..." alt="" coords="660,194,816,235"/>
+<area shape="rect" id="node15" href="$classIntersection.html#a603d1cb4b33762c72999968ceec95a39" title="Funzione che restituisce il triangolo di intersezione. " alt="" coords="1129,253,1279,294"/>
+<area shape="rect" id="node21" href="$classMatrixBifurcationHandler.html#ac134a5731e6614e543241a018ccf8c34" title="Funzione che calcola la matrice M_N, matrice che ha per righe le normali ai lati. ..." alt="" coords="660,311,816,353"/>
+<area shape="rect" id="node26" href="$classTriangleData.html#acbfbc62d5221ecd37437012fe8b68c8d" title="Funzione che calcola l&#39;area del triangolo. " alt="" coords="663,143,813,169"/>
+<area shape="rect" id="node14" href="$classMatrixBifurcationHandler.html#ac179ca406307a3d2ee5d5b5af94d265e" title="Funzione che calcola la matrice M_C, matrice che ha per righe i vettori che uniscono il baricentro de..." alt="" coords="884,194,1040,235"/>
+<area shape="rect" id="node16" href="$classTriangleData.html#a4278f62058529df47e095421d02599ad" title="Funzione che restituisce il vettore che collega il punto medio di un lato con il baricentro. " alt="" coords="1151,201,1257,228"/>
+<area shape="rect" id="node17" href="$classTriangleData.html#af52f48a6b75c258927b0b4ea29d4c383" title="Funzione che restituisce le coordinate del baricentro del triangolo. " alt="" coords="1354,151,1509,177"/>
+<area shape="rect" id="node18" href="$classTriangleData.html#a0642b843819fc842bad0be2f35f15be3" title="Funzione che calcola il punto medio di un lato. " alt="" coords="1351,201,1512,228"/>
+<area shape="rect" id="node20" href="$classPointData.html#a262fed95726ae252592717fe3cf2f9dd" title="Conversione Point da vettore di scalari a Vector2d eigen. " alt="" coords="1364,252,1499,279"/>
+<area shape="rect" id="node19" href="$classTriangleData.html#a32634f5f869bda807ccde85f226fd4ff" title="TriangleData::edge" alt="" coords="1560,201,1688,228"/>
+<area shape="rect" id="node22" href="$classTriangleData.html#a3b110e4ceb09cc5368fcecad9938a1c8" title="Funzione che restituisce il vettore che rappresenta la normale uscente da un lato. " alt="" coords="867,361,1057,388"/>
+<area shape="rect" id="node23" href="$classTriangleData.html#a6b8d98b054e9b094ba6b6ccf4217246b" title="Funzione che restituisce uno dei due punti che costituiscono un lato del triangolo. " alt="" coords="1126,340,1282,367"/>
+<area shape="rect" id="node24" href="$classPointData.html#a90dbf32a9579cb1cde67458d4ad38209" title="PointData::y" alt="" coords="1158,441,1250,468"/>
+<area shape="rect" id="node25" href="$classPointData.html#a5accef5ea9e813dd4517eb050f276ccf" title="PointData::x" alt="" coords="1158,391,1250,417"/>
+<area shape="rect" id="node29" href="$classIntersection.html#abfa3de3a738c4fd36c54eaeecc3557de" title="Funzione che restituisce il punto di intersezione. " alt="" coords="1105,492,1303,519"/>
+</map>

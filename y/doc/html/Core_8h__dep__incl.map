@@ -1,0 +1,46 @@
+<map id="include/Core.h" name="include/Core.h">
+<area shape="rect" id="node2" href="$BC_8h.html" title="include/BC.h" alt="" coords="379,80,476,107"/>
+<area shape="rect" id="node3" href="$BCHandler_8h.html" title="include/BCHandler.h" alt="" coords="317,229,459,256"/>
+<area shape="rect" id="node5" href="$FracturesSet_8h.html" title="include/FracturesSet.h" alt="" coords="562,544,715,571"/>
+<area shape="rect" id="node6" href="$DarcyFractured_8h.html" title="include/DarcyFractured.h" alt="" coords="720,768,888,795"/>
+<area shape="rect" id="node10" href="$MeshHandler_8h.html" title="include/MeshHandler.h" alt="" coords="1537,619,1691,645"/>
+<area shape="rect" id="node11" href="$XFEMOperators_8h.html" title="include/XFEMOperators.h" alt="" coords="150,693,321,720"/>
+<area shape="rect" id="node13" href="$Exporter_8h.html" title="include/Exporter.h" alt="" coords="1766,693,1892,720"/>
+<area shape="rect" id="node18" href="$FractureIntersect_8h.html" title="include/FractureIntersect.h" alt="" coords="1235,461,1412,488"/>
+<area shape="rect" id="node22" href="$MatrixBifurcationHandler_8h.html" title="include/MatrixBifurcation\lHandler.h" alt="" coords="701,454,865,495"/>
+<area shape="rect" id="node28" href="$FractureData_8h.html" title="include/FractureData.h" alt="" coords="883,155,1036,181"/>
+<area shape="rect" id="node30" href="$Parser_8h.html" title="File containing the Parser interface. " alt="" coords="1007,80,1123,107"/>
+<area shape="rect" id="node31" href="$LevelSetData_8h.html" title="include/LevelSetData.h" alt="" coords="688,155,845,181"/>
+<area shape="rect" id="node35" href="$MediumData_8h.html" title="include/MediumData.h" alt="" coords="1501,155,1653,181"/>
+<area shape="rect" id="node38" href="$StringUtility_8h.html" title="String utilities. " alt="" coords="1177,229,1324,256"/>
+<area shape="rect" id="node42" href="$UsefulFunctions_8h.html" title="include/UsefulFunctions.h" alt="" coords="1619,379,1792,405"/>
+<area shape="rect" id="node44" href="$PointData_8h.html" title="include/PointData.h" alt="" coords="1763,229,1897,256"/>
+<area shape="rect" id="node27" href="$BC_8cc.html" title="src/BC.cc" alt="" coords="309,155,389,181"/>
+<area shape="rect" id="node4" href="$FractureHandler_8h.html" title="include/FractureHandler.h" alt="" coords="733,304,904,331"/>
+<area shape="rect" id="node26" href="$BCHandler_8cc.html" title="src/BCHandler.cc" alt="" coords="246,304,372,331"/>
+<area shape="rect" id="node17" href="$IntersectData_8h.html" title="include/IntersectData.h" alt="" coords="1125,379,1283,405"/>
+<area shape="rect" id="node21" href="$TriangleHandler_8h.html" title="include/TriangleHandler.h" alt="" coords="931,379,1100,405"/>
+<area shape="rect" id="node25" href="$FractureHandler_8cc.html" title="src/FractureHandler.cc" alt="" coords="701,379,855,405"/>
+<area shape="rect" id="node7" href="$main_8cc.html" title="main.cc" alt="" coords="1422,851,1489,877"/>
+<area shape="rect" id="node16" href="$FracturesSet_8cc.html" title="src/FracturesSet.cc" alt="" coords="629,619,765,645"/>
+<area shape="rect" id="node8" href="$src_2DarcyFractured_8cc.html" title="src/DarcyFractured.cc" alt="" coords="812,851,964,877"/>
+<area shape="rect" id="node9" href="$versioni__precedenti_2DarcyFractured_8cc.html" title="versioni_precedenti\l/DarcyFractured.cc" alt="" coords="653,843,787,885"/>
+<area shape="rect" id="node15" href="$MeshHandler_8cc.html" title="src/MeshHandler.cc" alt="" coords="1488,693,1627,720"/>
+<area shape="rect" id="node12" href="$XFEMOperators_8cc.html" title="src/XFEMOperators.cc" alt="" coords="158,768,313,795"/>
+<area shape="rect" id="node14" href="$Exporter_8cc.html" title="src/Exporter.cc" alt="" coords="1774,768,1884,795"/>
+<area shape="rect" id="node20" href="$IntersectData_8cc.html" title="src/IntersectData.cc" alt="" coords="1069,461,1209,488"/>
+<area shape="rect" id="node19" href="$FractureIntersect_8cc.html" title="src/FractureIntersect.cc" alt="" coords="1243,544,1404,571"/>
+<area shape="rect" id="node24" href="$TriangleHandler_8cc.html" title="src/TriangleHandler.cc" alt="" coords="891,461,1044,488"/>
+<area shape="rect" id="node23" href="$MatrixBifurcationHandler_8cc.html" title="src/MatrixBifurcationHandler.cc" alt="" coords="841,544,1047,571"/>
+<area shape="rect" id="node29" href="$FractureData_8cc.html" title="src/FractureData.cc" alt="" coords="848,229,987,256"/>
+<area shape="rect" id="node37" href="$Parser_8cc.html" title="File containing the Parser interface. " alt="" coords="1113,155,1212,181"/>
+<area shape="rect" id="node32" href="$LevelSetHandler_8h.html" title="include/LevelSetHandler.h" alt="" coords="483,229,657,256"/>
+<area shape="rect" id="node34" href="$LevelSetData_8cc.html" title="src/LevelSetData.cc" alt="" coords="683,229,823,256"/>
+<area shape="rect" id="node33" href="$LevelSetHandler_8cc.html" title="src/LevelSetHandler.cc" alt="" coords="550,304,708,331"/>
+<area shape="rect" id="node36" href="$MediumData_8cc.html" title="src/MediumData.cc" alt="" coords="1552,229,1687,256"/>
+<area shape="rect" id="node39" href="$TriangleData_8h.html" title="include/TriangleData.h" alt="" coords="1451,304,1603,331"/>
+<area shape="rect" id="node41" href="$StringUtility_8cc.html" title="String utilities. " alt="" coords="1245,304,1375,331"/>
+<area shape="rect" id="node40" href="$TriangleData_8cc.html" title="src/TriangleData.cc" alt="" coords="1459,379,1593,405"/>
+<area shape="rect" id="node43" href="$UsefulFunctions_8cc.html" title="src/UsefulFunctions.cc" alt="" coords="1511,461,1668,488"/>
+<area shape="rect" id="node45" href="$PointData_8cc.html" title="src/PointData.cc" alt="" coords="1779,304,1899,331"/>
+</map>

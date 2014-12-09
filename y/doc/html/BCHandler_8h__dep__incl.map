@@ -1,0 +1,25 @@
+<map id="include/BCHandler.h" name="include/BCHandler.h">
+<area shape="rect" id="node2" href="$FractureHandler_8h.html" title="include/FractureHandler.h" alt="" coords="555,80,717,107"/>
+<area shape="rect" id="node4" href="$DarcyFractured_8h.html" title="include/DarcyFractured.h" alt="" coords="511,543,670,569"/>
+<area shape="rect" id="node8" href="$MeshHandler_8h.html" title="include/MeshHandler.h" alt="" coords="999,393,1148,420"/>
+<area shape="rect" id="node9" href="$XFEMOperators_8h.html" title="include/XFEMOperators.h" alt="" coords="746,468,913,495"/>
+<area shape="rect" id="node24" href="$BCHandler_8cc.html" title="src/BCHandler.cc" alt="" coords="1050,80,1169,107"/>
+<area shape="rect" id="node3" href="$FracturesSet_8h.html" title="include/FracturesSet.h" alt="" coords="656,319,800,345"/>
+<area shape="rect" id="node15" href="$IntersectData_8h.html" title="include/IntersectData.h" alt="" coords="505,155,655,181"/>
+<area shape="rect" id="node16" href="$FractureIntersect_8h.html" title="include/FractureIntersect.h" alt="" coords="390,237,554,263"/>
+<area shape="rect" id="node19" href="$TriangleHandler_8h.html" title="include/TriangleHandler.h" alt="" coords="208,155,368,181"/>
+<area shape="rect" id="node20" href="$MatrixBifurcationHandler_8h.html" title="include/MatrixBifurcation\lHandler.h" alt="" coords="211,229,365,271"/>
+<area shape="rect" id="node23" href="$FractureHandler_8cc.html" title="src/FractureHandler.cc" alt="" coords="729,155,873,181"/>
+<area shape="rect" id="node5" href="$main_8cc.html" title="main.cc" alt="" coords="679,625,743,651"/>
+<area shape="rect" id="node14" href="$FracturesSet_8cc.html" title="src/FracturesSet.cc" alt="" coords="746,393,873,420"/>
+<area shape="rect" id="node6" href="$src_2DarcyFractured_8cc.html" title="src/DarcyFractured.cc" alt="" coords="359,625,502,651"/>
+<area shape="rect" id="node7" href="$versioni__precedenti_2DarcyFractured_8cc.html" title="versioni_precedenti\l/DarcyFractured.cc" alt="" coords="527,617,655,659"/>
+<area shape="rect" id="node11" href="$Exporter_8h.html" title="include/Exporter.h" alt="" coords="937,468,1058,495"/>
+<area shape="rect" id="node13" href="$MeshHandler_8cc.html" title="src/MeshHandler.cc" alt="" coords="1082,468,1214,495"/>
+<area shape="rect" id="node10" href="$XFEMOperators_8cc.html" title="src/XFEMOperators.cc" alt="" coords="755,543,904,569"/>
+<area shape="rect" id="node12" href="$Exporter_8cc.html" title="src/Exporter.cc" alt="" coords="945,543,1049,569"/>
+<area shape="rect" id="node18" href="$IntersectData_8cc.html" title="src/IntersectData.cc" alt="" coords="578,237,710,263"/>
+<area shape="rect" id="node17" href="$FractureIntersect_8cc.html" title="src/FractureIntersect.cc" alt="" coords="456,319,603,345"/>
+<area shape="rect" id="node22" href="$TriangleHandler_8cc.html" title="src/TriangleHandler.cc" alt="" coords="43,237,186,263"/>
+<area shape="rect" id="node21" href="$MatrixBifurcationHandler_8cc.html" title="src/MatrixBifurcationHandler.cc" alt="" coords="241,319,431,345"/>
+</map>

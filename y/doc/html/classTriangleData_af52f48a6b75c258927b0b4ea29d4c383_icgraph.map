@@ -1,0 +1,9 @@
+<map id="TriangleData::baricenter" name="TriangleData::baricenter">
+<area shape="rect" id="node2" href="$classTriangleData.html#a4278f62058529df47e095421d02599ad" title="Funzione che restituisce il vettore che collega il punto medio di un lato con il baricentro. " alt="" coords="208,46,315,73"/>
+<area shape="rect" id="node3" href="$classMatrixBifurcationHandler.html#ac179ca406307a3d2ee5d5b5af94d265e" title="Funzione che calcola la matrice M_C, matrice che ha per righe i vettori che uniscono il baricentro de..." alt="" coords="363,39,519,80"/>
+<area shape="rect" id="node4" href="$classMatrixBifurcationHandler.html#a203b6bfcdef418ffa927aebaeedc6da2" title="Funzione che costruisce la matrice M_Qc, matrice che ha per colonne una base ortonormale per la matri..." alt="" coords="567,39,723,80"/>
+<area shape="rect" id="node5" href="$classMatrixBifurcationHandler.html#a46ee3c60eedda32abe36700ab2ce2d16" title="Funzione che calcola la matrice M_T, matrice di trasmissibilità. " alt="" coords="771,5,927,47"/>
+<area shape="rect" id="node8" href="$classMatrixBifurcationHandler.html#a2153adb36bdbba82ca18ae74eb9e2ea7" title="Funzione che calcola la matrice M_T, matrice di trasmissibilità. " alt="" coords="771,71,927,112"/>
+<area shape="rect" id="node6" href="$classMatrixBifurcationHandler.html#a94433cf28ec2af6ba06b7f63a081d787" title="Funzione che inizializza M_intersection, la classe che rappresenta il triangolo di intersezione..." alt="" coords="975,5,1131,47"/>
+<area shape="rect" id="node7" href="$classDarcyFractured.html#a7af785ff47dda6db2bcc0846c47877c1" title="Funzione che assembla tutte le matrici e il termine noto di destra. " alt="" coords="1179,13,1348,39"/>
+</map>

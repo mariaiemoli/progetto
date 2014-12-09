@@ -1,0 +1,8 @@
+<map id="TriangleData::edgePoint" name="TriangleData::edgePoint">
+<area shape="rect" id="node2" href="$classTriangleData.html#a3b110e4ceb09cc5368fcecad9938a1c8" title="Funzione che restituisce il vettore che rappresenta la normale uscente da un lato. " alt="" coords="209,46,400,73"/>
+<area shape="rect" id="node3" href="$classMatrixBifurcationHandler.html#ac134a5731e6614e543241a018ccf8c34" title="Funzione che calcola la matrice M_N, matrice che ha per righe le normali ai lati. ..." alt="" coords="448,39,604,80"/>
+<area shape="rect" id="node4" href="$classMatrixBifurcationHandler.html#a46ee3c60eedda32abe36700ab2ce2d16" title="Funzione che calcola la matrice M_T, matrice di trasmissibilità. " alt="" coords="652,5,808,47"/>
+<area shape="rect" id="node7" href="$classMatrixBifurcationHandler.html#a2153adb36bdbba82ca18ae74eb9e2ea7" title="Funzione che calcola la matrice M_T, matrice di trasmissibilità. " alt="" coords="652,71,808,112"/>
+<area shape="rect" id="node5" href="$classMatrixBifurcationHandler.html#a94433cf28ec2af6ba06b7f63a081d787" title="Funzione che inizializza M_intersection, la classe che rappresenta il triangolo di intersezione..." alt="" coords="856,5,1012,47"/>
+<area shape="rect" id="node6" href="$classDarcyFractured.html#a7af785ff47dda6db2bcc0846c47877c1" title="Funzione che assembla tutte le matrici e il termine noto di destra. " alt="" coords="1060,13,1229,39"/>
+</map>

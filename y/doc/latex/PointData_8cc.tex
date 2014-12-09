@@ -1,0 +1,121 @@
+\hypertarget{PointData_8cc}{\section{Riferimenti per il file src/\-Point\-Data.cc}
+\label{PointData_8cc}\index{src/\-Point\-Data.\-cc@{src/\-Point\-Data.\-cc}}
+}
+{\ttfamily \#include \char`\"{}../include/\-Point\-Data.\-h\char`\"{}}\\*
+Grafo delle dipendenze di inclusione per Point\-Data.\-cc\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{PointData_8cc__incl}
+\end{center}
+\end{figure}
+\subsection*{Funzioni}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classPointData}{Point\-Data} \hyperlink{PointData_8cc_a2468a63a40cab54a468719f2a3f28643}{operator-\/} (const \hyperlink{classPointData}{Point\-Data} \&a, const \hyperlink{classPointData}{Point\-Data} \&b)
+\item 
+\hyperlink{classPointData}{Point\-Data} \hyperlink{PointData_8cc_acdd6a398d9bbf1552c309bf854df4a10}{operator+} (const \hyperlink{classPointData}{Point\-Data} \&a, const \hyperlink{classPointData}{Point\-Data} \&b)
+\item 
+\hyperlink{classPointData}{Point\-Data} \hyperlink{PointData_8cc_a366cfe417d483e7cb1b689b52f294e03}{operator$\ast$} (const scalar\-\_\-type \&d, const \hyperlink{classPointData}{Point\-Data} \&p)
+\item 
+std\-::ostream \& \hyperlink{PointData_8cc_a66faab14b19458cf79ac85d61365a123}{operator$<$$<$} (std\-::ostream \&stream, \hyperlink{classPointData}{Point\-Data} const \&p)
+\end{DoxyCompactItemize}
+
+
+\subsection{Documentazione delle funzioni}
+\hypertarget{PointData_8cc_a366cfe417d483e7cb1b689b52f294e03}{\index{Point\-Data.\-cc@{Point\-Data.\-cc}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!PointData.cc@{Point\-Data.\-cc}}
+\subsubsection[{operator$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Point\-Data} operator$\ast$ (
+\begin{DoxyParamCaption}
+\item[{const scalar\-\_\-type \&}]{d, }
+\item[{const {\bf Point\-Data} \&}]{p}
+\end{DoxyParamCaption}
+)}}\label{PointData_8cc_a366cfe417d483e7cb1b689b52f294e03}
+
+\begin{DoxyCode}
+96 \{
+97   \textcolor{keywordflow}{return} p*d;
+98   
+99 \}\textcolor{comment}{// operator *}
+\end{DoxyCode}
+\hypertarget{PointData_8cc_acdd6a398d9bbf1552c309bf854df4a10}{\index{Point\-Data.\-cc@{Point\-Data.\-cc}!operator+@{operator+}}
+\index{operator+@{operator+}!PointData.cc@{Point\-Data.\-cc}}
+\subsubsection[{operator+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Point\-Data} operator+ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Point\-Data} \&}]{a, }
+\item[{const {\bf Point\-Data} \&}]{b}
+\end{DoxyParamCaption}
+)}}\label{PointData_8cc_acdd6a398d9bbf1552c309bf854df4a10}
+
+\begin{DoxyCode}
+68 \{
+69   \textcolor{keywordflow}{return} \hyperlink{classPointData}{PointData}( a.\hyperlink{classPointData_a5accef5ea9e813dd4517eb050f276ccf}{x}()+b.\hyperlink{classPointData_a5accef5ea9e813dd4517eb050f276ccf}{x}(),
+70                     a.\hyperlink{classPointData_a90dbf32a9579cb1cde67458d4ad38209}{y}()+b.\hyperlink{classPointData_a90dbf32a9579cb1cde67458d4ad38209}{y}() );
+71   
+72 \}\textcolor{comment}{// operator +}
+\end{DoxyCode}
+
+
+Questo è il grafo delle chiamate per questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=242pt]{PointData_8cc_acdd6a398d9bbf1552c309bf854df4a10_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{PointData_8cc_a2468a63a40cab54a468719f2a3f28643}{\index{Point\-Data.\-cc@{Point\-Data.\-cc}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!PointData.cc@{Point\-Data.\-cc}}
+\subsubsection[{operator-\/}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Point\-Data} operator-\/ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Point\-Data} \&}]{a, }
+\item[{const {\bf Point\-Data} \&}]{b}
+\end{DoxyParamCaption}
+)}}\label{PointData_8cc_a2468a63a40cab54a468719f2a3f28643}
+
+\begin{DoxyCode}
+61 \{
+62   \textcolor{keywordflow}{return} \hyperlink{classPointData}{PointData}( a.\hyperlink{classPointData_a5accef5ea9e813dd4517eb050f276ccf}{x}()-b.\hyperlink{classPointData_a5accef5ea9e813dd4517eb050f276ccf}{x}(),
+63                     a.\hyperlink{classPointData_a90dbf32a9579cb1cde67458d4ad38209}{y}()-b.\hyperlink{classPointData_a90dbf32a9579cb1cde67458d4ad38209}{y}() );
+64   
+65 \}\textcolor{comment}{// operator -}
+\end{DoxyCode}
+
+
+Questo è il grafo delle chiamate per questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=239pt]{PointData_8cc_a2468a63a40cab54a468719f2a3f28643_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{PointData_8cc_a66faab14b19458cf79ac85d61365a123}{\index{Point\-Data.\-cc@{Point\-Data.\-cc}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!PointData.cc@{Point\-Data.\-cc}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}std\-::ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{stream, }
+\item[{{\bf Point\-Data} const \&}]{p}
+\end{DoxyParamCaption}
+)}}\label{PointData_8cc_a66faab14b19458cf79ac85d61365a123}
+
+\begin{DoxyCode}
+108 \{
+109     stream << \textcolor{stringliteral}{" ( "} << p.x() << \textcolor{stringliteral}{", "} << p.y() << \textcolor{stringliteral}{" ) "} << std::endl;
+110     
+111     \textcolor{keywordflow}{return} stream;
+112     
+113 \}\end{DoxyCode}
+
+
+Questo è il grafo delle chiamate per questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{PointData_8cc_a66faab14b19458cf79ac85d61365a123_cgraph}
+\end{center}
+\end{figure}
+
+

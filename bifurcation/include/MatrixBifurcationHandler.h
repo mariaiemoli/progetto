@@ -14,7 +14,7 @@
 #define __MATRIXBIFURCATIONHANDLER_H__ 
 
 #include "Core.h"
-#include "TriangleHandler.h"
+#include "Geometry.h"
 #include "Parser.h"
 #include "FractureHandler.h"
 #include <eigen3/Eigen/Dense>

@@ -1,0 +1,138 @@
+\hypertarget{classFractureEnd}{\section{Riferimenti per la classe Fracture\-End}
+\label{classFractureEnd}\index{Fracture\-End@{Fracture\-End}}
+}
+
+
+\hyperlink{TriangleHandler_8h}{Triangle\-Handler.\-h}.  
+
+
+
+
+{\ttfamily \#include $<$Triangle\-Handler.\-h$>$}
+
+\subsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classFractureEnd_a5be0d3eb231ecbc491fb9c07bbe44183}{Fracture\-End} (\hyperlink{classPointData}{Point\-Data} \&, scalar\-\_\-type)
+\begin{DoxyCompactList}\small\item\em \hyperlink{TriangleHandler_8cc}{Triangle\-Handler.\-cc}. \end{DoxyCompactList}\item 
+\hyperlink{classPointData}{Point\-Data} \hyperlink{classFractureEnd_a48187852ce2e959d00577fe4d66c2e0f}{get\-Point} () const 
+\item 
+scalar\-\_\-type \hyperlink{classFractureEnd_a2b70172b4593324288f5779b7998d4a3}{get\-Thickness} () const 
+\item 
+\hyperlink{classFractureEnd}{Fracture\-End} \& \hyperlink{classFractureEnd_a94df97c8e4f3e68a62ebaa3ae754106f}{operator=} (const \hyperlink{classFractureEnd}{Fracture\-End} \&t)
+\end{DoxyCompactItemize}
+
+
+\subsection{Descrizione dettagliata}
+\hyperlink{TriangleHandler_8h}{Triangle\-Handler.\-h}. 
+
+Classe che costruisce il triangolo 2d dell'intersezione Classe che rappresenta la fine di una frattura 
+
+\subsection{Documentazione dei costruttori e dei distruttori}
+\hypertarget{classFractureEnd_a5be0d3eb231ecbc491fb9c07bbe44183}{\index{Fracture\-End@{Fracture\-End}!Fracture\-End@{Fracture\-End}}
+\index{Fracture\-End@{Fracture\-End}!FractureEnd@{Fracture\-End}}
+\subsubsection[{Fracture\-End}]{\setlength{\rightskip}{0pt plus 5cm}Fracture\-End\-::\-Fracture\-End (
+\begin{DoxyParamCaption}
+\item[{{\bf Point\-Data} \&}]{a, }
+\item[{scalar\-\_\-type}]{t}
+\end{DoxyParamCaption}
+)}}\label{classFractureEnd_a5be0d3eb231ecbc491fb9c07bbe44183}
+
+
+\hyperlink{TriangleHandler_8cc}{Triangle\-Handler.\-cc}. 
+
+
+\begin{DoxyCode}
+9 \{
+10     M\_endPoint = a;
+11 
+12     M\_thickness = t;
+13 \}\textcolor{comment}{//costruttore FractureEnd}
+\end{DoxyCode}
+
+
+\subsection{Documentazione delle funzioni membro}
+\hypertarget{classFractureEnd_a48187852ce2e959d00577fe4d66c2e0f}{\index{Fracture\-End@{Fracture\-End}!get\-Point@{get\-Point}}
+\index{get\-Point@{get\-Point}!FractureEnd@{Fracture\-End}}
+\subsubsection[{get\-Point}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Point\-Data} Fracture\-End\-::get\-Point (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureEnd_a48187852ce2e959d00577fe4d66c2e0f}
+
+\begin{DoxyCode}
+26     \{
+27         \textcolor{keywordflow}{return} M\_endPoint;
+28     \}
+\end{DoxyCode}
+
+
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=333pt]{classFractureEnd_a48187852ce2e959d00577fe4d66c2e0f_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classFractureEnd_a2b70172b4593324288f5779b7998d4a3}{\index{Fracture\-End@{Fracture\-End}!get\-Thickness@{get\-Thickness}}
+\index{get\-Thickness@{get\-Thickness}!FractureEnd@{Fracture\-End}}
+\subsubsection[{get\-Thickness}]{\setlength{\rightskip}{0pt plus 5cm}scalar\-\_\-type Fracture\-End\-::get\-Thickness (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureEnd_a2b70172b4593324288f5779b7998d4a3}
+
+\begin{DoxyCode}
+31     \{
+32         \textcolor{keywordflow}{return} M\_thickness;
+33     \}
+\end{DoxyCode}
+
+
+Questo è il grafo dei chiamanti di questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classFractureEnd_a2b70172b4593324288f5779b7998d4a3_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classFractureEnd_a94df97c8e4f3e68a62ebaa3ae754106f}{\index{Fracture\-End@{Fracture\-End}!operator=@{operator=}}
+\index{operator=@{operator=}!FractureEnd@{Fracture\-End}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Fracture\-End}\& Fracture\-End\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Fracture\-End} \&}]{t}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFractureEnd_a94df97c8e4f3e68a62ebaa3ae754106f}
+
+\begin{DoxyCode}
+37     \{
+38         \textcolor{keywordflow}{if} (\textcolor{keyword}{this} !=&t)
+39         \{
+40             M\_endPoint = t.\hyperlink{classFractureEnd_a48187852ce2e959d00577fe4d66c2e0f}{getPoint}();
+41             M\_thickness = t.\hyperlink{classFractureEnd_a2b70172b4593324288f5779b7998d4a3}{getThickness}();
+42         \}
+43 
+44         \textcolor{keywordflow}{return} *\textcolor{keyword}{this};
+45     \}
+\end{DoxyCode}
+
+
+Questo è il grafo delle chiamate per questa funzione\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classFractureEnd_a94df97c8e4f3e68a62ebaa3ae754106f_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+La documentazione per questa classe è stata generata a partire dai seguenti file\-:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{TriangleHandler_8h}{Triangle\-Handler.\-h}\item 
+src/\hyperlink{TriangleHandler_8cc}{Triangle\-Handler.\-cc}\end{DoxyCompactItemize}

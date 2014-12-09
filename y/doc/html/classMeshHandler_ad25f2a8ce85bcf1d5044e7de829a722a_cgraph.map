@@ -1,0 +1,6 @@
+<map id="MeshHandler::setUpRegions" name="MeshHandler::setUpRegions">
+<area shape="rect" id="node2" href="$classMeshHandler.html#a3c8a354d214222155cb4eecf8214c938" title="funzione che controlla se un convesso è effettivamente tagliato da una frattura " alt="" coords="257,5,415,32"/>
+<area shape="rect" id="node3" href="$classIntersectData.html#a1872122295e3fec0fb3e81d4098e9949" title="IntersectData::getElementID" alt="" coords="247,56,425,83"/>
+<area shape="rect" id="node4" href="$classIntersectData.html#a25def82d58f9508d33ab1a43b2b03ceb" title="IntersectData::getNumFractures" alt="" coords="237,107,435,133"/>
+<area shape="rect" id="node5" href="$classIntersectData.html#afef7730d6a494464350ebce088e488ee" title="IntersectData::getFracture" alt="" coords="254,157,418,184"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="MatrixBifurcationHandler::computeN" name="MatrixBifurcationHandler::computeN">
+<area shape="rect" id="node2" href="$classIntersection.html#a603d1cb4b33762c72999968ceec95a39" title="Funzione che restituisce il triangolo di intersezione. " alt="" coords="229,5,380,47"/>
+<area shape="rect" id="node3" href="$classTriangleData.html#a3b110e4ceb09cc5368fcecad9938a1c8" title="Funzione che restituisce il vettore che rappresenta la normale uscente da un lato. " alt="" coords="209,71,400,98"/>
+<area shape="rect" id="node4" href="$classTriangleData.html#a6b8d98b054e9b094ba6b6ccf4217246b" title="Funzione che restituisce uno dei due punti che costituiscono un lato del triangolo. " alt="" coords="448,21,604,47"/>
+<area shape="rect" id="node5" href="$classPointData.html#a90dbf32a9579cb1cde67458d4ad38209" title="PointData::y" alt="" coords="480,71,572,98"/>
+<area shape="rect" id="node6" href="$classPointData.html#a5accef5ea9e813dd4517eb050f276ccf" title="PointData::x" alt="" coords="480,122,572,149"/>
+</map>
