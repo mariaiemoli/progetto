@@ -2,6 +2,7 @@
 clear all
 clc
 %%
+figure()
 load matrice.mm
 
 %%
