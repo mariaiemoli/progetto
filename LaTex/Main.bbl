@@ -1,0 +1,21 @@
+\begin{thebibliography}{1}
+
+\bibitem{habilitationsschrift}
+Peter Bastian.
+\newblock Numerical computation of multiphase flows in porous media, 1999.
+
+\bibitem{LDAP}
+Franco Brezzi, Konstantin Lipnikov, and Valeria Simoncini.
+\newblock A family of mimetic finite difference methods on polygonal and
+  polyhedral meshes, March 17, 2005.
+
+\bibitem{Paper}
+Luca Formaggia.
+\newblock A possible model for bifurcation in 2d fracture networks.
+\newblock January 27, 2014.
+
+\bibitem{ESAIM}
+Luca Formaggia, Alessio Fumagalli, Anna Scotti, and Paolo Ruffo.
+\newblock A reduced model for darcy's problem in networks of fractures, 2013.
+
+\end{thebibliography}

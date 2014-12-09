@@ -1,0 +1,58 @@
+This is BibTeX, Version 0.99d (TeX Live 2013/MacPorts 2013_5)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: Main.aux
+A level-1 auxiliary file: introduzione.aux
+A level-1 auxiliary file: prefazione.aux
+A level-1 auxiliary file: cap1.aux
+A level-1 auxiliary file: cap2.aux
+A level-1 auxiliary file: subcap3_1.aux
+A level-1 auxiliary file: subcap3_2.aux
+A level-1 auxiliary file: subcap3_3.aux
+A level-1 auxiliary file: subcap3_4.aux
+A level-1 auxiliary file: cap4.aux
+The style file: plain.bst
+A level-1 auxiliary file: appendice.aux
+Database file #1: bibliografia.bib
+Warning--empty journal in Paper
+You've used 4 entries,
+            2118 wiz_defined-function locations,
+            526 strings with 4605 characters,
+and the built_in function-call counts, 985 in all, are:
+= -- 82
+> -- 55
+< -- 0
++ -- 25
+- -- 18
+* -- 50
+:= -- 173
+add.period$ -- 9
+call.type$ -- 4
+change.case$ -- 21
+chr.to.int$ -- 0
+cite$ -- 5
+duplicate$ -- 31
+empty$ -- 84
+format.name$ -- 18
+if$ -- 199
+int.to.chr$ -- 0
+int.to.str$ -- 4
+missing$ -- 1
+newline$ -- 20
+num.names$ -- 8
+pop$ -- 38
+preamble$ -- 1
+purify$ -- 17
+quote$ -- 0
+skip$ -- 31
+stack$ -- 0
+substring$ -- 23
+swap$ -- 3
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 16
+warning$ -- 1
+while$ -- 8
+width$ -- 5
+write$ -- 35
+(There was 1 warning)
