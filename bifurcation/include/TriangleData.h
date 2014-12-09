@@ -65,6 +65,8 @@ public:
 	 */
 	scalar_type measure() const; 
 	
+	size_type size () const;
+	
 	
 	/**
 	 * Funzione che restituisce uno dei due punti che costituiscono un lato del triangolo

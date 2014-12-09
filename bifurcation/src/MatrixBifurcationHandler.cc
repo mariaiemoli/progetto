@@ -8,8 +8,11 @@
 /**************************************************************************/
 
 MatrixBifurcationHandler::MatrixBifurcationHandler( const GetPot& dataFile,
+													const std::string& type, 
  												    const std::string& section,
-												    const std::string& subsection):M_Pc(Matrix3d::Constant(1./3.0))
+												    const std::string& subsection ):
+												    M_Pc(Matrix4d::Constant(1./4.0)),
+												    M_type( type )
 {
 	Matrix2d invk; 
 	scalar_type det = dataFile ( (section + subsection + "invK").data(), 1. );
@@ -19,27 +22,55 @@ MatrixBifurcationHandler::MatrixBifurcationHandler( const GetPot& dataFile,
 	invk(1,0) = dataFile ( ( section + subsection + "invKDist12" ).data (), 0. );
 	invk(1,1) = dataFile ( ( section + subsection + "invKDist22" ).data (), 1. );
 	
-	
+	std::cout << " Type " << type << std::endl;
 	this-> inversion2X2 ( invk, det );
 	
 }// costruttore
 
 
-MatrixBifurcationHandler::MatrixBifurcationHandler(scalar_type K):M_Pc(Matrix3d::Constant(1./3.0))
+MatrixBifurcationHandler::MatrixBifurcationHandler(scalar_type K, const std::string& type):
+												   M_Pc(Matrix4d::Constant(1./4.0)),
+												   M_type ( type) 
 {
 	M_K(0,0)=K;
 	M_K(0,1)=M_K(1,0)=0.0;
 	M_K(1,1)=K;
 }// costruttore
 
-MatrixBifurcationHandler::MatrixBifurcationHandler(Matrix2d K):M_K(K),M_Pc(Matrix3d::Constant(1./3.0)){};
+MatrixBifurcationHandler::MatrixBifurcationHandler(Matrix2d K, const std::string& type ):
+												M_K(K),M_Pc(Matrix4d::Constant(1./4.0)), 
+												M_type( type)
+{};
 
 
 void MatrixBifurcationHandler::setMatrices ( FracturePtrContainer_Type& fractures )
 {
 	M_intersection.setIntersection ( fractures );
 	
+	
+	if ( M_type == "Bifurcation" )
+	{
+		for ( size_type i = 0; i < 4; i++ )
+		{
+			for ( size_type j = 0; j < 4; j++ )
+			{
+				if( i == 3 || j == 3)
+				{
+					M_Pc(i,j) = 0;
+				}
+				else
+				{
+					M_Pc(i,j) = 1./3.0;
+				}
+			}
+		}
+	}
+	
 	computeT();	
+	
+	std::cout << "***********  T *********" << std::endl;
+	std::cout << M_T << std::endl;
+	std::cout << "****************" << std::endl;
 	
 	return;
 
@@ -48,19 +79,49 @@ void MatrixBifurcationHandler::setMatrices ( FracturePtrContainer_Type& fracture
 
 void MatrixBifurcationHandler::computeN()
 {
-	M_N.row(0)=M_intersection.intersectionTriangle ().unscaledNormal(0).transpose();
-	M_N.row(1)=M_intersection.intersectionTriangle ().unscaledNormal(1).transpose();
-	M_N.row(2)=M_intersection.intersectionTriangle ().unscaledNormal(2).transpose();
+	if ( M_type == "Bifurcation2")
+	{
+		M_N.row(0)=M_intersection.getNormal ( 0 ).transpose();
+		M_N.row(1)=M_intersection.getNormal ( 1 ).transpose();
+		M_N.row(2)=M_intersection.getNormal ( 2 ).transpose();
+		M_N.row(3)=M_intersection.getNormal ( 3 ).transpose();
+	}
+	else
+	{
+		M_N.row(0)=M_intersection.intersectionTriangle ().unscaledNormal(0).transpose();
+		M_N.row(1)=M_intersection.intersectionTriangle ().unscaledNormal(1).transpose();
+		M_N.row(2)=M_intersection.intersectionTriangle ().unscaledNormal(2).transpose();
+		M_N.row(3)=0*M_intersection.intersectionTriangle ().unscaledNormal(2).transpose();
+	}
 	
+	std::cout << "***********  N *********" << std::endl;
+	std::cout << M_N << std::endl;
+	std::cout << "****************" << std::endl;
+
 	return;
 }// computeN
 
 void MatrixBifurcationHandler::computeC()
 {
-	M_C.row(0) = M_intersection.intersectionTriangle ().c(0).transpose();
-	M_C.row(1) = M_intersection.intersectionTriangle ().c(1).transpose();
-	M_C.row(2) = M_intersection.intersectionTriangle ().c(2).transpose();
+	if ( M_type == "Bifurcation" )
+	{	
+		M_C.row(0) = M_intersection.intersectionTriangle ().c(0).transpose();
+		M_C.row(1) = M_intersection.intersectionTriangle ().c(1).transpose();
+		M_C.row(2) = M_intersection.intersectionTriangle ().c(2).transpose();
+		M_C.row(3) = 0*M_intersection.intersectionTriangle ().c(2).transpose();
+	}
+	else
+	{
+		M_C.row(0) = M_intersection.intersectionQuadrilater ().c(0).transpose();
+		M_C.row(1) = M_intersection.intersectionQuadrilater ().c(1).transpose();
+		M_C.row(2) = M_intersection.intersectionQuadrilater ().c(2).transpose();
+		M_C.row(3) = M_intersection.intersectionQuadrilater ().c(3).transpose();
+	}
 	
+	std::cout << "***********  C *********" << std::endl;
+	std::cout << M_C << std::endl;
+	std::cout << "****************" << std::endl;
+
 	return;
 }// computeC
 
@@ -69,10 +130,14 @@ void MatrixBifurcationHandler::computeQc()
 {
 	this->computeC();
 	M_Qc.col(0)  = M_C.col(0).normalized();
-	Vector3d v0 = M_Qc.col(0);
-	Vector3d v1 = M_C.col(1) - ( v0.dot(M_C.col(1)) )*v0;
+	Vector4d v0 = M_Qc.col(0);
+	Vector4d v1 = M_C.col(1) - ( v0.dot(M_C.col(1)) )*v0;
 	M_Qc.col(1)  = v1.normalized();
 	
+	std::cout << "***********  QC *********" << std::endl;
+	std::cout << M_Qc << std::endl;
+	std::cout << "****************" << std::endl;
+
 	return;
 }// computeQc
 
@@ -82,12 +147,43 @@ void MatrixBifurcationHandler::computeT(scalar_type t)
 	this->computeQc();
 	this->computeN();
 
-	scalar_type area = M_intersection.intersectionTriangle ().measure();
-	Matrix3d Nkn = M_N*M_K*M_N.transpose();
+	std::cout << "***********  Pc *********" << std::endl;
+	std::cout << M_Pc << std::endl;
+	std::cout << "****************" << std::endl;
+
+	scalar_type area;
 	
-	Eigen::DiagonalMatrix<scalar_type,3,3> Nd (Nkn.diagonal());
+	if ( M_type == "Bifurcation")
+	{
+		area = M_intersection.intersectionTriangle ().measure();
+	}
+	else 
+	{
+		area = M_intersection.intersectionQuadrilater ().measure();
+	}
 	
-	Matrix3d tmp = M_Pc *Nd *M_Pc;
+	Matrix4d Nkn = M_N*M_K*M_N.transpose();
+
+
+	std::cout << "***********  Nkd *********" << std::endl;
+	std::cout << Nkn << std::endl;
+	std::cout << "****************" << std::endl;
+	
+	Eigen::DiagonalMatrix<scalar_type,4,4> Nd (Nkn.diagonal());
+	
+
+	std::cout << "***********  Nd *********" << std::endl;
+	//std::cout << Nd(0) << std::endl;
+	std::cout << "****************" << std::endl;
+	
+	Matrix4d tmp = M_Pc *Nd *M_Pc;
+	
+
+	std::cout << "***********  tmp *********" << std::endl;
+	std::cout << tmp << std::endl;
+	std::cout << "****************" << std::endl;
+	
+	std::cout << "area: " << area << std::endl;
 	
 	M_T=(1./area)*( Nkn + t*tmp );
 	
@@ -101,11 +197,11 @@ void MatrixBifurcationHandler::computeTsimple(scalar_type t)
 	this->computeN();
 
 	scalar_type area = M_intersection.intersectionTriangle ().measure();
-	Matrix3d Nkn = M_N*M_K*M_N.transpose();
+	Matrix4d Nkn = M_N*M_K*M_N.transpose();
 	
 	scalar_type Nd=Nkn.trace();
 	
-	Matrix3d tmp = Nd *M_Pc;
+	Matrix4d tmp = Nd *M_Pc;
 	
 	M_T=(1./area)*( Nkn + t*tmp );
 	
@@ -115,13 +211,20 @@ void MatrixBifurcationHandler::computeTsimple(scalar_type t)
 
 void MatrixBifurcationHandler::computeScap( scalar_type& s, scalar_type t )
 {
-	Matrix3d Nkn = M_N*M_K*M_N.transpose();
+	Matrix4d Nkn = M_N*M_K*M_N.transpose();
 	
-	Eigen::DiagonalMatrix<scalar_type,3,3> Nd (Nkn.diagonal());
+	Eigen::DiagonalMatrix<scalar_type,4,4> Nd (Nkn.diagonal());
 	
-	Matrix3d S = t*Nd;
+	Matrix4d S = t*Nd;
 	
-	s = S.trace()*1./3.0;
+	if ( M_intersection.intersectionTriangle ().size() == 0 )
+	{
+		s = S.trace()*1./4.0; 
+	}
+	else
+	{
+		s = S.trace()*1./3.0;
+	}
 	
 	return; 
 }// computeS

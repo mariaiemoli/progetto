@@ -53,6 +53,11 @@ scalar_type TriangleData::measure() const
 	   				t[0][0] * (t[1][1] - t[2][1])   );
 }//measure
 
+size_type TriangleData::size () const
+{
+	return M_point.size();
+}
+
 PointData & TriangleData::edgePoint(size_type edgenum, size_type endnum)
 {
 	return M_point[M_edge[edgenum][endnum]];

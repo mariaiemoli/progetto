@@ -57,6 +57,8 @@ scalar_type QuadrilaterData::measure() const
 	d1 = sqrt( pow( t[ 2 ][ 0 ] - t[ 0 ][ 0 ], 2) + pow( t[ 2 ][ 1 ] - t[ 0 ][ 1 ], 2) );
 	d2 = sqrt( pow( t[ 1 ][ 0 ] - t[ 3 ][ 0 ], 2) + pow( t[ 1 ][ 1 ] - t[ 3 ][ 1 ], 2) );
 	
+	std::cout << "pow( t[ 2 ][ 0 ] - t[ 0 ][ 0 ], 2) " << pow( t[ 2 ][ 0 ] - t[ 0 ][ 0 ], 2) << std::endl;
+	std::cout << " sqrt( pow( t[ 2 ][ 0 ] - t[ 0 ][ 0 ], 2) + pow( t[ 2 ][ 1 ] - t[ 0 ][ 1 ], 2) ) " << sqrt( pow( t[ 2 ][ 0 ] - t[ 0 ][ 0 ], 2) + pow( t[ 2 ][ 1 ] - t[ 0 ][ 1 ], 2) ) << std::endl;
 	return 0.5*d1*d2;
 }//measure
 

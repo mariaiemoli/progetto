@@ -124,7 +124,9 @@ typedef Eigen::Matrix2d Matrix2d;
 typedef Eigen::Matrix< scalar_type,2,3 > Matrix23;
 typedef Eigen::Matrix3d Matrix3d;
 typedef Eigen::Vector3d Vector3d;
-typedef Eigen::Matrix4d Matrix4d;
-typedef Eigen::Vector4d Vector4d;
+typedef Eigen::Matrix< scalar_type,4,4 > Matrix4d;
+typedef Eigen::Matrix< scalar_type,4,1 > Vector4d;
+typedef Eigen::Matrix< scalar_type,4,2 > Matrix42;
+typedef Eigen::Matrix< scalar_type,2,4 > Matrix24;
 
 #endif

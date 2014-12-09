@@ -152,7 +152,7 @@ void setAup_i ( sparseMatrixPtr_Type& Aup_i,
  				size_type id, size_type id_i, size_type id_j, size_type id_k, 
  				scalarVector_Type& DOF, scalarVector_Type& DOF_v, 
  				sizeVector_Type& shiftIntersect, sizeVector_Type& fractureNumberGlobalDOFVelocity,  
- 				Matrix3d T, const size_type Index,
+ 				Matrix4d T, const size_type Index,
 				scalar_type s = 0 );
 /*					
 void copyBifurcationMatrices_in_GlobalMatrix ( sparseMatrixPtr_Type Aup0, size_type id0,

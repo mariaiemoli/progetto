@@ -378,7 +378,7 @@ void DarcyFractured::assembly ( const GetPot& dataFile )
 		
 		Matrix.setMatrices( Fracture_copy );
 		
-		Matrix3d T = Matrix.T();
+		Matrix4d T = Matrix.T();
 		
 		scalar_type s = 0.;
 		Matrix.computeScap ( s );
@@ -448,7 +448,7 @@ void DarcyFractured::assembly ( const GetPot& dataFile )
 	    gmm::clear(*Aup3);
 
 
-        MatrixBifurcationHandler_Type Matrix( dataFile );
+        MatrixBifurcationHandler_Type Matrix( dataFile, "Bifurcation2" );
 		FracturePtrContainer_Type Fracture( 2 );
 		Fracture[ 0 ] =f0;
 		Fracture[ 1 ] =f1;
@@ -482,7 +482,7 @@ void DarcyFractured::assembly ( const GetPot& dataFile )
 				DOF_v[ i ] = DOF[ i ] + 1.;
 			}
 		}
-
+		/*
 		(*Aup0) ( 0 , shiftIntersect[ id0 ] + DOF_v[ 0 ] )  = 1.;
 		(*Aup0) ( 0 , shiftIntersect[ id0 ] + DOF[ 0 ] + fractureNumberGlobalDOFVelocity [ id0 ] ) = 1.*T( 0 , 0 );
 		(*Aup0) ( 0 , shiftIntersect[ id1 ] + DOF[ 1 ] + fractureNumberGlobalDOFVelocity [ id1 ] ) = 1.*T( 0 , 1 );

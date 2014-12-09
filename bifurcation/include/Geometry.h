@@ -103,7 +103,6 @@ public:
 	 */
 	void setQuadrilaterIntersection( FracturePtrContainer_Type& M_FracturesSet );
 
-	
 
 	/**
 	 * Funzione che costruisce il triangolo di intersezione 
@@ -137,6 +136,14 @@ public:
 	}
 	
 	/**
+	 * Funzione che restituisce il triangolo di intersezione
+	 */
+	QuadrilaterData const & intersectionQuadrilater()const 
+	{
+		return M_intersectionQuadrilater;
+	}
+	
+	/**
 	 * Funzione che restituisce il punto di intersezione
 	 */
 	PointData getPointIntersection( ) const
@@ -144,6 +151,16 @@ public:
 		return M_intersection;
 	}
 	
+	
+	Vector2d getNormal( const size_type i ) const
+	{
+		return M_normals [ i ];
+	}
+	
+	Vector2d getTangent( const size_type i ) const
+	{
+		return M_tangents [ i ];
+	}
 	
 	/**
 	 * Funzione che ordina le fratture in senso orario

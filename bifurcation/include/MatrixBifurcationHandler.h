@@ -40,8 +40,9 @@ public:
 	 *    											pari a "darcy/"
 	 */ 
 	MatrixBifurcationHandler( const GetPot& dataFile,
+							  const std::string& type = "Bifurcation",
 							  const std::string& section = "mediumData/",
-							  const std::string& subsection = "darcy/");
+							  const std::string& subsection = "darcy/" );
 	
 	
 	/**
@@ -49,7 +50,7 @@ public:
 	 * Definisce la matrice 3x3 M_Pc costante pari a 1/3 e riempie la matrice 2x2 M_K usando la matrice K fornita.
 	 * \param Matrix2d K: matrice di permeabilità da usare per modificare M_K
 	 */ 
-	MatrixBifurcationHandler( Matrix2d K );
+	MatrixBifurcationHandler( Matrix2d K, const std::string& type = "Bifurcation" );
 	
 	
 	/**
@@ -57,7 +58,7 @@ public:
 	 * Definisce la matrice 3x3 M_Pc costante pari a 1/3 e riempie la matrice 2x2 M_K usando lo scalare K, inizializzandola come una matrice 
 	 * con K sulla diagonale e 0 fuori.
 	 */ 
-	explicit MatrixBifurcationHandler( scalar_type K );
+	explicit MatrixBifurcationHandler( scalar_type K, const std::string& type = "Bifurcation" );
 	
 	
 	
@@ -104,7 +105,7 @@ public:
 	 * Funzione che restituisce la matrice M_N, matrice che ha per righe le normali ai lati.
 	 * \return Matrix32 M_N: matrice 3x2
 	 */
-	Matrix32 N()const { return M_N; }
+	Matrix42 N()const { return M_N; }
 	
 
 	/**
@@ -121,7 +122,7 @@ public:
 	 * \return Matrix32 M_C: matrice 3x2
 	 */
 
-	Matrix32 C(){ return M_C; }
+	Matrix42 C(){ return M_C; }
 	
 	
 	/**
@@ -135,14 +136,14 @@ public:
 	 * Funzione che restituisce la matrice M_Qc, matrice che ha per colonne una base ortonormale per la matrice trasposta di C.
 	 * \return Matrix32 M_Qc: matrice 3x2
 	 */
-	Matrix32 Qc()const { return M_Qc; }
+	Matrix42 Qc()const { return M_Qc; }
 	
 		
 	/**
 	 * Funzione che restituisce la matrice M_Pc, matrice di proiezione sullo spazio nullo di M_Qc.
 	 * \return Matrix3d M_Pc: matrice 3x3
 	 */
-	Matrix3d Pc()const { return M_Pc; }
+	Matrix4d Pc()const { return M_Pc; }
 	
 	
 	/**
@@ -202,7 +203,7 @@ public:
 	 * Funzione che restituisce la matrice M_T, matrice di trasmissibilità.
 	 * \return Matrix3d M_T, matrice 3x3
 	 */
-	Matrix3d T()const { return M_T; }
+	Matrix4d T()const { return M_T; }
 	
 	EIGEN_MAKE_ALIGNED_OPERATOR_NEW 
 
@@ -210,11 +211,13 @@ private:
 
 	Matrix2d M_K;
 	Intersection_Type M_intersection;
-	Matrix32 M_N;
-	Matrix32 M_C;
-	Matrix32 M_Qc;
-	Matrix3d M_Pc;
-	Matrix3d M_T;
+	Matrix42 M_N;
+	Matrix42 M_C;
+	Matrix42 M_Qc;
+	Matrix4d M_Pc;
+	Matrix4d M_T;
+	
+	std::string M_type;
 };
 
 typedef MatrixBifurcationHandler MatrixBifurcationHandler_Type;									/*!< Classe  MatrixBifurcationHandler */
