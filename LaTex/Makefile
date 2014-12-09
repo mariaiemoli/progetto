@@ -1,13 +1,13 @@
-.PHONY: main.pdf pdf clean distclean
+.PHONY: Main.pdf pdf clean distclean
 
-main.pdf: main.tex bibliografia.bib 
-		@pdflatex main
-		@bibtex main
-		@pdflatex main-frn
-		@pdflatex  main
+Main.pdf: Main.tex bibliografia.bib 
+		@pdflatex Main
+		@bibtex Main
+		@pdflatex Main-frn
+		@pdflatex  Main
 #		texi2pdf main
 
-pdf: main.pdf
+pdf: Main.pdf
 
 clean: 
 	rm -f *.aux *.log *.out
