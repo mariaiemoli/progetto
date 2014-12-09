@@ -66,8 +66,8 @@ Intersection::Intersection( FractureEndContainer_Type const & fractureEnd, Point
 			M_normals[ i+2 ] = - ntmp;
 		}
 
-		//M_intersectionQuadrilater = this->computeIntersectionQuadrilater();
-	
+		M_intersectionQuadrilater = this->computeIntersectionQuadrilater();
+		
 	}	
 	
 }// costruttore intersezione
@@ -116,6 +116,7 @@ void Intersection::setQuadrilaterIntersection( FracturePtrContainer_Type& M_Frac
 	
 	const size_type nbDof0 = f0->getMeshFEMPressure().nb_basic_dof();
 	const size_type nbDof1 = f1->getMeshFEMPressure().nb_basic_dof();
+
 	
 	if (f1->getDofIntersection()[0] == 0) 
 	{
@@ -163,6 +164,23 @@ void Intersection::setQuadrilaterIntersection( FracturePtrContainer_Type& M_Frac
 	fractureEnd.push_back(fracture1);
 	
 	Intersection tmp(fractureEnd, pi);
+	
+	this->M_fractures = tmp.M_fractures;
+	this->M_intersection = tmp.M_intersection;
+	
+	this->M_tangents[0] = tmp.M_tangents[0];
+	this->M_tangents[1] = tmp.M_tangents[1];
+	this->M_tangents[2] = tmp.M_tangents[2];
+	this->M_tangents[3] = tmp.M_tangents[3];
+	
+	this->M_normals[0] = tmp.M_normals[0];
+	this->M_normals[1] = tmp.M_normals[1];
+	this->M_normals[2] = tmp.M_normals[2];
+	this->M_normals[3] = tmp.M_normals[3];
+	
+	this->M_intersectionQuadrilater = tmp.M_intersectionQuadrilater;
+	
+	std::cout << tmp.M_intersectionQuadrilater << std::endl;
 	
 	return;
 
@@ -295,6 +313,54 @@ TriangleData const & Intersection::computeIntersectionTriangle()
 	return M_intersectionTriangle;
 
 }// computeIntersectionTriangle
+
+
+QuadrilaterData const & Intersection::computeIntersectionQuadrilater()
+{
+	PointData point;
+	const scalar_type tol=1.e-5;
+	scalar_type s(0.);
+	
+	for (size_type i=0; i<4;++i)
+	{
+		size_type j = (i +1 )%4;
+		size_type k, p;
+		
+		if( i == 0 || i ==2 )
+		{
+			k = 0;
+			p = 1;
+		}
+		else
+		{
+			k = 1;
+			p = 0;
+		}
+		scalar_type ninj = M_normals[i].dot(M_normals[j] );
+		scalar_type nitj = M_normals[i].dot(M_tangents[j]);
+		 
+		if(std::fabs(nitj)<tol)
+		{
+			point = M_intersection + 
+					PointData ( M_normals [ i ] ( 0 ), M_normals [ i ] ( 1 ) ) * ( 0.5 * ( M_fractures [ p ].getThickness() + M_fractures [ k ].getThickness() ));
+		}
+		else
+		{
+			// parametric coordinate
+			s    = 0.5 * ( M_fractures [ p ].getThickness() * ninj + M_fractures [ k ].getThickness() )/nitj;
+			
+			// the ith point is Pji in the note
+			point = M_intersection + ( PointData ( M_tangents [ j ] ( 0 ), M_tangents [ j ] ( 1 ) ) * s )- 
+									( PointData ( M_normals [ j ] ( 0 ), M_normals [ j ] ( 1 ) ) * ( 0.5 * M_fractures [ p ].getThickness() ) );
+		}
+	
+		M_intersectionQuadrilater.setPoint(i,point);
+		
+	}
+	
+	return M_intersectionQuadrilater;
+
+}// computeIntersectionQuadrilater
 
 
 void Intersection::sortFractures ( FracturePtrContainer_Type& M_FracturesSet )

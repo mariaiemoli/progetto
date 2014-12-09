@@ -110,6 +110,13 @@ public:
 	 */
 	TriangleData const & computeIntersectionTriangle();
 	
+
+	/**
+	 * Funzione che costruisce il quadrilatero di intersezione 
+	 */
+	QuadrilaterData const & computeIntersectionQuadrilater();
+	
+	
 	/**
 	 * Funzione che costruisce il triangolo di intersezione a partire da un triangolo già esistente
 	 */
@@ -165,7 +172,7 @@ public:
 		this-> M_normals [ 3 ] = Int.M_normals [ 3 ];
 		
 		this-> M_intersectionTriangle = Int.M_intersectionTriangle;
-		//this-> M_intersectionQuadrilater = Int.M_intersectionQuadrilater;
+		this-> M_intersectionQuadrilater = Int.M_intersectionQuadrilater;
 		
 		return *this;
 		
@@ -187,7 +194,7 @@ private:
 	TriangleData M_intersectionTriangle;
 	
 	// Quadrilatero di intersezione
-	//QuadrilaterData M_intersectionQuadrilater;
+	QuadrilaterData M_intersectionQuadrilater;
 
 };
 

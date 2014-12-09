@@ -458,11 +458,11 @@ void DarcyFractured::assembly ( const GetPot& dataFile )
 		Fracture_copy = Fracture;
 		Matrix.setMatrices( Fracture_copy );
 
-		/*
-		Matrix3d T = Matrix.T();
+		
+		Matrix4d T = Matrix.T();
 
-		scalarVector_Type DOF( 3 );
-		scalarVector_Type DOF_v( 3 );
+		scalarVector_Type DOF( 2 );
+		scalarVector_Type DOF_v( 2 );
 
 
 
