@@ -68,10 +68,6 @@ void MatrixBifurcationHandler::setMatrices ( FracturePtrContainer_Type& fracture
 	
 	computeT();	
 	
-	std::cout << "***********  T *********" << std::endl;
-	std::cout << M_T << std::endl;
-	std::cout << "****************" << std::endl;
-	
 	return;
 
 }// setMatrices
@@ -93,10 +89,6 @@ void MatrixBifurcationHandler::computeN()
 		M_N.row(2)=M_intersection.intersectionTriangle ().unscaledNormal(2).transpose();
 		M_N.row(3)=0*M_intersection.intersectionTriangle ().unscaledNormal(2).transpose();
 	}
-	
-	std::cout << "***********  N *********" << std::endl;
-	std::cout << M_N << std::endl;
-	std::cout << "****************" << std::endl;
 
 	return;
 }// computeN
@@ -117,10 +109,6 @@ void MatrixBifurcationHandler::computeC()
 		M_C.row(2) = M_intersection.intersectionQuadrilater ().c(2).transpose();
 		M_C.row(3) = M_intersection.intersectionQuadrilater ().c(3).transpose();
 	}
-	
-	std::cout << "***********  C *********" << std::endl;
-	std::cout << M_C << std::endl;
-	std::cout << "****************" << std::endl;
 
 	return;
 }// computeC
@@ -133,10 +121,6 @@ void MatrixBifurcationHandler::computeQc()
 	Vector4d v0 = M_Qc.col(0);
 	Vector4d v1 = M_C.col(1) - ( v0.dot(M_C.col(1)) )*v0;
 	M_Qc.col(1)  = v1.normalized();
-	
-	std::cout << "***********  QC *********" << std::endl;
-	std::cout << M_Qc << std::endl;
-	std::cout << "****************" << std::endl;
 
 	return;
 }// computeQc
@@ -146,10 +130,6 @@ void MatrixBifurcationHandler::computeT(scalar_type t)
 {
 	this->computeQc();
 	this->computeN();
-
-	std::cout << "***********  Pc *********" << std::endl;
-	std::cout << M_Pc << std::endl;
-	std::cout << "****************" << std::endl;
 
 	scalar_type area;
 	
@@ -163,29 +143,37 @@ void MatrixBifurcationHandler::computeT(scalar_type t)
 	}
 	
 	Matrix4d Nkn = M_N*M_K*M_N.transpose();
-
-
-	std::cout << "***********  Nkd *********" << std::endl;
-	std::cout << Nkn << std::endl;
-	std::cout << "****************" << std::endl;
 	
 	Eigen::DiagonalMatrix<scalar_type,4,4> Nd (Nkn.diagonal());
 	
-
-	std::cout << "***********  Nd *********" << std::endl;
-	//std::cout << Nd(0) << std::endl;
-	std::cout << "****************" << std::endl;
-	
 	Matrix4d tmp = M_Pc *Nd *M_Pc;
 	
-
+	M_T=(1./area)*( Nkn + t*tmp );
+	
+	/*
+	std::cout << "***********  C *********" << std::endl;
+	std::cout << M_C << std::endl;
+	std::cout << "****************" << std::endl;
+	std::cout << "***********  QC *********" << std::endl;
+	std::cout << M_Qc << std::endl;
+	std::cout << "****************" << std::endl;
+	std::cout << "***********  N *********" << std::endl;
+	std::cout << M_N << std::endl;
+	std::cout << "****************" << std::endl;
+	std::cout << "***********  Nkd *********" << std::endl;
+	std::cout << Nkn << std::endl;
+	std::cout << "****************" << std::endl;
+	//std::cout << "***********  Nd *********" << std::endl;
+	//std::cout << Nd << std::endl;
+	//std::cout << "****************" << std::endl;
 	std::cout << "***********  tmp *********" << std::endl;
 	std::cout << tmp << std::endl;
 	std::cout << "****************" << std::endl;
-	
+	std::cout << "***********  M_T *********" << std::endl;
+	std::cout << M_T << std::endl;
+	std::cout << "****************" << std::endl;
 	std::cout << "area: " << area << std::endl;
-	
-	M_T=(1./area)*( Nkn + t*tmp );
+	*/
 	
 	return;
 }// computeT
@@ -217,7 +205,7 @@ void MatrixBifurcationHandler::computeScap( scalar_type& s, scalar_type t )
 	
 	Matrix4d S = t*Nd;
 	
-	if ( M_intersection.intersectionTriangle ().size() == 0 )
+	if ( M_intersection.intersectionTriangle ().measure() == 0 )
 	{
 		s = S.trace()*1./4.0; 
 	}
@@ -256,14 +244,20 @@ void MatrixBifurcationHandler::SetDOFIntersecton( FractureHandlerPtr_Type& fract
 	node[ 1 ] = fractures-> getLevelSet()->getData()->y_map( tmp0 );
 		
 	PointData temp = M_intersection.getPointIntersection();
-	
-	if( ( gmm::abs( node[ 0 ] - temp.x() ) < 1.0E-2 ) && ( gmm::abs( node[ 1 ] - temp.y() ) < 1.0E-2 ) )
+	if( fractures->getDOFBifurcation().size() != 0 )
 	{
-		DOF = 0;
+		DOF = fractures->getDOFBifurcation()[ 0 ];
 	}
-	else 
+	else
 	{
-		DOF= nbDof - 1;
+		if( ( gmm::abs( node[ 0 ] - temp.x() ) < 1.0E-2 ) && ( gmm::abs( node[ 1 ] - temp.y() ) < 1.0E-2 ) )
+		{
+			DOF = 0;
+		}
+		else 
+		{
+			DOF= nbDof - 1;
+		}
 	}
 	
 	return;

@@ -18,9 +18,10 @@ C0=sparse(M);
 hold on
 spy(C0,'g*');
 count=0;
-for i=1:661
-    if M(659,i)~=0
-        count=count+1;
-    end
-end
+
+%for i=1:661
+%    if M(659,i)~=0
+%        count=count+1;
+%    end
+%end
 count

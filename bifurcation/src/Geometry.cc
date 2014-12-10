@@ -178,12 +178,6 @@ void Intersection::setQuadrilaterIntersection( FracturePtrContainer_Type& M_Frac
 	this->M_normals[2] = tmp.M_normals[2];
 	this->M_normals[3] = tmp.M_normals[3];
 	
-	
-	std::cout << "M_normals[ 0 ] "<< M_normals[0] << std::endl;
-	std::cout << "M_normals[ 1 ] "<< M_normals[1] << std::endl;
-	std::cout << "M_normals[ 2 ] "<< M_normals[2] << std::endl;
-	std::cout << "M_normals[ 3] "<< M_normals[3] << std::endl;
-	
 	this->M_intersectionQuadrilater = tmp.M_intersectionQuadrilater;
 	
 	std::cout << tmp.M_intersectionQuadrilater << std::endl;
