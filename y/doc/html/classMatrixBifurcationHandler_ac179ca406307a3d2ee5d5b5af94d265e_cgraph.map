@@ -1,8 +1,0 @@
-<map id="MatrixBifurcationHandler::computeC" name="MatrixBifurcationHandler::computeC">
-<area shape="rect" id="node2" href="$classIntersection.html#a603d1cb4b33762c72999968ceec95a39" title="Funzione che restituisce il triangolo di intersezione. " alt="" coords="209,5,360,47"/>
-<area shape="rect" id="node3" href="$classTriangleData.html#a4278f62058529df47e095421d02599ad" title="Funzione che restituisce il vettore che collega il punto medio di un lato con il baricentro. " alt="" coords="231,71,338,98"/>
-<area shape="rect" id="node4" href="$classTriangleData.html#af52f48a6b75c258927b0b4ea29d4c383" title="Funzione che restituisce le coordinate del baricentro del triangolo. " alt="" coords="411,21,566,47"/>
-<area shape="rect" id="node5" href="$classTriangleData.html#a0642b843819fc842bad0be2f35f15be3" title="Funzione che calcola il punto medio di un lato. " alt="" coords="408,71,569,98"/>
-<area shape="rect" id="node7" href="$classPointData.html#a262fed95726ae252592717fe3cf2f9dd" title="Conversione Point da vettore di scalari a Vector2d eigen. " alt="" coords="421,122,556,149"/>
-<area shape="rect" id="node6" href="$classTriangleData.html#a32634f5f869bda807ccde85f226fd4ff" title="TriangleData::edge" alt="" coords="617,71,745,98"/>
-</map>
