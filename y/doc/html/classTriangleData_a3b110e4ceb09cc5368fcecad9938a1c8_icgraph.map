@@ -1,7 +1,0 @@
-<map id="TriangleData::unscaledNormal" name="TriangleData::unscaledNormal">
-<area shape="rect" id="node2" href="$classMatrixBifurcationHandler.html#ac134a5731e6614e543241a018ccf8c34" title="Funzione che calcola la matrice M_N, matrice che ha per righe le normali ai lati. ..." alt="" coords="244,39,400,80"/>
-<area shape="rect" id="node3" href="$classMatrixBifurcationHandler.html#a46ee3c60eedda32abe36700ab2ce2d16" title="Funzione che calcola la matrice M_T, matrice di trasmissibilità. " alt="" coords="448,5,604,47"/>
-<area shape="rect" id="node6" href="$classMatrixBifurcationHandler.html#a2153adb36bdbba82ca18ae74eb9e2ea7" title="Funzione che calcola la matrice M_T, matrice di trasmissibilità. " alt="" coords="448,71,604,112"/>
-<area shape="rect" id="node4" href="$classMatrixBifurcationHandler.html#a94433cf28ec2af6ba06b7f63a081d787" title="Funzione che inizializza M_intersection, la classe che rappresenta il triangolo di intersezione..." alt="" coords="652,5,808,47"/>
-<area shape="rect" id="node5" href="$classDarcyFractured.html#a7af785ff47dda6db2bcc0846c47877c1" title="Funzione che assembla tutte le matrici e il termine noto di destra. " alt="" coords="856,13,1025,39"/>
-</map>

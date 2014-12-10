@@ -1,6 +1,0 @@
-<map id="Intersection::Intersection" name="Intersection::Intersection">
-<area shape="rect" id="node2" href="$classPointData.html#a5accef5ea9e813dd4517eb050f276ccf" title="PointData::x" alt="" coords="259,5,351,32"/>
-<area shape="rect" id="node3" href="$classPointData.html#a90dbf32a9579cb1cde67458d4ad38209" title="PointData::y" alt="" coords="259,56,351,83"/>
-<area shape="rect" id="node4" href="$classIntersection.html#ae9d2fb8951a9f5a2bd7c1a96d73226f4" title="Funzione che costruisce il triangolo di intersezione. " alt="" coords="205,107,405,149"/>
-<area shape="rect" id="node5" href="$classTriangleData.html#a24c79732610361d5e11ee7ac2d577467" title="Funzione che setta un punto del triangolo. " alt="" coords="453,115,599,141"/>
-</map>

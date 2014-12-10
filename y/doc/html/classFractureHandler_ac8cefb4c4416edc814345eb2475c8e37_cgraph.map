@@ -1,5 +1,0 @@
-<map id="FractureHandler::setMeshLevelSetFracture" name="FractureHandler::setMeshLevelSetFracture">
-<area shape="rect" id="node2" href="$classFractureHandler.html#a7f7ec5b15315791f76d8deb0874511d6" title="FractureHandler::getId" alt="" coords="237,5,379,32"/>
-<area shape="rect" id="node3" href="$classFractureHandler.html#af37ab12a17f812a960da2aa71699ba0f" title="FractureHandler::getLevelSet" alt="" coords="217,56,399,83"/>
-<area shape="rect" id="node4" href="$classFractureData.html#a5c10d579be7849be1a126c24982f8a23" title="FractureData::getSpatial\lDiscretization" alt="" coords="229,107,387,149"/>
-</map>

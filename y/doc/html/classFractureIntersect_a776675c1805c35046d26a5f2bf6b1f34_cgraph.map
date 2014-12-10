@@ -1,6 +1,0 @@
-<map id="FractureIntersect::constructIntesection" name="FractureIntersect::constructIntesection">
-<area shape="rect" id="node2" href="$UsefulFunctions_8h.html#a0ea0b08a12a1e6a94718cf3bcd60edeb" title="fromBitVectorToStdVector" alt="" coords="194,5,357,32"/>
-<area shape="rect" id="node3" href="$classIntersectData.html#a306be572e6e9a2359310ba908e693b2e" title="Funzione che assegna a M_fractures le fratture che si intersecano, M_elementID l&#39;ID dell&#39;elemento in ..." alt="" coords="184,56,367,83"/>
-<area shape="rect" id="node4" href="$classFractureIntersect.html#a5290dda06af2f6ba24a37f93d3bb4e95" title="FractureIntersect::\lsetDofFree" alt="" coords="216,107,335,149"/>
-<area shape="rect" id="node5" href="$classFractureIntersect.html#a0d63690aff97bc6a98f7e01d9d319f1c" title="FractureIntersect::\lFindDOF_Intersection" alt="" coords="415,107,557,149"/>
-</map>

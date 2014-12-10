@@ -1,7 +1,0 @@
-<map id="FractureIntersect::getNumberIntersectionOfType" name="FractureIntersect::getNumberIntersectionOfType">
-<area shape="rect" id="node2" href="$classFractureIntersect.html#a8d9f707319b9b83744b6e03f19003734" title="Funzione che restituisce il numero di intersezioni trovate di tipo &quot; Cross &quot;. " alt="" coords="258,5,377,47"/>
-<area shape="rect" id="node4" href="$classFractureIntersect.html#afba7c92096a4b92a27fcb4f1158c7279" title="Funzione che restituisce il numero di intersezioni trovate di tipo &quot; Bifurcation &quot;. " alt="" coords="247,71,387,112"/>
-<area shape="rect" id="node6" href="$classFractureIntersect.html#aaff97a1338251e796ce44db631961459" title="Funzione che restituisce il numero totale di intersezioni. " alt="" coords="241,136,393,177"/>
-<area shape="rect" id="node3" href="$classFractureIntersect.html#a248df8f326f844e34d807234efdfd693" title="Funzione che restituisce tutte le intersezioni di tipo &quot; Cross &quot;. " alt="" coords="453,5,595,47"/>
-<area shape="rect" id="node5" href="$classFractureIntersect.html#a18ff664767b7e8ffa876b80a6100e74d" title="Funzione che restituisce tutte le intersezioni di tipo &quot; Bifurcation &quot;. " alt="" coords="441,71,607,112"/>
-</map>
