@@ -1,12 +1,31 @@
 \chapter{Risultati numerici e validazione del modello} 
+Si pu\`{o} subito vedere che l'andamento della pressione e della velocit\`{a} rispettano la legge di Darcy.
+Inoltre per validare il modello abbiamo implementato e risolto delle situazioni campione specifiche con l'ausilio di \texttt{FreeFem++} che permette la costruzione di domini in uno spazio 2D. Dunque per ogni prototipo sono state fatte tre simulazioni, diminuendo ad od ogni passo lo spessore delle fratture di un ordine di grandezza. 
+Riporteremo il valore della pressione nel punto di intersezione. Per i risultati di \texttt{FreeFem++} consideriamo il valore dell'integrale di pressione sul triangolo di intersezione mediato per l'area di quest'ultimo.\\
+Vediamo ora i risultati ottenuti in alcuni casi significativi.
+\section{Biforcazione semplice, 3 fratture}
+Consideriamo una biforcazione generata dall'incontro di tre fratture in uno dei loro punti estremi.
+Confronto valori della pressione nel punto di intersezione:
+%\begin{tabular}{}
+%\hline
+%\multicolumn{3}{|c|}{\textbf{\texttt{Code}}} & \multicolumn{3}{|c|}{\textbf{\texttt{FreeFem++}}} \\
+%\hline
+%\multicolumn{1}{|c|}{\textbf{Frattura 0}} & \textbf{Frattura 1} \textbf{Frattura 2}
+%\multicolumn{1}{|c|}{\textbf{1E-01}} & \textbf{1E-02} \textbf{1E-03} \\
+%\hline
+% q & q & q & Qui & Quo & Qua\\
+%\hline
+%\end{tabular}
 
-\section{Casi d'esempio e confronti FreeFem}
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=.4]{img/cap6/Biforcazione2D.eps}
+\caption{Risultati \texttt{FreeFem++} biforcazione - spessore ordine 1E-02 }\label{Biforcazione1E-02}
+\end{figure}
 
-\begin{enumerate}
-\item[-] biforcazione semplice
-\item[-] doppia biforcazione e cross 6 fratture
-\item[-] doppia biforcazione verticale 5 fratture
-\end{enumerate}
+
+\section{Doppia biforcazione e cross, 6 fratture}
+\section{Doppia biforcazione verticale, 5 fratture}
 
 \section{Caso limite}
 Biforcazione con due fratture
