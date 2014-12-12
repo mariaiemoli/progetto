@@ -1,7 +1,7 @@
 %%
 clear all
 clc
-%%
+
 load matrice.mm
 
 %%

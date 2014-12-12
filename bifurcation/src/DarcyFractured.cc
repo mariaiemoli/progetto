@@ -386,6 +386,8 @@ void DarcyFractured::assembly ( const GetPot& dataFile )
 		
 		scalar_type s = 0.;
 		Matrix.computeScap ( s );
+		
+		std::cout << " S  " << s << std::endl;
 				
 		scalarVector_Type DOF( 3 );
 		scalarVector_Type DOF_v( 3 );
@@ -419,7 +421,7 @@ void DarcyFractured::assembly ( const GetPot& dataFile )
     // Aggiorno ora la matrice globale imponendo le condizioni di interfaccia per la biforcazione di tipo 2
     for ( size_type i = 0; i < IntBifurcation2.size(); i++ )
     {
-    	/*
+    	
 		sparseMatrixPtr_Type Aup0, Aup1, Aup2, Aup3, Aup4;
 
     	FractureHandlerPtr_Type f0, f1;
@@ -484,13 +486,19 @@ void DarcyFractured::assembly ( const GetPot& dataFile )
 
 		
 		Matrix4d T = Matrix.T();
-
+		
+		std::cout << "************ T ************" << std::endl;
+		std::cout << T << std::endl;
+		std::cout << "***************************" << std::endl;
+		
 		scalarVector_Type DOF( 2 );
 		scalarVector_Type DOF_v( 2 );
 
 		for( size_type i=0; i< DOF.size(); i++)
 		{
 			Matrix.SetDOFIntersecton( Fracture[ i ], DOF[ i ] );
+			
+			//DOF[ i ]= DOF[ i ]-1;
     	}
 
 		for( size_type i=0;  i< DOF.size(); i++)
@@ -520,6 +528,16 @@ void DarcyFractured::assembly ( const GetPot& dataFile )
 	    		gmm::sub_interval( 0, fractureTotalNumberDOFVelocityPressure + globalFractureNumber ) ));
 
 		
+		std::cout << " shiftIntersect[ id1 ] + DOF_v[ 1 ]:  " << shiftIntersect[ id1 ] + DOF_v[ 1 ] << std::endl;
+		std::cout << " shiftIntersect[ id0 ] + DOF[ 0 ] + fractureNumberGlobalDOFVelocity [ id0 ]  " 
+				<< shiftIntersect[ id0 ] + DOF[ 0 ] + fractureNumberGlobalDOFVelocity [ id0 ] << std::endl;
+		std::cout << " shiftIntersect[ id1 ] + DOF[ 1 ] + fractureNumberGlobalDOFVelocity [ id1 ]  "
+				<< shiftIntersect[ id1 ] + DOF[ 1 ] + fractureNumberGlobalDOFVelocity [ id1 ] << std::endl;
+		std::cout << " shiftIntersect[ id0 ] + DOF[ 0 ] + 1 + fractureNumberGlobalDOFVelocity [ id0 ]:  " 
+				<< shiftIntersect[ id0 ] + DOF[ 0 ] + 1 + fractureNumberGlobalDOFVelocity [ id0 ] << std::endl;
+		std::cout << " globalShift:  " << globalShift << std::endl;
+		
+		
 		(*Aup1) ( 0 , shiftIntersect[ id1 ] + DOF_v[ 1 ] )  = 1.;
 		(*Aup1) ( 0 , shiftIntersect[ id0 ] + DOF[ 0 ] + fractureNumberGlobalDOFVelocity [ id0 ] ) = 1.*T( 1 , 0 );
 		(*Aup1) ( 0 , shiftIntersect[ id1 ] + DOF[ 1 ] + fractureNumberGlobalDOFVelocity [ id1 ] ) = 1.*T( 1 , 1 );
@@ -532,8 +550,8 @@ void DarcyFractured::assembly ( const GetPot& dataFile )
 	    		gmm::sub_interval( shiftVelocity[ id1 ] + DOF[ 1 ], 1),
 	    		gmm::sub_interval( 0, fractureTotalNumberDOFVelocityPressure + globalFractureNumber ) ));
 
-
-		(*Aup2) ( 0 , shiftIntersect[ id0 ] + DOF_v[ 0 ] + 1 )  = 1.;
+		
+		(*Aup2) ( 0 , shiftIntersect[ id0 ] + DOF_v[ 0 ] + 1 )  = -1.;
 		(*Aup2) ( 0 , shiftIntersect[ id0 ] + DOF[ 0 ] + fractureNumberGlobalDOFVelocity [ id0 ] ) = 1.*T( 2 , 0 );
 		(*Aup2) ( 0 , shiftIntersect[ id1 ] + DOF[ 1 ] + fractureNumberGlobalDOFVelocity [ id1 ] ) = 1.*T( 2 , 1 );
 		(*Aup2) ( 0 , shiftIntersect[ id0 ] + DOF[ 0 ] + 1 + fractureNumberGlobalDOFVelocity [ id0 ] ) = 1.*T( 2 , 2 );
@@ -544,7 +562,7 @@ void DarcyFractured::assembly ( const GetPot& dataFile )
 	    		gmm::sub_interval( shiftVelocity[ id0 ] + DOF[ 0 ] + 1, 1),
 	    		gmm::sub_interval( 0, fractureTotalNumberDOFVelocityPressure + globalFractureNumber ) ));
 
-
+		
 		//(*Aup3) ( 0 , shiftIntersect[ id0 ] + DOF_v[ 0 ] + 1 )  = 1.;
 		// Imponiamo condizione di non slip alla parete
 		(*Aup3) ( 0 , shiftIntersect[ id0 ] + DOF[ 0 ] + fractureNumberGlobalDOFVelocity [ id0 ] ) = 1.*T( 3 , 0 );
@@ -562,7 +580,8 @@ void DarcyFractured::assembly ( const GetPot& dataFile )
 
 		Matrix.computeScap ( s );
 
-
+		std::cout << " S  " << s << std::endl;
+		
 		// velocità: attenzione alla convenzione dei segni!!
 		
 		(*Aup4) ( 0 , shiftIntersect[ id0 ] + DOF_v[ 0 ] )  = 1./( 4.0 * s );
@@ -587,14 +606,11 @@ void DarcyFractured::assembly ( const GetPot& dataFile )
 		// pressione media
 		(*Aup4) ( 0 , globalShift ) = 1.;
 		
-	/*	std::cout << "GlobalShift"  << globalShift << std::endl;
-		std::cout << " hhh " << fractureTotalNumberDOFVelocityPressure + 2*fractureNumberCross + fractureNumberBifurcation + i << std::endl;
-		*/
-		/*
+		
 		gmm::copy(*Aup4, gmm::sub_matrix(*M_globalMatrix,
 	    		gmm::sub_interval( globalShift, 1),
 	    		gmm::sub_interval( 0, fractureTotalNumberDOFVelocityPressure + globalFractureNumber ) ));
-				*/
+				
     }
 
      gmm::copy(*App, gmm::sub_matrix(*M_globalMatrix, 

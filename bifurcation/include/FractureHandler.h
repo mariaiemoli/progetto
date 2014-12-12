@@ -348,10 +348,10 @@ private:
 
     LevelSetHandlerPtr_Type M_levelSet;
 	
-	// va a salvarsi, in caso ci fosse una biforcazione, in quale degli estremi della frattura cade
+	// Salviamo, in caso di una biforcazione, in quale degli estremi della frattura cade
 	sizeVector_Type M_DOF_Intersection;
 	
-	// Nel caso di una biforcazione con due fratture salva il DOF di quella tagliata inn due parti
+	// Nel caso di una biforcazione con due fratture salva il DOF di quella tagliata in due parti
 	sizeVector_Type M_DOF_Bifurcation;
 
     // M_mediummesh per la fratture: M_meshFlat è " piatta " (1d), M_meshMapped è mappata (x(t),y(t))

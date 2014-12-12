@@ -79,14 +79,6 @@ int main ( int argc, char* argv [ ] )
 	mesh->setUpRegions ( fractures );
 	std::cout << " completed!" << std::endl;
 
-/*
-	// Medium boundary conditions
-	std::cout << "Create medium boundary conditions..." << std::flush;
-	sizeVector_Type vuoto;
-	BCPtr_Type bcMedium(new BC_Type(mesh->getMesh(), mesh->getMeshType(), vuoto, MEDIUM));
-	std::cout << " completed!" << std::endl;
-
-*/
 	// Fracture boundary conditions
 	std::cout << "Create fracture boundary conditions..." << std::flush;
 	BCPtrContainer_Type bcFracture(numberFractures);
@@ -103,10 +95,6 @@ int main ( int argc, char* argv [ ] )
 	BCHandlerPtr_Type bcHandler(new BCHandler_Type( bcFracture ));
 	std::cout << " completed!" << std::endl;
 
-	std::cout << "Setup boundary conditions handler..." << std::flush;
-	//bcHandler->createBDRegions(mesh->getMesh());
-	//bcHandler->createBDRegionsFractures(mesh->getMesh());
-	std::cout << " completed!" << std::endl;
 
 	// Save the cutted elements
 	mesh->printCuttedElements(exporter->getFolder(), "cuttedElements.vtk");

@@ -77,10 +77,17 @@ void MatrixBifurcationHandler::computeN()
 {
 	if ( M_type == "Bifurcation2")
 	{
+		/*
 		M_N.row(0)=M_intersection.getNormal ( 0 ).transpose();
 		M_N.row(1)=M_intersection.getNormal ( 1 ).transpose();
 		M_N.row(2)=M_intersection.getNormal ( 2 ).transpose();
 		M_N.row(3)=M_intersection.getNormal ( 3 ).transpose();
+		*/
+		M_N.row(0)=M_intersection.intersectionQuadrilater ().unscaledNormal(0).transpose();
+		M_N.row(1)=M_intersection.intersectionQuadrilater ().unscaledNormal(1).transpose();
+		M_N.row(2)=M_intersection.intersectionQuadrilater ().unscaledNormal(2).transpose();
+		M_N.row(3)=M_intersection.intersectionQuadrilater ().unscaledNormal(3).transpose();
+		
 	}
 	else
 	{
@@ -150,7 +157,11 @@ void MatrixBifurcationHandler::computeT(scalar_type t)
 	
 	M_T=(1./area)*( Nkn + t*tmp );
 	
-	/*
+
+	std::cout << "***********  K *********" << std::endl;
+	std::cout << M_K << std::endl;
+	std::cout << "****************" << std::endl;
+
 	std::cout << "***********  C *********" << std::endl;
 	std::cout << M_C << std::endl;
 	std::cout << "****************" << std::endl;
@@ -160,7 +171,7 @@ void MatrixBifurcationHandler::computeT(scalar_type t)
 	std::cout << "***********  N *********" << std::endl;
 	std::cout << M_N << std::endl;
 	std::cout << "****************" << std::endl;
-	std::cout << "***********  Nkd *********" << std::endl;
+	std::cout << "***********  Nkn *********" << std::endl;
 	std::cout << Nkn << std::endl;
 	std::cout << "****************" << std::endl;
 	//std::cout << "***********  Nd *********" << std::endl;
@@ -173,7 +184,7 @@ void MatrixBifurcationHandler::computeT(scalar_type t)
 	std::cout << M_T << std::endl;
 	std::cout << "****************" << std::endl;
 	std::cout << "area: " << area << std::endl;
-	*/
+	
 	
 	return;
 }// computeT
