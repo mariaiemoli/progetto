@@ -13,6 +13,21 @@ for i = 1:length(matrice)
     M(r,c)=matrice(i,3);
 end
 
+contatore = 0;
+for i = 1:331
+    for j= 1:331
+        if M(j,i) ~= 0
+            contatore= contatore +1;
+        end
+    end
+    
+    if contatore == 0
+        display('ho trovato una riga nulla')
+    
+    end
+    
+end
+
 C0=sparse(M);
 
 hold on

@@ -1,0 +1,307 @@
+/////////////////////////////////////////////////////////////////////////
+///////////////// 	PROGETTO PACS		        /////////////////
+/////////////////////////////////////////////////////////////////////////
+
+/// CODICE PER CONFRONTARE I RISULTATI OTTENUTI CON IL MODELLO RIDOTTO PER LA PRESSIONE SULLA BIFORCAZIONE
+
+// esempio 2: cross + biforcazione, Bifurcation04
+
+// Spacing
+/*int Nelem = 120;*/
+/*int NelemI = 10;*/
+/*int NelemS = 1;*/
+
+/*bool plotYesNo = true;*/
+
+
+// prima frattura y = a0*x+b0
+real a0 = -1.;
+real b0 = 0.52;
+
+// seconda frattura y = a1*x+b1
+real a1 = 3.1;
+real b1 = -0.341;
+
+// terza frattura  y = a2*x+b2
+real a2 = 1.;
+real b2 = 0.1;
+
+// quarta frattura  y = a3*x+b3
+real a3 = 2.;
+real b3 = -1.15;
+
+// quinta frattura y = a4*x+b4
+real a4 = -1.;
+real b4 = 1.19;
+
+// sesta frattura y = a5*x+b5
+real a5 = 1.;
+real b5 = -0.37;
+
+
+// spessore delle fratture
+real d0 = 0.013;
+real d1 = 0.011;
+real d2 = 0.012;
+real d3 = 0.01;
+real d4 = 0.013;
+real d5 = 0.011;
+
+
+
+// lunghezza delle fratture lungo x
+
+real length0x = 0.31;
+real length1x = 0.1;
+real length21 = 0.335;
+real length22 = 0.355;
+real length3x = 0.205;
+real length41 = 0.355;
+real length42 = 0.235;
+real length5x = 0.22;
+
+
+
+// punto di intersezione: è lo stesso per tutte e tre, sono certa che sia una biforcazione
+real interFrac1 = ( b1 - b0 ) / ( a0 - a1 );
+real interFrac2 = ( b4 - b5 ) / ( a5 - a4 );
+real interFrac3 = ( b2 - b4 ) / ( a4 - a2 );
+
+cout << "Intersection Point Bifurcation1: " << interFrac1 << endl;
+cout << "Intersection Point Bifurcation2: " << interFrac2 << endl;
+cout << "Intersection Point Cross: " << interFrac3 << endl;
+
+
+
+// punti che costituiscono il triangolo della prima biforcazione
+real intx10 = ( ( b1 - d1/2. ) - ( b0 - d0/2. ) ) / ( a0 - a1 );
+real inty10 = a0*intx10 + b0 - d0/2.;
+
+real intx11 = ( ( b2 - d2/2. ) - ( b0 + d0/2. ) ) / ( a0 - a2 );
+real inty11 = a0*intx11 + b0 + d0/2.;
+
+real intx12 = ( ( b1 + d1/2. ) - ( b2 + d2/2. ) ) / ( a2 - a1 );
+real inty12 = a2*intx12 + b2 + d2/2.;
+
+
+
+
+// punti che costituiscono il triangolo della seconda biforcazione
+real intx20 = ( ( b5 - d5/2. ) - ( b3 - d3/2. ) ) / ( a3 - a5 );
+real inty20 = a5*intx20 + b5 - d5/2.;
+
+real intx21 = ( ( b4 + d4/2. ) - ( b5 + d5/2. ) ) / ( a5 - a4 );
+real inty21 = a4*intx21 + b4 + d4/2.;
+
+real intx22 = ( ( b3 + d3/2. ) - ( b4 - d4/2. ) ) / ( a4 - a3 );
+real inty22 = a3*intx22 + b3 + d3/2.;
+
+
+
+// punti che costituiscono il quadrato di intersezione
+real intx30 = ( ( b4 - d4/2. ) - ( b2 - d2/2. ) ) / ( a2 - a4 );
+real inty30 = a2*intx30 + b2 - d2/2.;
+
+real intx31 = ( ( b4 + d4/2. ) - ( b2 - d2/2. ) ) / ( a2 - a4 );
+real inty31 = a2*intx31 + b2 - d2/2.;
+
+real intx32 = ( ( b4 + d4/2. ) - ( b2 + d2/2. ) ) / ( a2 - a4 );
+real inty32 = a2*intx32 + b2 + d2/2.;
+
+real intx33 = ( ( b4 - d4/2. ) - ( b2 + d2/2. ) ) / ( a2 - a4 );
+real inty33 = a2*intx33 + b2 + d2/2.;
+
+
+
+
+// segmenti che definiscono il triangolo della prima biforcazione
+// inside0: y = e1*x + f1
+real e10 = ( inty11 - inty10 )/( intx11 - intx10 );
+real f10 = ( inty10 - e10*intx10 );
+
+cout << "e10 " << e10 << endl;
+// inside1: y = e2*x + f2
+real e11 = ( inty11 - inty12 )/( intx11 - intx12 );
+real f11 = ( inty12 - e11*intx12 );
+
+cout << "e11 " << e11 << endl;
+// inside2: y = e3*x + f3
+real e12 = ( inty12 - inty10 )/( intx12 - intx10 );
+real f12 = ( inty10 - e12*intx10 );
+cout << "e12 " << e12 << endl;
+
+// segmenti che definiscono il triangolo della seconda biforcazione
+// inside0: y = e1*x + f1
+real e20 = ( inty21 - inty20 )/( intx21 - intx20 );
+real f20 = ( inty20 - e20*intx20 );
+
+cout << "e20 " << e20 << endl;
+// inside1: y = e2*x + f2
+real e21 = ( inty21 - inty22 )/( intx21 - intx22 );
+real f21 = ( inty22 - e21*intx22 );
+cout << "e21 " << e21 << endl;
+
+// inside2: y = e3*x + f3
+real e22 = ( inty22 - inty20 )/( intx22 - intx20 );
+real f22 = ( inty20 - e22*intx20 );
+cout << "e22 " << e22 << endl;
+
+
+// segmenti che definiscono il quadrato
+// inside0: y = e1*x + f1
+real e30 = ( inty31 - inty30 )/( intx31 - intx30 );
+real f30 = ( inty30 - e30*intx30 );
+
+cout << "e30 " << e30 << endl;
+
+// inside1: y = e2*x + f2
+real e31 = ( inty31 - inty32 )/( intx31 - intx32 );
+real f31 = ( inty32 - e31*intx32 );
+cout << "e31 " << e31 << endl;
+
+// inside0: y = e1*x + f1
+real e32 = ( inty32 - inty33 )/( intx32 - intx33 );
+real f32 = ( inty33 - e32*intx33 );
+cout << "e32 " << e32 << endl;
+
+// inside1: y = e2*x + f2
+real e33 = ( inty33 - inty30 )/( intx33 - intx30 );
+real f33 = ( inty33 - e33*intx33 );
+cout << "e33 " << e33 << endl;
+
+// punti che definiscono il dominio 2d delle fratture
+real ext0 = ( ( interFrac1 + length0x )*( a0 + 1./a0 ) + d0/2.  )/( a0 + 1./a0 );
+real ext1 = ( - d0/2. + ( interFrac1 + length0x )*( a0 + 1./a0 )  )/( a0 + 1./a0 );
+
+real ext2 = ( - d3/2. + ( interFrac2 - length3x )*( a3 + 1./a3 ) )/( a3 + 1./a3 );
+real ext3 = ( ( interFrac2 - length3x )*( a3 + 1./a3 ) + d3/2. )/( a3 + 1./a3 );
+
+real ext4 = ( ( interFrac2 + length5x )*( a5 + 1./a5 ) + d5/2. )/( a5 + 1./a5 );
+real ext5 = ( ( interFrac2 + length5x )*( a5 + 1./a5 ) - d5/2. )/( a5 + 1./a5 );
+
+real ext6 = ( ( interFrac3 + length22 )*( a2 + 1./a2 ) + d2/2. )/( a2 + 1./a2 );
+real ext7 = ( ( interFrac3 + length22 )*( a2 + 1./a2 ) - d2/2. )/( a2 + 1./a2 );
+
+real ext8 = ( ( interFrac3 - length41 )*( a4 + 1./a4 ) - d4/2. )/( a4 + 1./a4 );
+real ext9 = ( ( interFrac3 - length41 )*( a4 + 1./a4 ) + d4/2. )/( a4 + 1./a4 );
+
+real ext10 = ( ( interFrac1 - length1x )*( a1 + 1./a1 ) - d1/2. )/( a1 + 1./a1 );
+real ext11 = ( ( interFrac1 - length1x )*( a1 + 1./a1 ) + d1/2. )/( a1 + 1./a1 );
+
+
+
+
+// definiamo i bordi della mesh
+border long0 ( t = ext1, intx11 ) { x = t; y = a0*t+b0+d0/2.; label = 3; }
+border long1 ( t = intx11, intx30 ) { x = t; y = a2*t+b2-d2/2.; label = 3; }
+
+border long3 ( t = intx30, intx22 ) { x = t; y = a4*t+b4-d4/2.; label = 3; }
+border long4 ( t = intx22, ext2 ) { x = t; y = a3*t+b3+d3/2.; label = 3; }
+
+border short0 ( t = ext2, ext3 ) { x = t; y = -1./a3*t+( interFrac2 - length3x )*( a3 + 1./a3 ) + b3; label = 13;}
+
+border long5 ( t = ext3, intx20 ) { x = t; y = a3*t+b3-d3/2.; label = 3; }
+border long6 ( t = intx20, ext4 ) { x = t; y = a5*t+b5-d5/2.; label = 3; }
+
+border short1 ( t = ext4, ext5 ) { x = t; y = -t*1./a5 + b5 + ( interFrac2 + length5x )*( a5 + 1./a5 ); label = 15;}
+
+border long7 ( t = ext5, intx21 ) { x = t; y = a5*t+b5+d5/2.; label = 3; }
+border long8 ( t = intx21, intx31 ) { x = t; y = a4*t+b4+d4/2.; label = 3; }
+
+border long9 ( t = intx31, ext6 ) { x = t; y = a2*t+b2-d2/2.; label = 3; }
+
+border short2 ( t = ext6, ext7 ) { x = t; y = -t*1./a2 + b2 + ( interFrac3 + length22 )*( a2 + 1./a2 ); label = 12; }
+
+border long10 ( t = ext7, intx32 ) { x = t; y = a2*t+b2+d2/2.; label = 3; }
+border long11 ( t = intx32, ext8 ) { x = t; y = a4*t+b4+d4/2.; label = 3; }
+
+border short3 ( t = ext8, ext9 ) { x = t; y = -t*1./a4 + b4 + ( interFrac3 - length41 )*( a4 + 1./a4 ); label = 14; }
+
+border long12 ( t = ext9, intx33 ) { x = t; y = a4*t+b4-d4/2.; label = 3; }
+border long13 ( t = intx33, intx12 ) { x = t; y = a2*t+b2+d2/2.; label = 3; }
+
+border long14 ( t = intx12, ext10 ) { x = t; y = a1*t+b1+d1/2.; label = 3; }
+
+border short4 ( t = ext10, ext11 ) { x = t; y = -1./a1*t+( interFrac1 - length1x )*( a1 + 1./a1 ) + b1; label = 11;}
+
+border long15 ( t = ext11, intx10 ) { x = t; y = a1*t+b1-d1/2.; label = 3; }
+border long16 ( t = intx10, ext0 ) { x = t; y = a0*t+b0-d0/2.; label = 3; }
+
+border short5 ( t = ext0, ext1 ) { x = t; y = -1./a0*t+( interFrac1 + length0x )*( a0 + 1./a0 ) + b0; label = 10;}
+
+
+
+border inside10 ( t = intx10, intx11 ) { x = t; y = e10*t+f10; label = 20; }
+border inside11 ( t = intx11, intx12 ) { x = t; y = e11*t+f11; label = 22; }
+border inside12 ( t = intx12, intx10 ) { x = t; y = e12*t+f12; label = 21; }
+
+border inside20 ( t = intx20, intx21 ) { x = t; y = e20*t+f20; label = 25; }
+border inside21 ( t = intx21, intx22 ) { x = t; y = e21*t+f21; label = 24; }
+border inside22 ( t = intx22, intx20 ) { x = t; y = e22*t+f22; label = 23; }
+
+
+border inside30 ( t = intx30, intx31 ) { x = t; y = e30*t+f30; label = 342; }
+border inside31 ( t = intx31, intx32 ) { x = t; y = e31*t+f31; label = 322; }
+border inside32 ( t = intx32, intx33 ) { x = t; y = e32*t+f32; label = 341; }
+border inside33 ( t = intx33, intx30 ) { x = t; y = e33*t+f33; label = 321; }
+
+
+// costruiamo la mesh
+
+mesh Th = buildmesh ( long0( Nelem ) + long1( Nelem ) + long3( Nelem ) + long4( Nelem ) + 
+		      short0( Nelem*d3*NelemS ) + 
+		      long5( Nelem ) + long6( Nelem ) +
+                      short1( Nelem*d5*NelemS ) +
+                      long7( Nelem ) + long8( Nelem ) + long9( Nelem ) +
+                      short2( Nelem*d2*NelemS ) + 
+		      long10( Nelem ) + long11( Nelem ) +
+  		      short3( Nelem*d4*NelemS ) + 
+		      long12( Nelem ) + long13( Nelem ) + long14( Nelem ) +
+                      short4( Nelem*d1*NelemS ) +
+		      long15( Nelem ) + long16( Nelem ) +
+                      short5( Nelem*d0*NelemS ) +
+   		      inside10( NelemT*Nelem*d0 ) + inside11( NelemT*Nelem*d2 ) + inside12( NelemT*Nelem*d1 ) +
+		      inside20( NelemT*Nelem*d5 ) + inside21( NelemT*Nelem*d4 ) + inside22( NelemT*Nelem*d3 ) +
+		      inside30( NelemI*Nelem*d4 ) + inside31( NelemI*Nelem*d2 ) + inside32( NelemI*Nelem*d4 ) 
+			+ inside33( NelemI*Nelem*d2 ) );
+
+
+plot ( Th, wait = true );
+
+
+
+func part1 = (y-e10*x-f10>=0)*(y-e11*x-f11<=0)*(y-e12*x-f12<=0);
+func part2 = (y-e20*x-f20>=0)*(y-e21*x-f21<=0)*(y-e22*x-f22>=0);
+func part3 = (y-e30*x-f30>=0)*(y-e31*x-f31<=0)*(y-e32*x-f32<=0)*(y-e33*x-f33>=0);
+
+
+func fracture0 = (y-a0*x-b0-d0/2.<=0)*(y-a0*x-b0+d0/2.>=0)*(1.*(y-e10*x-f10<=0));
+func fracture1 = (y-a1*x-b1+d1/2.>=0)*(y-a1*x-b1-d1/2.<=0)*(1.*(y-e12*x-f12>=0));
+func fracture2 = (y-a2*x-b2-d2/2.<=0)*(y-a2*x-b2+d2/2.>=0)*(1.*(y-e11*x-f11>=0))*( 1.*(y-e33*x-f33<=0) 
+			+ 1.*(y-e31*x-f31>=0) );
+
+
+func fracture3 = (y-a3*x-b3-d3/2.<=0)*(y-a3*x-b3+d3/2.>=0)*(1.*(y-e22*x-f22<=0));
+func fracture4 = (y-a4*x-b4-d4/2.<=0)*(y-a4*x-b4+d4/2.>=0)*(1.*(y-e21*x-f21>=0))*( 1.*(y-e30*x-f30<=0) 
+			+ 1.*(y-e32*x-f32>=0) );
+func fracture5 = (y-a5*x-b5-d5/2.<=0)*(y-a5*x-b5+d5/2.>=0)*(1.*(y-e20*x-f20>=0));
+
+
+
+mesh Th1 = buildmesh ( inside10(NelemI*Nelem*d0) + inside11(NelemI*Nelem*d2) + inside12(NelemI*Nelem*d1) );
+
+mesh Th2 = buildmesh ( inside20(NelemI*Nelem*d5) + inside21(NelemI*Nelem*d4) + inside22(NelemI*Nelem*d3) );
+
+mesh Th3 = buildmesh ( inside30(NelemI*Nelem*d4) + inside31(NelemI*Nelem*d2) + inside32(NelemI*Nelem*d4) 
+			+ inside33(NelemI*Nelem*d2));
+//mesh ThI = trunc ( Th, part1, label = 11, split = 1 );
+
+if ( plotYesNo )
+{
+    plot ( Th , wait = true, cmm = " mesh " );
+    plot ( Th1 , wait = true, cmm = " triangolo prima biforcazione " );
+    plot ( Th2 , wait = true, cmm = " triangolo seconda biforcazione " );
+    plot ( Th3 , wait = true, cmm = " quadrato intersezione " );
+}
+
+
