@@ -1,21 +1,36 @@
 \chapter{Risultati numerici e validazione del modello} 
 Si pu\`{o} subito vedere che l'andamento della pressione e della velocit\`{a} rispettano la legge di Darcy.
-Inoltre per validare il modello abbiamo implementato e risolto delle situazioni campione specifiche con l'ausilio di \texttt{FreeFem++} che permette la costruzione di domini in uno spazio 2D. Dunque per ogni prototipo sono state fatte tre simulazioni, diminuendo ad od ogni passo lo spessore delle fratture di un ordine di grandezza. 
-Riporteremo il valore della pressione nel punto di intersezione. Per i risultati di \texttt{FreeFem++} consideriamo il valore dell'integrale di pressione sul triangolo di intersezione mediato per l'area di quest'ultimo.\\
+Inoltre per validare il modello abbiamo implementato e risolto delle situazioni campione specifiche con l'ausilio di \texttt{FreeFem++} che permette la costruzione di domini in uno spazio bidimensionale. Per ogni prototipo sono state effettuate tre simulazioni, diminuendo ad od ogni passo lo spessore delle fratture di un ordine di grandezza. 
+Per ogni frattura abbiamo messo a confronto il valore della pressione nel DOF di intersezione, per il modello monodimensionale, con l'integrale di pressione lungo il lato del triangolo di intersezione mediato sulla sua lunghezza, per \texttt{FreeFem++}.
+Riportiamo inoltre il valore medio della pressione nel punto di intersezione ponendolo a paragone con il valore dell'integrale di pressione sul triangolo di intersezione mediato per l'area di quest'ultimo.\\
 Vediamo ora i risultati ottenuti in alcuni casi significativi.
 \section{Biforcazione semplice, 3 fratture}
 Consideriamo una biforcazione generata dall'incontro di tre fratture in uno dei loro punti estremi.
-Confronto valori della pressione nel punto di intersezione:\\
-\begin{tabular}{|c|c|c|c|c|c|}
+Confronto valori della pressione nel DOF di intersezione per il modello 2:\\
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
 \hline
-\multicolumn{3}{|c|}{\textbf{\texttt{Code}}} & \multicolumn{3}{|c|}{\textbf{\texttt{FreeFem++}}} \\
+ & \textbf{\texttt{Code}} & \multicolumn{3}{|c|}{\textbf{\texttt{FreeFem++}}} \\
 \hline
-\multicolumn{1}{|c|}{\textbf{Frattura 0}} & \textbf{Frattura 1} & \textbf{Frattura 2} &
-\multicolumn{1}{|c|}{\textbf{1E-01}} & \textbf{1E-02} & \textbf{1E-03} \\
+\multicolumn{1}{|c|}{Frattura} & - &
+\multicolumn{1}{|c|}{1E-01} & 1E-02 & 1E-03 \\
 \hline
- q & q & q & Qui & Quo & Qua\\
+ 0 & 0.000594764 & 0.372412 & 0.0674785 & -0.000186152\\
+ 1 & -0.0013522 & 0.244632 & 0.0553189 & -0.000189784\\
+ 2 & 0.00225249 & 0.323944 & 0.0627701 & -0.000187243\\
 \hline
 \end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+ & \textbf{\texttt{Code}} & \multicolumn{1}{|c|}{\textbf{\texttt{FreeFem++}}} \\
+\hline
+ Pressione media & 0.0004983513 & -0.000187683\\
+\hline
+\end{tabular}
+\end{center}
 
 \begin{figure}[h!]
 \centering
@@ -23,9 +38,9 @@ Confronto valori della pressione nel punto di intersezione:\\
 \caption{Risultati \texttt{FreeFem++} biforcazione - spessore ordine 1E-02 }\label{Biforcazione1E-02}
 \end{figure}
 
+\section{Doppia biforcazione verticale, 5 fratture}
 
 \section{Doppia biforcazione e cross, 6 fratture}
-\section{Doppia biforcazione verticale, 5 fratture}
 
 \section{Caso limite}
 Biforcazione con due fratture
