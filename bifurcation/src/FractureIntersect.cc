@@ -136,9 +136,6 @@ constructIntesection ( const getfem::mesh& mesh, getfem::mesh_level_set& meshLev
            {
 			    assert ( fracturesInvolved.size() == 2 && " caso non gestito " );
 
-    		    // Do una numerazione globale alle intersezioni di tipo Cross
-                std::cout << " globalIndexCross " << globalIndexCross << std::endl;
-
                 /*
                  * indexTmp è un indice che mi serve per tenere traccia degli indici dei gradi di libertà aggiuntivi associati ad ogni frattura
                  * l'idea è quella di considerare prima tutte le intersezioni di tipo Cross e poi quelle di tipo Bifurcation 
@@ -158,11 +155,7 @@ constructIntesection ( const getfem::mesh& mesh, getfem::mesh_level_set& meshLev
            
            // Intersezione di tipo Bifurcation
            if ( type == Bifurcation )
-           {
-			   
-			   // Anche per le intersezioni di tipo Bifurcation assegno una numerazione globale
-               std::cout << " globalIndexBifurcation " << globalIndexBifurcation << std::endl;
-               
+           {              
                std::string B ( "Bifurcation" );
                
                // Attenzione: nel caso della biforcazione ogni frattura interseca due altre fratture!
@@ -202,10 +195,7 @@ constructIntesection ( const getfem::mesh& mesh, getfem::mesh_level_set& meshLev
 			   {
 				   setDOFIntersection( mesh, fracturesInvolved[ f ], listOfConvex[ i ] );
 			   }
-			   
-			   // Anche per le intersezioni di tipo Bifurcation assegno una numerazione globale
-               std::cout << " globalIndexBifurcation2 " << globalIndexBifurcation2 << std::endl;
-               
+			                  
                std::string B ( "Bifurcation2" );
                
                // Attenzione: nel caso della biforcazione ogni frattura interseca due altre fratture!
@@ -555,11 +545,6 @@ size_type FractureIntersect::getBasisFunctionOfType ( IntersectionType type ) co
 	return basisFunction;
 } // getNumberBifurcation
 
-/*size_type FractureIntersect::getBasisFunctionOfType ( IntersectionType type ) const
-{
-    return M_basisFunctionOfType.find ( type )->second;
-} // getBasisFunctionOfType
-*/
 
 void FractureIntersect::setDOFIntersection( const getfem::mesh& M_mesh, FractureHandlerPtr_Type& fracture , size_type i )
 {

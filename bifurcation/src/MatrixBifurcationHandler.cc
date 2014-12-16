@@ -22,7 +22,6 @@ MatrixBifurcationHandler::MatrixBifurcationHandler( const GetPot& dataFile,
 	invk(1,0) = dataFile ( ( section + subsection + "invKDist12" ).data (), 0. );
 	invk(1,1) = dataFile ( ( section + subsection + "invKDist22" ).data (), 1. );
 	
-	std::cout << " Type " << type << std::endl;
 	this-> inversion2X2 ( invk, det );
 	
 }// costruttore
