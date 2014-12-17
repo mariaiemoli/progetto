@@ -8,11 +8,12 @@ bool plotYesNo = true;
 
 // Import mesh file
 
+real ODG = 1e3;
+
 // Spacing
-int Nelem = 1000;
+int Nelem = 1*ODG;
 int NelemS = 10;
 int NelemI = 10;
-
 
 include "mesh.edp"
 
@@ -83,6 +84,12 @@ cout << "Pressure, min " << ph[].min << " max " << ph[].max << endl;
 cout << "Velocity min [" << uh1[].min << ", " << uh2[].min << "] max ["
      << uh1[].max << ", " << uh2[].max << "]" << endl;
 
+cout << "Lato 0 " << int1d(Th1,20)( ph ) / int1d(Th1, 20)( 1. ) << endl;
+cout << "Lato 1 " << int1d(Th1,21)( ph ) / int1d(Th1, 21)( 1. ) << endl;
+cout << "Lato 31 " << int1d(Th1,22)( ph ) / int1d(Th1, 22)( 1. ) << endl;
+cout << "Lato 32 " << int1d(Th2,23)( ph ) / int1d(Th2, 23)( 1. ) << endl;
+cout << "Lato 4 " << int1d(Th2,24)( ph ) / int1d(Th2, 24)( 1. ) << endl;
+cout << "Lato 2 " << int1d(Th2,25)( ph ) / int1d(Th2, 25)( 1. ) << endl;
 
 real I = int2d(Th1)( one );
 real pI = 1./I * int2d(Th1)( ph );

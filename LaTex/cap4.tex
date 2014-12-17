@@ -6,7 +6,7 @@ Riportiamo inoltre il valore medio della pressione nel punto di intersezione pon
 Vediamo ora i risultati ottenuti in alcuni casi significativi.
 \section{Biforcazione semplice, 3 fratture}
 Consideriamo una biforcazione generata dall'incontro di tre fratture in uno dei loro punti estremi.
-Confronto valori della pressione nel DOF di intersezione per il modello 2:\\
+Confronto valori della pressione nel DOF di intersezione per il modello 2D:\\
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|}
 \hline
@@ -39,8 +39,126 @@ Confronto valori della pressione nel DOF di intersezione per il modello 2:\\
 \end{figure}
 
 \section{Doppia biforcazione verticale, 5 fratture}
+Andiamo ora ad analizzare i valori in un network contenente due biforcazioni con una frattura in comune.
+La prima biforcazione coinvolge le fratture 0,1,3 mentre la seconda nasce dall'incontro fra 2,3,4.
+Un'altra peculiarità di questo esempio è il posizionamento verticale di una delle fratture, nello specifico la 4.\\
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=.45]{img/cap6/DoppiaBifu.eps}
+\caption{Risultati \texttt{FreeFem++} doppia biforcazione risultati paraview }\label{DoppiaBifuVerticalParaview}
+\end{figure}
+
+Per la frattura 3 troveremo dapprima il valore relativo al lato del triangolo di intersezione 0-1-3, e subito dopo il valore per quello realativo alla biforcazione 2-3-4.
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\multicolumn{5}{|c|}{Biforcazione 0-1-3}\\
+\hline
+ & \textbf{\texttt{Code}} & \multicolumn{3}{|c|}{\textbf{\texttt{FreeFem++}}} \\
+\hline
+\multicolumn{1}{|c|}{Frattura} & - &
+\multicolumn{1}{|c|}{1E-01} & 1E-02 & 1E-03 \\
+\hline
+ 0 & 0.000463907 & -0.00108915 & -0.113533 & -0.0129926\\
+ 1 & -0.00101445 & 0.0571926 & -0.108828 & -0.0128677\\  
+ 3 & 0.00252798 & 0.0578132 & -0.110303 & -0.0128833\\
+\hline
+\multicolumn{5}{|c|}{Biforcazione 2-3-4}\\
+\hline
+ & \textbf{\texttt{Code}} & \multicolumn{3}{|c|}{\textbf{\texttt{FreeFem++}}} \\
+\hline
+\multicolumn{1}{|c|}{Frattura} & - &
+\multicolumn{1}{|c|}{1E-01} & 1E-02 & 1E-03 \\
+\hline
+ 2 & 0.00409494 & 0.803246 & 0.522995 & 0.0154489\\ 
+ 3 & 0.00252798 & 0.778237 & 0.520145 & 0.0154059\\
+ 4 & -0.0013522 & 0.823763 & 0.527501 & 0.0156668\\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=.35]{img/cap6/DoppiaBifuVertical.eps}
+\caption{Risultati \texttt{FreeFem++} doppia biforcazione - spessore ordine 1E-02 }\label{DoppiaBifuVertical1E-02}
+\end{figure}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+ Pressione media & \textbf{\texttt{Code}} & \multicolumn{3}{|c|}{\textbf{\texttt{FreeFem++}}} \\ 
+\hline
+\multicolumn{1}{|c|}{Biforcazione} & - &
+\multicolumn{1}{|c|}{1E-01} & 1E-02 & 1E-03 \\
+\hline
+  0-1-3 & - & 0.0342616 & -0.111032 & -0.0129202 \\
+  2-3-4 & - & 0.803906 & 0.523809 & 0.0155144 \\
+\hline
+\end{tabular}
+\end{center}
 
 \section{Doppia biforcazione e cross, 6 fratture}
+Andiamo ora ad analizzare i valori in un network contenente due biforcazioni e un cross generati da un insieme di 6 fratture. In particolare le fratture con intersezione di tipo \textit{Cross} sono 2-4. Mentre quelle con intersezione di tipo \textit{bifurcation} sono 0-1-2 e 3-4-5;\\
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=.5]{img/cap6/DoppiaBifuCross.eps}
+\caption{Risultati \texttt{FreeFem++} doppia biforcazione e cross risultati paraview }\label{DoppiaBifuCrossParaview}
+\end{figure}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\multicolumn{5}{|c|}{Biforcazione 0-1-3}\\
+\hline
+ & \textbf{\texttt{Code}} & \multicolumn{3}{|c|}{\textbf{\texttt{FreeFem++}}} \\
+\hline
+\multicolumn{1}{|c|}{Frattura} & - &
+\multicolumn{1}{|c|}{1E-01} & 1E-02 & 1E-03 \\
+\hline
+ 0 & -0.00402293 & -0.0126464 & -8.90379e-05 & 4.71909e-08\\
+ 1 & -0.0113048 & 0.00217558 & -7.84109e-05 & -9.00287e-07\\  
+ 2 & -0.00999955 & 0.0123638 & 3.64042e-06 & 5.78993e-07\\
+\hline
+\multicolumn{5}{|c|}{Biforcazione 3-4-5}\\
+\hline
+ & \textbf{\texttt{Code}} & \multicolumn{3}{|c|}{\textbf{\texttt{FreeFem++}}} \\
+\hline
+\multicolumn{1}{|c|}{Frattura} & - &
+\multicolumn{1}{|c|}{1E-01} & 1E-02 & 1E-03 \\
+\hline
+ 3 & -0.0319253 & 0.0917434 & 2.15017e-05 & -2.49308e-06\\ 
+ 4 & -0.129783 & 0.135803 & 4.0555e-05 & 1.01509e-05\\
+ 5 & -0.010618 & 0.154797 & 1.12678e-05 & -1.04707e-05\\
+\hline
+%\multicolumn{5}{|c|}{Cross 2-4}\\
+%\hline
+% & \textbf{\texttt{Code}} & \multicolumn{3}{|c|}{\textbf{\texttt{FreeFem++}}} \\
+%\hline
+%\multicolumn{1}{|c|}{Frattura} & - &
+%\multicolumn{1}{|c|}{1E-01} & 1E-02 & 1E-03 \\
+%\hline
+% 2 & -0.00999955 & 0.803246 & 0.522995 & 0.0154489\\ 
+% 4 & -0.129783 & 0.778237 & 0.520145 & 0.0154059\\
+%\hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+ Pressione media & \textbf{\texttt{Code}} & \multicolumn{3}{|c|}{\textbf{\texttt{FreeFem++}}} \\ 
+\hline
+\multicolumn{1}{|c|}{Biforcazione} & - &
+\multicolumn{1}{|c|}{1E-01} & 1E-02 & 1E-03 \\
+\hline
+  0-1-2 & - & 0.00589771 & 1.76686e-06 & 1.37214e-07 \\
+  3-4-5 & - & 0.127337 & -2.32565e-05 & -5.81148e-07 \\
+\hline
+\end{tabular}
+\end{center}
+
 
 \section{Caso limite}
 Biforcazione con due fratture

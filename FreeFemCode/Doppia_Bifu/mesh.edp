@@ -13,7 +13,6 @@
 
 /*bool plotYesNo = true;*/
 
-
 ///////////////////////////////////////////////////
 // definiamo le rette che rappresentano le fratture
 
@@ -39,11 +38,11 @@ real b4 = 1.5;
 
 
 // spessore delle fratture
-real d0 = 0.0013;
-real d1 = 0.0014;
-real d2 = 0.0012;
-real d3 = 0.001;
-real d4 = 0.0013;
+real d0 = 1.3/ODG;
+real d1 = 1.4/ODG;
+real d2 = 1.2/ODG;
+real d3 = 1./ODG;
+real d4 = 1.3/ODG;
 
 
 
@@ -125,9 +124,9 @@ real f21 = ( inty22 - e21*intx22 );
 real e22 = ( inty22 - inty20 )/( intx22 - intx20 );
 real f22 = ( inty20 - e22*intx20 );
 
-cout << " e20: " << e20 << "  f20:  " << f20 << endl;
-cout << " e21: " << e21 << "  f21:  " << f21 << endl;
-cout << " e22: " << e22 << "  f22:  " << f22 << endl;
+//cout << " e20: " << e20 << "  f20:  " << f20 << endl;
+//cout << " e21: " << e21 << "  f21:  " << f21 << endl;
+//cout << " e22: " << e22 << "  f22:  " << f22 << endl;
 
 ///////////////////////////////////////////////////
 // definiamo i segmenti che costituiscono il dominio delle fratture

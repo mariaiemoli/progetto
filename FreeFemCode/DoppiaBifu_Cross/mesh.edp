@@ -40,12 +40,12 @@ real b5 = -0.37;
 
 
 // spessore delle fratture
-real d0 = 0.013;
-real d1 = 0.011;
-real d2 = 0.012;
-real d3 = 0.01;
-real d4 = 0.013;
-real d5 = 0.011;
+real d0 = 1.3/ODG;
+real d1 = 1.1/ODG;
+real d2 = 1.2/ODG;
+real d3 = 1./ODG;
+real d4 = 1.3/ODG;
+real d5 = 1.1/ODG;
 
 
 
@@ -119,28 +119,32 @@ real inty33 = a2*intx33 + b2 + d2/2.;
 real e10 = ( inty11 - inty10 )/( intx11 - intx10 );
 real f10 = ( inty10 - e10*intx10 );
 
+//cout << "e10 " << e10 << endl;
 // inside1: y = e2*x + f2
 real e11 = ( inty11 - inty12 )/( intx11 - intx12 );
 real f11 = ( inty12 - e11*intx12 );
 
+//cout << "e11 " << e11 << endl;
 // inside2: y = e3*x + f3
 real e12 = ( inty12 - inty10 )/( intx12 - intx10 );
 real f12 = ( inty10 - e12*intx10 );
-
+//cout << "e12 " << e12 << endl;
 
 // segmenti che definiscono il triangolo della seconda biforcazione
 // inside0: y = e1*x + f1
 real e20 = ( inty21 - inty20 )/( intx21 - intx20 );
 real f20 = ( inty20 - e20*intx20 );
 
+//cout << "e20 " << e20 << endl;
 // inside1: y = e2*x + f2
 real e21 = ( inty21 - inty22 )/( intx21 - intx22 );
 real f21 = ( inty22 - e21*intx22 );
+//cout << "e21 " << e21 << endl;
 
 // inside2: y = e3*x + f3
 real e22 = ( inty22 - inty20 )/( intx22 - intx20 );
 real f22 = ( inty20 - e22*intx20 );
-
+//cout << "e22 " << e22 << endl;
 
 
 // segmenti che definiscono il quadrato
@@ -148,18 +152,22 @@ real f22 = ( inty20 - e22*intx20 );
 real e30 = ( inty31 - inty30 )/( intx31 - intx30 );
 real f30 = ( inty30 - e30*intx30 );
 
+//cout << "e30 " << e30 << endl;
+
 // inside1: y = e2*x + f2
 real e31 = ( inty31 - inty32 )/( intx31 - intx32 );
 real f31 = ( inty32 - e31*intx32 );
+//cout << "e31 " << e31 << endl;
 
 // inside0: y = e1*x + f1
 real e32 = ( inty32 - inty33 )/( intx32 - intx33 );
 real f32 = ( inty33 - e32*intx33 );
+//cout << "e32 " << e32 << endl;
 
 // inside1: y = e2*x + f2
 real e33 = ( inty33 - inty30 )/( intx33 - intx30 );
 real f33 = ( inty33 - e33*intx33 );
-
+//cout << "e33 " << e33 << endl;
 
 // punti che definiscono il dominio 2d delle fratture
 real ext0 = ( ( interFrac1 + length0x )*( a0 + 1./a0 ) + d0/2.  )/( a0 + 1./a0 );
@@ -262,13 +270,13 @@ plot ( Th, wait = true );
 
 
 
-func part1 = (y-e10*x-f10 >=0)*(y-e11*x-f11<=0)*(y-e12*x-f12>=0);
-func part2 = (y-e20*x-f20 <=0)*(y-e21*x-f21<=0)*(y-e22*x-f22>=0);
-func part3 = (y-e30*x-f30 >=0)*(y-e31*x-f31<=0)*(y-e32*x-f32<=0)*(y-e33*x-f33>=0);
+func part1 = (y-e10*x-f10>=0)*(y-e11*x-f11<=0)*(y-e12*x-f12<=0);
+func part2 = (y-e20*x-f20>=0)*(y-e21*x-f21<=0)*(y-e22*x-f22>=0);
+func part3 = (y-e30*x-f30>=0)*(y-e31*x-f31<=0)*(y-e32*x-f32<=0)*(y-e33*x-f33>=0);
 
 
 func fracture0 = (y-a0*x-b0-d0/2.<=0)*(y-a0*x-b0+d0/2.>=0)*(1.*(y-e10*x-f10<=0));
-func fracture1 = (y-a1*x-b1+d1/2.>=0)*(y-a1*x-b1-d1/2.<=0)*(1.*(y-e12*x-f12<=0));
+func fracture1 = (y-a1*x-b1+d1/2.>=0)*(y-a1*x-b1-d1/2.<=0)*(1.*(y-e12*x-f12>=0));
 func fracture2 = (y-a2*x-b2-d2/2.<=0)*(y-a2*x-b2+d2/2.>=0)*(1.*(y-e11*x-f11>=0))*( 1.*(y-e33*x-f33<=0) 
 			+ 1.*(y-e31*x-f31>=0) );
 
@@ -276,7 +284,7 @@ func fracture2 = (y-a2*x-b2-d2/2.<=0)*(y-a2*x-b2+d2/2.>=0)*(1.*(y-e11*x-f11>=0))
 func fracture3 = (y-a3*x-b3-d3/2.<=0)*(y-a3*x-b3+d3/2.>=0)*(1.*(y-e22*x-f22<=0));
 func fracture4 = (y-a4*x-b4-d4/2.<=0)*(y-a4*x-b4+d4/2.>=0)*(1.*(y-e21*x-f21>=0))*( 1.*(y-e30*x-f30<=0) 
 			+ 1.*(y-e32*x-f32>=0) );
-func fracture5 = (y-a5*x-b5-d5/2.<=0)*(y-a5*x-b5+d5/2.>=0)*(1.*(y-e20*x-f20>=0));
+func fracture5 = (y-a5*x-b5-d5/2.<=0)*(y-a5*x-b5+d5/2.>=0)*(1.*(y-e20*x-f20<=0));
 
 
 

@@ -7,12 +7,13 @@
 bool plotYesNo = true;
 
 // Import mesh file
+real ODG = 1e3;
 
 // Spacing
-int Nelem = 100;
-int NelemS = 5;
-int NelemI = 5;
-int NelemT = 5;
+int Nelem = 1*ODG;
+int NelemS = 1;
+int NelemI = 10;
+int NelemT = 10;
 
 include "mesh.edp"
 
@@ -42,17 +43,19 @@ fespace Qh ( Th, P0 );
 
 // solution and test function
 Vh [uh1, uh2], [tauh1, tauh2];
-Qh ph, qh, one, two, three; 
+Qh ph, qh, one, two, three, four, five, six; 
 one = part1(x,y);
 two = part2(x,y);
 three = part3(x,y);
 
+/*one = 100*fracture4(x,y);*/
 /*two = fracture0(x,y);*/
 /*three = fracture1(x,y);*/
 /*four = fracture2(x,y);*/
 /*five = fracture3(x,y);*/
+/*six = fracture5(x,y);*/
 
-//plot (one, oneb,two,three,four,five,  fill = true, nbiso = 20, value = true , wait = true );
+//plot (one,two,three,four,five, six,  fill = true, nbiso = 20, value = true , wait = true );
 
 // problem definition
 problem Darcy ( [uh1, uh2, ph], [tauh1, tauh2, qh], solver=GMRES, init=100 ) = -
@@ -85,35 +88,50 @@ cout << " Ho risolto Darcy: " << endl;
 /*plot(Th, cmm="adattata");*/
 
 /*Darcy;*/
-/*
+
 cout << "Pressure, min " << ph[].min << " max " << ph[].max << endl;
 cout << "Velocity min [" << uh1[].min << ", " << uh2[].min << "] max ["
      << uh1[].max << ", " << uh2[].max << "]" << endl;
 
+cout << "Bifurcation 1 " << endl;
+cout << "Lato 0 " << int1d(Th1,20)( ph ) / int1d(Th1, 20)( 1. ) << endl;
+cout << "Lato 1 " << int1d(Th1,22)( ph ) / int1d(Th1, 22)( 1. ) << endl;
+cout << "Lato 2 " << int1d(Th1,21)( ph ) / int1d(Th1, 21)( 1. ) << endl;
+cout << "Bifurcation 2 " << endl;
+cout << "Lato 3 " << int1d(Th2,23)( ph ) / int1d(Th2, 23)( 1. ) << endl;
+cout << "Lato 4 " << int1d(Th2,24)( ph ) / int1d(Th2, 24)( 1. ) << endl;
+cout << "Lato 5 " << int1d(Th2,25)( ph ) / int1d(Th2, 25)( 1. ) << endl;
+/*
+cout << "Cross " << endl;
+cout << "Lato 2 " << int1d(Th3,31)( ph ) / int1d(Th3, 31)( 1. ) << endl;
+cout << "Lato 4 " << int1d(Th3,32)( ph ) / int1d(Th3, 32)( 1. ) << endl;
+cout << "Lato 2 " << int1d(Th3,33)( ph ) / int1d(Th3, 33)( 1. ) << endl;
+cout << "Lato 4 " << int1d(Th3,30)( ph ) / int1d(Th3, 30)( 1. ) << endl;
+*/
 
 real I = int2d(Th1)( one );
 real pI = 1./I * int2d(Th1)( ph );
 
-cout << "Intersection pressure bifurcation " << pI << endl;
-cout << "Intersect area " << I << endl;
+cout << "Intersection pressure bifurcation1 " << pI << endl;
+cout << "Intersect area bifurcation1 " << I << endl;
 
 I = int2d(Th2)( two );
 pI = 1./I * int2d(Th2)( ph );
 
 cout << "Intersection pressure bifurcation2 " << pI << endl;
-cout << "Intersect area " << I << endl;
+cout << "Intersect area bifurcation2 " << I << endl;
 
 
-I = int2d(Th2)( three );
+I = int2d(Th3)( three );
 pI = 1./I * int2d(Th3)( ph );
 
 cout << "Intersection pressure cross " << pI << endl;
-cout << "Intersect area " << I << endl;
-*/
+cout << "Intersect area cross" << I << endl;
+
 
 if ( plotYesNo )
 {
-    plot ( ph, fill = true, nbiso = 20, value = true , wait = true, cmm = "pressione" );
-    plot ( [uh1, uh2], fill = true, value = true , wait = true, cmm="flusso" );
+    plot ( ph, fill = true, nbiso = 20, value = true , wait = true, ps = "pressione" );
+    plot ( [uh1, uh2], fill = true, value = true , wait = true, ps="flusso" );
 }
 
