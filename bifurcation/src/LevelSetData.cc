@@ -34,7 +34,7 @@ scalar_type LevelSetData::ylevelSetFunction ( const base_node& t )
     M_parser.setVariable ( "y", t [ 1 ] );
     
     return M_parser.evaluate ();
-}
+}// ylevelSetFunction
 
 
 scalar_type LevelSetData::levelSetFunction ( const base_node& t )
@@ -44,7 +44,7 @@ scalar_type LevelSetData::levelSetFunction ( const base_node& t )
     M_parser.setVariable ( "y", t [ 1 ] );
     
     return M_parser.evaluate ();
-}
+}// levelSetFunction
 
 
 scalar_type LevelSetData::levelSetCutFunction ( const base_node& t )
@@ -54,7 +54,7 @@ scalar_type LevelSetData::levelSetCutFunction ( const base_node& t )
     M_parser.setVariable ( "y", t [ 1 ] );
     
     return M_parser.evaluate ();
-}
+}// levelSetCutFunction
 
 
 scalar_type LevelSetData::y_map ( const base_node& t )
@@ -63,7 +63,7 @@ scalar_type LevelSetData::y_map ( const base_node& t )
     M_parser.setVariable ( "t", t [ 0 ] );
     
     return M_parser.evaluate ();
-}
+}//  y_map
 
 
 scalar_type LevelSetData::x_map ( const base_node& t )
@@ -72,7 +72,7 @@ scalar_type LevelSetData::x_map ( const base_node& t )
     M_parser.setVariable ( "t", t [ 0 ] );
     
     return M_parser.evaluate ();
-}
+}// x_map
 
 
 scalarVector_Type LevelSetData::map_jac ( const base_node& x,
@@ -90,7 +90,7 @@ scalarVector_Type LevelSetData::map_jac ( const base_node& x,
     }
 
     return map_jac;
-}
+}// map_jac
 
 
 scalarVector_Type LevelSetData::normal_map ( const base_node& x,
@@ -108,4 +108,4 @@ scalarVector_Type LevelSetData::normal_map ( const base_node& x,
     }
 
     return normal_map;
-}
+}// normal_map

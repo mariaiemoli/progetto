@@ -77,12 +77,6 @@ public:
     }
 
 
-    inline scalar_type getCsi0 () const
-    {
-        return M_csi0;
-    }
-
-
     inline scalar_type getLengthAbscissa () const
 	{
 		return M_lengthAbscissa;
@@ -165,8 +159,6 @@ private:
     // Proprietà del mezzo
 
     scalar_type M_thickness; // thickness of the fracture
-
-    scalar_type M_csi0; //csi-0.5
 
     scalar_type M_lengthAbscissa;
 	scalar_type M_lengthOrdinate;

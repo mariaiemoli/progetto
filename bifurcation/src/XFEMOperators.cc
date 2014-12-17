@@ -1161,18 +1161,6 @@ void setAup_i ( sparseMatrixPtr_Type& Aup_i,
 } //setAup_i
 
 
-/*
-void copyBifurcationMatrices_in_GlobalMatrix ( sparseMatrixPtr_Type Aup0, size_type id0,
-											   sparseMatrixPtr_Type Aup1, size_type id1,
-											   sparseMatrixPtr_Type Aup2, size_type id2,
-											   sparseMatrixPtr_Type Aup3, size_type id3 )
-{
-											   	
-} //copyBifurcationMatrices_in_GlobalMatrix
- */
-
-
-
 }// namespace getfem
 
 size_type GlobalIndex_Bifurcation( FracturesSetPtr_Type& M_fractures, size_type id0, size_type id1, size_type id2 )

@@ -406,7 +406,7 @@ integrateWithBooleanOperation ( getfem::mesh_level_set& meshLevelSet, const size
 
     return V[position];
 
-} // integrateWithBooleanOperation
+}// integrateWithBooleanOperation
 
 
 IntersectDataContainer_Type FractureIntersect::getCrossIntersections () const
@@ -422,7 +422,7 @@ IntersectDataContainer_Type FractureIntersect::getCrossIntersections () const
 
     return tmp;
 
-} // getCrossIntersections
+}// getCrossIntersections
 
 
 IntersectDataContainer_Type FractureIntersect::getBifurcationIntersections () const
@@ -439,7 +439,7 @@ IntersectDataContainer_Type FractureIntersect::getBifurcationIntersections () co
 	
     return tmp;
 
-} // getBifurcationIntersections
+}// getBifurcationIntersections
 
 IntersectDataContainer_Type FractureIntersect::getBifurcation2Intersections () const
 {
@@ -455,13 +455,13 @@ IntersectDataContainer_Type FractureIntersect::getBifurcation2Intersections () c
 	
     return tmp;
 
-} //getBifurcation2Intersections
+}//getBifurcation2Intersections
 
 
 size_type FractureIntersect::getNumberIntersectionOfType ( IntersectionType type ) const
 {
 	return M_intersections.find( type )->second.size();
-} // getNumberIntersectionOfType
+}// getNumberIntersectionOfType
 
 
 size_type FractureIntersect::getNumberCross () const
@@ -475,7 +475,7 @@ size_type FractureIntersect::getNumberCross () const
     }
 
     return numIntersect;
-} // getNumberCross
+}// getNumberCross
 
 
 size_type FractureIntersect::getNumberBifurcation () const
@@ -563,7 +563,7 @@ void FractureIntersect::setDOFIntersection( const getfem::mesh& M_mesh, Fracture
 		
 	return;
 	
-}
+}// setDOFIntersection
 
 size_type FractureIntersect::FindDOF_Intersection( const bgeot::basic_mesh::ref_mesh_pt_ct nodes, FractureHandlerPtr_Type& fracture )
 {

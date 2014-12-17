@@ -5,8 +5,7 @@
 meshFile = meshes/mesh
 folderVTK = ./vtk/
 
-numberFractures = 5
-
+numberFractures = 2
 
 
 [mediumData]
@@ -24,6 +23,8 @@ numberFractures = 5
                 meshType = GT_PK(2,1)
                 spaceDimension = 2.
 
+                penaltyParameterVelocity = 50.
+                penaltyParameterPressure = 10.
 
         [../]
 
@@ -38,95 +39,37 @@ numberFractures = 5
 
 [../]
 
-
 [fractureData0]
 
 spaceDimension = 1.
 
         [./levelSet]
 		
-				levelSet = y+x-0.52
-				ylevelSet = y-0.31+0.31*t
-				xlevelSet = x-0.21-0.31*t          
+				levelSet = y-2*x-0.6
+                ylevelSet = y-0.6-0.4*t
+				xlevelSet = x-0.2*t             
 				levelSetCut = -1
-				yMap = 0.31-0.31*t
-				xMap = 0.21+0.31*t
-				jacMap = [1./sqrt(2)]
-				normalMap = [1.,1.]
-		
-		        integrationTypeSimplex = IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(3),1)
+				yMap = 0.6+0.4*t
+				xMap = 0.2*t
+                jacMap = [1./sqrt(5)]
+                normalMap = [2.,-1.] #[-2.,1.]
+
+                integrationTypeSimplex = IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(3),1)
 
         [../]
 
         [./domain]
 
-		        thickness = 0.013
-		
-		        spacing = x+0.21
-		
-		        spatialDiscretization = 81
-		        translateAbscissa = 0.21
-		        lengthAbscissa = 0.31 #0.5
-		        lengthOrdinate = 0.
-		        lengthQuota = 0.
-		        meshType = GT_PK(1,1)
-		
-		
-		        integrationTypeVelocity = IM_GAUSS1D(3)
-		        integrationTypePressure = IM_GAUSS1D(2)
-		
-		        FEMTypeVelocity = FEM_PK(1,1)
-		        FEMTypePressure = FEM_PK(1,0)
-		        FEMTypeLinear = FEM_PK(1,1)
+                position = 0.00
+                thickness = 0.01
 
-        [../]
+                csi0 = 0.25
 
-        [./darcy]
-
-                etaNormal = 0.01
-                etaNormalDistribution = 1. #1.+1000.*(x>0.25)-1000.*(x>0.75)
-                etaTangential = 100.
-                etaTangentialDistribution = 1.
-
-                source = 0.0
-                solution = -1.
-                velocity = 0.
-
-        [../]
-
-
-[../]
-
-
-[fractureData1]
-
-spaceDimension = 1.
-
-        [./levelSet]
-			
-				levelSet = y-3.1*x+0.341
-		        ylevelSet = y-0.31*t
-				xlevelSet = x-0.11-0.1*t            
-				levelSetCut = -1
-				yMap = 0.31*t
-				xMap = 0.11+0.1*t
-	            jacMap = [0.307]
-	        	normalMap = [2.,-1.]
-	
-	            integrationTypeSimplex = IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(3),1)
-
-        [../]
-
-        [./domain]
-
-
-                thickness = 0.011
-
-                spacing = x+0.11
+                spacing = x #x+0.2
 
                 spatialDiscretization = 81
-                translateAbscissa = 0.11
-                lengthAbscissa = 0.1 #0.5
+                translateAbscissa = 0.0
+                lengthAbscissa = 0.2 #0.5
                 lengthOrdinate = 0.
                 lengthQuota = 0.
                 meshType = GT_PK(1,1)
@@ -148,15 +91,13 @@ spaceDimension = 1.
                 etaTangential = 100.
                 etaTangentialDistribution = 1.
 
-                source = 0.0
+                source = -0.04
                 solution = 1.
                 velocity = 0.
 
         [../]
 
-
-s[../]
-
+[../]
 
 [fractureData2]
 
@@ -164,14 +105,14 @@ spaceDimension = 1.
 
         [./levelSet]
 
-		levelSet = x-0.7
-                ylevelSet = y-0.8+0.8*t
-		xlevelSet = x-0.7
+				levelSet = y-0.93
+                ylevelSet = y-0.93
+				xlevelSet = x-0.165-0.3*t
                 levelSetCut = -1
-                yMap = 0.8-0.8*t
-		xMap = 0.7
-                jacMap = [0.01/0.8] %here the mapped grid is shorter than the actual arc length
-                normalMap = [1.,0.]
+                yMap = 0.93
+				xMap = 0.165+0.3*t
+                jacMap = 1 %here the mapped grid is shorter than the actual arc length
+                normalMap = [0.,-1.]
 
                 integrationTypeSimplex = IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(3),1)
 
@@ -179,13 +120,15 @@ spaceDimension = 1.
 
         [./domain]
 
+                position = 0.0
+                thickness = 0.01
 
-                thickness = 0.012
+                csi0 = 0.25
 
-                spacing = x+0.7  %here the fracture starts at x=0.1 
+                spacing = x+0.165  %here the fracture starts at x=0.1 
                 spatialDiscretization = 81 
-                translateAbscissa = 0.7
-                lengthAbscissa = 0.01 #1.
+                translateAbscissa = 0.165
+                lengthAbscissa = 0.3 #1.
                 lengthOrdinate = 0.
                 lengthQuota = 0.
                 meshType = GT_PK(1,1)
@@ -206,14 +149,73 @@ spaceDimension = 1.
                 etaTangential = 100
                 etaTangentialDistribution = 1.
 
-                source = 0.0
+                source = -0.04
+                solution = 0.
+                velocity = 0.
+
+        [../]
+
+s[../]
+
+
+[fractureData1]
+
+spaceDimension = 1.
+
+        [./levelSet]
+
+				levelSet = y-0.7
+                ylevelSet = y-0.7
+				xlevelSet = x-0.05-0.95*t
+                levelSetCut = -1
+                yMap = 0.7
+				xMap = 0.05+0.95*t
+                jacMap = 1 %here the mapped grid is shorter than the actual arc length
+                normalMap = [0.,-1.]
+
+                integrationTypeSimplex = IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(3),1)
+
+        [../]
+
+        [./domain]
+
+                position = 0.0
+                thickness = 0.01
+
+                csi0 = 0.25
+
+                spacing = x+0.05 %here the fracture starts at x=0.1 
+                spatialDiscretization = 81 
+                translateAbscissa = 0.05
+                lengthAbscissa = 0.95 #1.
+                lengthOrdinate = 0.
+                lengthQuota = 0.
+                meshType = GT_PK(1,1)
+
+                integrationTypeVelocity = IM_GAUSS1D(3)
+                integrationTypePressure = IM_GAUSS1D(2)
+
+                FEMTypeVelocity = FEM_PK(1,1)
+                FEMTypePressure = FEM_PK(1,0)
+                FEMTypeLinear = FEM_PK(1,1)
+
+        [../]
+
+        [./darcy]
+
+                etaNormal = 0.01
+                etaNormalDistribution = 1. 
+                etaTangential = 100
+                etaTangentialDistribution = 1.
+
+                source = -0.04
                 solution = 1.
                 velocity = 0.
 
         [../]
 
+s[../]
 
-[../]
 
 
 [fractureData3]
@@ -222,14 +224,14 @@ spaceDimension = 1.
 
         [./levelSet]
 
-				levelSet = y-x-0.1
-                ylevelSet = y-0.31-0.49*t
-				xlevelSet = x-0.21-0.49*t
+				levelSet = y-0.8
+                ylevelSet = y-0.8
+				xlevelSet = x-0.1-0.9*t
                 levelSetCut = -1
-                yMap = 0.31+0.49*t
-				xMap = 0.21+0.49*t
-                jacMap = [1./sqrt(2)] %here the mapped grid is shorter than the actual arc length
-                normalMap = [1.,-1.]
+                yMap = 0.8
+				xMap = 0.1+0.9*t
+                jacMap = 1 %here the mapped grid is shorter than the actual arc length
+                normalMap = [0.,-1.]
 
                 integrationTypeSimplex = IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(3),1)
 
@@ -237,13 +239,15 @@ spaceDimension = 1.
 
         [./domain]
 
+                position = 0.0
+                thickness = 0.01
 
-                thickness = 0.012
+                csi0 = 0.25
 
-                spacing = x+0.21  %here the fracture starts at x=0.1 
+                spacing = x+0.1  %here the fracture starts at x=0.1 
                 spatialDiscretization = 81 
-                translateAbscissa = 0.21
-                lengthAbscissa = 0.49 #1.
+                translateAbscissa = 0.1
+                lengthAbscissa = 0.9 #1.
                 lengthOrdinate = 0.
                 lengthQuota = 0.
                 meshType = GT_PK(1,1)
@@ -264,14 +268,15 @@ spaceDimension = 1.
                 etaTangential = 100
                 etaTangentialDistribution = 1.
 
-                source = 0.0
-                solution = -1.
+                source = -0.04
+                solution = 1.
                 velocity = 0.
 
         [../]
 
+s[../]
 
-[../]
+
 
 
 [fractureData4]
@@ -280,14 +285,14 @@ spaceDimension = 1.
 
         [./levelSet]
 
-		levelSet = y+x-1.5
-                ylevelSet = y-1.+0.2*t
-		xlevelSet = x-0.5-0.2*t
+				levelSet = y-0.8
+                ylevelSet = y-0.8
+				xlevelSet = x-t
                 levelSetCut = -1
-                yMap = 1-+0.2*t
-		xMap = 0.5+0.2*t
-                jacMap = [1./sqrt(2)] %here the mapped grid is shorter than the actual arc length
-                normalMap = [1.,1.]
+                yMap = 0.8
+				xMap = t
+                jacMap = 1 %here the mapped grid is shorter than the actual arc length
+                normalMap = [0.,-1.]
 
                 integrationTypeSimplex = IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(3),1)
 
@@ -295,13 +300,15 @@ spaceDimension = 1.
 
         [./domain]
 
+                position = 0.0
+                thickness = 0.01
 
-                thickness = 0.012
+                csi0 = 0.25
 
-                spacing = x+0.5  %here the fracture starts at x=0.1 
+                spacing = x %here the fracture starts at x=0.1 
                 spatialDiscretization = 81 
-                translateAbscissa = 0.5
-                lengthAbscissa = 0.2 #1.
+                translateAbscissa = 0.
+                lengthAbscissa = 1. #1.
                 lengthOrdinate = 0.
                 lengthQuota = 0.
                 meshType = GT_PK(1,1)
@@ -322,15 +329,13 @@ spaceDimension = 1.
                 etaTangential = 100
                 etaTangentialDistribution = 1.
 
-                source = 0.0
+                source = -0.04
                 solution = 1.
                 velocity = 0.
 
         [../]
 
-
-[../]
-
+s[../]
 
 
 

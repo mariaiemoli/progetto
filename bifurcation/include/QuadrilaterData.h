@@ -23,8 +23,8 @@
 
 /**************************************************************************/
 /*  QuadrilaterData.h											  		  */
-/*  Classe che contiene i dati principali per costrire il quadrilatero 	di	  */
-/*  intersezione                 										  */
+/*  Classe che contiene i dati principali per costrire il quadrilatero 	  */
+/*  di intersezione                 									  */
 /**************************************************************************/
 
 class QuadrilaterData

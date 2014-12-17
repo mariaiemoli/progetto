@@ -154,13 +154,7 @@ void setAup_i ( sparseMatrixPtr_Type& Aup_i,
  				sizeVector_Type& shiftIntersect, sizeVector_Type& fractureNumberGlobalDOFVelocity,  
  				Matrix4d T, const size_type Index,
 				scalar_type s = 0 );
-/*					
-void copyBifurcationMatrices_in_GlobalMatrix ( sparseMatrixPtr_Type Aup0, size_type id0,
-											   sparseMatrixPtr_Type Aup1, size_type id1,
-											   sparseMatrixPtr_Type Aup2, size_type id2,
-											   sparseMatrixPtr_Type Aup3, size_type id3 );
-*/
-							 
+						 
 
 
 } // namespace getfem

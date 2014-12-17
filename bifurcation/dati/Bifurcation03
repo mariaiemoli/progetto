@@ -4,25 +4,9 @@
 
 meshFile = meshes/mesh
 folderVTK = ./vtk/
-transientSolver = 0
-stabilize = 1
 
 numberFractures = 3
 
-[dataTime]
-
-        endTime = 1000000000000
-        deltaTime = 1000000000000
-        plotAt = 1
-
-[../]
-
-[stabilization]
-
-    relaxPeclet = 1.
-    function = Pe-1.
-
-[../]
 
 [mediumData]
 
@@ -38,15 +22,6 @@ numberFractures = 3
                 lengthQuota = 1.
                 meshType = GT_PK(2,1)
                 spaceDimension = 2.
-
-                integrationTypeVelocity = IM_TRIANGLE(6)
-                integrationTypePressure = IM_TRIANGLE(1)
-
-                FEMTypeVelocity = FEM_RT0(2)
-                FEMTypePressure = FEM_PK(2,0)
-
-                penaltyParameterVelocity = 50.
-                penaltyParameterPressure = 10.
 
         [../]
 
@@ -84,8 +59,6 @@ spaceDimension = 1.
         [./domain]
 
 		        thickness = 0.013
-		
-		        csi0 = 0.25
 		
 		        spacing = x
 		
@@ -147,8 +120,6 @@ spaceDimension = 1.
 
                 thickness = 0.011
 
-                csi0 = 0.25
-
                 spacing = x
 
                 spatialDiscretization = 81
@@ -207,8 +178,6 @@ spaceDimension = 1.
 
 
                 thickness = 0.012
-
-                csi0 = 0.25
 
                 spacing = x+0.43 %here the fracture starts at x=0.1 
                 spatialDiscretization = 81 

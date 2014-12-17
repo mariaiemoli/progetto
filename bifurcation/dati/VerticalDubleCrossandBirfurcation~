@@ -5,7 +5,7 @@
 meshFile = meshes/mesh
 folderVTK = ./vtk/
 
-numberFractures = 3
+numberFractures = 4
 
 
 [mediumData]
@@ -23,6 +23,9 @@ numberFractures = 3
                 meshType = GT_PK(2,1)
                 spaceDimension = 2.
 
+                penaltyParameterVelocity = 50.
+                penaltyParameterPressure = 10.
+
         [../]
 
         [./darcy]
@@ -32,9 +35,11 @@ numberFractures = 3
                 invKDist12 = 0.
                 invKDist22 = 1.
 
+
         [../]
 
 [../]
+
 
 
 [fractureData0]
@@ -43,14 +48,14 @@ spaceDimension = 1.
 
         [./levelSet]
 		
-				levelSet = y+x-1.19
-				ylevelSet = y-0.41+0.22*t
-				xlevelSet = x-0.78-0.22*t          
-				levelSetCut = -1
-				yMap = 0.41-0.22*t
-				xMap = 0.78+0.22*t
-				jacMap = [1./sqrt(2)]
-				normalMap = [1.,1.]
+			levelSet = y-x-0.08
+			ylevelSet = y-0.08-0.43*t
+			xlevelSet = x-0.43*t          
+			levelSetCut = -1
+			yMap = 0.08+0.43*t
+			xMap = 0.43*t
+			jacMap = [0.3040]
+			normalMap = [1.,-1.]
 		
 		        integrationTypeSimplex = IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(3),1)
 
@@ -60,11 +65,13 @@ spaceDimension = 1.
 
 		        thickness = 0.013
 		
-		        spacing = x+0.78
+		        csi0 = 0.25
+		
+		        spacing = x
 		
 		        spatialDiscretization = 81
-		        translateAbscissa = 0.78
-		        lengthAbscissa = 0.22 #0.5
+		        translateAbscissa = 0.
+		        lengthAbscissa = 0.43 #0.5
 		        lengthOrdinate = 0.
 		        lengthQuota = 0.
 		        meshType = GT_PK(1,1)
@@ -86,7 +93,7 @@ spaceDimension = 1.
                 etaTangential = 100.
                 etaTangentialDistribution = 1.
 
-                source = 0.0
+                source = -0.04
                 solution = -1.
                 velocity = 0.
 
@@ -101,17 +108,17 @@ spaceDimension = 1.
 spaceDimension = 1.
 
         [./levelSet]
-			
-				levelSet = y-x+0.37
-		        ylevelSet = y-0.41-0.22*t
-				xlevelSet = x-0.78-0.22*t            
-				levelSetCut = -1
-				yMap = 0.41+0.22*t
-				xMap = 0.78+0.22*t            
-	            jacMap = [1./sqrt(2)]
-	        	normalMap = [1.,-1.]
 	
-	            integrationTypeSimplex = IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(3),1)
+			levelSet = y+x-0.94
+	        ylevelSet = y-0.94+0.43*t
+			xlevelSet = x-0.43*t           
+			levelSetCut = -1
+			yMap = 0.94-0.43*t
+			xMap = 0.43*t   
+      	    jacMap = [0.3040]
+        	normalMap = [1.,1.]
+	
+      		integrationTypeSimplex = IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(3),1)
 
         [../]
 
@@ -120,11 +127,13 @@ spaceDimension = 1.
 
                 thickness = 0.011
 
-                spacing = x+0.78
+                csi0 = 0.25
+
+                spacing = x
 
                 spatialDiscretization = 81
-                translateAbscissa = 0.78
-                lengthAbscissa = 0.22 #0.5
+                translateAbscissa = 0.
+                lengthAbscissa = 0.43 #0.5
                 lengthOrdinate = 0.
                 lengthQuota = 0.
                 meshType = GT_PK(1,1)
@@ -146,8 +155,8 @@ spaceDimension = 1.
                 etaTangential = 100.
                 etaTangentialDistribution = 1.
 
-                source = 0.0
-                solution = 1.
+                source = -0.04
+                solution = -1.
                 velocity = 0.
 
         [../]
@@ -161,14 +170,14 @@ spaceDimension = 1.
 
         [./levelSet]
 
-				levelSet = y-0.41
-                ylevelSet = y-0.41
-				xlevelSet = x-0.78-0.22*t
+		levelSet = y-0.5*x-0.295
+                ylevelSet = y-0.51-0.285*t
+		xlevelSet = x-0.43-0.57*t
                 levelSetCut = -1
-                yMap = 0.41
-				xMap = 0.78+0.22*t
-                jacMap = [1.] %here the mapped grid is shorter than the actual arc length
-                normalMap = [1.,-1.]
+                yMap = 0.51+0.285*t
+		xMap = 0.43+0.57*t
+                jacMap = [0.5898] %here the mapped grid is shorter than the actual arc length
+                normalMap = [2.,-1.]
 
                 integrationTypeSimplex = IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(3),1)
 
@@ -179,10 +188,12 @@ spaceDimension = 1.
 
                 thickness = 0.012
 
-                spacing = x+0.78  %here the fracture starts at x=0.1 
+                csi0 = 0.25
+
+                spacing = x+0.43 %here the fracture starts at x=0.1 
                 spatialDiscretization = 81 
-                translateAbscissa = 0.78
-                lengthAbscissa = 0.22 #1.
+                translateAbscissa = 0.43
+                lengthAbscissa = 0.57 #1.
                 lengthOrdinate = 0.
                 lengthQuota = 0.
                 meshType = GT_PK(1,1)
@@ -203,8 +214,8 @@ spaceDimension = 1.
                 etaTangential = 100
                 etaTangentialDistribution = 1.
 
-                source = 0.0
-                solution = -1.
+                source = -0.04
+                solution = 1.
                 velocity = 0.
 
         [../]
@@ -213,3 +224,62 @@ spaceDimension = 1.
 [../]
 
 
+[fractureData3]
+
+spaceDimension = 1.
+
+        [./levelSet]
+		
+				levelSet = x-0.23
+                ylevelSet = y-t
+				xlevelSet = x-0.23            
+				levelSetCut = -1
+				yMap = t
+				xMap = 0.23
+                jacMap = [0.01]
+                normalMap = [1.,0.]
+
+                integrationTypeSimplex = IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(3),1)
+
+        [../]
+
+        [./domain]
+
+                position = 0.0
+                thickness = 0.01
+
+                csi0 = 0.25
+
+                spacing = x+0.23
+
+                spatialDiscretization = 81
+                translateAbscissa = 0.23
+                lengthAbscissa = 0.01. #0.5
+                lengthOrdinate = 0.
+                lengthQuota = 0.
+                meshType = GT_PK(1,1)
+
+
+                integrationTypeVelocity = IM_GAUSS1D(3)
+                integrationTypePressure = IM_GAUSS1D(2)
+
+                FEMTypeVelocity = FEM_PK(1,1)
+                FEMTypePressure = FEM_PK(1,0)
+                FEMTypeLinear = FEM_PK(1,1)
+
+        [../]
+
+        [./darcy]
+
+                etaNormal = 0.01
+                etaNormalDistribution = 1. #1.+1000.*(x>0.25)-1000.*(x>0.75)
+                etaTangential = 100.
+                etaTangentialDistribution = 1.
+
+                source = -0.4
+                solution = 0.
+                velocity = 0.
+
+        [../]
+
+[../]

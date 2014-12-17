@@ -86,7 +86,7 @@ void Intersection::setIntersection( FracturePtrContainer_Type& M_FracturesSet )
 
 	return; 
 	
-}
+}// setIntersection
 
 void Intersection::setQuadrilaterIntersection( FracturePtrContainer_Type& M_FracturesSet ) 
 {
@@ -184,7 +184,7 @@ void Intersection::setQuadrilaterIntersection( FracturePtrContainer_Type& M_Frac
 	
 	return;
 
-}	// setQuadrilaterIntersection
+}// setQuadrilaterIntersection
 
 
 void Intersection::setTriangleIntersection(	FracturePtrContainer_Type& M_FracturesSet ) 
@@ -277,7 +277,7 @@ void Intersection::setTriangleIntersection(	FracturePtrContainer_Type& M_Fractur
 	std::cout << tmp.M_intersectionTriangle << std::endl;
 	
 	return;
-} // setTriangleIntersection
+}// setTriangleIntersection
 
 TriangleData const & Intersection::computeIntersectionTriangle()
 {

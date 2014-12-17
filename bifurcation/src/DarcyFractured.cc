@@ -280,8 +280,6 @@ void DarcyFractured::assembly ( const GetPot& dataFile )
  					   	  
     }
     
-    
-    ///////////////////////////////////////////////////////////////////////////////
     // Aggiorno prima le matrici di tutte le fratture che si intersecano formando un " IntBifurcation2 "
 	for ( size_type i = 0; i < IntBifurcation2.size(); i++ )
 	{
@@ -539,8 +537,6 @@ void DarcyFractured::assembly ( const GetPot& dataFile )
 
 		
 		Matrix4d T = Matrix.T();
-			
-		///////////////////////////////////////////////////////////////////
 		
 		
 		scalarVector_Type DOF_p0( 2 );
@@ -786,10 +782,6 @@ void DarcyFractured::assembly ( const GetPot& dataFile )
     	getfem::assembling_SourceF ( B_pF [ id0 ], divF [ id0 ],
     								f0, f1, FractureHandler::FRACTURE_INTERSECT * ( id0 + 1 ) + id1 + 1 );
     	                
-    	/*
-    	getfem::assembling_SourceF ( B_pF [ id1 ], divF [ id1 ],
-    								f1, f0, FractureHandler::FRACTURE_INTERSECT * ( id1 + 1 ) + id0 + 1 );
-    	*/
     }
     
     
@@ -1207,12 +1199,6 @@ void DarcyFractured::solve ( )
 				std::cout << " DOF =  " << M_fractures->getFracture( f )->getDofIntersection()[ 1 ] <<std::endl;
 			}
 		}
-		
-/*		
-			std::cout<<std::endl;
-			std::cout << " Velocità nel punto di intersezione: " << fractureVelocityMeanUNCUTInterpolated << std::endl;
-			std::cout<<std::endl;
-*/		
 	
         osFileName.str("");
         osFileName << "fracturePressure" << f << ".vtk";

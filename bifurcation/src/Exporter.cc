@@ -2,7 +2,7 @@
 #include "../include/Exporter.h"
 
 /**************************************************************************/
-/*  Exporter.h															  */
+/*  Exporter.cc															  */
 /*  Classe in cui definisco le funzioni per esportare i dati              */
 /**************************************************************************/
 

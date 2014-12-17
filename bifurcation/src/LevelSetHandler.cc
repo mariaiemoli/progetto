@@ -99,4 +99,4 @@ void LevelSetHandler::init ( getfem::mesh& mediumMesh,
     }
 
     return;
-}
+}// init

@@ -4,25 +4,10 @@
 
 meshFile = meshes/mesh
 folderVTK = ./vtk/
-transientSolver = 0
-stabilize = 1
 
 numberFractures = 2
 
-[dataTime]
 
-        endTime = 1000000000000
-        deltaTime = 1000000000000
-        plotAt = 1
-
-[../]
-
-[stabilization]
-
-    relaxPeclet = 1.
-    function = Pe-1.
-
-[../]
 
 [mediumData]
 
@@ -39,14 +24,6 @@ numberFractures = 2
                 meshType = GT_PK(2,1)
                 spaceDimension = 2.
 
-                integrationTypeVelocity = IM_TRIANGLE(6)
-                integrationTypePressure = IM_TRIANGLE(1)
-
-                FEMTypeVelocity = FEM_RT0(2)
-                FEMTypePressure = FEM_PK(2,0)
-
-                penaltyParameterVelocity = 50.
-                penaltyParameterPressure = 10.
 
         [../]
 
@@ -56,12 +33,6 @@ numberFractures = 2
                 invKDist11 = 1.
                 invKDist12 = 0.
                 invKDist22 = 1.
-
-                source = 4   %source term for darcy
-                solution = 0 %function for BC on pressure
-                solutionIn = 0 
-                solutionOut = 0
-                velocity = 0. %function for BC on velocity
 
         [../]
 
@@ -88,10 +59,7 @@ spaceDimension = 1.
 
         [./domain]
 
-                position = 0.00
                 thickness = 0.01
-
-                csi0 = 0.25
 
                 spacing = x #x+0.2
 
@@ -149,10 +117,7 @@ spaceDimension = 1.
 
         [./domain]
 
-                position = 0.0
                 thickness = 0.01
-
-                csi0 = 0.25
 
                 spacing = x  %here the fracture starts at x=0.1 
                 spatialDiscretization = 81 
@@ -209,10 +174,7 @@ spaceDimension = 1.
 
         [./domain]
 
-                position = 0.00
                 thickness = 0.01
-
-                csi0 = 0.25
 
                 spacing = x #x+0.2
 
@@ -333,10 +295,7 @@ spaceDimension = 1.
 
         [./domain]
 
-                position = 0.0
                 thickness = 0.01
-
-                csi0 = 0.25
 
                 spacing = x+0.2
 
@@ -393,10 +352,7 @@ spaceDimension = 1.
 
         [./domain]
 
-                position = 0.00
                 thickness = 0.01
-
-                csi0 = 0.25
 
                 spacing = x+0.12 #x+0.2
 
@@ -455,10 +411,7 @@ spaceDimension = 1.
 
         [./domain]
 
-                position = 0.0
                 thickness = 0.01
-
-                csi0 = 0.25
 
                 spacing = x+0.32  %here the fracture starts at x=0.1 
                 spatialDiscretization = 81 
@@ -513,10 +466,7 @@ spaceDimension = 1.
 
         [./domain]
 
-                position = 0.0
                 thickness = 0.01
-
-                csi0 = 0.25
 
                 spacing = x+0.12  %here the fracture starts at x=0.1 
                 spatialDiscretization = 81 
@@ -574,10 +524,7 @@ spaceDimension = 1.
 
         [./domain]
 
-                position = 0.0
                 thickness = 0.01
-
-                csi0 = 0.25
 
                 spacing = x+0.12  %here the fracture starts at x=0.1 
                 spatialDiscretization = 81 
@@ -633,10 +580,7 @@ spaceDimension = 1.
 
         [./domain]
 
-                position = 0.0
                 thickness = 0.01
-
-                csi0 = 0.25
 
                 spacing = x+0.33
 
@@ -694,10 +638,7 @@ spaceDimension = 1.
 
         [./domain]
 
-                position = 0.0
                 thickness = 0.01
-
-                csi0 = 0.25
 
                 spacing = x
 

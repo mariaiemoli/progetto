@@ -4,7 +4,7 @@
 
 
 /**************************************************************************/
-/*  FractureData.h														  */
+/*  FractureData.cc														  */
 /*  Classe che contiene tutte le informazioni circa la natura geometrica  */
 /*  e fisica della singola frattura										  */
 /**************************************************************************/
@@ -19,8 +19,6 @@ FractureData::FractureData ( const GetPot& dataFile,
 
             // domain
             M_thickness ( dataFile ( ( M_sectionDomain + "thickness" ).data (), 0.01 ) ),
-
-            M_csi0 ( dataFile ( ( M_sectionDomain + "csi0" ).data (), 0.25 ) ),
             M_lengthAbscissa ( dataFile ( ( M_sectionDomain + "lengthAbscissa" ).data (), 1. ) ),
             M_lengthOrdinate ( dataFile ( ( M_sectionDomain + "lengthOrdinate" ).data (), 0. ) ),
             M_lengthQuota ( dataFile ( ( M_sectionDomain + "lengthQuota" ).data (), 0. ) ),
