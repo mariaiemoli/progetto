@@ -1,1 +1,47 @@
-\chapter{Confronto FreeFem, Validazione dei risultati} 
+\section{Caso particolare: biforcazione con due fratture}
+
+Come ultimo caso di studio ci siamo concentrate sulla biforcazione generata da due fratture. 
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{img/cap6/y.eps}
+\caption{Struttura di un'intersezione di tipo \textit{Bifurcation} tra due fratture.}\label{Y}
+\end{center}
+\end{figure}
+
+A differenza di quando visto fino ad ora, qui la regione d'intersezione non è più un triangolo, ma un parallelogramma. Si può generalizzare l'approssimazione fatta con gli operatori mimetici, essendo degli operatori generici, non legati al tipo di cella di integrazione su cui si lavora. \\
+\noindent Il punto di intersezione $i_c$ rappresenta un punto generico per la frattura $\gamma_0$ in figura \ref{Y}, mentre per la frattura $\gamma_1$ rappresenta il primo o l'ultimo nodo. Questo punto non è detto che coincida con un nodo della mesh $\gamma_0$ , in generale non sappiamo dove cadrà, per questo per poter imporre le condizioni d'interfaccia in modo corretto abbiamo introdotto per quesa frattura due gradi di libertà estesi per la velocità e uno per la pressione. In questo modo possiamo ottenere una miglior approssimazione del valore di velocità e pressione prima e dopo il punto di intersezione nell'elemento della mesh tagliato. \\
+Esteso il codice di partenza per la costruzione del quadrilatero di intersezione, le condizioni d'interfaccia che vanno imposte hanno la stessa forma del caso delle tre fratture:
+
+\begin{center}			
+	$\left \{
+		\begin{array}{l}	
+	 		\textbf{u} - p_{I}T\textbf{1}_{3}+T \boldsymbol{\Pi}=0  \\ \\
+     	 	\displaystyle \sum_{k=0}^2 u_{k} = p_{I} - \pi  \\
+		\end{array}
+	\right.$
+\end{center} \label{condizioni d'interfaccia y }
+
+\noindent In questo caso cambiano però le dimensioni. La matrice di trasmissibilità $T$ è ora una matrice di $\mathbb{R}^{4 \times 4}$, come diretta conseguenza della natura delle matrici $C$ e $N$. Ora infatti l'area d'intersezione è delimitata da quattro lati. Anche lo scalare $\pi$ e il vettore $\boldsymbol{\Pi}$ cambiano, e diventano:
+$$\boldsymbol{\Pi} = \left[ \begin{matrix}
+ 			p_0\\ 
+ 			p_1\\
+ 			p_2 \\ 
+		 	p_3 \\
+ 			\end{matrix}\right] 
+$$ 
+ e
+$$ \pi = \frac{p_0 + p_1 + p_2 + p_3 }{4} $$
+
+Per poter imporre le condizioni d'interfaccia, per la frattura tagliata, è necessario usare il valore della pressione e della velocità a ridosso dell'intersezione, ma questi valori sono incogniti. 
+Usiamo il grado classico di pressione e il grado esteso per indicare il valore di pressione prima e dopo il punto $i_c$, indicati con $p_0$ e $p_2$ in figura \ref{Y}.  L'incognita $p_1$ rappresenta il primo o l'ultimo grado di libertà della frattura $\gamma_1$, mentre con $p_3$ indichiamo un nodo fittizio, in cui imponiamo condizione di flusso nullo. 
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{img/cap6/xfem.eps}
+\caption{Introduzione dei gradi di libertà estesi per la frattura tagliata.}\label{xfem}
+\end{center}
+\end{figure}
+
+\noindent Per quanto riguarda la velocità invece, la velocità prima dell'intersezione lo poniamo par alla media tra il valore nel grado di libertà classico prima e al valore nel grado esteso dopo l'intersezione. Lo stesso facciamo per il valore di velocità dopo l'intersezione, come indicato in figura \ref{xfem}. \\
+
