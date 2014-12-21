@@ -42,9 +42,7 @@ e le condizioni che dobbiamo porre all'intersezione sono:
 	\right.$
 \end{center} \label{condizioni d'interfaccia}
 
-\noindent  Queste sono le condizioni d'interfaccia che verranno imposte nel punto di intersezione delle fratture.\\ 
-\par In questa parte di codice per gestire sia il calcolo delle matrici introdotte precedentemente, che i punti e la geometria del triangolo di intersezione, abbiamo usato la libreria matematica \textit{Eigen}.\\
-\par Note le basi teoriche possiamo passare a descrivere le principali classi del codice che definiscono la struttura e le propriet\`{a} della biforcazione in uno spazio bidimensionale.
+\par Passiamo ora a descrivere la parte di codice che definisce gestisce la costruzione del triangolo di intersezione e il calcolo della matrice di trasmissibilità $\textbf{T}$, scritta usando la libreria matematica \textit{Eigen}.\\
 
 \newpage
 \begin{figure}[htbp]
@@ -58,8 +56,8 @@ La classe \texttt{MatrixBifurcationHandler} contiene le matrici associate a una 
 
 \noindent I campi fondamentali della classe sono:
 	\begin{enumerate}
-	\item[-] \texttt{M\_intersection}: di tipo Intersection, contiene tutte le informazioni base per poter ricavare le matrici;
-	\item[-] \texttt{M\_T}: matrice T di trasmissibilità necessaria per l'imposizione delle condizioni di interfaccia.
+	\item[-] \texttt{M\_intersection}, di tipo Intersection, contiene tutte le informazioni base per poter ricavare le matrici;
+	\item[-] \texttt{M\_T}, matrice T di trasmissibilità necessaria per l'imposizione delle condizioni di interfaccia.
 	\end{enumerate} 
 \begin{Code03_03}[caption={Classe \texttt{Intersection}}]
 class MatrixBifurcationHandler
@@ -91,13 +89,13 @@ class MatrixBifurcationHandler
 
 \section{La Classe \texttt{Intersection}}
 
-La class \texttt{Intersection}, definita in \texttt{Geometry.h}, contiene tutte le informazioni relative ad una biforcazione in uno spazio 2D necessarie per il calcolo delle matrici associate al triangolo di intersezione.
+La classe \texttt{Intersection}, definita in \texttt{Geometry.h}, contiene tutte le informazioni relative ad una biforcazione in uno spazio 2D necessarie per il calcolo delle matrici associate al triangolo di intersezione.
 I campi fondamentali della classe sono:
 	\begin{enumerate}
-	\item[-] \texttt{M\_intersection}: di tipo PointData, rappresenta il punto di intersezione;
-	\item[-] \texttt{M\_tangents}: vettore contenente le tangenti alle fratture coinvolte;
-	\item[-] \texttt{M\_normals}: vettore contenente le normali alle fratture coinvolte;
-	\item[-] \texttt{M\_intersectionTriangle}:di tipo TriangleData, rappresenta il triangolo di intersezione, i cui vertici sono i punti d'incontro dei bordi delle fratture.
+	\item[-] \texttt{M\_intersection}, di tipo PointData, rappresenta il punto di intersezione;
+	\item[-] \texttt{M\_tangents}, vettore contenente le tangenti alle fratture coinvolte;
+	\item[-] \texttt{M\_normals}, vettore contenente le normali alle fratture coinvolte;
+	\item[-] \texttt{M\_intersectionTriangle}, di tipo TriangleData, rappresenta il triangolo di intersezione, i cui vertici sono i punti d'incontro dei bordi delle fratture.
 	\end{enumerate} 
 
 \begin{Code03_03}[caption={Classe \texttt{Intersection}}]

@@ -86,4 +86,6 @@ Nel nostro caso quindi, per risolvere il flusso di un fluido all'interno di una 
 \begin{equation}
 \left[\begin{matrix}A_{11} &A_{12} \\A_{12}^T & 0 \end{matrix}\right] \, \left[\begin{matrix}U  \\P \end{matrix}\right] = \left[\begin{matrix}F_{1} \\F_{2} \end{matrix}\right] 
 \end{equation}
+\label{sistemaAlgebrico}
+
 Se vi sono più fratture che si intersecano è necessario imporre delle condizioni che leghino i rispettivi flussi e le rispettive pressioni. Il codice da cui siamo partite impone le condizioni d'interfaccia nel caso di un'intersezione di tipo \textit{Cross} in modo debole. Il nostro codice, come verrà spiegato più avanti, impone le condizioni d'interfaccia nel caso della \textit{Biforcazione} in maniera forte, ossia una volta che il sistema algebrico è già stato assemblato.

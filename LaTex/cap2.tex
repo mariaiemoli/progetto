@@ -82,9 +82,10 @@ Per poter usare \texttt{CMake} è necessario posizionarsi nella directory in cui
 %ADD_LIBRARY(pacs ${TARGET_SRC} ${TARGET_HANDLER})
 %\end{Code03_01}
 
-\par \noindent Nella cartella test si trovano delle sottocartelle ognuna delle quali contenente un file data di esempio per poter eseguire il codice e un file  \texttt{CMakeLists.txt} . Il file  \texttt{CMakeLists.txt} nella cartella dei test definisce gli obiettivi e i collegamenti necessari per l'esecuzione. 
+\par \noindent Nella cartella test si trovano delle sottocartelle contenenti un file data di esempio per poter eseguire il codice e un file  \texttt{CMakeLists.txt} .\\
+\noindent Il file  \texttt{CMakeLists.txt} nella cartella dei test definisce gli obiettivi e i collegamenti necessari per l'esecuzione. \\
 
-\par Una volta che il \texttt{Makefile} è stato generato è possibile compilare il codice con il comando: \\ 
+\noindent Una volta che il \texttt{Makefile} è stato generato è possibile compilare il codice con il comando: \\ 
 \par \texttt{make}\\
 
 \noindent Questo crea in ogni sottocartella della cartella \texttt{test} un eseguibile chiamato \texttt{Test}. Per poterlo eseguire è sufficiente lanciare da terminale, dopo essersi posizionati nella directory corretta, 

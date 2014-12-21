@@ -9,8 +9,8 @@ Come ultimo caso di studio ci siamo concentrate sulla biforcazione generata da d
 \end{center}
 \end{figure}
 
-A differenza di quando visto fino ad ora, qui la regione d'intersezione non è più un triangolo, ma un parallelogramma. Si può generalizzare l'approssimazione fatta con gli operatori mimetici, essendo degli operatori generici, non legati al tipo di cella di integrazione su cui si lavora. \\
-\noindent Il punto di intersezione $i_c$ rappresenta un punto generico per la frattura $\gamma_0$ in figura \ref{Y}, mentre per la frattura $\gamma_1$ rappresenta il primo o l'ultimo nodo. Questo punto non è detto che coincida con un nodo della mesh $\gamma_0$ , in generale non sappiamo dove cadrà, per questo per poter imporre le condizioni d'interfaccia in modo corretto abbiamo introdotto per quesa frattura due gradi di libertà estesi per la velocità e uno per la pressione. In questo modo possiamo ottenere una miglior approssimazione del valore di velocità e pressione prima e dopo il punto di intersezione nell'elemento della mesh tagliato. \\
+A differenza di quando visto fino ad ora, qui la regione d'intersezione non è più un triangolo, ma un parallelogramma. Si può generalizzare l'approssimazione fatta in \cite{Paper} con gli operatori mimetici, essendo degli operatori generici, non legati al tipo di cella di integrazione su cui si lavora. \\
+\noindent Il punto di intersezione $i_c$ rappresenta un punto generico per la frattura $\gamma_0$ in figura \ref{Y}, mentre per la frattura $\gamma_1$ rappresenta il primo o l'ultimo nodo. Questo punto non è detto che coincida con un nodo della mesh di $\gamma_0$ , in generale non sappiamo dove cadrà, per questo per poter imporre le condizioni d'interfaccia in modo corretto abbiamo introdotto per quesa frattura due gradi di libertà estesi per la velocità e uno per la pressione. È così possibile ottenere una miglior approssimazione del valore di velocità e pressione prima e dopo il punto di intersezione nell'elemento della mesh tagliato. \\
 Esteso il codice di partenza per la costruzione del quadrilatero di intersezione, le condizioni d'interfaccia che vanno imposte hanno la stessa forma del caso delle tre fratture:
 
 \begin{center}			
@@ -21,6 +21,14 @@ Esteso il codice di partenza per la costruzione del quadrilatero di intersezione
 		\end{array}
 	\right.$
 \end{center} \label{condizioni d'interfaccia y }
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=1\textwidth]{img/cap6/dipendenze.pdf}
+\caption{Struttura globale del codice per il calcolo generico della matrice di trasmissibilità}\label{dipendenze}
+\end{center}
+\end{figure}
+
 
 \noindent In questo caso cambiano però le dimensioni. La matrice di trasmissibilità $T$ è ora una matrice di $\mathbb{R}^{4 \times 4}$, come diretta conseguenza della natura delle matrici $C$ e $N$. Ora infatti l'area d'intersezione è delimitata da quattro lati. Anche lo scalare $\pi$ e il vettore $\boldsymbol{\Pi}$ cambiano, e diventano:
 $$\boldsymbol{\Pi} = \left[ \begin{matrix}
