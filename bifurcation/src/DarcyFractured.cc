@@ -887,6 +887,14 @@ void DarcyFractured::solve ( )
   
     size_type fractureShift = 0;
     
+    size_type NumCross = M_fractures->getIntersections ()->getNumberCross ();
+    size_type NumBifurcation = M_fractures->getIntersections ()->getNumberBifurcation ();
+    size_type NumBifurcation2 = M_fractures->getIntersections ()->getNumberBifurcation2 ();
+    size_type NumIntersection = 2*NumCross + NumBifurcation + 2*NumBifurcation2;
+    
+    scalarVectorPtr_Type M_intersectionPressure;
+    M_intersectionPressure.reset(new scalarVector_Type( NumIntersection, 0));
+    
     for ( size_type f = 0; f < numberFractures; ++f )
     { 
         // Extract the dual in the fracture
@@ -901,6 +909,12 @@ void DarcyFractured::solve ( )
         // Update the shift
         fractureShift += fractureNumberDOFVelocityPressure [ f ];
     }
+    
+    // Extract the pressure at the intersections
+    gmm::copy( gmm::sub_vector( *M_velocityAndPressure, 
+    							gmm::sub_interval( fractureShift, NumIntersection )), 
+    		   *( M_intersectionPressure ));
+
 
     // the extra dof start at the end of the fracture dofs
   
@@ -1212,6 +1226,104 @@ void DarcyFractured::solve ( )
         exportSolution ( M_exporter->getFolder() + osFileName.str(), "Velocity",
                      mfproj_v, fractureVelocityMeanUNCUTInterpolated );
 
+                
+    }
+    
+    IntersectDataContainer_Type IntCross = M_fractures->getIntersections ()-> getCrossIntersections ();
+    
+    IntersectDataContainer_Type IntBifurcation = M_fractures->getIntersections ()-> getBifurcationIntersections ();
+        
+    IntersectDataContainer_Type IntBifurcation2 = M_fractures->getIntersections ()-> getBifurcation2Intersections ();
+
+    
+    for ( size_type i = 0; i < IntBifurcation.size(); i++ )
+    {
+    	FracturePtrContainer_Type fractures = IntBifurcation[ i ].getFractures ();
+    	
+    	sizeVector_Type Dof = fractures[ 0 ]->getDofIntersection ();	
+    	
+		FractureHandlerPtr_Type fracture = fractures[ 0 ];
+		
+		std::ostringstream osFileName;
+	
+		getfem::mesh_level_set meshFLevelSetCutFlat ( fracture->getMeshFlat() );
+	
+		getfem::mesh meshFcutFlat;
+		getfem::mesh meshFcutMapped;
+		meshFLevelSetCutFlat.global_cut_mesh ( meshFcutFlat );
+	
+		getfem::mesh_fem meshFEMcutFlat ( meshFcutFlat, fracture->getMeshFEMPressure().get_qdim());
+		meshFEMcutFlat.set_finite_element ( fracture->getMeshFEMVelocity().fem_of_element(0) );
+	
+		//scalarVector_Type ordinataUncut ( 1, 0. );
+		//scalarVector_Type ordinataCut ( 1, 0. );
+		
+        scalarVector_Type ordinataUncut ( fractureNumberDOFVelocity [ 0 ], 0. );
+        scalarVector_Type ordinataCut ( meshFEMcutFlat.nb_dof(), 0. );
+
+	
+		const bgeot::base_node P = fracture->getMeshFEMVelocity().point_of_basic_dof( Dof[ 0 ] );
+	
+		bgeot::base_node P1 = fracture->getMeshMapped().points( ) [ Dof[ 0 ] ];
+
+
+        scalar_type c= 1./fracture->getData().getSpatialDiscretization ();
+
+        P1 [0] =  Dof[ 0 ]*c;
+
+        ordinataUncut [ 0 ] = fracture->getLevelSet()->getData()->y_map(P1);
+
+		getfem::interpolation ( fracture->getMeshFEMVelocity(), meshFEMcutFlat, ordinataUncut, ordinataCut );
+	
+		bgeot::base_node P2 ( fracture->getData().getSpaceDimension() + 2 );
+
+		P2 [ 0 ] = meshFEMcutFlat.point_of_basic_dof( Dof[ 0 ] )[0];
+
+		P2 [ 1 ] = ordinataCut [ Dof[ 0 ] ];
+			
+		meshFcutMapped.add_point(P2);
+		////
+
+        getfem::mesh_fem mfproj ( meshFcutMapped, fracture->getMeshFEMPressure().get_qdim() );
+        getfem::mesh_fem mfproj_v ( meshFcutMapped, fracture->getMeshFEMVelocity().get_qdim() );
+
+        mfproj.set_classical_discontinuous_finite_element ( 0, 0.01 );
+        mfproj_v.set_classical_discontinuous_finite_element ( 0, 0.01 );
+
+        scalarVector_Type fracturePressureMeanUNCUT ( fractureNumberDOFPressure[ 0 ], 0. );
+
+        scalarVector_Type fractureVelocityMeanUNCUT ( fractureNumberDOFPressure[ 0 ], 0. );
+
+        fracturePressureMeanUNCUT [ Dof[ 0 ] ] = (*(M_fracturePressure [ 0 ])) [ Dof[ 0 ] ];
+
+        fractureVelocityMeanUNCUT [ Dof[ 0 ] ] = (*(M_fractureVelocity [ 0 ])) [ Dof[ 0 ] ];
+        
+        /*
+         * getfem risolve il sistema per la mesh " piatta ", per avere i corretti valori di pressione devo interpolare
+         * sulla mesh mappata i valori che ho ottenuto
+         * 
+         */
+        scalarVector_Type fracturePressureMeanUNCUTInterpolated (  mfproj.nb_dof(), 0. );
+
+        scalarVector_Type fractureVelocityMeanUNCUTInterpolated (  mfproj.nb_dof(), 0. );
+        
+        getfem::mesh_fem mfprojUncut ( fracture->getMeshMapped(), fracture->getMeshFEMPressure().get_qdim());
+        mfprojUncut.set_finite_element ( fractureFETypePressure );
+
+        getfem::mesh_fem mfprojUncut_v ( fracture->getMeshMapped(), fracture->getMeshFEMVelocity().get_qdim());
+        mfprojUncut_v.set_finite_element ( fractureFETypeVelocity );
+ 
+        std::cout << "   1   " << std::endl;
+  
+        getfem::interpolation ( mfprojUncut, mfproj, fracturePressureMeanUNCUT, fracturePressureMeanUNCUTInterpolated );
+        
+        std::cout << "   4   " << std::endl;
+ 
+        getfem::interpolation ( mfprojUncut_v, mfproj_v, fractureVelocityMeanUNCUT, fractureVelocityMeanUNCUTInterpolated );
+
+        std::cout << "Biforcazione numero  " << i+1 << " : " << std::endl;
+        std::cout << "			Fratture coinvolte: " << fractures[ 0 ]->getId() << ", " << fractures[ 1 ]->getId() << ", " << fractures[ 2 ]->getId() << std::endl;
+        std::cout << "			Valore di pressione nel punto di intersezione: " << fractureVelocityMeanUNCUTInterpolated[ Dof[ 0 ] ] << std::endl;
                 
     }
 
