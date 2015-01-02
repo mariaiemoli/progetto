@@ -10,21 +10,22 @@ bool plotYesNo = true;
 
 // Spacing
 int Nelem = 1200;
-int NelemI = 10;
+int NelemS = 5;
+int NelemI = 20 ;
 
 include "mesh_bifurcation.edp"
 
 // dual-mixed mathod
 
-func invK11 = part(x,y)*1 + fracture0(x,y)*1 + fracture1(x,y)*1 + fracture2(x,y)*1;
+func invK11 = part(x,y)*1. + fracture0(x,y)*1. + fracture1(x,y)*1. + fracture2(x,y)*1.;
 func invK12 = 0.;//-part(x,y)*4999.5;
-func invK22 = part(x,y)*1 + fracture0(x,y)*1 + fracture1(x,y)*1 + fracture2(x,y)*1;
+func invK22 = part(x,y)*1. + fracture0(x,y)*1. + fracture1(x,y)*1. + fracture2(x,y)*1.;
 func invK21 = invK12;
 
-func f = -0.04;
+func f = 0.0;
 
 // pressure at inflow
-real p0 = 1;
+real p0 = -1;
 real p1 = 1;
 real p2 = -1;
 
@@ -36,11 +37,16 @@ fespace Qh ( Th, P0 );
 
 // solution and test function
 Vh [uh1, uh2], [tauh1, tauh2];
-Qh ph, qh, one;
+Qh ph, qh, one, two, three,four;
 one = part(x,y);
+two = 2*fracture0(x,y);
+three = 3*fracture1(x,y);
+four = 4*fracture2(x,y);
+
+   // plot (one,two,three,four,  fill = true, nbiso = 20, value = true , wait = true );
 
 // problem definition
-problem Darcy ( [uh1, uh2, ph], [tauh1, tauh2, qh], solver = GMRES) = -
+problem Darcy ( [uh1, uh2, ph], [tauh1, tauh2, qh], solver=GMRES, init=1000 ) = -
                 int2d(Th)( ( invK11 * uh1 + invK12 * uh2 ) * tauh1 +
                            ( invK21 * uh1 + invK22 * uh2 ) * tauh2 ) +
                 int2d(Th)( ph * ( dx(tauh1) + dy(tauh2) ) ) +
@@ -49,7 +55,7 @@ problem Darcy ( [uh1, uh2, ph], [tauh1, tauh2, qh], solver = GMRES) = -
                 int1d(Th,54)(p2*(tauh1*N.x + tauh2*N.y) ) -
                 int1d(Th,32)(p1*(tauh1*N.x + tauh2*N.y) ) -
                 int1d(Th,10)(p0*(tauh1*N.x + tauh2*N.y) ) +
-                on(3, uh1 = 0, uh2 = 0);
+            on(3, uh1 = 0, uh2 = 0);
 
 
 //--------------------------------------------------------
@@ -78,7 +84,7 @@ cout << "Lato 2 " << int1d(Th,40)( ph ) / int1d(Th, 40)( 1. ) << endl;
 
 if ( plotYesNo )
 {
-    plot ( ph, fill = true, nbiso = 20, value = true ); //, wait = true );
-    plot ( [uh1, uh2], fill = true, value = true ); //, wait = true );
+    plot ( ph, fill = true, nbiso = 20, value = true , wait = true );
+    plot ( [uh1, uh2], fill = true, value = true , wait = true );
 }
 

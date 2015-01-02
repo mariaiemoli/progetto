@@ -63,9 +63,9 @@ La classe  \texttt{FractureHandler} è la classe che inizializza e gestisce ogni
 \item[-] il vettore dei gradi di libertà estesi per velocità e pressione.
 \end{enumerate}
 
-La particolarità di questa classe è che possiede due mesh: una mesh 2d, \texttt{M\_meshMapped}, e una mesh 1d, \texttt{M\_meshFlat}. Questo deriva dal fatto che le fratture sono su un piano e hanno una rappresentazione del tipo $y=f(x)$, cioè i loro punti hanno coordinate $(x,y)$. La libreria che noi usiamo, \textit{GetFEM++}, non è in grado di integrare su una mesh i cui punti hanno coordinate $(x,y)$ un'equazione 1d come quella del nostro modello ridotto. L'idea è quindi quella di risolvere il problema integrando sulle mesh " piatte " 1d ottenute proiettando le mesh reali, e successivamente interpolare i risultati ottenuti per ritornare sulle mesh 2d. La creazione delle mesh è nella funzione \texttt{ init}.
+La particolarità di questa classe è che ogni frattura possiede due mesh: una mesh 2d, \texttt{M\_meshMapped}, e una mesh 1d, \texttt{M\_meshFlat}. Questo deriva dal fatto che le fratture sono su un piano e hanno una rappresentazione del tipo $y=f(x)$, cioè i loro punti hanno coordinate $(x,y)$. La libreria che noi usiamo, \textit{GetFEM++}, non è in grado di integrare su una mesh i cui punti hanno coordinate $(x,y)$ un'equazione 1d come quella del nostro modello ridotto. L'idea è quindi quella di risolvere il problema integrando sulle mesh " piatte " 1d ottenute proiettando le mesh reali, e successivamente interpolare i risultati ottenuti per ritornare sulle mesh 2d. La creazione delle mesh è nella funzione \texttt{ init}.
 \par La funzione principale di questa classe è  \texttt{setMeshLevelSetFracture }.
-Tale funzione crea un legame tra la frattura corrente e le fratture con cui ha un'intersezione, tenendo traccia della mesh e dei valori del level set della frattura corrente nei punti della frattura intersecata. Nel caso di intersezione di tipo \textit{Cross}, dove l'intersezione tra due level set non è detto che avvenga su due punti delle rispettive mesh, vengono aggiunti dei gradi di libertà estesi, due per la velocità e uno per la pressione. Questo permetterà di imporre in modo corretto il salto di velocità e di pressione tra i due lati della frattura, prima e dopo l'intersezione. Nel caso dell'intersezione di tipo \textit{Bifurcation} l'introduzione di tali elementi non si rende necessaria, poichè il punto di intersezione coincide sempre con il primo o l'ultimo punto della frattura. 
+Tale funzione crea un legame tra la frattura corrente e le fratture con cui ha un'intersezione, tenendo traccia della mesh e dei valori del level set della frattura corrente nei punti di quella intersecata. Nel caso di intersezione di tipo \textit{Cross}, dove l'intersezione tra due level set non è detto che avvenga su due punti delle rispettive mesh, vengono aggiunti dei gradi di libertà estesi, due per la velocità e uno per la pressione. Questo permetterà di imporre in modo corretto il salto di velocità e di pressione tra i due lati della frattura, prima e dopo l'intersezione. Nel caso dell'intersezione di tipo \textit{Bifurcation} l'introduzione di tali elementi non si rende necessaria, poichè il punto di intersezione coincide sempre con il primo o l'ultimo punto della frattura. 
 
 
 \begin{Code}[caption={Funzione \texttt{setMeshLevelSetFracture}}]
@@ -146,7 +146,7 @@ La funzione fondamentale della classe è la funzione \texttt{init}, funzione che
 \begin{enumerate}
 \item[-] \texttt{M\_data}, puntatore alla classe \texttt{LevelSetData}, classe che contiene tutte le informazioni sul level set e le funzioni per valutarne il valore nei punti;
 \item[-] \texttt{M\_mesh}, puntatore ad una variabile di tipo \textit{getfem::mesh\_level\_set}, classe che contiene informazioni sulla mesh tagliata da level set;
-\item[-] \texttt{M\_levelSet}, oggetto di tipo \textit{getfem::level\_set}, variabile che definisce il level set. In GetFEM un level set è rappresentato come una o due funzioni scalari, definito su una mesh di tipo \textit{getfem::mesh\_fem}, ossia una mesh su cui è definito un metodo ad elementi finiti.
+\item[-] \texttt{M\_levelSet}, oggetto di tipo \textit{getfem::level\_set}, variabile che definisce il level set. In GetFEM un level set è rappresentato come una funzione scalare, definito su una mesh di tipo \textit{getfem::mesh\_fem}, ossia una mesh su cui è definito un metodo ad elementi finiti.
 \end{enumerate}
 
 \begin{Code}[caption={Classe \texttt{LevelSetHandler}}]
@@ -178,8 +178,8 @@ private:
 
  \section{Le Classi \texttt{FractureIntersect} e \texttt{IntersectData}}
 
-La classe \texttt{FractureIntersect} rappresenta tutte le intersezioni tra le fratture. Ad ogni tipo di intersezione viene associato il vettore delle classi \texttt{IntersectData}, classe che rappresenta la vera e propria intersezione, tenendo traccia delle informazioni sulle fratture e dell'id dell'elemento della mesh di supporto in cui avviene l'incontro.
-\par Le intersezioni vengono classificate come \textit{Parallel}, \textit{Cross} e \textit{Bifurcation}.  L'idea alla base della classificazione è quella di considerare gli elementi della mesh 2d di supporto, la mesh del mezzo, in cui passano due o più fratture, e di associargli un flag:
+La classe \texttt{FractureIntersect} rappresenta tutte le intersezioni tra le fratture. Ad ogni tipo di intersezione viene associato il vettore delle classi \texttt{IntersectData}, classe che rappresenta la vera e propria intersezione, tenendo traccia delle informazioni sulle fratture e dell'indice dell'elemento della mesh di supporto in cui avviene l'incontro.
+\par Nella ricerca delle intersezioni, queste vengono classificate come \textit{Parallel}, \textit{Cross} e \textit{Bifurcation}.  L'idea alla base della classificazione è quella di considerare gli elementi della mesh 2d di supporto, la mesh del mezzo, in cui passano due o più fratture, e di associargli un flag:
 \begin{enumerate}
 \item[-] \textit{Parallel}: quando due o più fratture passano in uno stesso elemento della mesh ma non si intersecano;
 \item[-] \textit{Cross}: quando due fratture passano nello stesso elemento della mesh e si intersecano formando una \textit{X};

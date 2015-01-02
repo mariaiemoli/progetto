@@ -6,7 +6,7 @@ Passiamo ora a descrivere le principali classi del codice per la soluzione del p
 
 \begin{figure}[h!]
 \centering
-\includegraphics[scale=.55]{img/subcap3_4/DarcyFractured.eps}
+\includegraphics[scale=.59]{img/subcap3_4/DarcyFractured.pdf}
 \caption{Inclusione tra le varie classi per la soluzione del problema numerico}\label{Inclusione classi DarcyFractured}
 \end{figure}
 
@@ -64,7 +64,7 @@ Le funzioni fondamentali della classe sono il metodo \texttt{assembly ()} e il m
 La matrice globale del sistema ha una struttura a blocchi, dove ad ogni frattura corrisponde un blocco derivante dal sistema \ref{sistemaAlgebrico}. Una volta definite le forme bilineari e i blocchi della matrice corrispondenti alle singole fratture, vanno imposte le condizioni d'interfaccia nel caso di eventuali intersezioni.\\
 \noindent Nel caso di un \textit{Cross} si impongono le condizioni di interfaccia in maniera debole tramite le matrici $E_{2}$ e $E_{3}$, che impongono il salto di velocità nell'intersezione.\\
 \noindent Nel caso di una \textit{Bifurcation} si impongono in maniera forte le condizioni di interfaccia \ref{condizioni d'interfaccia}.\\
-Ipotizzando di avere un ambiente dove tre fratture hanno un intersezione di tipo \textit{Bifurcation} e una di queste si incontra con una quarta creando un intersezione di tipo \textit{Cross}, la matrice globale avrà il seguente volto:\\
+Ipotizzando di essere in una situazione dove tre fratture hanno un intersezione di tipo \textit{Bifurcation} e una di queste si incontra con una quarta creando un intersezione di tipo \textit{Cross}, la matrice globale avrà il seguente volto:\\
 %---->DA SISTEMAREEEEE <----------------- 
  \begin{center}
   $ \left[ \begin{matrix}

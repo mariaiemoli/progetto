@@ -1010,6 +1010,7 @@ void DarcyFractured::solve ( )
         mfproj_v.set_classical_discontinuous_finite_element ( 0, 0.01 );
 
         scalarVector_Type fracturePressureMeanUNCUT ( fractureNumberDOFPressure [ f ], 0. );
+        scalarVector_Type fracturePressureIntersection ( fractureNumberDOFPressure [ f ], 0. );
         scalarVector_Type fracturePressureInCut ( fractureNumberDOFPressure [ f ], 0. );
         scalarVector_Type fracturePressureOutCut ( fractureNumberDOFPressure [ f ], 0. );
 
@@ -1024,6 +1025,11 @@ void DarcyFractured::solve ( )
             if ( fracture->getMeshFlat().region ( FractureHandler::FRACTURE_UNCUT * ( f + 1 ) ).is_in(el) )
             {	
                 fracturePressureMeanUNCUT [ i ] = (*(M_fracturePressure [ f ])) [ i ];
+            }
+            else	//	************************	//
+            {
+            	fracturePressureIntersection [ i ] = (*(M_fracturePressure [ f ])) [ i ];
+            	std::cout << " fracturePressureIntersection " << std::endl;
             }
         }
 
@@ -1043,6 +1049,7 @@ void DarcyFractured::solve ( )
          * 
          */
         scalarVector_Type fracturePressureMeanUNCUTInterpolated ( mfproj.nb_dof(), 0. );
+        scalarVector_Type fracturePressureMeanIntersectionInterpolated ( mfproj.nb_dof(), 0. );
         scalarVector_Type fracturePressureMeanInCutInterpolated ( mfproj.nb_dof(), 0. );
         scalarVector_Type fracturePressureMeanOutCutInterpolated ( mfproj.nb_dof(), 0. );
 
@@ -1058,6 +1065,10 @@ void DarcyFractured::solve ( )
         mfprojUncut_v.set_finite_element ( fractureFETypeVelocity );
 
         getfem::interpolation ( mfprojUncut, mfproj, fracturePressureMeanUNCUT, fracturePressureMeanUNCUTInterpolated );
+        
+        //	************************	//
+        getfem::interpolation ( mfprojUncut, mfproj, fracturePressureIntersection, fracturePressureMeanIntersectionInterpolated );
+        //	************************	//
         
         getfem::interpolation ( mfprojUncut_v, mfproj_v, fractureVelocityMeanUNCUT, fractureVelocityMeanUNCUTInterpolated );
 
@@ -1198,15 +1209,22 @@ void DarcyFractured::solve ( )
 
             }
         }
+        
+        // fracturePressureMeanIntersectionInterpolated
     	
 		std::cout<<std::endl;
 		std::cout<<std::endl;
 		std::cout << "Frattura " << f <<" Pressione " << fracturePressureMeanUNCUTInterpolated << std::endl;
 		std::cout<<std::endl;
-		
+		std::cout<<std::endl;
+		std::cout << "Frattura " << f <<" Pressione 2 " << fracturePressureMeanIntersectionInterpolated << std::endl;
+		std::cout<<std::endl;
 		if( M_fractures->getFracture( f )->getDofIntersection().size() != 0 )
 		{
-			std::cout << "Frattura " << f <<" Pressione nel punto di intersezione: " << fracturePressureMeanUNCUTInterpolated[ M_fractures->getFracture( f )->getDofIntersection()[ 0 ] ] << std::endl;
+			//std::cout << "Frattura " << f <<" Pressione nel punto di intersezione: " << fracturePressureMeanUNCUTInterpolated[ M_fractures->getFracture( f )->getDofIntersection()[ 0 ] ] << std::endl;
+			std::cout << "Frattura " << f <<" Pressione nel punto di intersezione: " 
+					  << fracturePressureMeanIntersectionInterpolated[ M_fractures->getFracture( f )->getDofIntersection()[ 0 ] ] << std::endl;
+			
 			std::cout << " DOF =  " << M_fractures->getFracture( f )->getDofIntersection()[ 0 ] <<std::endl;
 			if( M_fractures->getFracture( f )->getDofIntersection().size()==2 )
 			{
@@ -1225,10 +1243,11 @@ void DarcyFractured::solve ( )
         
         exportSolution ( M_exporter->getFolder() + osFileName.str(), "Velocity",
                      mfproj_v, fractureVelocityMeanUNCUTInterpolated );
-
+        
                 
     }
     
+    /*
     IntersectDataContainer_Type IntCross = M_fractures->getIntersections ()-> getCrossIntersections ();
     
     IntersectDataContainer_Type IntBifurcation = M_fractures->getIntersections ()-> getBifurcationIntersections ();
@@ -1293,27 +1312,42 @@ void DarcyFractured::solve ( )
         scalarVector_Type fracturePressureMeanUNCUT ( fractureNumberDOFPressure[ 0 ], 0. );
 
         scalarVector_Type fractureVelocityMeanUNCUT ( fractureNumberDOFPressure[ 0 ], 0. );
-
-        fracturePressureMeanUNCUT [ Dof[ 0 ] ] = (*(M_fracturePressure [ 0 ])) [ Dof[ 0 ] ];
-
-        fractureVelocityMeanUNCUT [ Dof[ 0 ] ] = (*(M_fractureVelocity [ 0 ])) [ Dof[ 0 ] ];
         
         /*
          * getfem risolve il sistema per la mesh " piatta ", per avere i corretti valori di pressione devo interpolare
          * sulla mesh mappata i valori che ho ottenuto
          * 
          */
+    /*
         scalarVector_Type fracturePressureMeanUNCUTInterpolated (  mfproj.nb_dof(), 0. );
 
         scalarVector_Type fractureVelocityMeanUNCUTInterpolated (  mfproj.nb_dof(), 0. );
         
+        std::cout << "   1   " << std::endl;
+        
+        for ( size_type i = 0; i < fractureNumberDOFPressure [ 0 ]; ++i )
+        {
+            fracturePressureMeanUNCUT [ i ] = (*(M_fracturePressure [ 0 ])) [ i ];
+        }
+        std::cout << "   2   " << std::endl;
+        
+        for ( size_type i = 0; i < fractureNumberDOFVelocity [ 0 ]; ++i )
+        {
+			fractureVelocityMeanUNCUT [ i ] = (*(M_fractureVelocity [ 0 ])) [ i ];
+        }
+        
+        std::cout << "   3   " << std::endl;
+        
         getfem::mesh_fem mfprojUncut ( fracture->getMeshMapped(), fracture->getMeshFEMPressure().get_qdim());
+        
+        std::cout << "   bis   " << std::endl;
+        
         mfprojUncut.set_finite_element ( fractureFETypePressure );
 
         getfem::mesh_fem mfprojUncut_v ( fracture->getMeshMapped(), fracture->getMeshFEMVelocity().get_qdim());
         mfprojUncut_v.set_finite_element ( fractureFETypeVelocity );
  
-        std::cout << "   1   " << std::endl;
+        std::cout << "   4   " << std::endl;
   
         getfem::interpolation ( mfprojUncut, mfproj, fracturePressureMeanUNCUT, fracturePressureMeanUNCUTInterpolated );
         
@@ -1326,7 +1360,8 @@ void DarcyFractured::solve ( )
         std::cout << "			Valore di pressione nel punto di intersezione: " << fractureVelocityMeanUNCUTInterpolated[ Dof[ 0 ] ] << std::endl;
                 
     }
-
+	*/
+    
     return;   
    
 }

@@ -4,7 +4,7 @@
 \chapter{Considerazioni preliminari}
 
 \section{Strumenti di sviluppo}
-Lo sviluppo del nostro progetto ha richiesto l'uso di strumenti specifici atti a facilitare e sistematizzare la gestione del codice quali \texttt{git}, \texttt{CMake} e \texttt{Dxygen}.\\
+Lo sviluppo del nostro progetto ha richiesto l'uso di strumenti specifici atti a facilitare e sistematizzare la gestione del codice quali \texttt{git}, \texttt{CMake} e \texttt{Doxygen}.\\
 
 \subsection{\texttt{Git}}
 \href{https://github.com/}{\texttt{Git}} è un sistema di controllo versione utilizzabile direttamente da linea di comando, molto diffuso è utile per tenere traccia delle varie fasi di sviluppo del codice. Git gestisce in modo adeguato i contributi al codice provenienti da agenti esterni e permette la condivisione del codice.\\
@@ -18,7 +18,7 @@ Nella cartella principale è contenuto anche un file \texttt{.gitignore}, in cui
 \href{http://www.cmake.org/}{\texttt{CMake}} è un software libero multipiattaforma nato per l'automazione dello sviluppo. Sostanzialmente con l'uso di \texttt{CMake} è possibile configurare e generare Makefile per il sistema operativo in uso. Questo facilita la diffusione del codice tra sviluppatori, non dovendo far altro che lanciare \texttt{CMake} e lasciare che sia lui ad occuparsi della ricerca di compilatori e librerie locali e della costruzione di software.\\
 \texttt{CMake} si basa sulla creazione di files \texttt{CMakeLists.txt} nella directory del progetto, che contengono le direttive necessarie per creare il \texttt{Makefile} per compilare ed eseguire il codice. \\
 Nella directory principale si trova un primo file \texttt{CMakeLists.txt} in cui si impostano i parametri fondamentali quali la dipendenza dalla versione di \texttt{CMake}, il nome del progetto, si includono le directory dei sorgenti nel path di compilazione e si caricano le librerie esterne utilizzate dai sorgenti. \\
-le librerie che vengono caricate sono:
+Le librerie che vengono caricate sono:
 \begin{enumerate}
 \item[-] \texttt{Eigen}, libreria template per l'algebra lineare usata principalmente nella fase di imposizione delle condizioni di interfaccia sul triangolo di intersezione nel caso della biforcazione, per il modello ridotto;
 \item[-] \texttt{Getfem++}, libreria matematica per gli elementi finiti usata per scrivere e risolvere il problema numerico;
@@ -119,7 +119,7 @@ HIDE_UNDOC_RELATIONS		=	NO
 \section{Dati del problema}
 
 \subsection{Intersezioni}
-Come è stato precedentemente detto, il codice di partenza trattava un tipo particolare di intersezione tra fratture, da noi chiamato \textit{Cross}. Questo tipo di intersezione ha la seguente forma:
+Il codice di partenza trattava un tipo particolare di intersezione tra fratture, da noi chiamato \textit{Cross}. Questo tipo di intersezione ha la seguente forma:
 
 \begin{figure}[htbp]
 \begin{center}
@@ -176,7 +176,7 @@ numberFractures = 3
 \end{Code03_01}
 
 \par \noindent Nonostante il nostro problema si concentri solamente sulla soluzione del flusso all'interno delle fratture, noi costruiamo comunque la mesh relativa al mezzo. Questa mesh verrà usata solamente come supporto, sarà puramente accessoria nel corso dell'implementazione. \\
- \noindent Per quanto riguarda la permeabilità, poichè le fratture sono costituite dallo stesso materiale, questa resta uguale in tutto il dominio, sia nel mezzo che nelle fratture. 
+ \noindent Per quanto riguarda la permeabilità, poichè le fratture sono costituite dallo stesso materiale, questa resta uguale in tutto il dominio. 
 
 \begin{figure}[htbp]
 \begin{center}

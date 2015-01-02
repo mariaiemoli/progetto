@@ -26,11 +26,11 @@ Definite ora \textbf{C} matrice dei vettori che uniscono il baricentro, punto C,
 \end{center}
 %\textbf{u} = \left\lbrace \u_{0}, \u_{1}, \u_{2} \right\rbrace
 %$\textbf{\pi} = \left\lbrace \pi_{0}, \pi_{1}, \pi_{2} \right\rbrace $
-Le variabili con cui ci troviamo a lavorare sono:
+dove:
 	\begin{enumerate}
-	\item[-] \textbf{u} : vettore dei flussi
-	\item[-] $p_{I}$ :  pressione nel punto di intersezione delle assi delle tre fratture;
-	\item[-] \textbf{$\pi$}: vettore delle pressioni nel punto di incontro fra l'asse della frattura i-esima con un lato del triangolo;
+	\item[-] \textbf{u} è il  vettore dei flussi
+	\item[-] $p_{I}$ rappresenta la  pressione nel punto di intersezione delle assi delle tre fratture;
+	\item[-] \textbf{$\pi$} è il vettore delle pressioni nel punto di incontro fra l'asse della frattura i-esima con un lato del triangolo;
 	\end{enumerate} 
 e le condizioni che dobbiamo porre all'intersezione sono:
 \begin{center}			
@@ -59,7 +59,7 @@ La classe \texttt{MatrixBifurcationHandler} contiene le matrici associate a una 
 	\item[-] \texttt{M\_intersection}, di tipo Intersection, contiene tutte le informazioni base per poter ricavare le matrici;
 	\item[-] \texttt{M\_T}, matrice T di trasmissibilità necessaria per l'imposizione delle condizioni di interfaccia.
 	\end{enumerate} 
-\begin{Code03_03}[caption={Classe \texttt{Intersection}}]
+\begin{Code03_03}[caption={Classe \texttt{MatrixBifurcationHandler}}]
 class MatrixBifurcationHandler
 {
  public:
@@ -98,27 +98,34 @@ I campi fondamentali della classe sono:
 	\item[-] \texttt{M\_intersectionTriangle}, di tipo TriangleData, rappresenta il triangolo di intersezione, i cui vertici sono i punti d'incontro dei bordi delle fratture.
 	\end{enumerate} 
 
-\begin{Code03_03}[caption={Classe \texttt{Intersection}}]
-class Intersection
-{
- public:
-	[ ... ]
+%\begin{Code03_03}[caption={Classe \texttt{Intersection}}]
+%class Intersection
+%{
+% public:
+%	[ ... ]
 	
-	void setIntersection( FracturePtrContainer_Type& M_FracturesSet );
+%	void setIntersection( FracturePtrContainer_Type& M_FracturesSet );
 	
-	[ ... ]
- private:
+%	[ ... ]
+% private:
 	
-	[ ... ]	
+%	[ ... ]	
 	
-	PointData M_intersection;
+%	PointData M_intersection;
 	
-	Vector2d M_tangents [ 3 ];
-	Vector2d M_normals [ 3 ];
-	
-	TriangleData M_intersectionTriangle;
-};	
-\end{Code03_03}
+%	Vector2d M_tangents [ 3 ];
+%	Vector2d M_normals [ 3 ];
+%	
+%	TriangleData M_intersectionTriangle;
+%};	
+%\end{Code03_03}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[height= 8cm, angle=90]{img/subcap3_3/dipendenze.pdf}
+\caption{Calcolo della matrice di trasmissibilità \textit{T}}
+\end{figure}
+
 
 \section{Classe \texttt{PointData} e Classe \texttt{TriangleData}}
 Queste classi rappresentano un punto e un triangolo come grandezze geometriche.

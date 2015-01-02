@@ -71,13 +71,13 @@ Q &= L^2(\Omega)
 Per la discretizzazione in spazio scegliamo lo spazio degli elementi finiti di grado due per la velocità e uno per la pressione e ricaviamo la seguente formulazione algebrica:
 \begin{equation}
 \begin{cases}
-A11 \textbf{U} \, +A12 \textbf{P} = F_1 \\
-A12^T \textbf{U} = F_2
+A_{11} \textbf{U} \, +A_{12} \textbf{P} = F_1 \\
+A_{12}^T \textbf{U} = F_2
 \end{cases}
 \end{equation}
 
 
-dove $ A11 \in \mathbb{R}^{N_u \times N_u}$ e $A12 \in \mathbb{R}^{N_p}$  sono le matrici realative alle forme bilineari $a(\cdot, \cdot)$ e $b(\cdot, \cdot)$ definite come:
+dove $ A_{11} \in \mathbb{R}^{N_u \times N_u}$ e $A_{12} \in \mathbb{R}^{N_p}$  sono le matrici realative alle forme bilineari $a(\cdot, \cdot)$ e $b(\cdot, \cdot)$ definite come:
 
 $$ a(\textbf{u}_h , \textbf{v}_h)= \int_{\Omega} (\textbf{K}^{-1} \textbf{u}_h) \cdot \textbf{v}_h \, dx \qquad b(\textbf{u}_h, q) = - \int_{\Omega} q_h \nabla \cdot \textbf{u}_h \, dx  $$
 $$ f1(\textbf{u}_h) = \int_{\Gamma^p} g_h \, \textbf{u}_h \cdot \textbf{n} \, d\Gamma \qquad f2(q_h) =  - \int_{\Omega} f q \, dx $$
