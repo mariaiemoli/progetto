@@ -1216,18 +1216,18 @@ void DarcyFractured::solve ( )
 		std::cout<<std::endl;
 		std::cout << "Frattura " << f <<" Pressione " << fracturePressureMeanUNCUTInterpolated << std::endl;
 		std::cout<<std::endl;
-		std::cout<<std::endl;
-		std::cout << "Frattura " << f <<" Pressione 2 " << fracturePressureMeanIntersectionInterpolated << std::endl;
-		std::cout<<std::endl;
+		
 		if( M_fractures->getFracture( f )->getDofIntersection().size() != 0 )
 		{
-			//std::cout << "Frattura " << f <<" Pressione nel punto di intersezione: " << fracturePressureMeanUNCUTInterpolated[ M_fractures->getFracture( f )->getDofIntersection()[ 0 ] ] << std::endl;
+			std::cout << "Frattura " << f <<" Pressione nel punto di intersezione: " << fracturePressureMeanUNCUTInterpolated[ M_fractures->getFracture( f )->getDofIntersection()[ 0 ] ] << std::endl;
+			/*
 			std::cout << "Frattura " << f <<" Pressione nel punto di intersezione: " 
 					  << fracturePressureMeanIntersectionInterpolated[ M_fractures->getFracture( f )->getDofIntersection()[ 0 ] ] << std::endl;
-			
+			*/
 			std::cout << " DOF =  " << M_fractures->getFracture( f )->getDofIntersection()[ 0 ] <<std::endl;
 			if( M_fractures->getFracture( f )->getDofIntersection().size()==2 )
 			{
+				std::cout << "Frattura " << f <<" Pressione nel punto di intersezione: " << fracturePressureMeanUNCUTInterpolated[ M_fractures->getFracture( f )->getDofIntersection()[ 1 ] ] << std::endl;
 				std::cout << " DOF =  " << M_fractures->getFracture( f )->getDofIntersection()[ 1 ] <<std::endl;
 			}
 		}
