@@ -1,5 +1,0 @@
-/Users/Claudia/Documents/Universita/Corsi/02.PACS/progetto/file_configurazione/build/test/Test1/CMakeFiles/Test1.dir
-/Users/Claudia/Documents/Universita/Corsi/02.PACS/progetto/file_configurazione/build/test/Test2/CMakeFiles/Test2.dir
-/Users/Claudia/Documents/Universita/Corsi/02.PACS/progetto/file_configurazione/build/test/Test3/CMakeFiles/Test3.dir
-/Users/Claudia/Documents/Universita/Corsi/02.PACS/progetto/file_configurazione/build/CMakeFiles/doc.dir
-/Users/Claudia/Documents/Universita/Corsi/02.PACS/progetto/file_configurazione/build/src/CMakeFiles/pacs.dir

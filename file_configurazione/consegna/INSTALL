@@ -1,0 +1,68 @@
+#################################################################
+##########	ISTRUZIONI DI COMPILAZIONE	       ##########
+#################################################################
+
+### PACCHETTI NECESSARI
+
+Per poter compilare il presente codice sul computer sono necessari:
+
+- compilatore g++ o gcc:
+
+- GETFEM++ 4.2
+
+- Getpot C++:  Parsing comand line arguments and configuration files.
+
+- Eigen 3.2.1
+
+- Qhull-dev: Using the Qhull library for delaunay triangulations
+
+- MuParser:  Used for parsing mathematical expressions.
+
+- Mumps:    A direct solver for large sparse linear systems. 
+
+- Lapack:  Provides routines for solving systems of simultaneous linear equations.
+
+- Blas
+
+- Python
+
+
+### COMPILAZIONE
+
+Una volta installate tutte le librerie necessarie per compilare il codice è sufficiente generare il Makefile usando CMake e digitanto da terminale
+			
+			cd <build_dir>
+			cmake <source_dir>
+			
+e digitare da terminale: 
+
+			make
+
+Con il comando make si produce un eseguibile, " dacy ".
+
+
+### ESECUZIONE
+
+Per eseguire il codice è necessario fornire un file contenente i dati richiesti. 
+Se da terminale si digita semplicemente:
+			
+			./darcy
+
+il codice prende di default in input il file di testo chiamato " data ".
+
+Per dare un file diverso è sufficiente digitare:
+
+			./darcy <nome_file_data>
+
+
+### STRUTTURA DEL CODICE
+
+Il codice è diviso in due cartelle:
+
+- include: cartella dove sono contenuti gli header files
+
+- src: cartella dove sono contenuti i source files
+
+I risultati vengono esportati nella cartella " vtk " in formato " .vtk " e sono visualizzabili con Paraview.
+
+

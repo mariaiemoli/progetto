@@ -1,0 +1,214 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% parameters for program laplacian    PARAMETRIZZATO                      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+meshFile = meshes/mesh
+folderVTK = ./vtk/
+
+numberFractures = 3
+
+
+[mediumData]
+
+        [./domain]
+
+                meshExternal = none
+                meshFolder = ./meshes/
+
+                spatialDiscretization = 21
+                spatialInclination = 0.
+                lengthAbscissa = 1.
+                lengthOrdinate = 1.
+                lengthQuota = 1.
+                meshType = GT_PK(2,1)
+                spaceDimension = 2.
+
+        [../]
+
+        [./darcy]
+
+                invK = 1.
+                invKDist11 = 1.
+                invKDist12 = 0.
+                invKDist22 = 1.
+
+        [../]
+
+[../]
+
+
+[fractureData0]
+
+spaceDimension = 1.
+
+        [./levelSet]
+		
+			levelSet = y-x-0.08
+			ylevelSet = y-0.08-0.43*t
+			xlevelSet = x-0.43*t          
+			levelSetCut = -1
+			yMap = 0.08+0.43*t
+			xMap = 0.43*t
+			jacMap = [0.3040]
+			normalMap = [1.,-1.]
+		
+		        integrationTypeSimplex = IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(3),1)
+
+        [../]
+
+        [./domain]
+
+		        thickness = 0.013
+		
+		        spacing = x
+		
+		        spatialDiscretization = 81
+		        translateAbscissa = 0.
+		        lengthAbscissa = 0.43 #0.5
+		        lengthOrdinate = 0.
+		        lengthQuota = 0.
+		        meshType = GT_PK(1,1)
+		
+		
+		        integrationTypeVelocity = IM_GAUSS1D(3)
+		        integrationTypePressure = IM_GAUSS1D(2)
+		
+		        FEMTypeVelocity = FEM_PK(1,1)
+		        FEMTypePressure = FEM_PK(1,0)
+		        FEMTypeLinear = FEM_PK(1,1)
+
+        [../]
+
+        [./darcy]
+
+                etaNormal = 0.01
+                etaNormalDistribution = 1. #1.+1000.*(x>0.25)-1000.*(x>0.75)
+                etaTangential = 100.
+                etaTangentialDistribution = 1.
+
+                source = 0.0
+                solution = -1.
+                velocity = 0.
+
+        [../]
+
+
+[../]
+
+
+[fractureData1]
+
+spaceDimension = 1.
+
+        [./levelSet]
+	
+		levelSet = y+x-0.94
+	        ylevelSet = y-0.94+0.43*t
+		xlevelSet = x-0.43*t           
+		levelSetCut = -1
+		yMap = 0.94-0.43*t
+		xMap = 0.43*t   
+      	      	jacMap = [0.3040]
+        	normalMap = [1.,1.]
+	
+      		integrationTypeSimplex = IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(3),1)
+
+        [../]
+
+        [./domain]
+
+
+                thickness = 0.011
+
+                spacing = x
+
+                spatialDiscretization = 81
+                translateAbscissa = 0.
+                lengthAbscissa = 0.43 #0.5
+                lengthOrdinate = 0.
+                lengthQuota = 0.
+                meshType = GT_PK(1,1)
+
+
+                integrationTypeVelocity = IM_GAUSS1D(3)
+                integrationTypePressure = IM_GAUSS1D(2)
+
+                FEMTypeVelocity = FEM_PK(1,1)
+                FEMTypePressure = FEM_PK(1,0)
+                FEMTypeLinear = FEM_PK(1,1)
+
+        [../]
+
+        [./darcy]
+
+                etaNormal = 0.01
+                etaNormalDistribution = 1. #1.+1000.*(x>0.25)-1000.*(x>0.75)
+                etaTangential = 100.
+                etaTangentialDistribution = 1.
+
+                source = 0.0
+                solution = -1.
+                velocity = 0.
+
+        [../]
+
+
+s[../]
+
+[fractureData2]
+
+spaceDimension = 1.
+
+        [./levelSet]
+
+		levelSet = y-0.5*x-0.295
+                ylevelSet = y-0.51-0.285*t
+		xlevelSet = x-0.43-0.57*t
+                levelSetCut = -1
+                yMap = 0.51+0.285*t
+		xMap = 0.43+0.57*t
+                jacMap = [0.5898] %here the mapped grid is shorter than the actual arc length
+                normalMap = [2.,-1.]
+
+                integrationTypeSimplex = IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(3),1)
+
+        [../]
+
+        [./domain]
+
+
+                thickness = 0.012
+
+                spacing = x+0.43 %here the fracture starts at x=0.1 
+                spatialDiscretization = 81 
+                translateAbscissa = 0.43
+                lengthAbscissa = 0.57 #1.
+                lengthOrdinate = 0.
+                lengthQuota = 0.
+                meshType = GT_PK(1,1)
+
+                integrationTypeVelocity = IM_GAUSS1D(3)
+                integrationTypePressure = IM_GAUSS1D(2)
+
+                FEMTypeVelocity = FEM_PK(1,1)
+                FEMTypePressure = FEM_PK(1,0)
+                FEMTypeLinear = FEM_PK(1,1)
+
+        [../]
+
+        [./darcy]
+
+                etaNormal = 0.01
+                etaNormalDistribution = 1. 
+                etaTangential = 100
+                etaTangentialDistribution = 1.
+
+                source = 0.0
+                solution = 1.
+                velocity = 0.
+
+        [../]
+
+
+[../]
+
