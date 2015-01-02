@@ -59,6 +59,13 @@ class DarcyFractured
 };
 \end{Code03_04}
 
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=.4, angle=90]{img/subcap3_4/assembly.pdf}
+\caption{Struttura del codice per la funzione \texttt{assembly}}\label{Inclusione classi DarcyFractured}
+\end{figure}
+
+
 Le funzioni fondamentali della classe sono il metodo \texttt{assembly ()} e il metodo \texttt{solve ()}. \\
 \noindent Il metodo \texttt{assembly ()} crea la matrice globale $A$ e il termine noto di destra, utilizzando le funzioni della classe \texttt{XFEMOperators}. 
 La matrice globale del sistema ha una struttura a blocchi, dove ad ogni frattura corrisponde un blocco derivante dal sistema \ref{sistemaAlgebrico}. Una volta definite le forme bilineari e i blocchi della matrice corrispondenti alle singole fratture, vanno imposte le condizioni d'interfaccia nel caso di eventuali intersezioni.\\
