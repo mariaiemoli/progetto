@@ -7,9 +7,10 @@
 bool plotYesNo = true;
 
 // Import mesh file
+real ODG = 1e3;
 
 // Spacing
-int Nelem = 1200;
+int Nelem = 1.2*ODG;
 int NelemS = 5;
 int NelemI = 20 ;
 /*int Nelem = 120;*/
