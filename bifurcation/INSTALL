@@ -22,18 +22,23 @@ Per poter compilare il presente codice sul computer sono necessari:
 
 - Lapack:  Provides routines for solving systems of simultaneous linear equations.
 
-- Blas:
+- Blas
 
-- Python: 
+- Python
 
 
 ### COMPILAZIONE
 
-Una volta installate tutte le librerie necessarie per compilare il codice è sufficiente digitare da terminale: 
+Una volta installate tutte le librerie necessarie per compilare il codice è sufficiente generare il Makefile usando CMake e digitanto da terminale
+			
+			cd <build_dir>
+			cmake <source_dir>
+			
+e digitare da terminale: 
 
 			make
 
-Se nel Makefile sono stati sostituiti i percorsi corretti delle librerie sul proprio pc il comando make produce un eseguibile, " dacy ".
+Con il comando make si produce un eseguibile, " dacy ".
 
 
 ### ESECUZIONE
@@ -47,7 +52,7 @@ il codice prende di default in input il file di testo chiamato " data ".
 
 Per dare un file diverso è sufficiente digitare:
 
-			./darcy #nome_file_data
+			./darcy <nome_file_data>
 
 
 ### STRUTTURA DEL CODICE
