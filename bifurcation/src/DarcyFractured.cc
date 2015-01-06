@@ -1201,6 +1201,17 @@ void DarcyFractured::solve ( )
 				std::cout << " DOF =  " << M_fractures->getFracture( f )->getDofIntersection()[ 1 ] <<std::endl;
 			}
 		}
+		
+		if( M_fractures->getFracture( f )->getDOFBifurcation().size() != 0 )
+		{
+			std::cout << "Frattura " << f <<" Pressione nel punto di intersezione: " << fracturePressureMeanUNCUTInterpolated[ M_fractures->getFracture( f )->getDofIntersection()[ 0 ] ] << std::endl;
+			std::cout << " DOF =  " << M_fractures->getFracture( f )->getDOFBifurcation()[ 0 ] <<std::endl;
+			if( M_fractures->getFracture( f )->getDOFBifurcation().size()==2 )
+			{
+				std::cout << "Frattura " << f <<" Pressione nel punto di intersezione: " << fracturePressureMeanUNCUTInterpolated[ M_fractures->getFracture( f )->getDofIntersection()[ 1 ] ] << std::endl;
+				std::cout << " DOF =  " << M_fractures->getFracture( f )->getDOFBifurcation()[ 1 ] <<std::endl;
+			}
+		}
 	
         osFileName.str("");
         osFileName << "fracturePressure" << f << ".vtk";

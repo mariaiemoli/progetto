@@ -42,8 +42,11 @@ $$
 $$ \pi = \frac{p_0 + p_1 + p_2 + p_3 }{4} $$
 
 Per poter imporre le condizioni d'interfaccia, per la frattura tagliata, è necessario usare il valore della pressione e della velocità a ridosso dell'intersezione, ma questi valori sono incogniti. 
-Usiamo il grado classico di pressione e il grado esteso per indicare il valore di pressione prima e dopo il punto $i_c$, indicati con $p_0$ e $p_2$ in figura \ref{Y}.  L'incognita $p_1$ rappresenta il primo o l'ultimo grado di libertà della frattura $\gamma_1$, mentre con $p_3$ indichiamo un nodo fittizio, in cui imponiamo condizione di flusso nullo. 
+Usiamo il grado classico di pressione e il grado esteso per indicare il valore di pressione prima e dopo il punto $i_c$, indicati con $p_0$ e $p_2$ in figura \ref{Y}.  L'incognita $p_1$ rappresenta il primo o l'ultimo grado di libertà della frattura $\gamma_1$, mentre con $p_3$ indichiamo un nodo fittizio, in cui imponiamo condizione di flusso nullo.
 
+\noindent Per quanto riguarda la velocità invece, la velocità prima dell'intersezione lo poniamo par alla media tra il valore nel grado di libertà classico prima e al valore nel grado esteso dopo l'intersezione. Lo stesso facciamo per il valore di velocità dopo l'intersezione, come indicato in figura \ref{xfem}. \\
+
+\newpage
 \begin{figure}[htbp]
 \begin{center}
 \includegraphics[width=0.8\textwidth]{img/cap6/xfem.eps}
@@ -51,5 +54,59 @@ Usiamo il grado classico di pressione e il grado esteso per indicare il valore d
 \end{center}
 \end{figure}
 
-\noindent Per quanto riguarda la velocità invece, la velocità prima dell'intersezione lo poniamo par alla media tra il valore nel grado di libertà classico prima e al valore nel grado esteso dopo l'intersezione. Lo stesso facciamo per il valore di velocità dopo l'intersezione, come indicato in figura \ref{xfem}. \\
+\subsection{Risultati numerici}
+Ripetiamo l'analisi precedente per il caso particolare di biforcazione.
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=.45]{img/cap6/CP.eps}
+\caption{Risultati \texttt{FreeFem++} biforcazione particolare risultati paraview }\label{CPParaview}
+\end{figure}
+Confronto valori della pressione nel DOF di intersezione per il modello 2D:\\
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+  & & \textbf{\texttt{Code}} & \multicolumn{3}{|c|}{\textbf{\texttt{FreeFem++}}} \\
+\hline
+\multicolumn{1}{|c|}{Frattura} & DOF & - &
+\multicolumn{1}{|c|}{1E-01} & 1E-02 & 1E-03 \\
+\hline
+\multirow{2}{*}{0} & Base & 0.0480334 & 0.686998 & 0.303247 & 0.00685515\\
+\cline{2-6}
+& Esteso & 0.00295565 & 0.737573 & 0.307976 & 0.00665541\\
+\hline
+ 1 & Base & 0.0146871 & 0.637801 & 0.298043 & 0.00673082\\
+\hline
+\end{tabular}
+\end{center}
 
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\multicolumn{4}{|c|}{Pressione media} \\
+\hline
+\textbf{\texttt{Code}} & \multicolumn{3}{|c|}{\textbf{\texttt{FreeFem++}}} \\
+\hline
+- & \multicolumn{1}{|c|}{1E-01} & 1E-02 & 1E-03 \\
+\hline
+0.02189205 & 0.679653 & 0.301661 & 0.00672457 \\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=.055]{img/cap6/BifuY.eps}
+\caption{Risultati \texttt{FreeFem++} biforcazione con due fratture - spessore ordine 1E-02 }\label{Biforcazione2Frat1E-02}
+\end{figure}
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+  \multicolumn{3}{|c|}{\textbf{\texttt{Errore}}} \\ 
+\hline
+\multicolumn{1}{|c|}{1E-01} & 1E-02 & 1E-03 \\
+\hline
+0.65776095 & 0.27976895 & 0.01516748 \\
+\hline
+\end{tabular}
+\end{center}

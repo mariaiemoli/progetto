@@ -24,9 +24,8 @@ real b1 = 0.8;
 
 
 // spessore delle fratture
-real d0 = 0.013;
-real d1 = 0.011;
-
+real d0 = 1.3/ODG;
+real d1 = 1.1/ODG;
 
 // punti di inizio frattura
 real init0 = 0.0;
@@ -60,7 +59,6 @@ real interFrac1 = ( b1 - b0 ) / ( a0 - a1 );
 
 
 cout << "Intersection Point Bifurcation: " << interFrac1 << endl;
-
 
 
 // punti che costituiscono il triangolo di intersezione

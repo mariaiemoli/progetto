@@ -7,9 +7,10 @@
 bool plotYesNo = true;
 
 // Import mesh file
+real ODG = 1e3;
 
 // Spacing
-int Nelem = 120;
+int Nelem = 1.2*ODG;
 int NelemS = 10;
 int NelemI = 10;
 
@@ -22,7 +23,7 @@ func invK12 = 0.;//-part(x,y)*4999.5;
 func invK22 = part(x,y)*1. + fracture0(x,y)*1. + fracture1(x,y)*1.;
 func invK21 = invK12;
 
-func f = -0.04;
+func f = 0.0;
 
 // pressure at inflow
 real p01 = 1;
@@ -78,6 +79,10 @@ real pI = 1./I * int2d(Th1)( ph );
 
 cout << "Intersection pressure bifurcation " << pI << endl;
 cout << "Intersect area " << I << endl;
+cout << "Bifurcation 1 " << endl;
+cout << "Lato 0 " << int1d(Th1,41)( ph ) / int1d(Th1, 41)( 1. ) << endl;
+cout << "Lato 1 " << int1d(Th1,42)( ph ) / int1d(Th1, 42)( 1. ) << endl;
+cout << "Lato 2 " << int1d(Th1,44)( ph ) / int1d(Th1, 44)( 1. ) << endl;
 
 /*
 I = int2d(Th2)( two );

@@ -1,4 +1,4 @@
-This is BibTeX, Version 0.99d (TeX Live 2013/MacPorts 2013_5)
+This is BibTeX, Version 0.99d (TeX Live 2014/MacPorts 2014_4)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: Main.aux
 A level-1 auxiliary file: introduzione.aux
@@ -10,13 +10,14 @@ A level-1 auxiliary file: subcap3_2.aux
 A level-1 auxiliary file: subcap3_3.aux
 A level-1 auxiliary file: subcap3_4.aux
 A level-1 auxiliary file: cap4.aux
+A level-1 auxiliary file: cap5.aux
 The style file: plain.bst
 A level-1 auxiliary file: appendice.aux
 Database file #1: bibliografia.bib
 Warning--empty journal in Paper
 You've used 4 entries,
             2118 wiz_defined-function locations,
-            526 strings with 4605 characters,
+            527 strings with 4613 characters,
 and the built_in function-call counts, 985 in all, are:
 = -- 82
 > -- 55

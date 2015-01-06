@@ -1,5 +1,5 @@
 \chapter{Risultati numerici e validazione del modello} 
-Per validare il modello ridotto da noi utilizzato abbiamo confrontato i nostri risultati con quelli ottenti con dei codici \texttt{FreeFem++}, in cui il problema è bidimensionale. Per ogni caso preso in considerazione sono state effettuate tre simulazioni, con spessori che ad ogni passo diminuiscono di un ordine di grandezza. Quello che ci aspettiamo infatti è che i risultati ottenuti con \texttt{FreeFem++}  si avvvicinino ai nostri risultati diminuendo lo spessore delle fratture.\\
+Per validare il modello ridotto da noi utilizzato abbiamo confrontato i nostri risultati con quelli ottenti con dei codici \texttt{FreeFem++}, in cui il problema è bidimensionale. Per ogni caso preso in considerazione sono state effettuate tre simulazioni, con spessori che ad ogni passo diminuiscono di un ordine di grandezza. Quello che ci aspettiamo infatti \`{e} che i risultati ottenuti con \texttt{FreeFem++}  si avvvicinino ai nostri risultati diminuendo lo spessore delle fratture.\\
 \noindent Per ogni frattura abbiamo messo a confronto il valore della pressione nel DOF di intersezione, per il modello monodimensionale, con l'integrale di pressione lungo il lato del triangolo di intersezione mediato sulla sua lunghezza, per \texttt{FreeFem++}.
 Riportiamo inoltre il valore medio della pressione nel punto di intersezione ponendolo a paragone con il valore dell'integrale di pressione sul triangolo di intersezione mediato per l'area di quest'ultimo.\\
 Vediamo ora i risultati ottenuti in alcuni casi significativi.
@@ -30,11 +30,10 @@ Confronto valori della pressione nel DOF di intersezione per il modello 2D:\\
 \hline
 - & \multicolumn{1}{|c|}{1E-01} & 1E-02 & 1E-03 \\
 \hline
-   - & -0.49058 & -0.127993 & -6.72695e-06 \\
+0.000498351 & -0.49058 & -0.127993 & -6.72695e-06 \\
 \hline
 \end{tabular}
 \end{center}
-
 
 \begin{figure}[h!]
 \centering
@@ -42,13 +41,25 @@ Confronto valori della pressione nel DOF di intersezione per il modello 2D:\\
 \caption{Risultati \texttt{FreeFem++} biforcazione - spessore ordine 1E-02 }\label{Biforcazione1E-02}
 \end{figure}
 
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+  \multicolumn{3}{|c|}{\textbf{\texttt{Errore}}} \\ 
+\hline
+\multicolumn{1}{|c|}{1E-01} & 1E-02 & 1E-03 \\
+\hline
+ 0.490081649 & 0.127494649 & 0.000491624 \\
+\hline
+\end{tabular}
+\end{center}
+
 \section{Doppia biforcazione verticale, 5 fratture}
 Vediamo ora i valori in un network contenente due biforcazioni con una frattura in comune.
 La prima biforcazione coinvolge le fratture 0,1,3 mentre la seconda nasce dall'incontro fra 2,3,4.\\
 
 \begin{figure}[h!]
 \centering
-\includegraphics[scale=.45]{img/cap6/DoppiaBifu.eps}
+\includegraphics[scale=.45]{img/cap6/DoppiaBifuVerticalF0.eps}
 \caption{Risultati \texttt{FreeFem++} doppia biforcazione risultati paraview }\label{DoppiaBifuVerticalParaview}
 \end{figure}
 
@@ -82,12 +93,6 @@ Per la frattura 3 troveremo dapprima il valore relativo al lato del triangolo di
 \end{tabular}
 \end{center}
 
-\begin{figure}[h!]
-\centering
-\includegraphics[scale=.35]{img/cap6/DoppiaBifuVertical.eps}
-\caption{Risultati \texttt{FreeFem++} doppia biforcazione - spessore ordine 1E-02 }\label{DoppiaBifuVertical1E-02}
-\end{figure}
-
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|}
 \hline
@@ -96,11 +101,17 @@ Per la frattura 3 troveremo dapprima il valore relativo al lato del triangolo di
 \multicolumn{1}{|c|}{Biforcazione} & - &
 \multicolumn{1}{|c|}{1E-01} & 1E-02 & 1E-03 \\
 \hline
-  0-1-3 & 6.59*1E-04 & 0.0393046 & -0.109636 & -0.0197574 \\
-  2-3-4 & -6.94*1E-05 & 0.810176 & 0.481358 & 0.0279764 \\
+  0-1-3 & 6.59e-04 & 0.0393046 & -0.109636 & -0.0197574 \\
+  2-3-4 & -6.94e-05 & 0.810176 & 0.481358 & 0.0279764 \\
 \hline
 \end{tabular}
 \end{center}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=.35]{img/cap6/DoppiaBifuVertical.eps}
+\caption{Risultati \texttt{FreeFem++} doppia biforcazione - spessore ordine 1E-02 }\label{DoppiaBifuVertical1E-02}
+\end{figure}
 
 \begin{center}
 \begin{tabular}{|c|c|c|c|}
@@ -151,16 +162,6 @@ Andiamo ora ad analizzare i valori in un network contenente due biforcazioni e u
  4 & -0.0257199 & 0.118724 & 7.17945e-05 & 1.8384e-05\\
  5 & -0.00203255 & 0.135597 & 3.95891e-05 & -8.71332e-06\\
 \hline
-%\multicolumn{5}{|c|}{Cross 2-4}\\
-%\hline
-% & \textbf{\texttt{Code}} & \multicolumn{3}{|c|}{\textbf{\texttt{FreeFem++}}} \\
-%\hline
-%\multicolumn{1}{|c|}{Frattura} & - &
-%\multicolumn{1}{|c|}{1E-01} & 1E-02 & 1E-03 \\
-%\hline
-% 2 & -0.00999955 & 0.803246 & 0.522995 & 0.0154489\\ 
-% 4 & -0.129783 & 0.778237 & 0.520145 & 0.0154059\\
-%\hline
 \end{tabular}
 \end{center}
 
@@ -172,8 +173,8 @@ Andiamo ora ad analizzare i valori in un network contenente due biforcazioni e u
 \multicolumn{1}{|c|}{Biforcazione} & - &
 \multicolumn{1}{|c|}{1E-01} & 1E-02 & 1E-03 \\
 \hline
-  0-1-2 & - & 0.00725767 & -2.96401e-06 & 7.36626e-07 \\
-  3-4-5 & - & 0.109662 & -3.78985e-05 & -6.11941e-07 \\
+  0-1-2 & -0.001228187 & 0.00725767 & -2.96401e-06 & 7.36626e-07 \\
+  3-4-5 & -0.01130843 & 0.109662 & -3.78985e-05 & -6.11941e-07 \\
 \hline
 \end{tabular}
 \end{center}
@@ -184,4 +185,18 @@ Andiamo ora ad analizzare i valori in un network contenente due biforcazioni e u
 \includegraphics[scale=.075]{img/cap6/Doppiabifucross3.eps}
 \caption{Risultati \texttt{FreeFem++} doppia biforcazione con cross - spessore ordine 1E-02 }\label{DoppiaBifuCross1E-02}
 \end{figure}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+  \multicolumn{4}{|c|}{\textbf{\texttt{Errore}}} \\ 
+\hline
+\multicolumn{1}{|c|}{Biforcazione} &
+\multicolumn{1}{|c|}{1E-01} & 1E-02 & 1E-03 \\
+\hline
+  0-1-2 &  0.006029483 & 0.001225223 & 0.00122745 \\
+  3-4-5 & -0.09835357 & 0.011270532 & 0.011307818 \\
+\hline
+\end{tabular}
 \end{center}
