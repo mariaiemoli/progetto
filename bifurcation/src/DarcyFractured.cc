@@ -504,7 +504,6 @@ void DarcyFractured::assembly ( const GetPot& dataFile )
 
 		const size_type globalIndex10 =  intersectElementsGlobalIndex1[ id0 ][ 0 ].first;
 
-
 		const size_type globalIndex = fmin ( globalIndex01, globalIndex10 );
 		
 		const size_type globalShift = fractureTotalNumberDOFVelocityPressure + globalIndex;
@@ -538,83 +537,34 @@ void DarcyFractured::assembly ( const GetPot& dataFile )
 		
 		Matrix4d T = Matrix.T();
 		
-		
 		scalarVector_Type DOF_p0( 2 );
 		scalarVector_Type DOF_v0( 4 );
 		scalar_type DOF_p1;
 		scalar_type DOF_v1;
-
-		Matrix.SetDOFIntersecton( Fracture[ 0 ], DOF_p0[ 0 ] );
-		Matrix.SetDOFIntersecton( Fracture[ 1 ], DOF_p1 );
-
-		const size_type nbDOF =  Fracture[ 1 ]-> getMeshFEMPressure().nb_basic_dof();
-			
-		if( DOF_p1 == nbDOF - 1 )
-		{
-			DOF_v1 = DOF_p1 + 1.;
-		}
-		else
-		{
-			DOF_v1 = DOF_p1;   
-		}
 		
-		DOF_p0[ 1 ] = shiftIntersect[ id0 ] + fractureNumberDOFVelocity [ 0 ] + fractureNumberDOFPressure  [ 0 ] + Fracture[ 0 ]->getNumExtendedVelocity();
-		DOF_v0[ 0 ] = DOF_p0[ 0 ];
-		DOF_v0[ 1 ] = DOF_p0[ 0 ]+1;
-		DOF_v0[ 2 ] = shiftIntersect[ id0 ] + fractureNumberDOFVelocity [ 0 ];
-		DOF_v0[ 3 ] = shiftIntersect[ id0 ] + fractureNumberDOFVelocity [ 0 ] + 1;
+		getfem::setDOF_v( DOF_p0, DOF_v0, DOF_p1, DOF_v1, Fracture, Matrix, shiftIntersect[ id0 ], fractureNumberDOFVelocity[ id0 ], fractureNumberDOFPressure[ id0 ] );
+		
+		getfem::setAup_i( Aup0, 0 , Fracture, DOF_p0, DOF_v0, DOF_p1, DOF_v1, shiftIntersect, fractureNumberGlobalDOFVelocity,  T, globalShift );
+		getfem::setAup_i( Aup1, 1 , Fracture, DOF_p0, DOF_v0, DOF_p1, DOF_v1, shiftIntersect, fractureNumberGlobalDOFVelocity,  T, globalShift );
+		getfem::setAup_i( Aup2, 2 , Fracture, DOF_p0, DOF_v0, DOF_p1, DOF_v1, shiftIntersect, fractureNumberGlobalDOFVelocity,  T, globalShift );
+		getfem::setAup_i( Aup3, 3 , Fracture, DOF_p0, DOF_v0, DOF_p1, DOF_v1, shiftIntersect, fractureNumberGlobalDOFVelocity,  T, globalShift );
 	
-		
-		(*Aup0) ( 0 , shiftIntersect[ id0 ] + DOF_v0[ 0 ] )  = 0.5;
-		(*Aup0) ( 0 , shiftIntersect[ id0 ] + DOF_v0[ 3 ] )  = 0.5;
-		(*Aup0) ( 0 , shiftIntersect[ id0 ] + DOF_p0[ 0 ] + fractureNumberGlobalDOFVelocity [ id0 ] ) = 1.*T( 0 , 0 );
-		(*Aup0) ( 0 , shiftIntersect[ id1 ] + DOF_p1 + fractureNumberGlobalDOFVelocity [ id1 ] ) = 1.*T( 0 , 1 );
-		(*Aup0) ( 0 , shiftIntersect[ id0 ] + DOF_p0[ 1 ] ) = 1.*T( 0 , 2 );
-		(*Aup0) ( 0 , globalShift + 1 ) = 1.*T( 0 , 3 );
-		(*Aup0) ( 0 , globalShift ) = -1.*( T( 0 , 0 ) + T( 0 , 1 ) + T( 0 , 2 ) + T( 0 , 3 ) );
-
 		gmm::copy(*Aup0, gmm::sub_matrix(*M_globalMatrix,
 	    		gmm::sub_interval( shiftVelocity[ id0 ]  + DOF_p0[ 0 ], 1),
 	    		gmm::sub_interval( 0, fractureTotalNumberDOFVelocityPressure + globalFractureNumber ) ));
-
-		
-		(*Aup1) ( 0 , shiftIntersect[ id1 ] + DOF_v1 )  = 1.;
-		(*Aup1) ( 0 , shiftIntersect[ id0 ] + DOF_p0[ 0 ] + fractureNumberGlobalDOFVelocity [ id0 ] ) = 1.*T( 1 , 0 );
-		(*Aup1) ( 0 , shiftIntersect[ id1 ] + DOF_p1 + fractureNumberGlobalDOFVelocity [ id1 ] ) = 1.*T( 1 , 1 );
-		(*Aup1) ( 0 , shiftIntersect[ id0 ] + DOF_p0[ 1 ] ) = 1.*T( 1 , 2 );
-		(*Aup1) ( 0 , globalShift + 1 ) = 1.*T( 1 , 3 );
-		(*Aup1) ( 0 , globalShift ) = -1.*( T( 1 , 0 ) + T( 1 , 1 ) + T( 1 , 2 ) + T( 1 , 3 ) );
-
-
+	
 		gmm::copy(*Aup1, gmm::sub_matrix(*M_globalMatrix,
 	    		gmm::sub_interval( shiftVelocity[ id1 ] + DOF_p1, 1),
 	    		gmm::sub_interval( 0, fractureTotalNumberDOFVelocityPressure + globalFractureNumber ) ));
-
-		
-		(*Aup2) ( 0 , shiftIntersect[ id0 ] + DOF_v0[ 1 ] ) = 0.5;
-		(*Aup2) ( 0 , shiftIntersect[ id0 ] + DOF_v0[ 2 ] ) = 0.5;
-		(*Aup2) ( 0 , shiftIntersect[ id0 ] + DOF_p0[ 0 ] + fractureNumberGlobalDOFVelocity [ id0 ] ) = 1.*T( 2 , 0 );
-		(*Aup2) ( 0 , shiftIntersect[ id1 ] + DOF_p1 + fractureNumberGlobalDOFVelocity [ id1 ] ) = 1.*T( 2 , 1 );
-		(*Aup2) ( 0 , shiftIntersect[ id0 ] + DOF_p0[ 1 ] ) = 1.*T( 2 , 2 );
-		(*Aup2) ( 0 , globalShift + 1 ) = 1.*T( 2 , 3 );
-		(*Aup2) ( 0 , globalShift ) = -1.*( T( 2 , 0 ) + T( 2 , 1 ) + T( 2 , 2 ) + T( 2 , 3 ) );
-
+				
 		gmm::copy(*Aup2, gmm::sub_matrix(*M_globalMatrix,
 	    		gmm::sub_interval( DOF_p0[ 1 ], 1),
 	    		gmm::sub_interval( 0, fractureTotalNumberDOFVelocityPressure + globalFractureNumber ) ));
 
-		
-		// Imponiamo condizione di non slip alla parete
-		(*Aup3) ( 0 , shiftIntersect[ id0 ] + DOF_p0[ 0 ] + fractureNumberGlobalDOFVelocity [ id0 ] ) = 1.*T( 3 , 0 );
-		(*Aup3) ( 0 , shiftIntersect[ id1 ] + DOF_p1 + fractureNumberGlobalDOFVelocity [ id1 ] ) = 1.*T( 3 , 1 );
-		(*Aup3) ( 0 , shiftIntersect[ id0 ] + DOF_p0[ 1 ] ) = 1.*T( 3 , 2 );
-		(*Aup3) ( 0 , globalShift + 1 ) = 1.*T( 3 , 3 );
-		(*Aup3) ( 0 , globalShift ) = -1.*( T( 3 , 0 ) + T( 3 , 1 ) + T( 3 , 2 ) + T( 3 , 3 ) );
-
+	
 		gmm::copy(*Aup3, gmm::sub_matrix(*M_globalMatrix,
 	    		gmm::sub_interval( globalShift + 1 , 1),
-	    		gmm::sub_interval( 0, fractureTotalNumberDOFVelocityPressure + globalFractureNumber ) ));
-				
+	    		gmm::sub_interval( 0, fractureTotalNumberDOFVelocityPressure + globalFractureNumber ) ));	
 		
 		scalar_type s = 0.;
 
@@ -622,30 +572,7 @@ void DarcyFractured::assembly ( const GetPot& dataFile )
 		
 		// velocità: attenzione alla convenzione dei segni!!
 		
-		(*Aup4) ( 0 , shiftIntersect[ id0 ] + DOF_v0[ 0 ] )  = -1./( 8.0 * s );
-		(*Aup4) ( 0 , shiftIntersect[ id0 ] + DOF_v0[ 3 ] )  = 1./( 8.0 * s );
-		(*Aup4) ( 0 , shiftIntersect[ id0 ] + DOF_v0[ 1 ]  )  = 1./( 8.0 * s );
-		(*Aup4) ( 0 , shiftIntersect[ id0 ] + DOF_v0[ 2 ]  )  = -1./( 8.0 * s );
-		
-		if ( DOF_v1 == 0 )
-		{
-			(*Aup4) ( 0 , shiftIntersect[ id1 ] + DOF_v1 )  = 1./( 4.0 * s );
-		}
-		else
-		{
-			(*Aup4) ( 0 , shiftIntersect[ id1 ] + DOF_v1 )  = -1./( 4.0 * s );
-		}
-
-
-		// pressione
-		(*Aup4) ( 0 , shiftIntersect[ id0 ] + DOF_p0[ 0 ] + fractureNumberGlobalDOFVelocity [ id0 ] ) = -1./4.;
-		(*Aup4) ( 0 , shiftIntersect[ id1 ] + DOF_p1 + fractureNumberGlobalDOFVelocity [ id1 ] ) = -1./4.;
-		(*Aup4) ( 0 , shiftIntersect[ id0 ] + DOF_p0[ 1 ] ) = -1./4.;
-		(*Aup4) ( 0 , globalShift + 1 ) = -1./4.;
-
-		// pressione media
-		(*Aup4) ( 0 , globalShift ) = 1.;
-		
+		getfem::setAup_i( Aup4, 4 , Fracture, DOF_p0, DOF_v0, DOF_p1, DOF_v1, shiftIntersect, fractureNumberGlobalDOFVelocity,  T, globalShift, s );
 		
 		gmm::copy(*Aup4, gmm::sub_matrix(*M_globalMatrix,
 	    		gmm::sub_interval( globalShift, 1),
@@ -886,7 +813,15 @@ void DarcyFractured::solve ( )
                   *M_globalRightHandSide, roundConditionNumber);
   
     size_type fractureShift = 0;
-        
+    
+    size_type NumCross = M_fractures->getIntersections ()->getNumberCross ();
+    size_type NumBifurcation = M_fractures->getIntersections ()->getNumberBifurcation ();
+    size_type NumBifurcation2 = M_fractures->getIntersections ()->getNumberBifurcation2 ();
+    size_type NumIntersection = 2*NumCross + NumBifurcation + 2*NumBifurcation2;
+    
+    scalarVectorPtr_Type M_intersectionPressure;
+    M_intersectionPressure.reset(new scalarVector_Type( NumIntersection, 0));
+    
     for ( size_type f = 0; f < numberFractures; ++f )
     { 
         // Extract the dual in the fracture
@@ -902,6 +837,11 @@ void DarcyFractured::solve ( )
         fractureShift += fractureNumberDOFVelocityPressure [ f ];
     }
     
+    // Extract the pressure at the intersections
+    gmm::copy( gmm::sub_vector( *M_velocityAndPressure, 
+    							gmm::sub_interval( fractureShift, NumIntersection )), 
+    		   *( M_intersectionPressure ));
+
 
     // the extra dof start at the end of the fracture dofs
   
@@ -997,6 +937,7 @@ void DarcyFractured::solve ( )
         mfproj_v.set_classical_discontinuous_finite_element ( 0, 0.01 );
 
         scalarVector_Type fracturePressureMeanUNCUT ( fractureNumberDOFPressure [ f ], 0. );
+        scalarVector_Type fracturePressureIntersection ( fractureNumberDOFPressure [ f ], 0. );
         scalarVector_Type fracturePressureInCut ( fractureNumberDOFPressure [ f ], 0. );
         scalarVector_Type fracturePressureOutCut ( fractureNumberDOFPressure [ f ], 0. );
 
@@ -1012,7 +953,12 @@ void DarcyFractured::solve ( )
             {	
                 fracturePressureMeanUNCUT [ i ] = (*(M_fracturePressure [ f ])) [ i ];
             }
-         }
+            else	//	************************	//
+            {
+            	fracturePressureIntersection [ i ] = (*(M_fracturePressure [ f ])) [ i ];
+            	std::cout << " fracturePressureIntersection " << std::endl;
+            }
+        }
 
         for ( size_type i = 0; i < fractureNumberDOFVelocity [ f ]; ++i )
         {
@@ -1030,6 +976,7 @@ void DarcyFractured::solve ( )
          * 
          */
         scalarVector_Type fracturePressureMeanUNCUTInterpolated ( mfproj.nb_dof(), 0. );
+        scalarVector_Type fracturePressureMeanIntersectionInterpolated ( mfproj.nb_dof(), 0. );
         scalarVector_Type fracturePressureMeanInCutInterpolated ( mfproj.nb_dof(), 0. );
         scalarVector_Type fracturePressureMeanOutCutInterpolated ( mfproj.nb_dof(), 0. );
 
@@ -1045,6 +992,10 @@ void DarcyFractured::solve ( )
         mfprojUncut_v.set_finite_element ( fractureFETypeVelocity );
 
         getfem::interpolation ( mfprojUncut, mfproj, fracturePressureMeanUNCUT, fracturePressureMeanUNCUTInterpolated );
+        
+        //	************************	//
+        getfem::interpolation ( mfprojUncut, mfproj, fracturePressureIntersection, fracturePressureMeanIntersectionInterpolated );
+        //	************************	//
         
         getfem::interpolation ( mfprojUncut_v, mfproj_v, fractureVelocityMeanUNCUT, fractureVelocityMeanUNCUTInterpolated );
 
@@ -1186,6 +1137,8 @@ void DarcyFractured::solve ( )
             }
         }
         
+        // fracturePressureMeanIntersectionInterpolated
+    	
 		std::cout<<std::endl;
 		std::cout<<std::endl;
 		std::cout << "Frattura " << f <<" Pressione " << fracturePressureMeanUNCUTInterpolated << std::endl;
@@ -1201,15 +1154,18 @@ void DarcyFractured::solve ( )
 				std::cout << " DOF =  " << M_fractures->getFracture( f )->getDofIntersection()[ 1 ] <<std::endl;
 			}
 		}
-		
+
 		if( M_fractures->getFracture( f )->getDOFBifurcation().size() != 0 )
 		{
-			std::cout << "Frattura " << f <<" Pressione nel punto di intersezione: " << fracturePressureMeanUNCUTInterpolated[ M_fractures->getFracture( f )->getDofIntersection()[ 0 ] ] << std::endl;
-			std::cout << " DOF =  " << M_fractures->getFracture( f )->getDOFBifurcation()[ 0 ] <<std::endl;
-			if( M_fractures->getFracture( f )->getDOFBifurcation().size()==2 )
+			for(size_type i = 0; i < M_fractures->getFracture( f )->getDOFBifurcation().size(); ++i)
 			{
-				std::cout << "Frattura " << f <<" Pressione nel punto di intersezione: " << fracturePressureMeanUNCUTInterpolated[ M_fractures->getFracture( f )->getDofIntersection()[ 1 ] ] << std::endl;
-				std::cout << " DOF =  " << M_fractures->getFracture( f )->getDOFBifurcation()[ 1 ] <<std::endl;
+				size_type DOFBifu = M_fractures->getFracture( f )->getDOFBifurcation()[ i ];
+				std::cout << "Frattura " << f << std::endl
+						  << "Biforcazione di tipo Bifurcation2 numero " << i+1 << std::endl	
+						  << "Pressione nel punto di intersezione: " << fracturePressureMeanUNCUTInterpolated[ DOFBifu ] << std::endl;
+				std::cout << " DOF =  " << DOFBifu <<std::endl;
+			  	std::cout << "Pressione nel DOF esteso: " << fracturePressureMeanUNCUTInterpolated[ DOFBifu + 1 ] << std::endl;
+				std::cout << " DOF =  " << DOFBifu + 1 <<std::endl;
 			}
 		}
 	
@@ -1227,7 +1183,7 @@ void DarcyFractured::solve ( )
         
                 
     }
-        
+    
     return;   
    
 }

@@ -1096,6 +1096,36 @@ scalarVector_Type setDOF_v ( scalarVector_Type& DOF, FracturePtrContainer_Type& 
 											   	
 } //setDOF_v
 
+void setDOF_v ( scalarVector_Type& DOF_p0, scalarVector_Type& DOF_v0,
+				scalar_type& DOF_p1, scalar_type& DOF_v1, 
+				FracturePtrContainer_Type& Fracture, 
+				MatrixBifurcationHandler_Type& Matrix,
+				size_type shiftIntersect, size_type fractureNumberDOFVelocity, size_type fractureNumberDOFPressure )
+{
+	Matrix.SetDOFIntersecton( Fracture[ 0 ], DOF_p0[ 0 ] );
+	Matrix.SetDOFIntersecton( Fracture[ 1 ], DOF_p1 );
+
+	const size_type nbDOF =  Fracture[ 1 ]-> getMeshFEMPressure().nb_basic_dof();
+		
+	if( DOF_p1 == nbDOF - 1 )
+	{
+		DOF_v1 = DOF_p1 + 1.;
+	}
+	else
+	{
+		DOF_v1 = DOF_p1;   
+	}
+	
+	DOF_p0[ 1 ] = shiftIntersect + fractureNumberDOFVelocity + fractureNumberDOFPressure + Fracture[ 0 ]->getNumExtendedVelocity();
+	DOF_v0[ 0 ] = DOF_p0[ 0 ];
+	DOF_v0[ 1 ] = DOF_p0[ 0 ]+1;
+	DOF_v0[ 2 ] = shiftIntersect + fractureNumberDOFVelocity;
+	DOF_v0[ 3 ] = shiftIntersect + fractureNumberDOFVelocity + 1;
+	
+	return;
+											   	
+} //setDOF_v bifurcation2
+
 void setAup_i ( sparseMatrixPtr_Type& Aup_i, 
 				size_type id, size_type id_i, size_type id_j, size_type id_k, 
 				scalarVector_Type& DOF, scalarVector_Type& DOF_v, 
@@ -1151,6 +1181,84 @@ void setAup_i ( sparseMatrixPtr_Type& Aup_i,
 		(*Aup_i) ( 0 , shiftIntersect[ id0 ] + DOF[ 0 ] + fractureNumberGlobalDOFVelocity [ id0 ] ) = -1./3.;
 		(*Aup_i) ( 0 , shiftIntersect[ id1 ] + DOF[ 1 ] + fractureNumberGlobalDOFVelocity [ id1 ] ) = -1./3.;
 		(*Aup_i) ( 0 , shiftIntersect[ id2 ] + DOF[ 2 ] + fractureNumberGlobalDOFVelocity [ id2 ] ) = -1./3.;
+
+		// pressione media
+		(*Aup_i) ( 0 , Index ) = 1.;
+	}
+	
+	return;
+											   	
+} //setAup_i
+
+void setAup_i ( sparseMatrixPtr_Type& Aup_i, size_type id, 
+				FracturePtrContainer_Type& Fracture,
+				scalarVector_Type& DOF_p0, scalarVector_Type& DOF_v0,
+				scalar_type& DOF_p1, scalar_type& DOF_v1, 
+				sizeVector_Type& shiftIntersect, sizeVector_Type& fractureNumberGlobalDOFVelocity,  
+				const Matrix4d& T, const size_type Index,
+				scalar_type s )
+{						
+		
+	size_type id0 = Fracture[ 0 ]->getId();
+	size_type id1 = Fracture[ 1 ]->getId();
+	
+	if( id != 4 )
+	{
+		if( id == 0  || id == 2 )
+		{
+			if( id == 0)
+			{
+				(*Aup_i) ( 0 , shiftIntersect[ id0 ] + DOF_v0[ 0 ] )  = 0.5;
+				(*Aup_i) ( 0 , shiftIntersect[ id0 ] + DOF_v0[ 3 ] )  = 0.5;
+			}
+			else
+			{
+				(*Aup_i) ( 0 , shiftIntersect[ id0 ] + DOF_v0[ 1 ] )  = 0.5;
+				(*Aup_i) ( 0 , shiftIntersect[ id0 ] + DOF_v0[ 2 ] )  = 0.5;
+			}
+			(*Aup_i) ( 0 , shiftIntersect[ id0 ] + DOF_p0[ 0 ] + fractureNumberGlobalDOFVelocity [ id0 ] ) = 1.*T( id , 0 );
+			(*Aup_i) ( 0 , shiftIntersect[ id1 ] + DOF_p1 + fractureNumberGlobalDOFVelocity [ id1 ] ) = 1.*T( id , 1 );
+			(*Aup_i) ( 0 , shiftIntersect[ id0 ] + DOF_p0[ 1 ] ) = 1.*T( id , 2 );
+			(*Aup_i) ( 0 , Index + 1 ) = 1.*T( id , 3 );
+			(*Aup_i) ( 0 , Index ) = -1.*( T( id , 0 ) + T( id , 1 ) + T( id , 2 ) + T( id , 3 ) );
+		}
+		else
+		{
+			if ( id == 1 )
+			{
+				(*Aup_i) ( 0 , shiftIntersect[ id1 ] + DOF_v1 )  = 1.;
+				//nel caso id == 3 imponiamo condizioni no-slip alla parete
+			}
+			(*Aup_i) ( 0 , shiftIntersect[ id0 ] + DOF_p0[ 0 ] + fractureNumberGlobalDOFVelocity [ id0 ] ) = 1.*T( id , 0 );
+			(*Aup_i) ( 0 , shiftIntersect[ id1 ] + DOF_p1 + fractureNumberGlobalDOFVelocity [ id1 ] ) = 1.*T( id , 1 );
+			(*Aup_i) ( 0 , shiftIntersect[ id0 ] + DOF_p0[ 1 ] ) = 1.*T( id , 2 );
+			(*Aup_i) ( 0 , Index + 1 ) = 1.*T( id , 3 );
+			(*Aup_i) ( 0 , Index ) = -1.*( T( id , 0 ) + T( id , 1 ) + T( id , 2 ) + T( id , 3 ) );
+		}
+
+	}
+	else
+	{
+		(*Aup_i) ( 0 , shiftIntersect[ id0 ] + DOF_v0[ 0 ] )  = -1./( 8.0 * s );
+		(*Aup_i) ( 0 , shiftIntersect[ id0 ] + DOF_v0[ 3 ] )  = 1./( 8.0 * s );
+		(*Aup_i) ( 0 , shiftIntersect[ id0 ] + DOF_v0[ 1 ]  )  = 1./( 8.0 * s );
+		(*Aup_i) ( 0 , shiftIntersect[ id0 ] + DOF_v0[ 2 ]  )  = -1./( 8.0 * s );
+		
+		if ( DOF_v1 == 0 )
+		{
+			(*Aup_i) ( 0 , shiftIntersect[ id1 ] + DOF_v1 )  = 1./( 4.0 * s );
+		}
+		else
+		{
+			(*Aup_i) ( 0 , shiftIntersect[ id1 ] + DOF_v1 )  = -1./( 4.0 * s );
+		}
+
+
+		// pressione
+		(*Aup_i) ( 0 , shiftIntersect[ id0 ] + DOF_p0[ 0 ] + fractureNumberGlobalDOFVelocity [ id0 ] ) = -1./4.;
+		(*Aup_i) ( 0 , shiftIntersect[ id1 ] + DOF_p1 + fractureNumberGlobalDOFVelocity [ id1 ] ) = -1./4.;
+		(*Aup_i) ( 0 , shiftIntersect[ id0 ] + DOF_p0[ 1 ] ) = -1./4.;
+		(*Aup_i) ( 0 , Index + 1 ) = -1./4.;
 
 		// pressione media
 		(*Aup_i) ( 0 , Index ) = 1.;

@@ -148,11 +148,25 @@ void velocityJump_Cross ( sparseMatrixPtr_Type& M,
 scalarVector_Type setDOF_v ( scalarVector_Type& DOF, FracturePtrContainer_Type& Fracture, 
 							 MatrixBifurcationHandler_Type& Matrix );
 							 
+void setDOF_v ( scalarVector_Type& DOF_p0, scalarVector_Type& DOF_v0,
+				scalar_type& DOF_p1, scalar_type& DOF_v1, 
+				FracturePtrContainer_Type& Fracture, 
+				MatrixBifurcationHandler_Type& Matrix, 
+				size_type shiftIntersect, size_type fractureNumberDOFVelocity, size_type fractureNumberDOFPressure );
+							 
 void setAup_i ( sparseMatrixPtr_Type& Aup_i, 
  				size_type id, size_type id_i, size_type id_j, size_type id_k, 
  				scalarVector_Type& DOF, scalarVector_Type& DOF_v, 
  				sizeVector_Type& shiftIntersect, sizeVector_Type& fractureNumberGlobalDOFVelocity,  
  				Matrix4d T, const size_type Index,
+				scalar_type s = 0 );
+				
+void setAup_i ( sparseMatrixPtr_Type& Aup_i, size_type id, 
+				FracturePtrContainer_Type& Fracture,
+				scalarVector_Type& DOF_p0, scalarVector_Type& DOF_v0,
+				scalar_type& DOF_p1, scalar_type& DOF_v1, 
+				sizeVector_Type& shiftIntersect, sizeVector_Type& fractureNumberGlobalDOFVelocity,  
+				const Matrix4d& T, const size_type Index,
 				scalar_type s = 0 );
 						 
 
