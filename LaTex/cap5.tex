@@ -9,22 +9,22 @@ Come ultimo caso di studio ci siamo concentrate sulla biforcazione generata da d
 \end{center}
 \end{figure}
 
-A differenza di quando visto fino ad ora, qui la regione d'intersezione non è più un triangolo, ma un parallelogramma. Si può generalizzare l'approssimazione fatta in \cite{Paper} con gli operatori mimetici, essendo degli operatori generici, non legati al tipo di cella di integrazione su cui si lavora. \\
-\noindent Il punto di intersezione $i_c$ rappresenta un punto generico per la frattura $\gamma_0$ in figura \ref{Y}, mentre per la frattura $\gamma_1$ rappresenta il primo o l'ultimo nodo. Questo punto non è detto che coincida con un nodo della mesh di $\gamma_0$ , in generale non sappiamo dove cadrà, per questo per poter imporre le condizioni d'interfaccia in modo corretto abbiamo introdotto per quesa frattura due gradi di libertà estesi per la velocità e uno per la pressione. È così possibile ottenere una miglior approssimazione del valore di velocità e pressione prima e dopo il punto di intersezione nell'elemento della mesh tagliato. \\
+A differenza di quanto visto fino ad ora, qui la regione d'intersezione non è più un triangolo, ma un parallelogramma. Si può generalizzare l'approssimazione fatta in \cite{Paper} con gli operatori mimetici, essendo generici e non legati al tipo di cella di integrazione su cui si lavora. \\
+\noindent Il punto di intersezione $i_c$ rappresenta un punto generico per la frattura $\gamma_0$ in figura \ref{Y}, mentre per la frattura $\gamma_1$ rappresenta il primo o l'ultimo nodo. Questo punto non è detto che coincida con un nodo della mesh di $\gamma_0$ , in generale non sappiamo dove cadrà, per questo, per poter imporre le condizioni d'interfaccia in modo corretto, abbiamo introdotto per questa frattura dei gradi di libertà estesi: due per la velocità e uno per la pressione. È così possibile ottenere una miglior approssimazione del valore di velocità e pressione prima e dopo il punto di intersezione nell'elemento della mesh tagliato. \\
 Esteso il codice di partenza per la costruzione del quadrilatero di intersezione, le condizioni d'interfaccia che vanno imposte hanno la stessa forma del caso delle tre fratture:
 
 \begin{center}			
 	$\left \{
 		\begin{array}{l}	
 	 		\textbf{u} - p_{I}T\textbf{1}_{3}+T \boldsymbol{\Pi}=0  \\ \\
-     	 	\displaystyle \sum_{k=0}^2 u_{k} = p_{I} - \pi  \\
+     	 	\displaystyle \sum_{k=0}^3 u_{k} = p_{I} - \pi  \\
 		\end{array}
 	\right.$
 \end{center} \label{condizioni d'interfaccia y }
 
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics[width=1\textwidth]{img/cap6/dipendenze.pdf}
+\includegraphics[width=1.2\textwidth]{img/cap6/dipendenze.pdf}
 \caption{Struttura globale del codice per il calcolo generico della matrice di trasmissibilità}\label{dipendenze}
 \end{center}
 \end{figure}
@@ -44,24 +44,24 @@ $$ \pi = \frac{p_0 + p_1 + p_2 + p_3 }{4} $$
 Per poter imporre le condizioni d'interfaccia, per la frattura tagliata, è necessario usare il valore della pressione e della velocità a ridosso dell'intersezione, ma questi valori sono incogniti. 
 Usiamo il grado classico di pressione e il grado esteso per indicare il valore di pressione prima e dopo il punto $i_c$, indicati con $p_0$ e $p_2$ in figura \ref{Y}.  L'incognita $p_1$ rappresenta il primo o l'ultimo grado di libertà della frattura $\gamma_1$, mentre con $p_3$ indichiamo un nodo fittizio, in cui imponiamo condizione di flusso nullo.
 
-\noindent Per quanto riguarda la velocità invece, la velocità prima dell'intersezione lo poniamo par alla media tra il valore nel grado di libertà classico prima e al valore nel grado esteso dopo l'intersezione. Lo stesso facciamo per il valore di velocità dopo l'intersezione, come indicato in figura \ref{xfem}. \\
+\noindent Per quanto riguarda la velocità invece, prima dell'intersezione la poniamo pari alla media tra il valore nel grado di libertà classico prima e il valore nel grado esteso dopo il punto $i_c$. Lo stesso facciamo per il valore di velocità dopo l'intersezione, come indicato in figura \ref{xfem}. \\
 
 \newpage
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics[width=0.8\textwidth]{img/cap6/xfem.eps}
+\includegraphics[width=1\textwidth]{img/cap6/xfem.eps}
 \caption{Introduzione dei gradi di libertà estesi per la frattura tagliata.}\label{xfem}
 \end{center}
 \end{figure}
 
 \subsection{Risultati numerici}
-Ripetiamo l'analisi precedente per il caso particolare di biforcazione.
+Ripetiamo l'analisi precedente per il caso particolare di biforcazione. Confronto valori della pressione nel DOF di intersezione per il modello 2D:\\
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=.45]{img/cap6/CP.eps}
 \caption{Risultati \texttt{FreeFem++} biforcazione particolare risultati paraview }\label{CPParaview}
 \end{figure}
-Confronto valori della pressione nel DOF di intersezione per il modello 2D:\\
+
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|c|}
 \hline
@@ -95,7 +95,7 @@ Confronto valori della pressione nel DOF di intersezione per il modello 2D:\\
 
 \begin{figure}[h!]
 \centering
-\includegraphics[scale=.055]{img/cap6/BifuY.eps}
+\includegraphics[scale=.07]{img/cap6/BifuY.eps}
 \caption{Risultati \texttt{FreeFem++} biforcazione con due fratture - spessore ordine 1E-02 }\label{Biforcazione2Frat1E-02}
 \end{figure}
 
@@ -110,3 +110,7 @@ Confronto valori della pressione nel DOF di intersezione per il modello 2D:\\
 \hline
 \end{tabular}
 \end{center}
+
+\subsection{Conclusioni}
+Dal confronto dei risultati ottenuti con il nostro codice e con i codici \texttt{FreeFem++} possiamo concludere che effettivamente il modello ridotto da noi usato rappresenta una buona approssimazione del fenomeno. L'approssimazione è tanto migliore quanto più le fratture hanno uno spessore piccolo, come avevamo già previsto. Infatti più sono grandi e più informazioni trascuriamo usando un modello 1d. \\
+\noindent Si potrebbe generalizzare ulteriormente il codice, usando sempre gli operatori mimetici, al caso in cui vi sia un numero generico di fratture che si intersecano in un punto. 

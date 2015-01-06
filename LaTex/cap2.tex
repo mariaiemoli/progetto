@@ -7,10 +7,10 @@
 Lo sviluppo del nostro progetto ha richiesto l'uso di strumenti specifici atti a facilitare e sistematizzare la gestione del codice quali \texttt{git}, \texttt{CMake} e \texttt{Doxygen}.\\
 
 \subsection{\texttt{Git}}
-\href{https://github.com/}{\texttt{Git}} è un sistema di controllo versione utilizzabile direttamente da linea di comando, molto diffuso è utile per tenere traccia delle varie fasi di sviluppo del codice. Git gestisce in modo adeguato i contributi al codice provenienti da agenti esterni e permette la condivisione del codice.\\
+\href{https://github.com/}{\texttt{Git}} è un sistema di controllo versione utilizzabile direttamente da linea di comando, molto diffuso e utile per tenere traccia delle varie fasi di sviluppo del codice. Git gestisce in modo adeguato i contributi al codice provenienti da agenti esterni e permette la condivisione del codice.\\
 Il codice del progetto è reperibile su \texttt{git} ed è possibile scaricarlo e collabolare allo sviluppo clonando il codice dalla repository  \href{https://github.com/}{\texttt{GitHub}}:\\
 \begin{center}
-\texttt{ git clone https://github.com/mariaiemoli/progetto.git}
+\texttt{ git clone https://github.com/mariaiemoli/PACS.git}
 \end{center}
 Nella cartella principale è contenuto anche un file \texttt{.gitignore}, in cui sono specificate le estensioni dei files e le sottocartelle che non devono essere visionati in una repository \texttt{git}. In particolare non si è interessati ai files temporanei che vengono eventualmente generati dagli editor, e alle cartelle generate da uno scorretta configurazione di \texttt{Doxygen}.
 
@@ -82,7 +82,7 @@ Per poter usare \texttt{CMake} è necessario posizionarsi nella directory in cui
 %ADD_LIBRARY(pacs ${TARGET_SRC} ${TARGET_HANDLER})
 %\end{Code03_01}
 
-\par \noindent Nella cartella test si trovano delle sottocartelle contenenti un file data di esempio per poter eseguire il codice e un file  \texttt{CMakeLists.txt} .\\
+\par \noindent Nella cartella test si trovano delle sottocartelle contenenti un file data di esempio per poter eseguire il codice e un file  \texttt{CMakeLists.txt}.\\
 \noindent Il file  \texttt{CMakeLists.txt} nella cartella dei test definisce gli obiettivi e i collegamenti necessari per l'esecuzione. \\
 
 \noindent Una volta che il \texttt{Makefile} è stato generato è possibile compilare il codice con il comando: \\ 

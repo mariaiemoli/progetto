@@ -67,10 +67,10 @@ class DarcyFractured
 
 
 Le funzioni fondamentali della classe sono il metodo \texttt{assembly ()} e il metodo \texttt{solve ()}. \\
-\noindent Il metodo \texttt{assembly ()} crea la matrice globale $A$ e il termine noto di destra, utilizzando le funzioni della classe \texttt{XFEMOperators}. 
-La matrice globale del sistema ha una struttura a blocchi, dove ad ogni frattura corrisponde un blocco derivante dal sistema \ref{sistemaAlgebrico}. Una volta definite le forme bilineari e i blocchi della matrice corrispondenti alle singole fratture, vanno imposte le condizioni d'interfaccia nel caso di eventuali intersezioni.\\
-\noindent Nel caso di un \textit{Cross} si impongono le condizioni di interfaccia in maniera debole tramite le matrici $E_{2}$ e $E_{3}$, che impongono il salto di velocità nell'intersezione.\\
-\noindent Nel caso di una \textit{Bifurcation} si impongono in maniera forte le condizioni di interfaccia \ref{condizioni d'interfaccia}.\\
+\noindent Il metodo \texttt{assembly ()} crea la matrice globale $A$ e il termine noto di destra.
+La matrice globale del sistema ha una struttura a blocchi, dove ad ogni frattura corrisponde un blocco derivante dal sistema \ref{sistemaAlgebrico}. Una volta definite le forme bilineari e i blocchi della matrice corrispondenti alle singole fratture, vanno aggiunti dei termini derivanti dalle condizioni d'interfaccia per le fratture coinvolte in eventuali intersezioni.\\
+\noindent Nel caso di un \textit{Cross} le condizioni all'intersezione vengono imposte in forma debole. Quello che ne deriva sono dei termini rappresentati dalle matrici $E_{2}$ e $E_{3}$, che impongono il salto di velocità nell'intersezione.\\
+\noindent Nel caso di una \textit{Bifurcation} si impongono in maniera forte le condizioni di interfaccia \ref{condizioni d'interfaccia}, ossia una volta assemblato il sestema si sostituisce nella riga corrispondente al dof di intersezione l'equazione giusta.\\
 Ipotizzando di essere in una situazione dove tre fratture hanno un intersezione di tipo \textit{Bifurcation} e una di queste si incontra con una quarta creando un intersezione di tipo \textit{Cross}, la matrice globale avrà il seguente volto:\\
 %---->DA SISTEMAREEEEE <----------------- 
  \begin{center}
@@ -87,7 +87,7 @@ Ipotizzando di essere in una situazione dove tre fratture hanno un intersezione 
  			0 & 0 & 0 & 0 & E_{2}^{T} & 0 & E_{3}^{T} & 0 & 0 & 0\\
  			\end{matrix}.\right] $ 
   \end{center}
-Infine il metodo \texttt{solve ()} risolve il problema e esporta i risultati ottenuti in formato \emph{vtk} per entrambe le incognite.\\
+Infine il metodo \texttt{solve ()} risolve il problema e esporta i risultati ottenuti in formato \emph{vtk} per entrambe le incognite. Una volta risolto il problema algebrico, è necessario interpolare i valori di pressione ricavati. Infatti i risultati così ottenuti sono riferiti alla mesh 1d costruita esclusivamente per l'integrazione. La mesh reale a cui devono riferirsi i valori di pressione reali è una mesh 2d, per questo è necessario interpolare i risultati per ogni frattura sulla rispettiva mesh prima di esportare.\\
 
 %\section{Class \texttt{XFEMOperetors}}
 %Ogni frattura ha associata la matrice:

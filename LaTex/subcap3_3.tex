@@ -2,7 +2,7 @@
 
 \chapter{Classi per la gestione dell'intersezione}
 
-Nel modello che abbiamo preso in considerazione noi le fratture hanno una rappresentazione in $\mathbb{R}$ e, nel caso della \textit{Biforcazione}, hanno un unico punto in comune. 
+Nel modello che è stato preso in considerazione le fratture hanno una rappresentazione in $\mathbb{R}$ e, nel caso della \textit{Biforcazione}, hanno un unico punto in comune. 
 Nella rappresentazione 2D, invece, la regione in comune è un triangolo. \\
 
 \begin{figure}[htbp]
@@ -29,7 +29,7 @@ Definite ora \textbf{C} matrice dei vettori che uniscono il baricentro, punto C,
 dove:
 	\begin{enumerate}
 	\item[-] \textbf{u} è il  vettore dei flussi
-	\item[-] $p_{I}$ rappresenta la  pressione nel punto di intersezione delle assi delle tre fratture;
+	\item[-] $p_{I}$ rappresenta la  pressione nel punto di intersezione degli assi delle tre fratture;
 	\item[-] \textbf{$\pi$} è il vettore delle pressioni nel punto di incontro fra l'asse della frattura i-esima con un lato del triangolo;
 	\end{enumerate} 
 e le condizioni che dobbiamo porre all'intersezione sono:
@@ -42,7 +42,7 @@ e le condizioni che dobbiamo porre all'intersezione sono:
 	\right.$
 \end{center} \label{condizioni d'interfaccia}
 
-\par Passiamo ora a descrivere la parte di codice che definisce gestisce la costruzione del triangolo di intersezione e il calcolo della matrice di trasmissibilità $\textbf{T}$, scritta usando la libreria matematica \textit{Eigen}.\\
+\par Passiamo ora a descrivere la parte di codice che gestisce la costruzione del triangolo di intersezione e il calcolo della matrice di trasmissibilità $\textbf{T}$, scritta usando la libreria matematica \textit{Eigen}.\\
 
 \newpage
 \begin{figure}[htbp]
