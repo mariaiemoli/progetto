@@ -229,13 +229,13 @@ public:
     }
 
 
-    inline const getfem::mesh_region& getRegion ( const size_type& regionFlag ) const
+    inline const getfem::mesh_region getRegion ( const size_type& regionFlag ) const
     {
         return M_mesh.region(regionFlag);
     }
 
 
-    inline getfem::mesh_region& getRegion ( const size_type& regionFlag )
+    inline getfem::mesh_region getRegion ( const size_type& regionFlag )
     {
         return M_mesh.region(regionFlag);
     }

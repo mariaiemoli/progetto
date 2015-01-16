@@ -150,7 +150,7 @@ public:
 		void setDOFIntersection( const getfem::mesh& M_mesh, FractureHandlerPtr_Type& fracture , size_type i );
 		
 
-		size_type FindDOF_Intersection( const bgeot::basic_mesh::ref_mesh_pt_ct nodes, FractureHandlerPtr_Type& fracture );
+		int FindDOF_Intersection( const bgeot::basic_mesh::ref_mesh_pt_ct nodes, FractureHandlerPtr_Type& fracture );
 		
 		bool checkCross( const sizeVector_Type& levelSets, const FracturePtrContainer_Type& fractures );
 		

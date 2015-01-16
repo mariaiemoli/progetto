@@ -565,7 +565,7 @@ void FractureIntersect::setDOFIntersection( const getfem::mesh& M_mesh, Fracture
 	
 }// setDOFIntersection
 
-size_type FractureIntersect::FindDOF_Intersection( const bgeot::basic_mesh::ref_mesh_pt_ct nodes, FractureHandlerPtr_Type& fracture )
+int FractureIntersect::FindDOF_Intersection( const bgeot::basic_mesh::ref_mesh_pt_ct nodes, FractureHandlerPtr_Type& fracture )
 {
 	// x e y dei nodi geometrici che definiscono il convesso
 	scalar_type x1 = nodes [ 0 ] [ 0 ];
